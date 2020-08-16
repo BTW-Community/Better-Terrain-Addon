@@ -33,7 +33,7 @@ public abstract class BTWGGenLayer extends GenLayer {
         GenLayer var6 = GenLayerZoom.magnify(1000L, var15, 0);
         BTWGGenLayerBiome var17 = new BTWGGenLayerBiome(200L, var6, par2WorldType);
         var6 = GenLayerZoom.magnify(1000L, var17, 2);
-        Object var18 = new GenLayerHills(1000L, var6);
+        Object var18 = new BTWGGenLayerHills(1000L, var6);
 
         for (int var7 = 0; var7 < var4; ++var7)
         {

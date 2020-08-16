@@ -20,8 +20,10 @@ public class BTWGWorldChunkManager extends WorldChunkManager {
         this.biomeCache = new BiomeCache(this);
         this.biomesToSpawnIn = new ArrayList();
         
-        for (BiomeGenBase b : BTWGBiomeConfiguration.biomeList) {
-        	biomesToSpawnIn.add(b);
+        for (BTWGBiomeGenBase b : BTWGBiomeConfiguration.biomeList) {
+        	if (b.isSpawnable()) {
+        		biomesToSpawnIn.add(b);
+        	}
         }
 	}
 

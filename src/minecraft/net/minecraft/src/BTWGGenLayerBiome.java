@@ -3,7 +3,7 @@ package net.minecraft.src;
 import java.util.ArrayList;
 
 public class BTWGGenLayerBiome extends BTWGGenLayer {
-	private ArrayList<BiomeGenBase> biomelist;
+	private ArrayList<BTWGBiomeGenBase> biomelist;
 
     public BTWGGenLayerBiome(long par1, GenLayer par3GenLayer, WorldType par4WorldType)
     {
