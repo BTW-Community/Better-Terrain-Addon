@@ -133,10 +133,12 @@ public class BTWGBiomeDecorator
 	//BTWG
 	private WorldGenerator oasisGen;
 	private WorldGenerator pumpkinGen;
+	private WorldGenerator steppeGen;
 
 	public int oasesPerChunk;
 	public int waterLakesPerChunk;
 	public int lavaLakesPerChunk;
+	public int steppePerChunk;
 
 	public BTWGBiomeDecorator(BiomeGenBase par1BiomeGenBase)
 	{
@@ -176,8 +178,10 @@ public class BTWGBiomeDecorator
 		//BTWG
 		pumpkinGen = new BTWGWorldGenPumpkin();
 		oasisGen = new BTWGWorldGenOasis(7, Block.grass.blockID);
-		
+		steppeGen = new BTWGWorldGenSteppe(Block.sand.blockID, 0);
+
 		oasesPerChunk = 0;
+		steppePerChunk = 0;
 		waterLakesPerChunk = 50;
 		lavaLakesPerChunk = 20;
 	}
@@ -402,6 +406,21 @@ public class BTWGBiomeDecorator
 				var2 = chunk_X + randomGenerator.nextInt(16) + 8;
 				var3 = chunk_Z + randomGenerator.nextInt(16) + 8;
 				oasisGen.generate(currentWorld, randomGenerator, var2, currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
+			}
+			catch (Exception e)
+			{
+
+			}
+		}
+
+		for (var2 = 0; var2 < steppePerChunk; ++var2)
+		{
+			try
+			{
+				var3 = chunk_X + randomGenerator.nextInt(16) + 8;
+				var4 = randomGenerator.nextInt(128);
+				var7 = chunk_Z + randomGenerator.nextInt(16) + 8;
+				steppeGen.generate(currentWorld, randomGenerator, var3, var4, var7);
 			}
 			catch (Exception e)
 			{

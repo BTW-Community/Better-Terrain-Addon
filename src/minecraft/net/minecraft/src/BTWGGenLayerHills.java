@@ -26,24 +26,7 @@ public class BTWGGenLayerHills extends GenLayer
 
                 if (this.nextInt(3) == 0)
                 {
-                    int hillsBiome = baseBiome;
-
-                    if (baseBiome == BTWGBiomeConfiguration.woods.biomeID)
-                    {
-                        hillsBiome = BTWGBiomeConfiguration.woodsHills.biomeID;
-                    }
-                    else if (baseBiome == BTWGBiomeConfiguration.desert.biomeID)
-                    {
-                        hillsBiome = BTWGBiomeConfiguration.desertHills.biomeID;
-                    }
-                    else if (baseBiome == BTWGBiomeConfiguration.lushDesert.biomeID)
-                    {
-                        hillsBiome = BTWGBiomeConfiguration.oasis.biomeID;
-                    }
-                    else if (baseBiome == BTWGBiomeConfiguration.savanna.biomeID)
-                    {
-                        hillsBiome = BTWGBiomeConfiguration.savannaHills.biomeID;
-                    }
+                    int hillsBiome = BTWGBiomeConfiguration.getHillsVariantForBiomes(baseBiome);
 
                     if (hillsBiome == baseBiome)
                     {
