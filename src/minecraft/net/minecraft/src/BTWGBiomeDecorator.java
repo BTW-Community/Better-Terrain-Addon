@@ -131,14 +131,18 @@ public class BTWGBiomeDecorator
 	public boolean generateLakes;
 
 	//BTWG
-	private WorldGenerator oasisGen;
-	private WorldGenerator pumpkinGen;
-	private WorldGenerator steppeGen;
+	protected WorldGenerator oasisGen;
+	protected WorldGenerator pumpkinGen;
+	protected WorldGenerator steppeGen;
+	protected WorldGenerator stoneInGrassGen;
+	protected WorldGenerator stoneInGrassGen2;
 
 	public int oasesPerChunk;
 	public int waterLakesPerChunk;
 	public int lavaLakesPerChunk;
 	public int steppePerChunk;
+	public boolean generateStoneInGrass;
+	public boolean generateStoneInGrass2;
 
 	public BTWGBiomeDecorator(BiomeGenBase par1BiomeGenBase)
 	{
@@ -157,7 +161,7 @@ public class BTWGBiomeDecorator
 		this.mushroomBrownGen = new WorldGenFlowers(Block.mushroomBrown.blockID);
 		this.mushroomRedGen = new WorldGenFlowers(Block.mushroomRed.blockID);
 		this.bigMushroomGen = new WorldGenBigMushroom();
-		this.reedGen = new WorldGenReed();
+		this.reedGen = new BTWGWorldGenReed();
 		this.cactusGen = new WorldGenCactus();
 		this.waterlilyGen = new WorldGenWaterlily();
 		this.waterlilyPerChunk = 0;
@@ -179,6 +183,8 @@ public class BTWGBiomeDecorator
 		pumpkinGen = new BTWGWorldGenPumpkin();
 		oasisGen = new BTWGWorldGenOasis(7, Block.grass.blockID);
 		steppeGen = new BTWGWorldGenSteppe(Block.sand.blockID, 0);
+		stoneInGrassGen = new BTWGWorldGenMycelium(Block.stone.blockID, 32);
+		stoneInGrassGen2 = new BTWGWorldGenShield(Block.stone.blockID, 48);
 
 		oasesPerChunk = 0;
 		steppePerChunk = 0;
@@ -427,6 +433,16 @@ public class BTWGBiomeDecorator
 
 			}
 		}
+
+		 if (generateStoneInGrass)
+		 {
+			 this.genStandardOre1(15, stoneInGrassGen, 64, 128);
+		 }
+
+		 if (generateStoneInGrass2)
+		 {
+			 this.genStandardOre1(20, stoneInGrassGen2, 64, 128);
+		 }
 	}
 
 	/**
