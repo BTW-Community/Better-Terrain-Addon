@@ -10,7 +10,7 @@ public class BTWGComponentVillageStartPiece extends ComponentVillageStartPiece {
 		super(par1WorldChunkManager, par2, par3Random, par4, par5, par6ArrayList, par7);
 
         BiomeGenBase var8 = par1WorldChunkManager.getBiomeGenAt(par4, par5);
-        setInDesert(BTWGBiomeConfiguration.canBiomeSpawnDesertTemple(var8));
+        setInDesert(BTWGBiomeConfiguration.canBiomeSpawnDesertTemple(var8) || var8 == BiomeGenBase.desert);
 	}
 	
 	//Uses reflection to modify final field "inDesert"

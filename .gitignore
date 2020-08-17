@@ -2115,7 +2115,6 @@ src/minecraft/net/minecraft/src/StructureNetherBridgePieceWeight.java
 src/minecraft/net/minecraft/src/StructureNetherBridgePieces.java
 src/minecraft/net/minecraft/src/StructureNetherBridgeStart.java
 src/minecraft/net/minecraft/src/StructurePieceBlockSelector.java
-src/minecraft/net/minecraft/src/StructureScatteredFeatureStart.java
 src/minecraft/net/minecraft/src/StructureScatteredFeatureStones.java
 src/minecraft/net/minecraft/src/StructureStart.java
 src/minecraft/net/minecraft/src/StructureStrongholdPieceWeight.java
