@@ -2126,7 +2126,6 @@ src/minecraft/net/minecraft/src/StructureStrongholdStart.java
 src/minecraft/net/minecraft/src/StructureStrongholdStones.java
 src/minecraft/net/minecraft/src/StructureVillagePieceWeight.java
 src/minecraft/net/minecraft/src/StructureVillagePieces.java
-src/minecraft/net/minecraft/src/StructureVillageStart.java
 src/minecraft/net/minecraft/src/SyntaxErrorException.java
 src/minecraft/net/minecraft/src/TaskLongRunning.java
 src/minecraft/net/minecraft/src/TaskOnlineConnect.java

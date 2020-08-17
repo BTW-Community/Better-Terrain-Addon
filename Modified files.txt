@@ -1,4 +1,5 @@
 ##Client##
 BlockAnvil
+StructureVillageStart
 WorldProvider
 WorldType

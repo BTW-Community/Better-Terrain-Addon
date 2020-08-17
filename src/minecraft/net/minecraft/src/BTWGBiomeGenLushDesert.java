@@ -2,9 +2,9 @@ package net.minecraft.src;
 
 import java.util.Random;
 
-public class BTWGBiomeGenDesert extends BTWGBiomeGenBase
+public class BTWGBiomeGenLushDesert extends BTWGBiomeGenBase
 {
-    public BTWGBiomeGenDesert(int par1)
+    public BTWGBiomeGenLushDesert(int par1)
     {
         super(par1);
         this.spawnableCreatureList.clear();
@@ -14,7 +14,20 @@ public class BTWGBiomeGenDesert extends BTWGBiomeGenBase
         this.btwgBiomeDecorator.deadBushPerChunk = 2;
         this.btwgBiomeDecorator.reedsPerChunk = 50;
         this.btwgBiomeDecorator.cactiPerChunk = 10;
-    }
+        this.btwgBiomeDecorator.oasesPerChunk = 100;
+        this.btwgBiomeDecorator.waterLakesPerChunk = 100;
+		this.btwgBiomeDecorator.treesPerChunk = 20;
+		this.btwgBiomeDecorator.grassPerChunk = 2;
+	}
+
+	/**
+	 * Gets a WorldGen appropriate for this biome.
+	 */
+	@Override
+	public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
+	{
+		return new BTWGWorldGenPalmTreeSmall(false);
+	}
 
     public void decorate(World par1World, Random par2Random, int par3, int par4)
     {

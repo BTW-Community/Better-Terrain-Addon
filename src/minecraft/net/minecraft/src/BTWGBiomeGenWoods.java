@@ -7,8 +7,8 @@ public class BTWGBiomeGenWoods extends BTWGBiomeGenBase {
     {
         super(par1);
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 5, 4, 4));
-        this.theBiomeDecorator.treesPerChunk = 10;
-        this.theBiomeDecorator.grassPerChunk = 2;
+        this.btwgBiomeDecorator.treesPerChunk = 10;
+        this.btwgBiomeDecorator.grassPerChunk = 2;
     }
 
     /**

@@ -470,7 +470,7 @@ public class BTWGChunkProvider implements IChunkProvider
         BlockSand.fallInstantly = true;
         int var4 = par2 * 16;
         int var5 = par3 * 16;
-        BiomeGenBase var6 = this.worldObj.getBiomeGenForCoords(var4 + 16, var5 + 16);
+        BiomeGenBase b = this.worldObj.getBiomeGenForCoords(var4 + 16, var5 + 16);
         this.rand.setSeed(this.worldObj.getSeed());
         long var7 = this.rand.nextLong() / 2L * 2L + 1L;
         long var9 = this.rand.nextLong() / 2L * 2L + 1L;
@@ -524,8 +524,16 @@ public class BTWGChunkProvider implements IChunkProvider
             }
         }
 
-        var6.decorate(this.worldObj, this.rand, var4, var5);
-        SpawnerAnimals.performWorldGenSpawning(this.worldObj, var6, var4 + 8, var5 + 8, 16, 16, this.rand);
+        try {
+        	BTWGBiomeGenBase biome = (BTWGBiomeGenBase) b;
+            biome.decorate(this.worldObj, this.rand, var4, var5);
+            SpawnerAnimals.performWorldGenSpawning(this.worldObj, biome, var4 + 8, var5 + 8, 16, 16, this.rand);
+        }
+        catch (Exception e) {
+            b.decorate(this.worldObj, this.rand, var4, var5);
+            SpawnerAnimals.performWorldGenSpawning(this.worldObj, b, var4 + 8, var5 + 8, 16, 16, this.rand);
+        }
+        
         var4 += 8;
         var5 += 8;
 

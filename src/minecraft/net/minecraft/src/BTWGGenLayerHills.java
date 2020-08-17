@@ -40,6 +40,10 @@ public class BTWGGenLayerHills extends GenLayer
                     {
                         hillsBiome = BTWGBiomeConfiguration.oasis.biomeID;
                     }
+                    else if (baseBiome == BTWGBiomeConfiguration.savanna.biomeID)
+                    {
+                        hillsBiome = BTWGBiomeConfiguration.savannaHills.biomeID;
+                    }
 
                     if (hillsBiome == baseBiome)
                     {

@@ -1,16 +1,21 @@
 package net.minecraft.src;
 
+import java.util.Random;
+
 import net.minecraft.src.BiomeGenBase;
 
 public class BTWGBiomeGenBase extends BiomeGenBase {
 	private boolean enableSnow;
 	private boolean enableRain;
 	private boolean isSpawnable;
+	
+    public BTWGBiomeDecorator btwgBiomeDecorator;
 
 	protected BTWGBiomeGenBase(int id) {
 		super(id);
 		this.enableRain = true;
 		this.isSpawnable = true;
+		this.btwgBiomeDecorator = new BTWGBiomeDecorator(this);
 	}
 
     /**
@@ -28,6 +33,11 @@ public class BTWGBiomeGenBase extends BiomeGenBase {
             this.rainfall = par2;
             return this;
         }
+    }
+
+    public void decorate(World par1World, Random par2Random, int par3, int par4)
+    {
+        this.btwgBiomeDecorator.decorate(par1World, par2Random, par3, par4);
     }
 
     /**
