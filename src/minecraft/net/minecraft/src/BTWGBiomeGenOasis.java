@@ -8,6 +8,8 @@ public class BTWGBiomeGenOasis extends BTWGBiomeGenBase {
 		super(par1);
 		this.btwgBiomeDecorator.treesPerChunk = 10;
 		this.btwgBiomeDecorator.grassPerChunk = 2;
+		this.btwgBiomeDecorator.sandPerChunk = 0;
+		this.btwgBiomeDecorator.sandPerChunk2 = 0;
 	}
 
 	/**

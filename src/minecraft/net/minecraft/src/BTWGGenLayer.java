@@ -56,7 +56,7 @@ public abstract class BTWGGenLayer extends GenLayer {
         }
 
         GenLayerSmooth var19 = new GenLayerSmooth(1000L, (GenLayer)var18);
-        GenLayerRiverMix var20 = new GenLayerRiverMix(100L, var19, var16);
+        BTWGGenLayerRiverMix var20 = new BTWGGenLayerRiverMix(100L, var19, var16);
         GenLayerVoronoiZoom var8 = new GenLayerVoronoiZoom(10L, var20);
         var20.initWorldGenSeed(par0);
         var8.initWorldGenSeed(par0);

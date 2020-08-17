@@ -29,6 +29,9 @@ public class BTWGBiomeConfiguration {
 	public static final BTWGBiomeGenBase birchForestM = new BTWGBiomeGenBirchForest(202).setColor(353825).setBiomeName("Birch Forest M").func_76733_a(5159473).setTemperatureRainfall(0.4F, 0.4F).setMinMaxHeight(0.2F, 3.0F);
 	public static final BTWGBiomeGenBase snowyWoodsM = new BTWGBiomeGenWoods(203).setColor(353825).setBiomeName("Snowy Woods M").func_76733_a(5159473).setEnableSnow().setTemperatureRainfall(0.1F, 0.1F).setMinMaxHeight(0.2F, 3.0F);
 	
+	//River variants
+	public static final BTWGBiomeGenBase riverDesert = new BTWGBiomeGenRiverDesert(230).setColor(255).setBiomeName("Desert River").setDisableRain().setMinMaxHeight(-0.5F, 0.0F);
+	
 	public static ArrayList<BTWGBiomeGenBase> biomeList = new ArrayList();
 	
 	private static ArrayList<BiomeGenBase> pumpkinBiomes = new ArrayList();
@@ -42,7 +45,7 @@ public class BTWGBiomeConfiguration {
 		//addBiomesToList();
 		filterSpawnBiomes();
 		addBiomesToStructureGenerators();
-		biomeList.add(chaparral);
+		biomeList.add(desert);
 	}
 	
 	public static void addBiomesToList() {
@@ -146,6 +149,19 @@ public class BTWGBiomeConfiguration {
         }
 		
 		return hillsBiome;
+	}
+	
+	public static int getRiverVariantForBiomes(int baseBiome) {
+		int riverBiome = -1;
+		
+		if (BiomeGenBase.biomeList[baseBiome].getEnableSnow()) {
+			riverBiome = BiomeGenBase.frozenRiver.biomeID;
+		}
+		else if (baseBiome == desert.biomeID || baseBiome == desertHills.biomeID) {
+			//riverBiome = riverDesert.biomeID;
+		}
+		
+		return riverBiome;
 	}
 	
 	public static ArrayList<BTWGBiomeGenBase> getBiomes() {
