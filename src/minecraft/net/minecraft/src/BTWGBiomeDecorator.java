@@ -199,7 +199,8 @@ public class BTWGBiomeDecorator
 	{
 		if (this.currentWorld != null)
 		{
-			throw new RuntimeException("Already decorating!!");
+			//throw new RuntimeException("Already decorating!!");
+			FCAddOnHandler.LogWarning("WARNING: Already decorating!");
 		}
 		else
 		{
