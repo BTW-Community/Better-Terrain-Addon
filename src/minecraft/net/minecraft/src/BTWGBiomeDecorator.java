@@ -134,13 +134,17 @@ public class BTWGBiomeDecorator
 	protected WorldGenerator oasisGen;
 	protected WorldGenerator pumpkinGen;
 	protected WorldGenerator steppeGen;
+	protected WorldGenerator steppeGenGravel;
 	protected WorldGenerator stoneInGrassGen;
 	protected WorldGenerator stoneInGrassGen2;
+	protected WorldGenerator bigRedMushroomGen;
 
 	public int oasesPerChunk;
 	public int waterLakesPerChunk;
 	public int lavaLakesPerChunk;
 	public int steppePerChunk;
+	public int steppeGravelPerChunk;
+	public int bigRedMushroomsPerChunk;
 	public boolean generateStoneInGrass;
 	public boolean generateStoneInGrass2;
 
@@ -185,11 +189,13 @@ public class BTWGBiomeDecorator
 		steppeGen = new BTWGWorldGenSteppe(Block.sand.blockID, 0);
 		stoneInGrassGen = new BTWGWorldGenMycelium(Block.stone.blockID, 32);
 		stoneInGrassGen2 = new BTWGWorldGenShield(Block.stone.blockID, 48);
+		bigRedMushroomGen = new WorldGenBigMushroom(1);
 
 		oasesPerChunk = 0;
 		steppePerChunk = 0;
 		waterLakesPerChunk = 50;
 		lavaLakesPerChunk = 20;
+		bigRedMushroomsPerChunk = 0;
 	}
 
 	/**
@@ -435,15 +441,22 @@ public class BTWGBiomeDecorator
 			}
 		}
 
-		 if (generateStoneInGrass)
-		 {
-			 this.genStandardOre1(15, stoneInGrassGen, 64, 128);
-		 }
+		for (var2 = 0; var2 < this.bigRedMushroomsPerChunk; ++var2)
+		{
+			var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
+			var4 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
+			this.bigRedMushroomGen.generate(this.currentWorld, this.randomGenerator, var3, this.currentWorld.getHeightValue(var3, var4), var4);
+		}
 
-		 if (generateStoneInGrass2)
-		 {
-			 this.genStandardOre1(20, stoneInGrassGen2, 64, 128);
-		 }
+		if (generateStoneInGrass)
+		{
+			this.genStandardOre1(15, stoneInGrassGen, 64, 128);
+		}
+
+		if (generateStoneInGrass2)
+		{
+			this.genStandardOre1(20, stoneInGrassGen2, 64, 128);
+		}
 	}
 
 	/**

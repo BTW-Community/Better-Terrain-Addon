@@ -15,6 +15,6 @@ public class BTWGBiomeGenAlpine extends BTWGBiomeGenBase {
      */
     public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
     {
-        return (WorldGenerator)(par1Random.nextInt(3) == 0 ? new WorldGenTaiga1() : new WorldGenTaiga2(false));
+        return (WorldGenerator)(par1Random.nextInt(3) == 0 ? new BTWGWorldGenTaiga5(false) : new WorldGenTaiga2(false));
     }
 }

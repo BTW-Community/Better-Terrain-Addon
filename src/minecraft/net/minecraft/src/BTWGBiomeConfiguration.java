@@ -19,6 +19,7 @@ public class BTWGBiomeConfiguration {
     public static final BTWGBiomeGenBase jungle = new BTWGBiomeGenJungle(113).setColor(5470985).setBiomeName("Jungle").func_76733_a(5470985).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.0F, 0.4F);
     public static final BTWGBiomeGenBase alpine = new BTWGBiomeGenAlpine(114).setColor(747097).setBiomeName("Alpine").func_76733_a(5159473).setTemperatureRainfall(0.2F, 0.8F).setMinMaxHeight(0.1F, 2.0F);
     public static final BTWGBiomeGenBase aspenGrove = new BTWGBiomeGenAspenGrove(115).setColor(747097).setBiomeName("Alpine").func_76733_a(5159473).setTemperatureRainfall(0.2F, 0.8F).setMinMaxHeight(0.1F, 2.0F); //Spawns within Alpine
+    public static final BTWGBiomeGenBase fungalForest = new BTWGBiomeGenFungalForest(116).setColor(522674).setBiomeName("Fungal Forest").func_76733_a(9154376).setMinMaxHeight(-0.2F, 0.8F).setTemperatureRainfall(0.4F, 0.9F);
 
 	//Hill variants - spawn within the normal variants
 	public static final BTWGBiomeGenBase woodsHills = new BTWGBiomeGenWoods(150).setColor(353825).setBiomeName("Woods Hills").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.3F, 1.0F);
@@ -29,6 +30,7 @@ public class BTWGBiomeConfiguration {
 	public static final BTWGBiomeGenBase chaparralHills = new BTWGBiomeGenChaparral(155).setColor(9286496).setBiomeName("Chaparral Hills").setTemperatureRainfall(0.8F, 0.4F).setMinMaxHeight(0.3F, 1.0F);
 	public static final BTWGBiomeGenBase ancientForestHills = new BTWGBiomeGenAncientForest(156).setColor(353825).setBiomeName("Ancient Forest Hills").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.3F, 1.0F);
     public static final BTWGBiomeGenBase jungleHills = new BTWGBiomeGenJungle(157).setColor(2900485).setBiomeName("JungleHills").func_76733_a(5470985).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(1.8F, 0.5F);
+    public static final BTWGBiomeGenBase fungalForestHills = new BTWGBiomeGenFungalForest(158).setColor(522674).setBiomeName("Fungal Forest Hills").func_76733_a(9154376).setMinMaxHeight(0.3F, 1.5F).setTemperatureRainfall(0.4F, 0.9F);
 	
 	//Mountain variants
 	public static final BTWGBiomeGenBase woodsM = new BTWGBiomeGenWoods(200).setColor(353825).setBiomeName("Woods M").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.2F, 3.0F);
@@ -52,7 +54,7 @@ public class BTWGBiomeConfiguration {
 		//addBiomesToList();
 		filterSpawnBiomes();
 		addBiomesToStructureGenerators();
-		biomeList.add(alpine);
+		biomeList.add(fungalForest);
 	}
 	
 	public static void addBiomesToList() {
@@ -68,6 +70,8 @@ public class BTWGBiomeConfiguration {
 		biomeList.add(ancientForest);
 		biomeList.add(tropics);
 		biomeList.add(jungle);
+		biomeList.add(alpine);
+		biomeList.add(fungalForest);
 		
 		//Mountain variants
 		biomeList.add(woodsM);
@@ -83,6 +87,7 @@ public class BTWGBiomeConfiguration {
 		steppe.setNotSpawnable();
 		woodedSteppe.setNotSpawnable();
 		tropics.setNotSpawnable();
+		jungle.setNotSpawnable();
 	}
 	
 	public static void addBiomesToStructureGenerators() {
@@ -93,6 +98,7 @@ public class BTWGBiomeConfiguration {
 		reedBiomes.add(mangroveSwamp);
 		reedBiomes.add(tropics);
 		reedBiomes.add(jungle);
+		reedBiomes.add(fungalForest);
 		
 		villageBiomes.add(savanna);
 		villageBiomes.add(savannaM);
@@ -109,12 +115,14 @@ public class BTWGBiomeConfiguration {
 		desertTempleBiomes.add(steppe);
 		
 		witchHutBiomes.add(mangroveSwamp);
+		witchHutBiomes.add(fungalForest);
 		
 		//Hill variants
 		pumpkinBiomes.add(savannaHills);
 		pumpkinBiomes.add(chaparralHills);
 		
 		reedBiomes.add(jungleHills);
+		reedBiomes.add(fungalForestHills);
 		
 		villageBiomes.add(savannaHills);
 		villageBiomes.add(desertHills);
@@ -125,6 +133,8 @@ public class BTWGBiomeConfiguration {
 
 		desertTempleBiomes.add(desertHills);
 		desertTempleBiomes.add(woodedSteppe);
+
+		witchHutBiomes.add(fungalForestHills);
 	}
 	
 	public static int getHillsVariantForBiomes(int baseBiome) {
@@ -162,6 +172,9 @@ public class BTWGBiomeConfiguration {
         }
         else if (baseBiome == alpine.biomeID) {
         	hillsBiome = aspenGrove.biomeID;
+        }
+        else if (baseBiome == fungalForest.biomeID) {
+        	hillsBiome = fungalForestHills.biomeID;
         }
 		
 		//Mountain variants
