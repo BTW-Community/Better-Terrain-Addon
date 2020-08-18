@@ -26,7 +26,7 @@ public class BTWGBiomeGenFungalForest extends BTWGBiomeGenBase {
     		gen = new BTWGWorldGenMassiveOak(true);
     	}
     	else {
-    		gen = this.worldGeneratorSwamp;
+    		gen = new BTWGWorldGenSwampTreeTall();
     	}
     	
     	return gen;

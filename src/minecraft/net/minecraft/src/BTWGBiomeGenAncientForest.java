@@ -19,13 +19,13 @@ public class BTWGBiomeGenAncientForest extends BTWGBiomeGenBase {
     	WorldGenerator gen;
     	
     	if (rand.nextInt(7) == 0) {
-    		gen = new BTWGWorldGenAncientTree(false);
+    		gen = new BTWGWorldGenOldOak(false);
     	}
     	else if (rand.nextInt(2) == 0) {
     		gen = this.worldGeneratorBigTree;
     	}
     	else {
-    		gen = this.worldGeneratorTrees;
+    		gen = new WorldGenTrees(false, 6, 0, 0, false);
     	}
     	
     	return gen;

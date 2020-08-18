@@ -12,6 +12,6 @@ public class BTWGBiomeGenAspenGrove extends BTWGBiomeGenAlpine {
      */
     public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
     {
-        return (WorldGenerator)(par1Random.nextInt(5) == 0 ? new BTWGWorldGenTaiga5(false) : this.worldGeneratorForest);
+        return (WorldGenerator)(par1Random.nextInt(5) == 0 ? new BTWGWorldGenTaiga5(false) : new BTWGWorldGenPineTree(false, 2, 2));
     }
 }
