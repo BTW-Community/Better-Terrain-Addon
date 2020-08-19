@@ -29,6 +29,16 @@ public class BTWGBiomeConfiguration {
 	public static final BTWGBiomeGenBase meadow = new BTWGBiomeGenMeadow(123).setColor(9286496).setBiomeName("Meadow").setTemperatureRainfall(0.7F, 1.0F).setMinMaxHeight(0.1F, 0.5F);
 	public static final BTWGBiomeGenBase orchard = new BTWGBiomeGenOrchard(124).setColor(353825).setBiomeName("Orchard").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.5F);
 	public static final BTWGBiomeGenBase mountain = new BTWGBiomeGenMountain(125).setColor(14090235).setBiomeName("Mountain").setTemperatureRainfall(0.5F, 0.1F).setMinMaxHeight(0.8F, 2.0F);
+	public static final BTWGBiomeGenBase dunes = new BTWGBiomeGenDesert(126).setColor(16421912).setBiomeName("Dunes").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.5F, 1.5F);
+	public static final BTWGBiomeGenBase heathland = new BTWGBiomeGenHeathland(127).setColor(9286496).setBiomeName("Heathland").setTemperatureRainfall(0.7F, 0.4F).setMinMaxHeight(0.1F, 0.5F);
+	public static final BTWGBiomeGenBase heathlandWoods = new BTWGBiomeGenHeathlandWoods(128).setColor(9286496).setBiomeName("Heathland Woods").setTemperatureRainfall(0.7F, 0.4F).setMinMaxHeight(0.1F, 0.5F); //spawns within heathland
+	public static final BTWGBiomeGenBase borealForest = new BTWGBiomeGenBorealForest(129).setColor(353825).setBiomeName("Boreal Forest").func_76733_a(5159473).setMinMaxHeight(0.0F, 1.0F).setTemperatureRainfall(0.6F, 0.7F);
+	public static final BTWGBiomeGenBase cascades = new BTWGBiomeGenWoods(100).setColor(353825).setBiomeName("Cascades").func_76733_a(5159473).setTemperatureRainfall(0.9F, 1.0F).setMinMaxHeight(0.1F, 3.0F);
+	
+	//Red desert/outback
+	//Cherry forest
+	//Badlands
+	//Autumn forest
 
 	//Hill variants - spawn within the normal variants
 	public static final BTWGBiomeGenBase woodsHills = new BTWGBiomeGenWoods(150).setColor(353825).setBiomeName("Woods Hills").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.3F, 1.0F);
@@ -60,7 +70,7 @@ public class BTWGBiomeConfiguration {
 		//addBiomesToList();
 		filterSpawnBiomes();
 		addBiomesToStructureGenerators();
-		biomeList.add(mountain);
+		biomeList.add(cascades);
 	}
 	
 	public static void addBiomesToList() {
@@ -84,24 +94,34 @@ public class BTWGBiomeConfiguration {
 		biomeList.add(rainforest);
 		biomeList.add(meadow);
 		biomeList.add(mountain);
+		biomeList.add(dunes);
+		biomeList.add(heathland);
+		biomeList.add(borealForest);
 	}
 	
 	public static void filterSpawnBiomes() {
 		desert.setNotSpawnable();
 		desertHills.setNotSpawnable();
+		riverDesert.setNotSpawnable();
 		lushDesert.setNotSpawnable();
 		steppe.setNotSpawnable();
 		woodedSteppe.setNotSpawnable();
 		tropics.setNotSpawnable();
 		jungle.setNotSpawnable();
+		jungleHills.setNotSpawnable();
 		rainforest.setNotSpawnable();
 		riverRainforest.setNotSpawnable();
+		dunes.setNotSpawnable();
+		mountain.setNotSpawnable();
+		alpine.setNotSpawnable();
+		aspenGrove.setNotSpawnable();
 	}
 	
 	public static void addBiomesToStructureGenerators() {
 		pumpkinBiomes.add(savanna);
 		pumpkinBiomes.add(chaparral);
 		pumpkinBiomes.add(meadow);
+		pumpkinBiomes.add(heathland);
 		
 		reedBiomes.add(mangroveSwamp);
 		reedBiomes.add(tropics);
@@ -116,6 +136,7 @@ public class BTWGBiomeConfiguration {
 		villageBiomes.add(steppe);
 		villageBiomes.add(chaparral);
 		villageBiomes.add(meadow);
+		villageBiomes.add(heathland);
 		
 		jungleTempleBiomes.add(tropics);
 		jungleTempleBiomes.add(jungle);
@@ -124,6 +145,7 @@ public class BTWGBiomeConfiguration {
 		desertTempleBiomes.add(desert);
 		desertTempleBiomes.add(lushDesert);
 		desertTempleBiomes.add(steppe);
+		desertTempleBiomes.add(dunes);
 		
 		witchHutBiomes.add(mangroveSwamp);
 		witchHutBiomes.add(fungalForest);
@@ -132,6 +154,7 @@ public class BTWGBiomeConfiguration {
 		//Hill variants
 		pumpkinBiomes.add(savannaHills);
 		pumpkinBiomes.add(chaparralHills);
+		pumpkinBiomes.add(heathlandWoods);
 		
 		reedBiomes.add(jungleHills);
 		reedBiomes.add(fungalForestHills);
@@ -197,6 +220,9 @@ public class BTWGBiomeConfiguration {
         else  if (baseBiome == mangroveSwamp.biomeID) {
         	hillsBiome = mangroveWetlands.biomeID;
         }
+        else if (baseBiome == heathland.biomeID) {
+        	hillsBiome = heathlandWoods.biomeID;
+        }
 		
 		return hillsBiome;
 	}
@@ -207,7 +233,7 @@ public class BTWGBiomeConfiguration {
 		if (BiomeGenBase.biomeList[baseBiome].getEnableSnow()) {
 			riverBiome = BiomeGenBase.frozenRiver.biomeID;
 		}
-		else if (baseBiome == desert.biomeID || baseBiome == desertHills.biomeID) {
+		else if (baseBiome == desert.biomeID || baseBiome == desertHills.biomeID || baseBiome == dunes.biomeID) {
 			riverBiome = riverDesert.biomeID;
 		}
 		else if (baseBiome == mysticForest.biomeID) {

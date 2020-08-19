@@ -5,7 +5,7 @@ import java.util.Random;
 public class BTWGBiomeGenWoodedSteppe extends BTWGBiomeGenSteppe {
 	public BTWGBiomeGenWoodedSteppe(int id) {
 		super(id);
-		btwgBiomeDecorator.treesPerChunk = 7;
+		btwgBiomeDecorator.treesPerChunk = 15;
 	}
 
     /**

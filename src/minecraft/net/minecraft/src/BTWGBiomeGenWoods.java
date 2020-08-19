@@ -33,4 +33,13 @@ public class BTWGBiomeGenWoods extends BTWGBiomeGenBase {
     	
     	return gen;
     }
+
+	/**
+	 * Gets a WorldGen appropriate for this biome.
+	 */
+	@Override
+	public WorldGenerator getRandomWorldGenForGrass(Random par1Random)
+	{
+		return par1Random.nextInt(2) == 0 ? new WorldGenTallGrass(Block.tallGrass.blockID, 2) : new WorldGenTallGrass(Block.tallGrass.blockID, 1);
+	}
 }
