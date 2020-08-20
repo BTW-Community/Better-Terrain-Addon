@@ -39,7 +39,7 @@ public class BTWGEntitySlime extends FCEntitySlime {
             {
                 BiomeGenBase var2 = this.worldObj.getBiomeGenForCoords(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posZ));
 
-                if ((var2 == BiomeGenBase.swampland || BTWGBiomeConfiguration.canBiomeSpawnWitchHut(var2)) && this.posY > 50.0D && this.posY < 70.0D && this.rand.nextFloat() < 0.5F && this.rand.nextFloat() < spawnChances[this.worldObj.getMoonPhase()] && this.worldObj.getBlockLightValue(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ)) <= this.rand.nextInt(8))
+                if ((var2 == BiomeGenBase.swampland || BTWGBiomeConfiguration.canBiomeSpawnWitchHut(var2)) && this.posY > 50.0D && this.posY < 256.0D && this.rand.nextFloat() < 0.5F && this.rand.nextFloat() < spawnChances[this.worldObj.getMoonPhase()] && this.worldObj.getBlockLightValue(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ)) <= this.rand.nextInt(8))
                 {
                     return super.getCanSpawnHere();
                 }
