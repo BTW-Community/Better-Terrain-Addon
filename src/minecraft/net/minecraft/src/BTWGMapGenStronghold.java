@@ -10,8 +10,6 @@ import java.util.Map.Entry;
 
 public class BTWGMapGenStronghold extends BTWGMapGenStructure
 {
-    private BiomeGenBase[] allowedBiomeGenBases;
-
     /**
      * is spawned false and set true once the defined BiomeGenBases were compared with the present ones
      */
@@ -22,7 +20,6 @@ public class BTWGMapGenStronghold extends BTWGMapGenStructure
 
     public BTWGMapGenStronghold()
     {
-        this.allowedBiomeGenBases = new BiomeGenBase[] {BiomeGenBase.desert, BiomeGenBase.forest, BiomeGenBase.extremeHills, BiomeGenBase.swampland, BiomeGenBase.taiga, BiomeGenBase.icePlains, BiomeGenBase.iceMountains, BiomeGenBase.desertHills, BiomeGenBase.forestHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.jungle, BiomeGenBase.jungleHills};
         this.structureCoords = new ChunkCoordIntPair[3];
         this.field_82671_h = 32.0D;
         this.field_82672_i = 3;
@@ -30,7 +27,6 @@ public class BTWGMapGenStronghold extends BTWGMapGenStructure
 
     public BTWGMapGenStronghold(Map par1Map)
     {
-        this.allowedBiomeGenBases = new BiomeGenBase[] {BiomeGenBase.desert, BiomeGenBase.forest, BiomeGenBase.extremeHills, BiomeGenBase.swampland, BiomeGenBase.taiga, BiomeGenBase.icePlains, BiomeGenBase.iceMountains, BiomeGenBase.desertHills, BiomeGenBase.forestHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.jungle, BiomeGenBase.jungleHills};
         this.structureCoords = new ChunkCoordIntPair[3];
         this.field_82671_h = 32.0D;
         this.field_82672_i = 3;
@@ -69,9 +65,7 @@ public class BTWGMapGenStronghold extends BTWGMapGenStructure
                 double var8 = (1.25D * (double)var6 + var3.nextDouble()) * this.field_82671_h * (double)var6;
                 int var10 = (int)Math.round(Math.cos(var4) * var8);
                 int var11 = (int)Math.round(Math.sin(var4) * var8);
-                ArrayList var12 = new ArrayList();
-                Collections.addAll(var12, this.allowedBiomeGenBases);
-                ChunkPosition var13 = this.worldObj.getWorldChunkManager().findBiomePosition((var10 << 4) + 8, (var11 << 4) + 8, 112, var12, var3);
+                ChunkPosition var13 = ((BTWGWorldChunkManager) this.worldObj.getWorldChunkManager()).findBiomePositionForStronghold((var10 << 4) + 8, (var11 << 4) + 8, 112, var3);
 
                 if (var13 != null)
                 {

@@ -244,6 +244,39 @@ public class BTWGWorldChunkManager extends WorldChunkManager {
     }
 
     /**
+     * Finds a valid position within a range, that is in one of the listed biomes. Searches {par1,par2} +-par3 blocks.
+     * Strongly favors positive y positions.
+     */
+    public ChunkPosition findBiomePositionForStronghold(int par1, int par2, int par3, Random par5Random)
+    {
+        IntCache.resetIntCache();
+        int var6 = par1 - par3 >> 2;
+        int var7 = par2 - par3 >> 2;
+        int var8 = par1 + par3 >> 2;
+        int var9 = par2 + par3 >> 2;
+        int var10 = var8 - var6 + 1;
+        int var11 = var9 - var7 + 1;
+        int[] var12 = this.genBiomes.getInts(var6, var7, var10, var11);
+        ChunkPosition var13 = null;
+        int var14 = 0;
+
+        for (int var15 = 0; var15 < var10 * var11; ++var15)
+        {
+            int var16 = var6 + var15 % var10 << 2;
+            int var17 = var7 + var15 / var10 << 2;
+            BiomeGenBase var18 = BiomeGenBase.biomeList[var12[var15]];
+
+            if (BTWGBiomeConfiguration.canBiomeSpawnStronghold(var18) && (var13 == null || par5Random.nextInt(var14 + 1) == 0))
+            {
+                var13 = new ChunkPosition(var16, 0, var17);
+                ++var14;
+            }
+        }
+
+        return var13;
+    }
+
+    /**
      * Calls the WorldChunkManager's biomeCache.cleanupCache()
      */
     public void cleanupCache()
