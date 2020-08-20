@@ -216,8 +216,16 @@ public class BTWGChunkProvider implements IChunkProvider
 								}
 								else if (var16 >= var5 - 4 && var16 <= var5 + 1)
 								{
-									var14 = var10.topBlock;
-									var15 = var10.fillerBlock;
+									if(var10.biomeID == BTWGBiomeConfiguration.valley.biomeID)
+									{
+										var14 = (byte)Block.sand.blockID;
+										var15 = (byte)Block.sand.blockID;
+									}
+									else
+									{
+										var14 = var10.topBlock;
+										var15 = var10.fillerBlock;
+									}
 								}
 
 								if (var16 < var5 && var14 == 0)

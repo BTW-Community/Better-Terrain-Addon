@@ -12,7 +12,6 @@ public class BTWGBiomeGenDesert extends BTWGBiomeGenBase
         this.fillerBlock = (byte)Block.sand.blockID;
         this.btwgBiomeDecorator.treesPerChunk = -999;
         this.btwgBiomeDecorator.deadBushPerChunk = 2;
-        this.btwgBiomeDecorator.reedsPerChunk = 50;
         this.btwgBiomeDecorator.cactiPerChunk = 10;
     }
 

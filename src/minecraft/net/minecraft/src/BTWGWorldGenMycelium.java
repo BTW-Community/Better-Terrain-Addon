@@ -11,6 +11,9 @@ public class BTWGWorldGenMycelium extends WorldGenerator
 {
 	/** The block ID of the ore to be placed using this generator. */
 	private int minableBlockId;
+	
+	/** The block ID of the ore to be placed using this generator. */
+	private int replaceBlockId;
 
 	/** The number of blocks to generate. */
 	private int numberOfBlocks;
@@ -19,6 +22,14 @@ public class BTWGWorldGenMycelium extends WorldGenerator
 	{
 		minableBlockId = par1;
 		numberOfBlocks = par2;
+		this.replaceBlockId = Block.grass.blockID;
+	}
+
+	public BTWGWorldGenMycelium(int par1, int par2, int replaceBlockId)
+	{
+		minableBlockId = par1;
+		numberOfBlocks = par2;
+		this.replaceBlockId = replaceBlockId;
 	}
 
 	@Override
@@ -63,9 +74,9 @@ public class BTWGWorldGenMycelium extends WorldGenerator
 							{
 								double var45 = (var44 + 0.5D - var24) / (var28 / 2.0D);
 
-								if (var39 * var39 + var42 * var42 + var45 * var45 < 1.0D && par1World.getBlockId(var38, var41, var44) == Block.grass.blockID)
+								if (var39 * var39 + var42 * var42 + var45 * var45 < 1.0D && par1World.getBlockId(var38, var41, var44) == replaceBlockId)
 								{
-									par1World.setBlock(var38, var41, var44, minableBlockId);
+									par1World.setBlock(var38, var41, var44, minableBlockId, 0, 2);
 								}
 							}
 						}

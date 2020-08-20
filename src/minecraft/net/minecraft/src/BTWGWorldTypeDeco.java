@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-public class BTWGWorldType extends WorldType {
-	public BTWGWorldType() {
-		super(4, "BTWG");
+public class BTWGWorldTypeDeco extends WorldType {
+	public BTWGWorldTypeDeco() {
+		super(5, "BTWGDeco");
 	}
 
     /**
@@ -10,6 +10,6 @@ public class BTWGWorldType extends WorldType {
      */
     public String getTranslateName()
     {
-        return "BTWG";
+        return "BTWG Deco";
     }
 }

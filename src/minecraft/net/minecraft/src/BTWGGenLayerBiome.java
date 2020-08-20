@@ -9,7 +9,11 @@ public class BTWGGenLayerBiome extends BTWGGenLayer {
     {
         super(par1);
 		parent = par3GenLayer;
-		biomelist = BTWGBiomeConfiguration.getBiomes();
+		
+		if (par4WorldType == BTWGMod.BTWGWorldType)
+			biomelist = BTWGBiomeConfiguration.getBiomes();
+		else
+			biomelist = BTWGBiomeConfiguration.getBiomesDeco();
 	} 
 
     @Override

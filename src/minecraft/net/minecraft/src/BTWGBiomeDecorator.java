@@ -138,6 +138,7 @@ public class BTWGBiomeDecorator
 	protected WorldGenerator stoneInGrassGen;
 	protected WorldGenerator stoneInGrassGen2;
 	protected WorldGenerator bigRedMushroomGen;
+	protected WorldGenerator outbackGen;
 
 	public int oasesPerChunk;
 	public int waterLakesPerChunk;
@@ -147,6 +148,7 @@ public class BTWGBiomeDecorator
 	public int bigRedMushroomsPerChunk;
 	public boolean generateStoneInGrass;
 	public boolean generateStoneInGrass2;
+	public boolean generateOutback;
 
 	public BTWGBiomeDecorator(BiomeGenBase par1BiomeGenBase)
 	{
@@ -190,6 +192,7 @@ public class BTWGBiomeDecorator
 		stoneInGrassGen = new BTWGWorldGenMycelium(Block.stone.blockID, 32);
 		stoneInGrassGen2 = new BTWGWorldGenShield(Block.stone.blockID, 48);
 		bigRedMushroomGen = new WorldGenBigMushroom(1);
+		outbackGen = new BTWGWorldGenMycelium(Block.grass.blockID, 48, Block.sand.blockID);
 
 		oasesPerChunk = 0;
 		steppePerChunk = 0;
@@ -456,6 +459,11 @@ public class BTWGBiomeDecorator
 		if (generateStoneInGrass2)
 		{
 			this.genStandardOre1(20, stoneInGrassGen2, 64, 128);
+		}
+
+		if (generateOutback)
+		{
+			this.genStandardOre1(30, outbackGen, 64, 128);
 		}
 	}
 

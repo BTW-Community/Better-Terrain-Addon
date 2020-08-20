@@ -77,7 +77,7 @@ public class WorldType
     /**
      * Sets canBeCreated to the provided value, and returns this.
      */
-    private WorldType setCanBeCreated(boolean par1)
+    public WorldType setCanBeCreated(boolean par1)
     {
         this.canBeCreated = par1;
         return this;
