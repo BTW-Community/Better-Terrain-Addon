@@ -76,6 +76,7 @@ public class BTWGBiomeConfiguration {
 		filterSpawnBiomes();
 		addBiomesToStructureGenerators();
 		biomeList.add(outback);
+		biomeList.add(woods);
 	}
 	
 	public static void addBiomesToList() {

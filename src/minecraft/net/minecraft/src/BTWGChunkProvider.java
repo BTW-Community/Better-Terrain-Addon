@@ -36,20 +36,20 @@ public class BTWGChunkProvider implements IChunkProvider
 	/** Holds the overall noise array used in chunk generation */
 	private double[] noiseArray;
 	private double[] stoneNoise = new double[256];
-	private MapGenBase caveGenerator = new MapGenCaves();
+	private BTWGMapGenBase caveGenerator = new BTWGMapGenCave();
 
 	/** Holds Stronghold Generator */
-	private MapGenStronghold strongholdGenerator = new MapGenStronghold();
+	private BTWGMapGenStronghold strongholdGenerator = new BTWGMapGenStronghold();
 
 	/** Holds Village Generator */
-	private MapGenVillage villageGenerator = new MapGenVillage();
+	private BTWGMapGenVillage villageGenerator = new BTWGMapGenVillage();
 
 	/** Holds Mineshaft Generator */
-	private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
-	private MapGenScatteredFeature scatteredFeatureGenerator = new MapGenScatteredFeature();
+	private BTWGMapGenMineshaft mineshaftGenerator = new BTWGMapGenMineshaft();
+	private BTWGMapGenScatteredFeature scatteredFeatureGenerator = new BTWGMapGenScatteredFeature();
 
 	/** Holds ravine generator */
-	private MapGenBase ravineGenerator = new MapGenRavine();
+	private BTWGMapGenBase ravineGenerator = new BTWGMapGenRavine();
 
 	/** The biomes that are used to generate the chunk */
 	private BiomeGenBase[] biomesForGeneration;
@@ -95,7 +95,7 @@ public class BTWGChunkProvider implements IChunkProvider
 	 * Generates the shape of the terrain for the chunk though its all stone though the water is frozen if the
 	 * temperature is low enough
 	 */
-	public void generateTerrain(int par1, int par2, byte[] par3ArrayOfByte)
+	public void generateTerrain(int par1, int par2, int[] blockArray)
 	{
 		byte var4 = 4;
 		byte var5 = 16;
@@ -143,15 +143,15 @@ public class BTWGChunkProvider implements IChunkProvider
 							{
 								if ((var49 += var47) > 0.0D)
 								{
-									par3ArrayOfByte[var43 += var44] = (byte)Block.stone.blockID;
+									blockArray[var43 += var44] = (byte)Block.stone.blockID;
 								}
 								else if (var12 * 8 + var31 < var6)
 								{
-									par3ArrayOfByte[var43 += var44] = (byte)Block.waterStill.blockID;
+									blockArray[var43 += var44] = (byte)Block.waterStill.blockID;
 								}
 								else
 								{
-									par3ArrayOfByte[var43 += var44] = 0;
+									blockArray[var43 += var44] = 0;
 								}
 							}
 
@@ -172,7 +172,7 @@ public class BTWGChunkProvider implements IChunkProvider
 	/**
 	 * Replaces the stone that was placed in with blocks that match the biome
 	 */
-	public void replaceBlocksForBiome(int par1, int par2, byte[] par3ArrayOfByte, BiomeGenBase[] par4ArrayOfBiomeGenBase)
+	public void replaceBlocksForBiome(int par1, int par2, int[] blockArray, BiomeGenBase[] par4ArrayOfBiomeGenBase)
 	{
 		byte var5 = 63;
 		double var6 = 0.03125D;
@@ -186,8 +186,17 @@ public class BTWGChunkProvider implements IChunkProvider
 				float var11 = var10.getFloatTemperature();
 				int var12 = (int)(this.stoneNoise[var8 + var9 * 16] / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
 				int var13 = -1;
-				byte var14 = var10.topBlock;
-				byte var15 = var10.fillerBlock;
+				int var14;
+				int var15;
+
+				if (var10 instanceof BTWGBiomeGenBase) {
+					var14 = ((BTWGBiomeGenBase) var10).topBlock;
+					var15 = ((BTWGBiomeGenBase) var10).fillerBlock;
+				}
+				else {
+					var14 = var10.topBlock;
+					var15 = var10.fillerBlock;
+				}
 
 				for (int var16 = 127; var16 >= 0; --var16)
 				{
@@ -195,11 +204,11 @@ public class BTWGChunkProvider implements IChunkProvider
 
 					if (var16 <= 0 + this.rand.nextInt(5))
 					{
-						par3ArrayOfByte[var17] = (byte)Block.bedrock.blockID;
+						blockArray[var17] = (byte)Block.bedrock.blockID;
 					}
 					else
 					{
-						byte var18 = par3ArrayOfByte[var17];
+						int var18 = blockArray[var17];
 
 						if (var18 == 0)
 						{
@@ -223,8 +232,14 @@ public class BTWGChunkProvider implements IChunkProvider
 									}
 									else
 									{
-										var14 = var10.topBlock;
-										var15 = var10.fillerBlock;
+										if (var10 instanceof BTWGBiomeGenBase) {
+											var14 = ((BTWGBiomeGenBase) var10).topBlock;
+											var15 = ((BTWGBiomeGenBase) var10).fillerBlock;
+										}
+										else {
+											var14 = var10.topBlock;
+											var15 = var10.fillerBlock;
+										}
 									}
 								}
 
@@ -244,17 +259,17 @@ public class BTWGChunkProvider implements IChunkProvider
 
 								if (var16 >= var5 - 1)
 								{
-									par3ArrayOfByte[var17] = var14;
+									blockArray[var17] = var14;
 								}
 								else
 								{
-									par3ArrayOfByte[var17] = var15;
+									blockArray[var17] = var15;
 								}
 							}
 							else if (var13 > 0)
 							{
 								--var13;
-								par3ArrayOfByte[var17] = var15;
+								blockArray[var17] = var15;
 
 								if (var13 == 0 && var15 == Block.sand.blockID)
 								{
@@ -284,7 +299,7 @@ public class BTWGChunkProvider implements IChunkProvider
 	public Chunk provideChunk(int par1, int par2)
 	{
 		this.rand.setSeed((long)par1 * 341873128712L + (long)par2 * 132897987541L);
-		byte[] var3 = new byte[32768];
+		int[] var3 = new int[32768];
 		this.generateTerrain(par1, par2, var3);
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
 		this.replaceBlocksForBiome(par1, par2, var3, this.biomesForGeneration);
@@ -299,7 +314,7 @@ public class BTWGChunkProvider implements IChunkProvider
 			this.scatteredFeatureGenerator.generate(this, this.worldObj, par1, par2, var3);
 		}
 
-		Chunk var4 = new Chunk(this.worldObj, var3, par1, par2);
+		Chunk var4 = new BTWGChunk(this.worldObj, var3, par1, par2);
 		byte[] var5 = var4.getBiomeArray();
 
 		for (int var6 = 0; var6 < var5.length; ++var6)

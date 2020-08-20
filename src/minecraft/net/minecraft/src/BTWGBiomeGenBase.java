@@ -5,6 +5,9 @@ import java.util.Random;
 import net.minecraft.src.BiomeGenBase;
 
 public class BTWGBiomeGenBase extends BiomeGenBase {
+    public int topBlock;
+    public int fillerBlock;
+    
 	private boolean enableSnow;
 	private boolean enableRain;
 	private boolean isSpawnable;
@@ -16,6 +19,8 @@ public class BTWGBiomeGenBase extends BiomeGenBase {
 		this.enableRain = true;
 		this.isSpawnable = true;
 		this.btwgBiomeDecorator = new BTWGBiomeDecorator(this);
+        this.topBlock = (byte)Block.grass.blockID;
+        this.fillerBlock = (byte)Block.dirt.blockID;
 	}
 
     /**

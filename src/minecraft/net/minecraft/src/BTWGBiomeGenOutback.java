@@ -5,8 +5,8 @@ import java.util.Random;
 public class BTWGBiomeGenOutback extends BTWGBiomeGenBase {
 	protected BTWGBiomeGenOutback(int id) {
 		super(id);
-        this.topBlock = (byte)Block.sand.blockID;
-        this.fillerBlock = (byte)Block.sand.blockID;
+        this.topBlock = Block.sand.blockID;
+        this.fillerBlock = Block.sand.blockID;
 		this.btwgBiomeDecorator.generateOutback = true;
         this.btwgBiomeDecorator.deadBushPerChunk = 10;
 		this.btwgBiomeDecorator.treesPerChunk = 100;
