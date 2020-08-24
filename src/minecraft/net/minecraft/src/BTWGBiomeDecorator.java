@@ -200,6 +200,7 @@ public class BTWGBiomeDecorator
 
 		if (BTWGDecoIntegration.isDecoInstalled()) {
 			outbackGen = new BTWGWorldGenMycelium(Block.grass.blockID, 48, BTWGDecoIntegration.redSand.blockID);
+			
 			andesiteGen = new BTWGWorldGenMinable(BTWGDecoIntegration.stoneTypes.blockID, 0, 32);
 			dioriteGen = new BTWGWorldGenMinable(BTWGDecoIntegration.stoneTypes.blockID, 1, 32);
 			graniteGen = new BTWGWorldGenMinable(BTWGDecoIntegration.stoneTypes.blockID, 2, 32);
