@@ -125,8 +125,4 @@ public class WorldType
     {
         return this.worldTypeId;
     }
-    
-	static {
-		BTWGMod.getInstance();
-	}
 }
