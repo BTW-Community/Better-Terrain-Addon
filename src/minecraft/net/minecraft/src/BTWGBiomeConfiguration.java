@@ -62,8 +62,8 @@ public class BTWGBiomeConfiguration {
 	public static final BTWGBiomeGenBase riverDesert = new BTWGBiomeGenRiverDesert(200).setColor(255).setBiomeName("Desert River").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(-0.5F, 0.0F);
 	public static final BTWGBiomeGenBase riverMystic = new BTWGBiomeGenRiverMystic(201).setColor(255).setBiomeName("Mystic River").setTemperatureRainfall(0.9F, 1.0F).setMinMaxHeight(-0.5F, 0.0F);
 	public static final BTWGBiomeGenBase riverRainforest = new BTWGBiomeGenRiverRainforest(202).setColor(255).setBiomeName("Rainforest River").setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(-0.5F, 0.0F);
-	public static final BTWGBiomeGenBase riverOutback = new BTWGBiomeGenRiverDesert(203).setColor(255).setBiomeName("Outback River").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(-0.5F, 0.0F);
-	public static final BTWGBiomeGenBase riverBadlands = new BTWGBiomeGenRiverDesert(204).setColor(255).setBiomeName("Badlands River").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(-0.5F, 0.0F);
+	public static final BTWGBiomeGenBase riverOutback = new BTWGBiomeGenRiverOutback(203).setColor(255).setBiomeName("Outback River").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(-0.5F, 0.0F);
+	public static final BTWGBiomeGenBase riverBadlands = new BTWGBiomeGenRiverOutback(204).setColor(255).setBiomeName("Badlands River").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(-0.5F, 0.0F);
 	public static final BTWGBiomeGenBase riverTropics = new BTWGBiomeGenRiverTropics(205).setColor(255).setBiomeName("Tropics River").setTemperatureRainfall(2.0F, 2.0F).setMinMaxHeight(-0.5F, 0.0F);
 	
 	//Beach variants
