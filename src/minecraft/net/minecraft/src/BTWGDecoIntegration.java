@@ -13,6 +13,7 @@ public class BTWGDecoIntegration {
 	public static Block flower;
 	public static Block flower2;
 	public static Block tulip;
+	public static Block stoneTypes;
 	
 	public static void init() {
 		try {
@@ -41,6 +42,7 @@ public class BTWGDecoIntegration {
 				flower = (Block) getDecoField(addonDefs, "flower");
 				flower2 = (Block) getDecoField(addonDefs, "flower2");
 				tulip = (Block) getDecoField(addonDefs, "tulip");
+				stoneTypes = (Block) getDecoField(addonDefs, "stoneTypes");
 			}
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();

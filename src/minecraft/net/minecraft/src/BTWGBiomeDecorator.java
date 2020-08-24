@@ -140,6 +140,9 @@ public class BTWGBiomeDecorator
 	protected WorldGenerator bigRedMushroomGen;
 	protected WorldGenerator outbackGen;
 	protected WorldGenerator decoFlowerGen;
+	protected WorldGenerator andesiteGen;
+	protected WorldGenerator dioriteGen;
+	protected WorldGenerator graniteGen;
 
 	public int oasesPerChunk;
 	public int waterLakesPerChunk;
@@ -195,10 +198,12 @@ public class BTWGBiomeDecorator
 		bigRedMushroomGen = new WorldGenBigMushroom(1);
 		decoFlowerGen = new BTWGWorldGenDecoFlowers();
 
-		if (BTWGDecoIntegration.isDecoInstalled())
+		if (BTWGDecoIntegration.isDecoInstalled()) {
 			outbackGen = new BTWGWorldGenMycelium(Block.grass.blockID, 48, BTWGDecoIntegration.redSand.blockID);
-		else
-			outbackGen = new BTWGWorldGenMycelium(Block.grass.blockID, 48, Block.sand.blockID);
+			andesiteGen = new WorldGenMinable(BTWGDecoIntegration.stoneTypes.blockID, 0, 32);
+			dioriteGen = new WorldGenMinable(BTWGDecoIntegration.stoneTypes.blockID, 1, 32);
+			graniteGen = new WorldGenMinable(BTWGDecoIntegration.stoneTypes.blockID, 2, 32);
+		}
 
 		oasesPerChunk = 0;
 		steppePerChunk = 0;
@@ -290,7 +295,7 @@ public class BTWGBiomeDecorator
 		//BTWG modified
 		for (var2 = 0; var2 < this.flowersPerChunk; ++var2)
 		{
-			if (BTWGDecoIntegration.isDecoInstalled()) {
+			if (BTWGDecoIntegration.isDecoInstalled() && this.currentWorld.provider.terrainType == BTWGMod.BTWGWorldTypeDeco) {
 				if (this.randomGenerator.nextInt(24) > 1) {
 					var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 					var4 = this.randomGenerator.nextInt(128);
@@ -539,5 +544,11 @@ public class BTWGBiomeDecorator
 		this.genStandardOre1(8, this.redstoneGen, 0, 16);
 		this.genStandardOre1(1, this.diamondGen, 0, 16);
 		this.genStandardOre2(1, this.lapisGen, 16, 16);
+
+		if (BTWGDecoIntegration.isDecoInstalled()) {
+			this.genStandardOre1(20, this.andesiteGen, 0, 128);
+			this.genStandardOre1(10, this.dioriteGen, 0, 128);
+			this.genStandardOre1(10, this.graniteGen, 0, 128);
+		}
 	}
 }
