@@ -9,9 +9,6 @@ import java.util.Map.Entry;
 
 public class BTWGMapGenVillage extends BTWGMapGenStructure
 {
-    /** A list of all the biomes villages can spawn in. */
-    public static final List villageSpawnBiomes = Arrays.asList(new BiomeGenBase[] {BiomeGenBase.plains, BiomeGenBase.desert});
-
     /** World terrain type, 0 for normal, 1 for flat map */
     private int terrainType;
     private int field_82665_g;
@@ -69,7 +66,7 @@ public class BTWGMapGenVillage extends BTWGMapGenStructure
 
         if (var3 == var5 && var4 == var6)
         {
-            boolean var8 = this.worldObj.getWorldChunkManager().areBiomesViable(var3 * 16 + 8, var4 * 16 + 8, 0, villageSpawnBiomes);
+            boolean var8 = this.worldObj.getWorldChunkManager().areBiomesViable(var3 * 16 + 8, var4 * 16 + 8, 0, BTWGBiomeConfiguration.getVillageBiomes());
 
             if (var8)
             {

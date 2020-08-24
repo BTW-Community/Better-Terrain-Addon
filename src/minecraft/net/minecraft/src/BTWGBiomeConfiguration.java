@@ -173,12 +173,12 @@ public class BTWGBiomeConfiguration {
 		reedBiomes.add(rainforest);
 		
 		//25%/21.4%
-		villageBiomes.add(savanna);
-		villageBiomes.add(desert);
-		villageBiomes.add(lushDesert);
-		villageBiomes.add(chaparral);
-		villageBiomes.add(meadow);
-		villageBiomes.add(heathland);
+		getVillageBiomes().add(savanna);
+		getVillageBiomes().add(desert);
+		getVillageBiomes().add(lushDesert);
+		getVillageBiomes().add(chaparral);
+		getVillageBiomes().add(meadow);
+		getVillageBiomes().add(heathland);
 		
 		//12.5%/10.7%
 		jungleTempleBiomes.add(tropics);
@@ -203,10 +203,10 @@ public class BTWGBiomeConfiguration {
 		reedBiomes.add(jungleHills);
 		reedBiomes.add(fungalForestHills);
 		
-		villageBiomes.add(savannaHills);
-		villageBiomes.add(desertHills);
-		villageBiomes.add(woodedSteppe);
-		villageBiomes.add(chaparralHills);
+		getVillageBiomes().add(savannaHills);
+		getVillageBiomes().add(desertHills);
+		getVillageBiomes().add(woodedSteppe);
+		getVillageBiomes().add(chaparralHills);
 
 		jungleTempleBiomes.add(jungleHills);
 
@@ -353,7 +353,7 @@ public class BTWGBiomeConfiguration {
 	}
 	
 	public static boolean canBiomeSpawnVillage(BiomeGenBase biome) {
-		return villageBiomes.contains(biome);
+		return getVillageBiomes().contains(biome);
 	}
 	
 	public static boolean canBiomeSpawnJungleTemple(BiomeGenBase biome) {
@@ -370,5 +370,9 @@ public class BTWGBiomeConfiguration {
 	
 	public static boolean canBiomeSpawnStronghold(BiomeGenBase biome) {
 		return biome != BiomeGenBase.ocean && biome != BiomeGenBase.frozenOcean;
+	}
+
+	public static ArrayList<BiomeGenBase> getVillageBiomes() {
+		return villageBiomes;
 	}
 }
