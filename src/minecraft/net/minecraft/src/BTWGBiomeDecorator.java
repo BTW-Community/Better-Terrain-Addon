@@ -545,7 +545,7 @@ public class BTWGBiomeDecorator
 		this.genStandardOre1(1, this.diamondGen, 0, 16);
 		this.genStandardOre2(1, this.lapisGen, 16, 16);
 
-		if (BTWGDecoIntegration.isDecoInstalled()) {
+		if (BTWGDecoIntegration.isDecoInstalled() && this.currentWorld.provider.terrainType == BTWGMod.BTWGWorldTypeDeco) {
 			this.genStandardOre1(20, this.andesiteGen, 0, 128);
 			this.genStandardOre1(10, this.dioriteGen, 0, 128);
 			this.genStandardOre1(10, this.graniteGen, 0, 128);
