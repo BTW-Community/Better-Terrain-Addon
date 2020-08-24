@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 import java.util.Random;
 
-public class BTWGWorldGenMineable extends WorldGenerator
+public class BTWGWorldGenMinable extends WorldGenerator
 {
     /** The block ID of the ore to be placed using this generator. */
     private int minableBlockId;
@@ -12,12 +12,12 @@ public class BTWGWorldGenMineable extends WorldGenerator
     private int numberOfBlocks;
     private int field_94523_c;
 
-    public BTWGWorldGenMineable(int par1, int par2, int par3)
+    public BTWGWorldGenMinable(int par1, int par2, int par3)
     {
         this(par1, par2, par3, Block.stone.blockID);
     }
 
-    public BTWGWorldGenMineable(int par1, int par2, int par3, int par4)
+    public BTWGWorldGenMinable(int par1, int par2, int par3, int par4)
     {
         this.minableBlockId = par1;
         this.mineableMetadata = par2;
