@@ -47,10 +47,40 @@ public class BTWGGenLayerHills extends GenLayer
                         {
                             var6[var8 + var7 * par3] = baseBiome;
                         }
+
+                        continue;
                     }
                 }
-                else
+                else {
+                    var6[var8 + var7 * par3] = baseBiome;
+                }
+                
+                if (this.nextInt(5) != 0)
                 {
+                    int hillsBiome = BTWGBiomeConfiguration.getHillsVariantForBiomes2(baseBiome);
+
+                    if (hillsBiome == baseBiome)
+                    {
+                        var6[var8 + var7 * par3] = baseBiome;
+                    }
+                    else
+                    {
+                        int var11 = var5[var8 + 1 + (var7 + 1 - 1) * (par3 + 2)];
+                        int var12 = var5[var8 + 1 + 1 + (var7 + 1) * (par3 + 2)];
+                        int var13 = var5[var8 + 1 - 1 + (var7 + 1) * (par3 + 2)];
+                        int var14 = var5[var8 + 1 + (var7 + 1 + 1) * (par3 + 2)];
+
+                        if (var11 == baseBiome && var12 == baseBiome && var13 == baseBiome && var14 == baseBiome)
+                        {
+                            var6[var8 + var7 * par3] = hillsBiome;
+                        }
+                        else
+                        {
+                            var6[var8 + var7 * par3] = baseBiome;
+                        }
+                    }
+                }
+                else {
                     var6[var8 + var7 * par3] = baseBiome;
                 }
             }

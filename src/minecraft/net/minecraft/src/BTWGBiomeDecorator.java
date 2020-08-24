@@ -139,6 +139,7 @@ public class BTWGBiomeDecorator
 	protected WorldGenerator stoneInGrassGen2;
 	protected WorldGenerator bigRedMushroomGen;
 	protected WorldGenerator outbackGen;
+	protected WorldGenerator decoFlowerGen;
 
 	public int oasesPerChunk;
 	public int waterLakesPerChunk;
@@ -192,7 +193,12 @@ public class BTWGBiomeDecorator
 		stoneInGrassGen = new BTWGWorldGenMycelium(Block.stone.blockID, 32);
 		stoneInGrassGen2 = new BTWGWorldGenShield(Block.stone.blockID, 48);
 		bigRedMushroomGen = new WorldGenBigMushroom(1);
-		outbackGen = new BTWGWorldGenMycelium(Block.grass.blockID, 48, Block.sand.blockID);
+		decoFlowerGen = new BTWGWorldGenDecoFlowers();
+
+		if (BTWGDecoIntegration.isDecoInstalled())
+			outbackGen = new BTWGWorldGenMycelium(Block.grass.blockID, 48, BTWGDecoIntegration.redSand.blockID);
+		else
+			outbackGen = new BTWGWorldGenMycelium(Block.grass.blockID, 48, Block.sand.blockID);
 
 		oasesPerChunk = 0;
 		steppePerChunk = 0;
@@ -281,19 +287,44 @@ public class BTWGBiomeDecorator
 
 		int var7;
 
+		//BTWG modified
 		for (var2 = 0; var2 < this.flowersPerChunk; ++var2)
 		{
-			var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
-			var4 = this.randomGenerator.nextInt(128);
-			var7 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-			this.plantYellowGen.generate(this.currentWorld, this.randomGenerator, var3, var4, var7);
+			if (BTWGDecoIntegration.isDecoInstalled()) {
+				if (this.randomGenerator.nextInt(24) > 1) {
+					var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
+					var4 = this.randomGenerator.nextInt(128);
+					var7 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
+					this.decoFlowerGen.generate(this.currentWorld, this.randomGenerator, var3, var4, var7);
+				}
+				else {
+					var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
+					var4 = this.randomGenerator.nextInt(128);
+					var7 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
+					this.plantYellowGen.generate(this.currentWorld, this.randomGenerator, var3, var4, var7);
 
-			if (this.randomGenerator.nextInt(4) == 0)
-			{
+					if (this.randomGenerator.nextInt(4) == 0)
+					{
+						var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
+						var4 = this.randomGenerator.nextInt(128);
+						var7 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
+						this.plantRedGen.generate(this.currentWorld, this.randomGenerator, var3, var4, var7);
+					}
+				}
+			}
+			else {
 				var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 				var4 = this.randomGenerator.nextInt(128);
 				var7 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-				this.plantRedGen.generate(this.currentWorld, this.randomGenerator, var3, var4, var7);
+				this.plantYellowGen.generate(this.currentWorld, this.randomGenerator, var3, var4, var7);
+
+				if (this.randomGenerator.nextInt(4) == 0)
+				{
+					var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
+					var4 = this.randomGenerator.nextInt(128);
+					var7 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
+					this.plantRedGen.generate(this.currentWorld, this.randomGenerator, var3, var4, var7);
+				}
 			}
 		}
 

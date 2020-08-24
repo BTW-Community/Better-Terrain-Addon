@@ -8,8 +8,8 @@ public class BTWGBiomeGenLushDesert extends BTWGBiomeGenBase
     {
         super(par1);
         this.spawnableCreatureList.clear();
-        this.topBlock = (byte)Block.sand.blockID;
-        this.fillerBlock = (byte)Block.sand.blockID;
+        this.topBlockExt = (byte)Block.sand.blockID;
+        this.fillerBlockExt = (byte)Block.sand.blockID;
         this.btwgBiomeDecorator.treesPerChunk = -999;
         this.btwgBiomeDecorator.deadBushPerChunk = 2;
         this.btwgBiomeDecorator.reedsPerChunk = 50;

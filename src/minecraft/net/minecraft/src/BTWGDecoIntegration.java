@@ -5,29 +5,43 @@ public class BTWGDecoIntegration {
 
 	public static Block redSand;
 	public static Block redSandStone;
+	public static Block terracotta;
+	public static Block stainedTerracotta;
 	public static Block cherryLog;
 	public static Block cherryStump;
 	public static Block cherryLeaves;
 	public static Block flower;
 	public static Block flower2;
+	public static Block tulip;
 	
 	public static void init() {
 		try {
-			Class addonManager = Class.forName("AddonManager");
+			Class addonDefs = null;
 			
-			if (addonManager != null) {
+			try {
+				addonDefs = Class.forName("AddonDefs");
+			} catch (ClassNotFoundException e) {
+				try {
+					addonDefs = Class.forName("net.minecraft.src.AddonDefs");
+				} catch (ClassNotFoundException e1) {
+					
+				}
+			}
+			
+			if (addonDefs != null) {
 				isDecoInstalled = true;
 				
-				redSand = (Block) getDecoField(addonManager, "redSand");
-				redSandStone = (Block) getDecoField(addonManager, "redSandStone");
-				cherryLog = (Block) getDecoField(addonManager, "cherryLog");
-				cherryStump = (Block) getDecoField(addonManager, "cherryStump");
-				cherryLeaves = (Block) getDecoField(addonManager, "cherryLeaves");
-				flower = (Block) getDecoField(addonManager, "flower");
-				flower2 = (Block) getDecoField(addonManager, "flower2");
+				redSand = (Block) getDecoField(addonDefs, "redSand");
+				redSandStone = (Block) getDecoField(addonDefs, "redSandStone");
+				terracotta = (Block) getDecoField(addonDefs, "terracotta");
+				stainedTerracotta = (Block) getDecoField(addonDefs, "stainedTerracotta");
+				cherryLog = (Block) getDecoField(addonDefs, "cherryLog");
+				cherryStump = (Block) getDecoField(addonDefs, "cherryStump");
+				cherryLeaves = (Block) getDecoField(addonDefs, "cherryLeaves");
+				flower = (Block) getDecoField(addonDefs, "flower");
+				flower2 = (Block) getDecoField(addonDefs, "flower2");
+				tulip = (Block) getDecoField(addonDefs, "tulip");
 			}
-		} catch (ClassNotFoundException e) {
-			
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
@@ -39,8 +53,8 @@ public class BTWGDecoIntegration {
 		}
 	}
 	
-	private static Object getDecoField(Class addonManager, String fieldName) throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {
-		return addonManager.getDeclaredField(fieldName).get(null);
+	private static Object getDecoField(Class addonDefs, String fieldName) throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {
+		return addonDefs.getDeclaredField(fieldName).get(null);
 	}
 	
 	public static boolean isDecoInstalled() {

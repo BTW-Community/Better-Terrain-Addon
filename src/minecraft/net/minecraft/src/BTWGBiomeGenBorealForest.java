@@ -27,7 +27,7 @@ public class BTWGBiomeGenBorealForest extends BTWGBiomeGenBase {
     		gen = new BTWGWorldGenBorealBirch();
     	}
     	else {
-    		gen = new BTWGWorldGenTaiga8(false);
+    		gen = new BTWGWorldGenTaiga6(false);
     	}
     	
     	return gen;

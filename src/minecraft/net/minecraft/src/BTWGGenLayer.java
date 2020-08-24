@@ -46,7 +46,7 @@ public abstract class BTWGGenLayer extends GenLayer {
 
             if (var7 == 1)
             {
-                var18 = new GenLayerShore(1000L, (GenLayer)var18);
+                var18 = new BTWGGenLayerShore(1000L, (GenLayer)var18);
             }
 
             if (var7 == 1)

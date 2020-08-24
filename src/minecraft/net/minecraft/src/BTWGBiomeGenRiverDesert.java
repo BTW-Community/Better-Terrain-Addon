@@ -5,8 +5,8 @@ public class BTWGBiomeGenRiverDesert extends BTWGBiomeGenBase {
     {
         super(par1);
         this.spawnableCreatureList.clear();
-        this.topBlock = (byte)Block.sand.blockID;
-        this.fillerBlock = (byte)Block.sand.blockID;
+        this.topBlockExt = (byte)Block.sand.blockID;
+        this.fillerBlockExt = (byte)Block.sand.blockID;
     }
 
     public boolean CanLightningStrikeInBiome()

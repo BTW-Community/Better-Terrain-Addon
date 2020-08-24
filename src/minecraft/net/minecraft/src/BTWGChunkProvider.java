@@ -190,8 +190,8 @@ public class BTWGChunkProvider implements IChunkProvider
 				int var15;
 
 				if (var10 instanceof BTWGBiomeGenBase) {
-					var14 = ((BTWGBiomeGenBase) var10).topBlock;
-					var15 = ((BTWGBiomeGenBase) var10).fillerBlock;
+					var14 = ((BTWGBiomeGenBase) var10).topBlockExt;
+					var15 = ((BTWGBiomeGenBase) var10).fillerBlockExt;
 				}
 				else {
 					var14 = var10.topBlock;
@@ -233,8 +233,27 @@ public class BTWGChunkProvider implements IChunkProvider
 									else
 									{
 										if (var10 instanceof BTWGBiomeGenBase) {
-											var14 = ((BTWGBiomeGenBase) var10).topBlock;
-											var15 = ((BTWGBiomeGenBase) var10).fillerBlock;
+											var14 = ((BTWGBiomeGenBase) var10).topBlockExt;
+											var15 = ((BTWGBiomeGenBase) var10).fillerBlockExt;
+										}
+										else {
+											var14 = var10.topBlock;
+											var15 = var10.fillerBlock;
+										}
+									}
+								}
+								else if (var16 >= var5 + 8)
+								{
+									if(var10.biomeID == BTWGBiomeConfiguration.badlands.biomeID || var10.biomeID == BTWGBiomeConfiguration.riverBadlands.biomeID)
+									{
+										var14 = BTWGDecoIntegration.terracotta.blockID;
+										var15 = BTWGDecoIntegration.terracotta.blockID;
+									}
+									else
+									{
+										if (var10 instanceof BTWGBiomeGenBase) {
+											var14 = ((BTWGBiomeGenBase) var10).topBlockExt;
+											var15 = ((BTWGBiomeGenBase) var10).fillerBlockExt;
 										}
 										else {
 											var14 = var10.topBlock;
@@ -275,6 +294,16 @@ public class BTWGChunkProvider implements IChunkProvider
 								{
 									var13 = this.rand.nextInt(4);
 									var15 = (byte)Block.sandStone.blockID;
+								}
+								else if (BTWGDecoIntegration.isDecoInstalled() && var13 == 0 && var15 == BTWGDecoIntegration.redSand.blockID)
+								{
+									var13 = this.rand.nextInt(4);
+									var15 = BTWGDecoIntegration.redSandStone.blockID;
+								}
+								else if (BTWGDecoIntegration.isDecoInstalled() && var13 == 0 && var15 == BTWGDecoIntegration.terracotta.blockID)
+								{
+									var13 = this.rand.nextInt(6) + 10;
+									var15 = BTWGDecoIntegration.terracotta.blockID;
 								}
 							}
 						}

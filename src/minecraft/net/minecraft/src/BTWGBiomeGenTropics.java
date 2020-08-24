@@ -10,6 +10,7 @@ public class BTWGBiomeGenTropics extends BTWGBiomeGenBase {
 		this.btwgBiomeDecorator.grassPerChunk = 2;
 		this.btwgBiomeDecorator.sandPerChunk = 100;
 		this.btwgBiomeDecorator.sandPerChunk2 = 100;
+		this.waterColorMultiplier = 65396;
         this.spawnableCreatureList.clear();
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityChicken.class, 10, 4, 4));
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityPig.class, 10, 4, 4));

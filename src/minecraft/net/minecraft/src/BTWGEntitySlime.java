@@ -8,6 +8,11 @@ public class BTWGEntitySlime extends FCEntitySlime {
 		super(var1);
 	}
 
+    protected EntitySlime createInstance()
+    {
+        return new BTWGEntitySlime(this.worldObj);
+    }
+
     /**
      * Checks if the entity's current position is a valid location to spawn this entity.
      */

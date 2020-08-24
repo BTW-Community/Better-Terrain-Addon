@@ -1,4 +1,6 @@
+src deco/
 src/minecraft/net/minecraft/server/
+src/minecraft/net/minecraft/src/BlockAnvil.java
 src/minecraft/net/minecraft/src/BlockPane.java
 src/minecraft/net/minecraft/src/ContainerRepair.java
 src/minecraft/net/minecraft/src/DataWatcher.java

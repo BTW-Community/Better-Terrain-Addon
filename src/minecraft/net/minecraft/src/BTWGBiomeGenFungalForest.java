@@ -8,6 +8,7 @@ public class BTWGBiomeGenFungalForest extends BTWGBiomeGenBase {
         this.btwgBiomeDecorator.treesPerChunk = 15;
         this.btwgBiomeDecorator.grassPerChunk = 2;
         this.btwgBiomeDecorator.bigRedMushroomsPerChunk = 5;
+        this.btwgBiomeDecorator.waterlilyPerChunk = 4;
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntitySlime.class, 1, 1, 1));
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntityWitch.class, 1, 1, 1));
         this.spawnableCreatureList.clear();
