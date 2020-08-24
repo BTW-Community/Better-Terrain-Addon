@@ -15,7 +15,7 @@ public class BTWGBiomeConfiguration {
 	public static final BTWGBiomeGenBase woodedSteppe = new BTWGBiomeGenWoodedSteppe(109).setColor(9286496).setBiomeName("Wooded Steppe").setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.3F, 0.5F); //Spawns within steppe
 	public static final BTWGBiomeGenBase chaparral = new BTWGBiomeGenChaparral(110).setColor(9286496).setBiomeName("Chaparral").setTemperatureRainfall(0.8F, 0.4F).setMinMaxHeight(0.3F, 0.6F);
 	public static final BTWGBiomeGenBase ancientForest = new BTWGBiomeGenAncientForest(111).setColor(353825).setBiomeName("Ancient Forest").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.1F, 0.5F);
-	public static final BTWGBiomeGenBase tropics = new BTWGBiomeGenTropics(112).setColor(16711935).setBiomeName("Tropics").setTemperatureRainfall(2.0F, 2.0F).setMinMaxHeight(-0.2F, 0.9F);
+	public static final BTWGBiomeGenBase tropics = new BTWGBiomeGenTropics(112).setColor(16711935).setBiomeName("Tropics").setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(-0.2F, 0.9F);
     public static final BTWGBiomeGenBase jungle = new BTWGBiomeGenJungle(113).setColor(5470985).setBiomeName("Jungle").func_76733_a(5470985).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.0F, 0.4F);
     public static final BTWGBiomeGenBase alpine = new BTWGBiomeGenAlpine(114).setColor(747097).setBiomeName("Alpine").func_76733_a(5159473).setTemperatureRainfall(0.2F, 0.8F).setMinMaxHeight(0.1F, 3.0F);
     public static final BTWGBiomeGenBase aspenGrove = new BTWGBiomeGenAspenGrove(115).setColor(747097).setBiomeName("Alpine").func_76733_a(5159473).setTemperatureRainfall(0.2F, 0.8F).setMinMaxHeight(0.1F, 3.0F); //Spawns within Alpine
@@ -33,7 +33,7 @@ public class BTWGBiomeConfiguration {
 	public static final BTWGBiomeGenBase heathland = new BTWGBiomeGenHeathland(127).setColor(9286496).setBiomeName("Heathland").setTemperatureRainfall(0.7F, 0.4F).setMinMaxHeight(0.1F, 0.5F);
 	public static final BTWGBiomeGenBase heathlandWoods = new BTWGBiomeGenHeathlandWoods(128).setColor(9286496).setBiomeName("Heathland Woods").setTemperatureRainfall(0.7F, 0.4F).setMinMaxHeight(0.1F, 0.5F); //Spawns within heathland
 	public static final BTWGBiomeGenBase borealForest = new BTWGBiomeGenBorealForest(129).setColor(353825).setBiomeName("Boreal Forest").func_76733_a(5159473).setMinMaxHeight(0.0F, 1.0F).setTemperatureRainfall(0.6F, 0.7F);
-	public static final BTWGBiomeGenBase cascades = new BTWGBiomeGenWoods(130).setColor(353825).setBiomeName("Cascades").func_76733_a(5159473).setTemperatureRainfall(0.9F, 1.0F).setMinMaxHeight(0.1F, 3.0F);
+	public static final BTWGBiomeGenBase cascades = new BTWGBiomeGenWoods(130).setColor(353825).setBiomeName("Cascades").func_76733_a(5159473).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.1F, 3.0F);
 	public static final BTWGBiomeGenBase valley = new BTWGBiomeGenValley(131).setColor(353825).setBiomeName("Valley").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.1F, 0.8F);
 	public static final BTWGBiomeGenBase tundra = new BTWGBiomeGenTundra(132).setColor(16421912).setBiomeName("Tundra").setEnableSnow().setTemperatureRainfall(0.1F, 0.1F).setMinMaxHeight(0.1F, 0.4F);
 

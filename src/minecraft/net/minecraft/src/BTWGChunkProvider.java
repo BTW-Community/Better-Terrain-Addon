@@ -242,7 +242,7 @@ public class BTWGChunkProvider implements IChunkProvider
 										}
 									}
 								}
-								else if (var16 >= var5 + 8)
+								else if (var16 >= var5 + 9)
 								{
 									if(var10.biomeID == BTWGBiomeConfiguration.badlands.biomeID || var10.biomeID == BTWGBiomeConfiguration.riverBadlands.biomeID)
 									{
