@@ -17,32 +17,32 @@ public class BTWGDecoIntegration {
 	
 	public static void init() {
 		try {
-			Class addonDefs = null;
+			Class decoDefs = null;
 			
 			try {
-				addonDefs = Class.forName("AddonDefs");
+				decoDefs = Class.forName("DecoDefs");
 			} catch (ClassNotFoundException e) {
 				try {
-					addonDefs = Class.forName("net.minecraft.src.AddonDefs");
+					decoDefs = Class.forName("net.minecraft.src.DecoDefs");
 				} catch (ClassNotFoundException e1) {
 					
 				}
 			}
 			
-			if (addonDefs != null) {
+			if (decoDefs != null) {
 				isDecoInstalled = true;
 				
-				redSand = (Block) getDecoField(addonDefs, "redSand");
-				redSandStone = (Block) getDecoField(addonDefs, "redSandStone");
-				terracotta = (Block) getDecoField(addonDefs, "terracotta");
-				stainedTerracotta = (Block) getDecoField(addonDefs, "stainedTerracotta");
-				cherryLog = (Block) getDecoField(addonDefs, "cherryLog");
-				cherryStump = (Block) getDecoField(addonDefs, "cherryStump");
-				cherryLeaves = (Block) getDecoField(addonDefs, "cherryLeaves");
-				flower = (Block) getDecoField(addonDefs, "flower");
-				flower2 = (Block) getDecoField(addonDefs, "flower2");
-				tulip = (Block) getDecoField(addonDefs, "tulip");
-				stoneTypes = (Block) getDecoField(addonDefs, "stoneTypes");
+				redSand = (Block) getDecoField(decoDefs, "redSand");
+				redSandStone = (Block) getDecoField(decoDefs, "redSandStone");
+				terracotta = (Block) getDecoField(decoDefs, "terracotta");
+				stainedTerracotta = (Block) getDecoField(decoDefs, "stainedTerracotta");
+				cherryLog = (Block) getDecoField(decoDefs, "cherryLog");
+				cherryStump = (Block) getDecoField(decoDefs, "cherryStump");
+				cherryLeaves = (Block) getDecoField(decoDefs, "cherryLeaves");
+				flower = (Block) getDecoField(decoDefs, "flower");
+				flower2 = (Block) getDecoField(decoDefs, "flower2");
+				tulip = (Block) getDecoField(decoDefs, "tulip");
+				stoneTypes = (Block) getDecoField(decoDefs, "stoneTypes");
 			}
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
