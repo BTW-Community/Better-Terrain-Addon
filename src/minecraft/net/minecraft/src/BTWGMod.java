@@ -5,6 +5,7 @@ public class BTWGMod extends DawnAddon {
 	
 	public static final WorldType BTWGWorldType = new BTWGWorldType();
 	public static final WorldType BTWGWorldTypeDeco = new BTWGWorldTypeDeco();
+	public static final WorldType BTWGWorldTypeCave = new BTWGWorldTypeCave();
 	
 	private BTWGMod() {
 		super("Better Than World Gen", "1.0", "BTWG");

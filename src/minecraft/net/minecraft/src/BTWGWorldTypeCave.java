@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-public class BTWGWorldTypeDeco extends WorldType {
-	public BTWGWorldTypeDeco() {
-		super(5, "BTWGDeco");
+public class BTWGWorldTypeCave extends WorldType {
+	public BTWGWorldTypeCave() {
+		super(5, "BTWGCave");
 	}
 
     /**
@@ -10,10 +10,10 @@ public class BTWGWorldTypeDeco extends WorldType {
      */
     public String getTranslateName()
     {
-        return "BTWG Deco";
+        return "BTWG";
     }
     
     public IChunkProvider getDefaultChunkProvider(World par1World, long par2, boolean par4) {
-    	return new BTWGChunkProvider(par1World, par2, par4);
+    	return new BTWGChunkProviderCave(par1World, par2, par4);
     }
 }

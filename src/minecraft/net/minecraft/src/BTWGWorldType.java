@@ -12,4 +12,8 @@ public class BTWGWorldType extends WorldType {
     {
         return "BTWG";
     }
+    
+    public IChunkProvider getDefaultChunkProvider(World par1World, long par2, boolean par4) {
+    	return new BTWGChunkProvider(par1World, par2, par4);
+    }
 }

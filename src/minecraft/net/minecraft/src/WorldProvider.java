@@ -80,15 +80,7 @@ public abstract class WorldProvider
      */
     public IChunkProvider createChunkGenerator()
     {
-    	if (this.terrainType == WorldType.FLAT) {
-    		return new ChunkProviderFlat(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), this.field_82913_c);
-    	}
-    	else if (this.terrainType == BTWGMod.BTWGWorldType || this.terrainType == BTWGMod.BTWGWorldTypeDeco) {
-    		return new BTWGChunkProvider(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
-    	}
-    	else {
-    		return new ChunkProviderGenerate(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
-    	}    	
+    	return this.terrainType.getDefaultChunkProvider(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), this.field_82913_c);
     }
 
     /**
