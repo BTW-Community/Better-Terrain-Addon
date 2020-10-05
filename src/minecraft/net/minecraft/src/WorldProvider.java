@@ -65,7 +65,7 @@ public abstract class WorldProvider
             FlatGeneratorInfo var1 = FlatGeneratorInfo.createFlatGeneratorFromString(this.worldObj.getWorldInfo().getGeneratorOptions());
             this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.biomeList[var1.getBiome()], 0.5F, 0.5F);
         }
-        else if (this.worldObj.getWorldInfo().getTerrainType() == BTWGMod.BTWGWorldType || this.worldObj.getWorldInfo().getTerrainType() == BTWGMod.BTWGWorldTypeDeco)
+        else if (this.worldObj.getWorldInfo().getTerrainType() == BTWGMod.BTWGWorldType || this.worldObj.getWorldInfo().getTerrainType() == BTWGMod.BTWGWorldTypeDeco || this.worldObj.getWorldInfo().getTerrainType() == BTWGMod.BTWGWorldTypeCave)
         {
             this.worldChunkMgr = new BTWGWorldChunkManager(this.worldObj);
         }
@@ -80,7 +80,7 @@ public abstract class WorldProvider
      */
     public IChunkProvider createChunkGenerator()
     {
-    	return this.terrainType.getDefaultChunkProvider(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), this.field_82913_c);
+    	return this.terrainType.getChunkProvider(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), this.field_82913_c);
     }
 
     /**

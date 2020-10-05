@@ -126,16 +126,16 @@ public class WorldType
         return this.worldTypeId;
     }
     
-    public IChunkProvider getDefaultChunkProvider(World par1World, long par2, boolean par4, String par5Str) {
+    public IChunkProvider getChunkProvider(World par1World, long par2, boolean par4, String par5Str) {
     	if (this.worldType == "flat") {
     		return new ChunkProviderFlat(par1World, par2, par4, par5Str);
     	}
     	else {
-    		return getDefaultChunkProvider(par1World, par2, par4);
+    		return getChunkProvider(par1World, par2, par4);
     	}
     }
     
-    public IChunkProvider getDefaultChunkProvider(World par1World, long par2, boolean par4) {
+    public IChunkProvider getChunkProvider(World par1World, long par2, boolean par4) {
     	return new ChunkProviderGenerate(par1World, par2, par4);
     }
 }

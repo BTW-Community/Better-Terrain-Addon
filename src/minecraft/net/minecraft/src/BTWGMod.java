@@ -26,6 +26,7 @@ public class BTWGMod extends DawnAddon {
 	
 	public void initWorldGen() {
 		BTWGBiomeConfiguration.init();
+		
 		if (!BTWGDecoIntegration.isDecoInstalled()) {
 			BTWGWorldTypeDeco.setCanBeCreated(false);
 		}

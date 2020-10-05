@@ -95,74 +95,74 @@ public class BTWGChunkProvider implements IChunkProvider
 	 * Generates the shape of the terrain for the chunk though its all stone though the water is frozen if the
 	 * temperature is low enough
 	 */
-	public void generateTerrain(int par1, int par2, int[] blockArray)
+	public void generateTerrain(int chunkX, int chunkZ, int[] blockArray)
 	{
-		byte var4 = 4;
-		byte var5 = 16;
-		byte var6 = 63;
-		int var7 = var4 + 1;
+		byte chunkCoordScaleFactor = 4;
+		byte chunkCoordYFactor = 16;
+		byte seaLevel = 63;
+		int var7 = chunkCoordScaleFactor + 1;
 		byte var8 = 17;
-		int var9 = var4 + 1;
-		this.biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, par1 * 4 - 2, par2 * 4 - 2, var7 + 5, var9 + 5);
-		this.noiseArray = this.initializeNoiseField(this.noiseArray, par1 * var4, 0, par2 * var4, var7, var8, var9);
+		int var9 = chunkCoordScaleFactor + 1;
+		this.biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, chunkX * 4 - 2, chunkZ * 4 - 2, var7 + 5, var9 + 5);
+		this.noiseArray = this.initializeNoiseField(this.noiseArray, chunkX * chunkCoordScaleFactor, 0, chunkZ * chunkCoordScaleFactor, var7, var8, var9);
 
-		for (int var10 = 0; var10 < var4; ++var10)
+		for (int i = 0; i < chunkCoordScaleFactor; ++i)
 		{
-			for (int var11 = 0; var11 < var4; ++var11)
+			for (int k = 0; k < chunkCoordScaleFactor; ++k)
 			{
-				for (int var12 = 0; var12 < var5; ++var12)
+				for (int j = 0; j < chunkCoordYFactor; ++j)
 				{
-					double var13 = 0.125D;
-					double var15 = this.noiseArray[((var10 + 0) * var9 + var11 + 0) * var8 + var12 + 0];
-					double var17 = this.noiseArray[((var10 + 0) * var9 + var11 + 1) * var8 + var12 + 0];
-					double var19 = this.noiseArray[((var10 + 1) * var9 + var11 + 0) * var8 + var12 + 0];
-					double var21 = this.noiseArray[((var10 + 1) * var9 + var11 + 1) * var8 + var12 + 0];
-					double var23 = (this.noiseArray[((var10 + 0) * var9 + var11 + 0) * var8 + var12 + 1] - var15) * var13;
-					double var25 = (this.noiseArray[((var10 + 0) * var9 + var11 + 1) * var8 + var12 + 1] - var17) * var13;
-					double var27 = (this.noiseArray[((var10 + 1) * var9 + var11 + 0) * var8 + var12 + 1] - var19) * var13;
-					double var29 = (this.noiseArray[((var10 + 1) * var9 + var11 + 1) * var8 + var12 + 1] - var21) * var13;
+					double noiseScaleFactor = 0.125D;
+					double noiseLarge1 = this.noiseArray[((i) * var9 + k) * var8 + j];
+					double noiseLarge2 = this.noiseArray[((i) * var9 + k + 1) * var8 + j];
+					double noiseLarge3 = this.noiseArray[((i + 1) * var9 + k) * var8 + j];
+					double noiseLarge4 = this.noiseArray[((i + 1) * var9 + k + 1) * var8 + j];
+					double noiseSmall1 = (this.noiseArray[((i) * var9 + k) * var8 + j + 1] - noiseLarge1) * noiseScaleFactor;
+					double noiseSmall2 = (this.noiseArray[((i) * var9 + k + 1) * var8 + j + 1] - noiseLarge2) * noiseScaleFactor;
+					double noiseSmall3 = (this.noiseArray[((i + 1) * var9 + k) * var8 + j + 1] - noiseLarge3) * noiseScaleFactor;
+					double noiseSmall4 = (this.noiseArray[((i + 1) * var9 + k + 1) * var8 + j + 1] - noiseLarge4) * noiseScaleFactor;
 
-					for (int var31 = 0; var31 < 8; ++var31)
+					for (int a = 0; a < 8; ++a)
 					{
-						double var32 = 0.25D;
-						double var34 = var15;
-						double var36 = var17;
-						double var38 = (var19 - var15) * var32;
-						double var40 = (var21 - var17) * var32;
+						double noiseScaleFactor2 = 0.25D;
+						double var34 = noiseLarge1;
+						double var36 = noiseLarge2;
+						double var38 = (noiseLarge3 - noiseLarge1) * noiseScaleFactor2;
+						double var40 = (noiseLarge4 - noiseLarge2) * noiseScaleFactor2;
 
-						for (int var42 = 0; var42 < 4; ++var42)
+						for (int b = 0; b < 4; ++b)
 						{
-							int var43 = var42 + var10 * 4 << 11 | 0 + var11 * 4 << 7 | var12 * 8 + var31;
+							int var43 = b + i * 4 << 11 | k * 4 << 7 | j * 8 + a;
 							short var44 = 128;
 							var43 -= var44;
 							double var45 = 0.25D;
 							double var47 = (var36 - var34) * var45;
 							double var49 = var34 - var47;
 
-							for (int var51 = 0; var51 < 4; ++var51)
+							for (int c = 0; c < 4; ++c)
 							{
 								if ((var49 += var47) > 0.0D)
 								{
 									blockArray[var43 += var44] = (byte)Block.stone.blockID;
 								}
-								else if (var12 * 8 + var31 < var6)
+								else if (j * 8 + a < seaLevel)
 								{
 									blockArray[var43 += var44] = (byte)Block.waterStill.blockID;
 								}
 								else
 								{
 									blockArray[var43 += var44] = 0;
-								}
+								} 
 							}
 
 							var34 += var38;
 							var36 += var40;
 						}
 
-						var15 += var23;
-						var17 += var25;
-						var19 += var27;
-						var21 += var29;
+						noiseLarge1 += noiseSmall1;
+						noiseLarge2 += noiseSmall2;
+						noiseLarge3 += noiseSmall3;
+						noiseLarge4 += noiseSmall4;
 					}
 				}
 			}
@@ -328,31 +328,31 @@ public class BTWGChunkProvider implements IChunkProvider
 	public Chunk provideChunk(int par1, int par2)
 	{
 		this.rand.setSeed((long)par1 * 341873128712L + (long)par2 * 132897987541L);
-		int[] var3 = new int[32768];
-		this.generateTerrain(par1, par2, var3);
+		int[] blockArray = new int[32768];
+		this.generateTerrain(par1, par2, blockArray);
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
-		this.replaceBlocksForBiome(par1, par2, var3, this.biomesForGeneration);
-		this.caveGenerator.generate(this, this.worldObj, par1, par2, var3);
-		this.ravineGenerator.generate(this, this.worldObj, par1, par2, var3);
+		this.replaceBlocksForBiome(par1, par2, blockArray, this.biomesForGeneration);
+		this.caveGenerator.generate(this, this.worldObj, par1, par2, blockArray);
+		this.ravineGenerator.generate(this, this.worldObj, par1, par2, blockArray);
 
 		if (this.mapFeaturesEnabled)
 		{
-			this.mineshaftGenerator.generate(this, this.worldObj, par1, par2, var3);
-			this.villageGenerator.generate(this, this.worldObj, par1, par2, var3);
-			this.strongholdGenerator.generate(this, this.worldObj, par1, par2, var3);
-			this.scatteredFeatureGenerator.generate(this, this.worldObj, par1, par2, var3);
+			this.mineshaftGenerator.generate(this, this.worldObj, par1, par2, blockArray);
+			this.villageGenerator.generate(this, this.worldObj, par1, par2, blockArray);
+			this.strongholdGenerator.generate(this, this.worldObj, par1, par2, blockArray);
+			this.scatteredFeatureGenerator.generate(this, this.worldObj, par1, par2, blockArray);
 		}
+		
+		Chunk chunk = new BTWGChunk(this.worldObj, blockArray, par1, par2);
+		byte[] var5 = chunk.getBiomeArray();
 
-		Chunk var4 = new BTWGChunk(this.worldObj, var3, par1, par2);
-		byte[] var5 = var4.getBiomeArray();
-
-		for (int var6 = 0; var6 < var5.length; ++var6)
+		for (int i = 0; i < var5.length; ++i)
 		{
-			var5[var6] = (byte)this.biomesForGeneration[var6].biomeID;
+			var5[i] = (byte)this.biomesForGeneration[i].biomeID;
 		}
 
-		var4.generateSkylightMap();
-		return var4;
+		chunk.generateSkylightMap();
+		return chunk;
 	}
 
 	/**
@@ -370,12 +370,12 @@ public class BTWGChunkProvider implements IChunkProvider
 		{
 			this.parabolicField = new float[25];
 
-			for (int var8 = -2; var8 <= 2; ++var8)
+			for (int i = -2; i <= 2; ++i)
 			{
-				for (int var9 = -2; var9 <= 2; ++var9)
+				for (int j = -2; j <= 2; ++j)
 				{
-					float var10 = 10.0F / MathHelper.sqrt_float((float)(var8 * var8 + var9 * var9) + 0.2F);
-					this.parabolicField[var8 + 2 + (var9 + 2) * 5] = var10;
+					float var10 = 10.0F / MathHelper.sqrt_float((float)(i * i + j * j) + 0.2F);
+					this.parabolicField[i + 2 + (j + 2) * 5] = var10;
 				}
 			}
 		}
