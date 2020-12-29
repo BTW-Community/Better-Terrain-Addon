@@ -5,7 +5,7 @@ import java.util.List;
 public class BlockAnvil extends BlockSand
 {
 	static {
-		BTWGMod.getInstance();
+		BTAMod.getInstance();
 	}
 	
 	/** List of types/statues the Anvil can be in. */

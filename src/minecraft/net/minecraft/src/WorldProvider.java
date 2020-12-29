@@ -65,9 +65,9 @@ public abstract class WorldProvider
             FlatGeneratorInfo var1 = FlatGeneratorInfo.createFlatGeneratorFromString(this.worldObj.getWorldInfo().getGeneratorOptions());
             this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.biomeList[var1.getBiome()], 0.5F, 0.5F);
         }
-        else if (this.worldObj.getWorldInfo().getTerrainType() == BTWGMod.BTWGWorldType || this.worldObj.getWorldInfo().getTerrainType() == BTWGMod.BTWGWorldTypeDeco)
+        else if (this.worldObj.getWorldInfo().getTerrainType() == BTAMod.BTWGWorldType || this.worldObj.getWorldInfo().getTerrainType() == BTAMod.BTWGWorldTypeDeco)
         {
-            this.worldChunkMgr = new BTWGWorldChunkManager(this.worldObj);
+            this.worldChunkMgr = new BTAWorldChunkManager(this.worldObj);
         }
         else
         {
@@ -83,8 +83,8 @@ public abstract class WorldProvider
     	if (this.terrainType == WorldType.FLAT) {
     		return new ChunkProviderFlat(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), this.field_82913_c);
     	}
-    	else if (this.terrainType == BTWGMod.BTWGWorldType || this.terrainType == BTWGMod.BTWGWorldTypeDeco) {
-    		return new BTWGChunkProvider(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
+    	else if (this.terrainType == BTAMod.BTWGWorldType || this.terrainType == BTAMod.BTWGWorldTypeDeco) {
+    		return new BTAChunkProvider(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
     	}
     	else {
     		return new ChunkProviderGenerate(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
