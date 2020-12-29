@@ -225,7 +225,7 @@ public class BTAChunkProvider implements IChunkProvider
 								}
 								else if (var16 >= var5 - 4 && var16 <= var5 + 1)
 								{
-									if(var10.biomeID == BTABiomeConfiguration.valley.biomeID)
+									if(var10.biomeID == BTABiomeConfiguration.valley.biomeID || var10.biomeID == BTABiomeConfiguration.cascadesPlains.biomeID)
 									{
 										var14 = (byte)Block.sand.blockID;
 										var15 = (byte)Block.sand.blockID;

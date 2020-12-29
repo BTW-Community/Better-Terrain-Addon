@@ -33,7 +33,7 @@ public class BTABiomeConfiguration {
 	public static final BTABiomeGenBase heathland = new BTABiomeGenHeathland(127).setColor(9286496).setBiomeName("Heathland").setTemperatureRainfall(0.7F, 0.4F).setMinMaxHeight(0.1F, 0.5F);
 	public static final BTABiomeGenBase heathlandWoods = new BTABiomeGenHeathlandWoods(128).setColor(9286496).setBiomeName("Heathland Woods").setTemperatureRainfall(0.7F, 0.4F).setMinMaxHeight(0.1F, 0.5F); //Spawns within heathland
 	public static final BTABiomeGenBase borealForest = new BTABiomeGenBorealForest(129).setColor(353825).setBiomeName("Boreal Forest").func_76733_a(5159473).setMinMaxHeight(0.0F, 1.0F).setTemperatureRainfall(0.6F, 0.7F);
-	public static final BTABiomeGenBase cascades = new BTABiomeGenWoods(130).setColor(353825).setBiomeName("Cascades").func_76733_a(5159473).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.1F, 3.0F);
+	public static final BTABiomeGenBase cascades = new BTABiomeGenWoods(130).setColor(353825).setBiomeName("Cascades").func_76733_a(5159473).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.5F, 3.0F);
 	public static final BTABiomeGenBase valley = new BTABiomeGenValley(131).setColor(353825).setBiomeName("Valley").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.1F, 0.8F);
 	public static final BTABiomeGenBase tundra = new BTABiomeGenTundra(132).setColor(16421912).setBiomeName("Tundra").setEnableSnow().setTemperatureRainfall(0.1F, 0.1F).setMinMaxHeight(0.1F, 0.4F);
 
@@ -50,6 +50,7 @@ public class BTABiomeConfiguration {
     public static final BTABiomeGenBase wetlandsHills = new BTABiomeGenWetlands(159).setColor(522674).setBiomeName("Wetlands Hills").func_76733_a(9154376).setMinMaxHeight(-0.2F, 0.6F).setTemperatureRainfall(0.8F, 0.9F);
 	public static final BTABiomeGenBase cherryForestHills = new BTABiomeGenCherryForest(181).setColor(353825).setBiomeName("Cherry Forest Hills").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.3F, 1.0F);
 	public static final BTABiomeGenBase autumnForestHills = new BTABiomeGenAutumnForest(184).setColor(353825).setBiomeName("Autumn Forest Hills").func_76733_a(5159473).setTemperatureRainfall(0.9F, 0.2F).setMinMaxHeight(0.3F, 1.0F);
+	public static final BTABiomeGenBase cascadesPlains = new BTABiomeGenWoods(185).setColor(353825).setBiomeName("Cascades Plains").func_76733_a(5159473).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.1F, 0.4F);
     
     //Deco only biomes
     public static final BTABiomeGenBase outback = new BTABiomeGenOutback(180).setColor(16421912).setBiomeName("Outback").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.1F, 0.4F);
@@ -87,7 +88,7 @@ public class BTABiomeConfiguration {
 		filterBeachBiomes();
 		addBiomesToStructureGenerators();
 		addBiomesToList();
-		//addSingleBiome(valley);
+		//addSingleBiome(cascades);
 	}
 	
 	public static void addBiomesToList() {
@@ -189,6 +190,8 @@ public class BTABiomeConfiguration {
 		getVillageBiomes().add(meadow);
 		getVillageBiomes().add(heathland);
 		
+		MapGenVillage.villageSpawnBiomes.addAll(villageBiomes);
+		
 		//12.5%/10.7%
 		jungleTempleBiomes.add(tropics);
 		jungleTempleBiomes.add(jungle);
@@ -203,6 +206,10 @@ public class BTABiomeConfiguration {
 		witchHutBiomes.add(wetlands);
 		witchHutBiomes.add(fungalForest);
 		witchHutBiomes.add(mysticForest);
+		
+		MapGenScatteredFeature.biomelist.addAll(jungleTempleBiomes);
+		MapGenScatteredFeature.biomelist.addAll(desertTempleBiomes);
+		MapGenScatteredFeature.biomelist.addAll(witchHutBiomes);
 		
 		//Hill variants
 		pumpkinBiomes.add(savannaHills);
@@ -283,6 +290,9 @@ public class BTABiomeConfiguration {
         }
         else if (baseBiome == autumnForest.biomeID) {
         	hillsBiome = autumnForestHills.biomeID;
+        }
+        else if (baseBiome == cascades.biomeID) {
+        	hillsBiome = cascadesPlains.biomeID;
         }
 		
 		return hillsBiome;

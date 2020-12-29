@@ -25,6 +25,7 @@ public class BTABiomeGenJungle extends BTABiomeGenBase
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntitySlime.class, 10, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntityEnderman.class, 1, 1, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntityOcelot.class, 2, 1, 1));
+        this.waterColorMultiplier = 10083127;
     }
 
     /**

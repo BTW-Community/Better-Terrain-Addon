@@ -1732,10 +1732,8 @@ src/minecraft/net/minecraft/src/MapGenCavesHell.java
 src/minecraft/net/minecraft/src/MapGenMineshaft.java
 src/minecraft/net/minecraft/src/MapGenNetherBridge.java
 src/minecraft/net/minecraft/src/MapGenRavine.java
-src/minecraft/net/minecraft/src/MapGenScatteredFeature.java
 src/minecraft/net/minecraft/src/MapGenStronghold.java
 src/minecraft/net/minecraft/src/MapGenStructure.java
-src/minecraft/net/minecraft/src/MapGenVillage.java
 src/minecraft/net/minecraft/src/MapInfo.java
 src/minecraft/net/minecraft/src/MapItemRenderer.java
 src/minecraft/net/minecraft/src/MapStorage.java
