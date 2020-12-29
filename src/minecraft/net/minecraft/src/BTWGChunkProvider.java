@@ -42,7 +42,7 @@ public class BTWGChunkProvider implements IChunkProvider
 	private BTWGMapGenStronghold strongholdGenerator = new BTWGMapGenStronghold();
 
 	/** Holds Village Generator */
-	private BTWGMapGenVillage villageGenerator = new BTWGMapGenVillage();
+	public BTWGMapGenVillage villageGenerator = new BTWGMapGenVillage();
 
 	/** Holds Mineshaft Generator */
 	private BTWGMapGenMineshaft mineshaftGenerator = new BTWGMapGenMineshaft();

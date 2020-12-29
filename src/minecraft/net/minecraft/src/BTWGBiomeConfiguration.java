@@ -82,13 +82,14 @@ public class BTWGBiomeConfiguration {
 	private static ArrayList<BiomeGenBase> witchHutBiomes = new ArrayList();
 	
 	public static void init() {
-		addBiomesToList();
 		filterSpawnBiomes();
 		filterBeachBiomes();
 		addBiomesToStructureGenerators();
+		addBiomesToList();
 	}
 	
 	public static void addBiomesToList() {
+		/*
 		biomeList.add(woods);
 		biomeList.add(desert);
 		biomeList.add(lushDesert);
@@ -119,6 +120,10 @@ public class BTWGBiomeConfiguration {
 		biomeListDeco.add(cherryForest);
 		biomeListDeco.add(badlands);
 		biomeListDeco.add(autumnForest);
+		*/
+		
+		for (BiomeGenBase biome : villageBiomes)
+			biomeList.add((BTWGBiomeGenBase) biome); 
 	}
 	
 	public static void filterSpawnBiomes() {
