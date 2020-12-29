@@ -1,5 +1,8 @@
 src deco/
 
+src/minecraft/net/minecraft/src/FC*
+src/minecraft_server/net/minecraft/src/FC*
+
 src/minecraft/net/minecraft/server/
 src/minecraft/net/minecraft/src/BlockPane.java
 src/minecraft/net/minecraft/src/ContainerRepair.java
@@ -9,6 +12,7 @@ src/minecraft/net/minecraft/src/DawnAddonHandler.java
 src/minecraft/net/minecraft/src/DawnNetClientHandler.java
 src/minecraft/net/minecraft/src/DawnNetServerHandler.java
 src/minecraft/net/minecraft/src/DawnRenderGlobal.java
+src/minecraft/net/minecraft/src/DawnServercommandManager.java
 src/minecraft/net/minecraft/src/DawnServerConfigurationManager.java
 src/minecraft/net/minecraft/src/DawnUtilsReflection.java
 src/minecraft/net/minecraft/src/EntityClientPlayerMP.java
@@ -24,7 +28,6 @@ src/minecraft/net/minecraft/src/ThreadOnlineConnect.java
 src/minecraft/net/minecraft/src/TileEntityChest.java
 src/minecraft/net/minecraft/src/TileEntityRendererSign.java
 src/minecraft/net/minecraft/src/WorldRenderer.java
-src/minecraft/net/minecraft/src/DawnServercommandManager.java
 src/minecraft_server/net/minecraft/server/
 src/minecraft_server/net/minecraft/src/BlockPane.java
 src/minecraft_server/net/minecraft/src/ContainerRepair.java
@@ -32,6 +35,7 @@ src/minecraft_server/net/minecraft/src/DataWatcher.java
 src/minecraft_server/net/minecraft/src/DawnAddon.java
 src/minecraft_server/net/minecraft/src/DawnAddonHandler.java
 src/minecraft_server/net/minecraft/src/DawnNetServerHandler.java
+src/minecraft_server/net/minecraft/src/DawnServercommandManager.java
 src/minecraft_server/net/minecraft/src/DawnServerConfigurationManager.java
 src/minecraft_server/net/minecraft/src/DawnUtilsReflection.java
 src/minecraft_server/net/minecraft/src/DedicatedPlayerList.java
