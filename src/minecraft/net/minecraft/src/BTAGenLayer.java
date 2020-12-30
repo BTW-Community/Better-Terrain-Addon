@@ -17,8 +17,8 @@ public abstract class BTAGenLayer extends GenLayer {
         GenLayerAddIsland var10 = new GenLayerAddIsland(1L, var9);
         GenLayerZoom var11 = new GenLayerZoom(2001L, var10);
         var10 = new GenLayerAddIsland(2L, var11);
-        GenLayerAddSnow var12 = new GenLayerAddSnow(2L, var10);
-        var11 = new GenLayerZoom(2002L, var12);
+        //GenLayerAddSnow var12 = new GenLayerAddSnow(2L, var10);
+        var11 = new GenLayerZoom(2002L, var10);
         var10 = new GenLayerAddIsland(3L, var11);
         var11 = new GenLayerZoom(2003L, var10);
         var10 = new GenLayerAddIsland(4L, var11);

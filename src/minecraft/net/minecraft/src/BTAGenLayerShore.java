@@ -63,6 +63,9 @@ public class BTAGenLayerShore extends BTAGenLayer
                     	else if (BTABiomeConfiguration.shouldBiomeSpawnBeach(var9)){
                     		var6[var8 + var7 * par3] = BiomeGenBase.beach.biomeID;
                     	}
+                    	else {
+                    		var6[var8 + var7 * par3] = var9;
+                    	}
                     }
                 }
                 else if (var9 == BiomeGenBase.extremeHills.biomeID)

@@ -7,6 +7,7 @@ public class BTABlockClay extends FCBlockClay {
 
 	//CLIENT ONLY
 	Icon sandyClayIcon;
+	Icon redSandyClayIcon;
 	
     /**
      * When this method is called, your block should register all the icons it needs with the given IconRegister. This
@@ -16,6 +17,7 @@ public class BTABlockClay extends FCBlockClay {
     {
         super.registerIcons(var1);
         sandyClayIcon = var1.registerIcon("btaBlockSandyClay");
+        redSandyClayIcon = var1.registerIcon("btaBlockRedSandyClay");
     }
 
     /**
@@ -46,6 +48,9 @@ public class BTABlockClay extends FCBlockClay {
         	if (var5 == 1) {
         		this.DropItemsIndividualy(var1, var2, var3, var4, FCBetterThanWolves.fcItemPileSand.itemID, 6, 0, var6);
         	}
+        	else if (var5 == 2 && BTADecoIntegration.isDecoInstalled()) {
+        		this.DropItemsIndividualy(var1, var2, var3, var4, BTADecoIntegration.pileRedSand.itemID, 6, 0, var6);
+        	}
         	else {
         		this.DropItemsIndividualy(var1, var2, var3, var4, FCBetterThanWolves.fcItemPileDirt.itemID, 6, 0, var6);
         	}
@@ -61,6 +66,9 @@ public class BTABlockClay extends FCBlockClay {
         
         if (meta == 1) {
         	return sandyClayIcon;
+        }
+        else if (meta == 2) {
+        	return redSandyClayIcon;
         }
         else {
         	return super.getBlockTexture(var1, var2, var3, var4, var5);

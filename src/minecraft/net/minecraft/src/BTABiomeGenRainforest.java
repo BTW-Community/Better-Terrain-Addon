@@ -9,6 +9,7 @@ public class BTABiomeGenRainforest extends BTABiomeGenBase {
 		this.btwgBiomeDecorator.treesPerChunk = 25;
 		this.btwgBiomeDecorator.grassPerChunk = 7;
 		this.btwgBiomeDecorator.reedsPerChunk = 10;
+        this.btwgBiomeDecorator.waterlilyPerChunk = 4;
 		this.waterColorMultiplier = 6160128;
 		this.spawnableCreatureList.clear();
 		this.spawnableCreatureList.add(new SpawnListEntry(FCEntityChicken.class, 10, 4, 4));

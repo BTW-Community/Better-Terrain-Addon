@@ -104,6 +104,7 @@ public class BTAChunkProvider implements IChunkProvider
 		byte var8 = 17;
 		int var9 = var4 + 1;
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, par1 * 4 - 2, par2 * 4 - 2, var7 + 5, var9 + 5);
+		
 		this.noiseArray = this.initializeNoiseField(this.noiseArray, par1 * var4, 0, par2 * var4, var7, var8, var9);
 
 		for (int var10 = 0; var10 < var4; ++var10)
@@ -183,6 +184,7 @@ public class BTAChunkProvider implements IChunkProvider
 			for (int var9 = 0; var9 < 16; ++var9)
 			{
 				BiomeGenBase var10 = par4ArrayOfBiomeGenBase[var9 + var8 * 16];
+				
 				float var11 = var10.getFloatTemperature();
 				int var12 = (int)(this.stoneNoise[var8 + var9 * 16] / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
 				int var13 = -1;
@@ -225,7 +227,7 @@ public class BTAChunkProvider implements IChunkProvider
 								}
 								else if (var16 >= var5 - 4 && var16 <= var5 + 1)
 								{
-									if(var10.biomeID == BTABiomeConfiguration.valley.biomeID || var10.biomeID == BTABiomeConfiguration.cascadesPlains.biomeID)
+									if(var10.biomeID == BTABiomeConfiguration.oldValley.biomeID || var10.biomeID == BTABiomeConfiguration.valleyMountains.biomeID || var10.biomeID == BTABiomeConfiguration.valley.biomeID)
 									{
 										var14 = (byte)Block.sand.blockID;
 										var15 = (byte)Block.sand.blockID;
@@ -330,7 +332,9 @@ public class BTAChunkProvider implements IChunkProvider
 		this.rand.setSeed((long)par1 * 341873128712L + (long)par2 * 132897987541L);
 		int[] var3 = new int[32768];
 		this.generateTerrain(par1, par2, var3);
+		
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
+		
 		this.replaceBlocksForBiome(par1, par2, var3, this.biomesForGeneration);
 		this.caveGenerator.generate(this, this.worldObj, par1, par2, var3);
 		this.ravineGenerator.generate(this, this.worldObj, par1, par2, var3);

@@ -1,11 +1,10 @@
 package net.minecraft.src;
 
-import java.util.Random;
-
-public class BTABiomeGenRiverMystic extends BTABiomeGenBase {
-	public BTABiomeGenRiverMystic(int par1) {
+public class BTABiomeGenRiverWetlands extends BTABiomeGenBase {
+	public BTABiomeGenRiverWetlands(int par1) {
 		super(par1);
-		this.waterColorMultiplier = BTABiomeConfiguration.mysticForest.waterColorMultiplier;
+		this.waterColorMultiplier = BTABiomeConfiguration.wetlands.waterColorMultiplier;
+        this.btwgBiomeDecorator.waterlilyPerChunk = 4;
         this.spawnableCreatureList.clear();
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntitySlime.class, 1, 1, 1));
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntityWitch.class, 1, 1, 1));
@@ -16,7 +15,7 @@ public class BTABiomeGenRiverMystic extends BTABiomeGenBase {
      */
     public int getBiomeGrassColor()
     {
-    	return BTABiomeConfiguration.mysticForest.getBiomeGrassColor();
+    	return BTABiomeConfiguration.wetlands.getBiomeGrassColor();
     }
 
     /**
@@ -24,6 +23,6 @@ public class BTABiomeGenRiverMystic extends BTABiomeGenBase {
      */
     public int getBiomeFoliageColor()
     {
-    	return BTABiomeConfiguration.mysticForest.getBiomeFoliageColor();
+    	return BTABiomeConfiguration.wetlands.getBiomeFoliageColor();
     }
 }

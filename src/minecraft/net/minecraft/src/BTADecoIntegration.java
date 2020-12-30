@@ -16,6 +16,8 @@ public class BTADecoIntegration {
 	public static Block stoneTypes;
 	public static Block autumnLeaves;
 	
+	public static Item pileRedSand;
+	
 	public static void init() {
 		try {
 			Class decoDefs = null;
@@ -45,6 +47,8 @@ public class BTADecoIntegration {
 				tulip = (Block) getDecoField(decoDefs, "tulip");
 				stoneTypes = (Block) getDecoField(decoDefs, "stoneTypes");
 				autumnLeaves = (Block) getDecoField(decoDefs, "autumnLeaves");
+				
+				pileRedSand = (Item) getDecoField(decoDefs, "pileRedSand");
 			}
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();

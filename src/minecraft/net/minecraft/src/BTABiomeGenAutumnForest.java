@@ -17,14 +17,13 @@ public class BTABiomeGenAutumnForest extends BTABiomeGenBase {
     {
     	WorldGenerator gen;
     	
-    	if (rand.nextInt(3) == 0) {
+    	int r = rand.nextInt(4);
+    	
+    	if (r == 3) {
     		gen = this.worldGeneratorForest;
     	}
-    	else if (rand.nextInt(3) == 0) {
-    		gen = new BTAWorldGenLog();
-    	}
     	else {
-    		gen = this.worldGeneratorTrees;
+    		gen = new BTAWorldGenAutumnTree(r);
     	}
     	
     	return gen;

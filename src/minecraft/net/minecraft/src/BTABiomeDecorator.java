@@ -200,7 +200,7 @@ public class BTABiomeDecorator
 
 		if (BTADecoIntegration.isDecoInstalled()) {
 			outbackGen = new BTAWorldGenMycelium(Block.grass.blockID, 48, BTADecoIntegration.redSand.blockID);
-			
+
 			andesiteGen = new BTAWorldGenMinable(BTADecoIntegration.stoneTypes.blockID, 0, 32);
 			dioriteGen = new BTAWorldGenMinable(BTADecoIntegration.stoneTypes.blockID, 1, 32);
 			graniteGen = new BTAWorldGenMinable(BTADecoIntegration.stoneTypes.blockID, 2, 32);
@@ -254,9 +254,11 @@ public class BTABiomeDecorator
 
 		for (var1 = 0; var1 < this.clayPerChunk; ++var1)
 		{
-			var2 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
-			var3 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-			this.clayGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
+			if (this.currentWorld.rand.nextInt(3) != 0) {
+				var2 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
+				var3 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
+				this.clayGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
+			}
 		}
 
 		for (var1 = 0; var1 < this.sandPerChunk; ++var1)

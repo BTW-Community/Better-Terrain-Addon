@@ -1,9 +1,9 @@
 package net.minecraft.src;
 
-public class BTABiomeGenRiverRainforest extends BTABiomeGenBase {
-	protected BTABiomeGenRiverRainforest(int id) {
+public class BTABiomeGenRiverJungle extends BTABiomeGenBase {
+	protected BTABiomeGenRiverJungle(int id) {
 		super(id);
-		this.waterColorMultiplier = BTABiomeConfiguration.rainforest.waterColorMultiplier;
+		this.waterColorMultiplier = BTABiomeConfiguration.jungle.waterColorMultiplier;
         this.btwgBiomeDecorator.waterlilyPerChunk = 4;
 		this.spawnableCreatureList.clear();
 		this.spawnableMonsterList.clear();
@@ -22,7 +22,7 @@ public class BTABiomeGenRiverRainforest extends BTABiomeGenBase {
      */
     public int getBiomeGrassColor()
     {
-    	return BTABiomeConfiguration.rainforest.getBiomeGrassColor();
+    	return BTABiomeConfiguration.jungle.getBiomeGrassColor();
     }
 
     /**
@@ -30,6 +30,6 @@ public class BTABiomeGenRiverRainforest extends BTABiomeGenBase {
      */
     public int getBiomeFoliageColor()
     {
-    	return BTABiomeConfiguration.rainforest.getBiomeFoliageColor();
+    	return BTABiomeConfiguration.jungle.getBiomeFoliageColor();
     }
 }

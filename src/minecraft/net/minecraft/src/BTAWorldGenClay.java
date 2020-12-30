@@ -47,6 +47,10 @@ public class BTAWorldGenClay extends WorldGenerator {
                             {
                                 par1World.setBlock(var8, var12, var9, this.clayBlockId, 1, 2);
                             }
+                            else if (BTADecoIntegration.isDecoInstalled() && var13 == BTADecoIntegration.redSand.blockID)
+                            {
+                                par1World.setBlock(var8, var12, var9, this.clayBlockId, 2, 2);
+                            }
                         }
                     }
                 }

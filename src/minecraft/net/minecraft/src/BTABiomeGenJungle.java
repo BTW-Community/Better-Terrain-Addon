@@ -12,6 +12,7 @@ public class BTABiomeGenJungle extends BTABiomeGenBase
         this.btwgBiomeDecorator.flowersPerChunk = 4;
 		this.btwgBiomeDecorator.sandPerChunk = 100;
 		this.btwgBiomeDecorator.sandPerChunk2 = 100;
+        this.btwgBiomeDecorator.waterlilyPerChunk = 4;
         this.spawnableCreatureList.clear();
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityChicken.class, 10, 4, 4));
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityPig.class, 10, 4, 4));
