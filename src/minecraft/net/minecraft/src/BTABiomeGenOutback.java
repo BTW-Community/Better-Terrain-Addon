@@ -16,6 +16,7 @@ public class BTABiomeGenOutback extends BTABiomeGenBase {
 		this.btwgBiomeDecorator.cactiPerChunk = 15;
 		this.btwgBiomeDecorator.sandPerChunk = 0;
 		this.btwgBiomeDecorator.sandPerChunk2 = 0;
+		this.btwgBiomeDecorator.flowersPerChunk = -999;
 		this.spawnableCreatureList.clear();
 		this.spawnableCreatureList.add(new SpawnListEntry(FCEntityChicken.class, 10, 2, 2));
 		this.spawnableCreatureList.add(new SpawnListEntry(FCEntityPig.class, 10, 2, 2));

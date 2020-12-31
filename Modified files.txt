@@ -1,7 +1,6 @@
 ##Client##
 BlockAnvil
 MapGenVillage
-MapGenScatteredFeature
 StructureScatteredFeatureStart
 StructureVillageStart
 WorldProvider

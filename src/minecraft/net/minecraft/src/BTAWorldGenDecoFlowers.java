@@ -25,19 +25,19 @@ public class BTAWorldGenDecoFlowers extends WorldGenerator
 		int plantID = plantBlockId;
 		
 		if (plantBlockId == -1) {
-			int i = rand.nextInt(22);
+			int i = rand.nextInt(23);
 
 			if (i < 16) {
 				plantID = BTADecoIntegration.flower.blockID;
 				plantMetadata = i;
 			}
-			else if (i < 17) {
+			else if (i < 18) {
 				plantID = BTADecoIntegration.flower2.blockID;
 				plantMetadata = i - 16;
 			}
 			else {
 				plantID = BTADecoIntegration.tulip.blockID;
-				plantMetadata = i - 17;
+				plantMetadata = i - 18;
 			}
 		}
 

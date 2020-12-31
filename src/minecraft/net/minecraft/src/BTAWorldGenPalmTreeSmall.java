@@ -14,18 +14,21 @@ public class BTAWorldGenPalmTreeSmall extends WorldGenerator {
 
 	/** The metadata value of the leaves to use in tree generation. */
 	private final int metaLeaves;
+	
+	private final boolean spawnCocoa;
 
-	public BTAWorldGenPalmTreeSmall(boolean par1) {
-		this(par1, 6, 3, 3, false);
+	public BTAWorldGenPalmTreeSmall(boolean par1, boolean spawnCocoa) {
+		this(par1, 6, 3, 3, false, spawnCocoa);
 	}
 
-	public BTAWorldGenPalmTreeSmall(boolean par1, int par2, int par3, int par4, boolean par5)
+	public BTAWorldGenPalmTreeSmall(boolean par1, int par2, int par3, int par4, boolean par5, boolean spawnCocoa)
 	{
 		super(par1);
 		this.minTreeHeight = par2;
 		this.metaWood = par3;
 		this.metaLeaves = par4;
 		this.vinesGrow = par5;
+		this.spawnCocoa = spawnCocoa;
 	}
 
 	@Override
@@ -111,6 +114,28 @@ public class BTAWorldGenPalmTreeSmall extends WorldGenerator {
 		for (int i = 0; i < trunkShifts + 1; i++) {
 			for (int j = 0; j < trunkShiftHeights[i]; j++) {
 				world.setBlockAndMetadata(x + leanX * i, height, z + leanZ * i, Block.wood.blockID, metaWood);
+				
+				if (rand.nextInt(5) == 0) {
+					int facing = rand.nextInt(4) + 2;
+					
+					FCUtilsBlockPos pos = new FCUtilsBlockPos(x + leanX * i, height, z + leanZ * i);
+					pos.AddFacingAsOffset(facing);
+					
+					int meta = 0;
+					
+					if (facing - 2 == 1) {
+						meta = 2;
+					}
+					else if (facing - 2 == 2) {
+						meta = 3;
+					}
+					else if (facing - 2 == 3) {
+						meta = 1;
+					}
+					
+					world.setBlockAndMetadata(pos.i, pos.j, pos.k, Block.cocoaPlant.blockID, meta);
+				}
+				
 				height++;
 			}
 		}

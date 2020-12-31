@@ -214,10 +214,25 @@ public class BTAWorldGenRainforest1 extends WorldGenerator
 										}
 									}
 								}
+								
+								if (par2Random.nextInt(5) == 0 && var6 > 5)
+		                        {
+		                            for (int i = 0; i < 2; ++i)
+		                            {
+		                                for (int j = 0; j < 4; ++j)
+		                                {
+		                                    if (par2Random.nextInt(4 - i) == 0)
+		                                    {
+		                                        var13 = par2Random.nextInt(3);
+		                                        this.setBlockAndMetadata(par1World, par3 + Direction.offsetX[Direction.rotateOpposite[j]], par4 + var6 - 5 + i, par5 + Direction.offsetZ[Direction.rotateOpposite[j]], Block.cocoaPlant.blockID, var13 << 2 | j);
+		                                    }
+		                                }
+		                            }
+		                        }
 							}
 						}
 					}
-
+					
 					return true;
 				} else
 					return false;

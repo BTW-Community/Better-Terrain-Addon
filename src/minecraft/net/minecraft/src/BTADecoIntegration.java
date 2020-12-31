@@ -15,6 +15,14 @@ public class BTADecoIntegration {
 	public static Block tulip;
 	public static Block stoneTypes;
 	public static Block autumnLeaves;
+	public static Block barkLogStripped;
+	public static Block strippedLog;
+	public static Block pergola;
+	public static Block gateSpruce;
+	public static Block doorSpruce;
+	public static Block trapdoorSpruce;
+	public static Block trapdoorCherry;
+	public static Block cherryStairs;
 	
 	public static Item pileRedSand;
 	
@@ -47,6 +55,14 @@ public class BTADecoIntegration {
 				tulip = (Block) getDecoField(decoDefs, "tulip");
 				stoneTypes = (Block) getDecoField(decoDefs, "stoneTypes");
 				autumnLeaves = (Block) getDecoField(decoDefs, "autumnLeaves");
+				barkLogStripped = (Block) getDecoField(decoDefs, "barkLogStripped");
+				strippedLog = (Block) getDecoField(decoDefs, "strippedLog");
+				pergola = (Block) getDecoField(decoDefs, "pergola");
+				gateSpruce = (Block) getDecoField(decoDefs, "gateSpruce");
+				doorSpruce = (Block) getDecoField(decoDefs, "doorSpruce");
+				trapdoorSpruce = (Block) getDecoField(decoDefs, "trapdoorSpruce");
+				trapdoorCherry = (Block) getDecoField(decoDefs, "trapdoorCherry");
+				cherryStairs = (Block) getDecoField(decoDefs, "cherryStairs");
 				
 				pileRedSand = (Item) getDecoField(decoDefs, "pileRedSand");
 			}

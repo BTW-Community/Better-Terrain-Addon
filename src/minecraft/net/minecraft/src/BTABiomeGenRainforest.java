@@ -37,8 +37,11 @@ public class BTABiomeGenRainforest extends BTABiomeGenBase {
     	if (rand.nextInt(10) == 0) {
     		gen = new BTAWorldGenRainforest2();
     	}
+    	else if (rand.nextInt(5) == 0) {
+    		gen = new WorldGenTrees(false, 4 + rand.nextInt(7), 3, 3, true);
+    	}
     	else if (rand.nextInt(2) == 0) {
-    		gen = new BTAWorldGenRainforest1(false);
+    		gen = new BTAWorldGenRainforest1(true);
     	}
     	else {
     		gen = new WorldGenShrub(3, 3);
@@ -46,4 +49,18 @@ public class BTABiomeGenRainforest extends BTABiomeGenBase {
     	
     	return gen;
 	}
+
+    public void decorate(World par1World, Random par2Random, int par3, int par4)
+    {
+        super.decorate(par1World, par2Random, par3, par4);
+        WorldGenVines var5 = new WorldGenVines();
+
+        for (int var6 = 0; var6 < 50; ++var6)
+        {
+            int var7 = par3 + par2Random.nextInt(16) + 8;
+            byte var8 = 64;
+            int var9 = par4 + par2Random.nextInt(16) + 8;
+            var5.generate(par1World, par2Random, var7, var8, var9);
+        }
+    }
 }

@@ -1,15 +1,16 @@
 Version 1.0
 [list]
-[*]Added many new biomes, each of which are detailed below.
+[*]Added 27 new biomes, plus 4 deco exclusive biomes, each of which are detailed below.
 [*]Added 2 new world types. The first will work for vanilla BTW, while the second is only enabled when Deco is also installed, and adds many of Deco's features to world gen.
-[*]Added the ability for clay to generate in sand and red sand. Given that some biomes exclusively use sand or red sand for their lake and river beds, this was done to enable clay spawning in those biomes. However, the overall spawn rate of clay has been reduced to compensate for in increase in viable spawn areas. This only affects new this addon's world types.
+[*]Added the /biome command to be able to see the name of the current biome.
+[*]Added the ability for clay to generate in sand and red sand. Given that some biomes exclusively use sand or red sand for their lake and river beds, this was done to enable clay spawning in those biomes. However, the overall spawn rate of clay has been reduced by 33% to compensate for in increase in viable spawn areas. This only affects this addon's world types.
 [/list]
 Biomes:
-The occurance of various different world gen features per biome is kept as close as possible to there frequency in vanilla BTW to maintain balance.
+The occurance of various different world gen features per biome is kept as close as possible to their frequency in vanilla world gen to maintain balance.
 [list]
 [*]Woods: Vanilla forest with some tweaks. Can spawn wolves.
 [*]Desert: Vanilla desert with some tweaks. Can spawn desert temples and villages.
-[*]Lush Desert: Desert variant with bright green grass, lots of lakes with palm trees, and occasional oases. Can spawn desert temples and villages.
+[*]Lush Desert: Desert variant with bright green grass, lots of lakes with palm trees, and occasional large oases. Can spawn desert temples and villages.
 [*]Savanna: Similar to vanilla savanna, spawn acacia trees (using oak wood) and small bushes. Can spawn villages.
 [*]Wetlands: Swamp-like biome with swamp oak and spruce trees. Can spawn witch huts, slimes, and reeds.
 [*]Birch Forest: Forest comprised exclusively of birch trees. Can spawn wolves.
@@ -29,16 +30,50 @@ The occurance of various different world gen features per biome is kept as close
 [*]Orchard: Warm, flower-filled woods with occasional large oak trees. Can spawn villages and pumpkins.
 [*]Mountains: Extremely mountainous biome with a light covering of narrow oak trees. Can spawn emeralds and silverfish.
 [*]Dunes: Extremely mountainous desert variant. Can spawn desert temples.
-[*]Healthland: Dry, flat biome with light trees and some bushes, and occasional patches of dense spindly spruce trees. Can spawn villages and pumpkins.
+[*]Heathland: Dry, flat biome with light trees and some bushes, and occasional patches of dense spindly spruce trees. Can spawn villages and pumpkins.
 [*]Boreal Forest: Moderately mountainous forest with a mix of spruce, oak, and birch trees, and with some bushes on the ground. Can spawn wolves.
 [*]Valley: Forest with a mix of extreme mountains and more moderate terrain, with sandy beaches. Designed to feel like beta world gen. Can spawn wolves, emeralds, and silverfish.
 [*]Tundra: Flat, snowy plains with spruce bushes and occasional trees.
 [/list]
 Deco only biomes:
 [list]
-[*]Savanna: Acacia trees spawn with acacia wood instead of oak.
+[*]Savanna: Acacia trees spawn with acacia wood instead of oak. Otherwise the same as normal.
 [*]Outback: Red sand desert with patches of grass with bushes and shrubs. Can spawn villages.
 [*]Cherry Forest: Forest filled with cherry trees. Can spawn wolves.
 [*]Badlands: Red sand desert with plateaus of terracotta.
 [*]Autumn Forest: Forest with autumn trees which have red, orange, and yellow leaves, along with a high number of birch trees. Can spawn wolves.
 [/list]
+The player may not spawn in the following biomes. Note that this only applies to initial spawn, not to any hardcore spawns.
+[list]
+[*]Desert
+[*]Lush Desert / Oasis
+[*]Dunes
+[*]Steppe
+[*]Tropics
+[*]Jungle
+[*]Rainforest
+[*]Outback
+[*]Badlands
+[/list]
+
+1.0 Beta 2
+- Added edge variants to mountainous biomes. These will form when a mountainous and a non mountainous biome meet to smooth the transition
+- Changed (reduced) the number of birch trees which spawn in autumn forests
+- Removed the ability for the player to spawn in the steppe and oasis biomes
+- Removed an accidental modification of a BTW class
+- Fixed an issue (hopefully) where scattered features (e.g. temples) would not spawn
+
+1.0 Beta 3
+- Added random vines to rainforests
+- Added cocoa beans to rainforests and tropics
+- Changed how biome edges are generated so that edge biomes do not form next to coniferous and snowy coniferous forests since they are also somewhat mountainous
+- Changed the name for deco world type to fit on the button
+- Changed (increased) the spawn rate of cacti in steppes
+- Changed the biome color slightly for cherry forests
+- Changed (increased) the amount of flowers which spawn in cherry forests
+- Changed rainforests and tropics to not spawn beaches
+- Changed outback to not spawn flowers
+- Changed (increased) the minimum terrain height for normal deserts to reduce the frequency of water
+- Fixed an issue where lilies of the valley would not generate as a part of world gen
+- Fixed an issue where badlands would sometimes spawn terracotta at the edges when merging into other biomes
+- Fixed an issue where mounntain and aspen trees were missing their topmost log block

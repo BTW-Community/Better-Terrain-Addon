@@ -6,6 +6,6 @@ public class BTABiomeGenSteppe extends BTABiomeGenBase {
 		btwgBiomeDecorator.treesPerChunk = -999;
 		btwgBiomeDecorator.grassPerChunk = 25;
 		btwgBiomeDecorator.steppePerChunk = 20;
-		btwgBiomeDecorator.cactiPerChunk = 15;
+		btwgBiomeDecorator.cactiPerChunk = 50;
 	}
 }

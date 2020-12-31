@@ -10,6 +10,6 @@ public class BTAWorldTypeDeco extends WorldType {
      */
     public String getTranslateName()
     {
-        return "Better Terrain Deco";
+        return "Deco Terrain";
     }
 }

@@ -26,7 +26,7 @@ public class BTABiomeGenLushDesert extends BTABiomeGenBase
 	@Override
 	public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
 	{
-		return new BTAWorldGenPalmTreeSmall(false);
+		return new BTAWorldGenPalmTreeSmall(false, false);
 	}
 
     public void decorate(World par1World, Random par2Random, int par3, int par4)

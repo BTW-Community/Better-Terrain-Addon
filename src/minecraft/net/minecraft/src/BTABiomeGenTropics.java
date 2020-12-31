@@ -35,7 +35,7 @@ public class BTABiomeGenTropics extends BTABiomeGenBase {
     	WorldGenerator gen;
     	
     	if (rand.nextInt(2) == 0) {
-    		gen = new BTAWorldGenPalmTreeSmall(false);;
+    		gen = new BTAWorldGenPalmTreeSmall(false, true);;
     	}
     	else {
     		gen = new WorldGenShrub(3, 3);

@@ -1,12 +1,12 @@
 ## TODO ##
-Spawn cocoa beans
 Make fallen logs vary in size and direction
-Add deco spawning of acacia and autumn trees
+Add deco spawning of acacia trees
 Add capability for grass and flowers to spawn with snow in snow biomes
 Make all tiers of spruce trees have snow in snowy biomes
+Make tall narrow trees less uniform
+Move badlands banding from biome.decorate() to chunk provider
+Create custom villages
 
 ## Issues ##
 Villages in deserts generate as normal villages
 Some trees will generate through blocks (meadow and mountain trees, maybe others)
-Mountain trees are missing their top log
-Desert wells may not have been updated to spawn in new biomes

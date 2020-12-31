@@ -18,7 +18,7 @@ public class BTABiomeGenOasis extends BTABiomeGenBase {
 	@Override
 	public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
 	{
-		return new BTAWorldGenPalmTreeSmall(false);
+		return new BTAWorldGenPalmTreeSmall(false, false);
 	}
 
 	@Override

@@ -12,7 +12,7 @@ class StructureVillageStart extends StructureStart
     public StructureVillageStart(World par1World, Random par2Random, int par3, int par4, int par5)
     {
         ArrayList var6 = StructureVillagePieces.getStructureVillageWeightedPieceList(par2Random, par5);
-        ComponentVillageStartPiece var7 = new BTAComponentVillageStartPiece(par1World.getWorldChunkManager(), 0, par2Random, (par3 << 4) + 2, (par4 << 4) + 2, var6, par5);
+        ComponentVillageStartPiece var7 = new ComponentVillageStartPiece(par1World.getWorldChunkManager(), 0, par2Random, (par3 << 4) + 2, (par4 << 4) + 2, var6, par5);
         this.components.add(var7);
         var7.buildComponent(var7, this.components, par2Random);
         ArrayList var8 = var7.field_74930_j;

@@ -61,6 +61,7 @@ public class BTAWorldGenPineTree extends WorldGenerator
 				var1.setBlockAndMetadata(var3, var4 + 8, var5, Block.wood.blockID, metaWood);
 				var1.setBlockAndMetadata(var3, var4 + 9, var5, Block.wood.blockID, metaWood);
 				var1.setBlockAndMetadata(var3, var4 + 10, var5, Block.wood.blockID, metaWood);
+				var1.setBlockAndMetadata(var3, var4 + 11, var5, Block.wood.blockID, metaWood);
 				var1.setBlockMetadataWithClient(var3, var4 + 1, var5, metaWood | 12); // place stump
 
 				var1.setBlockAndMetadata(var3 + 1, var4 + 6, var5, Block.leaves.blockID, metaLeaves);
@@ -123,6 +124,7 @@ public class BTAWorldGenPineTree extends WorldGenerator
 				var1.setBlockAndMetadata(var3, var4 + 8, var5, Block.wood.blockID, metaWood);
 				var1.setBlockAndMetadata(var3, var4 + 9, var5, Block.wood.blockID, metaWood);
 				var1.setBlockAndMetadata(var3, var4 + 10, var5, Block.wood.blockID, metaWood);
+				var1.setBlockAndMetadata(var3, var4 + 11, var5, Block.wood.blockID, metaWood);
                 var1.setBlockMetadataWithClient(var3, var4 + 1, var5, metaWood | 12); // place stump
 
 				var1.setBlockAndMetadata(var3 + 1, var4 + 6, var5, Block.leaves.blockID, metaLeaves);
