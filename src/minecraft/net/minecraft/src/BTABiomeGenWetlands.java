@@ -6,13 +6,13 @@ public class BTABiomeGenWetlands extends BTABiomeGenBase {
 
 	public BTABiomeGenWetlands(int id) {
 		super(id);
-        this.btwgBiomeDecorator.treesPerChunk = 10;
-        this.btwgBiomeDecorator.flowersPerChunk = -999;
-        this.btwgBiomeDecorator.deadBushPerChunk = 1;
-        this.btwgBiomeDecorator.mushroomsPerChunk = 8;
-        this.btwgBiomeDecorator.reedsPerChunk = 10;
-        this.btwgBiomeDecorator.clayPerChunk = 1;
-        this.btwgBiomeDecorator.waterlilyPerChunk = 4;
+        this.btaiomeDecorator.treesPerChunk = 10;
+        this.btaiomeDecorator.flowersPerChunk = -999;
+        this.btaiomeDecorator.deadBushPerChunk = 1;
+        this.btaiomeDecorator.mushroomsPerChunk = 8;
+        this.btaiomeDecorator.reedsPerChunk = 10;
+        this.btaiomeDecorator.clayPerChunk = 1;
+        this.btaiomeDecorator.waterlilyPerChunk = 4;
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntitySlime.class, 1, 1, 1));
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntityWitch.class, 1, 1, 1));
         this.spawnableCreatureList.clear();
@@ -39,5 +39,19 @@ public class BTABiomeGenWetlands extends BTABiomeGenBase {
     	}
     	
     	return gen;
+    }
+
+    public void decorate(World par1World, Random par2Random, int par3, int par4)
+    {
+        super.decorate(par1World, par2Random, par3, par4);
+        WorldGenVines var5 = new WorldGenVines();
+
+        for (int var6 = 0; var6 < 50; ++var6)
+        {
+            int var7 = par3 + par2Random.nextInt(16) + 8;
+            byte var8 = 64;
+            int var9 = par4 + par2Random.nextInt(16) + 8;
+            var5.generate(par1World, par2Random, var7, var8, var9);
+        }
     }
 }

@@ -2,6 +2,7 @@ package net.minecraft.src;
 
 public class BTADecoIntegration {
 	private static boolean isDecoInstalled = false;
+	private static Class decoDefs = null;
 
 	public static Block redSand;
 	public static Block redSandStone;
@@ -23,13 +24,29 @@ public class BTADecoIntegration {
 	public static Block trapdoorSpruce;
 	public static Block trapdoorCherry;
 	public static Block cherryStairs;
+	public static Block glassStained;
+	public static Block stoneTypesStoneBrick;
+	public static Block stoneTypesSmooth;
+	public static Block graniteBrickSidingAndCorner;
+	public static Block graniteBrickMouldingAndDecorative;
+	public static Block graniteSmoothSidingAndCorner;
+	public static Block graniteSmoothMouldingAndDecorative;
+	public static Block graniteBrickStairs;
+	public static Block barrelEmpty;
+	public static Block woodSlab;
+	public static Block carpet;
+	public static Block oakWoodChair;
+	public static Block hedgeOakSidingAndCorner;
+	public static Block barkLog;
+	public static Block stoneSlab2;
+	public static Block cherrySidingAndCorner;
+	public static Block andesiteSmoothStairs;
+	public static Block andesiteSmoothMouldingandDecorative;
 	
 	public static Item pileRedSand;
 	
 	public static void init() {
 		try {
-			Class decoDefs = null;
-			
 			try {
 				decoDefs = Class.forName("DecoDefs");
 			} catch (ClassNotFoundException e) {
@@ -43,28 +60,46 @@ public class BTADecoIntegration {
 			if (decoDefs != null) {
 				isDecoInstalled = true;
 				
-				redSand = (Block) getDecoField(decoDefs, "redSand");
-				redSandStone = (Block) getDecoField(decoDefs, "redSandStone");
-				terracotta = (Block) getDecoField(decoDefs, "terracotta");
-				stainedTerracotta = (Block) getDecoField(decoDefs, "stainedTerracotta");
-				cherryLog = (Block) getDecoField(decoDefs, "cherryLog");
-				cherryStump = (Block) getDecoField(decoDefs, "cherryStump");
-				cherryLeaves = (Block) getDecoField(decoDefs, "cherryLeaves");
-				flower = (Block) getDecoField(decoDefs, "flower");
-				flower2 = (Block) getDecoField(decoDefs, "flower2");
-				tulip = (Block) getDecoField(decoDefs, "tulip");
-				stoneTypes = (Block) getDecoField(decoDefs, "stoneTypes");
-				autumnLeaves = (Block) getDecoField(decoDefs, "autumnLeaves");
-				barkLogStripped = (Block) getDecoField(decoDefs, "barkLogStripped");
-				strippedLog = (Block) getDecoField(decoDefs, "strippedLog");
-				pergola = (Block) getDecoField(decoDefs, "pergola");
-				gateSpruce = (Block) getDecoField(decoDefs, "gateSpruce");
-				doorSpruce = (Block) getDecoField(decoDefs, "doorSpruce");
-				trapdoorSpruce = (Block) getDecoField(decoDefs, "trapdoorSpruce");
-				trapdoorCherry = (Block) getDecoField(decoDefs, "trapdoorCherry");
-				cherryStairs = (Block) getDecoField(decoDefs, "cherryStairs");
+				redSand = (Block) getDecoField("redSand");
+				redSandStone = (Block) getDecoField("redSandStone");
+				terracotta = (Block) getDecoField("terracotta");
+				stainedTerracotta = (Block) getDecoField("stainedTerracotta");
+				cherryLog = (Block) getDecoField("cherryLog");
+				cherryStump = (Block) getDecoField("cherryStump");
+				cherryLeaves = (Block) getDecoField("cherryLeaves");
+				flower = (Block) getDecoField("flower");
+				flower2 = (Block) getDecoField("flower2");
+				tulip = (Block) getDecoField("tulip");
+				stoneTypes = (Block) getDecoField("stoneTypes");
+				autumnLeaves = (Block) getDecoField("autumnLeaves");
+				barkLogStripped = (Block) getDecoField("barkLogStripped");
+				strippedLog = (Block) getDecoField("strippedLog");
+				pergola = (Block) getDecoField("pergola");
+				gateSpruce = (Block) getDecoField("gateSpruce");
+				doorSpruce = (Block) getDecoField("doorSpruce");
+				trapdoorSpruce = (Block) getDecoField("trapdoorSpruce");
+				trapdoorCherry = (Block) getDecoField("trapdoorCherry");
+				cherryStairs = (Block) getDecoField("cherryStairs");
+				glassStained = (Block) getDecoField("glassStained");
+				stoneTypesStoneBrick = (Block) getDecoField("stoneTypesStoneBrick");
+				stoneTypesSmooth = (Block) getDecoField("stoneTypesSmooth");
+				graniteBrickSidingAndCorner = ((Block[]) getDecoField("stoneTypesStoneBrickSidingAndCorner"))[0];
+				graniteBrickMouldingAndDecorative = ((Block[]) getDecoField("stoneTypesStoneBrickMouldingAndDecorative"))[0];
+				graniteSmoothSidingAndCorner = ((Block[]) getDecoField("stoneTypesSmoothSidingAndCorner"))[0];
+				graniteSmoothMouldingAndDecorative = ((Block[]) getDecoField("stoneTypesSmoothMouldingAndDecorative"))[0];
+				graniteBrickStairs = ((Block[]) getDecoField("stoneTypesStoneBrickStairs"))[0];
+				barrelEmpty = (Block) getDecoField("barrelEmpty");
+				woodSlab = (Block) getDecoField("woodSlab");
+				carpet = (Block) getDecoField("carpet");
+				oakWoodChair = (Block) getDecoField("oakWoodChair");
+				hedgeOakSidingAndCorner = (Block) getDecoField("hedgeOakSidingAndCorner");
+				barkLog = (Block) getDecoField("barkLog");
+				stoneSlab2 = (Block) getDecoField("stoneSlab2");
+				cherrySidingAndCorner = (Block) getDecoField("cherrySidingAndCorner");
+				andesiteSmoothStairs = ((Block[]) getDecoField("stoneTypesSmoothStairs"))[1];
+				andesiteSmoothMouldingandDecorative = ((Block[]) getDecoField("stoneTypesSmoothMouldingAndDecorative"))[1];
 				
-				pileRedSand = (Item) getDecoField(decoDefs, "pileRedSand");
+				pileRedSand = (Item) getDecoField("pileRedSand");
 			}
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
@@ -77,8 +112,8 @@ public class BTADecoIntegration {
 		}
 	}
 	
-	private static Object getDecoField(Class addonDefs, String fieldName) throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {
-		return addonDefs.getDeclaredField(fieldName).get(null);
+	private static Object getDecoField(String fieldName) throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {
+		return decoDefs.getDeclaredField(fieldName).get(null);
 	}
 	
 	public static boolean isDecoInstalled() {

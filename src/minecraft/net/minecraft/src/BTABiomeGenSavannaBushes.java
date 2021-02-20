@@ -2,11 +2,11 @@ package net.minecraft.src;
 
 import java.util.Random;
 
-public class BTABiomeGenSavanna extends BTABiomeGenBase {
+public class BTABiomeGenSavannaBushes extends BTABiomeGenBase {
 
-	public BTABiomeGenSavanna(int id) {
+	public BTABiomeGenSavannaBushes(int id) {
 		super(id);
-        this.btaiomeDecorator.treesPerChunk = 2;
+        this.btaiomeDecorator.treesPerChunk = 10;
         this.btaiomeDecorator.grassPerChunk = 25;
 	}
 
@@ -16,6 +16,6 @@ public class BTABiomeGenSavanna extends BTABiomeGenBase {
 	@Override
 	public WorldGenerator getRandomWorldGenForTrees(Random rand)
 	{
-		return rand.nextInt(3) == 0 ? new BTAWorldGenAcacia(false) : new WorldGenShrub(0,0);
+		return rand.nextInt(8) == 0 ? new BTAWorldGenAcacia(false) : new WorldGenShrub(0,0);
 	}
 }

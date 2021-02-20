@@ -10,11 +10,11 @@ public class BTAStructureVillagePieces
     public static ArrayList getStructureVillageWeightedPieceList(Random par0Random, int par1)
     {
         ArrayList var2 = new ArrayList();
-        var2.add(new StructureVillagePieceWeight(BTAComponentVillageHouseGarden.class, 4, MathHelper.getRandomIntegerInRange(par0Random, 2 + par1, 4 + par1 * 2)));
+        var2.add(new StructureVillagePieceWeight(BTAComponentVillageHouseSmall.class, 4, MathHelper.getRandomIntegerInRange(par0Random, 2 + par1, 4 + par1 * 2)));
         var2.add(new StructureVillagePieceWeight(BTAComponentVillageChurch.class, 20, MathHelper.getRandomIntegerInRange(par0Random, 0 + par1, 1 + par1)));
         var2.add(new StructureVillagePieceWeight(BTAComponentVillageLibrary.class, 20, MathHelper.getRandomIntegerInRange(par0Random, 0 + par1, 2 + par1)));
         var2.add(new StructureVillagePieceWeight(BTAComponentVillageWoodHut.class, 3, MathHelper.getRandomIntegerInRange(par0Random, 2 + par1, 5 + par1 * 3)));
-        var2.add(new StructureVillagePieceWeight(BTAComponentVillageHall.class, 15, MathHelper.getRandomIntegerInRange(par0Random, 0 + par1, 2 + par1)));
+        var2.add(new StructureVillagePieceWeight(BTAComponentVillageButcher.class, 15, MathHelper.getRandomIntegerInRange(par0Random, 0 + par1, 2 + par1)));
         var2.add(new StructureVillagePieceWeight(BTAComponentVillageField.class, 3, MathHelper.getRandomIntegerInRange(par0Random, 1 + par1, 4 + par1)));
         var2.add(new StructureVillagePieceWeight(BTAComponentVillageField2.class, 3, MathHelper.getRandomIntegerInRange(par0Random, 2 + par1, 4 + par1 * 2)));
         var2.add(new StructureVillagePieceWeight(BTAComponentVillageBlacksmith.class, 15, MathHelper.getRandomIntegerInRange(par0Random, 0, 1 + par1)));
@@ -55,12 +55,10 @@ public class BTAStructureVillagePieces
     {
         Class var9 = par1StructureVillagePieceWeight.villagePieceClass;
         Object var10 = null;
-        
-        System.out.println(var9.getName());
 
-        if (var9 == BTAComponentVillageHouseGarden.class)
+        if (var9 == BTAComponentVillageHouseSmall.class)
         {
-            var10 = BTAComponentVillageHouseGarden.func_74912_a(par0ComponentVillageStartPiece, par2List, par3Random, par4, par5, par6, par7, par8);
+            var10 = BTAComponentVillageHouseSmall.func_74912_a(par0ComponentVillageStartPiece, par2List, par3Random, par4, par5, par6, par7, par8);
         }
         else if (var9 == BTAComponentVillageChurch.class)
         {
@@ -74,9 +72,9 @@ public class BTAStructureVillagePieces
         {
             var10 = BTAComponentVillageWoodHut.func_74908_a(par0ComponentVillageStartPiece, par2List, par3Random, par4, par5, par6, par7, par8);
         }
-        else if (var9 == BTAComponentVillageHall.class)
+        else if (var9 == BTAComponentVillageButcher.class)
         {
-            var10 = BTAComponentVillageHall.func_74906_a(par0ComponentVillageStartPiece, par2List, par3Random, par4, par5, par6, par7, par8);
+            var10 = BTAComponentVillageButcher.func_74906_a(par0ComponentVillageStartPiece, par2List, par3Random, par4, par5, par6, par7, par8);
         }
         else if (var9 == BTAComponentVillageField.class)
         {
@@ -144,9 +142,6 @@ public class BTAStructureVillagePieces
                             }
 
                             return var13;
-                        }
-                        else {
-                        	System.out.println("null village piece");
                         }
                     }
                 }

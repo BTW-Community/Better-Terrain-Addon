@@ -9,14 +9,14 @@ public class BTABiomeGenOutback extends BTABiomeGenBase {
 			this.topBlockExt = BTADecoIntegration.redSand.blockID;
 			this.fillerBlockExt = BTADecoIntegration.redSand.blockID;
 		}
-		this.btwgBiomeDecorator.generateOutback = true;
-		this.btwgBiomeDecorator.deadBushPerChunk = 10;
-		this.btwgBiomeDecorator.treesPerChunk = 100;
-		this.btwgBiomeDecorator.grassPerChunk = 10;
-		this.btwgBiomeDecorator.cactiPerChunk = 15;
-		this.btwgBiomeDecorator.sandPerChunk = 0;
-		this.btwgBiomeDecorator.sandPerChunk2 = 0;
-		this.btwgBiomeDecorator.flowersPerChunk = -999;
+		this.btaiomeDecorator.generateOutback = true;
+		this.btaiomeDecorator.deadBushPerChunk = 10;
+		this.btaiomeDecorator.treesPerChunk = 10;
+		this.btaiomeDecorator.grassPerChunk = 20;
+		this.btaiomeDecorator.cactiPerChunk = 15;
+		this.btaiomeDecorator.sandPerChunk = 0;
+		this.btaiomeDecorator.sandPerChunk2 = 0;
+		this.btaiomeDecorator.flowersPerChunk = -999;
 		this.spawnableCreatureList.clear();
 		this.spawnableCreatureList.add(new SpawnListEntry(FCEntityChicken.class, 10, 2, 2));
 		this.spawnableCreatureList.add(new SpawnListEntry(FCEntityPig.class, 10, 2, 2));

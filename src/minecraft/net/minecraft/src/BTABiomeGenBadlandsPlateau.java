@@ -13,8 +13,8 @@ public class BTABiomeGenBadlandsPlateau extends BTABiomeGenBase {
 			this.topBlockExt = BTADecoIntegration.terracotta.blockID;
 			this.fillerBlockExt = BTADecoIntegration.terracotta.blockID;
 		}
-		this.btwgBiomeDecorator.sandPerChunk = 0;
-		this.btwgBiomeDecorator.sandPerChunk2 = 0;
+		this.btaiomeDecorator.sandPerChunk = 0;
+		this.btaiomeDecorator.sandPerChunk2 = 0;
 		this.spawnableCreatureList.clear();
 		
 		this.initMetaList();

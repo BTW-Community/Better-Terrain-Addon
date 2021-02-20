@@ -13,3 +13,4 @@ Villages in deserts generate as normal villages
 Some trees will generate through blocks (meadow and mountain trees, maybe others)
 Door metadata for structure rotation is not calculated right
 Wood huts still need chairs
+Terracotta generates down to bedrock

@@ -10,9 +10,9 @@ public class BTABiomeGenDesert extends BTABiomeGenBase
         this.spawnableCreatureList.clear();
         this.topBlockExt = (byte)Block.sand.blockID;
         this.fillerBlockExt = (byte)Block.sand.blockID;
-        this.btwgBiomeDecorator.treesPerChunk = -999;
-        this.btwgBiomeDecorator.deadBushPerChunk = 2;
-        this.btwgBiomeDecorator.cactiPerChunk = 10;
+        this.btaiomeDecorator.treesPerChunk = -999;
+        this.btaiomeDecorator.deadBushPerChunk = 2;
+        this.btaiomeDecorator.cactiPerChunk = 10;
     }
 
     public void decorate(World par1World, Random par2Random, int par3, int par4)

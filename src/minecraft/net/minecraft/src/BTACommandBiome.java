@@ -8,6 +8,14 @@ public class BTACommandBiome extends CommandBase {
 		return "biome";
 	}
 
+    /**
+     * Return the required permission level for this command.
+     */
+    public int getRequiredPermissionLevel()
+    {
+        return 2;
+    }
+
 	@Override
 	public void processCommand(ICommandSender var1, String[] var2) {
 		ChunkCoordinates coords = var1.getPlayerCoordinates();

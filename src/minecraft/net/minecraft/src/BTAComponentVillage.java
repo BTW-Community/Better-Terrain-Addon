@@ -3,7 +3,7 @@ package net.minecraft.src;
 import java.util.List;
 import java.util.Random;
 
-abstract class BTAComponentVillage extends StructureComponent
+abstract class BTAComponentVillage extends BTAStructureComponent
 {
     /** The number of villagers that have been spawned in this component. */
     private int villagersSpawned;

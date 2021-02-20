@@ -7,8 +7,8 @@ public class BTABiomeGenBirchForest extends BTABiomeGenBase {
     {
         super(par1);
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 5, 4, 4));
-        this.btwgBiomeDecorator.treesPerChunk = 10;
-        this.btwgBiomeDecorator.grassPerChunk = 2;
+        this.btaiomeDecorator.treesPerChunk = 10;
+        this.btaiomeDecorator.grassPerChunk = 2;
     }
 
     /**

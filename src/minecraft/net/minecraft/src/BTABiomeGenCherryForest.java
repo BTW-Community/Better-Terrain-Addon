@@ -7,9 +7,9 @@ public class BTABiomeGenCherryForest extends BTABiomeGenBase {
     {
         super(par1);
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 5, 4, 4));
-        this.btwgBiomeDecorator.treesPerChunk = 10;
-        this.btwgBiomeDecorator.grassPerChunk = 2;
-        this.btwgBiomeDecorator.flowersPerChunk = 15;
+        this.btaiomeDecorator.treesPerChunk = 10;
+        this.btaiomeDecorator.grassPerChunk = 5;
+        this.btaiomeDecorator.flowersPerChunk = 25;
     }
 
     /**
@@ -18,15 +18,17 @@ public class BTABiomeGenCherryForest extends BTABiomeGenBase {
     public WorldGenerator getRandomWorldGenForTrees(Random rand)
     {
     	WorldGenerator gen;
-    	/*
-    	if (rand.nextInt(10) == 0) {
-    		gen = new BTWGWorldGenCherryTreeBig(false);
+    	
+    	if (rand.nextInt(5) == 0) {
+    		gen = this.worldGeneratorTrees;
+    	}
+    	else if (rand.nextInt(4) == 0) {
+    		gen = this.worldGeneratorForest;
     	}
     	else {
-    		gen = new BTWGWorldGenCherryTree();
+    		gen = new BTAWorldGenCherryTree();
     	}
-    	*/
-		gen = new BTAWorldGenCherryTree();
+    	
     	return gen;
     }
 

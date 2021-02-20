@@ -6,10 +6,10 @@ public class BTABiomeGenOasis extends BTABiomeGenBase {
 	public BTABiomeGenOasis(int par1)
 	{
 		super(par1);
-		this.btwgBiomeDecorator.treesPerChunk = 10;
-		this.btwgBiomeDecorator.grassPerChunk = 2;
-		this.btwgBiomeDecorator.sandPerChunk = 0;
-		this.btwgBiomeDecorator.sandPerChunk2 = 0;
+		this.btaiomeDecorator.treesPerChunk = 10;
+		this.btaiomeDecorator.grassPerChunk = 2;
+		this.btaiomeDecorator.sandPerChunk = 0;
+		this.btaiomeDecorator.sandPerChunk2 = 0;
 	}
 
 	/**

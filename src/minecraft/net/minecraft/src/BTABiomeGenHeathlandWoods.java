@@ -5,9 +5,9 @@ import java.util.Random;
 public class BTABiomeGenHeathlandWoods extends BTABiomeGenBase {
 	public BTABiomeGenHeathlandWoods(int id) {
 		super(id);
-		this.btwgBiomeDecorator.treesPerChunk = 12;
-		this.btwgBiomeDecorator.grassPerChunk = 15;
-		this.btwgBiomeDecorator.flowersPerChunk = 30;
+		this.btaiomeDecorator.treesPerChunk = 12;
+		this.btaiomeDecorator.grassPerChunk = 15;
+		this.btaiomeDecorator.flowersPerChunk = 30;
 	}
 
 	/**

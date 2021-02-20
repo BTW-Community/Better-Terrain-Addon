@@ -100,7 +100,7 @@ public class BTAGenLayerShore extends BTAGenLayer
 								(BTABiomeConfiguration.shouldBiomeConnectWithEdge(var11)) ||
 								(BTABiomeConfiguration.shouldBiomeConnectWithEdge(var12)) ||
 								(BTABiomeConfiguration.shouldBiomeConnectWithEdge(var13)) ||
-							BTABiomeConfiguration.doesBiomeIgnoreEdgeRestrictions(currentBiome))
+							BTABiomeConfiguration.doesBiomeIgnoreEdgeRestrictions(currentBiome, var10, var11, var12, var13))
 					{
 						//If current biome is a biome that forms edges
 						if (BTABiomeConfiguration.getEdgeVariantForBiome(currentBiome) != -1) {

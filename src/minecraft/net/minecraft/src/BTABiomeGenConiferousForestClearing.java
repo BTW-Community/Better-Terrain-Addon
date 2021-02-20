@@ -6,8 +6,8 @@ public class BTABiomeGenConiferousForestClearing extends BTABiomeGenBase {
 	public BTABiomeGenConiferousForestClearing(int id) {
 		super(id);
 		spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 8, 4, 4));
-        this.btwgBiomeDecorator.treesPerChunk = 3;
-        this.btwgBiomeDecorator.grassPerChunk = 15;
+        this.btaiomeDecorator.treesPerChunk = 3;
+        this.btaiomeDecorator.grassPerChunk = 15;
 	}
 
     /**

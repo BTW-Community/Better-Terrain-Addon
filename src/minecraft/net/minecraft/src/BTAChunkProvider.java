@@ -225,7 +225,7 @@ public class BTAChunkProvider implements IChunkProvider
 									var14 = 0;
 									var15 = (byte)Block.stone.blockID;
 								}
-								else if (var16 >= var5 - 4 && var16 <= var5 + 1)
+								else if (var16 >= var5 - (8 + rand.nextInt(2)) && var16 <= var5 + 1)
 								{
 									if(var10.biomeID == BTABiomeConfiguration.oldValley.biomeID || var10.biomeID == BTABiomeConfiguration.valleyMountains.biomeID || var10.biomeID == BTABiomeConfiguration.valley.biomeID)
 									{
@@ -304,7 +304,7 @@ public class BTAChunkProvider implements IChunkProvider
 								}
 								else if (BTADecoIntegration.isDecoInstalled() && var13 == 0 && var15 == BTADecoIntegration.terracotta.blockID)
 								{
-									var13 = this.rand.nextInt(6) + 10;
+									var13 = this.rand.nextInt(6);
 									var15 = BTADecoIntegration.terracotta.blockID;
 								}
 							}

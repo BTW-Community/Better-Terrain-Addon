@@ -46,7 +46,12 @@ public class BTAWorldGenOasis extends WorldGenerator
 
 							if (var13 == Block.sand.blockID)
 							{
-								par1World.setBlock(var8, var12, var9, sandID);
+								if (sandID == Block.grass.blockID && par1World.getBlockId(var8, var12 + 1, var9) != 0) {
+									par1World.setBlock(var8, var12, var9, Block.dirt.blockID);
+								}
+								else {
+									par1World.setBlock(var8, var12, var9, sandID);
+								}
 							}
 						}
 					}

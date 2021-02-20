@@ -16,7 +16,7 @@ public class BTAComponentVillageLibrary extends BTAComponentVillage
 
     public static BTAComponentVillageLibrary func_74898_a(BTAComponentVillageStartPiece par0ComponentVillageStartPiece, List par1List, Random par2Random, int par3, int par4, int par5, int par6, int par7)
     {
-        StructureBoundingBox var8 = StructureBoundingBox.getComponentToAddBoundingBox(par3, par4, par5, 0, 0, 0, 9, 9, 6, par6);
+        StructureBoundingBox var8 = StructureBoundingBox.getComponentToAddBoundingBox(par3, par4, par5, 0, 0, 0, 15, 16, 16, par6);
         return canVillageGoDeeper(var8) && StructureComponent.findIntersecting(par1List, var8) == null ? new BTAComponentVillageLibrary(par0ComponentVillageStartPiece, par7, par2Random, var8, par6) : null;
     }
 
@@ -35,7 +35,7 @@ public class BTAComponentVillageLibrary extends BTAComponentVillage
                 return true;
             }
 
-            this.boundingBox.offset(0, this.averageGroundLevel - this.boundingBox.maxY + 9 - 1, 0);
+            this.boundingBox.offset(0, this.averageGroundLevel - this.boundingBox.maxY + 16 - 1, 0);
         }
 
         this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 1, 1, 7, 5, 4, 0, 0, false);

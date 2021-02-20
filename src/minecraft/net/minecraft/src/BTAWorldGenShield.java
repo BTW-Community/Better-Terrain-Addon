@@ -11,14 +11,27 @@ public class BTAWorldGenShield extends WorldGenerator
 {
 	/** The block ID of the ore to be placed using this generator. */
 	private int minableBlockId;
+	private int meta;
 
 	/** The number of blocks to generate. */
 	private int numberOfBlocks;
+	
+	private int replaceID;
 
 	public BTAWorldGenShield(int par1, int par2)
 	{
 		minableBlockId = par1;
 		numberOfBlocks = par2;
+		this.meta = 0;
+		this.replaceID = Block.grass.blockID;
+	}
+
+	public BTAWorldGenShield(int id, int meta, int numBlocks, int replaceID)
+	{
+		minableBlockId = id;
+		numberOfBlocks = numBlocks;
+		this.meta = meta;
+		this.replaceID = replaceID;
 	}
 
 	@Override
@@ -63,9 +76,9 @@ public class BTAWorldGenShield extends WorldGenerator
 							{
 								double var45 = (var44 + 0.5D - var24) / (var28 / 2.0D);
 
-								if (var39 * var39 + var42 * var42 + var45 * var45 < 1.0D && par1World.getBlockId(var38, var41, var44) == Block.grass.blockID || par1World.getBlockId(var38, var41, var44) == Block.dirt.blockID)
+								if (var39 * var39 + var42 * var42 + var45 * var45 < 1.0D && par1World.getBlockId(var38, var41, var44) == this.replaceID || (this.replaceID == Block.grass.blockID && par1World.getBlockId(var38, var41, var44) == Block.dirt.blockID))
 								{
-									par1World.setBlock(var38, var41, var44, minableBlockId);
+									par1World.setBlockAndMetadata(var38, var41, var44, this.minableBlockId, this.meta);
 								}
 							}
 						}

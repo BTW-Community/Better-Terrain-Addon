@@ -12,13 +12,13 @@ public class BTABiomeGenBase extends BiomeGenBase {
 	private boolean enableRain;
 	private boolean isSpawnable;
 	
-    public BTABiomeDecorator btwgBiomeDecorator;
+    public BTABiomeDecorator btaiomeDecorator;
 
 	protected BTABiomeGenBase(int id) {
 		super(id);
 		this.enableRain = true;
 		this.isSpawnable = true;
-		this.btwgBiomeDecorator = new BTABiomeDecorator(this);
+		this.btaiomeDecorator = new BTABiomeDecorator(this);
         this.topBlockExt = Block.grass.blockID;
         this.fillerBlockExt = Block.dirt.blockID;
 	}
@@ -42,7 +42,7 @@ public class BTABiomeGenBase extends BiomeGenBase {
 
     public void decorate(World par1World, Random par2Random, int par3, int par4)
     {
-        this.btwgBiomeDecorator.decorate(par1World, par2Random, par3, par4);
+        this.btaiomeDecorator.decorate(par1World, par2Random, par3, par4);
     }
 
     /**

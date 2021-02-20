@@ -6,10 +6,10 @@ public class BTABiomeGenTropics extends BTABiomeGenBase {
 	public BTABiomeGenTropics(int par1)
 	{
 		super(par1);
-		this.btwgBiomeDecorator.treesPerChunk = 10;
-		this.btwgBiomeDecorator.grassPerChunk = 2;
-		this.btwgBiomeDecorator.sandPerChunk = 100;
-		this.btwgBiomeDecorator.sandPerChunk2 = 100;
+		this.btaiomeDecorator.treesPerChunk = 10;
+		this.btaiomeDecorator.grassPerChunk = 2;
+		this.btaiomeDecorator.sandPerChunk = 100;
+		this.btaiomeDecorator.sandPerChunk2 = 100;
 		this.waterColorMultiplier = 65396;
         this.spawnableCreatureList.clear();
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityChicken.class, 10, 4, 4));

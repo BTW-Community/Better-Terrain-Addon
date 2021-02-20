@@ -5,8 +5,8 @@ import java.util.Random;
 public class BTABiomeGenOldValley extends BTABiomeGenBase {
 	public BTABiomeGenOldValley(int id) {
 		super(id);
-        this.btwgBiomeDecorator.treesPerChunk = 4;
-        this.btwgBiomeDecorator.grassPerChunk = 4;
+        this.btaiomeDecorator.treesPerChunk = 4;
+        this.btaiomeDecorator.grassPerChunk = 4;
 	}
 
     /**

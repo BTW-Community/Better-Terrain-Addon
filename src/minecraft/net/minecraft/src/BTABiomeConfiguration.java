@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class BTABiomeConfiguration {
 	public static final BTABiomeGenBase woods = new BTABiomeGenWoods(100).setColor(353825).setBiomeName("Woods").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.1F, 0.5F);
 	public static final BTABiomeGenBase desert = new BTABiomeGenDesert(101).setColor(16421912).setBiomeName("Desert").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.2F, 0.4F);
-	public static final BTABiomeGenBase lushDesert = new BTABiomeGenLushDesert(102).setColor(16711935).setBiomeName("Lush Desert").setDisableRain().setTemperatureRainfall(0.9F, 1.0F).setMinMaxHeight(0.3F, 0.6F);
+	public static final BTABiomeGenBase lushDesert = new BTABiomeGenLushDesert(102).setColor(16711935).setBiomeName("Lush Desert").setDisableRain().setTemperatureRainfall(0.9F, 1.0F).setMinMaxHeight(0.1F, 0.6F);
 	public static final BTABiomeGenBase oasis = new BTABiomeGenOasis(103).setColor(16711935).setBiomeName("Oasis").setDisableRain().setTemperatureRainfall(0.9F, 1.0F).setMinMaxHeight(-0.2F, 0.1F); //Spawns within lush deserts
-	public static final BTABiomeGenBase savanna = new BTABiomeGenSavanna(104).setColor(9286496).setBiomeName("Savanna").setTemperatureRainfall(1.5F, 0.1F).setMinMaxHeight(0.1F, 0.6F);
+	public static final BTABiomeGenBase savanna = new BTABiomeGenSavanna(104).setColor(9286496).setBiomeName("Savanna").setTemperatureRainfall(1.5F, 0.1F).setMinMaxHeight(0.1F, 0.3F);
     public static final BTABiomeGenBase wetlands = new BTABiomeGenWetlands(105).setColor(522674).setBiomeName("Wetlands").func_76733_a(9154376).setMinMaxHeight(-0.1F, 0.3F).setTemperatureRainfall(0.8F, 0.9F);
 	public static final BTABiomeGenBase birchForest = new BTABiomeGenBirchForest(106).setColor(353825).setBiomeName("Birch Forest").func_76733_a(5159473).setTemperatureRainfall(0.4F, 0.4F).setMinMaxHeight(0.1F, 0.5F);
 	public static final BTABiomeGenBase snowyWoods = new BTABiomeGenWoods(107).setColor(353825).setBiomeName("Snowy Woods").func_76733_a(5159473).setEnableSnow().setTemperatureRainfall(0.1F, 0.5F).setMinMaxHeight(0.1F, 0.5F);
@@ -19,44 +19,45 @@ public class BTABiomeConfiguration {
     public static final BTABiomeGenBase jungle = new BTABiomeGenJungle(113).setColor(5470985).setBiomeName("Jungle").func_76733_a(5470985).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.0F, 0.4F);
     public static final BTABiomeGenBase alpine = new BTABiomeGenAlpine(114).setColor(747097).setBiomeName("Alpine").func_76733_a(5159473).setTemperatureRainfall(0.2F, 0.8F).setMinMaxHeight(0.5F, 3.0F);
     public static final BTABiomeGenBase aspenGrove = new BTABiomeGenAspenGrove(115).setColor(747097).setBiomeName("Aspen Grove").func_76733_a(5159473).setTemperatureRainfall(0.2F, 0.8F).setMinMaxHeight(0.5F, 3.0F); //Spawns within Alpine
-    public static final BTABiomeGenBase fungalForest = new BTABiomeGenFungalForest(116).setColor(522674).setBiomeName("Fungal Forest").func_76733_a(9154376).setMinMaxHeight(-0.2F, 1.2F).setTemperatureRainfall(0.4F, 0.9F);
+    public static final BTABiomeGenBase fungalForest = new BTABiomeGenFungalForest(116).setColor(522674).setBiomeName("Fungal Forest").func_76733_a(9154376).setMinMaxHeight(-0.1F, 1.2F).setTemperatureRainfall(0.4F, 1.0F);
 	public static final BTABiomeGenBase coniferousForest = new BTABiomeGenConiferousForest(117).setColor(747097).setBiomeName("Coniferous Forest").func_76733_a(5159473).setTemperatureRainfall(0.5F, 0.4F).setMinMaxHeight(0.3F, 1.2F);
 	public static final BTABiomeGenBase coniferousForestClearing = new BTABiomeGenConiferousForestClearing(118).setColor(747097).setBiomeName("Coniferous Forest Clearing").func_76733_a(5159473).setTemperatureRainfall(0.5F, 0.4F).setMinMaxHeight(0.3F, 1.2F); // Spawns within coniferous forest
 	public static final BTABiomeGenBase coniferousForestSnow = new BTABiomeGenConiferousForest(119).setColor(747097).setBiomeName("Snowy Coniferous Forest").func_76733_a(5159473).setEnableSnow().setTemperatureRainfall(0.1F, 0.4F).setMinMaxHeight(0.3F, 1.2F);
 	public static final BTABiomeGenBase coniferousForestClearingSnow = new BTABiomeGenConiferousForestClearing(120).setColor(747097).setBiomeName("Snowy Coniferous Forest Clearing").func_76733_a(5159473).setEnableSnow().setTemperatureRainfall(0.1F, 0.4F).setMinMaxHeight(0.3F, 1.2F); // Spawns within snowy coniferous forest
 	public static final BTABiomeGenBase mysticForest = new BTABiomeGenMysticForest(121).setColor(10039961).setBiomeName("Mystic Forest").func_76733_a(5159473).setTemperatureRainfall(0.9F, 1.0F).setMinMaxHeight(0.3F, 1.5F);
 	public static final BTABiomeGenBase rainforest = new BTABiomeGenRainforest(122).setColor(9286496).setBiomeName("Rainforest").setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.3F, 1.5F);
-	public static final BTABiomeGenBase meadow = new BTABiomeGenMeadow(123).setColor(9286496).setBiomeName("Meadow").setTemperatureRainfall(0.7F, 1.0F).setMinMaxHeight(0.1F, 0.5F);
+	public static final BTABiomeGenBase meadow = new BTABiomeGenMeadow(123).setColor(9286496).setBiomeName("Meadow").setTemperatureRainfall(0.7F, 1.0F).setMinMaxHeight(0.1F, 0.4F);
 	public static final BTABiomeGenBase orchard = new BTABiomeGenOrchard(124).setColor(353825).setBiomeName("Orchard").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.5F);
 	public static final BTABiomeGenBase mountains = new BTABiomeGenMountain(125).setColor(14090235).setBiomeName("Mountains").setTemperatureRainfall(0.5F, 0.1F).setMinMaxHeight(0.8F, 2.5F);
 	public static final BTABiomeGenBase dunes = new BTABiomeGenDesert(126).setColor(16421912).setBiomeName("Dunes").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.5F, 1.5F);
 	public static final BTABiomeGenBase heathland = new BTABiomeGenHeathland(127).setColor(9286496).setBiomeName("Heathland").setTemperatureRainfall(0.7F, 0.4F).setMinMaxHeight(0.1F, 0.5F);
 	public static final BTABiomeGenBase heathlandWoods = new BTABiomeGenHeathlandWoods(128).setColor(9286496).setBiomeName("Heathland Woods").setTemperatureRainfall(0.7F, 0.4F).setMinMaxHeight(0.1F, 0.5F); //Spawns within heathland
 	public static final BTABiomeGenBase borealForest = new BTABiomeGenBorealForest(129).setColor(353825).setBiomeName("Boreal Forest").func_76733_a(5159473).setMinMaxHeight(0.2F, 1.0F).setTemperatureRainfall(0.6F, 0.7F);
-	public static final BTABiomeGenBase valleyMountains = new BTABiomeGenValley(130).setColor(353825).setBiomeName("Valley").func_76733_a(5159473).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.5F, 3.0F);
+	public static final BTABiomeGenBase valleyMountains = new BTABiomeGenValley(130).setColor(353825).setBiomeName("Valley Highlands").func_76733_a(5159473).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.5F, 3.0F);
 	public static final BTABiomeGenBase oldValley = new BTABiomeGenOldValley(131).setColor(353825).setBiomeName("Valley").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.1F, 0.8F);
 	public static final BTABiomeGenBase tundra = new BTABiomeGenTundra(132).setColor(16421912).setBiomeName("Tundra").setEnableSnow().setTemperatureRainfall(0.1F, 0.1F).setMinMaxHeight(0.1F, 0.4F);
 
 	//Hill variants - spawn within the normal variants
 	public static final BTABiomeGenBase woodsHills = new BTABiomeGenWoods(150).setColor(353825).setBiomeName("Woods Hills").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.3F, 1.0F);
 	public static final BTABiomeGenBase desertHills = new BTABiomeGenDesert(151).setColor(16421912).setBiomeName("Desert Hills").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.3F, 1.0F);
-	public static final BTABiomeGenBase savannaHills = new BTABiomeGenSavanna(152).setColor(9286496).setBiomeName("Savanna Hills").setTemperatureRainfall(1.5F, 0.1F).setMinMaxHeight(0.3F, 1.0F);
+	public static final BTABiomeGenBase savannaHills = new BTABiomeGenSavanna(152).setColor(9286496).setBiomeName("Savanna Hills").setTemperatureRainfall(1.5F, 0.1F).setMinMaxHeight(0.3F, 0.8F);
 	public static final BTABiomeGenBase birchForestHills = new BTABiomeGenBirchForest(153).setColor(353825).setBiomeName("Birch Forest Hills").func_76733_a(5159473).setTemperatureRainfall(0.4F, 0.4F).setMinMaxHeight(0.3F, 1.0F);
 	public static final BTABiomeGenBase snowyWoodsHills = new BTABiomeGenWoods(154).setColor(353825).setBiomeName("Snowy Woods Hills").func_76733_a(5159473).setEnableSnow().setTemperatureRainfall(0.1F, 0.5F).setMinMaxHeight(0.3F, 1.0F);
 	public static final BTABiomeGenBase chaparralHills = new BTABiomeGenChaparral(155).setColor(9286496).setBiomeName("Chaparral Hills").setTemperatureRainfall(0.8F, 0.4F).setMinMaxHeight(0.3F, 1.0F);
 	public static final BTABiomeGenBase ancientForestHills = new BTABiomeGenAncientForest(156).setColor(353825).setBiomeName("Ancient Forest Hills").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.3F, 1.0F);
     public static final BTABiomeGenBase jungleHills = new BTABiomeGenJungle(157).setColor(2900485).setBiomeName("Jungle Hills").func_76733_a(5470985).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(1.8F, 0.5F);
-    public static final BTABiomeGenBase fungalForestHills = new BTABiomeGenFungalForest(158).setColor(522674).setBiomeName("Fungal Forest Hills").func_76733_a(9154376).setMinMaxHeight(0.3F, 1.5F).setTemperatureRainfall(0.4F, 0.9F);
+    public static final BTABiomeGenBase fungalForestFlat = new BTABiomeGenFungalForest(158).setColor(522674).setBiomeName("Fungal Forest Lowlands").func_76733_a(9154376).setMinMaxHeight(-0.1F, 0.5F).setTemperatureRainfall(0.4F, 0.9F);
     public static final BTABiomeGenBase wetlandsHills = new BTABiomeGenWetlands(159).setColor(522674).setBiomeName("Wetlands Hills").func_76733_a(9154376).setMinMaxHeight(-0.2F, 0.6F).setTemperatureRainfall(0.8F, 0.9F);
 	public static final BTABiomeGenBase cherryForestHills = new BTABiomeGenCherryForest(160).setColor(353825).setBiomeName("Cherry Forest Hills").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.3F, 1.0F);
 	public static final BTABiomeGenBase autumnForestHills = new BTABiomeGenAutumnForest(161).setColor(353825).setBiomeName("Autumn Forest Hills").func_76733_a(5159473).setTemperatureRainfall(0.9F, 0.2F).setMinMaxHeight(0.3F, 1.0F);
 	public static final BTABiomeGenBase valley = new BTABiomeGenValley(162).setColor(353825).setBiomeName("Valley").func_76733_a(5159473).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.1F, 0.6F);
+	public static final BTABiomeGenBase orchardClearing = new BTABiomeGenOrchardClearing(163).setColor(353825).setBiomeName("Orchard Clearing").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.5F);
     
     //Deco only biomes
     public static final BTABiomeGenBase outback = new BTABiomeGenOutback(180).setColor(16421912).setBiomeName("Outback").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.1F, 0.4F);
 	public static final BTABiomeGenBase cherryForest = new BTABiomeGenCherryForest(181).setColor(353825).setBiomeName("Cherry Forest").func_76733_a(5159473).setTemperatureRainfall(0.9F, 0.8F).setMinMaxHeight(0.1F, 0.5F);
 	public static final BTABiomeGenBase badlands = new BTABiomeGenBadlands(182).setColor(16421912).setBiomeName("Badlands").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.1F, 0.1F);
-	public static final BTABiomeGenBase badlandsPlateau = new BTABiomeGenBadlandsPlateau(183).setColor(16421912).setBiomeName("Badlands Plateau").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(1.0F, 1.0F); //Spawns within badlands
+	public static final BTABiomeGenBase badlandsPlateau = new BTABiomeGenBadlandsPlateau(183).setColor(16421912).setBiomeName("Badlands Plateau").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.8F, 2.0F); //Spawns within badlands
 	public static final BTABiomeGenBase autumnForest = new BTABiomeGenAutumnForest(184).setColor(353825).setBiomeName("Autumn Forest").func_76733_a(5159473).setTemperatureRainfall(0.9F, 0.2F).setMinMaxHeight(0.1F, 0.5F);
 	
 	//River variants
@@ -73,11 +74,12 @@ public class BTABiomeConfiguration {
     //Edge variants
     public static final BTABiomeGenBase alpineEdge = new BTABiomeGenAlpine(230).setColor(747097).setBiomeName("Alpine Edge").func_76733_a(5159473).setTemperatureRainfall(0.2F, 0.8F).setMinMaxHeight(0.2F, 0.5F);
     public static final BTABiomeGenBase mountainEdge = new BTABiomeGenMountain(231).setColor(14090235).setBiomeName("Mountains Edge").setTemperatureRainfall(0.5F, 0.1F).setMinMaxHeight(0.2F, 0.5F);
-	public static final BTABiomeGenBase badlandsEdge = new BTABiomeGenBadlands(232).setColor(16421912).setBiomeName("Badlands").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.1F, 0.1F);
+	public static final BTABiomeGenBase badlandsEdge = new BTABiomeGenBadlands(232).setColor(16421912).setBiomeName("Badlands Edge").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.1F, 0.1F);
 	
 	//Beach variants
     public static final BTABiomeGenBase beachOutback = new BTABiomeGenBeachOutback(240).setColor(16440917).setBiomeName("Red Sand Beach").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.0F, 0.1F);
 	
+    //Various biome lists
 	public static ArrayList<BTABiomeGenBase> biomeList = new ArrayList();
 	public static ArrayList<BTABiomeGenBase> biomeListDeco = new ArrayList();
 
@@ -100,7 +102,8 @@ public class BTABiomeConfiguration {
 		filterEdgeBiomes();
 		addBiomesToStructureGenerators();
 		//addBiomesToList();
-		addSingleBiome(orchard);
+		addSingleBiome(badlandsPlateau);
+		addSingleBiome(meadow);
 	}
 	
 	public static void addBiomesToList() {
@@ -128,19 +131,20 @@ public class BTABiomeConfiguration {
 		biomeList.add(borealForest);
 		biomeList.add(valleyMountains);
 		biomeList.add(tundra);
-		//biomeList.add(valley);
+		//biomeList.add(oldValley);
 		biomeList.add(orchard);
 		biomeList.add(steppe);
 		
 		biomeListDeco.addAll(biomeList);
 		biomeListDeco.add(outback);
 		biomeListDeco.add(cherryForest);
-		biomeListDeco.add(badlands);
+		biomeListDeco.add(badlandsPlateau);
 		biomeListDeco.add(autumnForest);
 	}
 	
 	public static void addSingleBiome(BTABiomeGenBase biome) {
 		biomeList.add(biome);
+		biomeListDeco.add(biome);
 	}
 	
 	public static void filterSpawnBiomes() {
@@ -171,7 +175,7 @@ public class BTABiomeConfiguration {
 	public static void filterBeachBiomes() {
 		beachlessBiomes.add(alpine);
 		beachlessBiomes.add(fungalForest);
-		beachlessBiomes.add(fungalForestHills);
+		beachlessBiomes.add(fungalForestFlat);
 		beachlessBiomes.add(coniferousForest);
 		beachlessBiomes.add(coniferousForestSnow);
 		beachlessBiomes.add(mysticForest);
@@ -238,27 +242,30 @@ public class BTABiomeConfiguration {
 		pumpkinBiomes.add(savannaHills);
 		pumpkinBiomes.add(chaparralHills);
 		pumpkinBiomes.add(heathlandWoods);
+		pumpkinBiomes.add(orchardClearing);
 		
 		reedBiomes.add(jungleHills);
-		reedBiomes.add(fungalForestHills);
+		reedBiomes.add(fungalForestFlat);
 		reedBiomes.add(wetlandsHills);
-		
-		villageBiomes.add(savannaHills);
-		villageBiomes.add(desertHills);
+
+		villageBiomes.add(oasis);
 		villageBiomes.add(woodedSteppe);
-		villageBiomes.add(chaparralHills);
+		villageBiomes.add(heathlandWoods);
+		villageBiomes.add(orchardClearing);
 
 		jungleTempleBiomes.add(jungleHills);
 
 		desertTempleBiomes.add(desertHills);
 		desertTempleBiomes.add(woodedSteppe);
 
-		witchHutBiomes.add(fungalForestHills);
+		witchHutBiomes.add(fungalForestFlat);
+		witchHutBiomes.add(wetlandsHills);
 		
 		//Rivers
 		reedBiomes.add(riverRainforest);
 		reedBiomes.add(riverTropics);
 		reedBiomes.add(riverMystic);
+		reedBiomes.add(riverWetlands);
 	}
 	
 	public static int getHillsVariantForBiomes(int baseBiome) {
@@ -269,9 +276,6 @@ public class BTABiomeConfiguration {
         }
         else if (baseBiome == desert.biomeID){
             hillsBiome = desertHills.biomeID;
-        }
-        else if (baseBiome == lushDesert.biomeID){
-            hillsBiome = oasis.biomeID;
         }
         else if (baseBiome == savanna.biomeID){
             hillsBiome = savannaHills.biomeID;
@@ -297,9 +301,6 @@ public class BTABiomeConfiguration {
         else if (baseBiome == alpine.biomeID) {
         	hillsBiome = aspenGrove.biomeID;
         }
-        else if (baseBiome == fungalForest.biomeID) {
-        	hillsBiome = fungalForestHills.biomeID;
-        }
         else if (baseBiome == coniferousForest.biomeID) {
         	hillsBiome = coniferousForestClearing.biomeID;
         }
@@ -318,6 +319,15 @@ public class BTABiomeConfiguration {
         else if (baseBiome == valleyMountains.biomeID) {
         	hillsBiome = valley.biomeID;
         }
+        else if (baseBiome == orchard.biomeID) {
+        	hillsBiome = orchardClearing.biomeID;
+        }
+        else if (baseBiome == fungalForest.biomeID) {
+        	hillsBiome = fungalForestFlat.biomeID;
+        }
+        else if (baseBiome == badlandsPlateau.biomeID){
+            hillsBiome = badlands.biomeID;
+        }
 		
 		return hillsBiome;
 	}
@@ -326,11 +336,11 @@ public class BTABiomeConfiguration {
 	public static int getHillsVariantForBiomes2(int baseBiome) {
 		int hillsBiome = baseBiome;
 		
-		if (baseBiome == badlands.biomeID){
-            hillsBiome = badlandsPlateau.biomeID;
-        }
-        else  if (baseBiome == wetlands.biomeID) {
+		if (baseBiome == wetlands.biomeID) {
         	hillsBiome = wetlandsHills.biomeID;
+        }
+        else if (baseBiome == lushDesert.biomeID){
+            hillsBiome = oasis.biomeID;
         }
 		
 		return hillsBiome;
@@ -354,7 +364,7 @@ public class BTABiomeConfiguration {
 		else if (baseBiome == outback.biomeID) {
 			riverBiome = riverOutback.biomeID;
 		}
-		else if (baseBiome == badlands.biomeID || baseBiome == badlandsPlateau.biomeID) {
+		else if (baseBiome == badlands.biomeID || baseBiome == badlandsPlateau.biomeID || baseBiome == badlandsEdge.biomeID) {
 			riverBiome = riverBadlands.biomeID;
 		}
 		else if (baseBiome == tropics.biomeID) {
@@ -398,7 +408,7 @@ public class BTABiomeConfiguration {
 		else if (baseBiome == dunes.biomeID) {
 			edgeBiome = desert.biomeID;
 		}
-		else if (baseBiome == badlands.biomeID) {
+		else if (baseBiome == badlands.biomeID || baseBiome == badlandsPlateau.biomeID) {
 			edgeBiome = badlandsEdge.biomeID;
 		}
 		
@@ -420,6 +430,7 @@ public class BTABiomeConfiguration {
 		noEdgeBiomes.add(borealForest);
 		noEdgeBiomes.add(coniferousForest);
 		noEdgeBiomes.add(coniferousForestSnow);
+		noEdgeBiomes.add(badlandsPlateau);
 		noEdgeBiomes.remove(badlands);
 	}
 	
@@ -427,8 +438,12 @@ public class BTABiomeConfiguration {
 		return !noEdgeBiomes.contains(BiomeGenBase.biomeList[biome]);
 	}
 	
-	public static boolean doesBiomeIgnoreEdgeRestrictions(int biome) {
-		return biome == badlands.biomeID;
+	public static boolean doesBiomeIgnoreEdgeRestrictions(int currentBiome, int biome1, int biome2, int biome3, int biome4) {
+		return (currentBiome == badlands.biomeID &&
+				biome1 != badlandsPlateau.biomeID &&
+				biome2 != badlandsPlateau.biomeID &&
+				biome3 != badlandsPlateau.biomeID &&
+				biome4 != badlandsPlateau.biomeID);
 	}
 	
 	public static boolean shouldBiomeSpawnBeach(int biomeID) {

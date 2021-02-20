@@ -6,8 +6,8 @@ public class BTABiomeGenMountain extends BTABiomeGenBase {
 
 	public BTABiomeGenMountain(int id) {
 		super(id);
-		this.btwgBiomeDecorator.treesPerChunk = 2;
-		this.btwgBiomeDecorator.grassPerChunk = 3;
+		this.btaiomeDecorator.treesPerChunk = 2;
+		this.btaiomeDecorator.grassPerChunk = 3;
 	}
 
 	/**

@@ -6,13 +6,13 @@ public class BTABiomeGenMangroveSwamp extends BTABiomeGenBase {
 
 	public BTABiomeGenMangroveSwamp(int id) {
 		super(id);
-        this.btwgBiomeDecorator.treesPerChunk = 10;
-        this.btwgBiomeDecorator.flowersPerChunk = -999;
-        this.btwgBiomeDecorator.deadBushPerChunk = 1;
-        this.btwgBiomeDecorator.mushroomsPerChunk = 8;
-        this.btwgBiomeDecorator.reedsPerChunk = 10;
-        this.btwgBiomeDecorator.clayPerChunk = 1;
-        this.btwgBiomeDecorator.waterlilyPerChunk = 4;
+        this.btaiomeDecorator.treesPerChunk = 10;
+        this.btaiomeDecorator.flowersPerChunk = -999;
+        this.btaiomeDecorator.deadBushPerChunk = 1;
+        this.btaiomeDecorator.mushroomsPerChunk = 8;
+        this.btaiomeDecorator.reedsPerChunk = 10;
+        this.btaiomeDecorator.clayPerChunk = 1;
+        this.btaiomeDecorator.waterlilyPerChunk = 4;
         this.spawnableMonsterList.add(new SpawnListEntry(BTAEntitySlime.class, 1, 1, 1));
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntityWitch.class, 1, 1, 1));
         this.spawnableCreatureList.clear();

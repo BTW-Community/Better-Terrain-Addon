@@ -3,11 +3,11 @@ package net.minecraft.src;
 public class BTAMod extends AddonExt {
 	private static BTAMod instance;
 	
-	public static final WorldType BTWGWorldType = new BTAWorldType();
-	public static final WorldType BTWGWorldTypeDeco = new BTAWorldTypeDeco();
+	public static final WorldType BTAWorldType = new BTAWorldType();
+	public static final WorldType BTAWorldTypeDeco = new BTAWorldTypeDeco();
 	
 	private BTAMod() {
-		super("Better Terrain Addon", "1.0", "BTA");
+		super("Better Terrain", "1.0", "BTA");
 	}
 
 	@Override
@@ -27,14 +27,13 @@ public class BTAMod extends AddonExt {
 	public void initWorldGen() {
 		BTABiomeConfiguration.init();
 		if (!BTADecoIntegration.isDecoInstalled()) {
-			BTWGWorldTypeDeco.setCanBeCreated(false);
+			BTAWorldTypeDeco.setCanBeCreated(false);
 		}
 	}
 	
 	public void initOverrides() {
 		EntityList.replaceExistingMappingSafe(BTAEntitySlime.class, "Slime");
 		Block.blockClay = Block.replaceBlock(Block.blockClay.blockID, BTABlockClay.class);
-		Item.itemsList[Block.blockClay.blockID] = new ItemBlock(Block.blockClay.blockID - 256);
 	}
 	
 	public void initMisc() {

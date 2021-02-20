@@ -3,9 +3,9 @@ package net.minecraft.src;
 public class BTABiomeGenSteppe extends BTABiomeGenBase {
 	public BTABiomeGenSteppe(int id) {
 		super(id);
-		btwgBiomeDecorator.treesPerChunk = -999;
-		btwgBiomeDecorator.grassPerChunk = 25;
-		btwgBiomeDecorator.steppePerChunk = 20;
-		btwgBiomeDecorator.cactiPerChunk = 50;
+		btaiomeDecorator.treesPerChunk = -999;
+		btaiomeDecorator.grassPerChunk = 25;
+		btaiomeDecorator.steppePerChunk = 20;
+		btaiomeDecorator.cactiPerChunk = 50;
 	}
 }

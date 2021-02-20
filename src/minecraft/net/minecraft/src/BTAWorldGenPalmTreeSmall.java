@@ -115,7 +115,7 @@ public class BTAWorldGenPalmTreeSmall extends WorldGenerator {
 			for (int j = 0; j < trunkShiftHeights[i]; j++) {
 				world.setBlockAndMetadata(x + leanX * i, height, z + leanZ * i, Block.wood.blockID, metaWood);
 				
-				if (rand.nextInt(5) == 0) {
+				if (rand.nextInt(5) == 0 && this.spawnCocoa) {
 					int facing = rand.nextInt(4) + 2;
 					
 					FCUtilsBlockPos pos = new FCUtilsBlockPos(x + leanX * i, height, z + leanZ * i);

@@ -10,14 +10,14 @@ public class BTABiomeGenLushDesert extends BTABiomeGenBase
         this.spawnableCreatureList.clear();
         this.topBlockExt = (byte)Block.sand.blockID;
         this.fillerBlockExt = (byte)Block.sand.blockID;
-        this.btwgBiomeDecorator.treesPerChunk = -999;
-        this.btwgBiomeDecorator.deadBushPerChunk = 2;
-        this.btwgBiomeDecorator.reedsPerChunk = 50;
-        this.btwgBiomeDecorator.cactiPerChunk = 10;
-        this.btwgBiomeDecorator.oasesPerChunk = 100;
-        this.btwgBiomeDecorator.waterLakesPerChunk = 100;
-		this.btwgBiomeDecorator.treesPerChunk = 20;
-		this.btwgBiomeDecorator.grassPerChunk = 2;
+        this.btaiomeDecorator.treesPerChunk = -999;
+        this.btaiomeDecorator.deadBushPerChunk = 2;
+        this.btaiomeDecorator.reedsPerChunk = 50;
+        this.btaiomeDecorator.cactiPerChunk = 10;
+        this.btaiomeDecorator.oasesPerChunk = 100;
+        this.btaiomeDecorator.waterLakesPerChunk = 100;
+		this.btaiomeDecorator.treesPerChunk = 20;
+		this.btaiomeDecorator.grassPerChunk = 2;
 	}
 
 	/**

@@ -130,7 +130,7 @@ public class BTABiomeDecorator
 	/** True if decorator should generate surface lava & water */
 	public boolean generateLakes;
 
-	//BTWG
+	//BTA
 	protected WorldGenerator oasisGen;
 	protected WorldGenerator pumpkinGen;
 	protected WorldGenerator steppeGen;
@@ -140,9 +140,16 @@ public class BTABiomeDecorator
 	protected WorldGenerator bigRedMushroomGen;
 	protected WorldGenerator outbackGen;
 	protected WorldGenerator decoFlowerGen;
+	protected WorldGenerator graniteGen;
 	protected WorldGenerator andesiteGen;
 	protected WorldGenerator dioriteGen;
-	protected WorldGenerator graniteGen;
+	
+	protected WorldGenerator ruinsWall;
+	protected WorldGenerator ruinsHouse;
+	protected WorldGenerator ruinsAltar;
+	protected WorldGenerator ruinsTower;
+	protected WorldGenerator ruinsAqueduct;
+	protected WorldGenerator ruinsArches;
 
 	public int oasesPerChunk;
 	public int waterLakesPerChunk;
@@ -153,6 +160,7 @@ public class BTABiomeDecorator
 	public boolean generateStoneInGrass;
 	public boolean generateStoneInGrass2;
 	public boolean generateOutback;
+	public boolean generateRuins;
 
 	public BTABiomeDecorator(BiomeGenBase par1BiomeGenBase)
 	{
@@ -189,7 +197,7 @@ public class BTABiomeDecorator
 		this.generateLakes = true;
 		this.biome = par1BiomeGenBase;
 
-		//BTWG
+		//BTA
 		pumpkinGen = new BTAWorldGenPumpkin();
 		oasisGen = new BTAWorldGenOasis(7, Block.grass.blockID);
 		steppeGen = new BTAWorldGenSteppe(Block.sand.blockID, 0);
@@ -201,9 +209,9 @@ public class BTABiomeDecorator
 		if (BTADecoIntegration.isDecoInstalled()) {
 			outbackGen = new BTAWorldGenMycelium(Block.grass.blockID, 48, BTADecoIntegration.redSand.blockID);
 
-			andesiteGen = new BTAWorldGenMinable(BTADecoIntegration.stoneTypes.blockID, 0, 32);
-			dioriteGen = new BTAWorldGenMinable(BTADecoIntegration.stoneTypes.blockID, 1, 32);
-			graniteGen = new BTAWorldGenMinable(BTADecoIntegration.stoneTypes.blockID, 2, 32);
+			graniteGen = new BTAWorldGenShield(BTADecoIntegration.stoneTypes.blockID, 0, 32, Block.stone.blockID);
+			andesiteGen = new BTAWorldGenShield(BTADecoIntegration.stoneTypes.blockID, 1, 32, Block.stone.blockID);
+			dioriteGen = new BTAWorldGenShield(BTADecoIntegration.stoneTypes.blockID, 2, 32, Block.stone.blockID);
 		}
 
 		oasesPerChunk = 0;
@@ -211,6 +219,7 @@ public class BTABiomeDecorator
 		waterLakesPerChunk = 50;
 		lavaLakesPerChunk = 20;
 		bigRedMushroomsPerChunk = 0;
+		generateRuins = true;
 	}
 
 	/**
@@ -268,6 +277,11 @@ public class BTABiomeDecorator
 			this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
 		}
 
+		if (generateOutback)
+		{
+			this.genStandardOre1(30, outbackGen, 64, 128);
+		}
+
 		var1 = this.treesPerChunk;
 
 		if (this.randomGenerator.nextInt(10) == 0)
@@ -294,11 +308,10 @@ public class BTABiomeDecorator
 		}
 
 		int var7;
-
-		//BTWG modified
+		
 		for (var2 = 0; var2 < this.flowersPerChunk; ++var2)
 		{
-			if (BTADecoIntegration.isDecoInstalled() && this.currentWorld.provider.terrainType == BTAMod.BTWGWorldTypeDeco) {
+			if (BTADecoIntegration.isDecoInstalled() && this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeDeco) {
 				if (this.randomGenerator.nextInt(24) > 1) {
 					var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 					var4 = this.randomGenerator.nextInt(128);
@@ -425,15 +438,7 @@ public class BTABiomeDecorator
 			this.pumpkinGen.generate(this.currentWorld, this.randomGenerator, var2, var3, var4);
 		}
 
-		for (var2 = 0; var2 < this.cactiPerChunk; ++var2)
-		{
-			var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
-			var4 = this.randomGenerator.nextInt(128);
-			var7 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-			this.cactusGen.generate(this.currentWorld, this.randomGenerator, var3, var4, var7);
-		}
-
-		//BTWG modified
+		//BTA modified
 		if (this.generateLakes)
 		{
 			for (var2 = 0; var2 < waterLakesPerChunk; ++var2)
@@ -453,7 +458,7 @@ public class BTABiomeDecorator
 			}
 		}
 
-		//BTWG
+		//BTA
 		for (var1 = 0; var1 < oasesPerChunk; ++var1)
 		{
 			try
@@ -499,10 +504,41 @@ public class BTABiomeDecorator
 		{
 			this.genStandardOre1(20, stoneInGrassGen2, 64, 128);
 		}
+		
+		if (generateRuins) {
+			if (this.randomGenerator.nextInt(500) == 0) {
+				int x = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
+				int z = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
+				int y = this.currentWorld.getHeightValue(x, z);
+				
+				WorldGenerator gen = null;
+				
+				switch (this.randomGenerator.nextInt(4)) {
+				case 0:
+					gen = this.ruinsWall;
+					break;
+				case 1:
+					gen = this.ruinsHouse;
+					break;
+				case 2:
+					gen = this.ruinsTower;
+					break;
+				case 3:
+					gen = this.ruinsAltar;
+					break;
+				}
+				
+				if (gen != null)
+					gen.generate(this.currentWorld, this.randomGenerator, x, y, z);
+			}
+		}
 
-		if (generateOutback)
+		for (var2 = 0; var2 < this.cactiPerChunk; ++var2)
 		{
-			this.genStandardOre1(30, outbackGen, 64, 128);
+			var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
+			var4 = this.randomGenerator.nextInt(128);
+			var7 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
+			this.cactusGen.generate(this.currentWorld, this.randomGenerator, var3, var4, var7);
 		}
 	}
 
@@ -548,10 +584,10 @@ public class BTABiomeDecorator
 		this.genStandardOre1(1, this.diamondGen, 0, 16);
 		this.genStandardOre2(1, this.lapisGen, 16, 16);
 
-		if (BTADecoIntegration.isDecoInstalled() && this.currentWorld.provider.terrainType == BTAMod.BTWGWorldTypeDeco) {
-			this.genStandardOre1(20, this.andesiteGen, 0, 128);
-			this.genStandardOre1(10, this.dioriteGen, 0, 128);
-			this.genStandardOre1(10, this.graniteGen, 0, 128);
+		if (BTADecoIntegration.isDecoInstalled() && this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeDeco) {
+			this.genStandardOre1(12, this.graniteGen, 0, 128);
+			this.genStandardOre1(12, this.andesiteGen, 0, 128);
+			this.genStandardOre1(12, this.dioriteGen, 0, 128);
 		}
 	}
 }

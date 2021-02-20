@@ -5,9 +5,9 @@ import java.util.Random;
 public class BTABiomeGenChaparral extends BTABiomeGenBase {
 	protected BTABiomeGenChaparral(int id) {
 		super(id);
-		btwgBiomeDecorator.treesPerChunk = 8;
-		btwgBiomeDecorator.grassPerChunk = 20;
-		btwgBiomeDecorator.generateStoneInGrass = true;
+		btaiomeDecorator.treesPerChunk = 8;
+		btaiomeDecorator.grassPerChunk = 20;
+		btaiomeDecorator.generateStoneInGrass = true;
 	}
 
     /**

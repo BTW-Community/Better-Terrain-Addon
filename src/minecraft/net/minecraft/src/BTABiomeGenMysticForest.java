@@ -6,9 +6,9 @@ public class BTABiomeGenMysticForest extends BTABiomeGenBase {
 	public BTABiomeGenMysticForest(int id) {
 		super(id);
 		waterColorMultiplier = 15349914;
-		this.btwgBiomeDecorator.treesPerChunk = 15;
-		this.btwgBiomeDecorator.grassPerChunk = 7;
-		this.btwgBiomeDecorator.flowersPerChunk = 8;
+		this.btaiomeDecorator.treesPerChunk = 15;
+		this.btaiomeDecorator.grassPerChunk = 7;
+		this.btaiomeDecorator.flowersPerChunk = 8;
         this.spawnableMonsterList.add(new SpawnListEntry(BTAEntitySlime.class, 1, 1, 1));
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntityWitch.class, 1, 1, 1));
         this.spawnableCreatureList.clear();
