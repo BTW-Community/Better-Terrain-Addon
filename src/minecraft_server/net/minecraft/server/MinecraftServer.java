@@ -11,6 +11,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import net.minecraft.src.AddonExtHandler;
 import net.minecraft.src.AnvilSaveConverter;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.CallableIsServerModded;
@@ -562,6 +564,11 @@ public abstract class MinecraftServer implements ICommandSender, Runnable, IPlay
             this.serverConfigManager.saveAllPlayerData();
             this.saveAllWorlds(true);
             this.theProfiler.endSection();
+        }
+        
+        if (AddonExtHandler.getAwaitingLoginAck()) {
+        	AddonExtHandler.incrementTicksSinceAckRequested();
+        	AddonExtHandler.handleAckCheck();
         }
 
         this.theProfiler.startSection("tallying");

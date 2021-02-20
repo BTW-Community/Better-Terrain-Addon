@@ -68,6 +68,7 @@ The player may not spawn in the following biomes. Note that this only applies to
 - Added cocoa beans to rainforests and tropics
 - Added the ability for villages to spawn within oases
 - Added orchard clearing as a variant biome which spawns within orchards, which spawns more flowers and small trees only
+- Changed clay in sand and red sand to have a reduced movement modifier just like their base blocks
 - Changed how biome edges are generated so that edge biomes do not form next to coniferous and snowy coniferous forests since they are also somewhat mountainous
 - Changed the name for deco world type to fit on the button
 - Changed cherry forests to also generate birch and oak trees, though the majority remain cherry
@@ -93,6 +94,3 @@ The player may not spawn in the following biomes. Note that this only applies to
 - Fixed an issue where cacti could generate on grass in lush desert, causing them to pop off when they updated
 - Fixed an issue where lush deserts could generate grass multiple blocks deep instead of spawning dirt under the grass
 - Fixed an issue where bushes, shrubs, and tall grass were not spawning at the intended frequency in outback
-
-1.0 beta 4
-- Reworked badlands biome. It now spawns mesas more frequently, mesas are larger, and their height is taller and more varied.

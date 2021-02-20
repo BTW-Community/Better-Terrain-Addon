@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-public class BTAMod extends DawnAddon {
+public class BTAMod extends AddonExt {
 	private static BTAMod instance;
 	
 	public static final WorldType BTWGWorldType = new BTAWorldType();
@@ -32,21 +32,13 @@ public class BTAMod extends DawnAddon {
 	}
 	
 	public void initOverrides() {
-		DawnUtilsReflection.replaceEntityMappingWithAllowanceForOldClass(FCEntitySlime.class, BTAEntitySlime.class, "Slime");
-		
-		DawnUtilsReflection.registerBlockObfuscationMappping("blockClay", "ba");
-		int id = Block.blockClay.blockID;
-		Block.blocksList[id] = null;
-		Block clay = new BTABlockClay(id).setHardness(0.6F).setUnlocalizedName("clay");;
-		Item.itemsList[id] = new ItemBlock(id - 256);
+		EntityList.replaceExistingMappingSafe(BTAEntitySlime.class, "Slime");
+		Block.blockClay = Block.replaceBlock(Block.blockClay.blockID, BTABlockClay.class);
+		Item.itemsList[Block.blockClay.blockID] = new ItemBlock(Block.blockClay.blockID - 256);
 	}
 	
 	public void initMisc() {
-		DawnServerCommandManager.registerAddonCommand(new BTACommandBiome());
-		
-		if (!DawnUtilsReflection.isObfuscated()) {
-			DawnServerCommandManager.registerAddonCommand(new BTACommandVillage());
-		}
+		ServerCommandManager.registerAddonCommand(new BTACommandBiome());
 	}
 	
 	public static BTAMod getInstance() {
