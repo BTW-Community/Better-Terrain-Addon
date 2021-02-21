@@ -126,6 +126,10 @@ public class BTAWorldGenAcacia extends WorldGenerator
 	{
 		int baseHeight = 4 + rand.nextInt(3);
 		
+		int var5 = world.getBlockId(x, y - 1, z);
+		if (var5 != Block.grass.blockID)
+			return false;
+		
 		//Base tree
 		for(int i = 0; i < baseHeight + 4; i++) {
 			int blockID = world.getBlockId(x, y + i, z);
