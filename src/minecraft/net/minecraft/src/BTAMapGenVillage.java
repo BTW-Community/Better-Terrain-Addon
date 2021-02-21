@@ -80,7 +80,7 @@ public class BTAMapGenVillage extends BTAMapGenStructure
     protected StructureStart getStructureStart(int par1, int par2)
     {
     	if (this.worldObj.provider.terrainType == BTAMod.BTAWorldTypeDeco)
-    		return new BTAStructureVillageStart(this.worldObj, this.rand, par1, par2, this.terrainType);
+    		return new StructureVillageStart(this.worldObj, this.rand, par1, par2, this.terrainType);
     	else
     		return new StructureVillageStart(this.worldObj, this.rand, par1, par2, this.terrainType);
     }
