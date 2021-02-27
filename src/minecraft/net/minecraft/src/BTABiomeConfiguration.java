@@ -102,7 +102,7 @@ public class BTABiomeConfiguration {
 		filterEdgeBiomes();
 		addBiomesToStructureGenerators();
 		addBiomesToList();
-		//addSingleBiome(badlandsPlateau);
+		//addSingleBiome(mysticForest);
 	}
 	
 	public static void addBiomesToList() {

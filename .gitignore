@@ -654,7 +654,6 @@ src/minecraft/net/minecraft/src/EntitySenses.java
 src/minecraft/net/minecraft/src/EntitySheep.java
 src/minecraft/net/minecraft/src/EntitySilverfish.java
 src/minecraft/net/minecraft/src/EntitySkeleton.java
-src/minecraft/net/minecraft/src/EntitySlime.java
 src/minecraft/net/minecraft/src/EntitySmallFireball.java
 src/minecraft/net/minecraft/src/EntitySmokeFX.java
 src/minecraft/net/minecraft/src/EntitySnowShovelFX.java
@@ -2783,7 +2782,6 @@ src/minecraft_server/net/minecraft/src/EntitySenses.java
 src/minecraft_server/net/minecraft/src/EntitySheep.java
 src/minecraft_server/net/minecraft/src/EntitySilverfish.java
 src/minecraft_server/net/minecraft/src/EntitySkeleton.java
-src/minecraft_server/net/minecraft/src/EntitySlime.java
 src/minecraft_server/net/minecraft/src/EntitySmallFireball.java
 src/minecraft_server/net/minecraft/src/EntitySnowball.java
 src/minecraft_server/net/minecraft/src/EntitySnowman.java
