@@ -32,7 +32,7 @@ public class BTAMod extends AddonExt {
 	}
 	
 	public void initOverrides() {
-		EntityList.replaceExistingMappingSafe(BTAEntitySlime.class, "Slime");
+		//EntityList.replaceExistingMappingSafe(BTAEntitySlime.class, "Slime");
 		Block.blockClay = Block.replaceBlock(Block.blockClay.blockID, BTABlockClay.class);
 	}
 	
