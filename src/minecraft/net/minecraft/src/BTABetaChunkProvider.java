@@ -620,10 +620,10 @@ public class BTABetaChunkProvider implements IChunkProvider
 	/**
 	 * Returns a list of creatures of the specified type that can spawn at the given location.
 	 */
-	public List getPossibleCreatures(EnumCreatureType var1, int var2, int var3, int var4)
+	public List getPossibleCreatures(EnumCreatureType par1EnumCreatureType, int par2, int par3, int par4)
 	{
-		BiomeGenBase var5 = this.worldObj.getBiomeGenForCoords(var2, var4);
-		return var5 == null ? null : var5.getSpawnableList(var1);
+		BiomeGenBase var5 = this.worldObj.getBiomeGenForCoords(par2, par4);
+		return var5 == null ? null : (var5 == BiomeGenBase.swampland && par1EnumCreatureType == EnumCreatureType.monster && this.scatteredFeatureGenerator.hasStructureAt(par2, par3, par4) ? this.scatteredFeatureGenerator.getScatteredFeatureSpawnList() : var5.getSpawnableList(par1EnumCreatureType));
 	}
 
 	/**
