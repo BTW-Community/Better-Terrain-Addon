@@ -22,6 +22,10 @@ public class BTABetaChunkProvider implements IChunkProvider
 	private double[] stoneNoise = new double[256];
 	private BTAMapGenBase mapGenCaves = new BTAMapGenCave();
 	private BTAMapGenStronghold strongholdGenerator = new BTAMapGenStronghold();
+	public BTAMapGenVillage villageGenerator = new BTAMapGenVillage();
+	private BTAMapGenMineshaft mineshaftGenerator = new BTAMapGenMineshaft();
+	private BTAMapGenScatteredFeature scatteredFeatureGenerator = new BTAMapGenScatteredFeature();
+	private BTAMapGenBase ravineGenerator = new BTAMapGenRavine();
 	private BiomeGenBase[] biomesForGeneration;
 	private int worldtype;
 	double[] field_4185_d;
@@ -161,7 +165,7 @@ public class BTABetaChunkProvider implements IChunkProvider
 
 				for (int var17 = 127; var17 >= 0; --var17)
 				{
-					int var18 = (var9 * 16 + var8) * 128 + var17;
+					int var18 = (var8 * 16 + var9) * 128 + var17;
 
 					if (var17 <= 0 + this.rand.nextInt(5))
 					{
@@ -271,10 +275,14 @@ public class BTABetaChunkProvider implements IChunkProvider
 		this.generateTerrain(var1, var2, var3, this.biomesForGeneration);
 		this.replaceBlocksForBiome(var1, var2, var3, this.biomesForGeneration);
 		this.mapGenCaves.generate(this, this.worldObj, var1, var2, var3);
+		this.ravineGenerator.generate(this, this.worldObj, var1, var2, var3);
 
 		if (this.mapFeaturesEnabled)
 		{
+			this.mineshaftGenerator.generate(this, this.worldObj, var1, var2, var3);
+			this.villageGenerator.generate(this, this.worldObj, var1, var2, var3);
 			this.strongholdGenerator.generate(this, this.worldObj, var1, var2, var3);
+			this.scatteredFeatureGenerator.generate(this, this.worldObj, var1, var2, var3);
 		}
 
 		Chunk var5 = new BTAChunk(this.worldObj, var3, var1, var2);
@@ -418,85 +426,6 @@ public class BTABetaChunkProvider implements IChunkProvider
 	/**
 	 * Populates chunk with ores etc etc
 	 */
-	/*
-	public void populate(IChunkProvider var1, int var2, int var3)
-	{
-		int var4;
-		int var5;
-		BiomeGenBase var6;
-		long var7;
-		long var9;
-		double var11;
-		int var13;
-		int var14;
-		int var15;
-		int var16;
-		int var17;
-
-		BlockSand.fallInstantly = true;
-		var4 = var2 * 16;
-		var5 = var3 * 16;
-		var6 = this.worldObj.getWorldChunkManager().getBiomeGenAt(var4 + 16, var5 + 16);
-		this.rand.setSeed(this.worldObj.getSeed());
-		var7 = this.rand.nextLong() / 2L * 2L + 1L;
-		var9 = this.rand.nextLong() / 2L * 2L + 1L;
-		this.rand.setSeed((long)var2 * var7 + (long)var3 * var9 ^ this.worldObj.getSeed());
-		var11 = 0.25D;
-
-		if (this.mapFeaturesEnabled)
-		{
-			this.strongholdGenerator.generateStructuresInChunk(this.worldObj, this.rand, var2, var3);
-		}
-
-		if (this.rand.nextInt(4) == 0)
-		{
-			var13 = var4 + this.rand.nextInt(16) + 8;
-			var14 = this.rand.nextInt(128);
-			var15 = var5 + this.rand.nextInt(16) + 8;
-			(new WorldGenLakes(Block.waterStill.blockID)).generate(this.worldObj, this.rand, var13, var14, var15);
-		}
-
-		if (this.rand.nextInt(8) == 0)
-		{
-			var13 = var4 + this.rand.nextInt(16) + 8;
-			var14 = this.rand.nextInt(this.rand.nextInt(120) + 8);
-			var15 = var5 + this.rand.nextInt(16) + 8;
-
-			if (var14 < 64 || this.rand.nextInt(10) == 0)
-			{
-				(new WorldGenLakes(Block.lavaStill.blockID)).generate(this.worldObj, this.rand, var13, var14, var15);
-			}
-		}
-
-		for (int var20 = 0; var20 < 50; ++var20)
-		{
-			int var19 = var4 + this.rand.nextInt(16) + 8;
-			int var23 = this.rand.nextInt(this.rand.nextInt(120) + 8);
-			int var22 = var5 + this.rand.nextInt(16) + 8;
-			(new WorldGenLiquids(Block.waterMoving.blockID)).generate(this.worldObj, this.rand, var19, var23, var22);
-		}
-
-		for (int var20 = 0; var20 < 20; ++var20)
-		{
-			int var19 = var4 + this.rand.nextInt(16) + 8;
-			int var23 = this.rand.nextInt(this.rand.nextInt(this.rand.nextInt(112) + 8) + 8);
-			int var22 = var5 + this.rand.nextInt(16) + 8;
-			(new WorldGenLiquids(Block.lavaMoving.blockID)).generate(this.worldObj, this.rand, var19, var23, var22);
-		}
-
-		SpawnerAnimals.performWorldGenSpawning(this.worldObj, var6, var4 + 8, var5 + 8, 16, 16, this.rand);
-
-		BlockSand.fallInstantly = false;
-
-		this.BTWPostProcessChunk(this.worldObj, var4, var5);
-	}
-	*/
-	
-
-
-	/**
-	 * Populates chunk with ores etc etc
-	 */
 	public void populate(IChunkProvider par1IChunkProvider, int par2, int par3)
 	{
 		BlockSand.fallInstantly = true;
@@ -513,11 +442,11 @@ public class BTABetaChunkProvider implements IChunkProvider
 
 		if (this.mapFeaturesEnabled)
 		{
-			//this.mineshaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
-			//this.m_structureRand.setSeed((long)par2 * var11 + (long)par3 * var13 ^ this.worldObj.getSeed());
-			//var15 = this.villageGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
-			//this.strongholdGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
-			//this.scatteredFeatureGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
+			this.mineshaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
+			this.m_structureRand.setSeed((long)par2 * var11 + (long)par3 * var13 ^ this.worldObj.getSeed());
+			var15 = this.villageGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
+			this.strongholdGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
+			this.scatteredFeatureGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
 		}
 
 		int var16;
@@ -708,9 +637,5 @@ public class BTABetaChunkProvider implements IChunkProvider
 		}
 	}
 
-	@Override
-	public void func_104112_b() {
-		// TODO Auto-generated method stub
-
-	}
+	public void func_104112_b() {}
 }
