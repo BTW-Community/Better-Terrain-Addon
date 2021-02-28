@@ -68,8 +68,6 @@ public class BTABlockClay extends FCBlockClay {
 	
 	@Override
 	public Icon getIcon(int side, int meta) {
-		System.out.println(meta);
-		
 		if (meta == 1) {
 			return sandyClayIcon;
 		}
@@ -84,8 +82,6 @@ public class BTABlockClay extends FCBlockClay {
 	@Override
 	public boolean RenderBlock(RenderBlocks render, int x, int y, int z) {
 		int meta = render.blockAccess.getBlockMetadata(x, y, z);
-		
-		System.out.println(meta);
 		
 		if (meta == 0)
 			super.RenderBlock(render, x, y, z);

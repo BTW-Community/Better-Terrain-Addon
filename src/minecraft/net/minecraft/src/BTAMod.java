@@ -8,7 +8,7 @@ public class BTAMod extends AddonExt {
 	public static final WorldType BTAWorldTypeBeta = new BTAWorldTypeBeta();
 	public static final WorldType BTAWorldTypeBetaDeco = new BTAWorldTypeBetaDeco();
 	public static final WorldType BTAWorldTypeSky = new BTAWorldTypeSky();
-	public static final WorldType BTAWorldTypeSkyDeco = new BTAWorldTypeSky();
+	public static final WorldType BTAWorldTypeSkyDeco = new BTAWorldTypeSkyDeco();
 	
 	private BTAMod() {
 		super("Better Terrain", "1.1.0", "BTA");

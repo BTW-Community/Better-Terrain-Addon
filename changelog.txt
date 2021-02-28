@@ -6,6 +6,7 @@ Version 1.1.0
 [*]Changed tall grass and flowers to spawn already covered in snow in snow biomes if they are able to see the sky.
 [*]Changed how fallen logs generate to have variance in their direction and to generate with a stump at one end.
 [*]Changed red flowers to spawn with the same frequency as other flowers in deco world types.
+[*]Fixed an issue where emerald ore always spawned as first strata ore.
 [/list]
 
 Version 1.0

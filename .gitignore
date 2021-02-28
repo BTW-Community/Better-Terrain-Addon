@@ -2112,7 +2112,6 @@ src/minecraft/net/minecraft/src/StitcherException.java
 src/minecraft/net/minecraft/src/StringTranslate.java
 src/minecraft/net/minecraft/src/StringUtils.java
 src/minecraft/net/minecraft/src/StructureBoundingBox.java
-src/minecraft/net/minecraft/src/StructureComponent.java
 src/minecraft/net/minecraft/src/StructureMineshaftPieces.java
 src/minecraft/net/minecraft/src/StructureMineshaftStart.java
 src/minecraft/net/minecraft/src/StructureNetherBridgePieceWeight.java

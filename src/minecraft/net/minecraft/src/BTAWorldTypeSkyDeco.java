@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 public class BTAWorldTypeSkyDeco extends WorldType {
 	public BTAWorldTypeSkyDeco() {
-		super(9, "BTASkyDeco");
+		super(10, "BTASkyDeco");
 	}
 
     /**

@@ -228,7 +228,7 @@ public class BTASkyChunkProvider implements IChunkProvider
 
 		if (this.mapFeaturesEnabled)
 		{
-			//this.mineshaftGenerator.generate(this, this.worldObj, var1, var2, var3);
+			this.mineshaftGenerator.generate(this, this.worldObj, var1, var2, var3);
 			//this.villageGenerator.generate(this, this.worldObj, var1, var2, var3);
 			//this.strongholdGenerator.generate(this, this.worldObj, var1, var2, var3);
 			//this.scatteredFeatureGenerator.generate(this, this.worldObj, var1, var2, var3);
