@@ -1,6 +1,5 @@
 ## TODO ##
 Make fallen logs vary in size and direction
-Add capability for grass and flowers to spawn with snow in snow biomes
 Make all tiers of spruce trees have snow in snowy biomes
 Make tall narrow trees less uniform
 Move badlands banding from biome.decorate() to chunk provider

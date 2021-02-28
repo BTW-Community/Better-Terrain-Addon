@@ -101,8 +101,8 @@ public class BTABiomeConfiguration {
 		addBiomesWithEdge();
 		filterEdgeBiomes();
 		addBiomesToStructureGenerators();
-		addBiomesToList();
-		//addSingleBiome(coniferousForestSnow);
+		//addBiomesToList();
+		addSingleBiome(woods);
 	}
 	
 	public static void addBiomesToList() {
