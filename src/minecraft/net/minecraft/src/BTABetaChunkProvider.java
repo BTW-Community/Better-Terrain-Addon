@@ -20,8 +20,8 @@ public class BTABetaChunkProvider implements IChunkProvider
 	private double[] sandNoise = new double[256];
 	private double[] gravelNoise = new double[256];
 	private double[] stoneNoise = new double[256];
-	private MapGenBase field_902_u = new BTAMapGenCave();
-	private MapGenStronghold strongholdGenerator = new MapGenStronghold();
+	private BTAMapGenBase mapGenCaves = new BTAMapGenCave();
+	private BTAMapGenStronghold strongholdGenerator = new BTAMapGenStronghold();
 	private BiomeGenBase[] biomesForGeneration;
 	private int worldtype;
 	double[] field_4185_d;
@@ -30,12 +30,13 @@ public class BTABetaChunkProvider implements IChunkProvider
 	double[] field_4182_g;
 	double[] field_4181_h;
 	int[][] field_914_i = new int[32][32];
-	private double[] generatedTemperatures;
+	private Random m_structureRand;
 
 	public BTABetaChunkProvider(World var1, long var2, boolean var4)
 	{
 		this.worldObj = var1;
 		this.rand = new Random(var2);
+		this.m_structureRand = new Random(var2);
 		this.mapFeaturesEnabled = var4;
 		this.field_912_k = new BTABetaNoiseOctaves(this.rand, 16);
 		this.field_911_l = new BTABetaNoiseOctaves(this.rand, 16);
@@ -47,7 +48,7 @@ public class BTABetaChunkProvider implements IChunkProvider
 		this.mobSpawnerNoise = new BTABetaNoiseOctaves(this.rand, 8);
 	}
 
-	public void generateTerrain(int var1, int var2, byte[] var3, BiomeGenBase[] var4)
+	public void generateTerrain(int var1, int var2, int[] var3, BiomeGenBase[] var4)
 	{
 		byte var6 = 4;
 		byte var7 = 64;
@@ -97,7 +98,7 @@ public class BTABetaChunkProvider implements IChunkProvider
 								{
 									//if (var53 < 0.5D && var13 * 8 + var32 >= var7 - 1)
 										//{
-										var55 = Block.ice.blockID;
+										//var55 = Block.ice.blockID;
 										//}
 									//else
 										//{
@@ -129,7 +130,7 @@ public class BTABetaChunkProvider implements IChunkProvider
 		}
 	}
 
-	public void replaceBlocksForBiome(int var1, int var2, byte[] var3, BiomeGenBase[] var4)
+	public void replaceBlocksForBiome(int var1, int var2, int[] var3, BiomeGenBase[] var4)
 	{
 		byte var5 = 64;
 		double var6 = 0.03125D;
@@ -146,8 +147,17 @@ public class BTABetaChunkProvider implements IChunkProvider
 				boolean var12 = this.gravelNoise[var8 + var9 * 16] + this.rand.nextDouble() * 0.2D > 3.0D;
 				int var13 = (int)(this.stoneNoise[var8 + var9 * 16] / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
 				int var14 = -1;
-				byte var15 = var10.topBlock;
-				byte var16 = var10.fillerBlock;
+				int var15;
+				int var16;
+
+				if (var10 instanceof BTABiomeGenBase) {
+					var15 = ((BTABiomeGenBase) var10).topBlockExt;
+					var16 = ((BTABiomeGenBase) var10).fillerBlockExt;
+				}
+				else {
+					var15 = var10.topBlock;
+					var16 = var10.fillerBlock;
+				}
 
 				for (int var17 = 127; var17 >= 0; --var17)
 				{
@@ -155,11 +165,11 @@ public class BTABetaChunkProvider implements IChunkProvider
 
 					if (var17 <= 0 + this.rand.nextInt(5))
 					{
-						var3[var18] = (byte)Block.bedrock.blockID;
+						var3[var18] = Block.bedrock.blockID;
 					}
 					else
 					{
-						byte var19 = var3[var18];
+						int var19 = var3[var18];
 
 						if (var19 == 0)
 						{
@@ -172,12 +182,18 @@ public class BTABetaChunkProvider implements IChunkProvider
 								if (var13 <= 0)
 								{
 									var15 = 0;
-									var16 = (byte)Block.stone.blockID;
+									var16 = Block.stone.blockID;
 								}
 								else if (var17 >= var5 - 4 && var17 <= var5 + 1)
 								{
-									var15 = var10.topBlock;
-									var16 = var10.fillerBlock;
+									if (var10 instanceof BTABiomeGenBase) {
+										var15 = ((BTABiomeGenBase) var10).topBlockExt;
+										var16 = ((BTABiomeGenBase) var10).fillerBlockExt;
+									}
+									else {
+										var15 = var10.topBlock;
+										var16 = var10.fillerBlock;
+									}
 
 									if (var12)
 									{
@@ -249,19 +265,19 @@ public class BTABetaChunkProvider implements IChunkProvider
 	public Chunk provideChunk(int var1, int var2)
 	{
 		this.rand.setSeed((long)var1 * 341873128712L + (long)var2 * 132897987541L);
-		byte[] var3 = new byte[32768];
+		int[] var3 = new int[32768];
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, var1 * 16, var2 * 16, 16, 16);
 
 		this.generateTerrain(var1, var2, var3, this.biomesForGeneration);
 		this.replaceBlocksForBiome(var1, var2, var3, this.biomesForGeneration);
-		this.field_902_u.generate(this, this.worldObj, var1, var2, var3);
+		this.mapGenCaves.generate(this, this.worldObj, var1, var2, var3);
 
 		if (this.mapFeaturesEnabled)
 		{
 			this.strongholdGenerator.generate(this, this.worldObj, var1, var2, var3);
 		}
 
-		Chunk var5 = new Chunk(this.worldObj, var3, var1, var2);
+		Chunk var5 = new BTAChunk(this.worldObj, var3, var1, var2);
 		byte[] var6 = var5.getBiomeArray();
 
 		for (int var7 = 0; var7 < var6.length; ++var7)

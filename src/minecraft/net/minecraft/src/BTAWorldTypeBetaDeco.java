@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-public class BTAWorldTypeBeta extends WorldType {
-	public BTAWorldTypeBeta() {
-		super(8, "BTABeta");
+public class BTAWorldTypeBetaDeco extends WorldType {
+	public BTAWorldTypeBetaDeco() {
+		super(7, "BTABetaDeco");
 	}
 
     /**
@@ -10,6 +10,6 @@ public class BTAWorldTypeBeta extends WorldType {
      */
     public String getTranslateName()
     {
-        return "Beta";
+        return "Beta Deco";
     }
 }
