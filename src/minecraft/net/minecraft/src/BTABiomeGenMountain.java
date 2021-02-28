@@ -36,7 +36,7 @@ public class BTABiomeGenMountain extends BTABiomeGenBase {
 
             if (var10 == Block.stone.blockID)
             {
-                par1World.setBlock(var7, var8, var9, Block.oreEmerald.blockID, 0, 2);
+                par1World.setBlock(var7, var8, var9, Block.oreEmerald.blockID, 2, 2);
             }
         }
 

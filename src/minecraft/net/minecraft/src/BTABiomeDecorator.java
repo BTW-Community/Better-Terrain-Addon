@@ -254,6 +254,20 @@ public class BTABiomeDecorator
 		int var1;
 		int var2;
 		int var3;
+		
+		for (var1 = 0; var1 < oasesPerChunk; ++var1)
+		{
+			try
+			{
+				var2 = chunk_X + randomGenerator.nextInt(16) + 8;
+				var3 = chunk_Z + randomGenerator.nextInt(16) + 8;
+				oasisGen.generate(currentWorld, randomGenerator, var2, currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
+			}
+			catch (Exception e)
+			{
+
+			}
+		}
 
 		for (var1 = 0; var1 < this.sandPerChunk2; ++var1)
 		{
@@ -461,21 +475,6 @@ public class BTABiomeDecorator
 				var4 = this.randomGenerator.nextInt(this.randomGenerator.nextInt(this.randomGenerator.nextInt(112) + 8) + 8);
 				var7 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 				(new WorldGenLiquids(Block.lavaMoving.blockID)).generate(this.currentWorld, this.randomGenerator, var3, var4, var7);
-			}
-		}
-
-		//BTA
-		for (var1 = 0; var1 < oasesPerChunk; ++var1)
-		{
-			try
-			{
-				var2 = chunk_X + randomGenerator.nextInt(16) + 8;
-				var3 = chunk_Z + randomGenerator.nextInt(16) + 8;
-				oasisGen.generate(currentWorld, randomGenerator, var2, currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
-			}
-			catch (Exception e)
-			{
-
 			}
 		}
 

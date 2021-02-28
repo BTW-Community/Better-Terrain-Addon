@@ -1,10 +1,11 @@
 Version 1.1.0
 [list]
-[*]Added beta terrain gen world type. This world type uses BTA biomes but generates terrain based on old beta 1.7.3 terrain. Any seeds that worked in beta will work with this world type, although caves, ores, etc. will be different. The world type also generates with all vanilla features such as strongholds, villages, mineshafts, ravines, etc.
-[*]Added skylands world type (based on the old sky dimension generator from beta). I make no claims that this is in any way balanced, I simply added it as something fun and unique. It is currently incomplete as it does not generate villages, temples, or any other structures.
+[*]Added beta terrain gen world type. This world type uses BTA biomes but generates terrain based on old beta 1.7.3 terrain. Any seeds that worked in beta will work with this world type, although caves, ores, etc. will be different. This world type is also fully functional with with all vanilla features such as strongholds, villages, mineshafts, ravines, etc.
+[*]Added skylands world type (modified from the old sky dimension generator from beta). I make no claims that this is in any way balanced, I simply added it as something fun and unique. It is currently incomplete as it does not generate villages, temples, or any other structures. They interacted very poorly with the skyland terrain so I will have to create something custom.
 [*]Changed (increased) the depth of terracotta in badlands.
 [*]Changed tall grass and flowers to spawn already covered in snow in snow biomes if they are able to see the sky.
 [*]Changed how fallen logs generate to have variance in their direction and to generate with a stump at one end.
+[*]Changed red flowers to spawn with the same frequency as other flowers in deco world types.
 [/list]
 
 Version 1.0

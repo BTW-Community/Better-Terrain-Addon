@@ -68,6 +68,8 @@ public class BTABlockClay extends FCBlockClay {
 	
 	@Override
 	public Icon getIcon(int side, int meta) {
+		System.out.println(meta);
+		
 		if (meta == 1) {
 			return sandyClayIcon;
 		}
@@ -83,8 +85,14 @@ public class BTABlockClay extends FCBlockClay {
 	public boolean RenderBlock(RenderBlocks render, int x, int y, int z) {
 		int meta = render.blockAccess.getBlockMetadata(x, y, z);
 		
-		if (meta != 3)
+		System.out.println(meta);
+		
+		if (meta == 0)
 			super.RenderBlock(render, x, y, z);
+		else if (meta == 1)
+			this.RenderBlockWithTexture(render, x, y, z, sandyClayIcon);
+		else if (meta == 2)
+			this.RenderBlockWithTexture(render, x, y, z, redSandyClayIcon);
 		else
 			Block.grass.RenderBlock(render, x, y, z);
 		
@@ -94,6 +102,7 @@ public class BTABlockClay extends FCBlockClay {
 	@Override
 	public void RenderBlockSecondPass(RenderBlocks var1, int var2, int var3, int var4, boolean var5)
     {
-		this.RenderBlockWithTexture(var1, var2, var3, var4, grassyClayOverlay);
+		if (var1.blockAccess.getBlockMetadata(var2, var3, var4) == 3)
+			this.RenderBlockWithTexture(var1, var2, var3, var4, grassyClayOverlay);
     }
 }
