@@ -96,7 +96,7 @@ public class BTASkyChunkProvider implements IChunkProvider
                             {
                                 int var52 = 0;
 
-                                if (var47 > 0.0D)
+                                if (var47 > -20D)
                                 {
                                     var52 = Block.stone.blockID;
                                 }
@@ -151,7 +151,7 @@ public class BTASkyChunkProvider implements IChunkProvider
 
                 for (int var17 = 127; var17 >= 0; --var17)
                 {
-                    int var18 = (var9 * 16 + var8) * 128 + var17;
+                    int var18 = (var8 * 16 + var9) * 128 + var17;
                     int var19 = var3[var18];
 
                     if (var19 == 0)
@@ -228,10 +228,10 @@ public class BTASkyChunkProvider implements IChunkProvider
 
 		if (this.mapFeaturesEnabled)
 		{
-			this.mineshaftGenerator.generate(this, this.worldObj, var1, var2, var3);
-			this.villageGenerator.generate(this, this.worldObj, var1, var2, var3);
-			this.strongholdGenerator.generate(this, this.worldObj, var1, var2, var3);
-			this.scatteredFeatureGenerator.generate(this, this.worldObj, var1, var2, var3);
+			//this.mineshaftGenerator.generate(this, this.worldObj, var1, var2, var3);
+			//this.villageGenerator.generate(this, this.worldObj, var1, var2, var3);
+			//this.strongholdGenerator.generate(this, this.worldObj, var1, var2, var3);
+			//this.scatteredFeatureGenerator.generate(this, this.worldObj, var1, var2, var3);
 		}
 
 		Chunk var5 = new BTAChunk(this.worldObj, var3, var1, var2);

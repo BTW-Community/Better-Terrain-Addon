@@ -77,7 +77,7 @@ public class BTAWorldGenMinable extends WorldGenerator
 
                                         int strata2Height = par1World.provider.terrainType == BTAMod.BTAWorldTypeSky ? 32 : 24;
                                         
-                                        if (var41 <= 24 + par1World.rand.nextInt(2))
+                                        if (var41 <= strata2Height + par1World.rand.nextInt(2))
                                         {
                                             var49 = 2;
                                         }

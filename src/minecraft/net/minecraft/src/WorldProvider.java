@@ -215,6 +215,8 @@ public abstract class WorldProvider
      */
     public float getCloudHeight()
     {
+    	if (this.terrainType == BTAMod.BTAWorldTypeSky)
+    		return 8.0F;
         return 128.0F;
     }
 

@@ -52,6 +52,7 @@ public class BTABlockClay extends FCBlockClay {
 	//CLIENT ONLY
 	Icon sandyClayIcon;
 	Icon redSandyClayIcon;
+	Icon grassyClayOverlay;
 
 	/**
 	 * When this method is called, your block should register all the icons it needs with the given IconRegister. This
@@ -62,15 +63,11 @@ public class BTABlockClay extends FCBlockClay {
 		super.registerIcons(var1);
 		sandyClayIcon = var1.registerIcon("btaBlockSandyClay");
 		redSandyClayIcon = var1.registerIcon("btaBlockRedSandyClay");
+		grassyClayOverlay = var1.registerIcon("btaOverlayGrassyClay");
 	}
-
-	/**
-	 * Retrieves the block texture to use based on the display side. Args: iBlockAccess, x, y, z, side
-	 */
-	public Icon getBlockTexture(IBlockAccess var1, int var2, int var3, int var4, int var5)
-	{
-		int meta = var1.getBlockMetadata(var2, var3, var4);
-
+	
+	@Override
+	public Icon getIcon(int side, int meta) {
 		if (meta == 1) {
 			return sandyClayIcon;
 		}
@@ -78,7 +75,25 @@ public class BTABlockClay extends FCBlockClay {
 			return redSandyClayIcon;
 		}
 		else {
-			return super.getBlockTexture(var1, var2, var3, var4, var5);
+			return super.getIcon(side, meta);
 		}
 	}
+	
+	@Override
+	public boolean RenderBlock(RenderBlocks render, int x, int y, int z) {
+		int meta = render.blockAccess.getBlockMetadata(x, y, z);
+		
+		if (meta != 3)
+			super.RenderBlock(render, x, y, z);
+		else
+			Block.grass.RenderBlock(render, x, y, z);
+		
+		return true;
+	}
+	
+	@Override
+	public void RenderBlockSecondPass(RenderBlocks var1, int var2, int var3, int var4, boolean var5)
+    {
+		this.RenderBlockWithTexture(var1, var2, var3, var4, grassyClayOverlay);
+    }
 }

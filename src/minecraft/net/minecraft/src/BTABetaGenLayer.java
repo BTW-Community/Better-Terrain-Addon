@@ -23,7 +23,10 @@ public abstract class BTABetaGenLayer extends GenLayer {
         var11 = new GenLayerZoom(2003L, var10);
         //var10 = new GenLayerAddIsland(4L, var11);
         //GenLayerAddMushroomIsland var15 = new GenLayerAddMushroomIsland(5L, var10);
+        
         byte var4 = 5;
+        if (par2WorldType == BTAMod.BTAWorldTypeSky)
+        	var4 = 4;
 
         GenLayer var5 = GenLayerZoom.magnify(1000L, var11, 0);
         //GenLayerRiverInit var13 = new GenLayerRiverInit(100L, var5);
