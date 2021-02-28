@@ -48,7 +48,7 @@ public class BTABiomeGenOutback extends BTABiomeGenBase {
 	@Override
 	public WorldGenerator getRandomWorldGenForGrass(Random par1Random)
 	{
-		return par1Random.nextInt(2) == 0 ? new WorldGenTallGrass(Block.tallGrass.blockID, 0) : new WorldGenTallGrass(Block.tallGrass.blockID, 1);
+		return par1Random.nextInt(2) == 0 ? new BTAWorldGenTallGrass(Block.tallGrass.blockID, 0) : new BTAWorldGenTallGrass(Block.tallGrass.blockID, 1);
 	}
 
 	public boolean CanLightningStrikeInBiome()

@@ -102,7 +102,7 @@ public class BTABiomeConfiguration {
 		filterEdgeBiomes();
 		addBiomesToStructureGenerators();
 		addBiomesToList();
-		//addSingleBiome(desert);
+		//addSingleBiome(coniferousForestSnow);
 	}
 	
 	public static void addBiomesToList() {

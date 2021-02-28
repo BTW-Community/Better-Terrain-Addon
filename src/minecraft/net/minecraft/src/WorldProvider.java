@@ -68,7 +68,7 @@ public abstract class WorldProvider
         else if (this.worldObj.getWorldInfo().getTerrainType() == BTAMod.BTAWorldType || this.worldObj.getWorldInfo().getTerrainType() == BTAMod.BTAWorldTypeDeco) {
             this.worldChunkMgr = new BTAWorldChunkManager(this.worldObj);
         }
-        else if (this.terrainType == BTAMod.BTAWorldTypeBeta) {
+        else if (this.terrainType == BTAMod.BTAWorldTypeBeta || this.terrainType == BTAMod.BTAWorldTypeBetaDeco) {
         	this.worldChunkMgr = new BTABetaChunkManager(this.worldObj);
         }
         else
@@ -88,7 +88,7 @@ public abstract class WorldProvider
     	else if (this.terrainType == BTAMod.BTAWorldType || this.terrainType == BTAMod.BTAWorldTypeDeco) {
     		return new BTAChunkProvider(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
     	}
-    	else if (this.terrainType == BTAMod.BTAWorldTypeBeta) {
+    	else if (this.terrainType == BTAMod.BTAWorldTypeBeta || this.terrainType == BTAMod.BTAWorldTypeBetaDeco) {
     		return new BTABetaChunkProvider(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
     	}
     	else {

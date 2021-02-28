@@ -304,7 +304,7 @@ public class BTAChunkProvider implements IChunkProvider
 								}
 								else if (BTADecoIntegration.isDecoInstalled() && var13 == 0 && var15 == BTADecoIntegration.terracotta.blockID)
 								{
-									var13 = this.rand.nextInt(6);
+									var13 = this.rand.nextInt(2) + 6;
 									var15 = BTADecoIntegration.terracotta.blockID;
 								}
 							}

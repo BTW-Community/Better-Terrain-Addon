@@ -240,11 +240,21 @@ public class BTABetaChunkProvider implements IChunkProvider
 							{
 								--var14;
 								var3[var18] = var16;
-
+								
 								if (var14 == 0 && var16 == Block.sand.blockID)
 								{
 									var14 = this.rand.nextInt(4);
 									var16 = (byte)Block.sandStone.blockID;
+								}
+								else if (BTADecoIntegration.isDecoInstalled() && var14 == 0 && var16 == BTADecoIntegration.redSand.blockID)
+								{
+									var14 = this.rand.nextInt(4);
+									var16 = BTADecoIntegration.redSandStone.blockID;
+								}
+								else if (BTADecoIntegration.isDecoInstalled() && var14 == 0 && var16 == BTADecoIntegration.terracotta.blockID)
+								{
+									var14 = this.rand.nextInt(2) + 6;
+									var16 = BTADecoIntegration.terracotta.blockID;
 								}
 							}
 						}

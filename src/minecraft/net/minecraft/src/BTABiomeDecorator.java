@@ -174,10 +174,10 @@ public class BTABiomeDecorator
 		this.redstoneGen = new WorldGenMinable(Block.oreRedstone.blockID, 7);
 		this.diamondGen = new WorldGenMinable(Block.oreDiamond.blockID, 7);
 		this.lapisGen = new WorldGenMinable(Block.oreLapis.blockID, 6);
-		this.plantYellowGen = new WorldGenFlowers(Block.plantYellow.blockID);
-		this.plantRedGen = new WorldGenFlowers(Block.plantRed.blockID);
-		this.mushroomBrownGen = new WorldGenFlowers(Block.mushroomBrown.blockID);
-		this.mushroomRedGen = new WorldGenFlowers(Block.mushroomRed.blockID);
+		this.plantYellowGen = new BTAWorldGenFlowers(Block.plantYellow.blockID);
+		this.plantRedGen = new BTAWorldGenFlowers(Block.plantRed.blockID);
+		this.mushroomBrownGen = new BTAWorldGenFlowers(Block.mushroomBrown.blockID);
+		this.mushroomRedGen = new BTAWorldGenFlowers(Block.mushroomRed.blockID);
 		this.bigMushroomGen = new WorldGenBigMushroom();
 		this.reedGen = new BTAWorldGenReed();
 		this.cactusGen = new WorldGenCactus();
