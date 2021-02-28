@@ -56,43 +56,10 @@ The player may not spawn in the following biomes. Note that this only applies to
 [*]Badlands
 [/list]
 
-1.0 Beta 2
-- Added edge variants to mountainous biomes. These will form when a mountainous and a non mountainous biome meet to smooth the transition
-- Changed (reduced) the number of birch trees which spawn in autumn forests
-- Removed the ability for the player to spawn in the steppe and oasis biomes
-- Removed an accidental modification of a BTW class
-- Fixed an issue (hopefully) where scattered features (e.g. temples) would not spawn
+Version 1.0b
+[*]Fixed an issue where acacia trees could generate stacked on top of each other like [url=https://i.imgur.com/gw9akGB.png]this[/url]
+[*]Fixed an issue where unfinished custom villages were generating in the deco terrain world type. These villages will be properly added in a later release.
 
-1.0 Beta 3
-- Added random vines to rainforests and wetlands
-- Added cocoa beans to rainforests and tropics
-- Added the ability for villages to spawn within oases
-- Added orchard clearing as a variant biome which spawns within orchards, which spawns more flowers and small trees only
-- Changed how biome edges are generated so that edge biomes do not form next to coniferous and snowy coniferous forests since they are also somewhat mountainous
-- Changed the name for deco world type to fit on the button
-- Changed cherry forests to also generate birch and oak trees, though the majority remain cherry
-- Changed the grass color slightly for cherry forests
-- Changed (increased) the amount of flowers and grass which spawn in cherry forests
-- Changed (increased) the spawn rate of cacti in steppes
-- Changed rainforests and tropics to not spawn beaches
-- Changed outback to not spawn flowers
-- Changed how stone variants spawn slightly
-- Changed tiny bushes to generate with their single log in the ground so they only stick 1 block above the ground, not 2
-- Changed (increased) the minimum terrain height for normal deserts to decrease the frequency of water
-- Changed (decreased) the elevation range for fungal forests to decrease the height of mountains and decrease the depth of water slightly
-- Changed (decreased) the minimum terrain height for lush deserts to increase the frequency of water
-- Changed (increased) the frequency of oases in lush deserts
-- Changed (decreased) the maximum terrain height of meadow and savanna
-- Removed the ability for villages to spawn in hill variant biomes as this could cause various issues with generation such as villages being cut off by cliffs, or buildings generating partially underground. This applies to savanna, chaparral, and normal desert
-- Fixed an issue where witch huts were not able to spawn in wetland hill variants
-- Fixed an issue where lilies of the valley would not generate as a part of world gen
-- Fixed an issue where badlands would sometimes spawn terracotta at the edges when merging into other biomes
-- Fixed an issue where mountain and aspen trees were missing their topmost log block
-- Fixed an issue where mining clay with a stone shovel gave clay piles
-- Fixed an issue where granite generated too frequently
-- Fixed an issue where cacti could generate on grass in lush desert, causing them to pop off when they updated
-- Fixed an issue where lush deserts could generate grass multiple blocks deep instead of spawning dirt under the grass
-- Fixed an issue where bushes, shrubs, and tall grass were not spawning at the intended frequency in outback
-
-1.0 beta 4
-- Reworked badlands biome. It now spawns mesas more frequently, mesas are larger, and their height is taller and more varied.
+Version 1.0.2
+[*]Changed versioning system.
+[*]Fixed an issue where slimes were not spawning in swamp variants.
