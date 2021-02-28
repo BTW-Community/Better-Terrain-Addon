@@ -5,3 +5,5 @@ StructureScatteredFeatureStart
 StructureVillageStart
 WorldProvider
 WorldType
+World
+EntitySlime

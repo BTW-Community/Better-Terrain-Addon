@@ -68,7 +68,7 @@ public abstract class WorldProvider
         else if (this.worldObj.getWorldInfo().getTerrainType() == BTAMod.BTAWorldType || this.worldObj.getWorldInfo().getTerrainType() == BTAMod.BTAWorldTypeDeco) {
             this.worldChunkMgr = new BTAWorldChunkManager(this.worldObj);
         }
-        else if (this.terrainType == BTAMod.BTAWorldTypeBeta || this.terrainType == BTAMod.BTAWorldTypeBetaDeco) {
+        else if (this.terrainType == BTAMod.BTAWorldTypeBeta || this.terrainType == BTAMod.BTAWorldTypeBetaDeco || this.terrainType == BTAMod.BTAWorldTypeSky) {
         	this.worldChunkMgr = new BTABetaChunkManager(this.worldObj);
         }
         else
@@ -90,6 +90,9 @@ public abstract class WorldProvider
     	}
     	else if (this.terrainType == BTAMod.BTAWorldTypeBeta || this.terrainType == BTAMod.BTAWorldTypeBetaDeco) {
     		return new BTABetaChunkProvider(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
+    	}
+    	else if (this.terrainType == BTAMod.BTAWorldTypeSky) {
+    		return new BTASkyChunkProvider(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
     	}
     	else {
     		return new ChunkProviderGenerate(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());

@@ -166,14 +166,14 @@ public class BTABiomeDecorator
 	{
 		this.sandGen = new WorldGenSand(7, Block.sand.blockID);
 		this.gravelAsSandGen = new WorldGenSand(6, Block.gravel.blockID);
-		this.dirtGen = new WorldGenMinable(Block.dirt.blockID, 32);
-		this.gravelGen = new WorldGenMinable(Block.gravel.blockID, 32);
-		this.coalGen = new WorldGenMinable(Block.oreCoal.blockID, 16);
-		this.ironGen = new WorldGenMinable(Block.oreIron.blockID, 8);
-		this.goldGen = new WorldGenMinable(Block.oreGold.blockID, 8);
-		this.redstoneGen = new WorldGenMinable(Block.oreRedstone.blockID, 7);
-		this.diamondGen = new WorldGenMinable(Block.oreDiamond.blockID, 7);
-		this.lapisGen = new WorldGenMinable(Block.oreLapis.blockID, 6);
+		this.dirtGen = new BTAWorldGenMinable(Block.dirt.blockID, 0, 32);
+		this.gravelGen = new BTAWorldGenMinable(Block.gravel.blockID, 0, 32);
+		this.coalGen = new BTAWorldGenMinable(Block.oreCoal.blockID, 0, 16);
+		this.ironGen = new BTAWorldGenMinable(Block.oreIron.blockID, 0, 8);
+		this.goldGen = new BTAWorldGenMinable(Block.oreGold.blockID, 0, 8);
+		this.redstoneGen = new BTAWorldGenMinable(Block.oreRedstone.blockID, 0, 7);
+		this.diamondGen = new BTAWorldGenMinable(Block.oreDiamond.blockID, 0, 7);
+		this.lapisGen = new BTAWorldGenMinable(Block.oreLapis.blockID, 0, 6);
 		this.plantYellowGen = new BTAWorldGenFlowers(Block.plantYellow.blockID);
 		this.plantRedGen = new BTAWorldGenFlowers(Block.plantRed.blockID);
 		this.mushroomBrownGen = new BTAWorldGenFlowers(Block.mushroomBrown.blockID);
