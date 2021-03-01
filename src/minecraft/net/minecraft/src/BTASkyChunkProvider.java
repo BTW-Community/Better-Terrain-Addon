@@ -173,17 +173,6 @@ public class BTASkyChunkProvider implements IChunkProvider
                     {
                         if (var14 == -1)
                         {
-                            if (var13 <= 0)
-                            {
-                                var15 = var10.topBlock;
-                                var16 = var10.fillerBlock;
-                            }
-                            else if (var17 >= var5 - 4 && var17 <= var5 + 1)
-                            {
-                                var15 = var10.topBlock;
-                                var16 = var10.fillerBlock;
-                            }
-
                             var3[var18] = var15;
                             var14 = var13;
                         }
@@ -427,12 +416,20 @@ public class BTASkyChunkProvider implements IChunkProvider
 		int var17;
 		int var18;
 
-		if (!var15 && this.rand.nextInt(2) == 0)
+		if (!var15 && this.rand.nextInt(1) == 0)
 		{
 			var16 = var4 + this.rand.nextInt(16) + 8;
 			var17 = this.rand.nextInt(128);
 			var18 = var5 + this.rand.nextInt(16) + 8;
 			(new WorldGenLakes(Block.waterStill.blockID)).generate(this.worldObj, this.rand, var16, var17, var18);
+		}
+		
+		for (int i = 0; i < 5; i++)
+		{
+			var16 = var4 + this.rand.nextInt(16) + 8;
+			var17 = var5 + this.rand.nextInt(16) + 8;
+			var18 = this.rand.nextInt(128);
+			new BTAWorldGenReed().generate(this.worldObj, this.rand, var16, var17, var18);
 		}
 
 		if (!var15 && this.rand.nextInt(4) == 0)
