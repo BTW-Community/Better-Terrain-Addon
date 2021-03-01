@@ -5,9 +5,13 @@ public class BTAMod extends AddonExt {
 	
 	public static final WorldType BTAWorldType = new BTAWorldType();
 	public static final WorldType BTAWorldTypeDeco = new BTAWorldTypeDeco();
+	public static final WorldType BTAWorldTypeBeta = new BTAWorldTypeBeta();
+	public static final WorldType BTAWorldTypeBetaDeco = new BTAWorldTypeBetaDeco();
+	public static final WorldType BTAWorldTypeSky = new BTAWorldTypeSky();
+	public static final WorldType BTAWorldTypeSkyDeco = new BTAWorldTypeSkyDeco();
 	
 	private BTAMod() {
-		super("Better Terrain", "1.0.2", "BTA");
+		super("Better Terrain", "1.1.0", "BTA");
 	}
 
 	@Override
@@ -26,9 +30,10 @@ public class BTAMod extends AddonExt {
 	
 	public void initWorldGen() {
 		BTABiomeConfiguration.init();
-		if (!BTADecoIntegration.isDecoInstalled()) {
-			BTAWorldTypeDeco.setCanBeCreated(false);
-		}
+		
+		BTAWorldTypeDeco.setCanBeCreated(false);
+		BTAWorldTypeBetaDeco.setCanBeCreated(false);
+		BTAWorldTypeSkyDeco.setCanBeCreated(false);
 	}
 	
 	public void initOverrides() {
@@ -46,5 +51,10 @@ public class BTAMod extends AddonExt {
 		}
 		
 		return instance;
+	}
+
+	public String GetLanguageFilePrefix()
+	{
+		return "BTA";
 	}
 }

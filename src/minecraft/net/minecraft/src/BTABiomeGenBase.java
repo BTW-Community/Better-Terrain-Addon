@@ -117,4 +117,12 @@ public class BTABiomeGenBase extends BiomeGenBase {
     {
         return this.CanRainInBiome();
     }
+
+    /**
+     * Gets a WorldGen appropriate for this biome.
+     */
+    public WorldGenerator getRandomWorldGenForGrass(Random par1Random)
+    {
+        return new BTAWorldGenTallGrass(Block.tallGrass.blockID, 1);
+    }
 }

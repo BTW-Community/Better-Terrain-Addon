@@ -50,6 +50,10 @@ public class BTAWorldGenDecoFlowers extends WorldGenerator
 			if (par1World.isAirBlock(var7, var8, var9) && (!par1World.provider.hasNoSky || var8 < 127) && Block.blocksList[plantID].CanBlockStayDuringGenerate(par1World, var7, var8, var9))
 			{
 				par1World.setBlock(var7, var8, var9, plantID, this.plantMetadata, 2);
+                
+                if (par1World.getBiomeGenForCoords(var7, var9).getEnableSnow() && par1World.isAirBlock(var7, var8 + 1, var9) && par1World.canBlockSeeTheSky(var7, var8, var9)) {
+                	par1World.setBlock(var7, var8 + 1, var9, Block.snow.blockID);
+                }
 			}
 		}
 

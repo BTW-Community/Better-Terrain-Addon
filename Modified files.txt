@@ -5,3 +5,8 @@ StructureScatteredFeatureStart
 StructureVillageStart
 WorldProvider
 WorldType
+EntitySlime
+StructureComponent*
+
+GuiCreateWorld
+World

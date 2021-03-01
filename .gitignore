@@ -1509,7 +1509,6 @@ src/minecraft/net/minecraft/src/GuiControls.java
 src/minecraft/net/minecraft/src/GuiCrafting.java
 src/minecraft/net/minecraft/src/GuiCreateFlatWorld.java
 src/minecraft/net/minecraft/src/GuiCreateFlatWorldListSlot.java
-src/minecraft/net/minecraft/src/GuiCreateWorld.java
 src/minecraft/net/minecraft/src/GuiDisconnected.java
 src/minecraft/net/minecraft/src/GuiDispenser.java
 src/minecraft/net/minecraft/src/GuiDownloadTerrain.java
@@ -2112,7 +2111,6 @@ src/minecraft/net/minecraft/src/StitcherException.java
 src/minecraft/net/minecraft/src/StringTranslate.java
 src/minecraft/net/minecraft/src/StringUtils.java
 src/minecraft/net/minecraft/src/StructureBoundingBox.java
-src/minecraft/net/minecraft/src/StructureComponent.java
 src/minecraft/net/minecraft/src/StructureMineshaftPieces.java
 src/minecraft/net/minecraft/src/StructureMineshaftStart.java
 src/minecraft/net/minecraft/src/StructureNetherBridgePieceWeight.java
@@ -2219,7 +2217,6 @@ src/minecraft/net/minecraft/src/WeightedRandom.java
 src/minecraft/net/minecraft/src/WeightedRandomChestContent.java
 src/minecraft/net/minecraft/src/WeightedRandomItem.java
 src/minecraft/net/minecraft/src/WeightedRandomMinecart.java
-src/minecraft/net/minecraft/src/World.java
 src/minecraft/net/minecraft/src/WorldChunkManager.java
 src/minecraft/net/minecraft/src/WorldChunkManagerHell.java
 src/minecraft/net/minecraft/src/WorldClient.java
@@ -3903,7 +3900,6 @@ src/minecraft_server/net/minecraft/src/StepSoundStone.java
 src/minecraft_server/net/minecraft/src/StringTranslate.java
 src/minecraft_server/net/minecraft/src/StringUtils.java
 src/minecraft_server/net/minecraft/src/StructureBoundingBox.java
-src/minecraft_server/net/minecraft/src/StructureComponent.java
 src/minecraft_server/net/minecraft/src/StructureMineshaftPieces.java
 src/minecraft_server/net/minecraft/src/StructureMineshaftStart.java
 src/minecraft_server/net/minecraft/src/StructureNetherBridgePieceWeight.java

@@ -10,7 +10,7 @@ public class BTAGenLayerBiome extends BTAGenLayer {
         super(par1);
 		parent = par3GenLayer;
 		
-		if (par4WorldType == BTAMod.BTAWorldType)
+		if (par4WorldType != BTAMod.BTAWorldTypeDeco && par4WorldType != BTAMod.BTAWorldTypeBetaDeco && par4WorldType != BTAMod.BTAWorldTypeSkyDeco)
 			biomelist = BTABiomeConfiguration.getBiomes();
 		else
 			biomelist = BTABiomeConfiguration.getBiomesDeco();
