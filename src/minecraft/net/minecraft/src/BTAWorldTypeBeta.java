@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 public class BTAWorldTypeBeta extends WorldType {
 	public BTAWorldTypeBeta() {
-		super(8, "BTABeta");
+		super(6, "BTABeta");
 	}
 
     /**

@@ -52,4 +52,9 @@ public class BTAMod extends AddonExt {
 		
 		return instance;
 	}
+
+	public String GetLanguageFilePrefix()
+	{
+		return "BTA";
+	}
 }

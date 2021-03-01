@@ -261,48 +261,7 @@ public class BTAComponentMineshaftCorridor extends StructureComponent
 	                }
             	}
             	else if (var5 % 2 == 0){
-            		int depth1 = 0;
-            		int depth2 = 0;
             		
-            		while (depth1 <= 24) {
-            			if (this.getBlockIdAtCurrentPosition(par1World, 0, -depth1 - 1, var6, par3StructureBoundingBox) != 0)
-            				break;
-            			
-            			depth1++;
-            		}
-            		
-            		while (depth2 <= 24) {
-            			if (this.getBlockIdAtCurrentPosition(par1World, 2, -depth2 - 1, var6, par3StructureBoundingBox) != 0)
-            				break;
-            			
-            			depth2++;
-            		}
-            		
-            		int height1 = 0;
-            		int height2 = 0;
-            		
-            		while (depth1 <= 24) {
-            			if (this.getBlockIdAtCurrentPosition(par1World, 0, height1, var6, par3StructureBoundingBox) != 0)
-            				break;
-            			
-            			height1++;
-            		}
-            		
-            		while (depth2 <= 24) {
-            			if (this.getBlockIdAtCurrentPosition(par1World, 2, height2, var6, par3StructureBoundingBox) != 0)
-            				break;
-            			
-            			height2++;
-            		}
-            		
-            		if ((height1 > depth1) || (height2 > depth2) && this.getYWithOffset(-depth1 - 1) > 0 && this.getYWithOffset(-depth2 - 1) > 0) {
-            			this.fillWithMetadataBlocks(par1World, par3StructureBoundingBox, 0, -depth1 - 1, var6, 0, -1, var6, Block.wood.blockID, 0, 0, 0, false);
-            			this.fillWithMetadataBlocks(par1World, par3StructureBoundingBox, 2, -depth2 - 1, var6, 0, -1, var6, Block.wood.blockID, 0, 0, 0, false);
-            		}
-            		else {
-            			this.fillWithMetadataBlocks(par1World, par3StructureBoundingBox, 0, 1, var6, 0, height1, var6, Block.fence.blockID, 0, 0, 0, false);
-            			this.fillWithMetadataBlocks(par1World, par3StructureBoundingBox, 2, 1, var6, 2, height2, var6, Block.fence.blockID, 0, 0, 0, false);
-            		}
             	}
 
                 this.randomlyPlaceBlockIfNeighbor(par1World, par3StructureBoundingBox, par2Random, 0.1F, 0, 2, var6 - 1, FCBetterThanWolves.fcBlockWeb.blockID, 0);

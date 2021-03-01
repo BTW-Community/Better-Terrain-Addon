@@ -1509,7 +1509,6 @@ src/minecraft/net/minecraft/src/GuiControls.java
 src/minecraft/net/minecraft/src/GuiCrafting.java
 src/minecraft/net/minecraft/src/GuiCreateFlatWorld.java
 src/minecraft/net/minecraft/src/GuiCreateFlatWorldListSlot.java
-src/minecraft/net/minecraft/src/GuiCreateWorld.java
 src/minecraft/net/minecraft/src/GuiDisconnected.java
 src/minecraft/net/minecraft/src/GuiDispenser.java
 src/minecraft/net/minecraft/src/GuiDownloadTerrain.java

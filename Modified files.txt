@@ -7,3 +7,5 @@ WorldProvider
 WorldType
 World
 EntitySlime
+StructureComponent*
+GuiCreateWorld*
