@@ -94,11 +94,27 @@ public class BTABlockClay extends FCBlockClay {
 		
 		return true;
 	}
+
+    /**
+     * Returns true if the given side of this block type should be rendered, if the adjacent block is at the given
+     * coordinates.  Args: blockAccess, x, y, z, side
+     */
+	@Override
+    public boolean shouldSideBeRendered(IBlockAccess blockAccess, int x, int y, int z, int side) {
+		if (blockAccess.getBlockMetadata(x, y, z) == 3 && side == 1) {
+			return false;
+		}
+		
+		return true;
+    }
 	
 	@Override
 	public void RenderBlockSecondPass(RenderBlocks var1, int var2, int var3, int var4, boolean var5)
     {
-		if (var1.blockAccess.getBlockMetadata(var2, var3, var4) == 3)
+		if (var1.blockAccess.getBlockMetadata(var2, var3, var4) == 3) {
+			var1.SetRenderAllFaces(false);
 			this.RenderBlockWithTexture(var1, var2, var3, var4, grassyClayOverlay);
+			var1.SetRenderAllFaces(true);
+		}
     }
 }
