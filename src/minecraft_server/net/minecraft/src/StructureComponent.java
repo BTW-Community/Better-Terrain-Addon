@@ -418,7 +418,7 @@ public abstract class StructureComponent
                 {
                     if (par2 == 0 || par2 == 2)
                     {
-                        return Direction.rotateOpposite[par2];
+                        return Direction.footInvisibleFaceRemap[par2];
                     }
                 }
                 else if (this.coordBaseMode == 1)
