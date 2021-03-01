@@ -3900,7 +3900,6 @@ src/minecraft_server/net/minecraft/src/StepSoundStone.java
 src/minecraft_server/net/minecraft/src/StringTranslate.java
 src/minecraft_server/net/minecraft/src/StringUtils.java
 src/minecraft_server/net/minecraft/src/StructureBoundingBox.java
-src/minecraft_server/net/minecraft/src/StructureComponent.java
 src/minecraft_server/net/minecraft/src/StructureMineshaftPieces.java
 src/minecraft_server/net/minecraft/src/StructureMineshaftStart.java
 src/minecraft_server/net/minecraft/src/StructureNetherBridgePieceWeight.java

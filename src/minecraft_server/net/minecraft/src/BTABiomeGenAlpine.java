@@ -35,7 +35,10 @@ public class BTABiomeGenAlpine extends BTABiomeGenBase {
 
             if (var10 == Block.stone.blockID)
             {
-                par1World.setBlock(var7, var8, var9, Block.oreEmerald.blockID, 0, 2);
+            	int strata2Height = (par1World.provider.terrainType == BTAMod.BTAWorldTypeSky || par1World.provider.terrainType == BTAMod.BTAWorldTypeSkyDeco) ? 32 : 24;
+            	int meta = var8 > strata2Height + par2Random.nextInt(1) ? 1 : 2;
+            	
+                par1World.setBlock(var7, var8, var9, Block.oreEmerald.blockID, meta, 2);
             }
         }
 

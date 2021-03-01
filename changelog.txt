@@ -1,13 +1,15 @@
 Version 1.1.0
 [list]
 [*]Added beta terrain gen world type. This world type uses BTA biomes but generates terrain based on old beta 1.7.3 terrain. Any seeds that worked in beta will work with this world type, although caves, ores, etc. will be different. This world type is also fully functional with with all vanilla features such as strongholds, villages, mineshafts, ravines, etc.
-[*]Added skylands world type (modified from the old sky dimension generator from beta). I make no claims that this is in any way balanced, I simply added it as something fun and unique. It is currently incomplete as it does not generate villages, temples, witch huts, or strongholds. They interacted very poorly with the skyland terrain so I will have to create something custom.
+[*]Added skylands world type (modified from the old sky dimension generator from beta). I make no claims that this is in any way balanced, I simply added it as something fun and unique. It is currently incomplete as it does not generate villages, temples, witch huts, or strongholds as they interacted very poorly with the skyland terrain. I will be making further adjustments to this world type to enable these structures.
+[*]Changed how deco worlds are created. Instead of selecting a separate world type at world creation, there is now a button to toggle whether deco is enabled. Internally these are still handled as separate world types (only server owners should need to care about that).
 [*]Changed mineshaft components to not generate if they would be entirely floating, and to only generate the shaft supports if they would actually be supporting blocks. This mostly affects skylands generation but may have small effects on other BTA world types. Vanilla world gen as always is unaffected.
 [*]Changed (increased) the depth of terracotta in badlands.
 [*]Changed tall grass and flowers to spawn already covered in snow in snow biomes if they are able to see the sky.
 [*]Changed how fallen logs generate to have variance in their direction and to generate with a stump at one end.
 [*]Changed red flowers to spawn with the same frequency as other flowers in deco world types.
 [*]Fixed an issue where emerald ore always spawned as first strata ore.
+[*]Fixed an issue where biome specific textures through MCPatcher did not work in BTA jungles or deserts.
 [/list]
 
 Version 1.0

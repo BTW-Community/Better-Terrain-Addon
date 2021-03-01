@@ -21,6 +21,7 @@ public class BTABiomeDecorator
 
 	/** The clay generator. */
 	protected WorldGenerator clayGen = new BTAWorldGenClay(4);
+	protected WorldGenerator clayGenSky = new BTASkyWorldGenClay(4);
 
 	/** The sand generator. */
 	protected WorldGenerator sandGen;
@@ -143,7 +144,7 @@ public class BTABiomeDecorator
 	protected WorldGenerator graniteGen;
 	protected WorldGenerator andesiteGen;
 	protected WorldGenerator dioriteGen;
-	
+
 	protected WorldGenerator ruinsWall;
 	protected WorldGenerator ruinsHouse;
 	protected WorldGenerator ruinsAltar;
@@ -166,18 +167,18 @@ public class BTABiomeDecorator
 	{
 		this.sandGen = new WorldGenSand(7, Block.sand.blockID);
 		this.gravelAsSandGen = new WorldGenSand(6, Block.gravel.blockID);
-		this.dirtGen = new WorldGenMinable(Block.dirt.blockID, 32);
-		this.gravelGen = new WorldGenMinable(Block.gravel.blockID, 32);
-		this.coalGen = new WorldGenMinable(Block.oreCoal.blockID, 16);
-		this.ironGen = new WorldGenMinable(Block.oreIron.blockID, 8);
-		this.goldGen = new WorldGenMinable(Block.oreGold.blockID, 8);
-		this.redstoneGen = new WorldGenMinable(Block.oreRedstone.blockID, 7);
-		this.diamondGen = new WorldGenMinable(Block.oreDiamond.blockID, 7);
-		this.lapisGen = new WorldGenMinable(Block.oreLapis.blockID, 6);
-		this.plantYellowGen = new WorldGenFlowers(Block.plantYellow.blockID);
-		this.plantRedGen = new WorldGenFlowers(Block.plantRed.blockID);
-		this.mushroomBrownGen = new WorldGenFlowers(Block.mushroomBrown.blockID);
-		this.mushroomRedGen = new WorldGenFlowers(Block.mushroomRed.blockID);
+		this.dirtGen = new BTAWorldGenMinable(Block.dirt.blockID, 0, 32);
+		this.gravelGen = new BTAWorldGenMinable(Block.gravel.blockID, 0, 32);
+		this.coalGen = new BTAWorldGenMinable(Block.oreCoal.blockID, 0, 16);
+		this.ironGen = new BTAWorldGenMinable(Block.oreIron.blockID, 0, 8);
+		this.goldGen = new BTAWorldGenMinable(Block.oreGold.blockID, 0, 8);
+		this.redstoneGen = new BTAWorldGenMinable(Block.oreRedstone.blockID, 0, 7);
+		this.diamondGen = new BTAWorldGenMinable(Block.oreDiamond.blockID, 0, 7);
+		this.lapisGen = new BTAWorldGenMinable(Block.oreLapis.blockID, 0, 6);
+		this.plantYellowGen = new BTAWorldGenFlowers(Block.plantYellow.blockID);
+		this.plantRedGen = new BTAWorldGenFlowers(Block.plantRed.blockID);
+		this.mushroomBrownGen = new BTAWorldGenFlowers(Block.mushroomBrown.blockID);
+		this.mushroomRedGen = new BTAWorldGenFlowers(Block.mushroomRed.blockID);
 		this.bigMushroomGen = new WorldGenBigMushroom();
 		this.reedGen = new BTAWorldGenReed();
 		this.cactusGen = new WorldGenCactus();
@@ -253,12 +254,27 @@ public class BTABiomeDecorator
 		int var1;
 		int var2;
 		int var3;
+		
+		for (var1 = 0; var1 < oasesPerChunk; ++var1)
+		{
+			try
+			{
+				var2 = chunk_X + randomGenerator.nextInt(16) + 8;
+				var3 = chunk_Z + randomGenerator.nextInt(16) + 8;
+				oasisGen.generate(currentWorld, randomGenerator, var2, currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
+			}
+			catch (Exception e)
+			{
+
+			}
+		}
 
 		for (var1 = 0; var1 < this.sandPerChunk2; ++var1)
 		{
 			var2 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 			var3 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-			this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
+			if (this.currentWorld.provider.terrainType != BTAMod.BTAWorldTypeBeta && this.currentWorld.provider.terrainType != BTAMod.BTAWorldTypeBetaDeco)
+				this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
 		}
 
 		for (var1 = 0; var1 < this.clayPerChunk; ++var1)
@@ -266,7 +282,13 @@ public class BTABiomeDecorator
 			if (this.currentWorld.rand.nextInt(3) != 0) {
 				var2 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 				var3 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-				this.clayGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
+				if (this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSky || this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSkyDeco) {
+					if (this.randomGenerator.nextInt(5) == 0)
+						this.clayGenSky.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
+				}
+				else {
+					this.clayGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
+				}
 			}
 		}
 
@@ -274,7 +296,8 @@ public class BTABiomeDecorator
 		{
 			var2 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 			var3 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-			this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
+			if (this.currentWorld.provider.terrainType != BTAMod.BTAWorldTypeBeta && this.currentWorld.provider.terrainType != BTAMod.BTAWorldTypeBetaDeco)
+				this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
 		}
 
 		if (generateOutback)
@@ -308,10 +331,10 @@ public class BTABiomeDecorator
 		}
 
 		int var7;
-		
+
 		for (var2 = 0; var2 < this.flowersPerChunk; ++var2)
 		{
-			if (BTADecoIntegration.isDecoInstalled() && this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeDeco) {
+			if (BTADecoIntegration.isDecoInstalled() && (this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeDeco || this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeBetaDeco || this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSkyDeco)) {
 				if (this.randomGenerator.nextInt(24) > 1) {
 					var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 					var4 = this.randomGenerator.nextInt(128);
@@ -324,13 +347,10 @@ public class BTABiomeDecorator
 					var7 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 					this.plantYellowGen.generate(this.currentWorld, this.randomGenerator, var3, var4, var7);
 
-					if (this.randomGenerator.nextInt(4) == 0)
-					{
-						var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
-						var4 = this.randomGenerator.nextInt(128);
-						var7 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-						this.plantRedGen.generate(this.currentWorld, this.randomGenerator, var3, var4, var7);
-					}
+					var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
+					var4 = this.randomGenerator.nextInt(128);
+					var7 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
+					this.plantRedGen.generate(this.currentWorld, this.randomGenerator, var3, var4, var7);
 				}
 			}
 			else {
@@ -458,21 +478,6 @@ public class BTABiomeDecorator
 			}
 		}
 
-		//BTA
-		for (var1 = 0; var1 < oasesPerChunk; ++var1)
-		{
-			try
-			{
-				var2 = chunk_X + randomGenerator.nextInt(16) + 8;
-				var3 = chunk_Z + randomGenerator.nextInt(16) + 8;
-				oasisGen.generate(currentWorld, randomGenerator, var2, currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
-			}
-			catch (Exception e)
-			{
-
-			}
-		}
-
 		for (var2 = 0; var2 < steppePerChunk; ++var2)
 		{
 			try
@@ -504,15 +509,15 @@ public class BTABiomeDecorator
 		{
 			this.genStandardOre1(20, stoneInGrassGen2, 64, 128);
 		}
-		
+
 		if (generateRuins) {
 			if (this.randomGenerator.nextInt(500) == 0) {
 				int x = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 				int z = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 				int y = this.currentWorld.getHeightValue(x, z);
-				
+
 				WorldGenerator gen = null;
-				
+
 				switch (this.randomGenerator.nextInt(4)) {
 				case 0:
 					gen = this.ruinsWall;
@@ -527,7 +532,7 @@ public class BTABiomeDecorator
 					gen = this.ruinsAltar;
 					break;
 				}
-				
+
 				if (gen != null)
 					gen.generate(this.currentWorld, this.randomGenerator, x, y, z);
 			}
@@ -577,14 +582,25 @@ public class BTABiomeDecorator
 	{
 		this.genStandardOre1(20, this.dirtGen, 0, 128);
 		this.genStandardOre1(10, this.gravelGen, 0, 128);
-		this.genStandardOre1(20, this.coalGen, 0, 128);
-		this.genStandardOre1(20, this.ironGen, 0, 64);
-		this.genStandardOre1(2, this.goldGen, 0, 32);
-		this.genStandardOre1(8, this.redstoneGen, 0, 16);
-		this.genStandardOre1(1, this.diamondGen, 0, 16);
-		this.genStandardOre2(1, this.lapisGen, 16, 16);
 
-		if (BTADecoIntegration.isDecoInstalled() && this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeDeco) {
+		if (this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSky || this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSkyDeco) {
+			this.genStandardOre1(20, this.coalGen, 0, 128);
+			this.genStandardOre1(20, this.ironGen, 0, 64);
+			this.genStandardOre1(3, this.goldGen, 0, 48);
+			this.genStandardOre1(12, this.redstoneGen, 0, 32);
+			this.genStandardOre1(2, this.diamondGen, 16, 32);
+			this.genStandardOre2(1, this.lapisGen, 32, 16);
+		}
+		else {
+			this.genStandardOre1(20, this.coalGen, 0, 128);
+			this.genStandardOre1(20, this.ironGen, 0, 64);
+			this.genStandardOre1(2, this.goldGen, 0, 32);
+			this.genStandardOre1(8, this.redstoneGen, 0, 16);
+			this.genStandardOre1(1, this.diamondGen, 0, 16);
+			this.genStandardOre2(1, this.lapisGen, 16, 16);
+		}
+
+		if (BTADecoIntegration.isDecoInstalled() && (this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeDeco || this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeBetaDeco || this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSkyDeco)) {
 			this.genStandardOre1(12, this.graniteGen, 0, 128);
 			this.genStandardOre1(12, this.andesiteGen, 0, 128);
 			this.genStandardOre1(12, this.dioriteGen, 0, 128);
