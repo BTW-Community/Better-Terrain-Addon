@@ -42,7 +42,7 @@ public class BTAMod extends AddonExt {
 	}
 	
 	public void initMisc() {
-		ServerCommandManager.registerAddonCommand(new BTACommandBiome());
+		//ServerCommandManager.registerAddonCommand(new BTACommandBiome());
 	}
 	
 	public static BTAMod getInstance() {

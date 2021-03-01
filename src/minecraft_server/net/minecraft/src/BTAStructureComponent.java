@@ -287,7 +287,7 @@ abstract class BTAStructureComponent extends StructureComponent {
 					{
 						if (meta == 0 || meta == 2)
 						{
-							return Direction.rotateOpposite[meta];
+							return Direction.footInvisibleFaceRemap[meta];
 						}
 					}
 					else if (this.coordBaseMode == 1)
