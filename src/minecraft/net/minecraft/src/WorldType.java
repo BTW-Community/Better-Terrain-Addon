@@ -125,4 +125,28 @@ public class WorldType
     {
         return this.worldTypeId;
     }
+    
+    public WorldChunkManager getChunkManager(World world) {
+    	return new WorldChunkManager(world);
+    }
+    
+    public IChunkProvider getChunkProviderOverworld(World world, long seed, boolean mapFeaturesEnabled) {
+    	return new ChunkProviderGenerate(world, seed, mapFeaturesEnabled);
+    }
+    
+    public float getCloudHeight() {
+    	return 128F;
+    }
+    
+    public int getAverageGroundLevel() {
+    	return 64;
+    }
+    
+    public double getHorizon() {
+    	return 63D;
+    }
+    
+    public int[] getStrataLevels() {
+    	return new int[] {24, 48};
+    }
 }

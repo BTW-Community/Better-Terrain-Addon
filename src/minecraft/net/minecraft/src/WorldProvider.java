@@ -65,15 +65,9 @@ public abstract class WorldProvider
             FlatGeneratorInfo var1 = FlatGeneratorInfo.createFlatGeneratorFromString(this.worldObj.getWorldInfo().getGeneratorOptions());
             this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.biomeList[var1.getBiome()], 0.5F, 0.5F);
         }
-        else if (this.worldObj.getWorldInfo().getTerrainType() == BTAMod.BTAWorldType || this.worldObj.getWorldInfo().getTerrainType() == BTAMod.BTAWorldTypeDeco) {
-            this.worldChunkMgr = new BTAWorldChunkManager(this.worldObj);
-        }
-        else if (this.terrainType == BTAMod.BTAWorldTypeBeta || this.terrainType == BTAMod.BTAWorldTypeBetaDeco || this.terrainType == BTAMod.BTAWorldTypeSky || this.terrainType == BTAMod.BTAWorldTypeSkyDeco) {
-        	this.worldChunkMgr = new BTABetaChunkManager(this.worldObj);
-        }
         else
         {
-            this.worldChunkMgr = new WorldChunkManager(this.worldObj);
+            this.worldChunkMgr = this.terrainType.getChunkManager(this.worldObj);
         }
     }
 
@@ -85,18 +79,9 @@ public abstract class WorldProvider
     	if (this.terrainType == WorldType.FLAT) {
     		return new ChunkProviderFlat(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), this.field_82913_c);
     	}
-    	else if (this.terrainType == BTAMod.BTAWorldType || this.terrainType == BTAMod.BTAWorldTypeDeco) {
-    		return new BTAChunkProvider(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
-    	}
-    	else if (this.terrainType == BTAMod.BTAWorldTypeBeta || this.terrainType == BTAMod.BTAWorldTypeBetaDeco) {
-    		return new BTABetaChunkProvider(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
-    	}
-    	else if (this.terrainType == BTAMod.BTAWorldTypeSky || this.terrainType == BTAMod.BTAWorldTypeSkyDeco) {
-    		return new BTASkyChunkProvider(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
-    	}
     	else {
-    		return new ChunkProviderGenerate(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
-    	}    	
+    		return this.terrainType.getChunkProviderOverworld(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
+    	}
     }
 
     /**
@@ -215,9 +200,7 @@ public abstract class WorldProvider
      */
     public float getCloudHeight()
     {
-    	if (this.terrainType == BTAMod.BTAWorldTypeSky || this.terrainType == BTAMod.BTAWorldTypeSkyDeco)
-    		return 8.0F;
-        return 128.0F;
+    	return this.terrainType.getCloudHeight();
     }
 
     public boolean isSkyColored()
@@ -235,12 +218,10 @@ public abstract class WorldProvider
 
     public int getAverageGroundLevel()
     {
-    	if (this.terrainType == BTAMod.BTAWorldTypeSky || this.terrainType == BTAMod.BTAWorldTypeSkyDeco)
-    		return 16;
-    	else if (this.terrainType == WorldType.FLAT)
+    	if (this.terrainType == WorldType.FLAT)
     		return 4;
     	else
-    		return 64;
+    		return this.terrainType.getAverageGroundLevel();
     }
 
     /**

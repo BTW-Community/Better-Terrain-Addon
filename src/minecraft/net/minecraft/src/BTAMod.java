@@ -3,12 +3,12 @@ package net.minecraft.src;
 public class BTAMod extends AddonExt {
 	private static BTAMod instance;
 	
-	public static final WorldType BTAWorldType = new BTAWorldType();
-	public static final WorldType BTAWorldTypeDeco = new BTAWorldTypeDeco();
-	public static final WorldType BTAWorldTypeBeta = new BTAWorldTypeBeta();
-	public static final WorldType BTAWorldTypeBetaDeco = new BTAWorldTypeBetaDeco();
-	public static final WorldType BTAWorldTypeSky = new BTAWorldTypeSky();
-	public static final WorldType BTAWorldTypeSkyDeco = new BTAWorldTypeSkyDeco();
+	public static final WorldType BTAWorldType = new BTAWorldType(4, "BTA");
+	public static final WorldType BTAWorldTypeDeco = new BTAWorldType(5, "BTADeco");
+	public static final WorldType BTAWorldTypeBeta = new BTAWorldTypeBeta(6, "BTABeta");
+	public static final WorldType BTAWorldTypeBetaDeco = new BTAWorldTypeBeta(7, "BTABetaDeco");
+	public static final WorldType BTAWorldTypeSky = new BTAWorldTypeSky(8, "BTASky");
+	public static final WorldType BTAWorldTypeSkyDeco = new BTAWorldTypeSky(9, "BTASkyDeco");
 	
 	private BTAMod() {
 		super("Better Terrain", "1.1.2", "BTA");
