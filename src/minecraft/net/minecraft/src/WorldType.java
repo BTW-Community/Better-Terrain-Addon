@@ -25,6 +25,8 @@ public class WorldType
 
     /** The int version of the ChunkProvider that generated this world. */
     private final int generatorVersion;
+    
+    private boolean isDeco;
 
     /**
      * Whether this world type can be generated. Normally true; set to false for out-of-date generator versions.
@@ -134,6 +136,10 @@ public class WorldType
     	return new ChunkProviderGenerate(world, seed, mapFeaturesEnabled);
     }
     
+    public IChunkProvider getChunkProviderNether(World world, long seed, boolean mapFeaturesEnabled) {
+    	return new ChunkProviderHell(world, seed);
+    }
+    
     public float getCloudHeight() {
     	return 128F;
     }
@@ -148,5 +154,22 @@ public class WorldType
     
     public int[] getStrataLevels() {
     	return new int[] {24, 48};
+    }
+    
+    public WorldType setIsDeco() {
+    	this.isDeco = true;
+    	return this;
+    }
+    
+    public boolean isDeco() {
+    	return isDeco;
+    }
+    
+    public boolean hasDeco() {
+    	return false;
+    }
+    
+    public boolean isSky() {
+    	return false;
     }
 }

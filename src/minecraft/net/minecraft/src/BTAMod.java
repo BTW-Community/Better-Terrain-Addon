@@ -4,11 +4,11 @@ public class BTAMod extends AddonExt {
 	private static BTAMod instance;
 	
 	public static final WorldType BTAWorldType = new BTAWorldType(4, "BTA");
-	public static final WorldType BTAWorldTypeDeco = new BTAWorldType(5, "BTADeco");
+	public static final WorldType BTAWorldTypeDeco = new BTAWorldType(5, "BTADeco").setIsDeco().setCanBeCreated(false);
 	public static final WorldType BTAWorldTypeBeta = new BTAWorldTypeBeta(6, "BTABeta");
-	public static final WorldType BTAWorldTypeBetaDeco = new BTAWorldTypeBeta(7, "BTABetaDeco");
+	public static final WorldType BTAWorldTypeBetaDeco = new BTAWorldTypeBeta(7, "BTABetaDeco").setIsDeco().setCanBeCreated(false);
 	public static final WorldType BTAWorldTypeSky = new BTAWorldTypeSky(8, "BTASky");
-	public static final WorldType BTAWorldTypeSkyDeco = new BTAWorldTypeSky(9, "BTASkyDeco");
+	public static final WorldType BTAWorldTypeSkyDeco = new BTAWorldTypeSky(9, "BTASkyDeco").setIsDeco().setCanBeCreated(false);
 	
 	private BTAMod() {
 		super("Better Terrain", "1.1.2", "BTA");
@@ -30,10 +30,6 @@ public class BTAMod extends AddonExt {
 	
 	public void initWorldGen() {
 		BTABiomeConfiguration.init();
-		
-		BTAWorldTypeDeco.setCanBeCreated(false);
-		BTAWorldTypeBetaDeco.setCanBeCreated(false);
-		BTAWorldTypeSkyDeco.setCanBeCreated(false);
 	}
 	
 	public void initOverrides() {

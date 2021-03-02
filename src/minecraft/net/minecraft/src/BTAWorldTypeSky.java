@@ -21,6 +21,10 @@ public class BTAWorldTypeSky extends WorldType {
     	return new BTASkyChunkProvider(world, seed, mapFeaturesEnabled);
     }
     
+    public IChunkProvider getChunkProviderNether(World world, long seed, boolean mapFeaturesEnabled) {
+    	return new BTASkyChunkProvider(world, seed, true).setNether();
+    }
+    
     public float getCloudHeight() {
     	return 8F;
     }
@@ -35,5 +39,13 @@ public class BTAWorldTypeSky extends WorldType {
     
     public int[] getStrataLevels() {
     	return new int[] {32, 48};
+    }
+    
+    public boolean isSky() {
+    	return true;
+    }
+    
+    public boolean hasDeco() {
+    	return true;
     }
 }

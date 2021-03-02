@@ -406,7 +406,7 @@ public class GuiCreateWorld extends GuiScreen
         this.buttonWorldType.drawButton = this.moreOptions;
         this.buttonAllowCommands.drawButton = this.moreOptions;
         this.buttonCustomize.drawButton = this.moreOptions && WorldType.worldTypes[this.worldTypeId] == WorldType.FLAT;
-        this.buttonIsDeco.drawButton = this.moreOptions && (WorldType.worldTypes[this.worldTypeId] == BTAMod.BTAWorldType || WorldType.worldTypes[this.worldTypeId] == BTAMod.BTAWorldTypeBeta || WorldType.worldTypes[this.worldTypeId] == BTAMod.BTAWorldTypeSky);
+        this.buttonIsDeco.drawButton = this.moreOptions && (WorldType.worldTypes[this.worldTypeId].hasDeco());
         StringTranslate var2;
 
         if (this.moreOptions)

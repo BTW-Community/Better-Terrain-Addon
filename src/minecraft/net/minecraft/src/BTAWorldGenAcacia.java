@@ -36,7 +36,7 @@ public class BTAWorldGenAcacia extends WorldGenerator
 	
 	@Override
 	public boolean generate(World par1World, Random par2Random, int x, int y, int z) {
-		if (par1World.provider.terrainType != BTAMod.BTAWorldTypeDeco && par1World.provider.terrainType != BTAMod.BTAWorldTypeBetaDeco && par1World.provider.terrainType != BTAMod.BTAWorldTypeSkyDeco) {
+		if (!par1World.provider.terrainType.isDeco()) {
 			return this.generateOak(par1World, par2Random, x, y, z);
 		}
 		else {

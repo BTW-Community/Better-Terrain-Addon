@@ -206,7 +206,7 @@ public class FCEntityGhast extends EntityGhast
      */
     public boolean getCanSpawnHere()
     {
-        return (this.rand.nextInt(10) == 0 || (this.worldObj.provider.terrainType != BTAMod.BTAWorldTypeSky && this.worldObj.provider.terrainType != BTAMod.BTAWorldTypeSkyDeco)) && this.worldObj.checkNoEntityCollision(this.boundingBox) && this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty() && !this.worldObj.isAnyLiquid(this.boundingBox) && this.worldObj.getClosestPlayer(this.posX, this.posY, this.posZ, 64.0D) == null;
+        return (this.rand.nextInt(10) == 0 || !this.worldObj.provider.terrainType.isSky()) && this.worldObj.checkNoEntityCollision(this.boundingBox) && this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty() && !this.worldObj.isAnyLiquid(this.boundingBox) && this.worldObj.getClosestPlayer(this.posX, this.posY, this.posZ, 64.0D) == null;
     }
 
     public boolean AttractsLightning()
@@ -250,7 +250,7 @@ public class FCEntityGhast extends EntityGhast
 
     public boolean GetCanSpawnHereNoPlayerDistanceRestrictions()
     {
-        return (this.rand.nextInt(10) == 0 || (this.worldObj.provider.terrainType != BTAMod.BTAWorldTypeSky && this.worldObj.provider.terrainType != BTAMod.BTAWorldTypeSkyDeco)) && this.worldObj.checkNoEntityCollision(this.boundingBox) && this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty();
+        return (this.rand.nextInt(10) == 0 || !this.worldObj.provider.terrainType.isSky()) && this.worldObj.checkNoEntityCollision(this.boundingBox) && this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty();
     }
 
     private void SetMouthOpen(boolean var1)

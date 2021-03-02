@@ -20,4 +20,8 @@ public class BTAWorldType extends WorldType {
     public IChunkProvider getChunkProviderOverworld(World world, long seed, boolean mapFeaturesEnabled) {
     	return new BTAChunkProvider(world, seed, mapFeaturesEnabled);
     }
+    
+    public boolean hasDeco() {
+    	return true;
+    }
 }
