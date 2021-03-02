@@ -136,7 +136,7 @@ public class WorldType
     	return new ChunkProviderGenerate(world, seed, mapFeaturesEnabled);
     }
     
-    public IChunkProvider getChunkProviderNether(World world, long seed, boolean mapFeaturesEnabled) {
+    public IChunkProvider getChunkProviderNether(World world, long seed) {
     	return new ChunkProviderHell(world, seed);
     }
     
@@ -153,7 +153,7 @@ public class WorldType
     }
     
     public int[] getStrataLevels() {
-    	return new int[] {24, 48};
+    	return new int[] {48, 24};
     }
     
     public WorldType setIsDeco() {
