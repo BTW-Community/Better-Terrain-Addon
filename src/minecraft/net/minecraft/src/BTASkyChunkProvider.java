@@ -382,7 +382,8 @@ public class BTASkyChunkProvider implements IChunkProvider
                     
                     var42 = 2;
                     
-                    if (var31 > var6 / 2 - var42 && this.isEnd) {
+                    if (var31 > var6 / 2 - var42 && this.isEnd)
+                    {
                         var43 = (double)((float)(var31 - (var6 / 2 - var42)) / (64F));
                         
                         if (var43 < 0.0D)
@@ -459,7 +460,8 @@ public class BTASkyChunkProvider implements IChunkProvider
 				this.m_structureRand.setSeed((long)par2 * var11 + (long)par3 * var13 ^ this.worldObj.getSeed());
 				var15 = this.villageGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
 				this.strongholdGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
-				this.scatteredFeatureGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);			}
+				this.scatteredFeatureGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
+			}
 		}
 
 		int var16;
@@ -474,12 +476,12 @@ public class BTASkyChunkProvider implements IChunkProvider
 			(new WorldGenLakes(Block.waterStill.blockID)).generate(this.worldObj, this.rand, var16, var17, var18);
 		}
 		
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < 20; i++)
 		{
 			var16 = var4 + this.rand.nextInt(16) + 8;
 			var17 = var5 + this.rand.nextInt(16) + 8;
 			var18 = this.rand.nextInt(128);
-			new BTAWorldGenReed().generate(this.worldObj, this.rand, var16, var17, var18);
+			new BTAWorldGenReed().generate(this.worldObj, this.rand, var16, var18, var17);
 		}
 
 		if (!var15 && this.rand.nextInt(4) == 0)
