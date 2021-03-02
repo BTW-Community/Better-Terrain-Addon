@@ -108,17 +108,9 @@ public class BTAMapGenScatteredFeature extends BTAMapGenStructure
 
                 if (var8 == var10)
                 {
-                	isValidBiome = true;
+                	return true;
                 }
             }
-        }
-        
-        System.out.println("Biome at " + par1 + ", " + par2 + " valid? " + isValidBiome);
-        
-        if (isValidBiome) {
-        	int y = 127;
-        	
-        	return true;
         }
 
         return false;

@@ -172,7 +172,8 @@ public class FCEntityGhast extends EntityGhast
     }
 
     /**
-     * Drop 0-2 items of this living's type
+     * Drop 0-2 items of this living's type. @param par1 - Whether this entity has recently been hit by a player. @param
+     * par2 - Level of Looting used to kill this mob.
      */
     protected void dropFewItems(boolean var1, int var2)
     {
@@ -205,7 +206,7 @@ public class FCEntityGhast extends EntityGhast
      */
     public boolean getCanSpawnHere()
     {
-        return this.worldObj.checkNoEntityCollision(this.boundingBox) && this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty() && !this.worldObj.isAnyLiquid(this.boundingBox) && this.worldObj.getClosestPlayer(this.posX, this.posY, this.posZ, 64.0D) == null;
+        return (this.rand.nextInt(10) == 0 || (this.worldObj.provider.terrainType != BTAMod.BTAWorldTypeSky && this.worldObj.provider.terrainType != BTAMod.BTAWorldTypeSkyDeco)) && this.worldObj.checkNoEntityCollision(this.boundingBox) && this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty() && !this.worldObj.isAnyLiquid(this.boundingBox) && this.worldObj.getClosestPlayer(this.posX, this.posY, this.posZ, 64.0D) == null;
     }
 
     public boolean AttractsLightning()
@@ -249,7 +250,7 @@ public class FCEntityGhast extends EntityGhast
 
     public boolean GetCanSpawnHereNoPlayerDistanceRestrictions()
     {
-        return this.worldObj.checkNoEntityCollision(this.boundingBox) && this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty();
+        return (this.rand.nextInt(10) == 0 || (this.worldObj.provider.terrainType != BTAMod.BTAWorldTypeSky && this.worldObj.provider.terrainType != BTAMod.BTAWorldTypeSkyDeco)) && this.worldObj.checkNoEntityCollision(this.boundingBox) && this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty();
     }
 
     private void SetMouthOpen(boolean var1)

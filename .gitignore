@@ -366,7 +366,6 @@ src/minecraft/net/minecraft/src/CommandXP.java
 src/minecraft/net/minecraft/src/ComparatorClassSorter.java
 src/minecraft/net/minecraft/src/ComponentMineshaftCorridor.java
 src/minecraft/net/minecraft/src/ComponentMineshaftCross.java
-src/minecraft/net/minecraft/src/ComponentMineshaftRoom.java
 src/minecraft/net/minecraft/src/ComponentMineshaftStairs.java
 src/minecraft/net/minecraft/src/ComponentNetherBridgeCorridor.java
 src/minecraft/net/minecraft/src/ComponentNetherBridgeCorridor2.java
@@ -2523,7 +2522,6 @@ src/minecraft_server/net/minecraft/src/CommandXP.java
 src/minecraft_server/net/minecraft/src/ComparatorClassSorter.java
 src/minecraft_server/net/minecraft/src/ComponentMineshaftCorridor.java
 src/minecraft_server/net/minecraft/src/ComponentMineshaftCross.java
-src/minecraft_server/net/minecraft/src/ComponentMineshaftRoom.java
 src/minecraft_server/net/minecraft/src/ComponentMineshaftStairs.java
 src/minecraft_server/net/minecraft/src/ComponentNetherBridgeCorridor.java
 src/minecraft_server/net/minecraft/src/ComponentNetherBridgeCorridor2.java

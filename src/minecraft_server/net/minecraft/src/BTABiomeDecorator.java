@@ -433,21 +433,20 @@ public class BTABiomeDecorator
 			var4 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 			this.mushroomRedGen.generate(this.currentWorld, this.randomGenerator, var2, var3, var4);
 		}
-
+		
 		for (var2 = 0; var2 < this.reedsPerChunk; ++var2)
 		{
 			var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 			var4 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 			var7 = this.randomGenerator.nextInt(128);
 			this.reedGen.generate(this.currentWorld, this.randomGenerator, var3, var7, var4);
-		}
-
-		for (var2 = 0; var2 < 10; ++var2)
-		{
-			var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
-			var4 = this.randomGenerator.nextInt(128);
-			var7 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-			this.reedGen.generate(this.currentWorld, this.randomGenerator, var3, var4, var7);
+			
+			if (this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSky || this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSkyDeco) {
+				var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
+				var4 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
+				var7 = this.randomGenerator.nextInt(128);
+				this.reedGen.generate(this.currentWorld, this.randomGenerator, var3, var7, var4);
+			}
 		}
 
 		if (this.randomGenerator.nextInt(32) == 0)

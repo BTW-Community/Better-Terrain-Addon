@@ -1,10 +1,13 @@
 Version 1.1.1
 [list]
 [*]Added skylands generation to the nether in skylands worlds. Ghast spawn rate has been significantly reduced in this world type given that tunneling is far less viable.
-[*]Changed (increased) the number of surface water lakes in skylands given that there are no oceans.
+[*]Changed (increased) the number of surface water lakes in skylands given that there are no oceans. This improves the ability to farm and build mechanical builds which require water, and increases the frequency of sugar cane in biomes in which it can appear.
 [*]Changed (increased) the number of surface lava lakes in skylands given that cave lava does not generate, making obsidian easier to aqcuire.
 [*]Changed (increased) the number of times the game will attempt to generate dungeons in skylands to offset the number of dungeon spawns that fail from being in the void.
 [*]Fixed an issue where skylands would always generate grass near y=64 even if the biome should not generate grass.
+[*]Fixed an issue where sand and gravel beaches in beta terrain were generating incorrectly.
+[*]Fixed an issue where the game would crash in multiplayer when generating savannas in beta or skylands if the server did not have deco installed.
+[*]Fixed an issue where mineshafts were generating improperly in skylands in multiplayer.
 [/list]
 
 Version 1.1.0
