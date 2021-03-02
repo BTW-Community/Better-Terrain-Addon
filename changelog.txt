@@ -1,6 +1,6 @@
 Version 1.1.1
 [list]
-[*]Added skylands generation to the nether in skylands worlds. Ghast spawn rate has been significantly reduced in this world type given how difficult tunneling would be.
+[*]Added skylands generation to the nether in skylands worlds. Ghast spawn rate has been significantly reduced in this world type given that tunneling is far less viable.
 [*]Changed (increased) the number of surface water lakes in skylands given that there are no oceans.
 [*]Changed (increased) the number of surface lava lakes in skylands given that cave lava does not generate, making obsidian easier to aqcuire.
 [*]Changed (increased) the number of times the game will attempt to generate dungeons in skylands to offset the number of dungeon spawns that fail from being in the void.

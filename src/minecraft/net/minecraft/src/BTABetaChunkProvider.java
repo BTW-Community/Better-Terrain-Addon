@@ -147,9 +147,9 @@ public class BTABetaChunkProvider implements IChunkProvider
 			for (int var9 = 0; var9 < 16; ++var9)
 			{
 				BiomeGenBase var10 = var4[var8 + var9 * 16];
-				boolean var11 = this.sandNoise[var8 + var9 * 16] + this.rand.nextDouble() * 0.2D > 0.0D;
-				boolean var12 = this.gravelNoise[var8 + var9 * 16] + this.rand.nextDouble() * 0.2D > 3.0D;
-				int var13 = (int)(this.stoneNoise[var8 + var9 * 16] / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
+				boolean var11 = this.sandNoise[var9 + var8 * 16] + this.rand.nextDouble() * 0.2D > 0.0D;
+				boolean var12 = this.gravelNoise[var9 + var8 * 16] + this.rand.nextDouble() * 0.2D > 3.0D;
+				int var13 = (int)(this.stoneNoise[var9 + var8 * 16] / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
 				int var14 = -1;
 				int var15;
 				int var16;
