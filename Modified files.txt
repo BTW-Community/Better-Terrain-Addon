@@ -9,6 +9,7 @@ EntitySlime
 StructureComponent
 WorldProviderHell
 FCEntityGhast
+WorldProviderEnd
 
 GuiCreateWorld
 World

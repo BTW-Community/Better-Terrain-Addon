@@ -37,6 +37,7 @@ public class BTASkyChunkProvider implements IChunkProvider
 	int[][] field_914_i = new int[32][32];
 	private Random m_structureRand;
 	private boolean isNether = false;
+	private boolean isEnd = false;
 
 	public BTASkyChunkProvider(World var1, long var2, boolean var4)
 	{
@@ -54,10 +55,14 @@ public class BTASkyChunkProvider implements IChunkProvider
 		this.mobSpawnerNoise = new BTABetaNoiseOctaves(this.rand, 8);
 	}
 	
-	public BTASkyChunkProvider(World var1, long var2, boolean var4, boolean isNether)
-	{
-		this(var1, var2, var4);
-		this.isNether = isNether;
+	public BTASkyChunkProvider setNether() {
+		this.isNether = true;
+		return this;
+	}
+	
+	public BTASkyChunkProvider setEnd() {
+		this.isEnd = true;
+		return this;
 	}
 
 	public void generateTerrain(int var1, int var2, int[] var3, BiomeGenBase[] var4)
@@ -103,11 +108,18 @@ public class BTASkyChunkProvider implements IChunkProvider
                             for (int var51 = 0; var51 < 8; ++var51)
                             {
                                 int var52 = 0;
-
-                                if (var47 > -20D)
+                                
+                                double threshold = -20D;
+                                
+                                //if (this.isEnd)
+                                //	threshold = 0D;
+                                
+                                if (var47 > threshold)
                                 {
                                 	if (this.isNether)
                                 		var52 = Block.netherrack.blockID;
+                                	else if (this.isEnd)
+                                		var52 = Block.whiteStone.blockID;
                                 	else
                                 		var52 = Block.stone.blockID;
                                 }
@@ -297,6 +309,20 @@ public class BTASkyChunkProvider implements IChunkProvider
 
                 var27 = var27 * 3.0D - 2.0D;
 
+                float x = (float)(var14 + var2 - 0) / 1.0F;
+                float z = (float)(var15 + var4 - 0) / 1.0F;
+                float dist = 100.0F - MathHelper.sqrt_float(x * x + z * z) * 8.0F;
+
+                if (dist > 80.0F)
+                {
+                	dist = 80.0F;
+                }
+
+                if (dist < -100.0F)
+                {
+                	dist = -100.0F;
+                }
+
                 if (var27 > 1.0D)
                 {
                     var27 = 1.0D;
@@ -343,13 +369,33 @@ public class BTASkyChunkProvider implements IChunkProvider
                     }
 
                     var32 -= 8.0D;
+                    if (this.isEnd)
+                    	var32 += dist;
                     byte var42 = 32;
                     double var43;
 
-                    if (var31 > var6 - var42)
+                    if (var31 > var6 - var42 && !this.isEnd)
                     {
                         var43 = (double)((float)(var31 - (var6 - var42)) / ((float)var42 - 1.0F));
                         var32 = var32 * (1.0D - var43) + -30.0D * var43;
+                    }
+                    
+                    var42 = 2;
+                    
+                    if (var31 > var6 / 2 - var42 && this.isEnd) {
+                        var43 = (double)((float)(var31 - (var6 / 2 - var42)) / (64F));
+                        
+                        if (var43 < 0.0D)
+                        {
+                        	var43 = 0.0D;
+                        }
+
+                        if (var43 > 1.0D)
+                        {
+                        	var43 = 1.0D;
+                        }
+                        
+                        var32 = var32 * (1.0D - var43) + -3000.0D * var43;
                     }
 
                     var42 = 8;
@@ -384,6 +430,10 @@ public class BTASkyChunkProvider implements IChunkProvider
 	{
 		if (this.isNether) {
 			this.populateNether(par1IChunkProvider, par2, par3);
+			return;
+		}
+		else if (this.isEnd) {
+			this.populateEnd(par1IChunkProvider, par2, par3);
 			return;
 		}
 		
@@ -484,62 +534,6 @@ public class BTASkyChunkProvider implements IChunkProvider
 		this.BTWPostProcessChunk(this.worldObj, var4 - 8, var5 - 8);
 	}
 
-	private void BTWPostProcessChunk(World var1, int var2, int var3)
-	{
-		if (var1.provider.dimensionId == 0)
-		{
-			this.GenerateStrata(var1, var2, var3);
-			this.GenerateAdditionalBrownMushrooms(var1, var2, var3);
-		}
-	}
-
-	private void GenerateAdditionalBrownMushrooms(World var1, int var2, int var3)
-	{
-		if (var1.rand.nextInt(4) == 0)
-		{
-			WorldGenFlowers var4 = new WorldGenFlowers(Block.mushroomBrown.blockID);
-			int var5 = var2 + var1.rand.nextInt(16) + 8;
-			int var6 = var1.rand.nextInt(25);
-			int var7 = var3 + var1.rand.nextInt(16) + 8;
-			var4.generate(var1, var1.rand, var5, var6, var7);
-		}
-	}
-
-	private void GenerateStrata(World var1, int var2, int var3)
-	{
-		Chunk var4 = var1.getChunkFromChunkCoords(var2 >> 4, var3 >> 4);
-
-		for (int var5 = 0; var5 < 16; ++var5)
-		{
-			for (int var6 = 0; var6 < 16; ++var6)
-			{
-				int var7 = 0;
-				int var8;
-				int var9;
-
-				for (var8 = 32 + var1.rand.nextInt(2); var7 <= var8; ++var7)
-				{
-					var9 = var4.getBlockID(var5, var7, var6);
-
-					if (var9 == Block.stone.blockID)
-					{
-						var4.setBlockMetadata(var5, var7, var6, 2);
-					}
-				}
-
-				for (var8 = 48 + var1.rand.nextInt(2); var7 <= var8; ++var7)
-				{
-					var9 = var4.getBlockID(var5, var7, var6);
-
-					if (var9 == Block.stone.blockID)
-					{
-						var4.setBlockMetadata(var5, var7, var6, 1);
-					}
-				}
-			}
-		}
-	}
-
     /**
      * Populates chunk with ores etc etc
      */
@@ -628,6 +622,75 @@ public class BTASkyChunkProvider implements IChunkProvider
 
         BlockSand.fallInstantly = false;
     }
+
+    /**
+     * Populates chunk with ores etc etc
+     */
+    public void populateEnd(IChunkProvider par1IChunkProvider, int par2, int par3)
+    {
+        BlockSand.fallInstantly = true;
+        int var4 = par2 * 16;
+        int var5 = par3 * 16;
+        BiomeGenBase var6 = this.worldObj.getBiomeGenForCoords(var4 + 16, var5 + 16);
+        var6.decorate(this.worldObj, this.worldObj.rand, var4, var5);
+        BlockSand.fallInstantly = false;
+    }
+
+	private void BTWPostProcessChunk(World var1, int var2, int var3)
+	{
+		if (var1.provider.dimensionId == 0)
+		{
+			this.GenerateStrata(var1, var2, var3);
+			this.GenerateAdditionalBrownMushrooms(var1, var2, var3);
+		}
+	}
+
+	private void GenerateAdditionalBrownMushrooms(World var1, int var2, int var3)
+	{
+		if (var1.rand.nextInt(4) == 0)
+		{
+			WorldGenFlowers var4 = new WorldGenFlowers(Block.mushroomBrown.blockID);
+			int var5 = var2 + var1.rand.nextInt(16) + 8;
+			int var6 = var1.rand.nextInt(25);
+			int var7 = var3 + var1.rand.nextInt(16) + 8;
+			var4.generate(var1, var1.rand, var5, var6, var7);
+		}
+	}
+
+	private void GenerateStrata(World var1, int var2, int var3)
+	{
+		Chunk var4 = var1.getChunkFromChunkCoords(var2 >> 4, var3 >> 4);
+
+		for (int var5 = 0; var5 < 16; ++var5)
+		{
+			for (int var6 = 0; var6 < 16; ++var6)
+			{
+				int var7 = 0;
+				int var8;
+				int var9;
+
+				for (var8 = 32 + var1.rand.nextInt(2); var7 <= var8; ++var7)
+				{
+					var9 = var4.getBlockID(var5, var7, var6);
+
+					if (var9 == Block.stone.blockID)
+					{
+						var4.setBlockMetadata(var5, var7, var6, 2);
+					}
+				}
+
+				for (var8 = 48 + var1.rand.nextInt(2); var7 <= var8; ++var7)
+				{
+					var9 = var4.getBlockID(var5, var7, var6);
+
+					if (var9 == Block.stone.blockID)
+					{
+						var4.setBlockMetadata(var5, var7, var6, 1);
+					}
+				}
+			}
+		}
+	}
 
 	/**
 	 * Two modes of operation: if passed true, save all Chunks in one go.  If passed false, save up to two chunks.

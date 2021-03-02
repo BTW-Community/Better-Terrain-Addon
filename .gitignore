@@ -2249,7 +2249,6 @@ src/minecraft/net/minecraft/src/WorldGenerator.java
 src/minecraft/net/minecraft/src/WorldGeneratorBonusChest.java
 src/minecraft/net/minecraft/src/WorldInfo.java
 src/minecraft/net/minecraft/src/WorldManager.java
-src/minecraft/net/minecraft/src/WorldProviderEnd.java
 src/minecraft/net/minecraft/src/WorldProviderSurface.java
 src/minecraft/net/minecraft/src/WorldRenderer.java
 src/minecraft/net/minecraft/src/WorldSavedData.java
@@ -3992,7 +3991,6 @@ src/minecraft_server/net/minecraft/src/WorldGeneratorBonusChest.java
 src/minecraft_server/net/minecraft/src/WorldInfo.java
 src/minecraft_server/net/minecraft/src/WorldManager.java
 src/minecraft_server/net/minecraft/src/WorldProvider.java
-src/minecraft_server/net/minecraft/src/WorldProviderEnd.java
 src/minecraft_server/net/minecraft/src/WorldProviderSurface.java
 src/minecraft_server/net/minecraft/src/WorldSavedData.java
 src/minecraft_server/net/minecraft/src/WorldServer.java
