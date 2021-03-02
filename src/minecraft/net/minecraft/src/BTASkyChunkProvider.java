@@ -247,7 +247,7 @@ public class BTASkyChunkProvider implements IChunkProvider
 				this.mineshaftGenerator.generate(this, this.worldObj, var1, var2, var3);
 				//this.villageGenerator.generate(this, this.worldObj, var1, var2, var3);
 				//this.strongholdGenerator.generate(this, this.worldObj, var1, var2, var3);
-				//this.scatteredFeatureGenerator.generate(this, this.worldObj, var1, var2, var3);
+				this.scatteredFeatureGenerator.generate(this, this.worldObj, var1, var2, var3);
 			}
 		}
 
@@ -452,16 +452,11 @@ public class BTASkyChunkProvider implements IChunkProvider
 
 		if (this.mapFeaturesEnabled)
 		{
-			if (this.isNether) {
-				
-			}
-			else {
-				this.mineshaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
-				this.m_structureRand.setSeed((long)par2 * var11 + (long)par3 * var13 ^ this.worldObj.getSeed());
-				var15 = this.villageGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
-				this.strongholdGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
-				this.scatteredFeatureGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
-			}
+			this.mineshaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
+			this.m_structureRand.setSeed((long)par2 * var11 + (long)par3 * var13 ^ this.worldObj.getSeed());
+			var15 = this.villageGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
+			this.strongholdGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
+			this.scatteredFeatureGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
 		}
 
 		int var16;

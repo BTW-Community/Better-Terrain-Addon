@@ -1,3 +1,8 @@
+Version 1.1.2
+[list]
+[*]Changed sandy beaches in beta to spawn with red sand in outback and badlands.
+[/list]
+
 Version 1.1.1
 [list]
 [*]Added skylands generation to the nether in skylands worlds. Ghast spawn rate has been significantly reduced in this world type given that tunneling is far less viable.

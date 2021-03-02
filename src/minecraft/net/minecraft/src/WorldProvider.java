@@ -235,7 +235,12 @@ public abstract class WorldProvider
 
     public int getAverageGroundLevel()
     {
-        return this.terrainType == WorldType.FLAT ? 4 : 64;
+    	if (this.terrainType == BTAMod.BTAWorldTypeSky || this.terrainType == BTAMod.BTAWorldTypeSkyDeco)
+    		return 16;
+    	else if (this.terrainType == WorldType.FLAT)
+    		return 4;
+    	else
+    		return 64;
     }
 
     /**

@@ -101,8 +101,8 @@ public class BTABiomeConfiguration {
 		addBiomesWithEdge();
 		filterEdgeBiomes();
 		addBiomesToStructureGenerators();
-		addBiomesToList();
-		//addSingleBiome(tropics);
+		//addBiomesToList();
+		addSingleBiome(tropics);
 	}
 	
 	public static void addBiomesToList() {

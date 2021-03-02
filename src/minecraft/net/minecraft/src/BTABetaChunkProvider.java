@@ -211,12 +211,14 @@ public class BTABetaChunkProvider implements IChunkProvider
 
 									if (var11)
 									{
-										var15 = (byte)Block.sand.blockID;
-									}
-
-									if (var11)
-									{
-										var16 = (byte)Block.sand.blockID;
+										if (var10 == BTABiomeConfiguration.badlands || var10 == BTABiomeConfiguration.badlandsPlateau || var10 == BTABiomeConfiguration.outback) {
+											var15 = BTADecoIntegration.redSand.blockID;
+											var16 = BTADecoIntegration.redSand.blockID;
+										}
+										else {
+											var15 = Block.sand.blockID;
+											var16 = Block.sand.blockID;
+										}
 									}
 								}
 
