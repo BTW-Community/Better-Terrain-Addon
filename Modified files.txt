@@ -6,7 +6,11 @@ StructureVillageStart
 WorldProvider
 WorldType
 EntitySlime
-StructureComponent*
+StructureComponent
+WorldProviderHell
+FCEntityGhast
+WorldProviderEnd
+ComponentMineshaftRoom
 
 GuiCreateWorld
 World

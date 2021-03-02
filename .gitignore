@@ -1,8 +1,5 @@
 src deco/
 
-src/minecraft/net/minecraft/src/FC*
-src/minecraft_server/net/minecraft/src/FC*
-
 src/minecraft/net/minecraft/server/
 src/minecraft/net/minecraft/src/BlockPane.java
 src/minecraft/net/minecraft/src/ContainerRepair.java
@@ -369,7 +366,6 @@ src/minecraft/net/minecraft/src/CommandXP.java
 src/minecraft/net/minecraft/src/ComparatorClassSorter.java
 src/minecraft/net/minecraft/src/ComponentMineshaftCorridor.java
 src/minecraft/net/minecraft/src/ComponentMineshaftCross.java
-src/minecraft/net/minecraft/src/ComponentMineshaftRoom.java
 src/minecraft/net/minecraft/src/ComponentMineshaftStairs.java
 src/minecraft/net/minecraft/src/ComponentNetherBridgeCorridor.java
 src/minecraft/net/minecraft/src/ComponentNetherBridgeCorridor2.java
@@ -1141,7 +1137,6 @@ src/minecraft/net/minecraft/src/FCEntityCreeper.java
 src/minecraft/net/minecraft/src/FCEntityDynamite.java
 src/minecraft/net/minecraft/src/FCEntityEnderman.java
 src/minecraft/net/minecraft/src/FCEntityFallingBlock.java
-src/minecraft/net/minecraft/src/FCEntityGhast.java
 src/minecraft/net/minecraft/src/FCEntityInfiniteArrow.java
 src/minecraft/net/minecraft/src/FCEntityItemBloodWoodSapling.java
 src/minecraft/net/minecraft/src/FCEntityItemFloating.java
@@ -2253,8 +2248,6 @@ src/minecraft/net/minecraft/src/WorldGenerator.java
 src/minecraft/net/minecraft/src/WorldGeneratorBonusChest.java
 src/minecraft/net/minecraft/src/WorldInfo.java
 src/minecraft/net/minecraft/src/WorldManager.java
-src/minecraft/net/minecraft/src/WorldProviderEnd.java
-src/minecraft/net/minecraft/src/WorldProviderHell.java
 src/minecraft/net/minecraft/src/WorldProviderSurface.java
 src/minecraft/net/minecraft/src/WorldRenderer.java
 src/minecraft/net/minecraft/src/WorldSavedData.java
@@ -2529,7 +2522,6 @@ src/minecraft_server/net/minecraft/src/CommandXP.java
 src/minecraft_server/net/minecraft/src/ComparatorClassSorter.java
 src/minecraft_server/net/minecraft/src/ComponentMineshaftCorridor.java
 src/minecraft_server/net/minecraft/src/ComponentMineshaftCross.java
-src/minecraft_server/net/minecraft/src/ComponentMineshaftRoom.java
 src/minecraft_server/net/minecraft/src/ComponentMineshaftStairs.java
 src/minecraft_server/net/minecraft/src/ComponentNetherBridgeCorridor.java
 src/minecraft_server/net/minecraft/src/ComponentNetherBridgeCorridor2.java
@@ -3200,7 +3192,6 @@ src/minecraft_server/net/minecraft/src/FCEntityCreeper.java
 src/minecraft_server/net/minecraft/src/FCEntityDynamite.java
 src/minecraft_server/net/minecraft/src/FCEntityEnderman.java
 src/minecraft_server/net/minecraft/src/FCEntityFallingBlock.java
-src/minecraft_server/net/minecraft/src/FCEntityGhast.java
 src/minecraft_server/net/minecraft/src/FCEntityInfiniteArrow.java
 src/minecraft_server/net/minecraft/src/FCEntityItemBloodWoodSapling.java
 src/minecraft_server/net/minecraft/src/FCEntityItemFloating.java
@@ -3998,8 +3989,6 @@ src/minecraft_server/net/minecraft/src/WorldGeneratorBonusChest.java
 src/minecraft_server/net/minecraft/src/WorldInfo.java
 src/minecraft_server/net/minecraft/src/WorldManager.java
 src/minecraft_server/net/minecraft/src/WorldProvider.java
-src/minecraft_server/net/minecraft/src/WorldProviderEnd.java
-src/minecraft_server/net/minecraft/src/WorldProviderHell.java
 src/minecraft_server/net/minecraft/src/WorldProviderSurface.java
 src/minecraft_server/net/minecraft/src/WorldSavedData.java
 src/minecraft_server/net/minecraft/src/WorldServer.java

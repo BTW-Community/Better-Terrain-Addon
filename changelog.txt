@@ -1,16 +1,36 @@
+Version 1.1.1
+[list]
+[*]Added skylands generation to the nether in skylands worlds. Ghast spawn rate has been significantly reduced in this world type given that tunneling is far less viable.
+[*]Changed (increased) the number of surface water lakes in skylands given that there are no oceans. This improves the ability to farm and build mechanical builds which require water, and increases the frequency of sugar cane in biomes in which it can appear.
+[*]Changed (increased) the number of surface lava lakes in skylands given that cave lava does not generate, making obsidian easier to aqcuire.
+[*]Changed (increased) the number of times the game will attempt to generate dungeons in skylands to offset the number of dungeon spawns that fail from being in the void.
+[*]Fixed an issue where skylands would always generate grass near y=64 even if the biome should not generate grass.
+[*]Fixed an issue where sand and gravel beaches in beta terrain were generating incorrectly.
+[*]Fixed an issue where the game would crash in multiplayer when generating savannas in beta or skylands if the server did not have deco installed.
+[*]Fixed an issue where mineshafts were generating improperly in skylands in multiplayer.
+[/list]
+
 Version 1.1.0
 [list]
-[*]Added beta terrain gen world type. This world type uses BTA biomes but generates terrain based on old beta 1.7.3 terrain. Any seeds that worked in beta will work with this world type, although caves, ores, etc. will be different. This world type is also fully functional with with all vanilla features such as strongholds, villages, mineshafts, ravines, etc.
+[*]Added beta terrain gen world type. This world type uses BTA biomes but generates terrain based on old beta 1.7.3 terrain. Any seeds that worked in beta will work with this world type, although caves, ores, etc. will be different. This world type is also fully functional with all vanilla features such as strongholds, villages, mineshafts, ravines, etc.
 [*]Added skylands world type (modified from the old sky dimension generator from beta). I make no claims that this is in any way balanced, I simply added it as something fun and unique. It is currently incomplete as it does not generate villages, temples, witch huts, or strongholds as they interacted very poorly with the skyland terrain. I will be making further adjustments to this world type to enable these structures.
 [*]Changed how deco worlds are created. Instead of selecting a separate world type at world creation, there is now a button to toggle whether deco is enabled. Internally these are still handled as separate world types (only server owners should need to care about that).
 [*]Changed mineshaft components to not generate if they would be entirely floating, and to only generate the shaft supports if they would actually be supporting blocks. This mostly affects skylands generation but may have small effects on other BTA world types. Vanilla world gen as always is unaffected.
 [*]Changed (increased) the depth of terracotta in badlands.
 [*]Changed tall grass and flowers to spawn already covered in snow in snow biomes if they are able to see the sky.
 [*]Changed how fallen logs generate to have variance in their direction and to generate with a stump at one end.
-[*]Changed red flowers to spawn with the same frequency as other flowers in deco world types.
-[*]Fixed an issue where emerald ore always spawned as first strata ore.
+[*]Changed red roses to spawn with the same frequency as other flowers in deco world types.
+[*]Fixed an issue where emerald ore always spawned as first strata ore in BTA biomes.
 [*]Fixed an issue where biome specific textures through MCPatcher did not work in BTA jungles or deserts.
 [/list]
+
+Version 1.0.2
+[*]Changed versioning system.
+[*]Fixed an issue where slimes were not spawning in swamp variants.
+
+Version 1.0b
+[*]Fixed an issue where acacia trees could generate stacked on top of each other like [url=https://i.imgur.com/gw9akGB.png]this[/url]
+[*]Fixed an issue where unfinished custom villages were generating in the deco terrain world type. These villages will be properly added in a later release.
 
 Version 1.0
 [list]
@@ -69,11 +89,3 @@ The player may not spawn in the following biomes. Note that this only applies to
 [*]Outback
 [*]Badlands
 [/list]
-
-Version 1.0b
-[*]Fixed an issue where acacia trees could generate stacked on top of each other like [url=https://i.imgur.com/gw9akGB.png]this[/url]
-[*]Fixed an issue where unfinished custom villages were generating in the deco terrain world type. These villages will be properly added in a later release.
-
-Version 1.0.2
-[*]Changed versioning system.
-[*]Fixed an issue where slimes were not spawning in swamp variants.
