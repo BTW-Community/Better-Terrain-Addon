@@ -246,21 +246,13 @@ public class BTAChunkProvider implements IChunkProvider
 								}
 								else if (var16 >= var5 + 9)
 								{
-									if(var10.biomeID == BTABiomeConfiguration.badlands.biomeID || var10.biomeID == BTABiomeConfiguration.riverBadlands.biomeID)
-									{
-										var14 = BTADecoIntegration.terracotta.blockID;
-										var15 = BTADecoIntegration.terracotta.blockID;
+									if (var10 instanceof BTABiomeGenBase) {
+										var14 = ((BTABiomeGenBase) var10).topBlockExt;
+										var15 = ((BTABiomeGenBase) var10).fillerBlockExt;
 									}
-									else
-									{
-										if (var10 instanceof BTABiomeGenBase) {
-											var14 = ((BTABiomeGenBase) var10).topBlockExt;
-											var15 = ((BTABiomeGenBase) var10).fillerBlockExt;
-										}
-										else {
-											var14 = var10.topBlock;
-											var15 = var10.fillerBlock;
-										}
+									else {
+										var14 = var10.topBlock;
+										var15 = var10.fillerBlock;
 									}
 								}
 
@@ -275,9 +267,12 @@ public class BTAChunkProvider implements IChunkProvider
 										var14 = (byte)Block.waterStill.blockID;
 									}
 								}
-
+								
 								var13 = var12;
 
+								if (var10.biomeID == BTABiomeConfiguration.badlandsPlateau.biomeID)
+									var13 += 10;
+								
 								if (var16 >= var5 - 1)
 								{
 									blockArray[var17] = var14;
@@ -301,11 +296,6 @@ public class BTAChunkProvider implements IChunkProvider
 								{
 									var13 = this.rand.nextInt(4);
 									var15 = BTADecoIntegration.redSandStone.blockID;
-								}
-								else if (BTADecoIntegration.isDecoInstalled() && var13 == 0 && var15 == BTADecoIntegration.terracotta.blockID)
-								{
-									var13 = this.rand.nextInt(2) + 6;
-									var15 = BTADecoIntegration.terracotta.blockID;
 								}
 							}
 						}

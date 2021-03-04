@@ -396,6 +396,9 @@ public class BTAHorizonsChunkProvider implements IChunkProvider
 								}
 
 								remainingFillerDepth = stoneNoiseSample;
+								
+								if (biome.biomeID == BTABiomeConfiguration.badlandsPlateau.biomeID)
+									remainingFillerDepth += 10;
 
 								if (j >= seaLevel - 1) {
 									blockArray[i][k][j] = topBlock;
@@ -415,10 +418,6 @@ public class BTAHorizonsChunkProvider implements IChunkProvider
 								else if (BTADecoIntegration.isDecoInstalled() && remainingFillerDepth == 0 && fillerBlock == BTADecoIntegration.redSand.blockID) {
 									remainingFillerDepth = this.rand.nextInt(4);
 									fillerBlock = BTADecoIntegration.redSandStone.blockID;
-								}
-								else if (BTADecoIntegration.isDecoInstalled() && remainingFillerDepth == 0 && fillerBlock == BTADecoIntegration.terracotta.blockID) {
-									remainingFillerDepth = this.rand.nextInt(6) + 10;
-									fillerBlock = BTADecoIntegration.terracotta.blockID;
 								}
 							}
 						}

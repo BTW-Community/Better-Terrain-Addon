@@ -2,6 +2,7 @@ Version 1.1.2
 [list]
 [*]Changed sandy beaches in beta to spawn with red sand in outback and badlands.
 [*]Refactored several aspects of how world types are handled internally to make adding new types easier.
+[*]Fixed an issue where badlands generated terracotta all the way to bedrock.
 [/list]
 
 Version 1.1.1

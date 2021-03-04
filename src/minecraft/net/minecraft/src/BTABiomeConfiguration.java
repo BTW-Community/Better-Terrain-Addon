@@ -102,7 +102,7 @@ public class BTABiomeConfiguration {
 		filterEdgeBiomes();
 		addBiomesToStructureGenerators();
 		addBiomesToList();
-		//addSingleBiome(tropics);
+		//addSingleBiome(lushDesert);
 	}
 	
 	public static void addBiomesToList() {
