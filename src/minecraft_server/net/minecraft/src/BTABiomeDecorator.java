@@ -282,7 +282,7 @@ public class BTABiomeDecorator
 			if (this.currentWorld.rand.nextInt(3) != 0) {
 				var2 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 				var3 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-				if (this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSky || this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSkyDeco) {
+				if (this.currentWorld.provider.terrainType.isSky()) {
 					if (this.randomGenerator.nextInt(5) == 0)
 						this.clayGenSky.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
 				}
@@ -334,7 +334,7 @@ public class BTABiomeDecorator
 
 		for (var2 = 0; var2 < this.flowersPerChunk; ++var2)
 		{
-			if (BTADecoIntegration.isDecoInstalled() && (this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeDeco || this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeBetaDeco || this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSkyDeco)) {
+			if (BTADecoIntegration.isDecoInstalled() && (this.currentWorld.provider.terrainType.isDeco())) {
 				if (this.randomGenerator.nextInt(24) > 1) {
 					var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 					var4 = this.randomGenerator.nextInt(128);
@@ -441,7 +441,7 @@ public class BTABiomeDecorator
 			var7 = this.randomGenerator.nextInt(128);
 			this.reedGen.generate(this.currentWorld, this.randomGenerator, var3, var7, var4);
 			
-			if (this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSky || this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSkyDeco) {
+			if (this.currentWorld.provider.terrainType.isSky()) {
 				var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 				var4 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 				var7 = this.randomGenerator.nextInt(128);
@@ -582,7 +582,7 @@ public class BTABiomeDecorator
 		this.genStandardOre1(20, this.dirtGen, 0, 128);
 		this.genStandardOre1(10, this.gravelGen, 0, 128);
 
-		if (this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSky || this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSkyDeco) {
+		if (this.currentWorld.provider.terrainType.isSky()) {
 			this.genStandardOre1(20, this.coalGen, 0, 128);
 			this.genStandardOre1(20, this.ironGen, 0, 64);
 			this.genStandardOre1(3, this.goldGen, 0, 48);
@@ -599,7 +599,7 @@ public class BTABiomeDecorator
 			this.genStandardOre2(1, this.lapisGen, 16, 16);
 		}
 
-		if (BTADecoIntegration.isDecoInstalled() && (this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeDeco || this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeBetaDeco || this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSkyDeco)) {
+		if (BTADecoIntegration.isDecoInstalled() && (this.currentWorld.provider.terrainType.isDeco())) {
 			this.genStandardOre1(12, this.graniteGen, 0, 128);
 			this.genStandardOre1(12, this.andesiteGen, 0, 128);
 			this.genStandardOre1(12, this.dioriteGen, 0, 128);

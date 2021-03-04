@@ -228,7 +228,6 @@ public class BTABetaChunkProvider implements IChunkProvider
 								}
 
 								var14 = var13;
-								
 
 								if (var10.biomeID == BTABiomeConfiguration.badlandsPlateau.biomeID)
 									var14 += 10;

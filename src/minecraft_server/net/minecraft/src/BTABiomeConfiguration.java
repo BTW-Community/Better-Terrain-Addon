@@ -34,7 +34,7 @@ public class BTABiomeConfiguration {
 	public static final BTABiomeGenBase heathlandWoods = new BTABiomeGenHeathlandWoods(128).setColor(9286496).setBiomeName("Heathland Woods").setTemperatureRainfall(0.7F, 0.4F).setMinMaxHeight(0.1F, 0.5F); //Spawns within heathland
 	public static final BTABiomeGenBase borealForest = new BTABiomeGenBorealForest(129).setColor(353825).setBiomeName("Boreal Forest").func_76733_a(5159473).setMinMaxHeight(0.2F, 1.0F).setTemperatureRainfall(0.6F, 0.7F);
 	public static final BTABiomeGenBase valleyMountains = new BTABiomeGenValley(130).setColor(353825).setBiomeName("Valley Highlands").func_76733_a(5159473).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.5F, 3.0F);
-	public static final BTABiomeGenBase oldValley = new BTABiomeGenOldValley(131).setColor(353825).setBiomeName("Valley").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.1F, 0.8F);
+	public static final BTABiomeGenBase oldValley = new BTABiomeGenOldValley(131).setColor(353825).setBiomeName("Old Valley").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.1F, 0.8F);
 	public static final BTABiomeGenBase tundra = new BTABiomeGenTundra(132).setColor(16421912).setBiomeName("Tundra").setEnableSnow().setTemperatureRainfall(0.1F, 0.1F).setMinMaxHeight(0.1F, 0.4F);
 
 	//Hill variants - spawn within the normal variants
@@ -102,7 +102,7 @@ public class BTABiomeConfiguration {
 		filterEdgeBiomes();
 		addBiomesToStructureGenerators();
 		addBiomesToList();
-		//addSingleBiome(woods);
+		//addSingleBiome(lushDesert);
 	}
 	
 	public static void addBiomesToList() {
@@ -130,7 +130,6 @@ public class BTABiomeConfiguration {
 		biomeList.add(borealForest);
 		biomeList.add(valleyMountains);
 		biomeList.add(tundra);
-		//biomeList.add(oldValley);
 		biomeList.add(orchard);
 		biomeList.add(steppe);
 		

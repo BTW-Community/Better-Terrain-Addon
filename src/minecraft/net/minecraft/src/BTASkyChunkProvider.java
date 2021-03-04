@@ -187,6 +187,9 @@ public class BTASkyChunkProvider implements IChunkProvider
                         {
                             var3[var18] = var15;
                             var14 = var13;
+
+							if (var10.biomeID == BTABiomeConfiguration.badlandsPlateau.biomeID)
+								var14 += 10;
                         }
                         else if (var14 > 0)
                         {
@@ -202,11 +205,6 @@ public class BTASkyChunkProvider implements IChunkProvider
 							{
 								var14 = this.rand.nextInt(4);
 								var16 = BTADecoIntegration.redSandStone.blockID;
-							}
-							else if (BTADecoIntegration.isDecoInstalled() && var14 == 0 && var16 == BTADecoIntegration.terracotta.blockID)
-							{
-								var14 = this.rand.nextInt(2) + 6;
-								var16 = BTADecoIntegration.terracotta.blockID;
 							}
 						}
                     }

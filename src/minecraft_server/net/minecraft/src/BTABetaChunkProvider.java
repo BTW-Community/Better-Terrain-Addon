@@ -211,12 +211,14 @@ public class BTABetaChunkProvider implements IChunkProvider
 
 									if (var11)
 									{
-										var15 = (byte)Block.sand.blockID;
-									}
-
-									if (var11)
-									{
-										var16 = (byte)Block.sand.blockID;
+										if (var10 == BTABiomeConfiguration.badlands || var10 == BTABiomeConfiguration.badlandsPlateau || var10 == BTABiomeConfiguration.outback) {
+											var15 = BTADecoIntegration.redSand.blockID;
+											var16 = BTADecoIntegration.redSand.blockID;
+										}
+										else {
+											var15 = Block.sand.blockID;
+											var16 = Block.sand.blockID;
+										}
 									}
 								}
 
@@ -226,6 +228,9 @@ public class BTABetaChunkProvider implements IChunkProvider
 								}
 
 								var14 = var13;
+
+								if (var10.biomeID == BTABiomeConfiguration.badlandsPlateau.biomeID)
+									var14 += 10;
 
 								if (var17 >= var5 - 1)
 								{
@@ -250,11 +255,6 @@ public class BTABetaChunkProvider implements IChunkProvider
 								{
 									var14 = this.rand.nextInt(4);
 									var16 = BTADecoIntegration.redSandStone.blockID;
-								}
-								else if (BTADecoIntegration.isDecoInstalled() && var14 == 0 && var16 == BTADecoIntegration.terracotta.blockID)
-								{
-									var14 = this.rand.nextInt(2) + 6;
-									var16 = BTADecoIntegration.terracotta.blockID;
 								}
 							}
 						}
