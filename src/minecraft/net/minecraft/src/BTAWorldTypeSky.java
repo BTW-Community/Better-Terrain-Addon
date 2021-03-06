@@ -25,6 +25,10 @@ public class BTAWorldTypeSky extends WorldType {
     	return new BTASkyChunkProvider(world, seed, true).setNether();
     }
     
+    public IChunkProvider getChunkProviderEnd(World world, long seed) {
+    	return new BTAChunkProviderEnd(world, seed);
+    }
+    
     public float getCloudHeight() {
     	return 8F;
     }

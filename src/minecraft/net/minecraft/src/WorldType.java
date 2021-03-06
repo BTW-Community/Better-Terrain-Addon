@@ -140,6 +140,10 @@ public class WorldType
     	return new ChunkProviderHell(world, seed);
     }
     
+    public IChunkProvider getChunkProviderEnd(World world, long seed) {
+    	return new ChunkProviderEnd(world, seed);
+    }
+    
     public float getCloudHeight() {
     	return 128F;
     }

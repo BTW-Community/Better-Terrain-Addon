@@ -37,7 +37,6 @@ public class BTASkyChunkProvider implements IChunkProvider
 	int[][] field_914_i = new int[32][32];
 	private Random m_structureRand;
 	private boolean isNether = false;
-	private boolean isEnd = false;
 
 	public BTASkyChunkProvider(World var1, long var2, boolean var4)
 	{
@@ -57,11 +56,6 @@ public class BTASkyChunkProvider implements IChunkProvider
 	
 	public BTASkyChunkProvider setNether() {
 		this.isNether = true;
-		return this;
-	}
-	
-	public BTASkyChunkProvider setEnd() {
-		this.isEnd = true;
 		return this;
 	}
 
@@ -118,8 +112,6 @@ public class BTASkyChunkProvider implements IChunkProvider
                                 {
                                 	if (this.isNether)
                                 		var52 = Block.netherrack.blockID;
-                                	else if (this.isEnd)
-                                		var52 = Block.whiteStone.blockID;
                                 	else
                                 		var52 = Block.stone.blockID;
                                 }
@@ -307,20 +299,6 @@ public class BTASkyChunkProvider implements IChunkProvider
 
                 var27 = var27 * 3.0D - 2.0D;
 
-                float x = (float)(var14 + var2 - 0) / 1.0F;
-                float z = (float)(var15 + var4 - 0) / 1.0F;
-                float dist = 100.0F - MathHelper.sqrt_float(x * x + z * z) * 8.0F;
-
-                if (dist > 80.0F)
-                {
-                	dist = 80.0F;
-                }
-
-                if (dist < -100.0F)
-                {
-                	dist = -100.0F;
-                }
-
                 if (var27 > 1.0D)
                 {
                     var27 = 1.0D;
@@ -367,34 +345,13 @@ public class BTASkyChunkProvider implements IChunkProvider
                     }
 
                     var32 -= 8.0D;
-                    if (this.isEnd)
-                    	var32 += dist;
                     byte var42 = 32;
                     double var43;
 
-                    if (var31 > var6 - var42 && !this.isEnd)
+                    if (var31 > var6 - var42)
                     {
                         var43 = (double)((float)(var31 - (var6 - var42)) / ((float)var42 - 1.0F));
                         var32 = var32 * (1.0D - var43) + -30.0D * var43;
-                    }
-                    
-                    var42 = 2;
-                    
-                    if (var31 > var6 / 2 - var42 && this.isEnd)
-                    {
-                        var43 = (double)((float)(var31 - (var6 / 2 - var42)) / (64F));
-                        
-                        if (var43 < 0.0D)
-                        {
-                        	var43 = 0.0D;
-                        }
-
-                        if (var43 > 1.0D)
-                        {
-                        	var43 = 1.0D;
-                        }
-                        
-                        var32 = var32 * (1.0D - var43) + -3000.0D * var43;
                     }
 
                     var42 = 8;
@@ -429,10 +386,6 @@ public class BTASkyChunkProvider implements IChunkProvider
 	{
 		if (this.isNether) {
 			this.populateNether(par1IChunkProvider, par2, par3);
-			return;
-		}
-		else if (this.isEnd) {
-			this.populateEnd(par1IChunkProvider, par2, par3);
 			return;
 		}
 		
@@ -615,19 +568,6 @@ public class BTASkyChunkProvider implements IChunkProvider
             (new WorldGenHellLava(Block.lavaMoving.blockID, true)).generate(this.worldObj, this.rand, var9, var10, var12);
         }
 
-        BlockSand.fallInstantly = false;
-    }
-
-    /**
-     * Populates chunk with ores etc etc
-     */
-    public void populateEnd(IChunkProvider par1IChunkProvider, int par2, int par3)
-    {
-        BlockSand.fallInstantly = true;
-        int var4 = par2 * 16;
-        int var5 = par3 * 16;
-        BiomeGenBase var6 = this.worldObj.getBiomeGenForCoords(var4 + 16, var5 + 16);
-        var6.decorate(this.worldObj, this.worldObj.rand, var4, var5);
         BlockSand.fallInstantly = false;
     }
 

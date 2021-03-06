@@ -17,10 +17,7 @@ public class WorldProviderEnd extends WorldProvider
      */
     public IChunkProvider createChunkGenerator()
     {
-    	//if (this.worldObj.provider.terrainType == WorldType.DEFAULT || this.worldObj.provider.terrainType == WorldType.DEFAULT_1_1 || this.worldObj.provider.terrainType == WorldType.FLAT || this.worldObj.provider.terrainType == WorldType.LARGE_BIOMES)
-    		return new ChunkProviderEnd(this.worldObj, this.worldObj.getSeed());
-    	//else
-    	//	return new BTASkyChunkProvider(this.worldObj, this.worldObj.getSeed(), true).setEnd();
+    	return this.terrainType.getChunkProviderEnd(this.worldObj, this.worldObj.getSeed());
     }
 
     /**
