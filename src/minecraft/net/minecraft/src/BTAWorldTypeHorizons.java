@@ -21,6 +21,10 @@ public class BTAWorldTypeHorizons extends WorldType {
     	return new BTAHorizonsChunkProvider(world, seed, mapFeaturesEnabled);
     }
     
+    public IChunkProvider getChunkProviderEnd(World world, long seed) {
+    	return new BTAChunkProviderEnd(world, seed);
+    }
+    
     public float getCloudHeight() {
     	return 256F;
     }

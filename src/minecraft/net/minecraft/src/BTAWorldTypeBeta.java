@@ -21,6 +21,10 @@ public class BTAWorldTypeBeta extends WorldType {
     	return new BTABetaChunkProvider(world, seed, mapFeaturesEnabled);
     }
     
+    public IChunkProvider getChunkProviderEnd(World world, long seed) {
+    	return new BTAChunkProviderEnd(world, seed);
+    }
+    
     public boolean hasDeco() {
     	return true;
     }
