@@ -25,8 +25,7 @@ public class BTAHorizonsNoiseOctaves extends NoiseGenerator
      * pars:(par2,3,4=noiseOffset ; so that adjacent noise segments connect) (pars5,6,7=x,y,zArraySize),(pars8,10,12 =
      * x,y,z noiseScale)
      */
-    public double[] generateNoiseOctaves(double[] noiseArray, int xOffset, int yOffset, int zOffset,
-    		int xSize, int ySize, int zSize, double xScale, double yScale, double zSacle)
+    public double[] generateNoiseOctaves(double[] noiseArray, int xOffset, int yOffset, int zOffset, int xSize, int ySize, int zSize, double xScale, double yScale, double zSacle)
     {
     	//Resets noise array
         if (noiseArray == null)

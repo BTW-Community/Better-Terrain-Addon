@@ -181,8 +181,10 @@ public class BTAHorizonsChunkProvider implements IChunkProvider
 			}
 		}
 
-		double octaveScalarXZ = 684.412D;
-		double octaveScalarY = 684.412D;
+		//double octaveScalarXZ = 684.412D;
+		//double octaveScalarY = 684.412D;
+		double octaveScalarXZ = 1000D;
+		double octaveScalarY = 1000D;
 		this.biomeHeightNoise = this.biomeHeightNoiseGen.generateNoiseOctaves(this.biomeHeightNoise, posX, posZ, sizeX, sizeZ, 200.0D, 200.0D, 0.5D);
 		this.blockModifierNoise = this.blockModifierNoiseGen.generateNoiseOctaves(this.blockModifierNoise, posX, posY, posZ, sizeX, sizeY, sizeZ, octaveScalarXZ / 80.0D, octaveScalarY / 160.0D, octaveScalarXZ / 80.0D);
 		this.blockNoise1 = this.blockNoiseGen1.generateNoiseOctaves(this.blockNoise1, posX, posY, posZ, sizeX, sizeY, sizeZ, octaveScalarXZ, octaveScalarY, octaveScalarXZ);
@@ -323,7 +325,7 @@ public class BTAHorizonsChunkProvider implements IChunkProvider
 				BiomeGenBase biome = biomeArray[i + k * 16];
 				
 				float biomeTemp = biome.getFloatTemperature();
-				int stoneNoiseSample = (int)(this.soilDepthNoise[i + k * 16] / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
+				int stoneNoiseSample = (int)(this.soilDepthNoise[k + i * 16] / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
 				int remainingFillerDepth = -1;
 				int topBlock;
 				int fillerBlock;
