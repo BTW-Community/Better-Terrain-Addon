@@ -584,7 +584,7 @@ public class BTABiomeDecorator
 
 		if (this.currentWorld.provider.terrainType.isSky()) {
 			this.genStandardOre1(20, this.coalGen, 0, 128);
-			this.genStandardOre1(20, this.ironGen, 0, 64);
+			this.genStandardOre1(24, this.ironGen, 0, 80);
 			this.genStandardOre1(3, this.goldGen, 0, 48);
 			this.genStandardOre1(12, this.redstoneGen, 0, 32);
 			this.genStandardOre1(2, this.diamondGen, 16, 32);
