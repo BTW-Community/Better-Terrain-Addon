@@ -55,6 +55,11 @@ public class BTAWorldGenClay extends WorldGenerator {
                             {
                                 par1World.setBlock(var8, var12, var9, this.clayBlockId, 3, 2);
                             }
+                            else if (var13 == Block.blockClay.blockID)
+                            {
+                            	int meta = par1World.getBlockMetadata(par3, par4, par5);
+                                par1World.setBlock(var8, var12, var9, this.clayBlockId, meta, 2);
+                            }
                         }
                     }
                 }
