@@ -51,6 +51,9 @@ public class GuiCreateWorld extends GuiScreen
     
     private GuiButton buttonIsDeco;
     private boolean isDeco;
+    
+    private GuiButton buttonIsSmall;
+    private boolean isSmall;
 
     /** The first line of text describing the currently selected game mode. */
     private String gameModeDescriptionLine1;
@@ -100,19 +103,21 @@ public class GuiCreateWorld extends GuiScreen
         this.buttonList.add(new GuiButton(0, this.width / 2 - 155, this.height - 28, 150, 20, var1.translateKey("selectWorld.create")));
         this.buttonList.add(new GuiButton(1, this.width / 2 + 5, this.height - 28, 150, 20, var1.translateKey("gui.cancel")));
         this.buttonList.add(this.buttonGameMode = new GuiButton(2, this.width / 2 - 75, 115, 150, 20, var1.translateKey("selectWorld.gameMode")));
-        this.buttonList.add(this.moreWorldOptions = new GuiButton(3, this.width / 2 - 75, 187, 150, 20, var1.translateKey("selectWorld.moreWorldOptions")));
+        this.buttonList.add(this.moreWorldOptions = new GuiButton(3, this.width / 2 - 75, 215, 150, 20, var1.translateKey("selectWorld.moreWorldOptions")));
         this.buttonList.add(this.buttonGenerateStructures = new GuiButton(4, this.width / 2 - 155, 100, 150, 20, var1.translateKey("selectWorld.mapFeatures")));
         this.buttonGenerateStructures.drawButton = false;
-        this.buttonList.add(this.buttonBonusItems = new GuiButton(7, this.width / 2 + 5, 151, 150, 20, var1.translateKey("selectWorld.bonusItems")));
+        this.buttonList.add(this.buttonBonusItems = new GuiButton(7, this.width / 2 + 5, 175, 150, 20, var1.translateKey("selectWorld.bonusItems")));
         this.buttonBonusItems.drawButton = false;
         this.buttonList.add(this.buttonWorldType = new GuiButton(5, this.width / 2 + 5, 100, 150, 20, var1.translateKey("selectWorld.mapType")));
         this.buttonWorldType.drawButton = false;
-        this.buttonList.add(this.buttonAllowCommands = new GuiButton(6, this.width / 2 - 155, 151, 150, 20, var1.translateKey("selectWorld.allowCommands")));
+        this.buttonList.add(this.buttonAllowCommands = new GuiButton(6, this.width / 2 - 155, 175, 150, 20, var1.translateKey("selectWorld.allowCommands")));
         this.buttonAllowCommands.drawButton = false;
         this.buttonList.add(this.buttonCustomize = new GuiButton(8, this.width / 2 + 5, 120, 150, 20, var1.translateKey("selectWorld.customizeType")));
         this.buttonCustomize.drawButton = false;
         this.buttonList.add(this.buttonIsDeco = new GuiButton(9, this.width / 2 + 5, 120, 150, 20, var1.translateKey("selectWorld.isDeco")));
         this.buttonIsDeco.drawButton = false;
+        this.buttonList.add(this.buttonIsSmall = new GuiButton(10, this.width / 2 + 5, 140, 150, 20, var1.translateKey("selectWorld.isSmall")));
+        this.buttonIsSmall.drawButton = false;
         this.buttonIsDeco.enabled = BTADecoIntegration.isDecoInstalled();
         this.textboxWorldName = new GuiTextField(this.fontRenderer, this.width / 2 - 100, 60, 200, 20);
         this.textboxWorldName.setFocused(true);
@@ -194,6 +199,13 @@ public class GuiCreateWorld extends GuiScreen
         else {
         	this.buttonIsDeco.displayString = var1.translateKey("selectWorld.isDeco") + " " + var1.translateKey("options.off");
         }
+        
+        if (this.isSmall) {
+        	this.buttonIsSmall.displayString = var1.translateKey("selectWorld.isSmall") + " " + var1.translateKey("options.on");
+        }
+        else {
+        	this.buttonIsSmall.displayString = var1.translateKey("selectWorld.isSmall") + " " + var1.translateKey("options.off");
+        }
     }
 
     public static String func_73913_a(ISaveFormat par0ISaveFormat, String par1Str)
@@ -270,6 +282,10 @@ public class GuiCreateWorld extends GuiScreen
                 }
 
                 EnumGameType var8 = EnumGameType.getByName(this.gameMode);
+                
+                if (this.isSmall) {
+                	this.worldTypeId += 6;
+                }
                 
                 WorldType type = WorldType.worldTypes[this.worldTypeId];
                 
@@ -389,6 +405,10 @@ public class GuiCreateWorld extends GuiScreen
             	isDeco = !isDeco;
             	this.updateButtonText();
             }
+            else if (par1GuiButton.id == 10) {
+            	isSmall = !isSmall;
+            	this.updateButtonText();
+            }
         }
     }
 
@@ -407,6 +427,7 @@ public class GuiCreateWorld extends GuiScreen
         this.buttonAllowCommands.drawButton = this.moreOptions;
         this.buttonCustomize.drawButton = this.moreOptions && WorldType.worldTypes[this.worldTypeId] == WorldType.FLAT;
         this.buttonIsDeco.drawButton = this.moreOptions && (WorldType.worldTypes[this.worldTypeId].hasDeco());
+        this.buttonIsSmall.drawButton = this.moreOptions && (WorldType.worldTypes[this.worldTypeId] == BTAMod.BTAWorldType);
         StringTranslate var2;
 
         if (this.moreOptions)
@@ -477,7 +498,7 @@ public class GuiCreateWorld extends GuiScreen
             this.drawString(this.fontRenderer, var4.translateKey("selectWorld.enterSeed"), this.width / 2 - 100, 47, 10526880);
             this.drawString(this.fontRenderer, var4.translateKey("selectWorld.seedInfo"), this.width / 2 - 100, 85, 10526880);
             this.drawString(this.fontRenderer, var4.translateKey("selectWorld.mapFeatures.info"), this.width / 2 - 150, 122, 10526880);
-            this.drawString(this.fontRenderer, var4.translateKey("selectWorld.allowCommands.info"), this.width / 2 - 150, 172, 10526880);
+            this.drawString(this.fontRenderer, var4.translateKey("selectWorld.allowCommands.info"), this.width / 2 - 150, 200, 10526880);
             this.textboxSeed.drawTextBox();
         }
         else

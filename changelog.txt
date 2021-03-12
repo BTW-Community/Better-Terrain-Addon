@@ -1,5 +1,6 @@
 Version 1.1.3
 [list]
+[*]Added a new option to use vanilla sized biomes in standard BTA generation.
 [*]Added the ability for tall grass, reeds, and saplings to grow on grassy clay.
 [*]Changed how the end generates in all BTA world types to create slightly more interesitng terrain.
 [*]Changed (increased) the height to which iron will generate in skylands given that at any given time the player is likely to be much higher in elevation that in vanilla.

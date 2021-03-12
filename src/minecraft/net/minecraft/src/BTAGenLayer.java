@@ -23,11 +23,14 @@ public abstract class BTAGenLayer extends GenLayer {
         var11 = new GenLayerZoom(2003L, var10);
         var10 = new GenLayerAddIsland(4L, var11);
         GenLayerAddMushroomIsland var15 = new GenLayerAddMushroomIsland(5L, var10);
-        byte var4 = 5;
+        byte scale = 5;
+        
+        if (par2WorldType == BTAMod.BTAWorldTypeSmall || par2WorldType == BTAMod.BTAWorldTypeSmallDeco)
+        	scale = 4;
 
         GenLayer var5 = GenLayerZoom.magnify(1000L, var15, 0);
         GenLayerRiverInit var13 = new GenLayerRiverInit(100L, var5);
-        var5 = GenLayerZoom.magnify(1000L, var13, var4 + 2);
+        var5 = GenLayerZoom.magnify(1000L, var13, scale + 2);
         GenLayerRiver var14 = new GenLayerRiver(1L, var5);
         GenLayerSmooth var16 = new GenLayerSmooth(1000L, var14);
         GenLayer var6 = GenLayerZoom.magnify(1000L, var15, 0);
@@ -35,21 +38,21 @@ public abstract class BTAGenLayer extends GenLayer {
         var6 = GenLayerZoom.magnify(1000L, var17, 2);
         Object var18 = new BTAGenLayerHills(1000L, var6);
 
-        for (int var7 = 0; var7 < var4; ++var7)
+        for (int i = 0; i < scale; ++i)
         {
-            var18 = new GenLayerZoom((long)(1000 + var7), (GenLayer)var18);
+            var18 = new GenLayerZoom((long)(1000 + i), (GenLayer)var18);
 
-            if (var7 == 0)
+            if (i == 0)
             {
                 var18 = new GenLayerAddIsland(3L, (GenLayer)var18);
             }
 
-            if (var7 == 1)
+            if (i == 1)
             {
                 var18 = new BTAGenLayerShore(1000L, (GenLayer)var18);
             }
 
-            if (var7 == 1)
+            if (i == 1)
             {
                 var18 = new GenLayerSwampRivers(1000L, (GenLayer)var18);
             }
