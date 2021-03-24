@@ -19,6 +19,7 @@ public class BTAGuiGeneratorOptions extends GuiScreen
 	private static final int id_enable = 2;
 	private static final int id_enableAll = 3;
 	private static final int id_oceanSize = 4;
+	private static final int id_smallBiomes = 5;
 
 	public BTAGuiGeneratorOptions(GuiCreateWorld createWorldGui, String infoString)
 	{
@@ -52,8 +53,8 @@ public class BTAGuiGeneratorOptions extends GuiScreen
 		this.buttonList.add(this.buttonPerlinBeaches = new GuiButton(id_perlin, this.width / 2 - 50, this.height - 28, 100, 20, "Better Shores: On"));
 		this.buttonList.add(this.buttonEnable = new GuiButton(id_enable, this.width / 2 - 155, this.height - 52, 100, 20, "Enable/Disable"));
 		this.buttonList.add(this.buttonAll = new GuiButton(id_enableAll, this.width / 2 - 50, this.height - 52, 100, 20, "Disable All"));
-		this.buttonList.add(this.sliderOceanSize = new GuiSlider(4, this.width / 2 + 55, this.height - 52, 100, 20, "-"));
-		this.buttonList.add(this.buttonSetting = new GuiButton(5, this.width / 2 + 55, this.height - 28, 100, 20, "-"));
+		//this.buttonList.add(this.sliderOceanSize = new GuiSlider(4, this.width / 2 + 55, this.height - 52, 100, 20, "-"));
+		this.buttonList.add(this.buttonSetting = new GuiButton(5, this.width / 2 + 55, this.height - 28, 100, 20, "Biome Size: BTA"));
 		this.setButtons();
 		this.switchScreen();
 	}
@@ -133,8 +134,7 @@ public class BTAGuiGeneratorOptions extends GuiScreen
 	public void setButtons() {
 		boolean var1 = this.checkPossible();
 		this.buttonEnable.enabled = var1;
-		this.buttonBiome.enabled = false;
-		this.buttonSetting.enabled = false;
+		//this.buttonBiome.enabled = false;
 	}
 
 	private boolean checkPossible() {
@@ -144,7 +144,7 @@ public class BTAGuiGeneratorOptions extends GuiScreen
 	public void switchScreen() {
 		this.buttonEnable.drawButton = true;
 		this.buttonAll.drawButton = true;
-		this.buttonBiome.drawButton = true;
+		//this.buttonBiome.drawButton = true;
 		this.buttonSetting.displayString = "-";
 	}
 
