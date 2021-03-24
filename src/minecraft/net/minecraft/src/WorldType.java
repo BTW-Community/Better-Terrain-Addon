@@ -128,11 +128,11 @@ public class WorldType
         return this.worldTypeId;
     }
     
-    public WorldChunkManager getChunkManager(World world) {
+    public WorldChunkManager getChunkManager(World world, String generatorOptions) {
     	return new WorldChunkManager(world);
     }
     
-    public IChunkProvider getChunkProviderOverworld(World world, long seed, boolean mapFeaturesEnabled) {
+    public IChunkProvider getChunkProviderOverworld(World world, long seed, boolean mapFeaturesEnabled, String generatorOptions) {
     	return new ChunkProviderGenerate(world, seed, mapFeaturesEnabled);
     }
     

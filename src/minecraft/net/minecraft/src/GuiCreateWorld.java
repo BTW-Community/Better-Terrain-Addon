@@ -535,4 +535,8 @@ public class GuiCreateWorld extends GuiScreen
             this.gameMode = "creative";
         }
     }
+
+	public boolean isDeco() {
+		return isDeco;
+	}
 }

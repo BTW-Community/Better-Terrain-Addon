@@ -1,9 +1,20 @@
+Version 1.2.0
+[list]
+[*]Added expanded configuration to BTA world creation. This allows selecting and deselecting biomes to include in world generation, as well as other configuration options (options for deco and biome size have been moved within this menu). In addition, this allows me to add new biomes without breaking old worlds. To generate any of the following biomes added in this release, you will have to create a new world.
+[*]Added willow groves as a new swamp variant (witches, slimes, reeds).
+[*]Added icy peaks as a new mountain variant (emeralds).
+[*]Added frozen beaches, which spawn along coasts of snowy biomes. These will generate in existing worlds but will not cause any seams except for on the surface where snow starts generating.
+[*]Changed skylands cloud height to render below the bottom of the world (reduced y level from 8 to -8).
+[*]Fixed an issue where reeds could not generate along rivers in jungles.
+[/list]
+
 Version 1.1.3
 [list]
+[*]Removed space in the filename to assist users on linux.
 [*]Added a new option to use vanilla sized biomes in standard BTA generation. The world types are "BTASmall" and "BTASmallDeco" for server owners.
 [*]Added the ability for clay to replace grass in standard (waterlogged) generation. This allows clay to form on shores in grass like it does in sand variants.
 [*]Added the ability for tall grass, reeds, and saplings to grow on grassy clay.
-[*]Changed how the end generates in all BTA world types to create slightly more interesitng terrain.
+[*]Changed how the end generates in all BTA world types to create slightly more interesting terrain.
 [*]Changed (increased) the height to which iron will generate from 64 to 80 in skylands given that at any given time the player is likely to be much higher in elevation that in vanilla.
 [*]Changed sugar cane in skylands to no longer be restricted by biome given how rarely it still generates.
 [*]Fixed an issue where fungal forest and fungal forest lowlands did not have the same grass color.

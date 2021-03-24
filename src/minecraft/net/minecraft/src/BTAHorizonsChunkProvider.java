@@ -74,15 +74,15 @@ public class BTAHorizonsChunkProvider implements IChunkProvider
 	 * temperature is low enough
 	 */
 	public void generateTerrain(int chunkX, int chunkZ, int[][][] blockArray) {
-		int terrainHeight = 128;
+		int terrainHeight = 256;
 
 		this.parabolicRadius = 2;
-		this.seaLevel = 63;
+		this.seaLevel = 127;
 		
 		byte xzResolution = 4;
 		byte yResolution = 16;
 		int noiseFieldSizeX = xzResolution + 1;
-		byte noiseFieldSizeY = 17;
+		byte noiseFieldSizeY = 49;
 		int noiseFieldSizeZ = xzResolution + 1;
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, chunkX * 4 - 2, chunkZ * 4 - 2, noiseFieldSizeX + (parabolicRadius * 2 + 1), noiseFieldSizeZ + (parabolicRadius * 2 + 1));
 		
@@ -181,10 +181,10 @@ public class BTAHorizonsChunkProvider implements IChunkProvider
 			}
 		}
 
-		//double octaveScalarXZ = 684.412D;
-		//double octaveScalarY = 684.412D;
-		double octaveScalarXZ = 1000D;
-		double octaveScalarY = 1000D;
+		double octaveScalarXZ = 684.412D;
+		double octaveScalarY = 684.412D;
+		//double octaveScalarXZ = 1000D;
+		//double octaveScalarY = 1000D;
 		this.biomeHeightNoise = this.biomeHeightNoiseGen.generateNoiseOctaves(this.biomeHeightNoise, posX, posZ, sizeX, sizeZ, 200.0D, 200.0D, 0.5D);
 		this.blockModifierNoise = this.blockModifierNoiseGen.generateNoiseOctaves(this.blockModifierNoise, posX, posY, posZ, sizeX, sizeY, sizeZ, octaveScalarXZ / 80.0D, octaveScalarY / 160.0D, octaveScalarXZ / 80.0D);
 		this.blockNoise1 = this.blockNoiseGen1.generateNoiseOctaves(this.blockNoise1, posX, posY, posZ, sizeX, sizeY, sizeZ, octaveScalarXZ, octaveScalarY, octaveScalarXZ);
@@ -445,6 +445,8 @@ public class BTAHorizonsChunkProvider implements IChunkProvider
 		int[][][] blockArrayBase = new int[16][16][256];
 		this.generateTerrain(chunkX, chunkZ, blockArrayBase);
 		
+		
+		/*
 		//Raises entire terrain by 64 blocks
 		int[][][] blockArray = new int[16][16][256];
 		
@@ -460,6 +462,8 @@ public class BTAHorizonsChunkProvider implements IChunkProvider
 				}
 			}
 		}
+		*/
+		int[][][] blockArray = blockArrayBase;
 
 		this.generateCaves(chunkX, chunkZ, blockArray);
 		

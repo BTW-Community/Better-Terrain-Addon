@@ -5,7 +5,7 @@ public abstract class WorldProvider
     /** world object being used */
     public World worldObj;
     public WorldType terrainType;
-    public String field_82913_c;
+    public String generatorOptions;
 
     /** World chunk manager being used to generate chunks */
     public WorldChunkManager worldChunkMgr;
@@ -36,7 +36,7 @@ public abstract class WorldProvider
     {
         this.worldObj = par1World;
         this.terrainType = par1World.getWorldInfo().getTerrainType();
-        this.field_82913_c = par1World.getWorldInfo().getGeneratorOptions();
+        this.generatorOptions = par1World.getWorldInfo().getGeneratorOptions();
         this.registerWorldChunkManager();
         this.generateLightBrightnessTable();
     }
@@ -67,7 +67,7 @@ public abstract class WorldProvider
         }
         else
         {
-            this.worldChunkMgr = this.terrainType.getChunkManager(this.worldObj);
+            this.worldChunkMgr = this.terrainType.getChunkManager(this.worldObj, this.generatorOptions);
         }
     }
 
@@ -77,10 +77,10 @@ public abstract class WorldProvider
     public IChunkProvider createChunkGenerator()
     {
     	if (this.terrainType == WorldType.FLAT) {
-    		return new ChunkProviderFlat(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), this.field_82913_c);
+    		return new ChunkProviderFlat(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), this.generatorOptions);
     	}
     	else {
-    		return this.terrainType.getChunkProviderOverworld(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled());
+    		return this.terrainType.getChunkProviderOverworld(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), this.generatorOptions);
     	}
     }
 

@@ -12,31 +12,38 @@ public class BTAWorldTypeHorizons extends WorldType {
     {
         return "Horizons";
     }
-    
-    public WorldChunkManager getChunkManager(World world) {
+
+    @Override
+    public WorldChunkManager getChunkManager(World world, String generatorOptions) {
     	return new BTAHorizonsWorldChunkManager(world);
     }
     
-    public IChunkProvider getChunkProviderOverworld(World world, long seed, boolean mapFeaturesEnabled) {
+    @Override
+    public IChunkProvider getChunkProviderOverworld(World world, long seed, boolean mapFeaturesEnabled, String generatorOptions) {
     	return new BTAHorizonsChunkProvider(world, seed, mapFeaturesEnabled);
     }
-    
+
+    @Override
     public IChunkProvider getChunkProviderEnd(World world, long seed) {
     	return new BTAChunkProviderEnd(world, seed);
     }
-    
+
+    @Override
     public float getCloudHeight() {
     	return 256F;
     }
-    
+
+    @Override
     public int getAverageGroundLevel() {
     	return 128;
     }
-    
+
+    @Override
     public double getHorizon() {
     	return 128F;
     }
-    
+
+    @Override
     public int[] getStrataLevels() {
     	return new int[] {96, 48, 24};
     }

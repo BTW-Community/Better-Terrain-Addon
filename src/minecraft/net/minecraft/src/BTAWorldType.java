@@ -12,15 +12,18 @@ public class BTAWorldType extends WorldType {
     {
         return "Better Terrain";
     }
-    
-    public WorldChunkManager getChunkManager(World world) {
+
+    @Override
+    public WorldChunkManager getChunkManager(World world, String generatorOptions) {
     	return new BTAWorldChunkManager(world);
     }
-    
-    public IChunkProvider getChunkProviderOverworld(World world, long seed, boolean mapFeaturesEnabled) {
+
+    @Override
+    public IChunkProvider getChunkProviderOverworld(World world, long seed, boolean mapFeaturesEnabled, String generatorOptions) {
     	return new BTAChunkProvider(world, seed, mapFeaturesEnabled);
     }
-    
+
+    @Override
     public IChunkProvider getChunkProviderEnd(World world, long seed) {
     	return new BTAChunkProviderEnd(world, seed);
     }

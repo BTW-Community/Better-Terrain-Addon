@@ -13,18 +13,22 @@ public class BTAWorldTypeBeta extends WorldType {
         return "Beta";
     }
     
-    public WorldChunkManager getChunkManager(World world) {
+    @Override
+    public WorldChunkManager getChunkManager(World world, String generatorOptions) {
     	return new BTABetaChunkManager(world);
     }
-    
-    public IChunkProvider getChunkProviderOverworld(World world, long seed, boolean mapFeaturesEnabled) {
+
+    @Override
+    public IChunkProvider getChunkProviderOverworld(World world, long seed, boolean mapFeaturesEnabled, String generatorOptions) {
     	return new BTABetaChunkProvider(world, seed, mapFeaturesEnabled);
     }
-    
+
+    @Override
     public IChunkProvider getChunkProviderEnd(World world, long seed) {
     	return new BTAChunkProviderEnd(world, seed);
     }
-    
+
+    @Override
     public boolean hasDeco() {
     	return true;
     }
