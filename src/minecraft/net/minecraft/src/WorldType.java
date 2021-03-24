@@ -176,4 +176,8 @@ public class WorldType
     public boolean isSky() {
     	return false;
     }
+    
+    public boolean isBTA() {
+    	return false;
+    }
 }

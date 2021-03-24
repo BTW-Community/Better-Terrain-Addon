@@ -28,7 +28,13 @@ public class BTAWorldType extends WorldType {
     	return new BTAChunkProviderEnd(world, seed);
     }
     
+    @Override
     public boolean hasDeco() {
+    	return true;
+    }
+
+    @Override
+    public boolean isBTA() {
     	return true;
     }
 }

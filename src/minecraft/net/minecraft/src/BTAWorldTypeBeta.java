@@ -32,4 +32,9 @@ public class BTAWorldTypeBeta extends WorldType {
     public boolean hasDeco() {
     	return true;
     }
+
+    @Override
+    public boolean isBTA() {
+    	return true;
+    }
 }

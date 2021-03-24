@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BTAWorldConfigurationInfo {
-	private ArrayList<BTABiomeGenBase> biomesForGeneration;
+	private ArrayList<BTABiomeInfo> biomeInfoList = new ArrayList();
+	private ArrayList<BTABiomeGenBase> biomesForGeneration = new ArrayList();
 	
 	private boolean compatMode = false;
 	private int oceanSize = 10;
@@ -18,8 +19,11 @@ public class BTAWorldConfigurationInfo {
 			info.setBiomesForGeneration(BTABiomeConfiguration.biomeList);
 		else
 			info.setBiomesForGeneration(BTABiomeConfiguration.biomeListDeco);
+		info.setCompatMode(false);
 		info.setGenerateOceans(10);
 		info.setGeneratePerlinBeaches(true);
+
+		info.generateBiomeInfoListFromBiomes(BTABiomeConfiguration.biomeListDeco);
 		
 		return info;
 	}
@@ -31,8 +35,11 @@ public class BTAWorldConfigurationInfo {
 			info.setBiomesForGeneration(BTABiomeConfiguration.biomeListCompat);
 		else
 			info.setBiomesForGeneration(BTABiomeConfiguration.biomeListDecoCompat);
+		info.setCompatMode(true);
 		info.setGenerateOceans(10);
 		info.setGeneratePerlinBeaches(false);
+		
+		info.generateBiomeInfoListFromBiomes(BTABiomeConfiguration.biomeListDecoCompat);
 		
 		return info;
 	}
@@ -48,11 +55,16 @@ public class BTAWorldConfigurationInfo {
 		String[] biomeSplit = infoSplit[0].split(" ");
 		
 		for (String s : biomeSplit) {
-			this.biomesForGeneration.add((BTABiomeGenBase) BiomeGenBase.biomeList[Integer.parseInt(s)]);
+			String[] biomeInfoSplit = s.split("=");
+			
+			BTABiomeInfo biomeInfo = BTABiomeConfiguration.biomeInfoMap.get(Integer.parseInt(biomeInfoSplit[0]));
+			biomeInfo.setEnabled(Boolean.parseBoolean(biomeInfoSplit[1]));
+			
+			this.biomeInfoList.add(biomeInfo);
 		}
 		
 		for (int i = 1; i < infoSplit.length; i++) {
-			if (i == 1) this.compatMode = false;
+			if (i == 1) this.compatMode = Boolean.parseBoolean(infoSplit[i]);
 			if (i == 2) this.oceanSize = Integer.parseInt(infoSplit[i]);
 			if (i == 3) this.generatePerlinBeaches = Boolean.parseBoolean(infoSplit[i]);
 		}
@@ -61,8 +73,8 @@ public class BTAWorldConfigurationInfo {
 	public String toString() {
 		String out = "";
 		
-		for (BiomeGenBase b : this.biomesForGeneration) {
-			out += b.biomeID + " ";
+		for (BTABiomeInfo b : this.biomeInfoList) {
+			out += b.toString() + " ";
 		}
 		
 		out += "; ";
@@ -71,6 +83,20 @@ public class BTAWorldConfigurationInfo {
 		out += generatePerlinBeaches;
 		
 		return out;
+	}
+	
+	public void generateBiomeInfoListFromBiomes(ArrayList<BTABiomeGenBase> biomeList) {
+		for (BTABiomeGenBase b : biomeList) {
+			this.biomeInfoList.add(BTABiomeConfiguration.biomeInfoMap.get(b.biomeID));
+		}
+	}
+
+	public ArrayList<BTABiomeInfo> getBiomeInfoList() {
+		return biomeInfoList;
+	}
+
+	public void setBiomeInfoList(ArrayList<BTABiomeInfo> biomeInfoList) {
+		this.biomeInfoList = biomeInfoList;
 	}
 
 	public ArrayList<BTABiomeGenBase> getBiomesForGeneration() {
@@ -106,10 +132,5 @@ public class BTAWorldConfigurationInfo {
 	public BTAWorldConfigurationInfo setGeneratePerlinBeaches(boolean generateBeaches) {
 		this.generatePerlinBeaches = generateBeaches;
 		return this;
-	}
-
-	public List theBiomesList() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

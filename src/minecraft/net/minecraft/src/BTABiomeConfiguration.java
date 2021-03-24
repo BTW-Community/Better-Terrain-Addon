@@ -1,6 +1,8 @@
 package net.minecraft.src;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BTABiomeConfiguration {
 	public static final BTABiomeGenBase woods = new BTABiomeGenWoods(100).setColor(353825).setBiomeName("Woods").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.1F, 0.5F);
@@ -91,8 +93,8 @@ public class BTABiomeConfiguration {
 	public static ArrayList<BTABiomeGenBase> biomeListDeco = new ArrayList();
 	public static ArrayList<BTABiomeGenBase> biomeListCompat = new ArrayList();
 	public static ArrayList<BTABiomeGenBase> biomeListDecoCompat = new ArrayList();
-
-	public static BTABiomeInfo[] biomeInfoList = new BTABiomeInfo[BiomeGenBase.biomeList.length];
+	
+	public static Map<Integer, BTABiomeInfo> biomeInfoMap = new HashMap();
 
 	private static ArrayList<BiomeGenBase> beachlessBiomes = new ArrayList();
 	
@@ -145,7 +147,7 @@ public class BTABiomeConfiguration {
 		biomeListCompat.add(orchard);
 		biomeListCompat.add(steppe);
 		
-		biomeListDecoCompat.addAll(biomeList);
+		biomeListDecoCompat.addAll(biomeListCompat);
 		biomeListDecoCompat.add(outback);
 		biomeListDecoCompat.add(cherryForest);
 		biomeListDecoCompat.add(badlandsPlateau);
@@ -154,8 +156,13 @@ public class BTABiomeConfiguration {
 		biomeList.addAll(biomeListCompat);
 		biomeList.add(willowGrove);
 		biomeList.add(icyPeaks);
-		
-		biomeListDeco.addAll(biomeListDecoCompat);
+
+		biomeListDeco.addAll(biomeList);
+		for (BTABiomeGenBase b : biomeListDecoCompat) {
+			if (!biomeListDeco.contains(b)) {
+				biomeListDeco.add(b);
+			}
+		}
 	}
 	
 	public static void addSingleBiome(BTABiomeGenBase biome) {
@@ -166,9 +173,9 @@ public class BTABiomeConfiguration {
 	public static void initBiomeInfoList() {
 		for (BTABiomeGenBase b : biomeListDeco) {
 			if (biomeList.contains(b))
-				biomeInfoList[b.biomeID] = new BTABiomeInfo(b.biomeID, true);
+				biomeInfoMap.put(b.biomeID, new BTABiomeInfo(b.biomeID, true));
 			else
-				biomeInfoList[b.biomeID] = new BTABiomeInfo(b.biomeID, true, true);
+				biomeInfoMap.put(b.biomeID, new BTABiomeInfo(b.biomeID, true, true));
 		}
 	}
 	
@@ -416,7 +423,7 @@ public class BTABiomeConfiguration {
 		int beachBiome = -1;
 		
 		if (BiomeGenBase.biomeList[baseBiome].getEnableSnow()) {
-			beachBiome = frozenBeach.biomeID;
+			//beachBiome = frozenBeach.biomeID;
 		}
 		else if (baseBiome == outback.biomeID || baseBiome == badlands.biomeID) {
 			beachBiome = beachOutback.biomeID;

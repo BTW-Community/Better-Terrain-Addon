@@ -47,4 +47,9 @@ public class BTAWorldTypeHorizons extends WorldType {
     public int[] getStrataLevels() {
     	return new int[] {96, 48, 24};
     }
+
+    @Override
+    public boolean isBTA() {
+    	return true;
+    }
 }

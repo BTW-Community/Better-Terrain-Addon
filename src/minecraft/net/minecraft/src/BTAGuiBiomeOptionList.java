@@ -2,13 +2,13 @@ package net.minecraft.src;
 
 class BTAGuiBiomeOptionList extends GuiSlot
 {
-    final BTAGuiGeneratorOptions generatorOptionsGui;
+    final BTAGuiGeneratorOptions guiGeneratorOptions;
     public int selected;
 
-    public BTAGuiBiomeOptionList(BTAGuiGeneratorOptions var1)
+    public BTAGuiBiomeOptionList(BTAGuiGeneratorOptions guiGeneratorOptions)
     {
-        super(var1.mc, var1.width, var1.height, 43, var1.height - 60, 24);
-        this.generatorOptionsGui = var1;
+        super(guiGeneratorOptions.mc, guiGeneratorOptions.width, guiGeneratorOptions.height, 43, guiGeneratorOptions.height - 60, 24);
+        this.guiGeneratorOptions = guiGeneratorOptions;
         this.selected = -1;
     }
 
@@ -17,7 +17,7 @@ class BTAGuiBiomeOptionList extends GuiSlot
      */
     protected int getSize()
     {
-        return BTAGuiGeneratorOptions.getBiomeArray(this.generatorOptionsGui).theBiomesList().size();
+        return BTAGuiGeneratorOptions.getBiomeArray(this.guiGeneratorOptions).getBiomeInfoList().size();
     }
 
     /**
@@ -26,7 +26,7 @@ class BTAGuiBiomeOptionList extends GuiSlot
     protected void elementClicked(int var1, boolean var2)
     {
         this.selected = var1;
-        this.generatorOptionsGui.setButtons();
+        this.guiGeneratorOptions.setButtons();
     }
 
     /**
@@ -39,26 +39,34 @@ class BTAGuiBiomeOptionList extends GuiSlot
 
     protected void drawBackground() {}
 
-    protected void drawSlot(int var1, int var2, int var3, int var4, Tessellator var5)
+    protected void drawSlot(int index, int x, int y, int var4, Tessellator tesselator)
     {
-    	BTABiomeInfo biomeInfo = (BTABiomeInfo)BTAGuiGeneratorOptions.getBiomeArray(this.generatorOptionsGui).theBiomesList().get(BTAGuiGeneratorOptions.getBiomeArray(this.generatorOptionsGui).theBiomesList().size() - var1 - 1);
-        String var7 = biomeInfo.getName();
-        boolean var8 = biomeInfo.getEnabled();
-
-        if (var8)
+    	BTABiomeInfo biomeInfo = (BTABiomeInfo)BTAGuiGeneratorOptions.getBiomeArray(this.guiGeneratorOptions).getBiomeInfoList().get(BTAGuiGeneratorOptions.getBiomeArray(this.guiGeneratorOptions).getBiomeInfoList().size() - index - 1);
+        String biomeName = biomeInfo.getName();
+        boolean biomeEnabled = biomeInfo.getEnabled();
+        boolean decoOnly = biomeInfo.isDecoOnly();
+        
+        if (biomeName.startsWith("Better "))
+        	biomeName = biomeName.substring(7);
+        
+        if (decoOnly && !guiGeneratorOptions.isDeco()) {
+            this.guiGeneratorOptions.fontRenderer.drawString(biomeName + " (Deco)", x + 1, y + 7, 8526880);
+            this.guiGeneratorOptions.fontRenderer.drawString(" - ", x + 179, y + 7, 8526880);
+        }
+        else if (biomeEnabled)
         {
-            this.generatorOptionsGui.fontRenderer.drawString(var7, var2 + 1, var3 + 7, 16777215);
-            this.generatorOptionsGui.fontRenderer.drawString("YES", var2 + 179, var3 + 7, 16777215);
+            this.guiGeneratorOptions.fontRenderer.drawString(biomeName, x + 1, y + 7, 16777215);
+            this.guiGeneratorOptions.fontRenderer.drawString("YES", x + 179, y + 7, 16777215);
         }
         else
         {
-            this.generatorOptionsGui.fontRenderer.drawString(var7, var2 + 1, var3 + 7, 10526880);
-            this.generatorOptionsGui.fontRenderer.drawString("NO", var2 + 182, var3 + 7, 10526880);
+            this.guiGeneratorOptions.fontRenderer.drawString(biomeName, x + 1, y + 7, 10526880);
+            this.guiGeneratorOptions.fontRenderer.drawString("NO", x + 182, y + 7, 10526880);
         }
     }
 
     protected int getScrollBarX()
     {
-        return this.generatorOptionsGui.width - 70;
+        return this.guiGeneratorOptions.width - 70;
     }
 }

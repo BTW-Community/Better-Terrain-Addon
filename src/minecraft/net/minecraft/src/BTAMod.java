@@ -12,10 +12,10 @@ public class BTAMod extends AddonExt {
 	public static final WorldType BTAWorldTypeSmall = new BTAWorldType(10, "BTASmall").setCanBeCreated(false);
 	public static final WorldType BTAWorldTypeSmallDeco = new BTAWorldType(11, "BTASmallDeco").setIsDeco().setCanBeCreated(false);
 
-	public static final WorldType BTAWorldTypeHorizons = new BTAWorldTypeHorizons(15, "BTAHorizons");//.setCanBeCreated(false);
+	public static final WorldType BTAWorldTypeHorizons = new BTAWorldTypeHorizons(15, "BTAHorizons").setCanBeCreated(false);
 	
 	private BTAMod() {
-		super("Better Terrain", "1.1.3", "BTA");
+		super("Better Terrain", "1.2.0", "BTA");
 	}
 
 	@Override
