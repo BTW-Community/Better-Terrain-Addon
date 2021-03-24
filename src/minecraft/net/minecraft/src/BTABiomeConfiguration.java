@@ -41,6 +41,8 @@ public class BTABiomeConfiguration {
 	public static final BTABiomeGenBase willowGrove = new BTABiomeGenWillowGrove(133).setColor(522674).setBiomeName("Willow Grove").func_76733_a(9154376).setMinMaxHeight(-0.1F, 0.3F).setTemperatureRainfall(0.8F, 0.8F);
 	public static final BTABiomeGenBase icyPeaks = new BTABiomeGenIcyPeaks(134).setColor(16421912).setBiomeName("Icy Peaks").setEnableSnow().setTemperatureRainfall(0.1F, 0.1F).setMinMaxHeight(0.5F, 1.5F);
 	public static final BTABiomeGenBase patagonia = new BTABiomeGenPatagonia(135).setColor(9286496).setBiomeName("Patagonia").setTemperatureRainfall(0.3F, 0.6F).setMinMaxHeight(0.0F, 0.5F);
+	public static final BTABiomeGenBase grasslands = new BTABiomeGenGrasslands(136).setColor(9286496).setBiomeName("Grasslands").setTemperatureRainfall(0.3F, 0.6F).setMinMaxHeight(0.2F, 0.3F);
+	public static final BTABiomeGenBase siberia = new BTABiomeGenSiberia(137).setColor(747097).setBiomeName("Siberia").func_76733_a(5159473).setTemperatureRainfall(0.1F, 0.4F).setMinMaxHeight(0.3F, 0.7F).setEnableSnow();
 
 	//Hill variants - spawn within the normal variants
 	public static final BTABiomeGenBase woodsHills = new BTABiomeGenWoods(150).setColor(353825).setBiomeName("Woods Hills").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.3F, 1.0F);
@@ -60,6 +62,7 @@ public class BTABiomeConfiguration {
 	public static final BTABiomeGenBase willowHills = new BTABiomeGenWillowGrove(164).setColor(522674).setBiomeName("Willow Hills").func_76733_a(9154376).setMinMaxHeight(0.2F, 0.6F).setTemperatureRainfall(0.8F, 0.8F);
 	public static final BTABiomeGenBase icyPeaksForested = new BTABiomeGenIcyPeaksForested(165).setColor(16421912).setBiomeName("Forested Icy Peaks").setEnableSnow().setTemperatureRainfall(0.1F, 0.1F).setMinMaxHeight(0.5F, 1.5F);
 	public static final BTABiomeGenBase patagoniaMountains = new BTABiomeGenPatagoniaMountains(166).setColor(9286496).setBiomeName("Patagonia Mountains").setTemperatureRainfall(0.1F, 0.6F).setMinMaxHeight(2.0F, 4.0F).setEnableSnow();
+	public static final BTABiomeGenBase grasslandsLake = new BTABiomeGenGrasslandsLake(167).setColor(9286496).setBiomeName("Grasslands Lake").setTemperatureRainfall(0.3F, 0.6F).setMinMaxHeight(-0.3F, 0.0F);
     
     //Deco only biomes
     public static final BTABiomeGenBase outback = new BTABiomeGenOutback(180).setColor(16421912).setBiomeName("Outback").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.1F, 0.4F);
@@ -79,6 +82,7 @@ public class BTABiomeConfiguration {
     public static final BTABiomeGenBase riverJungle = new BTABiomeGenRiverJungle(207).setColor(5470985).setBiomeName("Jungle River").func_76733_a(5470985).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(-0.5F, 0.0F);
     public static final BTABiomeGenBase riverWetlands = new BTABiomeGenRiverWetlands(208).setColor(522674).setBiomeName("Wetlands River").func_76733_a(9154376).setTemperatureRainfall(0.8F, 0.9F).setMinMaxHeight(-0.5F, 0.0F);
     public static final BTABiomeGenBase riverWillow = new BTABiomeGenRiverWillow(209).setColor(522674).setBiomeName("Willow Grove River").func_76733_a(9154376).setTemperatureRainfall(0.6F, 0.9F).setMinMaxHeight(-0.5F, 0.0F);
+	public static final BTABiomeGenBase riverPatagonia = new BTABiomeGenPatagoniaRiver(210).setColor(9286496).setBiomeName("Patagonia River").setTemperatureRainfall(0.3F, 0.6F).setMinMaxHeight(-0.5F, 0.0F);
     
     //Edge variants
     public static final BTABiomeGenBase alpineEdge = new BTABiomeGenAlpine(230).setColor(747097).setBiomeName("Alpine Edge").func_76733_a(5159473).setTemperatureRainfall(0.2F, 0.8F).setMinMaxHeight(0.2F, 0.5F);
@@ -88,7 +92,6 @@ public class BTABiomeConfiguration {
 	
 	//Beach variants
     public static final BTABiomeGenBase beachOutback = new BTABiomeGenBeachOutback(240).setColor(16440917).setBiomeName("Red Sand Beach").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.0F, 0.1F);
-    public static final BTABiomeGenBase frozenBeach = new BTABiomeGenBeach(241).setColor(16440917).setBiomeName("Beach").setTemperatureRainfall(0.1F, 0.1F).setMinMaxHeight(0.0F, 0.1F).setEnableSnow();
 	
     //Various biome lists
 	public static ArrayList<BTABiomeGenBase> biomeList = new ArrayList();
@@ -116,8 +119,8 @@ public class BTABiomeConfiguration {
 		addBiomesWithEdge();
 		filterEdgeBiomes();
 		addBiomesToStructureGenerators();
-		addBiomesToList();
-		//addSingleBiome(patagonia);
+		//addBiomesToList();
+		addSingleBiome(siberia);
 		initBiomeInfoList();
 	}
 	
@@ -159,6 +162,8 @@ public class BTABiomeConfiguration {
 		biomeList.add(willowGrove);
 		biomeList.add(icyPeaks);
 		biomeList.add(patagonia);
+		biomeList.add(grasslands);
+		biomeList.add(siberia);
 
 		biomeListDeco.addAll(biomeList);
 		for (BTABiomeGenBase b : biomeListDecoCompat) {
@@ -233,6 +238,7 @@ public class BTABiomeConfiguration {
 		pumpkinBiomes.add(heathland);
 		pumpkinBiomes.add(orchard);
 		pumpkinBiomes.add(patagonia);
+		pumpkinBiomes.add(grasslands);
 		
 		reedBiomes.add(wetlands);
 		reedBiomes.add(tropics);
@@ -251,6 +257,7 @@ public class BTABiomeConfiguration {
 		villageBiomes.add(orchard);
 		villageBiomes.add(outback);
 		villageBiomes.add(patagonia);
+		villageBiomes.add(grasslands);
 		
 		MapGenVillage.villageSpawnBiomes.addAll(villageBiomes);
 		
@@ -363,8 +370,8 @@ public class BTABiomeConfiguration {
         else if (baseBiome == icyPeaks.biomeID) {
         	hillsBiome = icyPeaksForested.biomeID;
         }
-        else if (baseBiome == patagonia.biomeID) {
-        	hillsBiome = patagoniaMountains.biomeID;
+        else if (baseBiome == grasslands.biomeID) {
+        	hillsBiome = grasslandsLake.biomeID;
         }
 		
 		return hillsBiome;
@@ -377,11 +384,14 @@ public class BTABiomeConfiguration {
 		if (baseBiome == wetlands.biomeID) {
         	hillsBiome = wetlandsHills.biomeID;
         }
+        else if (baseBiome == lushDesert.biomeID){
+            hillsBiome = oasis.biomeID;
+        }
         else if (baseBiome == willowGrove.biomeID) {
         	hillsBiome = willowHills.biomeID;
         }
-        else if (baseBiome == lushDesert.biomeID){
-            hillsBiome = oasis.biomeID;
+        else if (baseBiome == patagonia.biomeID) {
+        	hillsBiome = patagoniaMountains.biomeID;
         }
 		
 		return hillsBiome;
@@ -423,6 +433,9 @@ public class BTABiomeConfiguration {
 		else if (baseBiome == willowGrove.biomeID) {
 			riverBiome = riverWillow.biomeID;
 		}
+		else if (baseBiome == patagonia.biomeID) {
+			riverBiome = riverPatagonia.biomeID;
+		}
 		
 		return riverBiome;
 	}
@@ -430,10 +443,7 @@ public class BTABiomeConfiguration {
 	public static int getBeachVariantForBiomes(int baseBiome) {
 		int beachBiome = -1;
 		
-		if (BiomeGenBase.biomeList[baseBiome].getEnableSnow()) {
-			//beachBiome = frozenBeach.biomeID;
-		}
-		else if (baseBiome == outback.biomeID || baseBiome == badlands.biomeID) {
+		if (baseBiome == outback.biomeID || baseBiome == badlands.biomeID) {
 			beachBiome = beachOutback.biomeID;
 		}
 		
