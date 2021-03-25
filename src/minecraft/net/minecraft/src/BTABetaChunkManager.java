@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class BTABetaChunkManager extends WorldChunkManager {
+public class BTABetaChunkManager extends BTAWorldChunkManager {
     private GenLayer genBiomes;
 
     /** A GenLayer containing the indices into BiomeGenBase.biomeList[] */
@@ -17,6 +17,7 @@ public class BTABetaChunkManager extends WorldChunkManager {
     private List biomesToSpawnIn;
     
 	public BTABetaChunkManager(BTAWorldConfigurationInfo generatorInfo) {
+		super(generatorInfo);
         this.biomeCache = new BiomeCache(this);
         this.biomesToSpawnIn = new ArrayList();
         

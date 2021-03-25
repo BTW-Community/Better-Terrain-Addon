@@ -43,7 +43,7 @@ public class BTABiomeConfiguration {
 	public static final BTABiomeGenBase patagonia = new BTABiomeGenPatagonia(135).setColor(9286496).setBiomeName("Patagonia").setTemperatureRainfall(0.3F, 0.6F).setMinMaxHeight(0.0F, 0.5F);
 	public static final BTABiomeGenBase grasslands = new BTABiomeGenGrasslands(136).setColor(9286496).setBiomeName("Grasslands").setTemperatureRainfall(0.3F, 0.6F).setMinMaxHeight(0.2F, 0.3F);
 	public static final BTABiomeGenBase siberia = new BTABiomeGenSiberia(137).setColor(747097).setBiomeName("Siberia").func_76733_a(5159473).setTemperatureRainfall(0.1F, 0.4F).setMinMaxHeight(0.3F, 0.7F).setEnableSnow();
-	public static final BTABiomeGenBase sahel = new BTABiomeGenSahel(138).setColor(9286496).setBiomeName("Sahel").setTemperatureRainfall(1.5F, 0.1F).setMinMaxHeight(0.1F, 0.3F);
+	//public static final BTABiomeGenBase sahel = new BTABiomeGenSahel(138).setColor(9286496).setBiomeName("Sahel").setTemperatureRainfall(1.5F, 0.1F).setMinMaxHeight(0.1F, 0.3F);
 
 	//Hill variants - spawn within the normal variants
 	public static final BTABiomeGenBase woodsHills = new BTABiomeGenWoods(150).setColor(353825).setBiomeName("Woods Hills").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.3F, 1.0F);

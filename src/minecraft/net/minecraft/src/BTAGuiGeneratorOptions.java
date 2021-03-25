@@ -61,6 +61,7 @@ public class BTAGuiGeneratorOptions extends GuiScreen
 		this.buttonList.add(this.buttonOceans = new GuiButton(4, this.width / 2 + 55, this.height - 52, 100, 20, "Oceans: On"));
 		this.buttonList.add(this.buttonBiomeSize = new GuiButton(5, this.width / 2 + 55, this.height - 28, 100, 20, "Biome Size: BTA"));
 		this.setButtons();
+		this.updateButtons();
 	}
 
 	/**

@@ -27,6 +27,8 @@ public class WorldType
     private final int generatorVersion;
     
     private boolean isDeco;
+    
+    private WorldType parent = this;
 
     /**
      * Whether this world type can be generated. Normally true; set to false for out-of-date generator versions.
@@ -184,4 +186,13 @@ public class WorldType
     public boolean hasOceans() {
     	return true;
     }
+
+	public WorldType getParent() {
+		return parent;
+	}
+
+	public WorldType setParent(WorldType parent) {
+		this.parent = parent;
+		return this;
+	}
 }
