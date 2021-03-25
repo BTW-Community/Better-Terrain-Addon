@@ -9,9 +9,10 @@ Version 1.2.0
 [*]Added grasslands as a new plains variant (villages, pumpkins).
 [*]Added siberia as a new taiga variant (wolves).
 [*]Changed skylands cloud height to render below the bottom of the world (reduced y level from 8 to -8).
-[*]Changed how tropics generates sandy shores to match valley.
+[*]Changed how tropics generates sandy shores to match valley. This may result in superficial seams in tropics shorelines, but only in the surface material, which can be easily patched if you so desire. Everything else (biomes, terrain contours, etc) will be unaffected.
 [*]Fixed an issue where reeds could not generate along rivers in jungles.
 [*]Fixed an issue in the create world menu where buttons would overlap on low resolution screens or at very high GUI scales.
+[*]Fixed an issue where the status of deco and biome size buttons would not be properly set when using the recreate world option.
 [/list]
 
 Version 1.1.3

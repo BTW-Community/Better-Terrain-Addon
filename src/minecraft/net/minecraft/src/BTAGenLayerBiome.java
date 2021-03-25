@@ -10,13 +10,6 @@ public class BTAGenLayerBiome extends BTAGenLayer {
         super(par1);
 		parent = par3GenLayer;
 		this.biomesForGeneration = biomesForGeneration;
-		
-		/*
-		 * if (!par4WorldType.isDeco())
-			biomesForGeneration = BTABiomeConfiguration.getBiomes();
-		else
-			biomesForGeneration = BTABiomeConfiguration.getBiomesDeco();
-		*/
 	} 
 
     @Override
