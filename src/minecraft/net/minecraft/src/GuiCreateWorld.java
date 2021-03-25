@@ -312,7 +312,10 @@ public class GuiCreateWorld extends GuiScreen
                 {
                     var6.enableCommands();
                 }
-
+                
+                if (WorldType.worldTypes[this.worldTypeId].isBTA() && this.generatorOptionsToUse.equals(""))
+                	this.generatorOptionsToUse = BTAWorldConfigurationInfo.createDefaultConfiguration(isDeco).toString();
+                
                 this.mc.launchIntegratedServer(this.folderName, this.textboxWorldName.getText().trim(), var6);
             }
             else if (par1GuiButton.id == 3)

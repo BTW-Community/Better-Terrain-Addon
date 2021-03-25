@@ -121,7 +121,7 @@ public class BTABiomeConfiguration {
 		filterEdgeBiomes();
 		addBiomesToStructureGenerators();
 		addBiomesToList();
-		//addSingleBiome(sahel);
+		//addSingleBiome(siberia);
 		initBiomeInfoList();
 	}
 	

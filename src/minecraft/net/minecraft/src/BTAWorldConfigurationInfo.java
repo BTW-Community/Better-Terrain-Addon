@@ -68,6 +68,12 @@ public class BTAWorldConfigurationInfo {
 			if (i == 2) this.oceanSize = Integer.parseInt(infoSplit[i]);
 			if (i == 3) this.generatePerlinBeaches = Boolean.parseBoolean(infoSplit[i]);
 		}
+		
+		for (BTABiomeInfo b : this.biomeInfoList) {
+			if (b.getEnabled()) {
+				this.biomesForGeneration.add((BTABiomeGenBase) BiomeGenBase.biomeList[b.getID()]);
+			}
+		}
 	}
 	
 	public String toString() {
