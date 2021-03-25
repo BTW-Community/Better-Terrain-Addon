@@ -106,6 +106,7 @@ public class BTABiomeConfiguration {
 	
 	private static ArrayList<BiomeGenBase> edgeBiomes = new ArrayList();
 	private static ArrayList<BiomeGenBase> noEdgeBiomes = new ArrayList();
+	private static ArrayList<BiomeGenBase> noPerlinBeachBiomes = new ArrayList();
 	
 	private static ArrayList<BiomeGenBase> pumpkinBiomes = new ArrayList();
 	private static ArrayList<BiomeGenBase> reedBiomes = new ArrayList();
@@ -117,6 +118,7 @@ public class BTABiomeConfiguration {
 	public static void init() {
 		filterSpawnBiomes();
 		filterBeachBiomes();
+		filterPerlinBeachBiomes();
 		addBiomesWithEdge();
 		filterEdgeBiomes();
 		addBiomesToStructureGenerators();
@@ -204,6 +206,9 @@ public class BTABiomeConfiguration {
 		riverRainforest.setNotSpawnable();
 		steppe.setNotSpawnable();
 		woodedSteppe.setNotSpawnable();
+		icyPeaks.setNotSpawnable();
+		icyPeaksForested.setNotSpawnable();
+		icyPeaksEdge.setNotSpawnable();
 		//DECO
 		outback.setNotSpawnable();
 		riverOutback.setNotSpawnable();
@@ -233,6 +238,12 @@ public class BTABiomeConfiguration {
 		beachlessBiomes.add(icyPeaks);
 		beachlessBiomes.add(patagoniaMountains);
 		beachlessBiomes.add(siberia);
+	}
+	
+	public static void filterPerlinBeachBiomes() {
+		noPerlinBeachBiomes.add(wetlands);
+		noPerlinBeachBiomes.add(willowGrove);
+		noPerlinBeachBiomes.add(patagonia);
 	}
 	
 	public static void addBiomesToStructureGenerators() {
@@ -376,6 +387,9 @@ public class BTABiomeConfiguration {
         else if (baseBiome == grasslands.biomeID) {
         	hillsBiome = grasslandsLake.biomeID;
         }
+        else if (baseBiome == patagonia.biomeID) {
+        	hillsBiome = patagoniaMountains.biomeID;
+        }
 		
 		return hillsBiome;
 	}
@@ -393,9 +407,6 @@ public class BTABiomeConfiguration {
         else if (baseBiome == willowGrove.biomeID) {
         	hillsBiome = willowHills.biomeID;
         }
-        else if (baseBiome == patagonia.biomeID) {
-        	hillsBiome = patagoniaMountains.biomeID;
-        }
 		
 		return hillsBiome;
 	}
@@ -403,10 +414,7 @@ public class BTABiomeConfiguration {
 	public static int getRiverVariantForBiomes(int baseBiome) {
 		int riverBiome = -1;
 		
-		if (BiomeGenBase.biomeList[baseBiome].getEnableSnow()) {
-			riverBiome = BiomeGenBase.frozenRiver.biomeID;
-		}
-		else if (baseBiome == desert.biomeID || baseBiome == desertHills.biomeID || baseBiome == dunes.biomeID) {
+		if (baseBiome == desert.biomeID || baseBiome == desertHills.biomeID || baseBiome == dunes.biomeID) {
 			riverBiome = riverDesert.biomeID;
 		}
 		else if (baseBiome == mysticForest.biomeID) {
@@ -436,8 +444,11 @@ public class BTABiomeConfiguration {
 		else if (baseBiome == willowGrove.biomeID) {
 			riverBiome = riverWillow.biomeID;
 		}
-		else if (baseBiome == patagonia.biomeID) {
+		else if (baseBiome == patagonia.biomeID || baseBiome == patagoniaMountains.biomeID) {
 			riverBiome = riverPatagonia.biomeID;
+		}
+		else if (BiomeGenBase.biomeList[baseBiome].getEnableSnow()) {
+			riverBiome = BiomeGenBase.frozenRiver.biomeID;
 		}
 		
 		return riverBiome;
@@ -494,6 +505,7 @@ public class BTABiomeConfiguration {
 		noEdgeBiomes.add(borealForest);
 		noEdgeBiomes.add(coniferousForest);
 		noEdgeBiomes.add(coniferousForestSnow);
+		noEdgeBiomes.add(patagoniaMountains);
 		noEdgeBiomes.add(badlandsPlateau);
 		noEdgeBiomes.remove(badlands);
 	}
@@ -513,6 +525,11 @@ public class BTABiomeConfiguration {
 	public static boolean shouldBiomeSpawnBeach(int biomeID) {
 		BiomeGenBase biome = BiomeGenBase.biomeList[biomeID];
 		return !beachlessBiomes.contains(biome);
+	}
+	
+	public static boolean shouldBiomeSpawnPerlinBeach(int biomeID) {
+		BiomeGenBase biome = BiomeGenBase.biomeList[biomeID];
+		return !noPerlinBeachBiomes.contains(biome);
 	}
 	
 	public static ArrayList<BTABiomeGenBase> getBiomes() {

@@ -265,7 +265,8 @@ public class BTABiomeDecorator
 			var2 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 			var3 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 			if (this.currentWorld.provider.terrainType != BTAMod.BTAWorldTypeBeta && this.currentWorld.provider.terrainType != BTAMod.BTAWorldTypeBetaDeco)
-				this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
+				if (this.currentWorld.chunkProvider instanceof BTAChunkProvider && !((BTAChunkProvider) this.currentWorld.chunkProvider).generatorInfo.generatePerlinBeaches())
+					this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
 		}
 
 		for (var1 = 0; var1 < this.clayPerChunk; ++var1)
@@ -288,7 +289,8 @@ public class BTABiomeDecorator
 			var2 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 			var3 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 			if (this.currentWorld.provider.terrainType != BTAMod.BTAWorldTypeBeta && this.currentWorld.provider.terrainType != BTAMod.BTAWorldTypeBetaDeco)
-				this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
+				if (this.currentWorld.chunkProvider instanceof BTAChunkProvider && !((BTAChunkProvider) this.currentWorld.chunkProvider).generatorInfo.generatePerlinBeaches())
+					this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
 		}
 
 		if (generateOutback)

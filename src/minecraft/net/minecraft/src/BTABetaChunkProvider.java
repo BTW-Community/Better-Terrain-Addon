@@ -9,8 +9,8 @@ public class BTABetaChunkProvider implements IChunkProvider
 	private BTABetaNoiseOctaves blockNoiseGen1;
 	private BTABetaNoiseOctaves blockNoiseGen2;
 	private BTABetaNoiseOctaves blockModifierNoiseGen;
-	private BTABetaNoiseOctaves field_909_n;
-	private BTABetaNoiseOctaves field_908_o;
+	private BTABetaNoiseOctaves sandNoiseGen;
+	private BTABetaNoiseOctaves stoneNoiseGen;
 	public BTABetaNoiseOctaves field_922_a;
 	public BTABetaNoiseOctaves field_921_b;
 	public BTABetaNoiseOctaves mobSpawnerNoise;
@@ -48,8 +48,8 @@ public class BTABetaChunkProvider implements IChunkProvider
 		this.blockNoiseGen1 = new BTABetaNoiseOctaves(this.rand, 16);
 		this.blockNoiseGen2 = new BTABetaNoiseOctaves(this.rand, 16);
 		this.blockModifierNoiseGen = new BTABetaNoiseOctaves(this.rand, 8);
-		this.field_909_n = new BTABetaNoiseOctaves(this.rand, 4);
-		this.field_908_o = new BTABetaNoiseOctaves(this.rand, 4);
+		this.sandNoiseGen = new BTABetaNoiseOctaves(this.rand, 4);
+		this.stoneNoiseGen = new BTABetaNoiseOctaves(this.rand, 4);
 		this.field_922_a = new BTABetaNoiseOctaves(this.rand, 10);
 		this.field_921_b = new BTABetaNoiseOctaves(this.rand, 16);
 		this.mobSpawnerNoise = new BTABetaNoiseOctaves(this.rand, 8);
@@ -141,17 +141,17 @@ public class BTABetaChunkProvider implements IChunkProvider
 	{
 		byte var5 = 64;
 		double var6 = 0.03125D;
-		this.sandNoise = this.field_909_n.generateNoiseOctaves(this.sandNoise, (double)(var1 * 16), (double)(var2 * 16), 0.0D, 16, 16, 1, var6, var6, 1.0D);
-		this.gravelNoise = this.field_909_n.generateNoiseOctaves(this.gravelNoise, (double)(var1 * 16), 109.0134D, (double)(var2 * 16), 16, 1, 16, var6, 1.0D, var6);
-		this.stoneNoise = this.field_908_o.generateNoiseOctaves(this.stoneNoise, (double)(var1 * 16), (double)(var2 * 16), 0.0D, 16, 16, 1, var6 * 2.0D, var6 * 2.0D, var6 * 2.0D);
+		this.sandNoise = this.sandNoiseGen.generateNoiseOctaves(this.sandNoise, (double)(var1 * 16), (double)(var2 * 16), 0.0D, 16, 16, 1, var6, var6, 1.0D);
+		this.gravelNoise = this.sandNoiseGen.generateNoiseOctaves(this.gravelNoise, (double)(var1 * 16), 109.0134D, (double)(var2 * 16), 16, 1, 16, var6, 1.0D, var6);
+		this.stoneNoise = this.stoneNoiseGen.generateNoiseOctaves(this.stoneNoise, (double)(var1 * 16), (double)(var2 * 16), 0.0D, 16, 16, 1, var6 * 2.0D, var6 * 2.0D, var6 * 2.0D);
 
 		for (int var8 = 0; var8 < 16; ++var8)
 		{
 			for (int var9 = 0; var9 < 16; ++var9)
 			{
 				BiomeGenBase var10 = var4[var8 + var9 * 16];
-				boolean var11 = this.sandNoise[var9 + var8 * 16] + this.rand.nextDouble() * 0.2D > 0.0D;
-				boolean var12 = this.gravelNoise[var9 + var8 * 16] + this.rand.nextDouble() * 0.2D > 3.0D;
+				boolean useSand = this.sandNoise[var9 + var8 * 16] + this.rand.nextDouble() * 0.2D > 0.0D;
+				boolean useGravel = this.gravelNoise[var9 + var8 * 16] + this.rand.nextDouble() * 0.2D > 3.0D;
 				int var13 = (int)(this.stoneNoise[var9 + var8 * 16] / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
 				int var14 = -1;
 				int var15;
@@ -202,17 +202,17 @@ public class BTABetaChunkProvider implements IChunkProvider
 										var16 = var10.fillerBlock;
 									}
 
-									if (var12)
+									if (useGravel)
 									{
 										var15 = 0;
 									}
 
-									if (var12)
+									if (useGravel)
 									{
 										var16 = (byte)Block.gravel.blockID;
 									}
 
-									if (var11)
+									if (useSand)
 									{
 										if (var10 == BTABiomeConfiguration.badlands || var10 == BTABiomeConfiguration.badlandsPlateau || var10 == BTABiomeConfiguration.outback) {
 											var15 = BTADecoIntegration.redSand.blockID;

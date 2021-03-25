@@ -25,7 +25,10 @@ public class BTAGuiGeneratorOptions extends GuiScreen
 	public BTAGuiGeneratorOptions(GuiCreateWorld createWorldGui, String infoString)
 	{
 		this.createWorldGui = createWorldGui;
-		worldGeneratorInfo = BTAWorldConfigurationInfo.createDefaultConfiguration(this.createWorldGui.isDeco());
+		if (infoString.equals(""))
+			worldGeneratorInfo = BTAWorldConfigurationInfo.createDefaultConfiguration(this.createWorldGui.isDeco());
+		else
+			worldGeneratorInfo = BTAWorldConfigurationInfo.createInfoFromString(infoString);
 	}
 
 	public String getGeneratorInfo()
