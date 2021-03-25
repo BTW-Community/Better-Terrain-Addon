@@ -16,7 +16,7 @@ public class BTAWorldChunkManager extends WorldChunkManager {
     /** A list of biomes that the player can spawn in. */
     private List biomesToSpawnIn;
     
-	public BTAWorldChunkManager() {
+	public BTAWorldChunkManager(BTAWorldConfigurationInfo generatorInfo) {
         this.biomeCache = new BiomeCache(this);
         this.biomesToSpawnIn = new ArrayList();
         
@@ -27,15 +27,15 @@ public class BTAWorldChunkManager extends WorldChunkManager {
         }
 	}
 
-	public BTAWorldChunkManager(long par1, WorldType par3WorldType) {
-        this();
-        GenLayer[] var4 = BTAGenLayer.initializeAllBiomeGenerators(par1, par3WorldType);
-        this.genBiomes = var4[0];
-        this.biomeIndexLayer = var4[1];
+	public BTAWorldChunkManager(long seed, WorldType worldType, BTAWorldConfigurationInfo generatorInfo) {
+        this(generatorInfo);
+        GenLayer[] layers = BTAGenLayer.initializeAllBiomeGenerators(seed, worldType, generatorInfo.getBiomesForGeneration());
+        this.genBiomes = layers[0];
+        this.biomeIndexLayer = layers[1];
 	}
 
-	public BTAWorldChunkManager(World par1World) {
-        this(par1World.getSeed(), par1World.getWorldInfo().getTerrainType());
+	public BTAWorldChunkManager(World par1World, BTAWorldConfigurationInfo generatorInfo) {
+        this(par1World.getSeed(), par1World.getWorldInfo().getTerrainType(), generatorInfo);
 	}
 
     /**

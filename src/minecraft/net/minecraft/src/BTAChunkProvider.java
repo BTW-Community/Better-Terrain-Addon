@@ -75,13 +75,16 @@ public class BTAChunkProvider implements IChunkProvider
 	float[] parabolicField;
 	int[][] field_73219_j = new int[32][32];
 	private Random m_structureRand;
+	
+	private BTAWorldConfigurationInfo generatorInfo;
 
-	public BTAChunkProvider(World par1World, long par2, boolean par4)
+	public BTAChunkProvider(World par1World, long par2, boolean par4, BTAWorldConfigurationInfo generatorInfo)
 	{
 		this.worldObj = par1World;
 		this.mapFeaturesEnabled = par4;
 		this.rand = new Random(par2);
 		this.m_structureRand = new Random(par2);
+		this.generatorInfo = generatorInfo;
 		this.noiseGen1 = new NoiseGeneratorOctaves(this.rand, 16);
 		this.noiseGen2 = new NoiseGeneratorOctaves(this.rand, 16);
 		this.noiseGen3 = new NoiseGeneratorOctaves(this.rand, 8);

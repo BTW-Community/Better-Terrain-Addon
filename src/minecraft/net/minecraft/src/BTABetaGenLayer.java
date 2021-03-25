@@ -1,5 +1,7 @@
 package net.minecraft.src;
 
+import java.util.ArrayList;
+
 public abstract class BTABetaGenLayer extends GenLayer {
 
 	public BTABetaGenLayer(long par1) {
@@ -10,7 +12,7 @@ public abstract class BTABetaGenLayer extends GenLayer {
      * the first array item is a linked list of the bioms, the second is the zoom function, the third is the same as the
      * first.
      */
-    public static GenLayer[] initializeAllBiomeGenerators(long par0, WorldType par2WorldType)
+    public static GenLayer[] initializeAllBiomeGenerators(long par0, WorldType par2WorldType, ArrayList<BTABiomeGenBase> biomesForGeneration)
     {
         GenLayerIsland var3 = new BTABetaGenLayerIsland(1L);
         GenLayerFuzzyZoom var9 = new GenLayerFuzzyZoom(2000L, var3);
@@ -32,7 +34,7 @@ public abstract class BTABetaGenLayer extends GenLayer {
         //GenLayerRiver var14 = new GenLayerRiver(1L, var5);
         GenLayerSmooth var16 = new GenLayerSmooth(1000L, var5);
         GenLayer var6 = GenLayerZoom.magnify(1000L, var11, 0);
-        BTAGenLayerBiome var17 = new BTAGenLayerBiome(200L, var6, par2WorldType);
+        BTAGenLayerBiome var17 = new BTAGenLayerBiome(200L, var6, par2WorldType, biomesForGeneration);
         var6 = GenLayerZoom.magnify(1000L, var17, 2);
         Object var18 = new BTAGenLayerHills(1000L, var6);
 

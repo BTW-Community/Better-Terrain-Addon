@@ -3,17 +3,20 @@ package net.minecraft.src;
 import java.util.ArrayList;
 
 public class BTAGenLayerBiome extends BTAGenLayer {
-	private ArrayList<BTABiomeGenBase> biomelist;
+	private ArrayList<BTABiomeGenBase> biomesForGeneration;
 
-    public BTAGenLayerBiome(long par1, GenLayer par3GenLayer, WorldType par4WorldType)
+    public BTAGenLayerBiome(long par1, GenLayer par3GenLayer, WorldType par4WorldType, ArrayList<BTABiomeGenBase> biomesForGeneration)
     {
         super(par1);
 		parent = par3GenLayer;
+		this.biomesForGeneration = biomesForGeneration;
 		
-		if (!par4WorldType.isDeco())
-			biomelist = BTABiomeConfiguration.getBiomes();
+		/*
+		 * if (!par4WorldType.isDeco())
+			biomesForGeneration = BTABiomeConfiguration.getBiomes();
 		else
-			biomelist = BTABiomeConfiguration.getBiomesDeco();
+			biomesForGeneration = BTABiomeConfiguration.getBiomesDeco();
+		*/
 	} 
 
     @Override
@@ -34,7 +37,7 @@ public class BTAGenLayerBiome extends BTAGenLayer {
 				}
 				else 
 				{
-					var6[var8 + var7 * par3] = biomelist.get(this.nextInt(biomelist.size())).biomeID;
+					var6[var8 + var7 * par3] = biomesForGeneration.get(this.nextInt(biomesForGeneration.size())).biomeID;
 				}
             }
         }

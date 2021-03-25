@@ -6,6 +6,8 @@ Version 1.2.0
 [*]Added willow groves as a new swamp variant (witches, slimes, reeds).
 [*]Added icy peaks as a new mountain variant (emeralds, silverfish).
 [*]Added patagonia as a new plains variant (villages, pumpkins) which spawns occasional tall, stony mountains. Emeralds and silverfish may spawn under the mountains.
+[*]Added grasslands as a new plains variant (villages, pumpkins).
+[*]Added siberia as a new taiga variant (wolves).
 [*]Changed skylands cloud height to render below the bottom of the world (reduced y level from 8 to -8).
 [*]Fixed an issue where reeds could not generate along rivers in jungles.
 [*]Fixed an issue in the create world menu where buttons would overlap on low resolution screens or at very high GUI scales.

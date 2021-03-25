@@ -15,17 +15,35 @@ public class BTAWorldTypeSky extends WorldType {
 
     @Override
     public WorldChunkManager getChunkManager(World world, String generatorOptions) {
-    	return new BTABetaChunkManager(world);
+    	BTAWorldConfigurationInfo info;
+    	
+    	if (generatorOptions.equals("")) {
+    		info = BTAWorldConfigurationInfo.createDefaultConfigurationLegacy(this.isDeco());
+    	}
+    	else {
+    		info = BTAWorldConfigurationInfo.createInfoFromString(generatorOptions);
+    	}
+    	
+    	return new BTABetaChunkManager(world, info);
     }
 
     @Override
     public IChunkProvider getChunkProviderOverworld(World world, long seed, boolean mapFeaturesEnabled, String generatorOptions) {
-    	return new BTASkyChunkProvider(world, seed, mapFeaturesEnabled);
+    	BTAWorldConfigurationInfo info;
+    	
+    	if (generatorOptions.equals("")) {
+    		info = BTAWorldConfigurationInfo.createDefaultConfigurationLegacy(this.isDeco());
+    	}
+    	else {
+    		info = BTAWorldConfigurationInfo.createInfoFromString(generatorOptions);
+    	}
+    	
+    	return new BTASkyChunkProvider(world, seed, mapFeaturesEnabled, info);
     }
 
     @Override
     public IChunkProvider getChunkProviderNether(World world, long seed) {
-    	return new BTASkyChunkProvider(world, seed, true).setNether();
+    	return new BTASkyChunkProvider(world, seed, true, BTAWorldConfigurationInfo.createDefaultConfiguration(this.isDeco())).setNether();
     }
 
     @Override

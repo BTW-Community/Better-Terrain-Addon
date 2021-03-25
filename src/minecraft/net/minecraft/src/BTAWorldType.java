@@ -15,12 +15,30 @@ public class BTAWorldType extends WorldType {
 
     @Override
     public WorldChunkManager getChunkManager(World world, String generatorOptions) {
-    	return new BTAWorldChunkManager(world);
+    	BTAWorldConfigurationInfo info;
+    	
+    	if (generatorOptions.equals("")) {
+    		info = BTAWorldConfigurationInfo.createDefaultConfigurationLegacy(this.isDeco());
+    	}
+    	else {
+    		info = BTAWorldConfigurationInfo.createInfoFromString(generatorOptions);
+    	}
+    	
+    	return new BTAWorldChunkManager(world, info);
     }
 
     @Override
     public IChunkProvider getChunkProviderOverworld(World world, long seed, boolean mapFeaturesEnabled, String generatorOptions) {
-    	return new BTAChunkProvider(world, seed, mapFeaturesEnabled);
+    	BTAWorldConfigurationInfo info;
+    	
+    	if (generatorOptions.equals("")) {
+    		info = BTAWorldConfigurationInfo.createDefaultConfigurationLegacy(this.isDeco());
+    	}
+    	else {
+    		info = BTAWorldConfigurationInfo.createInfoFromString(generatorOptions);
+    	}
+    	
+    	return new BTAChunkProvider(world, seed, mapFeaturesEnabled, info);
     }
 
     @Override

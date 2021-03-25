@@ -37,13 +37,16 @@ public class BTASkyChunkProvider implements IChunkProvider
 	int[][] field_914_i = new int[32][32];
 	private Random m_structureRand;
 	private boolean isNether = false;
+	
+	private BTAWorldConfigurationInfo generatorInfo;
 
-	public BTASkyChunkProvider(World var1, long var2, boolean var4)
+	public BTASkyChunkProvider(World var1, long var2, boolean var4, BTAWorldConfigurationInfo generatorInfo)
 	{
 		this.worldObj = var1;
 		this.rand = new Random(var2);
 		this.m_structureRand = new Random(var2);
 		this.mapFeaturesEnabled = var4;
+		this.generatorInfo = generatorInfo;
 		this.field_912_k = new BTABetaNoiseOctaves(this.rand, 16);
 		this.field_911_l = new BTABetaNoiseOctaves(this.rand, 16);
 		this.field_910_m = new BTABetaNoiseOctaves(this.rand, 8);

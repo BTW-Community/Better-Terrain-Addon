@@ -35,13 +35,16 @@ public class BTABetaChunkProvider implements IChunkProvider
 	double[] field_4181_h;
 	int[][] field_914_i = new int[32][32];
 	private Random m_structureRand;
+	
+	private BTAWorldConfigurationInfo generatorInfo;
 
-	public BTABetaChunkProvider(World var1, long var2, boolean var4)
+	public BTABetaChunkProvider(World var1, long var2, boolean var4, BTAWorldConfigurationInfo generatorInfo)
 	{
 		this.worldObj = var1;
 		this.rand = new Random(var2);
 		this.m_structureRand = new Random(var2);
 		this.mapFeaturesEnabled = var4;
+		this.generatorInfo = generatorInfo;
 		this.blockNoiseGen1 = new BTABetaNoiseOctaves(this.rand, 16);
 		this.blockNoiseGen2 = new BTABetaNoiseOctaves(this.rand, 16);
 		this.blockModifierNoiseGen = new BTABetaNoiseOctaves(this.rand, 8);
