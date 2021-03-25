@@ -51,7 +51,7 @@ class BTAGuiBiomeOptionList extends GuiSlot
         
         if (decoOnly && !guiGeneratorOptions.isDeco()) {
             this.guiGeneratorOptions.fontRenderer.drawString(biomeName + " (Deco)", x + 1, y + 7, 8526880);
-            this.guiGeneratorOptions.fontRenderer.drawString(" - ", x + 179, y + 7, 8526880);
+            this.guiGeneratorOptions.fontRenderer.drawString("-", x + 185, y + 7, 8526880);
         }
         else if (biomeEnabled)
         {

@@ -67,6 +67,14 @@ public class BTAGuiGeneratorOptions extends GuiScreen
 		BTABiomeInfo selectedBiome;
 
 		if (button.id == id_done) {
+			if (!isDeco()) {
+				for (BTABiomeInfo b : this.worldGeneratorInfo.getBiomeInfoList()) {
+					if (b.isDecoOnly()) {
+						b.setEnabled(false);
+					}
+				}
+			}
+			
 			this.createWorldGui.generatorOptionsToUse = this.getGeneratorInfo();
 			this.mc.displayGuiScreen(this.createWorldGui);
 		}
@@ -132,13 +140,13 @@ public class BTAGuiGeneratorOptions extends GuiScreen
 	}
 
 	public void setButtons() {
-		boolean var1 = this.checkPossible();
-		this.buttonEnable.enabled = var1;
-		//this.buttonBiome.enabled = false;
+		this.buttonEnable.enabled = this.allowBiomeToggle();
 	}
 
-	private boolean checkPossible() {
-		return this.guiBiomeOptionList.selected > -1 && this.guiBiomeOptionList.selected < this.worldGeneratorInfo.getBiomeInfoList().size();
+	private boolean allowBiomeToggle() {
+		return this.guiBiomeOptionList.selected > -1 && 
+				this.guiBiomeOptionList.selected < this.worldGeneratorInfo.getBiomeInfoList().size() &&
+				!(this.worldGeneratorInfo.getBiomeInfoList().get(this.worldGeneratorInfo.getBiomeInfoList().size() - this.guiBiomeOptionList.selected - 1).isDecoOnly() && !this.isDeco());
 	}
 
 	public void switchScreen() {

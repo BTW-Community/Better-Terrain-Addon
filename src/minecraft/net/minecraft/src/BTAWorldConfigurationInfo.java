@@ -22,8 +22,16 @@ public class BTAWorldConfigurationInfo {
 		info.setCompatMode(false);
 		info.setGenerateOceans(10);
 		info.setGeneratePerlinBeaches(true);
-
+		
 		info.generateBiomeInfoListFromBiomes(BTABiomeConfiguration.biomeListDeco);
+		
+		if (!isDeco) {
+			for (BTABiomeInfo b : info.getBiomeInfoList()) {
+				if (b.isDecoOnly()) {
+					b.setEnabled(false);
+				}
+			}
+		}
 		
 		return info;
 	}

@@ -301,6 +301,10 @@ public class GuiCreateWorld extends GuiScreen
                 }
                 
                 WorldSettings var6 = new WorldSettings(var2, var8, this.generateStructures, this.isHardcore, type);
+                
+                if (WorldType.worldTypes[this.worldTypeId].isBTA() && this.generatorOptionsToUse.equals(""))
+                	this.generatorOptionsToUse = BTAWorldConfigurationInfo.createDefaultConfiguration(isDeco).toString();
+                System.out.println(this.generatorOptionsToUse);
                 var6.func_82750_a(this.generatorOptionsToUse);
 
                 if (this.bonusItems && !this.isHardcore)
@@ -312,9 +316,6 @@ public class GuiCreateWorld extends GuiScreen
                 {
                     var6.enableCommands();
                 }
-                
-                if (WorldType.worldTypes[this.worldTypeId].isBTA() && this.generatorOptionsToUse.equals(""))
-                	this.generatorOptionsToUse = BTAWorldConfigurationInfo.createDefaultConfiguration(isDeco).toString();
                 
                 this.mc.launchIntegratedServer(this.folderName, this.textboxWorldName.getText().trim(), var6);
             }
