@@ -55,4 +55,8 @@ public class BTAWorldTypeBeta extends WorldType {
     public boolean isBTA() {
     	return true;
     }
+    
+    public boolean hasOceans() {
+    	return false;
+    }
 }

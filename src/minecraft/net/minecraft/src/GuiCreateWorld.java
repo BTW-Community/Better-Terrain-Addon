@@ -551,4 +551,16 @@ public class GuiCreateWorld extends GuiScreen
 	public boolean isDeco() {
 		return isDeco;
 	}
+
+	public boolean isSmall() {
+		return isSmall;
+	}
+
+	public void setSmall(boolean isSmall) {
+		this.isSmall = isSmall;
+	}
+
+	public int getWorldTypeId() {
+		return worldTypeId;
+	}
 }

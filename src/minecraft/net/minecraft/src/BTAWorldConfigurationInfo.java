@@ -20,7 +20,7 @@ public class BTAWorldConfigurationInfo {
 		else
 			info.setBiomesForGeneration(BTABiomeConfiguration.biomeListDeco);
 		info.setCompatMode(false);
-		info.setGenerateOceans(10);
+		info.setOceanSize(10);
 		info.setGeneratePerlinBeaches(true);
 		
 		info.generateBiomeInfoListFromBiomes(BTABiomeConfiguration.biomeListDeco);
@@ -44,7 +44,7 @@ public class BTAWorldConfigurationInfo {
 		else
 			info.setBiomesForGeneration(BTABiomeConfiguration.biomeListDecoCompat);
 		info.setCompatMode(true);
-		info.setGenerateOceans(10);
+		info.setOceanSize(10);
 		info.setGeneratePerlinBeaches(false);
 		
 		info.generateBiomeInfoListFromBiomes(BTABiomeConfiguration.biomeListDecoCompat);
@@ -130,11 +130,11 @@ public class BTAWorldConfigurationInfo {
 		this.compatMode = compatMode;
 	}
 
-	public int generateOceans() {
+	public int getOceanSize() {
 		return oceanSize;
 	}
 
-	public BTAWorldConfigurationInfo setGenerateOceans(int oceanSize) {
+	public BTAWorldConfigurationInfo setOceanSize(int oceanSize) {
 		this.oceanSize = oceanSize;
 		return this;
 	}

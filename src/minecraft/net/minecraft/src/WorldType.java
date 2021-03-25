@@ -180,4 +180,8 @@ public class WorldType
     public boolean isBTA() {
     	return false;
     }
+    
+    public boolean hasOceans() {
+    	return true;
+    }
 }

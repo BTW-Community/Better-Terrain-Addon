@@ -12,7 +12,7 @@ public abstract class BTAGenLayer extends GenLayer {
      * the first array item is a linked list of the bioms, the second is the zoom function, the third is the same as the
      * first.
      */
-    public static GenLayer[] initializeAllBiomeGenerators(long par0, WorldType par2WorldType, ArrayList<BTABiomeGenBase> biomesForGeneration)
+    public static GenLayer[] initializeAllBiomeGenerators(long par0, WorldType par2WorldType, ArrayList<BTABiomeGenBase> biomesForGeneration, int oceanSize)
     {
         GenLayerIsland var3 = new GenLayerIsland(1L);
         GenLayerFuzzyZoom var9 = new GenLayerFuzzyZoom(2000L, var3);

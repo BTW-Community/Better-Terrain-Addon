@@ -8,8 +8,9 @@ public class BTAGuiGeneratorOptions extends GuiScreen
 	private GuiButton buttonPerlinBeaches;
 	private GuiButton buttonEnable;
 	private GuiButton buttonAll;
-	private GuiSlider sliderOceanSize;
-	private GuiButton buttonSetting;
+	private GuiButton buttonOceans;
+	private BTAGuiSlider sliderOceanSize;
+	private GuiButton buttonBiomeSize;
 	private boolean all = false;
 	private boolean perlinBeachesEnabled = true;
 	private BTABiomeInfo biome;
@@ -18,7 +19,7 @@ public class BTAGuiGeneratorOptions extends GuiScreen
 	private static final int id_perlin = 1;
 	private static final int id_enable = 2;
 	private static final int id_enableAll = 3;
-	private static final int id_oceanSize = 4;
+	private static final int id_oceans = 4;
 	private static final int id_smallBiomes = 5;
 
 	public BTAGuiGeneratorOptions(GuiCreateWorld createWorldGui, String infoString)
@@ -53,10 +54,10 @@ public class BTAGuiGeneratorOptions extends GuiScreen
 		this.buttonList.add(this.buttonPerlinBeaches = new GuiButton(id_perlin, this.width / 2 - 50, this.height - 28, 100, 20, "Better Shores: On"));
 		this.buttonList.add(this.buttonEnable = new GuiButton(id_enable, this.width / 2 - 155, this.height - 52, 100, 20, "Enable/Disable"));
 		this.buttonList.add(this.buttonAll = new GuiButton(id_enableAll, this.width / 2 - 50, this.height - 52, 100, 20, "Disable All"));
-		//this.buttonList.add(this.sliderOceanSize = new GuiSlider(4, this.width / 2 + 55, this.height - 52, 100, 20, "-"));
-		this.buttonList.add(this.buttonSetting = new GuiButton(5, this.width / 2 + 55, this.height - 28, 100, 20, "Biome Size: BTA"));
+		//this.buttonList.add(this.sliderOceanSize = new BTAGuiSlider(4, this.width / 2 + 55, this.height - 52, 100, 20, "Ocean Size", 1.0F));
+		this.buttonList.add(this.buttonOceans = new GuiButton(4, this.width / 2 + 55, this.height - 52, 100, 20, "Oceans: On"));
+		this.buttonList.add(this.buttonBiomeSize = new GuiButton(5, this.width / 2 + 55, this.height - 28, 100, 20, "Biome Size: BTA"));
 		this.setButtons();
-		this.switchScreen();
 	}
 
 	/**
@@ -112,11 +113,14 @@ public class BTAGuiGeneratorOptions extends GuiScreen
 
 			this.updateButtons();
 		}
-		else if (button.id == 4) {
-
+		else if (button.id == id_oceans) {
+			int oceanSize = this.worldGeneratorInfo.getOceanSize();
+			this.worldGeneratorInfo.setOceanSize(oceanSize == 10 ? 1 : 10);
+			this.updateButtons();
 		}
-		else if (button.id == 5) {
-
+		else if (button.id == id_smallBiomes) {
+			createWorldGui.setSmall(!createWorldGui.isSmall());
+			this.updateButtons();
 		}
 	}
 
@@ -137,23 +141,35 @@ public class BTAGuiGeneratorOptions extends GuiScreen
 		else {
 			this.buttonPerlinBeaches.displayString = "Better Shores: Off";
 		}
+
+		if (createWorldGui.isSmall()) {
+			this.buttonBiomeSize.displayString = "Biome Size: Vanilla";
+		}
+		else {
+			this.buttonBiomeSize.displayString = "Biome Size: BTA";
+		}
+		
+		if (this.worldGeneratorInfo.getOceanSize() == 10) {
+			this.buttonOceans.displayString = "Oceans: On";
+		}
+		else {
+			this.buttonOceans.displayString = "Oceans: Off";
+		}
 	}
 
 	public void setButtons() {
 		this.buttonEnable.enabled = this.allowBiomeToggle();
+		
+		if (!WorldType.worldTypes[this.createWorldGui.getWorldTypeId()].hasOceans()) {
+			this.buttonOceans.enabled = false;
+			this.buttonOceans.displayString = "Oceans: Off";
+		}
 	}
 
 	private boolean allowBiomeToggle() {
 		return this.guiBiomeOptionList.selected > -1 && 
 				this.guiBiomeOptionList.selected < this.worldGeneratorInfo.getBiomeInfoList().size() &&
 				!(this.worldGeneratorInfo.getBiomeInfoList().get(this.worldGeneratorInfo.getBiomeInfoList().size() - this.guiBiomeOptionList.selected - 1).isDecoOnly() && !this.isDeco());
-	}
-
-	public void switchScreen() {
-		this.buttonEnable.drawButton = true;
-		this.buttonAll.drawButton = true;
-		//this.buttonBiome.drawButton = true;
-		this.buttonSetting.displayString = "-";
 	}
 
 	/**
