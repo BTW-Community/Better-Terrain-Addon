@@ -69,25 +69,33 @@ public class BTAChunkProvider implements IChunkProvider
 	/** A double array that holds terrain noise from noiseGen6 */
 	double[] noise6;
 
+	private double[] sandNoise = new double[256];
+	private double[] gravelNoise = new double[256];
+	private BTABetaNoiseOctaves sandNoiseGen;
+
 	/**
 	 * Used to store the 5x5 parabolic field that is used during terrain generation.
 	 */
 	float[] parabolicField;
 	int[][] field_73219_j = new int[32][32];
 	private Random m_structureRand;
+	
+	public BTAWorldConfigurationInfo generatorInfo;
 
-	public BTAChunkProvider(World par1World, long par2, boolean par4)
+	public BTAChunkProvider(World par1World, long par2, boolean par4, BTAWorldConfigurationInfo generatorInfo)
 	{
 		this.worldObj = par1World;
 		this.mapFeaturesEnabled = par4;
 		this.rand = new Random(par2);
 		this.m_structureRand = new Random(par2);
+		this.generatorInfo = generatorInfo;
 		this.noiseGen1 = new NoiseGeneratorOctaves(this.rand, 16);
 		this.noiseGen2 = new NoiseGeneratorOctaves(this.rand, 16);
 		this.noiseGen3 = new NoiseGeneratorOctaves(this.rand, 8);
 		this.noiseGen4 = new NoiseGeneratorOctaves(this.rand, 4);
 		this.noiseGen5 = new NoiseGeneratorOctaves(this.rand, 10);
 		this.noiseGen6 = new NoiseGeneratorOctaves(this.rand, 16);
+		this.sandNoiseGen = new BTABetaNoiseOctaves(this.rand, 4);
 		this.mobSpawnerNoise = new NoiseGeneratorOctaves(this.rand, 8);
 	}
 
@@ -177,6 +185,8 @@ public class BTAChunkProvider implements IChunkProvider
 	{
 		byte var5 = 63;
 		double var6 = 0.03125D;
+		this.sandNoise = this.sandNoiseGen.generateNoiseOctaves(this.sandNoise, (double)(par1 * 16), (double)(par2 * 16), 0.0D, 16, 16, 1, var6, var6, 1.0D);
+		this.gravelNoise = this.sandNoiseGen.generateNoiseOctaves(this.gravelNoise, (double)(par1 * 16), 109.0134D, (double)(par2 * 16), 16, 1, 16, var6, 1.0D, var6);
 		this.stoneNoise = this.noiseGen4.generateNoiseOctaves(this.stoneNoise, par1 * 16, par2 * 16, 0, 16, 16, 1, var6 * 2.0D, var6 * 2.0D, var6 * 2.0D);
 
 		for (int var8 = 0; var8 < 16; ++var8)
@@ -186,6 +196,8 @@ public class BTAChunkProvider implements IChunkProvider
 				BiomeGenBase var10 = par4ArrayOfBiomeGenBase[var9 + var8 * 16];
 				
 				float var11 = var10.getFloatTemperature();
+				boolean useSand = this.sandNoise[var8 + var9 * 16] + this.rand.nextDouble() * 0.2D > 0.0D;
+				boolean useGravel = this.gravelNoise[var8 + var9 * 16] + this.rand.nextDouble() * 0.2D > 3.0D;
 				int var12 = (int)(this.stoneNoise[var8 + var9 * 16] / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
 				int var13 = -1;
 				int var14;
@@ -227,7 +239,7 @@ public class BTAChunkProvider implements IChunkProvider
 								}
 								else if (var16 >= var5 - (8 + rand.nextInt(2)) && var16 <= var5 + 1)
 								{
-									if(var10.biomeID == BTABiomeConfiguration.oldValley.biomeID || var10.biomeID == BTABiomeConfiguration.valleyMountains.biomeID || var10.biomeID == BTABiomeConfiguration.valley.biomeID)
+									if(var10.biomeID == BTABiomeConfiguration.oldValley.biomeID || var10.biomeID == BTABiomeConfiguration.valleyMountains.biomeID || var10.biomeID == BTABiomeConfiguration.valley.biomeID || (var10.biomeID == BTABiomeConfiguration.tropics.biomeID && !this.generatorInfo.isCompatMode()))
 									{
 										var14 = (byte)Block.sand.blockID;
 										var15 = (byte)Block.sand.blockID;
@@ -243,24 +255,40 @@ public class BTAChunkProvider implements IChunkProvider
 											var15 = var10.fillerBlock;
 										}
 									}
+
+									if (this.generatorInfo.generatePerlinBeaches() && BTABiomeConfiguration.shouldBiomeSpawnPerlinBeach(var10.biomeID)) {
+										if (useGravel)
+										{
+											var14 = 0;
+										}
+	
+										if (useGravel)
+										{
+											var15 = Block.gravel.blockID;
+										}
+	
+										if (useSand)
+										{
+											if (var10 == BTABiomeConfiguration.badlands || var10 == BTABiomeConfiguration.badlandsPlateau || var10 == BTABiomeConfiguration.outback) {
+												var14 = BTADecoIntegration.redSand.blockID;
+												var15 = BTADecoIntegration.redSand.blockID;
+											}
+											else {
+												var14 = Block.sand.blockID;
+												var15 = Block.sand.blockID;
+											}
+										}
+									}
 								}
 								else if (var16 >= var5 + 9)
 								{
-									if(var10.biomeID == BTABiomeConfiguration.badlands.biomeID || var10.biomeID == BTABiomeConfiguration.riverBadlands.biomeID)
-									{
-										var14 = BTADecoIntegration.terracotta.blockID;
-										var15 = BTADecoIntegration.terracotta.blockID;
+									if (var10 instanceof BTABiomeGenBase) {
+										var14 = ((BTABiomeGenBase) var10).topBlockExt;
+										var15 = ((BTABiomeGenBase) var10).fillerBlockExt;
 									}
-									else
-									{
-										if (var10 instanceof BTABiomeGenBase) {
-											var14 = ((BTABiomeGenBase) var10).topBlockExt;
-											var15 = ((BTABiomeGenBase) var10).fillerBlockExt;
-										}
-										else {
-											var14 = var10.topBlock;
-											var15 = var10.fillerBlock;
-										}
+									else {
+										var14 = var10.topBlock;
+										var15 = var10.fillerBlock;
 									}
 								}
 
@@ -275,9 +303,12 @@ public class BTAChunkProvider implements IChunkProvider
 										var14 = (byte)Block.waterStill.blockID;
 									}
 								}
-
+								
 								var13 = var12;
 
+								if (var10.biomeID == BTABiomeConfiguration.badlandsPlateau.biomeID)
+									var13 += 10;
+								
 								if (var16 >= var5 - 1)
 								{
 									blockArray[var17] = var14;
@@ -301,11 +332,6 @@ public class BTAChunkProvider implements IChunkProvider
 								{
 									var13 = this.rand.nextInt(4);
 									var15 = BTADecoIntegration.redSandStone.blockID;
-								}
-								else if (BTADecoIntegration.isDecoInstalled() && var13 == 0 && var15 == BTADecoIntegration.terracotta.blockID)
-								{
-									var13 = this.rand.nextInt(6);
-									var15 = BTADecoIntegration.terracotta.blockID;
 								}
 							}
 						}

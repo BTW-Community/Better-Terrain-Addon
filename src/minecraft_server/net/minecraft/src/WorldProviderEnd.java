@@ -17,7 +17,7 @@ public class WorldProviderEnd extends WorldProvider
      */
     public IChunkProvider createChunkGenerator()
     {
-        return new ChunkProviderEnd(this.worldObj, this.worldObj.getSeed());
+        return this.terrainType.getChunkProviderEnd(this.worldObj, this.worldObj.getSeed());
     }
 
     /**

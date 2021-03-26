@@ -6,7 +6,6 @@ public class BTAWorldGenReed extends WorldGenReed {
 	public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
     {
         BiomeGenBase var6 = par1World.getBiomeGenForCoords(par3, par5);
-        boolean var7 = BTABiomeConfiguration.canBiomeSpawnReeds(var6);
 
         for (int var8 = 0; var8 < 20; ++var8)
         {
@@ -18,7 +17,7 @@ public class BTAWorldGenReed extends WorldGenReed {
             {
                 int var12 = 2 + par2Random.nextInt(par2Random.nextInt(3) + 1);
 
-                if (var7)
+                if (BTABiomeConfiguration.canBiomeSpawnReeds(var6) || par1World.provider.terrainType.isSky())
                 {
                     for (int var13 = 0; var13 < var12; ++var13)
                     {

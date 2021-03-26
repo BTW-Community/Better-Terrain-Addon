@@ -1,14 +1,11 @@
 ## TODO ##
-Make fallen logs vary in size and direction
 Make all tiers of spruce trees have snow in snowy biomes
 Make tall narrow trees less uniform
 Move badlands banding from biome.decorate() to chunk provider
 Create custom villages
-Add the abiltiy for villages to spawn in orchard clearing
 
 ## Issues ##
 Villages in deserts generate as normal villages
 Some trees will generate through blocks (meadow and mountain trees, maybe others)
 Door metadata for structure rotation is not calculated right
 Wood huts still need chairs
-Terracotta generates down to bedrock

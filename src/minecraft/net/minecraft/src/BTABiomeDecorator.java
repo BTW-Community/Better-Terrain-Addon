@@ -145,13 +145,6 @@ public class BTABiomeDecorator
 	protected WorldGenerator andesiteGen;
 	protected WorldGenerator dioriteGen;
 
-	protected WorldGenerator ruinsWall;
-	protected WorldGenerator ruinsHouse;
-	protected WorldGenerator ruinsAltar;
-	protected WorldGenerator ruinsTower;
-	protected WorldGenerator ruinsAqueduct;
-	protected WorldGenerator ruinsArches;
-
 	public int oasesPerChunk;
 	public int waterLakesPerChunk;
 	public int lavaLakesPerChunk;
@@ -161,7 +154,6 @@ public class BTABiomeDecorator
 	public boolean generateStoneInGrass;
 	public boolean generateStoneInGrass2;
 	public boolean generateOutback;
-	public boolean generateRuins;
 
 	public BTABiomeDecorator(BiomeGenBase par1BiomeGenBase)
 	{
@@ -220,7 +212,6 @@ public class BTABiomeDecorator
 		waterLakesPerChunk = 50;
 		lavaLakesPerChunk = 20;
 		bigRedMushroomsPerChunk = 0;
-		generateRuins = true;
 	}
 
 	/**
@@ -274,7 +265,10 @@ public class BTABiomeDecorator
 			var2 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 			var3 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 			if (this.currentWorld.provider.terrainType != BTAMod.BTAWorldTypeBeta && this.currentWorld.provider.terrainType != BTAMod.BTAWorldTypeBetaDeco)
-				this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
+				if (this.currentWorld.chunkProvider instanceof BTAChunkProvider && 
+						!((BTAChunkProvider) this.currentWorld.chunkProvider).generatorInfo.generatePerlinBeaches() &&
+						!(this.biome == BTABiomeConfiguration.tropics && !((BTAChunkProvider) this.currentWorld.chunkProvider).generatorInfo.isCompatMode()))
+					this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
 		}
 
 		for (var1 = 0; var1 < this.clayPerChunk; ++var1)
@@ -282,7 +276,7 @@ public class BTABiomeDecorator
 			if (this.currentWorld.rand.nextInt(3) != 0) {
 				var2 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 				var3 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-				if (this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSky || this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSkyDeco) {
+				if (this.currentWorld.provider.terrainType.isSky()) {
 					if (this.randomGenerator.nextInt(5) == 0)
 						this.clayGenSky.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
 				}
@@ -297,7 +291,10 @@ public class BTABiomeDecorator
 			var2 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 			var3 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 			if (this.currentWorld.provider.terrainType != BTAMod.BTAWorldTypeBeta && this.currentWorld.provider.terrainType != BTAMod.BTAWorldTypeBetaDeco)
-				this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
+				if (this.currentWorld.chunkProvider instanceof BTAChunkProvider && 
+						!((BTAChunkProvider) this.currentWorld.chunkProvider).generatorInfo.generatePerlinBeaches() &&
+						!(this.biome == BTABiomeConfiguration.tropics && !((BTAChunkProvider) this.currentWorld.chunkProvider).generatorInfo.isCompatMode()))
+					this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
 		}
 
 		if (generateOutback)
@@ -334,7 +331,7 @@ public class BTABiomeDecorator
 
 		for (var2 = 0; var2 < this.flowersPerChunk; ++var2)
 		{
-			if (BTADecoIntegration.isDecoInstalled() && (this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeDeco || this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeBetaDeco || this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSkyDeco)) {
+			if (BTADecoIntegration.isDecoInstalled() && (this.currentWorld.provider.terrainType.isDeco())) {
 				if (this.randomGenerator.nextInt(24) > 1) {
 					var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 					var4 = this.randomGenerator.nextInt(128);
@@ -441,7 +438,7 @@ public class BTABiomeDecorator
 			var7 = this.randomGenerator.nextInt(128);
 			this.reedGen.generate(this.currentWorld, this.randomGenerator, var3, var7, var4);
 			
-			if (this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSky || this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSkyDeco) {
+			if (this.currentWorld.provider.terrainType.isSky()) {
 				var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 				var4 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 				var7 = this.randomGenerator.nextInt(128);
@@ -509,34 +506,6 @@ public class BTABiomeDecorator
 			this.genStandardOre1(20, stoneInGrassGen2, 64, 128);
 		}
 
-		if (generateRuins) {
-			if (this.randomGenerator.nextInt(500) == 0) {
-				int x = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
-				int z = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-				int y = this.currentWorld.getHeightValue(x, z);
-
-				WorldGenerator gen = null;
-
-				switch (this.randomGenerator.nextInt(4)) {
-				case 0:
-					gen = this.ruinsWall;
-					break;
-				case 1:
-					gen = this.ruinsHouse;
-					break;
-				case 2:
-					gen = this.ruinsTower;
-					break;
-				case 3:
-					gen = this.ruinsAltar;
-					break;
-				}
-
-				if (gen != null)
-					gen.generate(this.currentWorld, this.randomGenerator, x, y, z);
-			}
-		}
-
 		for (var2 = 0; var2 < this.cactiPerChunk; ++var2)
 		{
 			var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
@@ -582,9 +551,9 @@ public class BTABiomeDecorator
 		this.genStandardOre1(20, this.dirtGen, 0, 128);
 		this.genStandardOre1(10, this.gravelGen, 0, 128);
 
-		if (this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSky || this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSkyDeco) {
+		if (this.currentWorld.provider.terrainType.isSky()) {
 			this.genStandardOre1(20, this.coalGen, 0, 128);
-			this.genStandardOre1(20, this.ironGen, 0, 64);
+			this.genStandardOre1(24, this.ironGen, 0, 80);
 			this.genStandardOre1(3, this.goldGen, 0, 48);
 			this.genStandardOre1(12, this.redstoneGen, 0, 32);
 			this.genStandardOre1(2, this.diamondGen, 16, 32);
@@ -599,7 +568,7 @@ public class BTABiomeDecorator
 			this.genStandardOre2(1, this.lapisGen, 16, 16);
 		}
 
-		if (BTADecoIntegration.isDecoInstalled() && (this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeDeco || this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeBetaDeco || this.currentWorld.provider.terrainType == BTAMod.BTAWorldTypeSkyDeco)) {
+		if (BTADecoIntegration.isDecoInstalled() && (this.currentWorld.provider.terrainType.isDeco())) {
 			this.genStandardOre1(12, this.graniteGen, 0, 128);
 			this.genStandardOre1(12, this.andesiteGen, 0, 128);
 			this.genStandardOre1(12, this.dioriteGen, 0, 128);

@@ -167,7 +167,7 @@ public class BTAMapGenRavine extends BTAMapGenBase
 
                                             if (var52 == Block.stone.blockID || var52 == Block.dirt.blockID || var52 == Block.grass.blockID)
                                             {
-                                                if (var49 < 10 && this.worldObj.provider.terrainType != BTAMod.BTAWorldTypeSky && this.worldObj.provider.terrainType != BTAMod.BTAWorldTypeSkyDeco)
+                                                if (var49 < 10 && !this.worldObj.provider.terrainType.isSky())
                                                 {
                                                     blockArray[var47] = (byte)Block.lavaMoving.blockID;
                                                 }

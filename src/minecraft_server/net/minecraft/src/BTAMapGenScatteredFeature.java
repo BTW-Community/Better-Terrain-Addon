@@ -16,16 +16,44 @@ public class BTAMapGenScatteredFeature extends BTAMapGenStructure
     private List scatteredFeatureSpawnList;
 
     /** the maximum distance between scattered features */
-    private int maxDistanceBetweenScatteredFeatures;
+    private int maxDistanceBetweenScatteredFeatures = 32;
 
     /** the minimum distance between scattered features */
-    private int minDistanceBetweenScatteredFeatures;
+    private int minDistanceBetweenScatteredFeatures = 8;
 
     public BTAMapGenScatteredFeature()
     {
         this.scatteredFeatureSpawnList = new ArrayList();
-        this.maxDistanceBetweenScatteredFeatures = 32;
-        this.minDistanceBetweenScatteredFeatures = 8;
+    }
+
+    /**
+     * Recursively called by generate() (generate) and optionally by itself.
+     */
+    protected void recursiveGenerate(World par1World, int par2, int par3, int par4, int par5, int[] blockArray)
+    {
+        if (!this.structureMap.containsKey(Long.valueOf(ChunkCoordIntPair.chunkXZ2Int(par2, par3))))
+        {
+            this.rand.nextInt();
+
+            try
+            {
+                if (this.canSpawnStructureAtCoords(par2, par3))
+                {
+                    StructureStart var7 = this.getStructureStart(par2, par3);
+                    this.structureMap.put(Long.valueOf(ChunkCoordIntPair.chunkXZ2Int(par2, par3)), var7);
+                }
+            }
+            catch (Throwable var10)
+            {
+                CrashReport var8 = CrashReport.makeCrashReport(var10, "Exception preparing structure feature");
+                CrashReportCategory var9 = var8.makeCategory("Feature being prepared");
+                var9.addCrashSectionCallable("Is feature chunk", new BTACallableIsFeatureChunk(this, par2, par3));
+                var9.addCrashSection("Chunk location", String.format("%d,%d", new Object[] {Integer.valueOf(par2), Integer.valueOf(par3)}));
+                var9.addCrashSectionCallable("Chunk pos hash", new BTACallableChunkPosHash(this, par2, par3));
+                var9.addCrashSectionCallable("Structure type", new BTACallableStructureType(this));
+                throw new ReportedException(var8);
+            }
+        }
     }
 
     public BTAMapGenScatteredFeature(Map par1Map)
@@ -67,6 +95,8 @@ public class BTAMapGenScatteredFeature extends BTAMapGenStructure
         var5 += var7.nextInt(this.maxDistanceBetweenScatteredFeatures - this.minDistanceBetweenScatteredFeatures);
         var6 += var7.nextInt(this.maxDistanceBetweenScatteredFeatures - this.minDistanceBetweenScatteredFeatures);
 
+        boolean isValidBiome = false;
+        
         if (var3 == var5 && var4 == var6)
         {
             BiomeGenBase var8 = this.worldObj.getWorldChunkManager().getBiomeGenAt(var3 * 16 + 8, var4 * 16 + 8);
@@ -78,7 +108,7 @@ public class BTAMapGenScatteredFeature extends BTAMapGenStructure
 
                 if (var8 == var10)
                 {
-                    return true;
+                	return this.worldObj.getTopSolidOrLiquidBlock(par1, par2) >= this.worldObj.provider.getAverageGroundLevel();
                 }
             }
         }

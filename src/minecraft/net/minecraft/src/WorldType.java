@@ -25,6 +25,10 @@ public class WorldType
 
     /** The int version of the ChunkProvider that generated this world. */
     private final int generatorVersion;
+    
+    private boolean isDeco;
+    
+    private WorldType parent = this;
 
     /**
      * Whether this world type can be generated. Normally true; set to false for out-of-date generator versions.
@@ -125,4 +129,70 @@ public class WorldType
     {
         return this.worldTypeId;
     }
+    
+    public WorldChunkManager getChunkManager(World world, String generatorOptions) {
+    	return new WorldChunkManager(world);
+    }
+    
+    public IChunkProvider getChunkProviderOverworld(World world, long seed, boolean mapFeaturesEnabled, String generatorOptions) {
+    	return new ChunkProviderGenerate(world, seed, mapFeaturesEnabled);
+    }
+    
+    public IChunkProvider getChunkProviderNether(World world, long seed) {
+    	return new ChunkProviderHell(world, seed);
+    }
+    
+    public IChunkProvider getChunkProviderEnd(World world, long seed) {
+    	return new ChunkProviderEnd(world, seed);
+    }
+    
+    public float getCloudHeight() {
+    	return 128F;
+    }
+    
+    public int getAverageGroundLevel() {
+    	return 64;
+    }
+    
+    public double getHorizon() {
+    	return 63D;
+    }
+    
+    public int[] getStrataLevels() {
+    	return new int[] {48, 24};
+    }
+    
+    public WorldType setIsDeco() {
+    	this.isDeco = true;
+    	return this;
+    }
+    
+    public boolean isDeco() {
+    	return isDeco;
+    }
+    
+    public boolean hasDeco() {
+    	return false;
+    }
+    
+    public boolean isSky() {
+    	return false;
+    }
+    
+    public boolean isBTA() {
+    	return false;
+    }
+    
+    public boolean hasOceans() {
+    	return true;
+    }
+
+	public WorldType getParent() {
+		return parent;
+	}
+
+	public WorldType setParent(WorldType parent) {
+		this.parent = parent;
+		return this;
+	}
 }

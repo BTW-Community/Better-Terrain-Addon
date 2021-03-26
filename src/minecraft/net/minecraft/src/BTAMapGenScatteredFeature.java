@@ -108,7 +108,7 @@ public class BTAMapGenScatteredFeature extends BTAMapGenStructure
 
                 if (var8 == var10)
                 {
-                	return true;
+                	return this.worldObj.getTopSolidOrLiquidBlock(par1, par2) >= this.worldObj.provider.getAverageGroundLevel();
                 }
             }
         }

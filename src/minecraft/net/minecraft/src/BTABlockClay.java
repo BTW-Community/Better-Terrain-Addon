@@ -49,6 +49,21 @@ public class BTABlockClay extends FCBlockClay {
         return (meta == 1 || meta == 2) ? 0.8F : 1.0F;
     }
 
+    public boolean CanReedsGrowOnBlock(World var1, int var2, int var3, int var4)
+    {
+        return var1.getBlockMetadata(var2, var3, var4) == 3;
+    }
+
+    public boolean CanSaplingsGrowOnBlock(World var1, int var2, int var3, int var4)
+    {
+        return var1.getBlockMetadata(var2, var3, var4) == 3;
+    }
+
+    public boolean CanWildVegetationGrowOnBlock(World var1, int var2, int var3, int var4)
+    {
+        return var1.getBlockMetadata(var2, var3, var4) == 3;
+    }
+
 	//CLIENT ONLY
 	Icon sandyClayIcon;
 	Icon redSandyClayIcon;

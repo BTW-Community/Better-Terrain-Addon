@@ -37,14 +37,16 @@ public class BTASkyChunkProvider implements IChunkProvider
 	int[][] field_914_i = new int[32][32];
 	private Random m_structureRand;
 	private boolean isNether = false;
-	private boolean isEnd = false;
+	
+	private BTAWorldConfigurationInfo generatorInfo;
 
-	public BTASkyChunkProvider(World var1, long var2, boolean var4)
+	public BTASkyChunkProvider(World var1, long var2, boolean var4, BTAWorldConfigurationInfo generatorInfo)
 	{
 		this.worldObj = var1;
 		this.rand = new Random(var2);
 		this.m_structureRand = new Random(var2);
 		this.mapFeaturesEnabled = var4;
+		this.generatorInfo = generatorInfo;
 		this.field_912_k = new BTABetaNoiseOctaves(this.rand, 16);
 		this.field_911_l = new BTABetaNoiseOctaves(this.rand, 16);
 		this.field_910_m = new BTABetaNoiseOctaves(this.rand, 8);
@@ -57,11 +59,6 @@ public class BTASkyChunkProvider implements IChunkProvider
 	
 	public BTASkyChunkProvider setNether() {
 		this.isNether = true;
-		return this;
-	}
-	
-	public BTASkyChunkProvider setEnd() {
-		this.isEnd = true;
 		return this;
 	}
 
@@ -118,8 +115,6 @@ public class BTASkyChunkProvider implements IChunkProvider
                                 {
                                 	if (this.isNether)
                                 		var52 = Block.netherrack.blockID;
-                                	else if (this.isEnd)
-                                		var52 = Block.whiteStone.blockID;
                                 	else
                                 		var52 = Block.stone.blockID;
                                 }
@@ -187,6 +182,9 @@ public class BTASkyChunkProvider implements IChunkProvider
                         {
                             var3[var18] = var15;
                             var14 = var13;
+
+							if (var10.biomeID == BTABiomeConfiguration.badlandsPlateau.biomeID)
+								var14 += 10;
                         }
                         else if (var14 > 0)
                         {
@@ -202,11 +200,6 @@ public class BTASkyChunkProvider implements IChunkProvider
 							{
 								var14 = this.rand.nextInt(4);
 								var16 = BTADecoIntegration.redSandStone.blockID;
-							}
-							else if (BTADecoIntegration.isDecoInstalled() && var14 == 0 && var16 == BTADecoIntegration.terracotta.blockID)
-							{
-								var14 = this.rand.nextInt(2) + 6;
-								var16 = BTADecoIntegration.terracotta.blockID;
 							}
 						}
                     }
@@ -247,7 +240,7 @@ public class BTASkyChunkProvider implements IChunkProvider
 				this.mineshaftGenerator.generate(this, this.worldObj, var1, var2, var3);
 				//this.villageGenerator.generate(this, this.worldObj, var1, var2, var3);
 				//this.strongholdGenerator.generate(this, this.worldObj, var1, var2, var3);
-				//this.scatteredFeatureGenerator.generate(this, this.worldObj, var1, var2, var3);
+				this.scatteredFeatureGenerator.generate(this, this.worldObj, var1, var2, var3);
 			}
 		}
 
@@ -309,20 +302,6 @@ public class BTASkyChunkProvider implements IChunkProvider
 
                 var27 = var27 * 3.0D - 2.0D;
 
-                float x = (float)(var14 + var2 - 0) / 1.0F;
-                float z = (float)(var15 + var4 - 0) / 1.0F;
-                float dist = 100.0F - MathHelper.sqrt_float(x * x + z * z) * 8.0F;
-
-                if (dist > 80.0F)
-                {
-                	dist = 80.0F;
-                }
-
-                if (dist < -100.0F)
-                {
-                	dist = -100.0F;
-                }
-
                 if (var27 > 1.0D)
                 {
                     var27 = 1.0D;
@@ -369,34 +348,13 @@ public class BTASkyChunkProvider implements IChunkProvider
                     }
 
                     var32 -= 8.0D;
-                    if (this.isEnd)
-                    	var32 += dist;
                     byte var42 = 32;
                     double var43;
 
-                    if (var31 > var6 - var42 && !this.isEnd)
+                    if (var31 > var6 - var42)
                     {
                         var43 = (double)((float)(var31 - (var6 - var42)) / ((float)var42 - 1.0F));
                         var32 = var32 * (1.0D - var43) + -30.0D * var43;
-                    }
-                    
-                    var42 = 2;
-                    
-                    if (var31 > var6 / 2 - var42 && this.isEnd)
-                    {
-                        var43 = (double)((float)(var31 - (var6 / 2 - var42)) / (64F));
-                        
-                        if (var43 < 0.0D)
-                        {
-                        	var43 = 0.0D;
-                        }
-
-                        if (var43 > 1.0D)
-                        {
-                        	var43 = 1.0D;
-                        }
-                        
-                        var32 = var32 * (1.0D - var43) + -3000.0D * var43;
                     }
 
                     var42 = 8;
@@ -433,10 +391,6 @@ public class BTASkyChunkProvider implements IChunkProvider
 			this.populateNether(par1IChunkProvider, par2, par3);
 			return;
 		}
-		else if (this.isEnd) {
-			this.populateEnd(par1IChunkProvider, par2, par3);
-			return;
-		}
 		
 		BlockSand.fallInstantly = true;
 		int var4 = par2 * 16;
@@ -452,16 +406,11 @@ public class BTASkyChunkProvider implements IChunkProvider
 
 		if (this.mapFeaturesEnabled)
 		{
-			if (this.isNether) {
-				
-			}
-			else {
-				this.mineshaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
-				this.m_structureRand.setSeed((long)par2 * var11 + (long)par3 * var13 ^ this.worldObj.getSeed());
-				var15 = this.villageGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
-				this.strongholdGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
-				this.scatteredFeatureGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
-			}
+			this.mineshaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
+			this.m_structureRand.setSeed((long)par2 * var11 + (long)par3 * var13 ^ this.worldObj.getSeed());
+			var15 = this.villageGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
+			this.strongholdGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
+			this.scatteredFeatureGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
 		}
 
 		int var16;
@@ -622,19 +571,6 @@ public class BTASkyChunkProvider implements IChunkProvider
             (new WorldGenHellLava(Block.lavaMoving.blockID, true)).generate(this.worldObj, this.rand, var9, var10, var12);
         }
 
-        BlockSand.fallInstantly = false;
-    }
-
-    /**
-     * Populates chunk with ores etc etc
-     */
-    public void populateEnd(IChunkProvider par1IChunkProvider, int par2, int par3)
-    {
-        BlockSand.fallInstantly = true;
-        int var4 = par2 * 16;
-        int var5 = par3 * 16;
-        BiomeGenBase var6 = this.worldObj.getBiomeGenForCoords(var4 + 16, var5 + 16);
-        var6.decorate(this.worldObj, this.worldObj.rand, var4, var5);
         BlockSand.fallInstantly = false;
     }
 
