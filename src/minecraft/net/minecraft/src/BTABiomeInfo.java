@@ -52,4 +52,8 @@ public class BTABiomeInfo {
 
         return var1;
     }
+    
+    public BTABiomeInfo copy() {
+    	return new BTABiomeInfo(this.id, this.enabled, this.decoOnly);
+    }
 }

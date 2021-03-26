@@ -239,7 +239,7 @@ public class BTAChunkProvider implements IChunkProvider
 								}
 								else if (var16 >= var5 - (8 + rand.nextInt(2)) && var16 <= var5 + 1)
 								{
-									if(var10.biomeID == BTABiomeConfiguration.oldValley.biomeID || var10.biomeID == BTABiomeConfiguration.valleyMountains.biomeID || var10.biomeID == BTABiomeConfiguration.valley.biomeID || var10.biomeID == BTABiomeConfiguration.tropics.biomeID)
+									if(var10.biomeID == BTABiomeConfiguration.oldValley.biomeID || var10.biomeID == BTABiomeConfiguration.valleyMountains.biomeID || var10.biomeID == BTABiomeConfiguration.valley.biomeID || (var10.biomeID == BTABiomeConfiguration.tropics.biomeID && !this.generatorInfo.isCompatMode()))
 									{
 										var14 = (byte)Block.sand.blockID;
 										var15 = (byte)Block.sand.blockID;
