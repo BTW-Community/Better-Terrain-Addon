@@ -6,11 +6,11 @@ import java.util.Random;
 public class BTABetaChunkProvider implements IChunkProvider
 {
 	private Random rand;
-	private BTABetaNoiseOctaves field_912_k;
-	private BTABetaNoiseOctaves field_911_l;
-	private BTABetaNoiseOctaves field_910_m;
-	private BTABetaNoiseOctaves field_909_n;
-	private BTABetaNoiseOctaves field_908_o;
+	private BTABetaNoiseOctaves blockNoiseGen1;
+	private BTABetaNoiseOctaves blockNoiseGen2;
+	private BTABetaNoiseOctaves blockModifierNoiseGen;
+	private BTABetaNoiseOctaves sandNoiseGen;
+	private BTABetaNoiseOctaves stoneNoiseGen;
 	public BTABetaNoiseOctaves field_922_a;
 	public BTABetaNoiseOctaves field_921_b;
 	public BTABetaNoiseOctaves mobSpawnerNoise;
@@ -28,25 +28,28 @@ public class BTABetaChunkProvider implements IChunkProvider
 	private BTAMapGenBase ravineGenerator = new BTAMapGenRavine();
 	private BiomeGenBase[] biomesForGeneration;
 	private int worldtype;
-	double[] field_4185_d;
-	double[] field_4184_e;
-	double[] field_4183_f;
+	double[] blockModiferNoise;
+	double[] blockNoise1;
+	double[] blockNoise2;
 	double[] field_4182_g;
 	double[] field_4181_h;
 	int[][] field_914_i = new int[32][32];
 	private Random m_structureRand;
+	
+	private BTAWorldConfigurationInfo generatorInfo;
 
-	public BTABetaChunkProvider(World var1, long var2, boolean var4)
+	public BTABetaChunkProvider(World var1, long var2, boolean var4, BTAWorldConfigurationInfo generatorInfo)
 	{
 		this.worldObj = var1;
 		this.rand = new Random(var2);
 		this.m_structureRand = new Random(var2);
 		this.mapFeaturesEnabled = var4;
-		this.field_912_k = new BTABetaNoiseOctaves(this.rand, 16);
-		this.field_911_l = new BTABetaNoiseOctaves(this.rand, 16);
-		this.field_910_m = new BTABetaNoiseOctaves(this.rand, 8);
-		this.field_909_n = new BTABetaNoiseOctaves(this.rand, 4);
-		this.field_908_o = new BTABetaNoiseOctaves(this.rand, 4);
+		this.generatorInfo = generatorInfo;
+		this.blockNoiseGen1 = new BTABetaNoiseOctaves(this.rand, 16);
+		this.blockNoiseGen2 = new BTABetaNoiseOctaves(this.rand, 16);
+		this.blockModifierNoiseGen = new BTABetaNoiseOctaves(this.rand, 8);
+		this.sandNoiseGen = new BTABetaNoiseOctaves(this.rand, 4);
+		this.stoneNoiseGen = new BTABetaNoiseOctaves(this.rand, 4);
 		this.field_922_a = new BTABetaNoiseOctaves(this.rand, 10);
 		this.field_921_b = new BTABetaNoiseOctaves(this.rand, 16);
 		this.mobSpawnerNoise = new BTABetaNoiseOctaves(this.rand, 8);
@@ -138,17 +141,17 @@ public class BTABetaChunkProvider implements IChunkProvider
 	{
 		byte var5 = 64;
 		double var6 = 0.03125D;
-		this.sandNoise = this.field_909_n.generateNoiseOctaves(this.sandNoise, (double)(var1 * 16), (double)(var2 * 16), 0.0D, 16, 16, 1, var6, var6, 1.0D);
-		this.gravelNoise = this.field_909_n.generateNoiseOctaves(this.gravelNoise, (double)(var1 * 16), 109.0134D, (double)(var2 * 16), 16, 1, 16, var6, 1.0D, var6);
-		this.stoneNoise = this.field_908_o.generateNoiseOctaves(this.stoneNoise, (double)(var1 * 16), (double)(var2 * 16), 0.0D, 16, 16, 1, var6 * 2.0D, var6 * 2.0D, var6 * 2.0D);
+		this.sandNoise = this.sandNoiseGen.generateNoiseOctaves(this.sandNoise, (double)(var1 * 16), (double)(var2 * 16), 0.0D, 16, 16, 1, var6, var6, 1.0D);
+		this.gravelNoise = this.sandNoiseGen.generateNoiseOctaves(this.gravelNoise, (double)(var1 * 16), 109.0134D, (double)(var2 * 16), 16, 1, 16, var6, 1.0D, var6);
+		this.stoneNoise = this.stoneNoiseGen.generateNoiseOctaves(this.stoneNoise, (double)(var1 * 16), (double)(var2 * 16), 0.0D, 16, 16, 1, var6 * 2.0D, var6 * 2.0D, var6 * 2.0D);
 
 		for (int var8 = 0; var8 < 16; ++var8)
 		{
 			for (int var9 = 0; var9 < 16; ++var9)
 			{
 				BiomeGenBase var10 = var4[var8 + var9 * 16];
-				boolean var11 = this.sandNoise[var9 + var8 * 16] + this.rand.nextDouble() * 0.2D > 0.0D;
-				boolean var12 = this.gravelNoise[var9 + var8 * 16] + this.rand.nextDouble() * 0.2D > 3.0D;
+				boolean useSand = this.sandNoise[var9 + var8 * 16] + this.rand.nextDouble() * 0.2D > 0.0D;
+				boolean useGravel = this.gravelNoise[var9 + var8 * 16] + this.rand.nextDouble() * 0.2D > 3.0D;
 				int var13 = (int)(this.stoneNoise[var9 + var8 * 16] / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
 				int var14 = -1;
 				int var15;
@@ -199,17 +202,17 @@ public class BTABetaChunkProvider implements IChunkProvider
 										var16 = var10.fillerBlock;
 									}
 
-									if (var12)
+									if (useGravel)
 									{
 										var15 = 0;
 									}
 
-									if (var12)
+									if (useGravel)
 									{
 										var16 = (byte)Block.gravel.blockID;
 									}
 
-									if (var11)
+									if (useSand)
 									{
 										if (var10 == BTABiomeConfiguration.badlands || var10 == BTABiomeConfiguration.badlandsPlateau || var10 == BTABiomeConfiguration.outback) {
 											var15 = BTADecoIntegration.redSand.blockID;
@@ -307,117 +310,114 @@ public class BTABetaChunkProvider implements IChunkProvider
 		return var5;
 	}
 
-	private double[] initializeNoiseField(double[] noiseField, int var2, int var3, int var4, int var5, int var6, int var7)
+	private double[] initializeNoiseField(double[] noiseField, int posX, int posY, int posZ, int sizeX, int sizeY, int sizeZ)
 	{
 		if (noiseField == null)
 		{
-			noiseField = new double[var5 * var6 * var7];
+			noiseField = new double[sizeX * sizeY * sizeZ];
 		}
 
-		double var8 = 684.412D;
-		double var10 = 684.412D;
-		this.field_4182_g = this.field_922_a.generateNoiseOctaves(this.field_4182_g, var2, var4, var5, var7, 1.121D, 1.121D, 0.5D);
-		this.field_4181_h = this.field_921_b.generateNoiseOctaves(this.field_4181_h, var2, var4, var5, var7, 200.0D, 200.0D, 0.5D);
-		this.field_4185_d = this.field_910_m.generateNoiseOctaves(this.field_4185_d, (double)var2, (double)var3, (double)var4, var5, var6, var7, var8 / 80.0D, var10 / 160.0D, var8 / 80.0D);
-		this.field_4184_e = this.field_912_k.generateNoiseOctaves(this.field_4184_e, (double)var2, (double)var3, (double)var4, var5, var6, var7, var8, var10, var8);
-		this.field_4183_f = this.field_911_l.generateNoiseOctaves(this.field_4183_f, (double)var2, (double)var3, (double)var4, var5, var6, var7, var8, var10, var8);
-		int var14 = 0;
-		int var15 = 0;
-		int var16 = 16 / var5;
+		double octaveScalarXZ = 684.412D;
+		double octaveScalarY = 684.412D;
+		this.field_4182_g = this.field_922_a.generateNoiseOctaves(this.field_4182_g, posX, posZ, sizeX, sizeZ, 1.121D, 1.121D, 0.5D);
+		this.field_4181_h = this.field_921_b.generateNoiseOctaves(this.field_4181_h, posX, posZ, sizeX, sizeZ, 200.0D, 200.0D, 0.5D);
+		this.blockModiferNoise = this.blockModifierNoiseGen.generateNoiseOctaves(this.blockModiferNoise, (double)posX, (double)posY, (double)posZ, sizeX, sizeY, sizeZ, octaveScalarXZ / 80.0D, octaveScalarY / 160.0D, octaveScalarXZ / 80.0D);
+		this.blockNoise1 = this.blockNoiseGen1.generateNoiseOctaves(this.blockNoise1, (double)posX, (double)posY, (double)posZ, sizeX, sizeY, sizeZ, octaveScalarXZ, octaveScalarY, octaveScalarXZ);
+		this.blockNoise2 = this.blockNoiseGen2.generateNoiseOctaves(this.blockNoise2, (double)posX, (double)posY, (double)posZ, sizeX, sizeY, sizeZ, octaveScalarXZ, octaveScalarY, octaveScalarXZ);
+		int blockNoiseIndex = 0;
+		int heightmapNoiseIndex = 0;
 
-		for (int var17 = 0; var17 < var5; ++var17)
+		for (int i = 0; i < sizeX; ++i)
 		{
-			int var18 = var17 * var16 + var16 / 2;
-
-			for (int var19 = 0; var19 < var7; ++var19)
+			for (int k = 0; k < sizeZ; ++k)
 			{
-				int var20 = var19 * var16 + var16 / 2;
-				double var27 = (this.field_4182_g[var15] + 256.0D) / 512.0D;
+				double maxHeightVale = (this.field_4182_g[heightmapNoiseIndex] + 256.0D) / 512.0D;
 
-				if (var27 > 1.0D)
+				if (maxHeightVale > 1.0D)
 				{
-					var27 = 1.0D;
+					maxHeightVale = 1.0D;
 				}
 
-				double var29 = this.field_4181_h[var15] / 8000.0D;
+				double heightmapNoiseModifier = this.field_4181_h[heightmapNoiseIndex] / 8000.0D;
 
-				if (var29 < 0.0D)
+				if (heightmapNoiseModifier < 0.0D)
 				{
-					var29 = -var29 * 0.3D;
+					heightmapNoiseModifier = -heightmapNoiseModifier * 0.3D;
 				}
 
-				var29 = var29 * 3.0D - 2.0D;
+				heightmapNoiseModifier = heightmapNoiseModifier * 3.0D - 2.0D;
 
-				if (var29 < 0.0D)
+				if (heightmapNoiseModifier < 0.0D)
 				{
-					var29 /= 2.0D;
+					heightmapNoiseModifier /= 2.0D;
 
-					if (var29 < -1.0D)
+					if (heightmapNoiseModifier < -1.0D)
 					{
-						var29 = -1.0D;
+						heightmapNoiseModifier = -1.0D;
 					}
 
-					var29 /= 1.4D;
-					var29 /= 2.0D;
-					var27 = 0.0D;
+					heightmapNoiseModifier /= 1.4D;
+					heightmapNoiseModifier /= 2.0D;
+					maxHeightVale = 0.0D;
 				}
 				else
 				{
-					if (var29 > 1.0D)
+					if (heightmapNoiseModifier > 1.0D)
 					{
-						var29 = 1.0D;
+						heightmapNoiseModifier = 1.0D;
 					}
 
-					var29 /= 8.0D;
+					heightmapNoiseModifier /= 8.0D;
 				}
 
-				if (var27 < 0.0D)
+				if (maxHeightVale < 0.0D)
 				{
-					var27 = 0.0D;
+					maxHeightVale = 0.0D;
 				}
 
-				var27 += 0.5D;
-				var29 = var29 * (double)var6 / 16.0D;
-				double var31 = (double)var6 / 2.0D + var29 * 4.0D;
-				++var15;
+				maxHeightVale += 0.5D;
+				heightmapNoiseModifier = heightmapNoiseModifier * (double)sizeY / 16.0D;
+				double minHeightModified = (double)sizeY / 2.0D + heightmapNoiseModifier * 4.0D;
+				++heightmapNoiseIndex;
 
-				for (int var33 = 0; var33 < var6; ++var33)
+				for (int j = 0; j < sizeY; ++j)
 				{
-					double var34 = 0.0D;
-					double var36 = ((double)var33 - var31) * 12.0D / var27;
+					double noiseSample = 0.0D;
+					double heightmapValue = ((double)j - minHeightModified) * 12.0D / maxHeightVale;
 
-					if (var36 < 0.0D)
+					if (heightmapValue < 0.0D)
 					{
-						var36 *= 4.0D;
+						heightmapValue *= 4.0D;
 					}
 
-					double var38 = this.field_4184_e[var14] / 512.0D;
-					double var40 = this.field_4183_f[var14] / 512.0D;
-					double var42 = (this.field_4185_d[var14] / 10.0D + 1.0D) / 2.0D;
+					double blockNoiseModiferSample = (this.blockModiferNoise[blockNoiseIndex] / 10.0D + 1.0D) / 2.0D;
 
-					if (var42 < 0.0D)
+					double blockNoiseSample1 = this.blockNoise1[blockNoiseIndex] / 512.0D;
+					double blockNoiseSample2 = this.blockNoise2[blockNoiseIndex] / 512.0D;
+
+					if (blockNoiseModiferSample < 0.0D)
 					{
-						var34 = var38;
+						noiseSample = blockNoiseSample1;
 					}
-					else if (var42 > 1.0D)
+					else if (blockNoiseModiferSample > 1.0D)
 					{
-						var34 = var40;
+						noiseSample = blockNoiseSample2;
 					}
 					else
 					{
-						var34 = var38 + (var40 - var38) * var42;
+						noiseSample = blockNoiseSample1 + (blockNoiseSample2 - blockNoiseSample1) * blockNoiseModiferSample;
 					}
 
-					var34 -= var36;
+					noiseSample -= heightmapValue;
 
-					if (var33 > var6 - 4)
+					if (j > sizeY - 4)
 					{
-						double var44 = (double)((float)(var33 - (var6 - 4)) / 3.0F);
-						var34 = var34 * (1.0D - var44) + -10.0D * var44;
+						double var44 = (double)((float)(j - (sizeY - 4)) / 3.0F);
+						noiseSample = noiseSample * (1.0D - var44) + -10.0D * var44;
 					}
 
-					noiseField[var14] = var34;
-					++var14;
+					noiseField[blockNoiseIndex] = noiseSample;
+					++blockNoiseIndex;
 				}
 			}
 		}

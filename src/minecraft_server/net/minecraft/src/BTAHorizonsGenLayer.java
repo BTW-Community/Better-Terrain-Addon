@@ -30,7 +30,7 @@ public abstract class BTAHorizonsGenLayer extends GenLayer {
         GenLayerRiver var14 = new GenLayerRiver(1L, var5);
         GenLayerSmooth var16 = new GenLayerSmooth(1000L, var14);
         GenLayer var6 = GenLayerZoom.magnify(1000L, var15, 0);
-        BTAGenLayerBiome var17 = new BTAGenLayerBiome(200L, var6, worldType);
+        BTAGenLayerBiome var17 = new BTAGenLayerBiome(200L, var6, worldType, BTABiomeConfiguration.biomeListDeco);
         var6 = GenLayerZoom.magnify(1000L, var17, 2);
         Object var18 = new BTAGenLayerHills(1000L, var6);
 

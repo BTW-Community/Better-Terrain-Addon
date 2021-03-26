@@ -70,16 +70,28 @@ public class BTAWorldGenMinable extends WorldGenerator
                                 {
                                     int var47 = mineableMetadata;
                                     Block var48 = Block.blocksList[this.minableBlockId];
+                                    
+                                    int[] stratas = par1World.provider.terrainType.getStrataLevels();
+                                    
+                                    int strata1Height = stratas[0];
+                                    int strata2Height = stratas[1];
+                                    int strata3Height = -2;
+                                    
+                                    if (stratas.length > 2)
+                                    	strata3Height = stratas[2];
 
-                                    if (var48.HasStrata() && var41 <= 48 + par1World.rand.nextInt(2))
+                                    if (var48.HasStrata() && var41 <= strata1Height + par1World.rand.nextInt(2))
                                     {
                                         byte var49 = 1;
-
-                                        int strata2Height = (par1World.provider.terrainType == BTAMod.BTAWorldTypeSky || par1World.provider.terrainType == BTAMod.BTAWorldTypeSkyDeco) ? 32 : 24;
                                         
                                         if (var41 <= strata2Height + par1World.rand.nextInt(2))
                                         {
                                             var49 = 2;
+                                        }
+                                        
+                                        if (var41 <= strata3Height + par1World.rand.nextInt(2))
+                                        {
+                                            var49 = 3;
                                         }
 
                                         var47 = var48.GetMetadataConversionForStrataLevel(var49, 0);

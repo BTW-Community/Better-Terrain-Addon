@@ -1,5 +1,5 @@
 Version 1.2.0
-Note: This release adds several new biomes and world generation options. However, I have specifically made sure that existing worlds are unaffected and as such you do not need to worry about compatibility when upgrading to this version.
+Note: This release adds several new biomes and world generation options. However, I have specifically made sure that existing worlds are unaffected and as such you do not need to worry about compatibility when upgrading to this version. However, it is still good practice to backup your worlds.
 [list]
 [*]Added expanded configuration to BTA world creation. This allows selecting and deselecting biomes to include in world generation, as well as other configuration options. In addition, this allows me to add new biomes without breaking old worlds by tying the biome list to the save file. To generate any of the new biomes added in this release, you will have to create a new world.
 [*]Added the ability to replace sand generation with beta's sand and gravel beaches on world creation.

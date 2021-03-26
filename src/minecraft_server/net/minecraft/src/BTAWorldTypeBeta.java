@@ -13,15 +13,50 @@ public class BTAWorldTypeBeta extends WorldType {
         return "Beta";
     }
     
-    public WorldChunkManager getChunkManager(World world) {
-    	return new BTABetaChunkManager(world);
+    @Override
+    public WorldChunkManager getChunkManager(World world, String generatorOptions) {
+    	BTAWorldConfigurationInfo info;
+    	
+    	if (generatorOptions.equals("")) {
+    		info = BTAWorldConfigurationInfo.createDefaultConfigurationLegacy(this.isDeco());
+    	}
+    	else {
+    		info = BTAWorldConfigurationInfo.createInfoFromString(generatorOptions);
+    	}
+    	
+    	return new BTABetaChunkManager(world, info);
     }
-    
-    public IChunkProvider getChunkProviderOverworld(World world, long seed, boolean mapFeaturesEnabled) {
-    	return new BTABetaChunkProvider(world, seed, mapFeaturesEnabled);
+
+    @Override
+    public IChunkProvider getChunkProviderOverworld(World world, long seed, boolean mapFeaturesEnabled, String generatorOptions) {
+    	BTAWorldConfigurationInfo info;
+    	
+    	if (generatorOptions.equals("")) {
+    		info = BTAWorldConfigurationInfo.createDefaultConfigurationLegacy(this.isDeco());
+    	}
+    	else {
+    		info = BTAWorldConfigurationInfo.createInfoFromString(generatorOptions);
+    	}
+    	
+    	return new BTABetaChunkProvider(world, seed, mapFeaturesEnabled, info);
     }
-    
+
+    @Override
+    public IChunkProvider getChunkProviderEnd(World world, long seed) {
+    	return new BTAChunkProviderEnd(world, seed);
+    }
+
+    @Override
     public boolean hasDeco() {
     	return true;
+    }
+
+    @Override
+    public boolean isBTA() {
+    	return true;
+    }
+    
+    public boolean hasOceans() {
+    	return false;
     }
 }

@@ -12,16 +12,51 @@ public class BTAWorldType extends WorldType {
     {
         return "Better Terrain";
     }
-    
-    public WorldChunkManager getChunkManager(World world) {
-    	return new BTAWorldChunkManager(world);
+
+    @Override
+    public WorldChunkManager getChunkManager(World world, String generatorOptions) {
+    	BTAWorldConfigurationInfo info;
+    	
+    	System.out.println("Options input: " + generatorOptions);
+    	
+    	if (generatorOptions.equals("")) {
+    		info = BTAWorldConfigurationInfo.createDefaultConfigurationLegacy(this.isDeco());
+    	}
+    	else {
+    		info = BTAWorldConfigurationInfo.createInfoFromString(generatorOptions);
+    	}
+    	
+    	System.out.println("Options output: " + info);
+    	
+    	return new BTAWorldChunkManager(world, info);
+    }
+
+    @Override
+    public IChunkProvider getChunkProviderOverworld(World world, long seed, boolean mapFeaturesEnabled, String generatorOptions) {
+    	BTAWorldConfigurationInfo info;
+    	
+    	if (generatorOptions.equals("")) {
+    		info = BTAWorldConfigurationInfo.createDefaultConfigurationLegacy(this.isDeco());
+    	}
+    	else {
+    		info = BTAWorldConfigurationInfo.createInfoFromString(generatorOptions);
+    	}
+    	
+    	return new BTAChunkProvider(world, seed, mapFeaturesEnabled, info);
+    }
+
+    @Override
+    public IChunkProvider getChunkProviderEnd(World world, long seed) {
+    	return new BTAChunkProviderEnd(world, seed);
     }
     
-    public IChunkProvider getChunkProviderOverworld(World world, long seed, boolean mapFeaturesEnabled) {
-    	return new BTAChunkProvider(world, seed, mapFeaturesEnabled);
-    }
-    
+    @Override
     public boolean hasDeco() {
+    	return true;
+    }
+
+    @Override
+    public boolean isBTA() {
     	return true;
     }
 }

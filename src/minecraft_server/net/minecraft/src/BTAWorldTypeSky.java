@@ -12,40 +12,81 @@ public class BTAWorldTypeSky extends WorldType {
     {
         return "Skylands";
     }
-    
-    public WorldChunkManager getChunkManager(World world) {
-    	return new BTABetaChunkManager(world);
+
+    @Override
+    public WorldChunkManager getChunkManager(World world, String generatorOptions) {
+    	BTAWorldConfigurationInfo info;
+    	
+    	if (generatorOptions.equals("")) {
+    		info = BTAWorldConfigurationInfo.createDefaultConfigurationLegacy(this.isDeco());
+    	}
+    	else {
+    		info = BTAWorldConfigurationInfo.createInfoFromString(generatorOptions);
+    	}
+    	
+    	return new BTABetaChunkManager(world, info);
     }
-    
-    public IChunkProvider getChunkProviderOverworld(World world, long seed, boolean mapFeaturesEnabled) {
-    	return new BTASkyChunkProvider(world, seed, mapFeaturesEnabled);
+
+    @Override
+    public IChunkProvider getChunkProviderOverworld(World world, long seed, boolean mapFeaturesEnabled, String generatorOptions) {
+    	BTAWorldConfigurationInfo info;
+    	
+    	if (generatorOptions.equals("")) {
+    		info = BTAWorldConfigurationInfo.createDefaultConfigurationLegacy(this.isDeco());
+    	}
+    	else {
+    		info = BTAWorldConfigurationInfo.createInfoFromString(generatorOptions);
+    	}
+    	
+    	return new BTASkyChunkProvider(world, seed, mapFeaturesEnabled, info);
     }
-    
+
+    @Override
     public IChunkProvider getChunkProviderNether(World world, long seed) {
-    	return new BTASkyChunkProvider(world, seed, true).setNether();
+    	return new BTASkyChunkProvider(world, seed, true, BTAWorldConfigurationInfo.createDefaultConfiguration(this.isDeco())).setNether();
     }
-    
+
+    @Override
+    public IChunkProvider getChunkProviderEnd(World world, long seed) {
+    	return new BTAChunkProviderEnd(world, seed);
+    }
+
+    @Override
     public float getCloudHeight() {
-    	return 8F;
+    	return -8F;
     }
-    
+
+    @Override
     public int getAverageGroundLevel() {
     	return 16;
     }
-    
+
+    @Override
     public double getHorizon() {
     	return 0F;
     }
-    
+
+    @Override
     public int[] getStrataLevels() {
     	return new int[] {48, 32};
     }
-    
+
+    @Override
     public boolean isSky() {
     	return true;
     }
-    
+
+    @Override
     public boolean hasDeco() {
     	return true;
+    }
+
+    @Override
+    public boolean isBTA() {
+    	return true;
+    }
+    
+    public boolean hasOceans() {
+    	return false;
     }
 }

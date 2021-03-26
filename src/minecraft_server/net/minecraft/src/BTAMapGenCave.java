@@ -180,7 +180,7 @@ public class BTAMapGenCave extends BTAMapGenBase
 
                                             if (var53 == Block.stone.blockID || var53 == Block.dirt.blockID || var53 == Block.grass.blockID)
                                             {
-                                                if (var50 < 10 && this.worldObj.provider.terrainType != BTAMod.BTAWorldTypeSky && this.worldObj.provider.terrainType != BTAMod.BTAWorldTypeSkyDeco)
+                                                if (var50 < 10 && !this.worldObj.provider.terrainType.isSky())
                                                 {
                                                     blockArray[var48] = (byte)Block.lavaMoving.blockID;
                                                 }

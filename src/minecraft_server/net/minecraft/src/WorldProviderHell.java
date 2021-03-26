@@ -32,12 +32,7 @@ public class WorldProviderHell extends WorldProvider
      */
     public IChunkProvider createChunkGenerator()
     {
-    	if (this.terrainType == BTAMod.BTAWorldTypeSky || this.terrainType == BTAMod.BTAWorldTypeSkyDeco) {
-    		return new BTASkyChunkProvider(this.worldObj, this.worldObj.getSeed(), true).setNether();
-    	}
-    	else {
-    		return new ChunkProviderHell(this.worldObj, this.worldObj.getSeed());
-    	}
+    	return this.terrainType.getChunkProviderNether(this.worldObj, this.worldObj.getSeed());
     }
 
     /**
