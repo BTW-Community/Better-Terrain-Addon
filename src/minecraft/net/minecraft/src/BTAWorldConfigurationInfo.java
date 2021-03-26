@@ -107,7 +107,7 @@ public class BTAWorldConfigurationInfo {
 
 	public void generateBiomeInfoListFromBiomes(ArrayList<BTABiomeGenBase> biomeList) {
 		for (BTABiomeGenBase b : biomeList) {
-			this.biomeInfoList.add(BTABiomeConfiguration.biomeInfoMap.get(b.biomeID));
+			this.biomeInfoList.add(BTABiomeConfiguration.biomeInfoMap.get(b.biomeID).setEnabled(true));
 		}
 	}
 

@@ -17,12 +17,16 @@ public class BTAWorldType extends WorldType {
     public WorldChunkManager getChunkManager(World world, String generatorOptions) {
     	BTAWorldConfigurationInfo info;
     	
+    	System.out.println("Options input: " + generatorOptions);
+    	
     	if (generatorOptions.equals("")) {
     		info = BTAWorldConfigurationInfo.createDefaultConfigurationLegacy(this.isDeco());
     	}
     	else {
     		info = BTAWorldConfigurationInfo.createInfoFromString(generatorOptions);
     	}
+    	
+    	System.out.println("Options output: " + info);
     	
     	return new BTAWorldChunkManager(world, info);
     }

@@ -35,8 +35,9 @@ public class BTABiomeInfo {
         return this.enabled;
     }
 
-    public void setEnabled(boolean enabled) {
+    public BTABiomeInfo setEnabled(boolean enabled) {
         this.enabled = enabled;
+        return this;
     }
 
     public String toString() {
