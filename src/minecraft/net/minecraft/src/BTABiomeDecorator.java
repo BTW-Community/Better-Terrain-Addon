@@ -154,6 +154,10 @@ public class BTABiomeDecorator
 	public boolean generateStoneInGrass;
 	public boolean generateStoneInGrass2;
 	public boolean generateOutback;
+	
+	public int fractionalTreeChance;
+	
+	private BTAWorldConfigurationInfo generatorInfo;
 
 	public BTABiomeDecorator(BiomeGenBase par1BiomeGenBase)
 	{
@@ -212,6 +216,7 @@ public class BTABiomeDecorator
 		waterLakesPerChunk = 50;
 		lavaLakesPerChunk = 20;
 		bigRedMushroomsPerChunk = 0;
+		fractionalTreeChance = 10;
 	}
 
 	/**
@@ -227,6 +232,7 @@ public class BTABiomeDecorator
 		else
 		{
 			this.currentWorld = par1World;
+			this.generatorInfo = BTAWorldConfigurationInfo.createInfoFromString(this.currentWorld.provider.generatorOptions);
 			this.randomGenerator = par2Random;
 			this.chunk_X = par3;
 			this.chunk_Z = par4;
@@ -265,10 +271,9 @@ public class BTABiomeDecorator
 			var2 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 			var3 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 			if (this.currentWorld.provider.terrainType != BTAMod.BTAWorldTypeBeta && this.currentWorld.provider.terrainType != BTAMod.BTAWorldTypeBetaDeco)
-				if (this.currentWorld.chunkProvider instanceof BTAChunkProvider && 
-						!((BTAChunkProvider) this.currentWorld.chunkProvider).generatorInfo.generatePerlinBeaches() &&
-						!(this.biome == BTABiomeConfiguration.tropics && !((BTAChunkProvider) this.currentWorld.chunkProvider).generatorInfo.isCompatMode()))
-					this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
+				if (!this.generatorInfo.generatePerlinBeaches())
+					if (this.biome != BTABiomeConfiguration.tropics || ((BTAChunkProvider) this.currentWorld.chunkProvider).generatorInfo.isCompatMode())
+						this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
 		}
 
 		for (var1 = 0; var1 < this.clayPerChunk; ++var1)
@@ -291,10 +296,9 @@ public class BTABiomeDecorator
 			var2 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 			var3 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 			if (this.currentWorld.provider.terrainType != BTAMod.BTAWorldTypeBeta && this.currentWorld.provider.terrainType != BTAMod.BTAWorldTypeBetaDeco)
-				if (this.currentWorld.chunkProvider instanceof BTAChunkProvider && 
-						!((BTAChunkProvider) this.currentWorld.chunkProvider).generatorInfo.generatePerlinBeaches() &&
-						!(this.biome == BTABiomeConfiguration.tropics && !((BTAChunkProvider) this.currentWorld.chunkProvider).generatorInfo.isCompatMode()))
-					this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
+				if (!this.generatorInfo.generatePerlinBeaches())
+					if (this.biome != BTABiomeConfiguration.tropics || ((BTAChunkProvider) this.currentWorld.chunkProvider).generatorInfo.isCompatMode())
+						this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
 		}
 
 		if (generateOutback)
@@ -304,7 +308,7 @@ public class BTABiomeDecorator
 
 		var1 = this.treesPerChunk;
 
-		if (this.randomGenerator.nextInt(10) == 0)
+		if (this.randomGenerator.nextInt(fractionalTreeChance) == 0)
 		{
 			++var1;
 		}

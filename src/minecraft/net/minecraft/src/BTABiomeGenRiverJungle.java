@@ -4,6 +4,8 @@ public class BTABiomeGenRiverJungle extends BTABiomeGenBase {
 	protected BTABiomeGenRiverJungle(int id) {
 		super(id);
 		this.waterColorMultiplier = BTABiomeConfiguration.jungle.waterColorMultiplier;
+		this.btaiomeDecorator.sandPerChunk = 100;
+		this.btaiomeDecorator.sandPerChunk2 = 100;
         this.btaiomeDecorator.waterlilyPerChunk = 4;
 		this.spawnableCreatureList.clear();
 		this.spawnableMonsterList.clear();

@@ -269,7 +269,8 @@ public class BTAChunkProvider implements IChunkProvider
 	
 										if (useSand)
 										{
-											if (var10 == BTABiomeConfiguration.badlands || var10 == BTABiomeConfiguration.badlandsPlateau || var10 == BTABiomeConfiguration.outback) {
+											if (var10 == BTABiomeConfiguration.badlands || var10 == BTABiomeConfiguration.badlandsPlateau || var10 == BTABiomeConfiguration.badlandsEdge || var10 == BTABiomeConfiguration.riverBadlands || 
+													var10 == BTABiomeConfiguration.outback || var10 == BTABiomeConfiguration.riverOutback || var10 == BTABiomeConfiguration.beachOutback) {
 												var14 = BTADecoIntegration.redSand.blockID;
 												var15 = BTADecoIntegration.redSand.blockID;
 											}
