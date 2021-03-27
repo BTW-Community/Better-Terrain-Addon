@@ -3,16 +3,17 @@ Version 1.2.1
 [*]Added plains, modified from the vanilla version.
 [*]Added BTA versions of river and frozen river. This does nothing except allow me to control how decorations spawn in them.(most notably allowing me to limit vanilla sand spawning for better shorelines).
 [*]Added the ability for desert temples to spawn in steppes.
+[*]Changed how version compatibility is handled internally to have finer control. This largely only concerns server owners and is detailed in the server section of the OP.
 [*]Changed the biome colors of grasslands slightly.
 [*]Changed the position of buttons in the BTA world configuration menu.
-[*]Fixed an issue where badlands edge, badlands river, outback river, and red sand beach were generating regular sand instead of red sand when better shorelines were enabled.
+[*]Fixed an issue where badlands edge, badlands river, outback river, and red sand beach were generating regular sand near sea level instead of red sand when better shorelines were enabled.
 [*]Fixed an issue where toggling buttons in beta or skylands configuration would change the text of the oceans button to on, despite the fact that those world types cannot generate oceans.
 [*]Fixed an issue where the better shorelines button was enabled when creating beta and skylands worlds, despite the setting not affecting those world types (beta always has it turned on, and there is no sea level in skylands to generate shores).
 [*]Fixed an issue where the setting for better shorelines was always being set to true at world creation regardless of the state of the button in the configuration menu.
 [*]Fixed an issue where sand would not generate underwater at all in legacy (pre 1.2.0) worlds.
 [*]Fixed an issue where jungle hills would spawn standard rivers within them and not jungle rivers, leading to mismatched water color.
 [*]Fixed an issue where jungle rivers did not spawn enough sand when using vanilla sand generation.
-[*]Fixed an issue where willow groves were not able to spawn witch huts or reeds.
+[*]Fixed an issue where willow groves were not able to spawn swamp specific features and mobs.
 [/list]
 
 Version 1.2.0

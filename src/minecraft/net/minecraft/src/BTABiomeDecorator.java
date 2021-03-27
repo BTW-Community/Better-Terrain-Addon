@@ -272,7 +272,7 @@ public class BTABiomeDecorator
 			var3 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 			if (this.currentWorld.provider.terrainType != BTAMod.BTAWorldTypeBeta && this.currentWorld.provider.terrainType != BTAMod.BTAWorldTypeBetaDeco)
 				if (!this.generatorInfo.generatePerlinBeaches())
-					if (this.biome != BTABiomeConfiguration.tropics || ((BTAChunkProvider) this.currentWorld.chunkProvider).generatorInfo.isCompatMode())
+					if (this.biome != BTABiomeConfiguration.tropics || ((BTAChunkProvider) this.currentWorld.chunkProvider).generatorInfo.getCompatMode().isVersionAtOrBelow(BTAEnumVersionCompat.V1_1_3))
 						this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
 		}
 
@@ -297,7 +297,7 @@ public class BTABiomeDecorator
 			var3 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 			if (this.currentWorld.provider.terrainType != BTAMod.BTAWorldTypeBeta && this.currentWorld.provider.terrainType != BTAMod.BTAWorldTypeBetaDeco)
 				if (!this.generatorInfo.generatePerlinBeaches())
-					if (this.biome != BTABiomeConfiguration.tropics || ((BTAChunkProvider) this.currentWorld.chunkProvider).generatorInfo.isCompatMode())
+					if (this.biome != BTABiomeConfiguration.tropics || ((BTAChunkProvider) this.currentWorld.chunkProvider).generatorInfo.getCompatMode().isVersionAtOrBelow(BTAEnumVersionCompat.V1_1_3))
 						this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
 		}
 
