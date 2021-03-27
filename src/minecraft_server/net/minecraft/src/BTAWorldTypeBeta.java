@@ -59,4 +59,12 @@ public class BTAWorldTypeBeta extends WorldType {
     public boolean hasOceans() {
     	return false;
     }
+    
+    public boolean canPerlinBeachesBeToggled() {
+    	return false;
+    }
+    
+    public boolean getDefaultPerlinBeachState() {
+    	return true;
+    }
 }

@@ -186,6 +186,14 @@ public class WorldType
     public boolean hasOceans() {
     	return true;
     }
+    
+    public boolean canPerlinBeachesBeToggled() {
+    	return true;
+    }
+    
+    public boolean getDefaultPerlinBeachState() {
+    	return true;
+    }
 
 	public WorldType getParent() {
 		return parent;

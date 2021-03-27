@@ -8,14 +8,14 @@ public class BTAWorldConfigurationInfo {
 	private ArrayList<BTABiomeInfo> biomeInfoList = new ArrayList();
 	private ArrayList<BTABiomeGenBase> biomesForGeneration = new ArrayList();
 
-	private boolean compatMode = false;
+	private BTAEnumVersionCompat compatMode = BTAEnumVersionCompat.V1_1_3;
 	private int oceanSize = 10;
 	private boolean generatePerlinBeaches = true;
 
 	public static BTAWorldConfigurationInfo createDefaultConfiguration(boolean isDeco) {
 		BTAWorldConfigurationInfo info = new BTAWorldConfigurationInfo();
 
-		info.setCompatMode(false);
+		info.setCompatMode(BTAMod.getInstance().currentVersion);
 		info.setOceanSize(10);
 		info.setGeneratePerlinBeaches(true);
 
@@ -43,7 +43,7 @@ public class BTAWorldConfigurationInfo {
 	public static BTAWorldConfigurationInfo createDefaultConfigurationLegacy(boolean isDeco) {
 		BTAWorldConfigurationInfo info = new BTAWorldConfigurationInfo();
 
-		info.setCompatMode(true);
+		info.setCompatMode(BTAEnumVersionCompat.V1_1_3);
 		info.setOceanSize(10);
 		info.setGeneratePerlinBeaches(false);
 
@@ -82,7 +82,18 @@ public class BTAWorldConfigurationInfo {
 		}
 
 		for (int i = 1; i < infoSplit.length; i++) {
-			if (i == 1) this.compatMode = Boolean.parseBoolean(infoSplit[i]);
+			if (i == 1) {
+				//Done this way for backwards compatibility with older standard
+				if (infoSplit[1].equals("true")) {
+					this.compatMode = BTAEnumVersionCompat.V1_1_3;
+				}
+				else if (infoSplit[1].equals("false")) {
+					this.compatMode = BTAEnumVersionCompat.V1_2_0;
+				}
+				else {
+					this.compatMode = BTAEnumVersionCompat.fromString(infoSplit[i]);
+				}
+			}
 			if (i == 2) this.oceanSize = Integer.parseInt(infoSplit[i]);
 			if (i == 3) this.generatePerlinBeaches = Boolean.parseBoolean(infoSplit[i]);
 		}
@@ -141,11 +152,11 @@ public class BTAWorldConfigurationInfo {
 		return this;
 	}
 
-	public boolean isCompatMode() {
+	public BTAEnumVersionCompat getCompatMode() {
 		return compatMode;
 	}
 
-	public void setCompatMode(boolean compatMode) {
+	public void setCompatMode(BTAEnumVersionCompat compatMode) {
 		this.compatMode = compatMode;
 	}
 

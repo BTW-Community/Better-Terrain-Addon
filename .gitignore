@@ -93,7 +93,6 @@ src/minecraft/net/minecraft/src/BiomeCache.java
 src/minecraft/net/minecraft/src/BiomeCacheBlock.java
 src/minecraft/net/minecraft/src/BiomeDecorator.java
 src/minecraft/net/minecraft/src/BiomeEndDecorator.java
-src/minecraft/net/minecraft/src/BiomeGenBase.java
 src/minecraft/net/minecraft/src/BiomeGenBeach.java
 src/minecraft/net/minecraft/src/BiomeGenDesert.java
 src/minecraft/net/minecraft/src/BiomeGenEnd.java
@@ -2279,7 +2278,6 @@ src/minecraft_server/net/minecraft/src/BiomeCache.java
 src/minecraft_server/net/minecraft/src/BiomeCacheBlock.java
 src/minecraft_server/net/minecraft/src/BiomeDecorator.java
 src/minecraft_server/net/minecraft/src/BiomeEndDecorator.java
-src/minecraft_server/net/minecraft/src/BiomeGenBase.java
 src/minecraft_server/net/minecraft/src/BiomeGenBeach.java
 src/minecraft_server/net/minecraft/src/BiomeGenDesert.java
 src/minecraft_server/net/minecraft/src/BiomeGenEnd.java

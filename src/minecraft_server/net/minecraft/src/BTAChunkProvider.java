@@ -239,7 +239,7 @@ public class BTAChunkProvider implements IChunkProvider
 								}
 								else if (var16 >= var5 - (8 + rand.nextInt(2)) && var16 <= var5 + 1)
 								{
-									if(var10.biomeID == BTABiomeConfiguration.oldValley.biomeID || var10.biomeID == BTABiomeConfiguration.valleyMountains.biomeID || var10.biomeID == BTABiomeConfiguration.valley.biomeID || (var10.biomeID == BTABiomeConfiguration.tropics.biomeID && !this.generatorInfo.isCompatMode()))
+									if(var10.biomeID == BTABiomeConfiguration.oldValley.biomeID || var10.biomeID == BTABiomeConfiguration.valleyMountains.biomeID || var10.biomeID == BTABiomeConfiguration.valley.biomeID || (var10.biomeID == BTABiomeConfiguration.tropics.biomeID && this.generatorInfo.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_2_0)))
 									{
 										var14 = (byte)Block.sand.blockID;
 										var15 = (byte)Block.sand.blockID;
@@ -269,7 +269,8 @@ public class BTAChunkProvider implements IChunkProvider
 	
 										if (useSand)
 										{
-											if (var10 == BTABiomeConfiguration.badlands || var10 == BTABiomeConfiguration.badlandsPlateau || var10 == BTABiomeConfiguration.outback) {
+											if (var10 == BTABiomeConfiguration.badlands || var10 == BTABiomeConfiguration.badlandsPlateau || var10 == BTABiomeConfiguration.badlandsEdge || var10 == BTABiomeConfiguration.riverBadlands || 
+													var10 == BTABiomeConfiguration.outback || var10 == BTABiomeConfiguration.riverOutback || var10 == BTABiomeConfiguration.beachOutback) {
 												var14 = BTADecoIntegration.redSand.blockID;
 												var15 = BTADecoIntegration.redSand.blockID;
 											}

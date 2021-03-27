@@ -3,6 +3,8 @@ package net.minecraft.src;
 public class BTAMod extends AddonExt {
 	private static BTAMod instance;
 	
+	public final BTAEnumVersionCompat currentVersion;
+	
 	public static final WorldType BTAWorldType = new BTAWorldType(4, "BTA");
 	public static final WorldType BTAWorldTypeDeco = new BTAWorldType(5, "BTADeco").setIsDeco().setCanBeCreated(false).setParent(BTAWorldType);
 	public static final WorldType BTAWorldTypeBeta = new BTAWorldTypeBeta(6, "BTABeta");
@@ -15,7 +17,8 @@ public class BTAMod extends AddonExt {
 	public static final WorldType BTAWorldTypeHorizons = new BTAWorldTypeHorizons(15, "BTAHorizons").setCanBeCreated(false);
 	
 	private BTAMod() {
-		super("Better Terrain", "1.2.0", "BTA");
+		super("Better Terrain", "1.2.1", "BTA");
+		this.currentVersion = BTAEnumVersionCompat.fromString(this.getVersionString());
 	}
 
 	@Override
