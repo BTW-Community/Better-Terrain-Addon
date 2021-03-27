@@ -13,7 +13,7 @@ Version 1.2.1
 [*]Fixed an issue where sand would not generate underwater at all in legacy (pre 1.2.0) worlds.
 [*]Fixed an issue where jungle hills would spawn standard rivers within them and not jungle rivers, leading to mismatched water color.
 [*]Fixed an issue where jungle rivers did not spawn enough sand when using vanilla sand generation.
-[*]Fixed an issue where willow groves were not able to spawn swamp specific features and mobs.
+[*]Fixed an issue where willow groves were not able to spawn witch huts, reeds, or slimes.
 [/list]
 
 Version 1.2.0
