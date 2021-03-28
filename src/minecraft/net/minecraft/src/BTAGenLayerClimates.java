@@ -1,14 +1,21 @@
 package net.minecraft.src;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BTAGenLayerClimates extends BTAGenLayer {
 	private ArrayList<BTABiomeGenBase> biomesForGeneration;
+	public static Map<BTAEnumClimate, ArrayList<BTABiomeGenBase>> biomeCategoryMapCached = new HashMap();
 	
     public BTAGenLayerClimates(long baseSeed, GenLayer parent, ArrayList<BTABiomeGenBase> biomesForGeneration) {
         super(baseSeed);
         this.parent = parent;
 		this.biomesForGeneration = biomesForGeneration;
+		
+		for (BTAEnumClimate c : BTAEnumClimate.values()) {
+			biomeCategoryMapCached.put(c, BTABiomeConfiguration.getClimateListForGenerator(c, this.biomesForGeneration));
+		}
     }
 
     /**
@@ -30,7 +37,7 @@ public class BTAGenLayerClimates extends BTAGenLayer {
                 
             	int climateID = this.nextInt(5) - 5;
             	
-            	while (BTABiomeConfiguration.getClimateListForGenerator(BTAEnumClimate.fromID(climateID), this.biomesForGeneration).size() == 0) {
+            	while (biomeCategoryMapCached.get(BTAEnumClimate.fromID(climateID)).size() == 0) {
             		climateID = this.nextInt(5) - 5;
             	}
             	
