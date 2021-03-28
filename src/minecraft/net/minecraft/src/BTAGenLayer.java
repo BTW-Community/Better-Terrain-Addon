@@ -49,7 +49,7 @@ public abstract class BTAGenLayer extends GenLayer {
         GenLayerSmooth layerSmoothRivers = new GenLayerSmooth(1000L, layerRiver);
         GenLayer layerMangnifyBiome = GenLayerZoom.magnify(1000L, layerMushroomIsland, 0);
         
-        GenLayer layerClimateZoom = GenLayerZoom.magnify(1000l, layerClimates, 2);
+        GenLayer layerClimateZoom = GenLayerZoom.magnify(1000l, layerClimates, 3);
         BTAGenLayerBiomeClimatized layerBiome = new BTAGenLayerBiomeClimatized(200L, layerMangnifyBiome, layerClimateZoom, generatorInfo.getBiomesForGeneration());
         
         layerMangnifyBiome = GenLayerZoom.magnify(1000L, layerBiome, 2);
@@ -66,8 +66,8 @@ public abstract class BTAGenLayer extends GenLayer {
                 layerExtras = new BTAGenLayerShore(1000L, (GenLayer)layerExtras);
             }
 
-            if (passNum == 1) {
-                layerExtras = new GenLayerSwampRivers(1000L, (GenLayer)layerExtras);
+            if (passNum == scale - 3) {
+                layerExtras = new BTAGenLayerSporadic(1000L, (GenLayer)layerExtras, generatorInfo);
             }
         }
 
@@ -118,8 +118,8 @@ public abstract class BTAGenLayer extends GenLayer {
                 layerExtras = new BTAGenLayerShore(1000L, (GenLayer)layerExtras);
             }
 
-            if (passNum == 1) {
-                layerExtras = new GenLayerSwampRivers(1000L, (GenLayer)layerExtras);
+            if (passNum == scale - 3) {
+                layerExtras = new BTAGenLayerSporadic(1000L, (GenLayer)layerExtras, generatorInfo);
             }
         }
 

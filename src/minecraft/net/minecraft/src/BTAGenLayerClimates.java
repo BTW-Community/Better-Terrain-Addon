@@ -38,7 +38,9 @@ public class BTAGenLayerClimates extends BTAGenLayer {
             	int climateID = this.nextInt(5) - 5;
             	
             	while (biomeCategoryMapCached.get(BTAEnumClimate.fromID(climateID)).size() == 0) {
-            		climateID = this.nextInt(5) - 5;
+            		climateID -= 1;
+            		if (climateID < -(BTAEnumClimate.values().length))
+            			climateID = -1;
             	}
             	
                 cache[k + i * sizeX] = climateID;
