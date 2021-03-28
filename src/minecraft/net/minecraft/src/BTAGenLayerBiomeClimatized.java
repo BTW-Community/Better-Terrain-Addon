@@ -7,6 +7,7 @@ import java.util.Map;
 public class BTAGenLayerBiomeClimatized extends BTAGenLayer {
 	private ArrayList<BTABiomeGenBase> biomesForGeneration;
 	private GenLayer climateLayer;
+	public static Map<BTAEnumClimate, ArrayList<BTABiomeGenBase>> biomeCategoryMapCached = new HashMap();
 
     public BTAGenLayerBiomeClimatized(long baseSeed, GenLayer parent, GenLayer climates, ArrayList<BTABiomeGenBase> biomesForGeneration)
     {
@@ -14,6 +15,10 @@ public class BTAGenLayerBiomeClimatized extends BTAGenLayer {
 		this.parent = parent;
 		this.climateLayer = climates;
 		this.biomesForGeneration = biomesForGeneration;
+		
+		for (BTAEnumClimate c : BTAEnumClimate.values()) {
+			biomeCategoryMapCached.put(c, BTABiomeConfiguration.getClimateListForGenerator(c, this.biomesForGeneration));
+		}
 	} 
 
     @Override
@@ -37,7 +42,7 @@ public class BTAGenLayerBiomeClimatized extends BTAGenLayer {
 				else {
 					BTAEnumClimate climate = BTAEnumClimate.fromID(climateInts[k + i * sizeX]);
 					
-					ArrayList<BTABiomeGenBase> biomesForClimate = BTABiomeConfiguration.getClimateListForGenerator(climate, this.biomesForGeneration);
+					ArrayList<BTABiomeGenBase> biomesForClimate = biomeCategoryMapCached.get(climate);
 					
 					cache[k + i * sizeX] = biomesForClimate.get(this.nextInt(biomesForClimate.size())).biomeID;
 				}
