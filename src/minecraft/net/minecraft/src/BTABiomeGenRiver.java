@@ -2,9 +2,9 @@ package net.minecraft.src;
 
 public class BTABiomeGenRiver extends BTABiomeGenBase
 {
-    public BTABiomeGenRiver(int id)
+    public BTABiomeGenRiver(int id, BTAEnumClimate climate)
     {
-        super(id);
+        super(id, climate);
         this.spawnableCreatureList.clear();
     }
 }

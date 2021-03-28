@@ -12,15 +12,18 @@ public class BTABiomeGenBase extends BiomeGenBase {
 	private boolean enableRain;
 	private boolean isSpawnable;
 	
-    public BTABiomeDecorator btaiomeDecorator;
+	protected BTAEnumClimate climate;
+	
+    public BTABiomeDecorator btaBiomeDecorator;
 
-	protected BTABiomeGenBase(int id) {
+	protected BTABiomeGenBase(int id, BTAEnumClimate climate) {
 		super(id);
 		this.enableRain = true;
 		this.isSpawnable = true;
-		this.btaiomeDecorator = new BTABiomeDecorator(this);
+		this.btaBiomeDecorator = new BTABiomeDecorator(this);
         this.topBlockExt = Block.grass.blockID;
         this.fillerBlockExt = Block.dirt.blockID;
+        this.climate = climate;
 	}
 
     /**
@@ -42,7 +45,7 @@ public class BTABiomeGenBase extends BiomeGenBase {
 
     public void decorate(World par1World, Random par2Random, int par3, int par4)
     {
-        this.btaiomeDecorator.decorate(par1World, par2Random, par3, par4);
+        this.btaBiomeDecorator.decorate(par1World, par2Random, par3, par4);
     }
 
     /**
@@ -179,4 +182,6 @@ public class BTABiomeGenBase extends BiomeGenBase {
             new BTAWorldGenMinable(Block.silverfish.blockID, 0, 8).generate(var1, var2, var6, var7, var8);
         }
     }
+    
+    
 }

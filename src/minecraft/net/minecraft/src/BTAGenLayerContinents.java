@@ -1,12 +1,12 @@
 package net.minecraft.src;
 
-public class BTAGenLayerIsland extends GenLayerIsland
+public class BTAGenLayerContinents extends GenLayerIsland
 {
 	private int oceanSize;
 	
-    public BTAGenLayerIsland(long par1, int oceanSize)
+    public BTAGenLayerContinents(long baseSeed, int oceanSize)
     {
-        super(par1);
+        super(baseSeed);
         this.oceanSize = oceanSize;
     }
 

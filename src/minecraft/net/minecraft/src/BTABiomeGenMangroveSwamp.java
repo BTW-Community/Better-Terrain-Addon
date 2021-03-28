@@ -4,15 +4,15 @@ import java.util.Random;
 
 public class BTABiomeGenMangroveSwamp extends BTABiomeGenBase {
 
-	public BTABiomeGenMangroveSwamp(int id) {
-		super(id);
-        this.btaiomeDecorator.treesPerChunk = 10;
-        this.btaiomeDecorator.flowersPerChunk = -999;
-        this.btaiomeDecorator.deadBushPerChunk = 1;
-        this.btaiomeDecorator.mushroomsPerChunk = 8;
-        this.btaiomeDecorator.reedsPerChunk = 10;
-        this.btaiomeDecorator.clayPerChunk = 1;
-        this.btaiomeDecorator.waterlilyPerChunk = 4;
+	public BTABiomeGenMangroveSwamp(int id, BTAEnumClimate climate) {
+		super(id, climate);
+        this.btaBiomeDecorator.treesPerChunk = 10;
+        this.btaBiomeDecorator.flowersPerChunk = -999;
+        this.btaBiomeDecorator.deadBushPerChunk = 1;
+        this.btaBiomeDecorator.mushroomsPerChunk = 8;
+        this.btaBiomeDecorator.reedsPerChunk = 10;
+        this.btaBiomeDecorator.clayPerChunk = 1;
+        this.btaBiomeDecorator.waterlilyPerChunk = 4;
         this.spawnableMonsterList.add(new SpawnListEntry(BTAEntitySlime.class, 1, 1, 1));
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntityWitch.class, 1, 1, 1));
         this.spawnableCreatureList.clear();

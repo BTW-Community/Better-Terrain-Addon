@@ -3,8 +3,8 @@ package net.minecraft.src;
 import java.util.Random;
 
 public class BTABiomeGenAspenGrove extends BTABiomeGenAlpine {
-	protected BTABiomeGenAspenGrove(int id) {
-		super(id);
+	protected BTABiomeGenAspenGrove(int id, BTAEnumClimate climate) {
+		super(id, climate);
 	}
 
     /**

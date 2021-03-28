@@ -2,9 +2,9 @@ package net.minecraft.src;
 
 public class BTABiomeGenBeach extends BTABiomeGenBase
 {
-    public BTABiomeGenBeach(int par1)
+    public BTABiomeGenBeach(int par1, BTAEnumClimate climate)
     {
-        super(par1);
+        super(par1, climate);
         this.spawnableCreatureList.clear();
         this.topBlock = (byte)Block.sand.blockID;
         this.fillerBlock = (byte)Block.sand.blockID;

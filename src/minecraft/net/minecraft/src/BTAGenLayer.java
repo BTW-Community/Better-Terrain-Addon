@@ -12,59 +12,122 @@ public abstract class BTAGenLayer extends GenLayer {
      * the first array item is a linked list of the bioms, the second is the zoom function, the third is the same as the
      * first.
      */
-    public static GenLayer[] initializeAllBiomeGenerators(long par0, WorldType par2WorldType, ArrayList<BTABiomeGenBase> biomesForGeneration, int oceanSize)
-    {
-    	BTAGenLayerIsland var3 = new BTAGenLayerIsland(1L, oceanSize);
-        GenLayerFuzzyZoom var9 = new GenLayerFuzzyZoom(2000L, var3);
-        GenLayerAddIsland var10 = new GenLayerAddIsland(1L, var9);
-        GenLayerZoom var11 = new GenLayerZoom(2001L, var10);
-        var10 = new GenLayerAddIsland(2L, var11);
-        //GenLayerAddSnow var12 = new GenLayerAddSnow(2L, var10);
-        var11 = new GenLayerZoom(2002L, var10);
-        var10 = new GenLayerAddIsland(3L, var11);
-        var11 = new GenLayerZoom(2003L, var10);
-        var10 = new GenLayerAddIsland(4L, var11);
-        GenLayerAddMushroomIsland var15 = new GenLayerAddMushroomIsland(5L, var10);
+    public static GenLayer[] initializeAllBiomeGenerators(long seed, WorldType worldType, BTAWorldConfigurationInfo generatorInfo) {
+    	if (generatorInfo.isClimatized() && generatorInfo.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_3_0)) {
+    		return initBiomesClimatized(seed, worldType, generatorInfo);
+    	}
+    	else {
+    		return initBiomesRandom(seed, worldType, generatorInfo);
+    	}
+    }
+    
+    private static GenLayer[] initBiomesClimatized(long seed, WorldType worldType, BTAWorldConfigurationInfo generatorInfo) {
+    	BTAGenLayerContinents layerContinents = new BTAGenLayerContinents(1L, generatorInfo.getOceanSize());
+        GenLayerFuzzyZoom layerFuzzyZoom = new GenLayerFuzzyZoom(2000L, layerContinents);
+        
+        GenLayerAddIsland layerIsland = new GenLayerAddIsland(1L, layerFuzzyZoom);
+        GenLayerZoom layerZoom = new GenLayerZoom(2001L, layerIsland);
+        layerIsland = new GenLayerAddIsland(2L, layerZoom);
+        
+        BTAGenLayerClimates layerClimates = new BTAGenLayerClimates(2L, layerIsland, generatorInfo.getBiomesForGeneration());
+        
+        layerZoom = new GenLayerZoom(2002L, layerIsland);
+        layerIsland = new GenLayerAddIsland(3L, layerZoom);
+        layerZoom = new GenLayerZoom(2003L, layerIsland);
+        layerIsland = new GenLayerAddIsland(4L, layerZoom);
+        GenLayerAddMushroomIsland layerMushroomIsland = new GenLayerAddMushroomIsland(5L, layerIsland);
+        
         byte scale = 5;
         
-        if (par2WorldType == BTAMod.BTAWorldTypeSmall || par2WorldType == BTAMod.BTAWorldTypeSmallDeco)
+        if (worldType == BTAMod.BTAWorldTypeSmall || worldType == BTAMod.BTAWorldTypeSmallDeco)
         	scale = 4;
 
-        GenLayer var5 = GenLayerZoom.magnify(1000L, var15, 0);
-        GenLayerRiverInit var13 = new GenLayerRiverInit(100L, var5);
-        var5 = GenLayerZoom.magnify(1000L, var13, scale + 2);
-        GenLayerRiver var14 = new GenLayerRiver(1L, var5);
-        GenLayerSmooth var16 = new GenLayerSmooth(1000L, var14);
-        GenLayer var6 = GenLayerZoom.magnify(1000L, var15, 0);
-        BTAGenLayerBiome var17 = new BTAGenLayerBiome(200L, var6, par2WorldType, biomesForGeneration);
-        var6 = GenLayerZoom.magnify(1000L, var17, 2);
-        Object var18 = new BTAGenLayerHills(1000L, var6);
+        GenLayer layerMagnifyRiver = GenLayerZoom.magnify(1000L, layerMushroomIsland, 0);
+        GenLayerRiverInit layerRiverInit = new GenLayerRiverInit(100L, layerMagnifyRiver);
+        layerMagnifyRiver = GenLayerZoom.magnify(1000L, layerRiverInit, scale + 2);
+        GenLayerRiver layerRiver = new GenLayerRiver(1L, layerMagnifyRiver);
+        GenLayerSmooth layerSmoothRivers = new GenLayerSmooth(1000L, layerRiver);
+        GenLayer layerMangnifyBiome = GenLayerZoom.magnify(1000L, layerMushroomIsland, 0);
+        
+        GenLayer layerClimateZoom = GenLayerZoom.magnify(1000l, layerClimates, 2);
+        BTAGenLayerBiomeClimatized layerBiome = new BTAGenLayerBiomeClimatized(200L, layerMangnifyBiome, layerClimateZoom, generatorInfo.getBiomesForGeneration());
+        
+        layerMangnifyBiome = GenLayerZoom.magnify(1000L, layerBiome, 2);
+        Object layerExtras = new BTAGenLayerHills(1000L, layerMangnifyBiome);
 
-        for (int i = 0; i < scale; ++i)
-        {
-            var18 = new GenLayerZoom((long)(1000 + i), (GenLayer)var18);
+        for (int passNum = 0; passNum < scale; passNum++) {
+            layerExtras = new GenLayerZoom((long)(1000 + passNum), (GenLayer)layerExtras);
 
-            if (i == 0)
-            {
-                var18 = new GenLayerAddIsland(3L, (GenLayer)var18);
+            if (passNum == 0) {
+                layerExtras = new GenLayerAddIsland(3L, (GenLayer)layerExtras);
             }
 
-            if (i == 1)
-            {
-                var18 = new BTAGenLayerShore(1000L, (GenLayer)var18);
+            if (passNum == 1) {
+                layerExtras = new BTAGenLayerShore(1000L, (GenLayer)layerExtras);
             }
 
-            if (i == 1)
-            {
-                var18 = new GenLayerSwampRivers(1000L, (GenLayer)var18);
+            if (passNum == 1) {
+                layerExtras = new GenLayerSwampRivers(1000L, (GenLayer)layerExtras);
             }
         }
 
-        GenLayerSmooth var19 = new GenLayerSmooth(1000L, (GenLayer)var18);
-        BTAGenLayerRiverMix var20 = new BTAGenLayerRiverMix(100L, var19, var16);
-        GenLayerVoronoiZoom var8 = new GenLayerVoronoiZoom(10L, var20);
-        var20.initWorldGenSeed(par0);
-        var8.initWorldGenSeed(par0);
-        return new GenLayer[] {var20, var8, var20};
+        GenLayerSmooth layerSmoothBiome = new GenLayerSmooth(1000L, (GenLayer)layerExtras);
+        BTAGenLayerRiverMix layerRiverMix = new BTAGenLayerRiverMix(100L, layerSmoothBiome, layerSmoothRivers);
+        GenLayerVoronoiZoom layerVoronoiZoom = new GenLayerVoronoiZoom(10L, layerRiverMix);
+        layerRiverMix.initWorldGenSeed(seed);
+        layerVoronoiZoom.initWorldGenSeed(seed);
+        return new GenLayer[] {layerRiverMix, layerVoronoiZoom, layerRiverMix};
+    }
+    
+    private static GenLayer[] initBiomesRandom(long seed, WorldType worldType, BTAWorldConfigurationInfo generatorInfo) {
+    	BTAGenLayerContinents layerContinents = new BTAGenLayerContinents(1L, generatorInfo.getOceanSize());
+        GenLayerFuzzyZoom layerFuzzyZoom = new GenLayerFuzzyZoom(2000L, layerContinents);
+        
+        GenLayerAddIsland layerIsland = new GenLayerAddIsland(1L, layerFuzzyZoom);
+        GenLayerZoom layerZoom = new GenLayerZoom(2001L, layerIsland);
+        layerIsland = new GenLayerAddIsland(2L, layerZoom);
+        layerZoom = new GenLayerZoom(2002L, layerIsland);
+        layerIsland = new GenLayerAddIsland(3L, layerZoom);
+        layerZoom = new GenLayerZoom(2003L, layerIsland);
+        layerIsland = new GenLayerAddIsland(4L, layerZoom);
+        GenLayerAddMushroomIsland layerMushroomIsland = new GenLayerAddMushroomIsland(5L, layerIsland);
+        
+        byte scale = 5;
+        
+        if (worldType == BTAMod.BTAWorldTypeSmall || worldType == BTAMod.BTAWorldTypeSmallDeco)
+        	scale = 4;
+
+        GenLayer layerMagnifyRiver = GenLayerZoom.magnify(1000L, layerMushroomIsland, 0);
+        GenLayerRiverInit layerRiverInit = new GenLayerRiverInit(100L, layerMagnifyRiver);
+        layerMagnifyRiver = GenLayerZoom.magnify(1000L, layerRiverInit, scale + 2);
+        GenLayerRiver layerRiver = new GenLayerRiver(1L, layerMagnifyRiver);
+        GenLayerSmooth layerSmoothRivers = new GenLayerSmooth(1000L, layerRiver);
+        GenLayer layerMangnifyBiome = GenLayerZoom.magnify(1000L, layerMushroomIsland, 0);
+        BTAGenLayerBiome layerBiome = new BTAGenLayerBiome(200L, layerMangnifyBiome, worldType, generatorInfo.getBiomesForGeneration());
+        layerMangnifyBiome = GenLayerZoom.magnify(1000L, layerBiome, 2);
+        Object layerExtras = new BTAGenLayerHills(1000L, layerMangnifyBiome);
+
+        for (int passNum = 0; passNum < scale; passNum++) {
+            layerExtras = new GenLayerZoom((long)(1000 + passNum), (GenLayer)layerExtras);
+
+            if (passNum == 0) {
+                layerExtras = new GenLayerAddIsland(3L, (GenLayer)layerExtras);
+            }
+
+            if (passNum == 1) {
+                layerExtras = new BTAGenLayerShore(1000L, (GenLayer)layerExtras);
+            }
+
+            if (passNum == 1) {
+                layerExtras = new GenLayerSwampRivers(1000L, (GenLayer)layerExtras);
+            }
+        }
+
+        GenLayerSmooth layerSmoothBiome = new GenLayerSmooth(1000L, (GenLayer)layerExtras);
+        BTAGenLayerRiverMix layerRiverMix = new BTAGenLayerRiverMix(100L, layerSmoothBiome, layerSmoothRivers);
+        GenLayerVoronoiZoom layerVoronoiZoom = new GenLayerVoronoiZoom(10L, layerRiverMix);
+        layerRiverMix.initWorldGenSeed(seed);
+        layerVoronoiZoom.initWorldGenSeed(seed);
+        return new GenLayer[] {layerRiverMix, layerVoronoiZoom, layerRiverMix};
     }
 }

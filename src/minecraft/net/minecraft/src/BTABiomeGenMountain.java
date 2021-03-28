@@ -4,10 +4,10 @@ import java.util.Random;
 
 public class BTABiomeGenMountain extends BTABiomeGenBase {
 
-	public BTABiomeGenMountain(int id) {
-		super(id);
-		this.btaiomeDecorator.treesPerChunk = 2;
-		this.btaiomeDecorator.grassPerChunk = 3;
+	public BTABiomeGenMountain(int id, BTAEnumClimate climate) {
+		super(id, climate);
+		this.btaBiomeDecorator.treesPerChunk = 2;
+		this.btaBiomeDecorator.grassPerChunk = 3;
 	}
 
 	/**

@@ -4,15 +4,15 @@ import java.util.Random;
 
 public class BTABiomeGenJungle extends BTABiomeGenBase
 {
-    public BTABiomeGenJungle(int par1)
+    public BTABiomeGenJungle(int par1, BTAEnumClimate climate)
     {
-        super(par1);
-        this.btaiomeDecorator.treesPerChunk = 50;
-        this.btaiomeDecorator.grassPerChunk = 25;
-        this.btaiomeDecorator.flowersPerChunk = 4;
-		this.btaiomeDecorator.sandPerChunk = 100;
-		this.btaiomeDecorator.sandPerChunk2 = 100;
-        this.btaiomeDecorator.waterlilyPerChunk = 4;
+        super(par1, climate);
+        this.btaBiomeDecorator.treesPerChunk = 50;
+        this.btaBiomeDecorator.grassPerChunk = 25;
+        this.btaBiomeDecorator.flowersPerChunk = 4;
+		this.btaBiomeDecorator.sandPerChunk = 100;
+		this.btaBiomeDecorator.sandPerChunk2 = 100;
+        this.btaBiomeDecorator.waterlilyPerChunk = 4;
         this.spawnableCreatureList.clear();
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityChicken.class, 10, 4, 4));
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityPig.class, 10, 4, 4));

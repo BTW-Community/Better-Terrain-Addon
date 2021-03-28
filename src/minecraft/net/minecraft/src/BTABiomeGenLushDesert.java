@@ -4,20 +4,20 @@ import java.util.Random;
 
 public class BTABiomeGenLushDesert extends BTABiomeGenBase
 {
-    public BTABiomeGenLushDesert(int par1)
+    public BTABiomeGenLushDesert(int par1, BTAEnumClimate climate)
     {
-        super(par1);
+        super(par1, climate);
         this.spawnableCreatureList.clear();
         this.topBlockExt = (byte)Block.sand.blockID;
         this.fillerBlockExt = (byte)Block.sand.blockID;
-        this.btaiomeDecorator.treesPerChunk = -999;
-        this.btaiomeDecorator.deadBushPerChunk = 2;
-        this.btaiomeDecorator.reedsPerChunk = 50;
-        this.btaiomeDecorator.cactiPerChunk = 10;
-        this.btaiomeDecorator.oasesPerChunk = 100;
-        this.btaiomeDecorator.waterLakesPerChunk = 100;
-		this.btaiomeDecorator.treesPerChunk = 20;
-		this.btaiomeDecorator.grassPerChunk = 2;
+        this.btaBiomeDecorator.treesPerChunk = -999;
+        this.btaBiomeDecorator.deadBushPerChunk = 2;
+        this.btaBiomeDecorator.reedsPerChunk = 50;
+        this.btaBiomeDecorator.cactiPerChunk = 10;
+        this.btaBiomeDecorator.oasesPerChunk = 100;
+        this.btaBiomeDecorator.waterLakesPerChunk = 100;
+		this.btaBiomeDecorator.treesPerChunk = 20;
+		this.btaBiomeDecorator.grassPerChunk = 2;
 	}
 
 	/**

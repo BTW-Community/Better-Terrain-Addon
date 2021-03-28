@@ -3,9 +3,9 @@ package net.minecraft.src;
 import java.util.Random;
 
 public class BTABiomeGenIcyPeaks extends BTABiomeGenBase {
-	protected BTABiomeGenIcyPeaks(int id) {
-		super(id);
-        this.btaiomeDecorator.grassPerChunk = 2;
+	protected BTABiomeGenIcyPeaks(int id, BTAEnumClimate climate) {
+		super(id, climate);
+        this.btaBiomeDecorator.grassPerChunk = 2;
 	}
 
     /**

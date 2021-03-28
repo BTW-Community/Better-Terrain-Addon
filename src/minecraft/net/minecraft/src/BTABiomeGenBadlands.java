@@ -7,14 +7,14 @@ import java.util.Random;
 public class BTABiomeGenBadlands extends BTABiomeGenBase {
 	private ArrayList<Integer> allowedTerracottaMetadata = new ArrayList();
 	
-	public BTABiomeGenBadlands(int id) {
-		super(id);
+	public BTABiomeGenBadlands(int id, BTAEnumClimate climate) {
+		super(id, climate);
 		if (BTADecoIntegration.isDecoInstalled()) {
 			this.topBlockExt = BTADecoIntegration.redSand.blockID;
 			this.fillerBlockExt = BTADecoIntegration.redSand.blockID;
 		}
-		this.btaiomeDecorator.sandPerChunk = 0;
-		this.btaiomeDecorator.sandPerChunk2 = 0;
+		this.btaBiomeDecorator.sandPerChunk = 0;
+		this.btaBiomeDecorator.sandPerChunk2 = 0;
 		this.spawnableCreatureList.clear();
 		
 		this.initMetaList();

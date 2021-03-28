@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-public class BTABiomeGenPatagoniaRiver extends BTABiomeGenBase {
-	public BTABiomeGenPatagoniaRiver(int par1) {
-		super(par1);
+public class BTABiomeGenRiverPatagonia extends BTABiomeGenBase {
+	public BTABiomeGenRiverPatagonia(int par1) {
+		super(par1, BTABiomeConfiguration.patagonia.climate);
 	}
 
     /**
