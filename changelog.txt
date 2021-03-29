@@ -1,6 +1,7 @@
 Version 1.3.0
 [list]
 [*]Added climate zones. This can be configured at world creation, and is enabled by default. This means biomes will now be clustered according to their climate: Snowy, cold, temperate, tropical, or arid. Furthermore, if snowy climates generate next to arid or tropical climates, a border of cold biomes will be formed to smooth the transition. A full list of which biomes below to which climate is available in the OP.
+[*]Added height-dependent snowfall in cold biomes. Snow will fall anywhere in these biomes above y=95. This only affects new worlds.
 [*]Added frozen springs as a new snowy biome which can generate reeds.
 [*]Added mangal (mangrove forest) as a new temperate jungle variant (temples, jungle spiders, reeds).
 [*]Added pockets of water to wetlands, willow grove, jungle, and rainforest, similar to how vanilla generates water in jungles and swamps. This only affects new worlds.
@@ -12,6 +13,7 @@ Version 1.3.0
 [*]Changed (increased) possible biome size ranges to 0.5x to 4x vanilla (Original BTA was 2x, vanilla large biomes is 4x). As a part of this, small world types have been deprecated as biome size information is now handled through generator options. These world types will continue to function for existing worlds but may no longer be created.
 [*]Changed the default biome size to vanilla sized biomes as the new climate zone system tends to spread out dissimilar biomes further than before.
 [*]Changed the display name of a few biomes in world configuration to match the generic name rather than specific sub-biome names. Internal biome names remain the same, and are still listed in the OP (internal biome names only concern texture pack authors using MCPatcher).
+[*]Changed the name of boreal forest to temperate forest.
 [*]Removed the ability for better shorelines to spawn in oases. This may create minor seams in surface material but these will be easy to fix manually if you so desire.
 [*]Fixed an issue where frozen rivers weren't frozen. Any which have generated in your world in the last release that weren't frozen will naturally refreeze as you spend time near them. The biome locations were correct, just not the precipitation data.
 [*]Fixed an issue where wetland hills and willow grove hills would spawn standard rivers within them and not jungle rivers, leading to mismatched water color.

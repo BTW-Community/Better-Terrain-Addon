@@ -30,11 +30,11 @@ public class BTABiomeConfiguration {
 	public static final BTABiomeGenBase rainforest = new BTABiomeGenRainforest(122, BTAEnumClimate.TROPICAL).setColor(9286496).setBiomeName("Rainforest").setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.3F, 1.5F);
 	public static final BTABiomeGenBase meadow = new BTABiomeGenMeadow(123, BTAEnumClimate.TROPICAL).setColor(9286496).setBiomeName("Meadow").setTemperatureRainfall(0.7F, 1.0F).setMinMaxHeight(0.1F, 0.4F);
 	public static final BTABiomeGenBase orchard = new BTABiomeGenOrchard(124, BTAEnumClimate.TEMPERATE).setColor(353825).setBiomeName("Orchard").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.5F);
-	public static final BTABiomeGenBase mountains = new BTABiomeGenMountain(125, BTAEnumClimate.TEMPERATE).setColor(14090235).setBiomeName("Mountains").setTemperatureRainfall(0.5F, 0.1F).setMinMaxHeight(0.8F, 2.5F);
+	public static final BTABiomeGenBase mountains = new BTABiomeGenMountain(125, BTAEnumClimate.COLD).setColor(14090235).setBiomeName("Mountains").setTemperatureRainfall(0.5F, 0.1F).setMinMaxHeight(0.8F, 2.5F);
 	public static final BTABiomeGenBase dunes = new BTABiomeGenDesert(126, BTAEnumClimate.ARID).setColor(16421912).setBiomeName("Dunes").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.5F, 1.5F);
 	public static final BTABiomeGenBase heathland = new BTABiomeGenHeathland(127, BTAEnumClimate.TEMPERATE).setColor(9286496).setBiomeName("Heathland").setTemperatureRainfall(0.7F, 0.4F).setMinMaxHeight(0.1F, 0.5F);
 	public static final BTABiomeGenBase heathlandWoods = new BTABiomeGenHeathlandWoods(128, BTAEnumClimate.TEMPERATE).setColor(9286496).setBiomeName("Heathland Woods").setTemperatureRainfall(0.7F, 0.4F).setMinMaxHeight(0.1F, 0.5F); //Spawns within heathland
-	public static final BTABiomeGenBase borealForest = new BTABiomeGenBorealForest(129, BTAEnumClimate.COLD).setColor(353825).setBiomeName("Boreal Forest").func_76733_a(5159473).setMinMaxHeight(0.2F, 1.0F).setTemperatureRainfall(0.6F, 0.7F);
+	public static final BTABiomeGenBase borealForest = new BTABiomeGenBorealForest(129, BTAEnumClimate.TEMPERATE).setColor(353825).setBiomeName("Temperate Forest").func_76733_a(5159473).setMinMaxHeight(0.2F, 1.0F).setTemperatureRainfall(0.6F, 0.7F);
 	public static final BTABiomeGenBase valleyMountains = new BTABiomeGenValley(130, BTAEnumClimate.TROPICAL).setColor(353825).setBiomeName("Valley Highlands").func_76733_a(5159473).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.5F, 3.0F);
 	public static final BTABiomeGenBase oldValley = new BTABiomeGenOldValley(131, BTAEnumClimate.TROPICAL).setColor(353825).setBiomeName("Old Valley").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.1F, 0.8F);
 	public static final BTABiomeGenBase tundra = new BTABiomeGenTundra(132, BTAEnumClimate.SNOWY).setColor(16421912).setBiomeName("Tundra").setEnableSnow().setTemperatureRainfall(0.1F, 0.1F).setMinMaxHeight(0.1F, 0.4F);
@@ -298,7 +298,7 @@ public class BTABiomeConfiguration {
 		reedBiomes.add(mysticForest);
 		reedBiomes.add(rainforest);
 		reedBiomes.add(willowGrove);
-		reedBiomes.add(borealForest);
+		reedBiomes.add(patagonia);
 		reedBiomes.add(plains);
 		reedBiomes.add(mangroveForest);
 		

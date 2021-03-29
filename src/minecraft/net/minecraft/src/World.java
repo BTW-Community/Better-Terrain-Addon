@@ -124,6 +124,9 @@ public abstract class World implements IBlockAccess
     protected InventoryEnderChest m_localLowPowerEnderChestInventory = new InventoryEnderChest();
     protected FCBeaconEffectLocationList m_LootingBeaconLocationList = new FCBeaconEffectLocationList();
     protected FCSpawnLocationList m_SpawnLocationList = new FCSpawnLocationList();
+    
+    //BTAMOD
+    private BTAWorldConfigurationInfo generatorInfoCache;
 
     /**
      * Gets the biome for a given set of x/z coordinates
@@ -2798,11 +2801,29 @@ public abstract class World implements IBlockAccess
     /**
      * Tests whether or not snow can be placed at a given location
      */
-    public boolean canSnowAt(int par1, int par2, int par3)
+    //BTAMOD
+    public boolean canSnowAt(int x, int y, int z)
     {
-        BiomeGenBase var4 = this.getBiomeGenForCoords(par1, par3);
-        float var5 = var4.getFloatTemperature();
-        return var5 > 0.15F ? false : par2 >= 0 && par2 < 256 && this.getSavedLightValue(EnumSkyBlock.Block, par1, par2, par3) < 10 && FCBlockSnowCover.CanSnowCoverReplaceBlock(this, par1, par2, par3) && Block.snow.canPlaceBlockAt(this, par1, par2, par3);
+        BiomeGenBase biome = this.getBiomeGenForCoords(x, z);
+        float temperature = biome.getFloatTemperature();
+        
+        if (this.generatorInfoCache == null) {
+        	this.generatorInfoCache = BTAWorldConfigurationInfo.createInfoFromString(this.provider.generatorOptions);
+        }
+        
+        if (this.getBiomeGenForCoords(x, z) instanceof BTABiomeGenBase && this.generatorInfoCache.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_3_0)) {
+        	BTABiomeGenBase btaBiome = (BTABiomeGenBase) biome;
+        	
+        	if (y >= btaBiome.climate.minHeightForSnow && y < 256) {
+        		return this.getSavedLightValue(EnumSkyBlock.Block, x, y, z) < 10 && FCBlockSnowCover.CanSnowCoverReplaceBlock(this, x, y, z) && Block.snow.canPlaceBlockAt(this, x, y, z);
+        	}
+        	else {
+        		return false;
+        	}
+        }
+        else {
+        	return temperature > 0.15F ? false : y >= 0 && y < 256 && this.getSavedLightValue(EnumSkyBlock.Block, x, y, z) < 10 && FCBlockSnowCover.CanSnowCoverReplaceBlock(this, x, y, z) && Block.snow.canPlaceBlockAt(this, x, y, z);
+        }
     }
 
     public void updateAllLightTypes(int par1, int par2, int par3)
