@@ -20,7 +20,7 @@ public class BTABiomeInfo {
 	}
 
 	public String getName() {
-        return ((BTABiomeGenBase) BiomeGenBase.biomeList[id]).getConfigDisplayName();
+        return BiomeGenBase.biomeList[id].biomeName;
     }
 	
 	public BiomeGenBase getBiome() {

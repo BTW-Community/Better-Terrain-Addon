@@ -48,6 +48,10 @@ class BTAGuiBiomeOptionList extends GuiSlot
         
         if (biomeName.startsWith("Better "))
         	biomeName = biomeName.substring(7);
+        if (biomeName.equals("Valley Highlands"))
+        	biomeName = "Valley";
+        if (biomeName.equals("Badlands Plateau"))
+        	biomeName = "Badlands";
         
         if (decoOnly && !guiGeneratorOptions.isDeco()) {
             this.guiGeneratorOptions.fontRenderer.drawString(biomeName + " (Deco)", x + 1, y + 7, 8526880);

@@ -14,8 +14,6 @@ public class BTABiomeGenBase extends BiomeGenBase {
 	
 	protected BTAEnumClimate climate;
 	
-	private String configDisplayName;
-	
     public BTABiomeDecorator btaBiomeDecorator;
 
 	protected BTABiomeGenBase(int id, BTAEnumClimate climate) {
@@ -89,17 +87,7 @@ public class BTABiomeGenBase extends BiomeGenBase {
     public BTABiomeGenBase setBiomeName(String par1Str)
     {
         this.biomeName = par1Str;
-        this.configDisplayName = par1Str;
         return this;
-    }
-    
-    public String getConfigDisplayName() {
-    	return this.configDisplayName;
-    }
-    
-    public BTABiomeGenBase setBiomeConfigDisplayName(String name) {
-    	this.configDisplayName = name;
-    	return this;
     }
 
     public BTABiomeGenBase func_76733_a(int par1)
