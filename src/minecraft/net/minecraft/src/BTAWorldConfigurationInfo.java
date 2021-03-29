@@ -12,6 +12,7 @@ public class BTAWorldConfigurationInfo {
 	private int oceanSize = 10;
 	private boolean generatePerlinBeaches = true;
 	private boolean climatized = false;
+	private boolean isSmall = false;
 
 	public static BTAWorldConfigurationInfo createDefaultConfiguration(boolean isDeco) {
 		BTAWorldConfigurationInfo info = new BTAWorldConfigurationInfo();
@@ -20,6 +21,7 @@ public class BTAWorldConfigurationInfo {
 		info.setOceanSize(10);
 		info.setGeneratePerlinBeaches(true);
 		info.setClimatized(true);
+		info.setSmall(true);
 
 		info.generateBiomeInfoListFromBiomes(BTABiomeConfiguration.biomeListDeco);
 
@@ -49,6 +51,7 @@ public class BTAWorldConfigurationInfo {
 		info.setOceanSize(10);
 		info.setGeneratePerlinBeaches(false);
 		info.setClimatized(false);
+		info.setSmall(false);
 
 		info.generateBiomeInfoListFromBiomes(BTABiomeConfiguration.biomeListDecoCompat);
 
@@ -100,6 +103,7 @@ public class BTAWorldConfigurationInfo {
 			if (i == 2) this.oceanSize = Integer.parseInt(infoSplit[i]);
 			if (i == 3) this.generatePerlinBeaches = Boolean.parseBoolean(infoSplit[i]);
 			if (i == 4) this.climatized = Boolean.parseBoolean(infoSplit[i]);
+			if (i == 5) this.isSmall = Boolean.parseBoolean(infoSplit[i]);
 		}
 
 		this.setBiomesForGenerationFromInfo(this.biomeInfoList);
@@ -116,7 +120,8 @@ public class BTAWorldConfigurationInfo {
 		out += compatMode + "; ";
 		out += oceanSize + "; ";
 		out += generatePerlinBeaches + "; ";
-		out += climatized;
+		out += climatized + "; ";
+		out += isSmall;
 
 		return out;
 	}
@@ -190,5 +195,13 @@ public class BTAWorldConfigurationInfo {
 	public BTAWorldConfigurationInfo setClimatized(boolean climatized) {
 		this.climatized = climatized;
 		return this;
+	}
+
+	public boolean isSmall() {
+		return isSmall;
+	}
+
+	public void setSmall(boolean isSmall) {
+		this.isSmall = isSmall;
 	}
 }

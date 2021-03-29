@@ -122,7 +122,7 @@ public class BTAGuiGeneratorOptions extends GuiScreen
 			this.updateButtons();
 		}
 		else if (button.id == id_smallBiomes) {
-			createWorldGui.setSmall(!createWorldGui.isSmall());
+			this.worldGeneratorInfo.setSmall(!this.worldGeneratorInfo.isSmall());
 			this.updateButtons();
 		}
 	}
@@ -145,7 +145,7 @@ public class BTAGuiGeneratorOptions extends GuiScreen
 			this.buttonPerlinBeaches.displayString = "Better Shores: Off";
 		}
 
-		if (createWorldGui.isSmall()) {
+		if (this.worldGeneratorInfo.isSmall()) {
 			this.buttonBiomeSize.displayString = "Biome Size: Vanilla";
 		}
 		else {

@@ -39,7 +39,7 @@ public abstract class BTAGenLayer extends GenLayer {
         
         byte scale = 5;
         
-        if (worldType == BTAMod.BTAWorldTypeSmall || worldType == BTAMod.BTAWorldTypeSmallDeco)
+        if (generatorInfo.isSmall() || worldType == BTAMod.BTAWorldTypeSmall || worldType == BTAMod.BTAWorldTypeSmallDeco)
         	scale = 4;
 
         GenLayer layerMagnifyRiver = GenLayerZoom.magnify(1000L, layerMushroomIsland, 0);
@@ -94,7 +94,7 @@ public abstract class BTAGenLayer extends GenLayer {
         
         byte scale = 5;
         
-        if (worldType == BTAMod.BTAWorldTypeSmall || worldType == BTAMod.BTAWorldTypeSmallDeco)
+        if (generatorInfo.isSmall() || worldType == BTAMod.BTAWorldTypeSmall || worldType == BTAMod.BTAWorldTypeSmallDeco)
         	scale = 4;
 
         GenLayer layerMagnifyRiver = GenLayerZoom.magnify(1000L, layerMushroomIsland, 0);

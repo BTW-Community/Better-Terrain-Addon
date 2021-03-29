@@ -53,7 +53,6 @@ public class GuiCreateWorld extends GuiScreen
     private boolean isDeco;
     
     private GuiButton buttonCustomizeBTA;
-    private boolean isSmall;
 
     /** The first line of text describing the currently selected game mode. */
     private String gameModeDescriptionLine1;
@@ -290,10 +289,6 @@ public class GuiCreateWorld extends GuiScreen
                 }
 
                 EnumGameType var8 = EnumGameType.getByName(this.gameMode);
-                
-                if (this.isSmall) {
-                	this.worldTypeId += 6;
-                }
                 
                 WorldType type = WorldType.worldTypes[this.worldTypeId];
                 
@@ -551,20 +546,11 @@ public class GuiCreateWorld extends GuiScreen
         
         WorldType currentType = WorldType.worldTypes[this.worldTypeId];
         this.isDeco = currentType.isDeco();
-        this.isSmall = currentType.equals(BTAMod.BTAWorldTypeSmall) || currentType.equals(BTAMod.BTAWorldTypeSmallDeco);
         this.worldTypeId = currentType.getParent().getWorldTypeID();
     }
 
 	public boolean isDeco() {
 		return isDeco;
-	}
-
-	public boolean isSmall() {
-		return isSmall;
-	}
-
-	public void setSmall(boolean isSmall) {
-		this.isSmall = isSmall;
 	}
 
 	public int getWorldTypeId() {

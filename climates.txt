@@ -1,0 +1,46 @@
+Snowy:
+-Snowy woods
+-Snowy coniferous forest
+-Tundra
+-Icy peaks
+-Siberia
+-Frozen Springs
+
+Cold:
+-Birch Forest
+-Alpine
+-Confierous Forest
+-Mountains
+-Boreal forest
+-Patagonia
+
+Temperate:
+-Woods
+-Steppe
+-Ancient forest
+-Fungal Forest
+-Mystic Forest
+-Orchard
+-Heathland
+-Grasslands
+-Cherry forest
+-Autumn forest
+
+Tropical:
+-Lush Desert
+-Wetlands
+-Tropics
+-Jungle
+-Rainforest
+-Meadow
+-Valley
+-Willow grove
+
+Arid:
+-Desert
+-Savanna
+-Chaparral
+-Dunes
+-Plains
+-Outback
+-Badlands

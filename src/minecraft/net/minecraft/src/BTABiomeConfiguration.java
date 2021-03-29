@@ -45,6 +45,7 @@ public class BTABiomeConfiguration {
 	public static final BTABiomeGenBase siberia = new BTABiomeGenSiberia(137, BTAEnumClimate.SNOWY).setColor(747097).setBiomeName("Siberia").func_76733_a(5159473).setTemperatureRainfall(0.1F, 0.4F).setMinMaxHeight(0.3F, 0.7F).setEnableSnow();
 	public static final BTABiomeGenBase plains = new BTABiomeGenPlains(138, BTAEnumClimate.ARID).setColor(9286496).setBiomeName("Better Plains").setTemperatureRainfall(0.8F, 0.4F).setMinMaxHeight(0.2F, 0.4F);
 	public static final BTABiomeGenBase frozenSprings = new BTABiomeGenFrozenSprings(139, BTAEnumClimate.SNOWY).setColor(16421912).setBiomeName("Frozen Springs").setEnableSnow().setTemperatureRainfall(0.1F, 0.1F).setMinMaxHeight(0.2F, 0.6F);
+    public static final BTABiomeGenBase mangroveForest = new BTABiomeGenMangroveForest(140, BTAEnumClimate.TEMPERATE).setColor(522674).setBiomeName("Mangal").func_76733_a(9154376).setMinMaxHeight(-0.3F, 0.2F).setTemperatureRainfall(0.8F, 0.9F);
 
 	//Hill variants - spawn within the normal variants
 	public static final BTABiomeGenBase woodsHills = new BTABiomeGenWoods(150, BTAEnumClimate.TEMPERATE).setColor(353825).setBiomeName("Woods Hills").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.3F, 1.0F);
@@ -66,6 +67,7 @@ public class BTABiomeConfiguration {
 	public static final BTABiomeGenBase patagoniaMountains = new BTABiomeGenPatagoniaMountains(166, BTAEnumClimate.COLD).setColor(9286496).setBiomeName("Patagonia Mountains").setTemperatureRainfall(0.1F, 0.6F).setMinMaxHeight(2.0F, 4.0F).setEnableSnow();
 	public static final BTABiomeGenBase grasslandsLake = new BTABiomeGenGrasslandsLake(167, BTAEnumClimate.TEMPERATE).setColor(9286496).setBiomeName("Grasslands Lake").setTemperatureRainfall(0.5F, 0.6F).setMinMaxHeight(-0.3F, 0.0F);
 	public static final BTABiomeGenBase frozenSpringsPond = new BTABiomeGenFrozenSpringPond(168, BTAEnumClimate.SNOWY).setColor(16421912).setBiomeName("Frozen Springs Pond").setTemperatureRainfall(0.2F, 0.1F).setMinMaxHeight(-0.3F, 0.0F);
+    public static final BTABiomeGenBase mangroveForestIsland = new BTABiomeGenMangroveForest(169, BTAEnumClimate.TEMPERATE).setColor(522674).setBiomeName("Mangal Island").func_76733_a(9154376).setMinMaxHeight(0.0F, 0.3F).setTemperatureRainfall(0.8F, 0.9F);
     
     //Deco only biomes
     public static final BTABiomeGenBase outback = new BTABiomeGenOutback(180, BTAEnumClimate.ARID).setColor(16421912).setBiomeName("Outback").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.1F, 0.4F);
@@ -180,6 +182,7 @@ public class BTABiomeConfiguration {
 		biomeList.add(siberia);
 		biomeList.add(plains);
 		biomeList.add(frozenSprings);
+		biomeList.add(mangroveForest);
 
 		biomeListDeco.addAll(biomeList);
 		for (BTABiomeGenBase b : biomeListDecoCompat) {
@@ -263,12 +266,18 @@ public class BTABiomeConfiguration {
 		beachlessBiomes.add(icyPeaks);
 		beachlessBiomes.add(patagoniaMountains);
 		beachlessBiomes.add(siberia);
+		beachlessBiomes.add(frozenSprings);
+		beachlessBiomes.add(mangroveForest);
+		beachlessBiomes.add(mangroveForestIsland);
 	}
 	
 	public static void filterPerlinBeachBiomes() {
 		noPerlinBeachBiomes.add(wetlands);
 		noPerlinBeachBiomes.add(willowGrove);
 		noPerlinBeachBiomes.add(patagonia);
+		noPerlinBeachBiomes.add(oasis);
+		noPerlinBeachBiomes.add(mangroveForest);
+		noPerlinBeachBiomes.add(mangroveForestIsland);
 	}
 	
 	public static void addBiomesToStructureGenerators() {
@@ -287,6 +296,9 @@ public class BTABiomeConfiguration {
 		reedBiomes.add(mysticForest);
 		reedBiomes.add(rainforest);
 		reedBiomes.add(willowGrove);
+		reedBiomes.add(borealForest);
+		reedBiomes.add(plains);
+		reedBiomes.add(mangroveForest);
 		
 		villageBiomes.add(savanna);
 		villageBiomes.add(desert);
@@ -306,6 +318,7 @@ public class BTABiomeConfiguration {
 		jungleTempleBiomes.add(tropics);
 		jungleTempleBiomes.add(jungle);
 		jungleTempleBiomes.add(rainforest);
+		jungleTempleBiomes.add(mangroveForest);
 		
 		desertTempleBiomes.add(desert);
 		desertTempleBiomes.add(lushDesert);
@@ -332,6 +345,7 @@ public class BTABiomeConfiguration {
 		reedBiomes.add(wetlandsHills);
 		reedBiomes.add(willowHills);
 		reedBiomes.add(frozenSpringsPond);
+		reedBiomes.add(mangroveForestIsland);
 
 		villageBiomes.add(oasis);
 		villageBiomes.add(woodedSteppe);
@@ -339,6 +353,7 @@ public class BTABiomeConfiguration {
 		villageBiomes.add(orchardClearing);
 
 		jungleTempleBiomes.add(jungleHills);
+		jungleTempleBiomes.add(mangroveForestIsland);
 
 		desertTempleBiomes.add(desertHills);
 		desertTempleBiomes.add(woodedSteppe);
@@ -542,6 +557,18 @@ public class BTABiomeConfiguration {
 		else if (baseBiome == willowGrove.biomeID || baseBiome == willowHills.biomeID) {
 			sporadicBiome = riverWillow.biomeID;
 		}
+		else if (baseBiome == jungle.biomeID) {
+			sporadicBiome = riverJungle.biomeID;
+		}
+		else if (baseBiome == rainforest.biomeID) {
+			sporadicBiome = riverRainforest.biomeID;
+		}
+		else if (baseBiome == lushDesert.biomeID) {
+			sporadicBiome = oasis.biomeID;
+		}
+		else if (baseBiome == mangroveForest.biomeID) {
+			sporadicBiome = mangroveForestIsland.biomeID;
+		}
 		
 		return sporadicBiome;
 	}
@@ -553,6 +580,14 @@ public class BTABiomeConfiguration {
 			return 5;
 		if (baseBiome == willowGrove.biomeID || baseBiome == willowHills.biomeID)
 			return 5;
+		if (baseBiome == jungle.biomeID)
+			return 8;
+		if (baseBiome == rainforest.biomeID)
+			return 8;
+		if (baseBiome == lushDesert.biomeID)
+			return 8;
+		if (baseBiome == mangroveForest.biomeID)
+			return 3;
 		return 0;
 	}
 	
@@ -609,6 +644,10 @@ public class BTABiomeConfiguration {
 	
 	public static boolean canBiomeSpawnPumpkin(BiomeGenBase biome) {
 		return pumpkinBiomes.contains(biome);
+	}
+	
+	public static boolean canBiomeSpawnMelon(BiomeGenBase biome) {
+		return jungleTempleBiomes.contains(biome);
 	}
 	
 	public static boolean canBiomeSpawnReeds(BiomeGenBase biome) {
