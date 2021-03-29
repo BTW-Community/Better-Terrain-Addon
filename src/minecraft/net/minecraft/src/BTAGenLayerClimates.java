@@ -6,7 +6,8 @@ import java.util.Map;
 
 public class BTAGenLayerClimates extends BTAGenLayer {
 	private ArrayList<BTABiomeGenBase> biomesForGeneration;
-	public static Map<BTAEnumClimate, ArrayList<BTABiomeGenBase>> biomeCategoryMapCached = new HashMap();
+	private Map<BTAEnumClimate, ArrayList<BTABiomeGenBase>> biomeCategoryMapCached = new HashMap();
+	private ArrayList<Integer> climateIDsForGeneration = new ArrayList();
 	
     public BTAGenLayerClimates(long baseSeed, GenLayer parent, ArrayList<BTABiomeGenBase> biomesForGeneration) {
         super(baseSeed);
@@ -14,7 +15,11 @@ public class BTAGenLayerClimates extends BTAGenLayer {
 		this.biomesForGeneration = biomesForGeneration;
 		
 		for (BTAEnumClimate c : BTAEnumClimate.values()) {
-			biomeCategoryMapCached.put(c, BTABiomeConfiguration.getClimateListForGenerator(c, this.biomesForGeneration));
+			this.biomeCategoryMapCached.put(c, BTABiomeConfiguration.getClimateListForGenerator(c, this.biomesForGeneration));
+			
+			if (biomeCategoryMapCached.get(c).size() != 0) {
+				climateIDsForGeneration.add(c.id);
+			}
 		}
     }
 
@@ -35,13 +40,7 @@ public class BTAGenLayerClimates extends BTAGenLayer {
                 int parentInt = parentArray[k + 1 + (i + 1) * parentSizeX];
                 this.initChunkSeed((long)(k + xOffset), (long)(i + zOffset));
                 
-            	int climateID = this.nextInt(5) - 5;
-            	
-            	while (biomeCategoryMapCached.get(BTAEnumClimate.fromID(climateID)).size() == 0) {
-            		climateID -= 1;
-            		if (climateID < -(BTAEnumClimate.values().length))
-            			climateID = -1;
-            	}
+            	int climateID = climateIDsForGeneration.get(this.nextInt(climateIDsForGeneration.size()));
             	
                 cache[k + i * sizeX] = climateID;
             }

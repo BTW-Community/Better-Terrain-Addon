@@ -10,7 +10,6 @@ Cold:
 -Birch Forest
 -Alpine
 -Confierous Forest
--Mountains
 -Boreal forest
 -Patagonia
 
@@ -25,6 +24,8 @@ Temperate:
 -Grasslands
 -Cherry forest
 -Autumn forest
+-Mountains
+-Mangal
 
 Tropical:
 -Lush Desert
