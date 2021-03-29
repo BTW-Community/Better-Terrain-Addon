@@ -40,8 +40,15 @@ public class BTAGenLayerBiomeClimatized extends BTAGenLayer {
 					cache[k + i * sizeX] = 0;
 				}
 				else {
-					BTAEnumClimate climate = BTAEnumClimate.fromID(climateInts[k + i * sizeX]);
+					int climateID = climateInts[k + i * sizeX];
 					
+					while (biomeCategoryMapCached.get(BTAEnumClimate.fromID(climateID)).size() == 0) {
+	            		climateID -= 1;
+	            		if (climateID < -(BTAEnumClimate.values().length))
+	            			climateID = -1;
+	            	}
+					
+					BTAEnumClimate climate = BTAEnumClimate.fromID(climateID);
 					ArrayList<BTABiomeGenBase> biomesForClimate = biomeCategoryMapCached.get(climate);
 					
 					cache[k + i * sizeX] = biomesForClimate.get(this.nextInt(biomesForClimate.size())).biomeID;

@@ -11,9 +11,10 @@ Version 1.3.0
 [*]Changed ocean size configuration to be a scale from 1 (off) to 10 (vanilla), defaulting to 5.
 [*]Changed (increased) possible biome size ranges to 0.5x to 4x vanilla (Original BTA was 2x, vanilla large biomes is 4x). As a part of this, small world types have been deprecated as biome size information is now handled through generator options. These world types will continue to function for existing worlds but may no longer be created.
 [*]Changed the default biome size to vanilla sized biomes as the new climate zone system tends to spread out dissimilar biomes further than before.
+[*]Changed the display name of a few biomes in world configuration to match the generic name rather than specific sub-biome names. Internal biome names remain the same, and are still listed in the OP (internal biome names only concern texture pack authors using MCPatcher).
 [*]Removed the ability for better shorelines to spawn in oases. This may create minor seams in surface material but these will be easy to fix manually if you so desire.
 [*]Fixed an issue where frozen rivers weren't frozen. Any which have generated in your world in the last release that weren't frozen will naturally refreeze as you spend time near them. The biome locations were correct, just not the precipitation data.
-[*]Fixed an issue where wetlands and willow grove hills would spawn standard rivers within them and not jungle rivers, leading to mismatched water color.
+[*]Fixed an issue where wetland hills and willow grove hills would spawn standard rivers within them and not jungle rivers, leading to mismatched water color.
 [*]Fixed an issue where beta and skylands world types always generated vanilla sized biomes, regardless of world configuration settings.
 [list]
 
