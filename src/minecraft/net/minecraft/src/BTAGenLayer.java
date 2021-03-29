@@ -28,9 +28,9 @@ public abstract class BTAGenLayer extends GenLayer {
         layerIsland = new GenLayerAddIsland(4L, layerZoom);
         GenLayerAddMushroomIsland layerMushroomIsland = new GenLayerAddMushroomIsland(5L, layerIsland);
         
-        byte scale = 5;
+        int scale = 3 + generatorInfo.getBiomeSize();
         
-        if (generatorInfo.isSmall() || worldType == BTAMod.BTAWorldTypeSmall || worldType == BTAMod.BTAWorldTypeSmallDeco)
+        if (worldType == BTAMod.BTAWorldTypeSmall || worldType == BTAMod.BTAWorldTypeSmallDeco)
         	scale = 4;
 
         GenLayer layerMagnifyRiver = GenLayerZoom.magnify(1000L, layerMushroomIsland, 0);
@@ -40,9 +40,9 @@ public abstract class BTAGenLayer extends GenLayer {
         GenLayerSmooth layerSmoothRivers = new GenLayerSmooth(1000L, layerRiver);
         GenLayer layerMangnifyBiome = GenLayerZoom.magnify(1000L, layerMushroomIsland, 0);
         
-        GenLayer layerClimateZoom = GenLayerZoom.magnify(1000l, layerClimates, 3);
         GenLayer layerBiome;
         if (generatorInfo.isClimatized() && generatorInfo.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_3_0)) {
+            GenLayer layerClimateZoom = GenLayerZoom.magnify(1000l, layerClimates, 3);
             layerBiome = new BTAGenLayerBiomeClimatized(200L, layerMangnifyBiome, layerClimateZoom, generatorInfo.getBiomesForGeneration());
     	}
     	else {
@@ -71,6 +71,7 @@ public abstract class BTAGenLayer extends GenLayer {
         GenLayerSmooth layerSmoothBiome = new GenLayerSmooth(1000L, (GenLayer)layerExtras);
         BTAGenLayerRiverMix layerRiverMix = new BTAGenLayerRiverMix(100L, layerSmoothBiome, layerSmoothRivers);
         GenLayerVoronoiZoom layerVoronoiZoom = new GenLayerVoronoiZoom(10L, layerRiverMix);
+        
         layerRiverMix.initWorldGenSeed(seed);
         layerVoronoiZoom.initWorldGenSeed(seed);
         return new GenLayer[] {layerRiverMix, layerVoronoiZoom, layerRiverMix};

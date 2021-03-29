@@ -2,10 +2,10 @@ package net.minecraft.src;
 
 class BTAGuiBiomeOptionList extends GuiSlot
 {
-    final BTAGuiGeneratorOptions guiGeneratorOptions;
+    final BTAGuiBiomeOptions guiGeneratorOptions;
     public int selected;
 
-    public BTAGuiBiomeOptionList(BTAGuiGeneratorOptions guiGeneratorOptions)
+    public BTAGuiBiomeOptionList(BTAGuiBiomeOptions guiGeneratorOptions)
     {
         super(guiGeneratorOptions.mc, guiGeneratorOptions.width, guiGeneratorOptions.height, 43, guiGeneratorOptions.height - 60, 24);
         this.guiGeneratorOptions = guiGeneratorOptions;
@@ -17,7 +17,7 @@ class BTAGuiBiomeOptionList extends GuiSlot
      */
     protected int getSize()
     {
-        return BTAGuiGeneratorOptions.getBiomeArray(this.guiGeneratorOptions).getBiomeInfoList().size();
+        return BTAGuiBiomeOptions.getBiomeArray(this.guiGeneratorOptions).getBiomeInfoList().size();
     }
 
     /**
@@ -41,7 +41,7 @@ class BTAGuiBiomeOptionList extends GuiSlot
 
     protected void drawSlot(int index, int x, int y, int var4, Tessellator tesselator)
     {
-    	BTABiomeInfo biomeInfo = (BTABiomeInfo)BTAGuiGeneratorOptions.getBiomeArray(this.guiGeneratorOptions).getBiomeInfoList().get(BTAGuiGeneratorOptions.getBiomeArray(this.guiGeneratorOptions).getBiomeInfoList().size() - index - 1);
+    	BTABiomeInfo biomeInfo = (BTABiomeInfo)BTAGuiBiomeOptions.getBiomeArray(this.guiGeneratorOptions).getBiomeInfoList().get(BTAGuiBiomeOptions.getBiomeArray(this.guiGeneratorOptions).getBiomeInfoList().size() - index - 1);
         String biomeName = biomeInfo.getName();
         boolean biomeEnabled = biomeInfo.getEnabled();
         boolean decoOnly = biomeInfo.isDecoOnly();

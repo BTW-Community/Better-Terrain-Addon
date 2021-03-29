@@ -10,18 +10,18 @@ public class BTAWorldConfigurationInfo {
 
 	private BTAEnumVersionCompat compatMode = BTAEnumVersionCompat.V1_1_3;
 	private int oceanSize = 10;
-	private boolean generatePerlinBeaches = true;
+	private boolean generatePerlinBeaches = false;
 	private boolean climatized = false;
-	private boolean isSmall = false;
+	private int biomeSize = 2;
 
 	public static BTAWorldConfigurationInfo createDefaultConfiguration(boolean isDeco) {
 		BTAWorldConfigurationInfo info = new BTAWorldConfigurationInfo();
 
 		info.setCompatMode(BTAMod.getInstance().currentVersion);
-		info.setOceanSize(10);
+		info.setOceanSize(5);
 		info.setGeneratePerlinBeaches(true);
 		info.setClimatized(true);
-		info.setSmall(true);
+		info.setBiomeSize(1);
 
 		info.generateBiomeInfoListFromBiomes(BTABiomeConfiguration.biomeListDeco);
 
@@ -51,7 +51,7 @@ public class BTAWorldConfigurationInfo {
 		info.setOceanSize(10);
 		info.setGeneratePerlinBeaches(false);
 		info.setClimatized(false);
-		info.setSmall(false);
+		info.setBiomeSize(2);
 
 		info.generateBiomeInfoListFromBiomes(BTABiomeConfiguration.biomeListDecoCompat);
 
@@ -103,7 +103,7 @@ public class BTAWorldConfigurationInfo {
 			if (i == 2) this.oceanSize = Integer.parseInt(infoSplit[i]);
 			if (i == 3) this.generatePerlinBeaches = Boolean.parseBoolean(infoSplit[i]);
 			if (i == 4) this.climatized = Boolean.parseBoolean(infoSplit[i]);
-			if (i == 5) this.isSmall = Boolean.parseBoolean(infoSplit[i]);
+			if (i == 5) this.biomeSize = Integer.parseInt(infoSplit[i]);
 		}
 
 		this.setBiomesForGenerationFromInfo(this.biomeInfoList);
@@ -121,7 +121,7 @@ public class BTAWorldConfigurationInfo {
 		out += oceanSize + "; ";
 		out += generatePerlinBeaches + "; ";
 		out += climatized + "; ";
-		out += isSmall;
+		out += biomeSize;
 
 		return out;
 	}
@@ -197,11 +197,11 @@ public class BTAWorldConfigurationInfo {
 		return this;
 	}
 
-	public boolean isSmall() {
-		return isSmall;
+	public int getBiomeSize() {
+		return biomeSize;
 	}
 
-	public void setSmall(boolean isSmall) {
-		this.isSmall = isSmall;
+	public void setBiomeSize(int biomeSize) {
+		this.biomeSize = biomeSize;
 	}
 }

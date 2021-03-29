@@ -128,6 +128,11 @@ public class BTABiomeConfiguration {
 	private static ArrayList<BiomeGenBase> desertTempleBiomes = new ArrayList();
 	private static ArrayList<BiomeGenBase> witchHutBiomes = new ArrayList();
 	
+	static {
+		valley.setBiomeConfigDisplayName("Valley");
+		badlands.setBiomeConfigDisplayName("Badlands");
+	}
+	
 	public static void init() {
 		filterSpawnBiomes();
 		filterBeachBiomes();

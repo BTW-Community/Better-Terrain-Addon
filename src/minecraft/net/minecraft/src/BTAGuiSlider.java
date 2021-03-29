@@ -10,11 +10,31 @@ public class BTAGuiSlider extends GuiButton
 
     /** Is this slider control being dragged. */
     public boolean dragging = false;
+    
+    private final BTAISliderSettingHandler handler;
+    
+    public final int numSettings;
 
-    public BTAGuiSlider(int id, int x, int y, int sizeX, int sizeY, String displayString, float startingValue)
+    public BTAGuiSlider(int id, int x, int y, int sizeX, int sizeY, String displayString, float startingValue, BTAISliderSettingHandler handler, int numSettings)
     {
         super(id, x, y, sizeX, sizeY, displayString);
         this.sliderValue = startingValue;
+        this.handler = handler;
+        this.numSettings = numSettings;
+
+        handler.handleSetting(this);
+        handler.updateText(this);
+    }
+
+    public BTAGuiSlider(int id, int x, int y, int sizeX, int sizeY, String displayString, int startingValue, BTAISliderSettingHandler handler, int numSettings)
+    {
+        super(id, x, y, sizeX, sizeY, displayString);
+        this.sliderValue = ((float) startingValue) / (numSettings - 1);
+        this.handler = handler;
+        this.numSettings = numSettings;
+
+        handler.handleSetting(this);
+        handler.updateText(this);
     }
 
     /**
@@ -36,6 +56,8 @@ public class BTAGuiSlider extends GuiButton
             if (this.dragging)
             {
                 this.sliderValue = (float)(x - (this.xPosition + 4)) / (float)(this.width - 8);
+                
+                this.sliderValue = ((int) (this.sliderValue * this.numSettings)) / (float) (this.numSettings - 1);
 
                 if (this.sliderValue < 0.0F)
                 {
@@ -47,8 +69,8 @@ public class BTAGuiSlider extends GuiButton
                     this.sliderValue = 1.0F;
                 }
 
-                //par1Minecraft.gameSettings.setOptionFloatValue(this.idFloat, this.sliderValue);
-                //this.displayString = par1Minecraft.gameSettings.getKeyBinding(this.idFloat);
+                handler.handleSetting(this);
+                handler.updateText(this);
             }
 
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
@@ -66,6 +88,8 @@ public class BTAGuiSlider extends GuiButton
         if (super.mousePressed(mc, x, y))
         {
             this.sliderValue = (float)(x - (this.xPosition + 4)) / (float)(this.width - 8);
+            
+            this.sliderValue = ((int) (this.sliderValue * this.numSettings)) / (float) (this.numSettings - 1);
 
             if (this.sliderValue < 0.0F)
             {
@@ -77,8 +101,9 @@ public class BTAGuiSlider extends GuiButton
                 this.sliderValue = 1.0F;
             }
 
-            //par1Minecraft.gameSettings.setOptionFloatValue(this.idFloat, this.sliderValue);
-            //this.displayString = par1Minecraft.gameSettings.getKeyBinding(this.idFloat);
+            handler.handleSetting(this);
+            handler.updateText(this);
+            
             this.dragging = true;
             return true;
         }
