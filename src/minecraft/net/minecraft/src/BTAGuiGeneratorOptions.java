@@ -3,7 +3,7 @@ package net.minecraft.src;
 public class BTAGuiGeneratorOptions extends GuiScreen implements BTAISliderSettingHandler
 {
 	private final GuiCreateWorld guiCreateWorld;
-	private BTAWorldConfigurationInfo worldGeneratorInfo;
+	public BTAWorldConfigurationInfo worldGeneratorInfo;
 	
 	private GuiButton buttonDone;
 	private GuiButton buttonDeco;

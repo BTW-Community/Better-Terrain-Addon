@@ -2,10 +2,9 @@ package net.minecraft.src;
 
 public class BTAGuiBiomeOptions extends GuiScreen
 {
-	private final BTAGuiGeneratorOptions guiGeneratorOptions;
+	public final BTAGuiGeneratorOptions guiGeneratorOptions;
 	private final GuiCreateWorld guiCreateWorld;
 	private BTAGuiBiomeOptionList guiBiomeOptionList;
-	private BTAWorldConfigurationInfo worldGeneratorInfo;
 	private GuiButton buttonPerlinBeaches;
 	private GuiButton buttonEnable;
 	private GuiButton buttonAll;
@@ -22,11 +21,6 @@ public class BTAGuiBiomeOptions extends GuiScreen
 	public BTAGuiBiomeOptions(GuiCreateWorld guiCreateWorld, BTAGuiGeneratorOptions guiGeneratorOptions, String infoString) {
 		this.guiGeneratorOptions = guiGeneratorOptions;
 		this.guiCreateWorld = guiCreateWorld;
-		
-		if (infoString.equals(""))
-			worldGeneratorInfo = BTAWorldConfigurationInfo.createDefaultConfiguration(this.guiCreateWorld.isDeco());
-		else
-			worldGeneratorInfo = BTAWorldConfigurationInfo.createInfoFromString(infoString);
 	}
 
 	/**
@@ -43,14 +37,14 @@ public class BTAGuiBiomeOptions extends GuiScreen
 	}
 
 	public String getGeneratorInfo() {
-		return this.worldGeneratorInfo.toString();
+		return guiGeneratorOptions.worldGeneratorInfo.toString();
 	}
 
 	public void setGeneratorInfo(String infoString) {
-		this.worldGeneratorInfo = BTAWorldConfigurationInfo.createInfoFromString(infoString);
+		guiGeneratorOptions.worldGeneratorInfo = BTAWorldConfigurationInfo.createInfoFromString(infoString);
 	}
 
-	static BTAWorldConfigurationInfo getBiomeArray(BTAGuiBiomeOptions guiGeneratorOptions) {
+	static BTAWorldConfigurationInfo getBiomeArray(BTAGuiGeneratorOptions guiGeneratorOptions) {
 		return guiGeneratorOptions.worldGeneratorInfo;
 	}
 
@@ -58,14 +52,14 @@ public class BTAGuiBiomeOptions extends GuiScreen
 	 * Fired when a control is clicked. This is the equivalent of ActionListener.actionPerformed(ActionEvent e).
 	 */
 	protected void actionPerformed(GuiButton button) {
-		int var2 = this.worldGeneratorInfo.getBiomeInfoList().size() - this.guiBiomeOptionList.selected - 1;
+		int var2 = guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().size() - this.guiBiomeOptionList.selected - 1;
 		BTABiomeInfo selectedBiome;
 
 		if (button.id == id_done) {
 			this.mc.displayGuiScreen(this.guiGeneratorOptions);
 		}
 		else if (button.id == id_enable) {
-			selectedBiome = (BTABiomeInfo)this.worldGeneratorInfo.getBiomeInfoList().get(this.worldGeneratorInfo.getBiomeInfoList().size() - this.guiBiomeOptionList.selected - 1);
+			selectedBiome = (BTABiomeInfo)guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().get(guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().size() - this.guiBiomeOptionList.selected - 1);
 
 			if (selectedBiome.getEnabled()) {
 				selectedBiome.setEnabled(false);
@@ -76,16 +70,16 @@ public class BTAGuiBiomeOptions extends GuiScreen
 		}
 		else if (button.id == id_enableAll) {
 			if (!this.all) {
-				for (int i = 0; i < this.worldGeneratorInfo.getBiomeInfoList().size(); ++i) {
-					selectedBiome = (BTABiomeInfo)this.worldGeneratorInfo.getBiomeInfoList().get(i);
+				for (int i = 0; i < guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().size(); ++i) {
+					selectedBiome = (BTABiomeInfo)guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().get(i);
 					selectedBiome.setEnabled(false);
 				}
 
 				this.all = true;
 			}
 			else {
-				for (int i = 0; i < this.worldGeneratorInfo.getBiomeInfoList().size(); ++i) {
-					selectedBiome = (BTABiomeInfo)this.worldGeneratorInfo.getBiomeInfoList().get(i);
+				for (int i = 0; i < guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().size(); ++i) {
+					selectedBiome = (BTABiomeInfo)guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().get(i);
 					selectedBiome.setEnabled(true);
 				}
 
@@ -116,8 +110,8 @@ public class BTAGuiBiomeOptions extends GuiScreen
 
 	private boolean allowBiomeToggle() {
 		return this.guiBiomeOptionList.selected > -1 && 
-				this.guiBiomeOptionList.selected < this.worldGeneratorInfo.getBiomeInfoList().size() &&
-				!(this.worldGeneratorInfo.getBiomeInfoList().get(this.worldGeneratorInfo.getBiomeInfoList().size() - this.guiBiomeOptionList.selected - 1).isDecoOnly() && !this.isDeco());
+				this.guiBiomeOptionList.selected < guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().size() &&
+				!(guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().get(guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().size() - this.guiBiomeOptionList.selected - 1).isDecoOnly() && !this.isDeco());
 	}
 
 	/**
