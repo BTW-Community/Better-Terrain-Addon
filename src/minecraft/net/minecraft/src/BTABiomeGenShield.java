@@ -2,12 +2,14 @@ package net.minecraft.src;
 
 import java.util.Random;
 
-public class BTABiomeGenBorealForest extends BTABiomeGenBase {
-	protected BTABiomeGenBorealForest(int id, BTAEnumClimate climate) {
+public class BTABiomeGenShield extends BTABiomeGenBase {
+	protected BTABiomeGenShield(int id, BTAEnumClimate climate) {
 		super(id, climate);
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 5, 4, 4));
-        this.btaBiomeDecorator.treesPerChunk = 20;
+        this.btaBiomeDecorator.treesPerChunk = 7;
         this.btaBiomeDecorator.grassPerChunk = 2;
+        this.btaBiomeDecorator.generateStoneInGrass = true;
+        this.btaBiomeDecorator.generateStoneInGrass2 = true;
 	}
 
     /**
@@ -17,23 +19,17 @@ public class BTABiomeGenBorealForest extends BTABiomeGenBase {
     {
     	WorldGenerator gen;
     	
-    	if (rand.nextInt(6) == 0) {
-    		gen = new WorldGenTaiga2(false);
-    	}
-    	else if (rand.nextInt(5) == 0) {
-    		gen = new BTAWorldGenTaiga5(false);
-    	}
-    	else if (rand.nextInt(4) == 0) {
-    		gen = new BTAWorldGenTaiga6(false);
+    	if (rand.nextInt(4) == 0) {
+    		gen = new BTAWorldGenTaiga3(false);
     	}
     	else if (rand.nextInt(3) == 0) {
-    		gen = new BTAWorldGenTaiga7(false);
+    		gen = new WorldGenTaiga2(false);
     	}
-    	else if (rand.nextInt(2) == 0){
-    		gen = new WorldGenShrub(1, 1);
+    	else if (rand.nextInt(2) == 0) {
+    		gen = new BTAWorldGenTaiga5(false);
     	}
     	else {
-    		gen = new BTAWorldGenShrubSmall(1, 1);
+    		gen = new BTAWorldGenTaiga6(false);
     	}
     	
     	return gen;

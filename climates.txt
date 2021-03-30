@@ -12,6 +12,9 @@ Cold:
 -Confierous Forest
 -Patagonia
 -Mountains
+-Boreal forest
+-Shield
+-Brushland
 
 Temperate:
 -Woods
@@ -45,3 +48,4 @@ Arid:
 -Plains
 -Outback
 -Badlands
+-Arid forest
