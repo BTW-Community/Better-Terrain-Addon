@@ -52,7 +52,7 @@ public abstract class BTAGenLayer extends GenLayer {
     	}
         
         layerMangnifyBiome = GenLayerZoom.magnify(1000L, layerBiome, 2);
-        Object layerExtras = new BTAGenLayerHills(1000L, layerMangnifyBiome);
+        Object layerExtras = new BTAGenLayerHills(1000L, layerMangnifyBiome, generatorInfo);
 
         for (int passNum = 0; passNum < scale; passNum++) {
             layerExtras = new GenLayerZoom((long)(1000 + passNum), (GenLayer)layerExtras);

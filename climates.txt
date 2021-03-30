@@ -3,7 +3,7 @@ Snowy:
 -Snowy coniferous forest
 -Tundra
 -Icy peaks
--Siberia
+-Siberia
 -Frozen Springs
 
 Cold:

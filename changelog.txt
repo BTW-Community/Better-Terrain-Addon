@@ -4,9 +4,10 @@ Version 1.3.0
 [*]Added height-dependent snowfall in cold biomes. Snow will fall anywhere in these biomes above y=95. This only affects new worlds.
 [*]Added frozen springs as a new snowy biome which can generate reeds.
 [*]Added mangal (mangrove forest) as a new temperate jungle variant (temples, jungle spiders, reeds).
+[*]Added arid forest as a new sub-biome which replaces woods spawning inside of plains in new worlds.
 [*]Added pockets of water to wetlands, willow grove, jungle, and rainforest, similar to how vanilla generates water in jungles and swamps. This only affects new worlds.
 [*]Added small oasis pockets inside lush deserts in addition to the large ones. This only affects new worlds.
-[*]Added the ability for reeds to spawn in boreal forests and plains. In the new climate distribution system it was possible to have extremely large distances between biomes which could spawn reeds, which could be a problem given how vital they are early game. So this, combined with frozen springs above, ensures every climate is capable of spawning reeds in at least one biome. However, temperate and tropical climates remain where reeds can be found most commonly.
+[*]Added the ability for reeds to spawn in patagonia and plains. In the new climate distribution system it was possible to have extremely large distances between biomes which could spawn reeds, which could be a problem given how vital they are early game. So this, combined with frozen springs above, ensures every climate is capable of spawning reeds in at least one biome. However, temperate and tropical climates remain where reeds can be found most commonly.
 [*]Added the ability for melons to spawn on the surface in jungle variants (jungle, rainforest, tropics, mangal).
 [*]Changed configuration menu to have biome configration on its own page.
 [*]Changed ocean size configuration to be a scale from 1 (off) to 10 (vanilla), defaulting to 5.
