@@ -11,6 +11,6 @@ WorldProviderHell
 FCEntityGhast
 WorldProviderEnd
 ComponentMineshaftRoom
+World
 
 GuiCreateWorld
-World

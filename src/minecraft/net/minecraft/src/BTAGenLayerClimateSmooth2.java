@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BTAGenLayerClimateSmooth extends BTAGenLayer {
+public class BTAGenLayerClimateSmooth2 extends BTAGenLayer {
 	private ArrayList<BTABiomeGenBase> biomesForGeneration;
 	public static Map<BTAEnumClimate, ArrayList<BTABiomeGenBase>> biomeCategoryMapCached = new HashMap();
 	
-    public BTAGenLayerClimateSmooth(long baseSeed, GenLayer parent, ArrayList<BTABiomeGenBase> biomesForGeneration) {
+    public BTAGenLayerClimateSmooth2(long baseSeed, GenLayer parent, ArrayList<BTABiomeGenBase> biomesForGeneration) {
         super(baseSeed);
         this.parent = parent;
 		this.biomesForGeneration = biomesForGeneration;
@@ -40,16 +40,26 @@ public class BTAGenLayerClimateSmooth extends BTAGenLayer {
             	int neighborInt3 = parentArray[k + 1 + (i + 0) * parentSizeX];
             	int neighborInt4 = parentArray[k + 2 + (i + 1) * parentSizeX];
             	
-            	if (climateID == BTAEnumClimate.SNOWY.id) {
-            		if (neighborInt1 == BTAEnumClimate.TROPICAL.id || neighborInt1 == BTAEnumClimate.ARID.id || neighborInt1 == BTAEnumClimate.TEMPERATE.id)
-            			climateID = BTAEnumClimate.COLD.id;
-            		if (neighborInt2 == BTAEnumClimate.TROPICAL.id || neighborInt2 == BTAEnumClimate.ARID.id || neighborInt2 == BTAEnumClimate.TEMPERATE.id)
-            			climateID = BTAEnumClimate.COLD.id;
-            		if (neighborInt3 == BTAEnumClimate.TROPICAL.id || neighborInt3 == BTAEnumClimate.ARID.id || neighborInt3 == BTAEnumClimate.TEMPERATE.id)
-            			climateID = BTAEnumClimate.COLD.id;
-            		if (neighborInt4 == BTAEnumClimate.TROPICAL.id || neighborInt4 == BTAEnumClimate.ARID.id || neighborInt4 == BTAEnumClimate.TEMPERATE.id)
-            			climateID = BTAEnumClimate.COLD.id;
+            	if (climateID == BTAEnumClimate.TROPICAL.id) {
+            		if (neighborInt1 == BTAEnumClimate.COLD.id || neighborInt1 == BTAEnumClimate.ARID.id)
+            			climateID = BTAEnumClimate.TEMPERATE.id;
+            		if (neighborInt2 == BTAEnumClimate.COLD.id || neighborInt2 == BTAEnumClimate.ARID.id)
+            			climateID = BTAEnumClimate.TEMPERATE.id;
+            		if (neighborInt3 == BTAEnumClimate.COLD.id || neighborInt3 == BTAEnumClimate.ARID.id)
+            			climateID = BTAEnumClimate.TEMPERATE.id;
+            		if (neighborInt4 == BTAEnumClimate.COLD.id || neighborInt4 == BTAEnumClimate.ARID.id)
+            			climateID = BTAEnumClimate.TEMPERATE.id;
             	}
+            	else if (climateID == BTAEnumClimate.ARID.id) {
+                		if (neighborInt1 == BTAEnumClimate.COLD.id || neighborInt1 == BTAEnumClimate.TROPICAL.id)
+                			climateID = BTAEnumClimate.TEMPERATE.id;
+                		if (neighborInt2 == BTAEnumClimate.COLD.id || neighborInt2 == BTAEnumClimate.TROPICAL.id)
+                			climateID = BTAEnumClimate.TEMPERATE.id;
+                		if (neighborInt3 == BTAEnumClimate.COLD.id || neighborInt3 == BTAEnumClimate.TROPICAL.id)
+                			climateID = BTAEnumClimate.TEMPERATE.id;
+                		if (neighborInt4 == BTAEnumClimate.COLD.id || neighborInt4 == BTAEnumClimate.TROPICAL.id)
+                			climateID = BTAEnumClimate.TEMPERATE.id;
+                	}
             	
                 cache[k + i * sizeX] = climateID;
             }

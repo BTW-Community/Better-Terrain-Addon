@@ -248,6 +248,7 @@ public class BTABiomeConfiguration {
 		icyPeaksEdge.setNotSpawnable();
 		mangroveForest.setNotSpawnable();
 		mangroveForestIsland.setNotSpawnable();
+		tundra.setNotSpawnable();
 		//DECO
 		outback.setNotSpawnable();
 		riverOutback.setNotSpawnable();
