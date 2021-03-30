@@ -2807,11 +2807,14 @@ public abstract class World implements IBlockAccess
         BiomeGenBase biome = this.getBiomeGenForCoords(x, z);
         float temperature = biome.getFloatTemperature();
         
-        if (this.generatorInfoCache == null) {
-        	this.generatorInfoCache = BTAWorldConfigurationInfo.createInfoFromString(this.provider.generatorOptions);
+        if (this.generatorInfoCache == null && this.provider.terrainType.isBTA()) {
+        	if (this.provider.generatorOptions.equals(""))
+        		this.generatorInfoCache = BTAWorldConfigurationInfo.createDefaultConfigurationLegacy(this.provider.terrainType.isDeco());
+        	else
+        		this.generatorInfoCache = BTAWorldConfigurationInfo.createInfoFromString(this.provider.generatorOptions);
         }
         
-        if (this.getBiomeGenForCoords(x, z) instanceof BTABiomeGenBase && this.generatorInfoCache.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_3_0)) {
+        if (this.provider.terrainType.isBTA() && this.getBiomeGenForCoords(x, z) instanceof BTABiomeGenBase && this.generatorInfoCache.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_3_0)) {
         	BTABiomeGenBase btaBiome = (BTABiomeGenBase) biome;
         	
         	if (y >= btaBiome.climate.minHeightForSnow && y < 256) {
