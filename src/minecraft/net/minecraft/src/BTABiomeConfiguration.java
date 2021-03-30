@@ -256,6 +256,10 @@ public class BTABiomeConfiguration {
 		badlands.setNotSpawnable();
 		badlandsPlateau.setNotSpawnable();
 		riverBadlands.setNotSpawnable();
+		
+		snowyWoods.setNotSpawnable();
+		coniferousForestClearingSnow.setNotSpawnable();
+		frozenSprings.setNotSpawnable();
 	}
 	
 	public static void filterBeachBiomes() {

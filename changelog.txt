@@ -1,6 +1,6 @@
 Version 1.3.0
 [list]
-[*]Added climate zones. This can be configured at world creation, and is enabled by default. This means biomes will now be clustered according to their climate: Snowy, cold, temperate, tropical, or arid. Furthermore, if snowy climates generate next to arid or tropical climates, a border of cold biomes will be formed to smooth the transition. A full list of which biomes below to which climate is available in the OP.
+[*]Added climate zones. This can be configured at world creation, and is enabled by default. This means biomes will now be clustered according to their climate: Snowy, cold, temperate, tropical, or arid. Climates are randomly distributed, then smoothed to prevent disjointed transitions between climates. A full list of which biomes belong to which climate is available in the OP.
 [*]Added height-dependent snowfall in cold biomes. Snow will fall anywhere in these biomes above y=95. This only affects new worlds.
 [*]Added frozen springs as a new snowy biome which can generate reeds.
 [*]Added boreal forest as a new cold taiga variant (wolves) and renamed the old boreal forest to temperate forest.

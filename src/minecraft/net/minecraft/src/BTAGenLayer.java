@@ -43,8 +43,10 @@ public abstract class BTAGenLayer extends GenLayer {
         GenLayer layerBiome;
         if (generatorInfo.isClimatized() && generatorInfo.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_3_0)) {
             GenLayer layerClimateZoom = GenLayerZoom.magnify(1000l, layerClimates, 2);
-            GenLayer layerClimateSmooth = new BTAGenLayerClimateSmooth(2L, layerClimateZoom, generatorInfo.getBiomesForGeneration());
-            layerClimateSmooth = new BTAGenLayerClimateSmooth2(2L, layerClimateSmooth, generatorInfo.getBiomesForGeneration());
+            GenLayer layerClimateSmooth = new BTAGenLayerClimateSmooth(2000L, layerClimateZoom, generatorInfo.getBiomesForGeneration());
+            layerClimateSmooth = new BTAGenLayerClimateSmooth2(2000L, layerClimateSmooth, generatorInfo.getBiomesForGeneration());
+            layerClimateSmooth.initWorldGenSeed(seed);
+            
             layerBiome = new BTAGenLayerBiomeClimatized(200L, layerMangnifyBiome, layerClimateSmooth, generatorInfo.getBiomesForGeneration());
     	}
     	else {
