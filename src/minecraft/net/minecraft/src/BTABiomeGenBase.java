@@ -14,7 +14,8 @@ public class BTABiomeGenBase extends BiomeGenBase {
 	
 	protected BTAEnumClimate climate;
 	
-    public BTABiomeDecorator btaBiomeDecorator;
+	protected BTABiomeDecorator btaBiomeDecorator;
+    private BTASurfaceBuilder surfaceBuilder;
 
 	protected BTABiomeGenBase(int id, BTAEnumClimate climate) {
 		super(id);
@@ -129,7 +130,15 @@ public class BTABiomeGenBase extends BiomeGenBase {
         return new BTAWorldGenTallGrass(Block.tallGrass.blockID, 1);
     }
 
-    public void AddEmeralds(World var1, Random var2, int var3, int var4)
+    public BTASurfaceBuilder getSurfaceBuilder() {
+		return surfaceBuilder;
+	}
+
+	public void setSurfaceBuilder(BTASurfaceBuilder surfaceBuilder) {
+		this.surfaceBuilder = surfaceBuilder;
+	}
+
+	public void AddEmeralds(World var1, Random var2, int var3, int var4)
     {
         int var5 = 3 + var2.nextInt(6);
 
