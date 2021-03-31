@@ -163,7 +163,7 @@ public class BTAGuiGeneratorOptions extends GuiScreen implements BTAISliderSetti
 				setting = (int) (slider.sliderValue * (slider.numSettings - 2) + 1); 
 			}
 			
-			this.worldGeneratorInfo.setOceanSize(setting);
+			this.worldGeneratorInfo.setOceanSize(setting + 1);
 		}
 		else if (slider.id == id_biomeSize) {
 			int setting;

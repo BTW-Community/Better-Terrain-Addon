@@ -9,7 +9,6 @@ public class BTABiomeGenShield extends BTABiomeGenBase {
         this.btaBiomeDecorator.treesPerChunk = 7;
         this.btaBiomeDecorator.grassPerChunk = 2;
         this.btaBiomeDecorator.generateStoneInGrass = true;
-        this.btaBiomeDecorator.generateStoneInGrass2 = true;
 	}
 
     /**
@@ -20,13 +19,10 @@ public class BTABiomeGenShield extends BTABiomeGenBase {
     	WorldGenerator gen;
     	
     	if (rand.nextInt(4) == 0) {
-    		gen = new BTAWorldGenTaiga3(false);
+    		gen = new BTAWorldGenTaiga4(false);
     	}
     	else if (rand.nextInt(3) == 0) {
-    		gen = new WorldGenTaiga2(false);
-    	}
-    	else if (rand.nextInt(2) == 0) {
-    		gen = new BTAWorldGenTaiga5(false);
+    		gen = new BTAWorldGenTaiga7(false);
     	}
     	else {
     		gen = new BTAWorldGenTaiga6(false);

@@ -201,9 +201,14 @@ public class BTABiomeConfiguration {
 		}
 	}
 	
-	public static void addSingleBiome(BTABiomeGenBase biome) {
-		biomeList.add(biome);
+	public static void addExternalBiome(BTABiomeGenBase biome, boolean decoOnly) {
 		biomeListDeco.add(biome);
+		
+		if (!decoOnly)
+			biomeList.add(biome);
+		
+		biomeCategoryMap.get(biome.climate).add(biome);
+		biomeInfoMap.put(biome.biomeID, new BTABiomeInfo(biome.biomeID, true, decoOnly));
 	}
 	
 	public static void initClimateLists() {

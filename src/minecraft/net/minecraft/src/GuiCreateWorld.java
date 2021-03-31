@@ -275,7 +275,7 @@ public class GuiCreateWorld extends GuiScreen
                 
                 if (WorldType.worldTypes[this.worldTypeId].isBTA() && this.generatorOptionsToUse.equals(""))
                 	this.generatorOptionsToUse = BTAWorldConfigurationInfo.createDefaultConfiguration(isDeco).toString();
-                System.out.println(this.generatorOptionsToUse);
+                //System.out.println(this.generatorOptionsToUse);
                 var6.func_82750_a(this.generatorOptionsToUse);
 
                 if (this.bonusItems && !this.isHardcore)
