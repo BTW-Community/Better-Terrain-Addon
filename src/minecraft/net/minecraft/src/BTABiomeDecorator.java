@@ -234,7 +234,12 @@ public class BTABiomeDecorator
 		else
 		{
 			this.currentWorld = par1World;
-			this.generatorInfo = BTAWorldConfigurationInfo.createInfoFromString(this.currentWorld.provider.generatorOptions);
+			if (this.currentWorld.provider.generatorOptions.equals("")) {
+				this.generatorInfo = BTAWorldConfigurationInfo.createDefaultConfigurationLegacy(this.currentWorld.provider.terrainType.isDeco());
+			}
+			else {
+				this.generatorInfo = BTAWorldConfigurationInfo.createInfoFromString(this.currentWorld.provider.generatorOptions);
+			}
 			this.randomGenerator = par2Random;
 			this.chunk_X = par3;
 			this.chunk_Z = par4;
