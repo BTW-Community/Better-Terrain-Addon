@@ -3,13 +3,13 @@ package net.minecraft.src;
 import java.util.Random;
 
 public class BTABiomeGenTropics extends BTABiomeGenBase {
-	public BTABiomeGenTropics(int par1)
+	public BTABiomeGenTropics(int par1, BTAEnumClimate climate)
 	{
-		super(par1);
-		this.btaiomeDecorator.treesPerChunk = 10;
-		this.btaiomeDecorator.grassPerChunk = 2;
-		this.btaiomeDecorator.sandPerChunk = 100;
-		this.btaiomeDecorator.sandPerChunk2 = 100;
+		super(par1, climate);
+		this.btaBiomeDecorator.treesPerChunk = 10;
+		this.btaBiomeDecorator.grassPerChunk = 2;
+		this.btaBiomeDecorator.sandPerChunk = 100;
+		this.btaBiomeDecorator.sandPerChunk2 = 100;
 		this.waterColorMultiplier = 65396;
         this.spawnableCreatureList.clear();
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityChicken.class, 10, 4, 4));

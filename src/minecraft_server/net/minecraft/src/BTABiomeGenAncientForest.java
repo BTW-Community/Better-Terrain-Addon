@@ -3,12 +3,12 @@ package net.minecraft.src;
 import java.util.Random;
 
 public class BTABiomeGenAncientForest extends BTABiomeGenBase {
-    public BTABiomeGenAncientForest(int par1)
+    public BTABiomeGenAncientForest(int par1, BTAEnumClimate climate)
     {
-        super(par1);
+        super(par1, climate);
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 5, 4, 4));
-        this.btaiomeDecorator.treesPerChunk = 10;
-        this.btaiomeDecorator.grassPerChunk = 2;
+        this.btaBiomeDecorator.treesPerChunk = 10;
+        this.btaBiomeDecorator.grassPerChunk = 2;
     }
 
     /**

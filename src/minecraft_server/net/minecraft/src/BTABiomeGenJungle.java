@@ -4,15 +4,15 @@ import java.util.Random;
 
 public class BTABiomeGenJungle extends BTABiomeGenBase
 {
-    public BTABiomeGenJungle(int par1)
+    public BTABiomeGenJungle(int par1, BTAEnumClimate climate)
     {
-        super(par1);
-        this.btaiomeDecorator.treesPerChunk = 50;
-        this.btaiomeDecorator.grassPerChunk = 25;
-        this.btaiomeDecorator.flowersPerChunk = 4;
-		this.btaiomeDecorator.sandPerChunk = 100;
-		this.btaiomeDecorator.sandPerChunk2 = 100;
-        this.btaiomeDecorator.waterlilyPerChunk = 4;
+        super(par1, climate);
+        this.btaBiomeDecorator.treesPerChunk = 50;
+        this.btaBiomeDecorator.grassPerChunk = 25;
+        this.btaBiomeDecorator.flowersPerChunk = 4;
+		this.btaBiomeDecorator.sandPerChunk = 100;
+		this.btaBiomeDecorator.sandPerChunk2 = 100;
+        this.btaBiomeDecorator.waterlilyPerChunk = 4;
         this.spawnableCreatureList.clear();
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityChicken.class, 10, 4, 4));
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityPig.class, 10, 4, 4));
@@ -45,9 +45,9 @@ public class BTABiomeGenJungle extends BTABiomeGenBase
         return par1Random.nextInt(4) == 0 ? new BTAWorldGenTallGrass(Block.tallGrass.blockID, 2) : new BTAWorldGenTallGrass(Block.tallGrass.blockID, 1);
     }
 
-    public void decorate(World par1World, Random par2Random, int par3, int par4)
+    public void decorate(World par1World, Random par2Random, int par3, int par4, BTAWorldConfigurationInfo generatorOptions)
     {
-        super.decorate(par1World, par2Random, par3, par4);
+        super.decorate(par1World, par2Random, par3, par4, generatorOptions);
         WorldGenVines var5 = new WorldGenVines();
 
         for (int var6 = 0; var6 < 50; ++var6)

@@ -3,8 +3,8 @@ package net.minecraft.src;
 import java.util.Random;
 
 public class BTABiomeGenPatagoniaMountains extends BTABiomeGenBase {
-	public BTABiomeGenPatagoniaMountains(int id) {
-		super(id);
+	public BTABiomeGenPatagoniaMountains(int id, BTAEnumClimate climate) {
+		super(id, climate);
 		this.topBlockExt = Block.stone.blockID;
 		this.fillerBlockExt = Block.stone.blockID;
 	}

@@ -2,9 +2,9 @@ package net.minecraft.src;
 
 public class BTABiomeGenRiverRainforest extends BTABiomeGenBase {
 	protected BTABiomeGenRiverRainforest(int id) {
-		super(id);
+		super(id, BTABiomeConfiguration.rainforest.climate);
 		this.waterColorMultiplier = BTABiomeConfiguration.rainforest.waterColorMultiplier;
-        this.btaiomeDecorator.waterlilyPerChunk = 4;
+        this.btaBiomeDecorator.waterlilyPerChunk = 4;
 		this.spawnableCreatureList.clear();
 		this.spawnableMonsterList.clear();
 		this.spawnableMonsterList.add(new SpawnListEntry(FCEntityJungleSpider.class, 2, 1, 1));

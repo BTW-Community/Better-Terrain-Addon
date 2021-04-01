@@ -3,20 +3,20 @@ package net.minecraft.src;
 import java.util.Random;
 
 public class BTABiomeGenOutback extends BTABiomeGenBase {
-	protected BTABiomeGenOutback(int id) {
-		super(id);
+	protected BTABiomeGenOutback(int id, BTAEnumClimate climate) {
+		super(id, climate);
 		if (BTADecoIntegration.isDecoInstalled()) {
 			this.topBlockExt = BTADecoIntegration.redSand.blockID;
 			this.fillerBlockExt = BTADecoIntegration.redSand.blockID;
 		}
-		this.btaiomeDecorator.generateOutback = true;
-		this.btaiomeDecorator.deadBushPerChunk = 10;
-		this.btaiomeDecorator.treesPerChunk = 10;
-		this.btaiomeDecorator.grassPerChunk = 20;
-		this.btaiomeDecorator.cactiPerChunk = 15;
-		this.btaiomeDecorator.sandPerChunk = 0;
-		this.btaiomeDecorator.sandPerChunk2 = 0;
-		this.btaiomeDecorator.flowersPerChunk = -999;
+		this.btaBiomeDecorator.generateOutback = true;
+		this.btaBiomeDecorator.deadBushPerChunk = 10;
+		this.btaBiomeDecorator.treesPerChunk = 10;
+		this.btaBiomeDecorator.grassPerChunk = 20;
+		this.btaBiomeDecorator.cactiPerChunk = 15;
+		this.btaBiomeDecorator.sandPerChunk = 0;
+		this.btaBiomeDecorator.sandPerChunk2 = 0;
+		this.btaBiomeDecorator.flowersPerChunk = -999;
 		this.spawnableCreatureList.clear();
 		this.spawnableCreatureList.add(new SpawnListEntry(FCEntityChicken.class, 10, 2, 2));
 		this.spawnableCreatureList.add(new SpawnListEntry(FCEntityPig.class, 10, 2, 2));
