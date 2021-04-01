@@ -156,7 +156,8 @@ public class BTABiomeDecorator
 	public boolean generateStoneInGrass2;
 	public boolean generateOutback;
 	
-	public int fractionalTreeChance;
+	protected int fractionalTreeChance;
+	protected int melonChancePerChunk;
 	
 	private BTAWorldConfigurationInfo generatorInfo;
 
@@ -219,6 +220,7 @@ public class BTABiomeDecorator
 		lavaLakesPerChunk = 20;
 		bigRedMushroomsPerChunk = 0;
 		fractionalTreeChance = 10;
+		melonChancePerChunk = 24;
 	}
 
 	/**
@@ -473,7 +475,7 @@ public class BTABiomeDecorator
 			this.pumpkinGen.generate(this.currentWorld, this.randomGenerator, var2, var3, var4);
 		}
 
-		if (this.randomGenerator.nextInt(24) == 0)
+		if (this.randomGenerator.nextInt(melonChancePerChunk) == 0)
 		{
 			var2 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 			var3 = this.randomGenerator.nextInt(128);
