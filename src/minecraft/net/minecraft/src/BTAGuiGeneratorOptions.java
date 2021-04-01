@@ -37,9 +37,9 @@ public class BTAGuiGeneratorOptions extends GuiScreen implements BTAISliderSetti
 	 */
 	public void initGui() {
 		this.buttonList.clear();
-		this.buttonList.add(this.sliderOceanSize = new BTAGuiSlider(id_oceanSize, this.width / 2 - 155, this.height / 6, 150, 20, "Ocean Size", 4, this, 10));
+		this.buttonList.add(this.sliderOceanSize = new BTAGuiSlider(id_oceanSize, this.width / 2 - 155, this.height / 6, 150, 20, "Ocean Size", this.worldGeneratorInfo.getOceanSize() - 1, this, 10));
 		this.buttonList.add(this.buttonOceanSizeDummy = new GuiButton(id_oceanSize, this.width / 2 - 155, this.height / 6, 150, 20, "Ocean Size: Off"));
-		this.buttonList.add(this.sliderBiomeSize = new BTAGuiSlider(id_biomeSize, this.width / 2 + 5, this.height / 6, 150, 20, "Biome Size", 1, this, 4));
+		this.buttonList.add(this.sliderBiomeSize = new BTAGuiSlider(id_biomeSize, this.width / 2 + 5, this.height / 6, 150, 20, "Biome Size", this.worldGeneratorInfo.getBiomeSize(), this, 4));
 		this.buttonList.add(this.buttonPerlinBeaches = new GuiButton(id_perlinBeaches, this.width / 2 - 155, this.height / 6 + 25, 150, 20, "Better Shores: On"));
 		this.buttonList.add(this.buttonClimates = new GuiButton(id_climates, this.width / 2 + 5, this.height / 6 + 25, 150, 20, "Climate Zones: On"));
 		this.buttonList.add(this.buttonDeco = new GuiButton(id_deco, this.width / 2 - 155, this.height / 6 + 50, 150, 20, "Deco Enabled: Off"));
@@ -74,6 +74,7 @@ public class BTAGuiGeneratorOptions extends GuiScreen implements BTAISliderSetti
 			}
 			
 			this.guiCreateWorld.generatorOptionsToUse = this.getGeneratorInfo();
+			System.out.println(this.getGeneratorInfo());
 			this.mc.displayGuiScreen(this.guiCreateWorld);
 		}
 		else if (button.id == id_deco) {
@@ -133,6 +134,8 @@ public class BTAGuiGeneratorOptions extends GuiScreen implements BTAISliderSetti
 		}
 		else {
 			this.buttonOceanSizeDummy.drawButton = false;
+			
+			this.sliderOceanSize.sliderValue = (this.worldGeneratorInfo.getOceanSize() - 1) / (float) this.sliderOceanSize.getNumSettings();
 		}
         
 		this.updateButtons();

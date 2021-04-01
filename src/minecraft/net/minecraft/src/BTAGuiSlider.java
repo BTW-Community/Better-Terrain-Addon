@@ -120,4 +120,8 @@ public class BTAGuiSlider extends GuiButton
     {
         this.dragging = false;
     }
+
+	public int getNumSettings() {
+		return numSettings;
+	}
 }
