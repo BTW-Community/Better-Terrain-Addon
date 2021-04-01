@@ -1,60 +1,45 @@
 package net.minecraft.src;
 
+import java.util.ArrayList;
 import java.util.Random;
 
-public class BTASurfaceBuilder {
-	protected double[] sandNoise = new double[256];
-	protected double[] gravelNoise = new double[256];
-	protected double[] soilDepthNoise = new double[256];
-	protected BTABetaNoiseOctaves sandNoiseGen;
-	protected NoiseGeneratorOctaves soilDepthNoiseGen;
-	protected BiomeGenBase biome;
+public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
+	private static ArrayList<Integer> allowedTerracottaMetadata = new ArrayList();
+	private static int[] metaLocations;
 
-	protected boolean hasBeenInit = false;
-	
-	public static final BTASurfaceBuilder defaultBuilder = new BTASurfaceBuilder();
-	public static final BTASurfaceBuilderLegacy defaultBuilderLegacy = new BTASurfaceBuilderLegacy();
+	@Override
+	public void init(Random rand) {
+		super.init(rand);
+		
+		//Init terracotta striping data - done statically in case multiple badlands variants use this surface builder
+		if (allowedTerracottaMetadata.size() == 0) {
+			allowedTerracottaMetadata.add(1);
+			allowedTerracottaMetadata.add(3);
+			allowedTerracottaMetadata.add(7);
+			allowedTerracottaMetadata.add(11);
+			allowedTerracottaMetadata.add(14);
+			allowedTerracottaMetadata.add(15);
+		}
 
-	public static void replaceSurface(Random rand, int chunkX, int chunkZ, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
-		if (generatorInfo.getCompatMode().isVersionAtOrBelow(BTAEnumVersionCompat.V1_2_1)) {
-			if (!defaultBuilderLegacy.hasBeenInit) {
-				defaultBuilderLegacy.init(rand);
-				defaultBuilderLegacy.hasBeenInit = true;
+		if (metaLocations == null) {
+			metaLocations = new int[16];
+			
+			for (int i = 0; i < 16; i++) {
+				metaLocations[i] = i;
 			}
 			
-			defaultBuilderLegacy.replaceBlocksForBiome(rand, chunkX, chunkZ, blockArray, metaArray, biomesForGeneration, generatorInfo);
-		}
-		else {
-			for (int i = 0; i < 16; i++) {
-				for (int k = 0; k < 16; k++) {
-					BiomeGenBase biome = biomesForGeneration[k + i*16];
-					
-					if (biome instanceof BTABiomeGenBase && ((BTABiomeGenBase) biome).getSurfaceBuilder() != null) {
-						if (!((BTABiomeGenBase) biome).getSurfaceBuilder().hasBeenInit) {
-							((BTABiomeGenBase) biome).getSurfaceBuilder().init(rand);
-							((BTABiomeGenBase) biome).getSurfaceBuilder().hasBeenInit = true;
-						}
-						
-						((BTABiomeGenBase) biome).getSurfaceBuilder().replaceBlocksForBiome(rand, chunkX + i, chunkZ + k, blockArray, metaArray, biomesForGeneration, generatorInfo);
-					}
-					else {
-						if (!defaultBuilder.hasBeenInit) {
-							defaultBuilder.init(rand);
-							defaultBuilder.hasBeenInit = true;
-						}
-						
-						defaultBuilder.setBiome(biome);
-						defaultBuilder.replaceBlocksForBiome(rand, chunkX + i, chunkZ + k, blockArray, metaArray, biomesForGeneration, generatorInfo);
-					}
-				}
-			}
+			//Randomizes the locations of the stripes based on the seed
+			for (int i = metaLocations.length; i > 1; i--) {
+	            swap(metaLocations, i - 1, rand.nextInt(i));
+	        }
 		}
 	}
-
-	public void init(Random rand) {
-		this.sandNoiseGen = new BTABetaNoiseOctaves(rand, 4);
-		this.soilDepthNoiseGen = new NoiseGeneratorOctaves(rand, 4);
-	}
+	
+	private static void swap(int[] array, int i, int j) {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
 
 	public void replaceBlocksForBiome(Random rand, int x, int z, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
 		byte seaLevel = 63;
@@ -74,14 +59,8 @@ public class BTASurfaceBuilder {
 		int topBlock;
 		int fillerBlock;
 
-		if (biome instanceof BTABiomeGenBase) {
-			topBlock = ((BTABiomeGenBase) biome).topBlockExt;
-			fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
-		}
-		else {
-			topBlock = biome.topBlock;
-			fillerBlock = biome.fillerBlock;
-		}
+		topBlock = ((BTABiomeGenBase) biome).topBlockExt;
+		fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
 
 		for (int j = 127; j >= 0; --j) {
 			int index = (k * 16 + i) * 128 + j;
@@ -102,14 +81,8 @@ public class BTASurfaceBuilder {
 							fillerBlock = (byte)Block.stone.blockID;
 						}
 						else if (j >= seaLevel - (8 + rand.nextInt(2)) && j <= seaLevel + 1) {
-							if (biome instanceof BTABiomeGenBase) {
-								topBlock = ((BTABiomeGenBase) biome).topBlockExt;
-								fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
-							}
-							else {
-								topBlock = biome.topBlock;
-								fillerBlock = biome.fillerBlock;
-							}
+							topBlock = (byte)Block.sand.blockID;
+							fillerBlock = (byte)Block.sand.blockID;
 
 							if (generatorInfo.generatePerlinBeaches() && BTABiomeConfiguration.shouldBiomeSpawnPerlinBeach(biome.biomeID)) {
 								if (useGravel) {
@@ -118,8 +91,8 @@ public class BTASurfaceBuilder {
 								}
 
 								if (useSand) {
-									topBlock = Block.sand.blockID;
-									fillerBlock = Block.sand.blockID;
+									topBlock = BTADecoIntegration.redSand.blockID;
+									fillerBlock = BTADecoIntegration.redSand.blockID;
 								}
 							}
 						}
@@ -143,16 +116,18 @@ public class BTASurfaceBuilder {
 							}
 						}
 
-						remaingDepth = soilDepthNoiseSample;
-
-						if (biome.biomeID == BTABiomeConfiguration.badlandsPlateau.biomeID)
-							remaingDepth += 10;
+						remaingDepth = soilDepthNoiseSample + 10;
 
 						if (j >= seaLevel - 1) {
 							blockArray[index] = topBlock;
 						}
 						else {
 							blockArray[index] = fillerBlock;
+						}
+						
+						if (blockArray[index] == BTADecoIntegration.terracotta.blockID && allowedTerracottaMetadata.contains(metaLocations[j & 15])) {
+							blockArray[index] = BTADecoIntegration.stainedTerracotta.blockID;
+							metaArray[index] = metaLocations[j & 15];
 						}
 					}
 					else if (remaingDepth > 0) {
@@ -171,13 +146,5 @@ public class BTASurfaceBuilder {
 				}
 			}
 		}
-	}
-
-	public BiomeGenBase getBiome() {
-		return biome;
-	}
-
-	public void setBiome(BiomeGenBase biome) {
-		this.biome = biome;
 	}
 }

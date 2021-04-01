@@ -29,9 +29,9 @@ public class BTABiomeGenLushDesert extends BTABiomeGenBase
 		return new BTAWorldGenPalmTreeSmall(false, false);
 	}
 
-    public void decorate(World par1World, Random par2Random, int par3, int par4)
+    public void decorate(World par1World, Random par2Random, int par3, int par4, BTAWorldConfigurationInfo generatorOptions)
     {
-        super.decorate(par1World, par2Random, par3, par4);
+        super.decorate(par1World, par2Random, par3, par4, generatorOptions);
 
         if (par2Random.nextInt(1000) == 0)
         {

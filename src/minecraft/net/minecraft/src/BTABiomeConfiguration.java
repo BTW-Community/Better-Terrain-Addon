@@ -232,6 +232,17 @@ public class BTABiomeConfiguration {
 		}
 	}
 	
+	public static void initSurfaceBuilders() {
+		valley.setSurfaceBuilder(new BTASurfaceBuilderTropics());
+		valleyMountains.setSurfaceBuilder(new BTASurfaceBuilderTropics());
+		tropics.setSurfaceBuilder(new BTASurfaceBuilderTropics());
+		riverTropics.setSurfaceBuilder(new BTASurfaceBuilderTropics());
+		
+		badlands.setSurfaceBuilder(new BTASurfaceBuilderBadlands());
+		riverBadlands.setSurfaceBuilder(new BTASurfaceBuilderBadlands());
+		badlandsPlateau.setSurfaceBuilder(new BTASurfaceBuilderBadlandsPlateau());
+	}
+	
 	public static void filterSpawnBiomes() {
 		desert.setNotSpawnable();
 		desertHills.setNotSpawnable();
@@ -292,9 +303,6 @@ public class BTABiomeConfiguration {
 		noPerlinBeachBiomes.add(wetlands);
 		noPerlinBeachBiomes.add(willowGrove);
 		noPerlinBeachBiomes.add(patagonia);
-		noPerlinBeachBiomes.add(oasis);
-		noPerlinBeachBiomes.add(mangroveForest);
-		noPerlinBeachBiomes.add(mangroveForestIsland);
 	}
 	
 	public static void addBiomesToStructureGenerators() {

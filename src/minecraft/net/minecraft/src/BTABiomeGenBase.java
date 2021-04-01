@@ -44,9 +44,9 @@ public class BTABiomeGenBase extends BiomeGenBase {
         }
     }
 
-    public void decorate(World par1World, Random par2Random, int par3, int par4)
+    public void decorate(World world, Random rand, int chunkX, int chunkZ, BTAWorldConfigurationInfo generatorOptions)
     {
-        this.btaBiomeDecorator.decorate(par1World, par2Random, par3, par4);
+        this.btaBiomeDecorator.decorate(world, rand, chunkX, chunkZ);
     }
 
     /**
@@ -136,6 +136,9 @@ public class BTABiomeGenBase extends BiomeGenBase {
 
 	public void setSurfaceBuilder(BTASurfaceBuilder surfaceBuilder) {
 		this.surfaceBuilder = surfaceBuilder;
+		if (this.surfaceBuilder.getBiome() == null) {
+			this.surfaceBuilder.setBiome(this);
+		}
 	}
 
 	public void AddEmeralds(World var1, Random var2, int var3, int var4)

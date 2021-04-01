@@ -20,18 +20,20 @@ public class BTABiomeGenBadlands extends BTABiomeGenBase {
 		this.initMetaList();
 	}
 
-	public void decorate(World world, Random rand, int startX, int startZ)
+	public void decorate(World world, Random rand, int startX, int startZ, BTAWorldConfigurationInfo generatorOptions)
 	{
-		super.decorate(world, rand, startX, startZ);
+		super.decorate(world, rand, startX, startZ, generatorOptions);
 
-		for (int i = startX; i < startX + 16; i++) {
-			for (int j = 50; j < 127; j++) {
-				int metaForY = Math.abs(Arrays.hashCode(new int[] {(int) world.getSeed() >> 32, j}) % 16);
-				
-				for (int k = startZ; k < startZ + 16; k++) {
-					if (world.getBlockId(i, j, k) == BTADecoIntegration.terracotta.blockID) {
-						if (allowedTerracottaMetadata.contains(metaForY)) {
-							world.setBlockAndMetadata(i, j, k, BTADecoIntegration.stainedTerracotta.blockID, metaForY);
+		if (generatorOptions.getCompatMode().isVersionAtOrBelow(BTAEnumVersionCompat.V1_2_1)) {
+			for (int i = startX; i < startX + 16; i++) {
+				for (int j = 50; j < 127; j++) {
+					int metaForY = Math.abs(Arrays.hashCode(new int[] {(int) world.getSeed() >> 32, j}) % 16);
+
+					for (int k = startZ; k < startZ + 16; k++) {
+						if (world.getBlockId(i, j, k) == BTADecoIntegration.terracotta.blockID) {
+							if (allowedTerracottaMetadata.contains(metaForY)) {
+								world.setBlockAndMetadata(i, j, k, BTADecoIntegration.stainedTerracotta.blockID, metaForY);
+							}
 						}
 					}
 				}

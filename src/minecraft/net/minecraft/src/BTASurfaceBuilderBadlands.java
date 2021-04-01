@@ -2,60 +2,7 @@ package net.minecraft.src;
 
 import java.util.Random;
 
-public class BTASurfaceBuilder {
-	protected double[] sandNoise = new double[256];
-	protected double[] gravelNoise = new double[256];
-	protected double[] soilDepthNoise = new double[256];
-	protected BTABetaNoiseOctaves sandNoiseGen;
-	protected NoiseGeneratorOctaves soilDepthNoiseGen;
-	protected BiomeGenBase biome;
-
-	protected boolean hasBeenInit = false;
-	
-	public static final BTASurfaceBuilder defaultBuilder = new BTASurfaceBuilder();
-	public static final BTASurfaceBuilderLegacy defaultBuilderLegacy = new BTASurfaceBuilderLegacy();
-
-	public static void replaceSurface(Random rand, int chunkX, int chunkZ, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
-		if (generatorInfo.getCompatMode().isVersionAtOrBelow(BTAEnumVersionCompat.V1_2_1)) {
-			if (!defaultBuilderLegacy.hasBeenInit) {
-				defaultBuilderLegacy.init(rand);
-				defaultBuilderLegacy.hasBeenInit = true;
-			}
-			
-			defaultBuilderLegacy.replaceBlocksForBiome(rand, chunkX, chunkZ, blockArray, metaArray, biomesForGeneration, generatorInfo);
-		}
-		else {
-			for (int i = 0; i < 16; i++) {
-				for (int k = 0; k < 16; k++) {
-					BiomeGenBase biome = biomesForGeneration[k + i*16];
-					
-					if (biome instanceof BTABiomeGenBase && ((BTABiomeGenBase) biome).getSurfaceBuilder() != null) {
-						if (!((BTABiomeGenBase) biome).getSurfaceBuilder().hasBeenInit) {
-							((BTABiomeGenBase) biome).getSurfaceBuilder().init(rand);
-							((BTABiomeGenBase) biome).getSurfaceBuilder().hasBeenInit = true;
-						}
-						
-						((BTABiomeGenBase) biome).getSurfaceBuilder().replaceBlocksForBiome(rand, chunkX + i, chunkZ + k, blockArray, metaArray, biomesForGeneration, generatorInfo);
-					}
-					else {
-						if (!defaultBuilder.hasBeenInit) {
-							defaultBuilder.init(rand);
-							defaultBuilder.hasBeenInit = true;
-						}
-						
-						defaultBuilder.setBiome(biome);
-						defaultBuilder.replaceBlocksForBiome(rand, chunkX + i, chunkZ + k, blockArray, metaArray, biomesForGeneration, generatorInfo);
-					}
-				}
-			}
-		}
-	}
-
-	public void init(Random rand) {
-		this.sandNoiseGen = new BTABetaNoiseOctaves(rand, 4);
-		this.soilDepthNoiseGen = new NoiseGeneratorOctaves(rand, 4);
-	}
-
+public class BTASurfaceBuilderBadlands extends BTASurfaceBuilder {
 	public void replaceBlocksForBiome(Random rand, int x, int z, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
 		byte seaLevel = 63;
 		double soilDepthNoiseScalar = 0.03125D;
@@ -74,14 +21,8 @@ public class BTASurfaceBuilder {
 		int topBlock;
 		int fillerBlock;
 
-		if (biome instanceof BTABiomeGenBase) {
-			topBlock = ((BTABiomeGenBase) biome).topBlockExt;
-			fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
-		}
-		else {
-			topBlock = biome.topBlock;
-			fillerBlock = biome.fillerBlock;
-		}
+		topBlock = ((BTABiomeGenBase) biome).topBlockExt;
+		fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
 
 		for (int j = 127; j >= 0; --j) {
 			int index = (k * 16 + i) * 128 + j;
@@ -102,14 +43,8 @@ public class BTASurfaceBuilder {
 							fillerBlock = (byte)Block.stone.blockID;
 						}
 						else if (j >= seaLevel - (8 + rand.nextInt(2)) && j <= seaLevel + 1) {
-							if (biome instanceof BTABiomeGenBase) {
-								topBlock = ((BTABiomeGenBase) biome).topBlockExt;
-								fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
-							}
-							else {
-								topBlock = biome.topBlock;
-								fillerBlock = biome.fillerBlock;
-							}
+							topBlock = (byte)Block.sand.blockID;
+							fillerBlock = (byte)Block.sand.blockID;
 
 							if (generatorInfo.generatePerlinBeaches() && BTABiomeConfiguration.shouldBiomeSpawnPerlinBeach(biome.biomeID)) {
 								if (useGravel) {
@@ -118,8 +53,8 @@ public class BTASurfaceBuilder {
 								}
 
 								if (useSand) {
-									topBlock = Block.sand.blockID;
-									fillerBlock = Block.sand.blockID;
+									topBlock = BTADecoIntegration.redSand.blockID;
+									fillerBlock = BTADecoIntegration.redSand.blockID;
 								}
 							}
 						}
@@ -145,9 +80,6 @@ public class BTASurfaceBuilder {
 
 						remaingDepth = soilDepthNoiseSample;
 
-						if (biome.biomeID == BTABiomeConfiguration.badlandsPlateau.biomeID)
-							remaingDepth += 10;
-
 						if (j >= seaLevel - 1) {
 							blockArray[index] = topBlock;
 						}
@@ -171,13 +103,5 @@ public class BTASurfaceBuilder {
 				}
 			}
 		}
-	}
-
-	public BiomeGenBase getBiome() {
-		return biome;
-	}
-
-	public void setBiome(BiomeGenBase biome) {
-		this.biome = biome;
 	}
 }

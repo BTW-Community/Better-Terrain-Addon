@@ -41,9 +41,9 @@ public class BTABiomeGenWetlands extends BTABiomeGenBase {
     	return gen;
     }
 
-    public void decorate(World par1World, Random par2Random, int par3, int par4)
+    public void decorate(World par1World, Random par2Random, int par3, int par4, BTAWorldConfigurationInfo generatorOptions)
     {
-        super.decorate(par1World, par2Random, par3, par4);
+        super.decorate(par1World, par2Random, par3, par4, generatorOptions);
         WorldGenVines var5 = new WorldGenVines();
 
         for (int var6 = 0; var6 < 50; ++var6)
