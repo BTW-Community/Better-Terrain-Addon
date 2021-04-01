@@ -46,7 +46,7 @@ public class BTASurfaceBuilderTropics extends BTASurfaceBuilder {
 							topBlock = (byte)Block.sand.blockID;
 							fillerBlock = (byte)Block.sand.blockID;
 
-							if (generatorInfo.generatePerlinBeaches() && BTABiomeConfiguration.shouldBiomeSpawnPerlinBeach(biome.biomeID)) {
+							if (generatorInfo.generatePerlinBeaches()) {
 								if (useGravel) {
 									topBlock = 0;
 									fillerBlock = Block.gravel.blockID;

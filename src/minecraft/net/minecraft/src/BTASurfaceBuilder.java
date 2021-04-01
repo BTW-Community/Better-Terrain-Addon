@@ -3,19 +3,20 @@ package net.minecraft.src;
 import java.util.Random;
 
 public class BTASurfaceBuilder {
-	protected double[] sandNoise = new double[256];
-	protected double[] gravelNoise = new double[256];
-	protected double[] soilDepthNoise = new double[256];
-	protected BTABetaNoiseOctaves sandNoiseGen;
-	protected NoiseGeneratorOctaves soilDepthNoiseGen;
+	protected static double[] sandNoise = new double[1];
+	protected static double[] gravelNoise = new double[1];
+	protected static double[] soilDepthNoise = new double[1];
+	protected static BTABetaNoiseOctaves sandNoiseGen;
+	protected static NoiseGeneratorOctaves soilDepthNoiseGen;
+	
 	protected BiomeGenBase biome;
-
 	protected boolean hasBeenInit = false;
 	
 	public static final BTASurfaceBuilder defaultBuilder = new BTASurfaceBuilder();
 	public static final BTASurfaceBuilderLegacy defaultBuilderLegacy = new BTASurfaceBuilderLegacy();
 
 	public static void replaceSurface(Random rand, int chunkX, int chunkZ, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
+		/*
 		if (generatorInfo.getCompatMode().isVersionAtOrBelow(BTAEnumVersionCompat.V1_2_1)) {
 			if (!defaultBuilderLegacy.hasBeenInit) {
 				defaultBuilderLegacy.init(rand);
@@ -49,27 +50,37 @@ public class BTASurfaceBuilder {
 				}
 			}
 		}
+		*/
+		
+		if (!defaultBuilderLegacy.hasBeenInit) {
+			defaultBuilderLegacy.init(rand);
+			defaultBuilderLegacy.hasBeenInit = true;
+		}
+		
+		defaultBuilderLegacy.replaceBlocksForBiome(rand, chunkX, chunkZ, blockArray, metaArray, biomesForGeneration, generatorInfo);
 	}
 
 	public void init(Random rand) {
-		this.sandNoiseGen = new BTABetaNoiseOctaves(rand, 4);
-		this.soilDepthNoiseGen = new NoiseGeneratorOctaves(rand, 4);
+		//if (sandNoiseGen == null)
+			sandNoiseGen = new BTABetaNoiseOctaves(rand, 4);
+		//if (soilDepthNoise == null)
+			soilDepthNoiseGen = new NoiseGeneratorOctaves(rand, 4);
 	}
 
 	public void replaceBlocksForBiome(Random rand, int x, int z, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
 		byte seaLevel = 63;
 		double soilDepthNoiseScalar = 0.03125D;
-		this.sandNoise = this.sandNoiseGen.generateNoiseOctaves(this.sandNoise, x, z, 0.0D, 1, 1, 1, soilDepthNoiseScalar, soilDepthNoiseScalar, 1.0D);
-		this.gravelNoise = this.sandNoiseGen.generateNoiseOctaves(this.gravelNoise, x, 109.0134D, z, 1, 1, 1, soilDepthNoiseScalar, 1.0D, soilDepthNoiseScalar);
-		this.soilDepthNoise = this.soilDepthNoiseGen.generateNoiseOctaves(this.soilDepthNoise, x, z, 0, 1, 1, 1, soilDepthNoiseScalar * 2.0D, soilDepthNoiseScalar * 2.0D, soilDepthNoiseScalar * 2.0D);
+		sandNoise = sandNoiseGen.generateNoiseOctaves(sandNoise, x, z, 0.0D, 1, 1, 1, soilDepthNoiseScalar, soilDepthNoiseScalar, 1.0D);
+		gravelNoise = sandNoiseGen.generateNoiseOctaves(gravelNoise, x, 109.0134D, z, 1, 1, 1, soilDepthNoiseScalar, 1.0D, soilDepthNoiseScalar);
+		soilDepthNoise = soilDepthNoiseGen.generateNoiseOctaves(soilDepthNoise, x, z, 0, 1, 1, 1, soilDepthNoiseScalar * 2.0D, soilDepthNoiseScalar * 2.0D, soilDepthNoiseScalar * 2.0D);
 
 		int i = x & 15;
 		int k = z & 15;
 
 		float temperature = biome.getFloatTemperature();
-		boolean useSand = this.sandNoise[0] + rand.nextDouble() * 0.2D > 0.0D;
-		boolean useGravel = this.gravelNoise[0] + rand.nextDouble() * 0.2D > 3.0D;
-		int soilDepthNoiseSample = (int)(this.soilDepthNoise[0] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
+		boolean useSand = sandNoise[0] + rand.nextDouble() * 0.2D > 0.0D;
+		boolean useGravel = gravelNoise[0] + rand.nextDouble() * 0.2D > 3.0D;
+		int soilDepthNoiseSample = (int)(soilDepthNoise[0] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
 		int remaingDepth = -1;
 		int topBlock;
 		int fillerBlock;
@@ -111,7 +122,7 @@ public class BTASurfaceBuilder {
 								fillerBlock = biome.fillerBlock;
 							}
 
-							if (generatorInfo.generatePerlinBeaches() && BTABiomeConfiguration.shouldBiomeSpawnPerlinBeach(biome.biomeID)) {
+							if (generatorInfo.generatePerlinBeaches()) {
 								if (useGravel) {
 									topBlock = 0;
 									fillerBlock = Block.gravel.blockID;

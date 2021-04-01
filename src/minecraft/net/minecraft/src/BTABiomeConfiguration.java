@@ -233,6 +233,14 @@ public class BTABiomeConfiguration {
 	}
 	
 	public static void initSurfaceBuilders() {
+		patagonia.setSurfaceBuilder(new BTASurfaceBuilderNoShorelines());
+		patagoniaMountains.setSurfaceBuilder(new BTASurfaceBuilderNoShorelines());
+		willowGrove.setSurfaceBuilder(new BTASurfaceBuilderNoShorelines());
+		wetlands.setSurfaceBuilder(new BTASurfaceBuilderNoShorelines());
+		oasis.setSurfaceBuilder(new BTASurfaceBuilderNoShorelines());
+		mangroveForest.setSurfaceBuilder(new BTASurfaceBuilderNoShorelines());
+		mangroveForestIsland.setSurfaceBuilder(new BTASurfaceBuilderNoShorelines());
+		
 		valley.setSurfaceBuilder(new BTASurfaceBuilderTropics());
 		valleyMountains.setSurfaceBuilder(new BTASurfaceBuilderTropics());
 		tropics.setSurfaceBuilder(new BTASurfaceBuilderTropics());
@@ -241,6 +249,8 @@ public class BTABiomeConfiguration {
 		badlands.setSurfaceBuilder(new BTASurfaceBuilderBadlands());
 		riverBadlands.setSurfaceBuilder(new BTASurfaceBuilderBadlands());
 		badlandsPlateau.setSurfaceBuilder(new BTASurfaceBuilderBadlandsPlateau());
+		
+		//desert.setSurfaceBuilder(new BTASurfaceBuilderOutback());
 	}
 	
 	public static void filterSpawnBiomes() {

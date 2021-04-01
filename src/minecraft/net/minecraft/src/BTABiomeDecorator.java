@@ -303,7 +303,7 @@ public class BTABiomeDecorator
 						this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
 		}
 
-		if (generateOutback)
+		if (generateOutback && this.generatorInfo.getCompatMode().isVersionAtOrBelow(BTAEnumVersionCompat.V1_2_1))
 		{
 			this.genStandardOre1(30, outbackGen, 64, 128);
 		}
