@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-public class BTABiomeGenRiverWetlands extends BTABiomeGenBase {
+public class BTABiomeGenRiverWetlands extends BTABiomeGenRiver {
 	public BTABiomeGenRiverWetlands(int par1) {
 		super(par1, BTABiomeConfiguration.wetlands.climate);
 		this.waterColorMultiplier = BTABiomeConfiguration.wetlands.waterColorMultiplier;

@@ -2,10 +2,13 @@ package net.minecraft.src;
 
 public class BTAGenLayerShore extends BTAGenLayer
 {
-	public BTAGenLayerShore(long par1, GenLayer par3GenLayer)
+	private BTAWorldConfigurationInfo generatorInfo;
+	
+	public BTAGenLayerShore(long par1, GenLayer parent, BTAWorldConfigurationInfo generatorInfo)
 	{
 		super(par1);
-		this.parent = par3GenLayer;
+		this.parent = parent;
+        this.generatorInfo = generatorInfo;
 	}
 
 	/**
@@ -23,19 +26,19 @@ public class BTAGenLayerShore extends BTAGenLayer
 			{
 				this.initChunkSeed((long)(j + par1), (long)(i + par2));
 				int currentBiome = parentInts[j + 1 + (i + 1) * (par3 + 2)];
-				int var10;
-				int var11;
-				int var12;
-				int var13;
+				int neighbor1;
+				int neighbor2;
+				int neighbor3;
+				int neighbor4;
 
 				if (currentBiome == BiomeGenBase.mushroomIsland.biomeID)
 				{
-					var10 = parentInts[j + 1 + (i + 1 - 1) * (par3 + 2)];
-					var11 = parentInts[j + 1 + 1 + (i + 1) * (par3 + 2)];
-					var12 = parentInts[j + 1 - 1 + (i + 1) * (par3 + 2)];
-					var13 = parentInts[j + 1 + (i + 1 + 1) * (par3 + 2)];
+					neighbor1 = parentInts[j + 1 + (i + 1 - 1) * (par3 + 2)];
+					neighbor2 = parentInts[j + 1 + 1 + (i + 1) * (par3 + 2)];
+					neighbor3 = parentInts[j + 1 - 1 + (i + 1) * (par3 + 2)];
+					neighbor4 = parentInts[j + 1 + (i + 1 + 1) * (par3 + 2)];
 
-					if (var10 != BiomeGenBase.ocean.biomeID && var11 != BiomeGenBase.ocean.biomeID && var12 != BiomeGenBase.ocean.biomeID && var13 != BiomeGenBase.ocean.biomeID)
+					if (neighbor1 != BiomeGenBase.ocean.biomeID && neighbor2 != BiomeGenBase.ocean.biomeID && neighbor3 != BiomeGenBase.ocean.biomeID && neighbor4 != BiomeGenBase.ocean.biomeID)
 					{
 						intCache[j + i * par3] = currentBiome;
 					}
@@ -44,14 +47,14 @@ public class BTAGenLayerShore extends BTAGenLayer
 						intCache[j + i * par3] = BiomeGenBase.mushroomIslandShore.biomeID;
 					}
 				}
-				else if (currentBiome != BiomeGenBase.ocean.biomeID && currentBiome != BiomeGenBase.river.biomeID && currentBiome != BiomeGenBase.swampland.biomeID && currentBiome != BiomeGenBase.extremeHills.biomeID && BTABiomeConfiguration.getEdgeVariantForBiome(currentBiome) == -1)
+				else if (currentBiome != BiomeGenBase.ocean.biomeID && currentBiome != BiomeGenBase.river.biomeID && currentBiome != BiomeGenBase.swampland.biomeID && currentBiome != BiomeGenBase.extremeHills.biomeID && BTABiomeConfiguration.getEdgeVariantForBiome(currentBiome, this.generatorInfo) == -1)
 				{
-					var10 = parentInts[j + 1 + (i + 1 - 1) * (par3 + 2)];
-					var11 = parentInts[j + 1 + 1 + (i + 1) * (par3 + 2)];
-					var12 = parentInts[j + 1 - 1 + (i + 1) * (par3 + 2)];
-					var13 = parentInts[j + 1 + (i + 1 + 1) * (par3 + 2)];
+					neighbor1 = parentInts[j + 1 + (i + 1 - 1) * (par3 + 2)];
+					neighbor2 = parentInts[j + 1 + 1 + (i + 1) * (par3 + 2)];
+					neighbor3 = parentInts[j + 1 - 1 + (i + 1) * (par3 + 2)];
+					neighbor4 = parentInts[j + 1 + (i + 1 + 1) * (par3 + 2)];
 
-					if (var10 != BiomeGenBase.ocean.biomeID && var11 != BiomeGenBase.ocean.biomeID && var12 != BiomeGenBase.ocean.biomeID && var13 != BiomeGenBase.ocean.biomeID)
+					if (neighbor1 != BiomeGenBase.ocean.biomeID && neighbor2 != BiomeGenBase.ocean.biomeID && neighbor3 != BiomeGenBase.ocean.biomeID && neighbor4 != BiomeGenBase.ocean.biomeID)
 					{
 						intCache[j + i * par3] = currentBiome;
 					}
@@ -70,12 +73,12 @@ public class BTAGenLayerShore extends BTAGenLayer
 				}
 				else if (currentBiome == BiomeGenBase.extremeHills.biomeID)
 				{
-					var10 = parentInts[j + 1 + (i + 1 - 1) * (par3 + 2)];
-					var11 = parentInts[j + 1 + 1 + (i + 1) * (par3 + 2)];
-					var12 = parentInts[j + 1 - 1 + (i + 1) * (par3 + 2)];
-					var13 = parentInts[j + 1 + (i + 1 + 1) * (par3 + 2)];
+					neighbor1 = parentInts[j + 1 + (i + 1 - 1) * (par3 + 2)];
+					neighbor2 = parentInts[j + 1 + 1 + (i + 1) * (par3 + 2)];
+					neighbor3 = parentInts[j + 1 - 1 + (i + 1) * (par3 + 2)];
+					neighbor4 = parentInts[j + 1 + (i + 1 + 1) * (par3 + 2)];
 
-					if (var10 == BiomeGenBase.extremeHills.biomeID && var11 == BiomeGenBase.extremeHills.biomeID && var12 == BiomeGenBase.extremeHills.biomeID && var13 == BiomeGenBase.extremeHills.biomeID)
+					if (neighbor1 == BiomeGenBase.extremeHills.biomeID && neighbor2 == BiomeGenBase.extremeHills.biomeID && neighbor3 == BiomeGenBase.extremeHills.biomeID && neighbor4 == BiomeGenBase.extremeHills.biomeID)
 					{
 						intCache[j + i * par3] = currentBiome;
 					}
@@ -86,25 +89,25 @@ public class BTAGenLayerShore extends BTAGenLayer
 				}
 				else
 				{
-					var10 = parentInts[j + 1 + (i + 1 - 1) * (par3 + 2)];
-					var11 = parentInts[j + 1 + 1 + (i + 1) * (par3 + 2)];
-					var12 = parentInts[j + 1 - 1 + (i + 1) * (par3 + 2)];
-					var13 = parentInts[j + 1 + (i + 1 + 1) * (par3 + 2)];
+					neighbor1 = parentInts[j + 1 + (i + 1 - 1) * (par3 + 2)];
+					neighbor2 = parentInts[j + 1 + 1 + (i + 1) * (par3 + 2)];
+					neighbor3 = parentInts[j + 1 - 1 + (i + 1) * (par3 + 2)];
+					neighbor4 = parentInts[j + 1 + (i + 1 + 1) * (par3 + 2)];
 					
 					//If all surrounding biomes are the same as the current biome do not form an edge
-					if (var10 == currentBiome && var11 == currentBiome && var12 == currentBiome && var13 == currentBiome) {
+					if (neighbor1 == currentBiome && neighbor2 == currentBiome && neighbor3 == currentBiome && neighbor4 == currentBiome) {
 						intCache[j + i * par3] = currentBiome;
 					}
 					//If an edge can be formed with any of the adjacent biomes
-					else if ((BTABiomeConfiguration.shouldBiomeConnectWithEdge(var10)) ||
-								(BTABiomeConfiguration.shouldBiomeConnectWithEdge(var11)) ||
-								(BTABiomeConfiguration.shouldBiomeConnectWithEdge(var12)) ||
-								(BTABiomeConfiguration.shouldBiomeConnectWithEdge(var13)) ||
-							BTABiomeConfiguration.doesBiomeIgnoreEdgeRestrictions(currentBiome, var10, var11, var12, var13))
+					else if ((BTABiomeConfiguration.shouldBiomeConnectWithEdge(neighbor1, this.generatorInfo)) ||
+								(BTABiomeConfiguration.shouldBiomeConnectWithEdge(neighbor2, this.generatorInfo)) ||
+								(BTABiomeConfiguration.shouldBiomeConnectWithEdge(neighbor3, this.generatorInfo)) ||
+								(BTABiomeConfiguration.shouldBiomeConnectWithEdge(neighbor4, this.generatorInfo)) ||
+								BTABiomeConfiguration.doesBiomeIgnoreEdgeRestrictions(currentBiome, neighbor1, neighbor2, neighbor3, neighbor4))
 					{
 						//If current biome is a biome that forms edges
-						if (BTABiomeConfiguration.getEdgeVariantForBiome(currentBiome) != -1) {
-							intCache[j + i * par3] = BTABiomeConfiguration.getEdgeVariantForBiome(currentBiome);
+						if (BTABiomeConfiguration.getEdgeVariantForBiome(currentBiome, this.generatorInfo) != -1) {
+							intCache[j + i * par3] = BTABiomeConfiguration.getEdgeVariantForBiome(currentBiome, this.generatorInfo);
 						}
 						else {
 							intCache[j + i * par3] = currentBiome;
