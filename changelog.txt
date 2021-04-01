@@ -1,9 +1,10 @@
 Version 1.3.2
 [list]
-[*]Added edge variants to rainforest and jungle which have slightly less dense vegetation. This only affects new worlds.
-[*]Increased the thickness of the border created by all edge variants. This only affects new worlds.
-[*]Fixed an issue where the game would crash when trying to smooth between climates when no biomes of the transition climate were allowed to generate. It will now not attempt to smooth climates if no biomes are available for smoothing.
-[*]Fixed an issue where particularly wide rivers could generate with a standard river along the center even if the rest of the river was a different variant.
+[*]Added edge variants to rainforest and jungle which have slightly less dense vegetation, and which will not spawn melons. This helps provide a transition into the heavy vegetation of these biomes, and makes easy melons harder to obtain. This only affects new worlds.
+[*]Changed (increased) the thickness of the border created by all edge variants. This only affects new worlds.
+[*]Changed (increased) the chance of melons spawning to offset the large amount of vegetation present in jungle variants which could prevent them from spawning.
+[*]Fixed an issue where the game would crash when trying to smooth between climates when no biomes of the transition climate were allowed to generate. The game will now not attempt to smooth climates if no biomes are available for smoothing.
+[*]Fixed an issue where particularly wide rivers could generate with a standard river along the center even if the rest of the river was a different variant. This was most notable as a change in water color but could also show up as missing ice, mismatching riverbed material, or having a random spot of rain in the middle of the river in desert variants.
 [/list]
 
 Version 1.3.1

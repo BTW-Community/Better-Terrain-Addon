@@ -473,7 +473,7 @@ public class BTABiomeDecorator
 			this.pumpkinGen.generate(this.currentWorld, this.randomGenerator, var2, var3, var4);
 		}
 
-		if (this.randomGenerator.nextInt(32) == 0)
+		if (this.randomGenerator.nextInt(24) == 0)
 		{
 			var2 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 			var3 = this.randomGenerator.nextInt(128);

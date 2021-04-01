@@ -404,6 +404,10 @@ public class BTABiomeConfiguration {
 		witchHutBiomes.add(wetlandsHills);
 		witchHutBiomes.add(willowHills);
 		
+		//Edges
+		jungleTempleBiomes.add(jungleEdge);
+		jungleTempleBiomes.add(rainforestEdge);
+		
 		//Rivers
 		reedBiomes.add(riverRainforest);
 		reedBiomes.add(riverTropics);
