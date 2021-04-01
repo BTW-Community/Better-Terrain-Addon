@@ -74,7 +74,6 @@ public class BTAGuiGeneratorOptions extends GuiScreen implements BTAISliderSetti
 			}
 			
 			this.guiCreateWorld.generatorOptionsToUse = this.getGeneratorInfo();
-			System.out.println(this.getGeneratorInfo());
 			this.mc.displayGuiScreen(this.guiCreateWorld);
 		}
 		else if (button.id == id_deco) {
@@ -134,8 +133,6 @@ public class BTAGuiGeneratorOptions extends GuiScreen implements BTAISliderSetti
 		}
 		else {
 			this.buttonOceanSizeDummy.drawButton = false;
-			
-			this.sliderOceanSize.sliderValue = (this.worldGeneratorInfo.getOceanSize() - 1) / (float) this.sliderOceanSize.getNumSettings();
 		}
         
 		this.updateButtons();

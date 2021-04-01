@@ -31,7 +31,7 @@ public class BTABiomeConfiguration {
 	public static final BTABiomeGenBase meadow = new BTABiomeGenMeadow(123, BTAEnumClimate.TROPICAL).setColor(9286496).setBiomeName("Meadow").setTemperatureRainfall(0.7F, 1.0F).setMinMaxHeight(0.1F, 0.4F);
 	public static final BTABiomeGenBase orchard = new BTABiomeGenOrchard(124, BTAEnumClimate.TEMPERATE).setColor(353825).setBiomeName("Orchard").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.5F);
 	public static final BTABiomeGenBase mountains = new BTABiomeGenMountain(125, BTAEnumClimate.COLD).setColor(14090235).setBiomeName("Mountains").setTemperatureRainfall(0.5F, 0.1F).setMinMaxHeight(0.8F, 2.5F);
-	public static final BTABiomeGenBase dunes = new BTABiomeGenDesert(126, BTAEnumClimate.ARID).setColor(16421912).setBiomeName("Dunes").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.5F, 1.5F);
+	public static final BTABiomeGenBase dunes = new BTABiomeGenDunes(126, BTAEnumClimate.ARID).setColor(16421912).setBiomeName("Dunes").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.5F, 1.5F);
 	public static final BTABiomeGenBase heathland = new BTABiomeGenHeathland(127, BTAEnumClimate.TEMPERATE).setColor(9286496).setBiomeName("Heathland").setTemperatureRainfall(0.7F, 0.4F).setMinMaxHeight(0.1F, 0.5F);
 	public static final BTABiomeGenBase heathlandWoods = new BTABiomeGenHeathlandWoods(128, BTAEnumClimate.TEMPERATE).setColor(9286496).setBiomeName("Heathland Woods").setTemperatureRainfall(0.7F, 0.4F).setMinMaxHeight(0.1F, 0.5F); //Spawns within heathland
 	public static final BTABiomeGenBase temperateForest = new BTABiomeGenTemperateForest(129, BTAEnumClimate.TEMPERATE).setColor(353825).setBiomeName("Temperate Forest").func_76733_a(5159473).setMinMaxHeight(0.2F, 1.0F).setTemperatureRainfall(0.6F, 0.7F);
@@ -50,6 +50,7 @@ public class BTABiomeConfiguration {
 	public static final BTABiomeGenBase aridForest = new BTABiomeGenAridForest(142, BTAEnumClimate.ARID).setColor(9286496).setBiomeName("Arid Forest").setTemperatureRainfall(0.8F, 0.3F).setMinMaxHeight(0.2F, 0.4F);
 	public static final BTABiomeGenBase shield = new BTABiomeGenShield(143, BTAEnumClimate.COLD).setColor(747097).setBiomeName("Shield").func_76733_a(5159473).setTemperatureRainfall(0.5F, 0.4F).setMinMaxHeight(0.2F, 0.6F);
 	public static final BTABiomeGenBase brushland = new BTABiomeGenBrushland(144, BTAEnumClimate.COLD).setColor(9286496).setBiomeName("Brushland").setTemperatureRainfall(0.4F, 0.2F).setMinMaxHeight(0.3F, 0.5F);
+	public static final BTABiomeGenBase highlands = new BTABiomeGenHighlands(125, BTAEnumClimate.TEMPERATE).setColor(14090235).setBiomeName("Highlands").setTemperatureRainfall(0.7F, 0.5F).setMinMaxHeight(0.8F, 2.5F);
 
 	//Hill variants - spawn within the normal variants
 	public static final BTABiomeGenBase woodsHills = new BTABiomeGenWoods(150, BTAEnumClimate.TEMPERATE).setColor(353825).setBiomeName("Woods Hills").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.3F, 1.0F);
@@ -101,6 +102,7 @@ public class BTABiomeConfiguration {
     public static final BTABiomeGenBase mountainEdge = new BTABiomeGenMountain(231, BTAEnumClimate.COLD).setColor(14090235).setBiomeName("Mountains Edge").setTemperatureRainfall(0.5F, 0.1F).setMinMaxHeight(0.2F, 0.5F);
 	public static final BTABiomeGenBase badlandsEdge = new BTABiomeGenBadlands(232, BTAEnumClimate.ARID).setColor(16421912).setBiomeName("Badlands Edge").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.1F, 0.1F);
 	public static final BTABiomeGenBase icyPeaksEdge = new BTABiomeGenIcyPeaks(233, BTAEnumClimate.SNOWY).setColor(16421912).setBiomeName("Icy Peaks Edge").setEnableSnow().setTemperatureRainfall(0.1F, 0.1F).setMinMaxHeight(0.1F, 0.5F);
+	public static final BTABiomeGenBase highlandsEdge = new BTABiomeGenHighlands(234, BTAEnumClimate.TEMPERATE).setColor(14090235).setBiomeName("Highlands Edge").setTemperatureRainfall(0.7F, 0.5F).setMinMaxHeight(0.8F, 2.5F);
 	
 	//Beach variants
     public static final BTABiomeGenBase beachOutback = new BTABiomeGenBeachOutback(240, BTAEnumClimate.ARID).setColor(16440917).setBiomeName("Red Sand Beach").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.0F, 0.1F);
@@ -192,6 +194,7 @@ public class BTABiomeConfiguration {
 		biomeList.add(borealForest);
 		biomeList.add(shield);
 		biomeList.add(brushland);
+		biomeList.add(highlands);
 		
 		biomeListDeco.addAll(biomeList);
 		for (BTABiomeGenBase b : biomeListDecoCompat) {
@@ -582,6 +585,9 @@ public class BTABiomeConfiguration {
 		else if (baseBiome == icyPeaks.biomeID) {
 			edgeBiome = icyPeaksEdge.biomeID;
 		}
+		else if (baseBiome == highlands.biomeID) {
+			edgeBiome = highlandsEdge.biomeID;
+		}
 		
 		return edgeBiome;
 	}
@@ -639,6 +645,7 @@ public class BTABiomeConfiguration {
 		edgeBiomes.add(dunes);
 		edgeBiomes.add(badlands);
 		edgeBiomes.add(icyPeaks);
+		edgeBiomes.add(highlandsEdge);
 	}
 	
 	public static void filterEdgeBiomes() {

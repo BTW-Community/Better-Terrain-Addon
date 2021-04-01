@@ -8,10 +8,12 @@ Version 1.3.0
 [*]Added arid forest as a new arid forest variant (duh). Arid forest also replaces woods as a sub-biome for plains in new worlds.
 [*]Added shield as a new cold taiga variant (wolves).
 [*]Added brushland as a new cold plains variant (villages, pumpkins).
+[*]Added highlands as a new temperate mountain variant (emeralds, silverfish).
 [*]Added pockets of water to wetlands, willow grove, jungle, and rainforest, similar to how vanilla generates water in jungles and swamps. This only affects new worlds.
 [*]Added small oasis pockets inside lush deserts in addition to the large ones. This only affects new worlds.
 [*]Added the ability for reeds to spawn in patagonia and plains. In the new climate distribution system it was possible to have extremely large distances between biomes which could spawn reeds, which could be a problem given how vital they are early game. So this, combined with frozen springs above, ensures every climate is capable of spawning reeds in at least one biome. However, temperate and tropical climates remain where reeds can be found most commonly.
 [*]Added the ability for melons to spawn on the surface in jungle variants (jungle, rainforest, tropics, mangal).
+[*]Added the ability for emeralds and silverfish to spawn in dunes.
 [*]Added a hook for other addons to add their own biomes to BTA world generation.
 [*]Changed configuration menu to have biome configration on its own page.
 [*]Changed the formatting of the generator options string. The old format will still be processed correctly for old worlds but will not contain any new options. The new format ignores whitespace, has labels for all options, and is order-agnostic.
