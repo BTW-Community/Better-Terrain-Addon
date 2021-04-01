@@ -326,7 +326,15 @@ public class BTABiomeDecorator
 		{
 			var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 			var4 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-			WorldGenerator var5 = this.biome.getRandomWorldGenForTrees(this.randomGenerator);
+			
+			WorldGenerator var5;
+			if (biome instanceof BTABiomeGenBase) {
+				var5 = ((BTABiomeGenBase) this.biome).getRandomWorldGenForTrees(this.randomGenerator, this.generatorInfo, this.currentWorld.provider.terrainType);
+			}
+			else {
+				var5 = this.biome.getRandomWorldGenForTrees(this.randomGenerator);
+			}
+			
 			var5.setScale(1.0D, 1.0D, 1.0D);
 			var5.generate(this.currentWorld, this.randomGenerator, var3, this.currentWorld.getHeightValue(var3, var4), var4);
 		}

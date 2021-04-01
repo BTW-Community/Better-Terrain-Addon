@@ -50,6 +50,22 @@ public class BTABiomeGenBase extends BiomeGenBase {
     }
 
     /**
+     * Gets a WorldGen appropriate for this biome.
+     */
+    public WorldGenerator getRandomWorldGenForTrees(Random par1Random, BTAWorldConfigurationInfo generatorOptions)
+    {
+        return this.getRandomWorldGenForTrees(par1Random);
+    }
+
+    /**
+     * Gets a WorldGen appropriate for this biome.
+     */
+    public WorldGenerator getRandomWorldGenForTrees(Random par1Random, BTAWorldConfigurationInfo generatorOptions, WorldType worldType)
+    {
+        return this.getRandomWorldGenForTrees(par1Random, generatorOptions);
+    }
+
+    /**
      * Sets the minimum and maximum height of this biome. Seems to go from -2.0 to 2.0.
      */
     public BTABiomeGenBase setMinMaxHeight(float par1, float par2)

@@ -50,7 +50,7 @@ public class BTABiomeConfiguration {
 	public static final BTABiomeGenBase aridForest = new BTABiomeGenAridForest(142, BTAEnumClimate.ARID).setColor(9286496).setBiomeName("Arid Forest").setTemperatureRainfall(0.8F, 0.3F).setMinMaxHeight(0.2F, 0.4F);
 	public static final BTABiomeGenBase shield = new BTABiomeGenShield(143, BTAEnumClimate.COLD).setColor(747097).setBiomeName("Shield").func_76733_a(5159473).setTemperatureRainfall(0.5F, 0.4F).setMinMaxHeight(0.2F, 0.6F);
 	public static final BTABiomeGenBase brushland = new BTABiomeGenBrushland(144, BTAEnumClimate.COLD).setColor(9286496).setBiomeName("Brushland").setTemperatureRainfall(0.4F, 0.2F).setMinMaxHeight(0.3F, 0.5F);
-	public static final BTABiomeGenBase highlands = new BTABiomeGenHighlands(125, BTAEnumClimate.TEMPERATE).setColor(14090235).setBiomeName("Highlands").setTemperatureRainfall(0.7F, 0.5F).setMinMaxHeight(0.8F, 2.5F);
+	public static final BTABiomeGenBase highlands = new BTABiomeGenHighlands(145, BTAEnumClimate.TEMPERATE).setColor(14090235).setBiomeName("Highlands").setTemperatureRainfall(0.7F, 0.5F).setMinMaxHeight(0.8F, 2.5F);
 
 	//Hill variants - spawn within the normal variants
 	public static final BTABiomeGenBase woodsHills = new BTABiomeGenWoods(150, BTAEnumClimate.TEMPERATE).setColor(353825).setBiomeName("Woods Hills").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.3F, 1.0F);
