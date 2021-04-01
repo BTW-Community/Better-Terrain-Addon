@@ -12,15 +12,19 @@ public class BTABiomeGenBase extends BiomeGenBase {
 	private boolean enableRain;
 	private boolean isSpawnable;
 	
-    public BTABiomeDecorator btaiomeDecorator;
+	protected BTAEnumClimate climate;
+	
+	protected BTABiomeDecorator btaBiomeDecorator;
+    private BTASurfaceBuilder surfaceBuilder;
 
-	protected BTABiomeGenBase(int id) {
+	protected BTABiomeGenBase(int id, BTAEnumClimate climate) {
 		super(id);
 		this.enableRain = true;
 		this.isSpawnable = true;
-		this.btaiomeDecorator = new BTABiomeDecorator(this);
+		this.btaBiomeDecorator = new BTABiomeDecorator(this);
         this.topBlockExt = Block.grass.blockID;
         this.fillerBlockExt = Block.dirt.blockID;
+        this.climate = climate;
 	}
 
     /**
@@ -40,9 +44,9 @@ public class BTABiomeGenBase extends BiomeGenBase {
         }
     }
 
-    public void decorate(World par1World, Random par2Random, int par3, int par4)
+    public void decorate(World world, Random rand, int chunkX, int chunkZ, BTAWorldConfigurationInfo generatorOptions)
     {
-        this.btaiomeDecorator.decorate(par1World, par2Random, par3, par4);
+        this.btaBiomeDecorator.decorate(world, rand, chunkX, chunkZ);
     }
 
     /**
@@ -126,7 +130,18 @@ public class BTABiomeGenBase extends BiomeGenBase {
         return new BTAWorldGenTallGrass(Block.tallGrass.blockID, 1);
     }
 
-    public void AddEmeralds(World var1, Random var2, int var3, int var4)
+    public BTASurfaceBuilder getSurfaceBuilder() {
+		return surfaceBuilder;
+	}
+
+	public void setSurfaceBuilder(BTASurfaceBuilder surfaceBuilder) {
+		this.surfaceBuilder = surfaceBuilder;
+		if (this.surfaceBuilder.getBiome() == null) {
+			this.surfaceBuilder.setBiome(this);
+		}
+	}
+
+	public void AddEmeralds(World var1, Random var2, int var3, int var4)
     {
         int var5 = 3 + var2.nextInt(6);
 
@@ -179,4 +194,6 @@ public class BTABiomeGenBase extends BiomeGenBase {
             new BTAWorldGenMinable(Block.silverfish.blockID, 0, 8).generate(var1, var2, var6, var7, var8);
         }
     }
+    
+    
 }

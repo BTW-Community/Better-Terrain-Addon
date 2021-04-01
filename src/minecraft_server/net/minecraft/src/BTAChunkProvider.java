@@ -18,7 +18,7 @@ public class BTAChunkProvider implements IChunkProvider
 	private NoiseGeneratorOctaves noiseGen3;
 
 	/** A NoiseGeneratorOctaves used in generating terrain */
-	private NoiseGeneratorOctaves noiseGen4;
+	private NoiseGeneratorOctaves soilDepthNoiseGen;
 
 	/** A NoiseGeneratorOctaves used in generating terrain */
 	public NoiseGeneratorOctaves noiseGen5;
@@ -35,7 +35,7 @@ public class BTAChunkProvider implements IChunkProvider
 
 	/** Holds the overall noise array used in chunk generation */
 	private double[] noiseArray;
-	private double[] stoneNoise = new double[256];
+	private double[] soilDepthNoise = new double[256];
 	private BTAMapGenBase caveGenerator = new BTAMapGenCave();
 
 	/** Holds Stronghold Generator */
@@ -92,7 +92,7 @@ public class BTAChunkProvider implements IChunkProvider
 		this.noiseGen1 = new NoiseGeneratorOctaves(this.rand, 16);
 		this.noiseGen2 = new NoiseGeneratorOctaves(this.rand, 16);
 		this.noiseGen3 = new NoiseGeneratorOctaves(this.rand, 8);
-		this.noiseGen4 = new NoiseGeneratorOctaves(this.rand, 4);
+		this.soilDepthNoiseGen = new NoiseGeneratorOctaves(this.rand, 4);
 		this.noiseGen5 = new NoiseGeneratorOctaves(this.rand, 10);
 		this.noiseGen6 = new NoiseGeneratorOctaves(this.rand, 16);
 		this.sandNoiseGen = new BTABetaNoiseOctaves(this.rand, 4);
@@ -181,158 +181,130 @@ public class BTAChunkProvider implements IChunkProvider
 	/**
 	 * Replaces the stone that was placed in with blocks that match the biome
 	 */
-	public void replaceBlocksForBiome(int par1, int par2, int[] blockArray, BiomeGenBase[] par4ArrayOfBiomeGenBase)
-	{
-		byte var5 = 63;
-		double var6 = 0.03125D;
-		this.sandNoise = this.sandNoiseGen.generateNoiseOctaves(this.sandNoise, (double)(par1 * 16), (double)(par2 * 16), 0.0D, 16, 16, 1, var6, var6, 1.0D);
-		this.gravelNoise = this.sandNoiseGen.generateNoiseOctaves(this.gravelNoise, (double)(par1 * 16), 109.0134D, (double)(par2 * 16), 16, 1, 16, var6, 1.0D, var6);
-		this.stoneNoise = this.noiseGen4.generateNoiseOctaves(this.stoneNoise, par1 * 16, par2 * 16, 0, 16, 16, 1, var6 * 2.0D, var6 * 2.0D, var6 * 2.0D);
+	public void replaceBlocksForBiome(int chunkX, int chunkZ, int[] blockArray, BiomeGenBase[] par4ArrayOfBiomeGenBase) {
+		byte seaLevel = 63;
+		double soilDepthNoiseScalar = 0.03125D;
+		this.sandNoise = this.sandNoiseGen.generateNoiseOctaves(this.sandNoise, (double)(chunkX * 16), (double)(chunkZ * 16), 0.0D, 16, 16, 1, soilDepthNoiseScalar, soilDepthNoiseScalar, 1.0D);
+		this.gravelNoise = this.sandNoiseGen.generateNoiseOctaves(this.gravelNoise, (double)(chunkX * 16), 109.0134D, (double)(chunkZ * 16), 16, 1, 16, soilDepthNoiseScalar, 1.0D, soilDepthNoiseScalar);
+		this.soilDepthNoise = this.soilDepthNoiseGen.generateNoiseOctaves(this.soilDepthNoise, chunkX * 16, chunkZ * 16, 0, 16, 16, 1, soilDepthNoiseScalar * 2.0D, soilDepthNoiseScalar * 2.0D, soilDepthNoiseScalar * 2.0D);
 
-		for (int var8 = 0; var8 < 16; ++var8)
-		{
-			for (int var9 = 0; var9 < 16; ++var9)
-			{
-				BiomeGenBase var10 = par4ArrayOfBiomeGenBase[var9 + var8 * 16];
+		for (int i = 0; i < 16; ++i) {
+			for (int k = 0; k < 16; ++k) {
+				BiomeGenBase biome = par4ArrayOfBiomeGenBase[k + i * 16];
 				
-				float var11 = var10.getFloatTemperature();
-				boolean useSand = this.sandNoise[var8 + var9 * 16] + this.rand.nextDouble() * 0.2D > 0.0D;
-				boolean useGravel = this.gravelNoise[var8 + var9 * 16] + this.rand.nextDouble() * 0.2D > 3.0D;
-				int var12 = (int)(this.stoneNoise[var8 + var9 * 16] / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
-				int var13 = -1;
-				int var14;
-				int var15;
+				float temperature = biome.getFloatTemperature();
+				boolean useSand = this.sandNoise[i + k * 16] + this.rand.nextDouble() * 0.2D > 0.0D;
+				boolean useGravel = this.gravelNoise[i + k * 16] + this.rand.nextDouble() * 0.2D > 3.0D;
+				int soilDepthNoiseSample = (int)(this.soilDepthNoise[i + k * 16] / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
+				int remaingDepth = -1;
+				int topBlock;
+				int fillerBlock;
 
-				if (var10 instanceof BTABiomeGenBase) {
-					var14 = ((BTABiomeGenBase) var10).topBlockExt;
-					var15 = ((BTABiomeGenBase) var10).fillerBlockExt;
+				if (biome instanceof BTABiomeGenBase) {
+					topBlock = ((BTABiomeGenBase) biome).topBlockExt;
+					fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
 				}
 				else {
-					var14 = var10.topBlock;
-					var15 = var10.fillerBlock;
+					topBlock = biome.topBlock;
+					fillerBlock = biome.fillerBlock;
 				}
 
-				for (int var16 = 127; var16 >= 0; --var16)
-				{
-					int var17 = (var9 * 16 + var8) * 128 + var16;
+				for (int j = 127; j >= 0; --j) {
+					int index = (k * 16 + i) * 128 + j;
 
-					if (var16 <= 0 + this.rand.nextInt(5))
-					{
-						blockArray[var17] = (byte)Block.bedrock.blockID;
+					if (j <= 0 + this.rand.nextInt(5)) {
+						blockArray[index] = (byte)Block.bedrock.blockID;
 					}
-					else
-					{
-						int var18 = blockArray[var17];
+					else {
+						int blockID = blockArray[index];
 
-						if (var18 == 0)
-						{
-							var13 = -1;
+						if (blockID == 0) {
+							remaingDepth = -1;
 						}
-						else if (var18 == Block.stone.blockID)
-						{
-							if (var13 == -1)
-							{
-								if (var12 <= 0)
-								{
-									var14 = 0;
-									var15 = (byte)Block.stone.blockID;
+						else if (blockID == Block.stone.blockID) {
+							if (remaingDepth == -1) {
+								if (soilDepthNoiseSample <= 0) {
+									topBlock = 0;
+									fillerBlock = (byte)Block.stone.blockID;
 								}
-								else if (var16 >= var5 - (8 + rand.nextInt(2)) && var16 <= var5 + 1)
-								{
-									if(var10.biomeID == BTABiomeConfiguration.oldValley.biomeID || var10.biomeID == BTABiomeConfiguration.valleyMountains.biomeID || var10.biomeID == BTABiomeConfiguration.valley.biomeID || (var10.biomeID == BTABiomeConfiguration.tropics.biomeID && this.generatorInfo.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_2_0)))
-									{
-										var14 = (byte)Block.sand.blockID;
-										var15 = (byte)Block.sand.blockID;
-									}
-									else
-									{
-										if (var10 instanceof BTABiomeGenBase) {
-											var14 = ((BTABiomeGenBase) var10).topBlockExt;
-											var15 = ((BTABiomeGenBase) var10).fillerBlockExt;
-										}
-										else {
-											var14 = var10.topBlock;
-											var15 = var10.fillerBlock;
-										}
-									}
-
-									if (this.generatorInfo.generatePerlinBeaches() && BTABiomeConfiguration.shouldBiomeSpawnPerlinBeach(var10.biomeID)) {
-										if (useGravel)
-										{
-											var14 = 0;
-										}
-	
-										if (useGravel)
-										{
-											var15 = Block.gravel.blockID;
-										}
-	
-										if (useSand)
-										{
-											if (var10 == BTABiomeConfiguration.badlands || var10 == BTABiomeConfiguration.badlandsPlateau || var10 == BTABiomeConfiguration.badlandsEdge || var10 == BTABiomeConfiguration.riverBadlands || 
-													var10 == BTABiomeConfiguration.outback || var10 == BTABiomeConfiguration.riverOutback || var10 == BTABiomeConfiguration.beachOutback) {
-												var14 = BTADecoIntegration.redSand.blockID;
-												var15 = BTADecoIntegration.redSand.blockID;
-											}
-											else {
-												var14 = Block.sand.blockID;
-												var15 = Block.sand.blockID;
-											}
-										}
-									}
-								}
-								else if (var16 >= var5 + 9)
-								{
-									if (var10 instanceof BTABiomeGenBase) {
-										var14 = ((BTABiomeGenBase) var10).topBlockExt;
-										var15 = ((BTABiomeGenBase) var10).fillerBlockExt;
+								else if (j >= seaLevel - (8 + rand.nextInt(2)) && j <= seaLevel + 1) {
+									if(biome.biomeID == BTABiomeConfiguration.oldValley.biomeID || biome.biomeID == BTABiomeConfiguration.valleyMountains.biomeID || biome.biomeID == BTABiomeConfiguration.valley.biomeID || (biome.biomeID == BTABiomeConfiguration.tropics.biomeID && this.generatorInfo.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_2_0))) {
+										topBlock = (byte)Block.sand.blockID;
+										fillerBlock = (byte)Block.sand.blockID;
 									}
 									else {
-										var14 = var10.topBlock;
-										var15 = var10.fillerBlock;
+										if (biome instanceof BTABiomeGenBase) {
+											topBlock = ((BTABiomeGenBase) biome).topBlockExt;
+											fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
+										}
+										else {
+											topBlock = biome.topBlock;
+											fillerBlock = biome.fillerBlock;
+										}
+									}
+
+									if (this.generatorInfo.generatePerlinBeaches() && BTABiomeConfiguration.shouldBiomeSpawnPerlinBeach(biome.biomeID)) {
+										if (useGravel) {
+											topBlock = 0;
+											fillerBlock = Block.gravel.blockID;
+										}
+	
+										if (useSand) {
+											if (biome == BTABiomeConfiguration.badlands || biome == BTABiomeConfiguration.badlandsPlateau || biome == BTABiomeConfiguration.badlandsEdge || biome == BTABiomeConfiguration.riverBadlands || 
+													biome == BTABiomeConfiguration.outback || biome == BTABiomeConfiguration.riverOutback || biome == BTABiomeConfiguration.beachOutback) {
+												topBlock = BTADecoIntegration.redSand.blockID;
+												fillerBlock = BTADecoIntegration.redSand.blockID;
+											}
+											else {
+												topBlock = Block.sand.blockID;
+												fillerBlock = Block.sand.blockID;
+											}
+										}
+									}
+								}
+								else if (j >= seaLevel + 9) {
+									if (biome instanceof BTABiomeGenBase) {
+										topBlock = ((BTABiomeGenBase) biome).topBlockExt;
+										fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
+									}
+									else {
+										topBlock = biome.topBlock;
+										fillerBlock = biome.fillerBlock;
 									}
 								}
 
-								if (var16 < var5 && var14 == 0)
-								{
-									if (var11 < 0.15F)
-									{
-										var14 = (byte)Block.ice.blockID;
+								if (j < seaLevel && topBlock == 0) {
+									if (temperature < 0.15F) {
+										topBlock = (byte)Block.ice.blockID;
 									}
-									else
-									{
-										var14 = (byte)Block.waterStill.blockID;
+									else {
+										topBlock = (byte)Block.waterStill.blockID;
 									}
 								}
 								
-								var13 = var12;
+								remaingDepth = soilDepthNoiseSample;
 
-								if (var10.biomeID == BTABiomeConfiguration.badlandsPlateau.biomeID)
-									var13 += 10;
+								if (biome.biomeID == BTABiomeConfiguration.badlandsPlateau.biomeID)
+									remaingDepth += 10;
 								
-								if (var16 >= var5 - 1)
-								{
-									blockArray[var17] = var14;
+								if (j >= seaLevel - 1) {
+									blockArray[index] = topBlock;
 								}
-								else
-								{
-									blockArray[var17] = var15;
+								else {
+									blockArray[index] = fillerBlock;
 								}
 							}
-							else if (var13 > 0)
-							{
-								--var13;
-								blockArray[var17] = var15;
+							else if (remaingDepth > 0) {
+								--remaingDepth;
+								blockArray[index] = fillerBlock;
 
-								if (var13 == 0 && var15 == Block.sand.blockID)
-								{
-									var13 = this.rand.nextInt(4);
-									var15 = (byte)Block.sandStone.blockID;
+								if (remaingDepth == 0 && fillerBlock == Block.sand.blockID) {
+									remaingDepth = this.rand.nextInt(4);
+									fillerBlock = (byte)Block.sandStone.blockID;
 								}
-								else if (BTADecoIntegration.isDecoInstalled() && var13 == 0 && var15 == BTADecoIntegration.redSand.blockID)
-								{
-									var13 = this.rand.nextInt(4);
-									var15 = BTADecoIntegration.redSandStone.blockID;
+								else if (BTADecoIntegration.isDecoInstalled() && remaingDepth == 0 && fillerBlock == BTADecoIntegration.redSand.blockID) {
+									remaingDepth = this.rand.nextInt(4);
+									fillerBlock = BTADecoIntegration.redSandStone.blockID;
 								}
 							}
 						}
@@ -354,36 +326,39 @@ public class BTAChunkProvider implements IChunkProvider
 	 * Will return back a chunk, if it doesn't exist and its not a MP client it will generates all the blocks for the
 	 * specified chunk from the map seed and chunk seed
 	 */
-	public Chunk provideChunk(int par1, int par2)
+	public Chunk provideChunk(int chunkX, int chunkZ)
 	{
-		this.rand.setSeed((long)par1 * 341873128712L + (long)par2 * 132897987541L);
-		int[] var3 = new int[32768];
-		this.generateTerrain(par1, par2, var3);
+		this.rand.setSeed((long)chunkX * 341873128712L + (long)chunkZ * 132897987541L);
+		int[] blockArray = new int[32768];
+		int[] metaArray = new int[32768];
+		this.generateTerrain(chunkX, chunkZ, blockArray);
 		
-		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
+		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
 		
-		this.replaceBlocksForBiome(par1, par2, var3, this.biomesForGeneration);
-		this.caveGenerator.generate(this, this.worldObj, par1, par2, var3);
-		this.ravineGenerator.generate(this, this.worldObj, par1, par2, var3);
+		//this.replaceBlocksForBiome(chunkX, chunkZ, blockArray, this.biomesForGeneration);
+		BTASurfaceBuilder.replaceSurface(this.rand, chunkX, chunkZ, blockArray, metaArray, biomesForGeneration, generatorInfo);
+		
+		this.caveGenerator.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
+		this.ravineGenerator.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
 
 		if (this.mapFeaturesEnabled)
 		{
-			this.mineshaftGenerator.generate(this, this.worldObj, par1, par2, var3);
-			this.villageGenerator.generate(this, this.worldObj, par1, par2, var3);
-			this.strongholdGenerator.generate(this, this.worldObj, par1, par2, var3);
-			this.scatteredFeatureGenerator.generate(this, this.worldObj, par1, par2, var3);
+			this.mineshaftGenerator.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
+			this.villageGenerator.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
+			this.strongholdGenerator.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
+			this.scatteredFeatureGenerator.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
 		}
 
-		Chunk var4 = new BTAChunk(this.worldObj, var3, par1, par2);
-		byte[] var5 = var4.getBiomeArray();
+		Chunk chunk = new BTAChunk(this.worldObj, blockArray, metaArray, chunkX, chunkZ);
+		byte[] chunkBiomeArray = chunk.getBiomeArray();
 
-		for (int var6 = 0; var6 < var5.length; ++var6)
+		for (int i = 0; i < chunkBiomeArray.length; ++i)
 		{
-			var5[var6] = (byte)this.biomesForGeneration[var6].biomeID;
+			chunkBiomeArray[i] = (byte)this.biomesForGeneration[i].biomeID;
 		}
 
-		var4.generateSkylightMap();
-		return var4;
+		chunk.generateSkylightMap();
+		return chunk;
 	}
 
 	/**
@@ -551,9 +526,9 @@ public class BTAChunkProvider implements IChunkProvider
 	public void populate(IChunkProvider par1IChunkProvider, int par2, int par3)
 	{
 		BlockSand.fallInstantly = true;
-		int var4 = par2 * 16;
-		int var5 = par3 * 16;
-		BiomeGenBase b = this.worldObj.getBiomeGenForCoords(var4 + 16, var5 + 16);
+		int chunkX = par2 * 16;
+		int chunkZ = par3 * 16;
+		BiomeGenBase b = this.worldObj.getBiomeGenForCoords(chunkX + 16, chunkZ + 16);
 		this.rand.setSeed(this.worldObj.getSeed());
 		long var7 = this.rand.nextLong() / 2L * 2L + 1L;
 		long var9 = this.rand.nextLong() / 2L * 2L + 1L;
@@ -577,17 +552,17 @@ public class BTAChunkProvider implements IChunkProvider
 
 		if (!var15 && this.rand.nextInt(4) == 0)
 		{
-			var16 = var4 + this.rand.nextInt(16) + 8;
+			var16 = chunkX + this.rand.nextInt(16) + 8;
 			var17 = this.rand.nextInt(128);
-			var18 = var5 + this.rand.nextInt(16) + 8;
+			var18 = chunkZ + this.rand.nextInt(16) + 8;
 			(new WorldGenLakes(Block.waterStill.blockID)).generate(this.worldObj, this.rand, var16, var17, var18);
 		}
 
 		if (!var15 && this.rand.nextInt(8) == 0)
 		{
-			var16 = var4 + this.rand.nextInt(16) + 8;
+			var16 = chunkX + this.rand.nextInt(16) + 8;
 			var17 = this.rand.nextInt(this.rand.nextInt(120) + 8);
-			var18 = var5 + this.rand.nextInt(16) + 8;
+			var18 = chunkZ + this.rand.nextInt(16) + 8;
 
 			if (var17 < 63 || this.rand.nextInt(10) == 0)
 			{
@@ -597,9 +572,9 @@ public class BTAChunkProvider implements IChunkProvider
 
 		for (var16 = 0; var16 < 8; ++var16)
 		{
-			var17 = var4 + this.rand.nextInt(16) + 8;
+			var17 = chunkX + this.rand.nextInt(16) + 8;
 			var18 = this.rand.nextInt(128);
-			int var19 = var5 + this.rand.nextInt(16) + 8;
+			int var19 = chunkZ + this.rand.nextInt(16) + 8;
 
 			if ((new WorldGenDungeons()).generate(this.worldObj, this.rand, var17, var18, var19))
 			{
@@ -607,32 +582,35 @@ public class BTAChunkProvider implements IChunkProvider
 			}
 		}
 
-		b.decorate(this.worldObj, this.rand, var4, var5);
-		SpawnerAnimals.performWorldGenSpawning(this.worldObj, b, var4 + 8, var5 + 8, 16, 16, this.rand);
+		if (b instanceof BTABiomeGenBase)
+			((BTABiomeGenBase) b).decorate(this.worldObj, this.rand, chunkX, chunkZ, this.generatorInfo);
+		else
+			b.decorate(this.worldObj, this.rand, chunkX, chunkZ);
+		SpawnerAnimals.performWorldGenSpawning(this.worldObj, b, chunkX + 8, chunkZ + 8, 16, 16, this.rand);
 
-		var4 += 8;
-		var5 += 8;
+		chunkX += 8;
+		chunkZ += 8;
 
 		for (var16 = 0; var16 < 16; ++var16)
 		{
 			for (var17 = 0; var17 < 16; ++var17)
 			{
-				var18 = this.worldObj.getPrecipitationHeight(var4 + var16, var5 + var17);
+				var18 = this.worldObj.getPrecipitationHeight(chunkX + var16, chunkZ + var17);
 
-				if (this.worldObj.isBlockFreezable(var16 + var4, var18 - 1, var17 + var5))
+				if (this.worldObj.isBlockFreezable(var16 + chunkX, var18 - 1, var17 + chunkZ))
 				{
-					this.worldObj.setBlock(var16 + var4, var18 - 1, var17 + var5, Block.ice.blockID, 0, 2);
+					this.worldObj.setBlock(var16 + chunkX, var18 - 1, var17 + chunkZ, Block.ice.blockID, 0, 2);
 				}
 
-				if (this.worldObj.canSnowAt(var16 + var4, var18, var17 + var5))
+				if (this.worldObj.canSnowAt(var16 + chunkX, var18, var17 + chunkZ))
 				{
-					this.worldObj.setBlock(var16 + var4, var18, var17 + var5, Block.snow.blockID, 0, 2);
+					this.worldObj.setBlock(var16 + chunkX, var18, var17 + chunkZ, Block.snow.blockID, 0, 2);
 				}
 			}
 		}
 
 		BlockSand.fallInstantly = false;
-		this.BTWPostProcessChunk(this.worldObj, var4 - 8, var5 - 8);
+		this.BTWPostProcessChunk(this.worldObj, chunkX - 8, chunkZ - 8);
 	}
 
 	/**

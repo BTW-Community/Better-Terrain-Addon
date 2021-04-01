@@ -3,11 +3,11 @@ package net.minecraft.src;
 import java.util.Random;
 
 public class BTABiomeGenBorealForest extends BTABiomeGenBase {
-	public BTABiomeGenBorealForest(int id) {
-		super(id);
+	protected BTABiomeGenBorealForest(int id, BTAEnumClimate climate) {
+		super(id, climate);
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 5, 4, 4));
-        this.btaiomeDecorator.treesPerChunk = 30;
-        this.btaiomeDecorator.grassPerChunk = 5;
+        this.btaBiomeDecorator.treesPerChunk = 20;
+        this.btaBiomeDecorator.grassPerChunk = 2;
 	}
 
     /**
@@ -17,19 +17,34 @@ public class BTABiomeGenBorealForest extends BTABiomeGenBase {
     {
     	WorldGenerator gen;
     	
-    	if (rand.nextInt(4) == 0) {
-    		gen = new WorldGenTrees(false, 6, 0, 0, false);
+    	if (rand.nextInt(6) == 0) {
+    		gen = new WorldGenTaiga2(false);
+    	}
+    	else if (rand.nextInt(5) == 0) {
+    		gen = new BTAWorldGenTaiga5(false);
     	}
     	else if (rand.nextInt(4) == 0) {
-    		gen = new WorldGenShrub(0, 0);
+    		gen = new BTAWorldGenTaiga6(false);
     	}
     	else if (rand.nextInt(3) == 0) {
-    		gen = new BTAWorldGenBorealBirch();
+    		gen = new BTAWorldGenTaiga7(false);
+    	}
+    	else if (rand.nextInt(2) == 0){
+    		gen = new WorldGenShrub(1, 1);
     	}
     	else {
-    		gen = new BTAWorldGenTaiga6(false);
+    		gen = new BTAWorldGenShrubSmall(1, 1);
     	}
     	
     	return gen;
     }
+
+	/**
+	 * Gets a WorldGen appropriate for this biome.
+	 */
+	@Override
+	public WorldGenerator getRandomWorldGenForGrass(Random par1Random)
+	{
+		return par1Random.nextInt(2) == 0 ? new BTAWorldGenTallGrass(Block.tallGrass.blockID, 2) : new BTAWorldGenTallGrass(Block.tallGrass.blockID, 1);
+	}
 }

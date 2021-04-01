@@ -4,12 +4,12 @@ import java.util.Random;
 
 public class BTABiomeGenRainforest extends BTABiomeGenBase {
 
-	public BTABiomeGenRainforest(int id) {
-		super(id);
-		this.btaiomeDecorator.treesPerChunk = 25;
-		this.btaiomeDecorator.grassPerChunk = 7;
-		this.btaiomeDecorator.reedsPerChunk = 10;
-        this.btaiomeDecorator.waterlilyPerChunk = 4;
+	public BTABiomeGenRainforest(int id, BTAEnumClimate climate) {
+		super(id, climate);
+		this.btaBiomeDecorator.treesPerChunk = 25;
+		this.btaBiomeDecorator.grassPerChunk = 7;
+		this.btaBiomeDecorator.reedsPerChunk = 10;
+        this.btaBiomeDecorator.waterlilyPerChunk = 4;
 		this.waterColorMultiplier = 6160128;
 		this.spawnableCreatureList.clear();
 		this.spawnableCreatureList.add(new SpawnListEntry(FCEntityChicken.class, 10, 4, 4));
@@ -50,9 +50,9 @@ public class BTABiomeGenRainforest extends BTABiomeGenBase {
     	return gen;
 	}
 
-    public void decorate(World par1World, Random par2Random, int par3, int par4)
+    public void decorate(World par1World, Random par2Random, int par3, int par4, BTAWorldConfigurationInfo generatorOptions)
     {
-        super.decorate(par1World, par2Random, par3, par4);
+        super.decorate(par1World, par2Random, par3, par4, generatorOptions);
         WorldGenVines var5 = new WorldGenVines();
 
         for (int var6 = 0; var6 < 50; ++var6)

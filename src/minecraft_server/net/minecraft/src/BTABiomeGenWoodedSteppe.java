@@ -3,9 +3,9 @@ package net.minecraft.src;
 import java.util.Random;
 
 public class BTABiomeGenWoodedSteppe extends BTABiomeGenSteppe {
-	public BTABiomeGenWoodedSteppe(int id) {
-		super(id);
-		btaiomeDecorator.treesPerChunk = 15;
+	public BTABiomeGenWoodedSteppe(int id, BTAEnumClimate climate) {
+		super(id, climate);
+		btaBiomeDecorator.treesPerChunk = 15;
 	}
 
     /**

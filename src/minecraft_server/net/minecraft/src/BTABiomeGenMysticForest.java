@@ -3,12 +3,12 @@ package net.minecraft.src;
 import java.util.Random;
 
 public class BTABiomeGenMysticForest extends BTABiomeGenBase {
-	public BTABiomeGenMysticForest(int id) {
-		super(id);
+	public BTABiomeGenMysticForest(int id, BTAEnumClimate climate) {
+		super(id, climate);
 		waterColorMultiplier = 15349914;
-		this.btaiomeDecorator.treesPerChunk = 15;
-		this.btaiomeDecorator.grassPerChunk = 7;
-		this.btaiomeDecorator.flowersPerChunk = 8;
+		this.btaBiomeDecorator.treesPerChunk = 15;
+		this.btaBiomeDecorator.grassPerChunk = 7;
+		this.btaBiomeDecorator.flowersPerChunk = 8;
         this.spawnableMonsterList.add(new SpawnListEntry(BTAEntitySlime.class, 1, 1, 1));
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntityWitch.class, 1, 1, 1));
         this.spawnableCreatureList.clear();

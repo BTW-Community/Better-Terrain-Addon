@@ -29,7 +29,7 @@ public class BTAWorldChunkManager extends WorldChunkManager {
 
 	public BTAWorldChunkManager(long seed, WorldType worldType, BTAWorldConfigurationInfo generatorInfo) {
         this(generatorInfo);
-        GenLayer[] layers = BTAGenLayer.initializeAllBiomeGenerators(seed, worldType, generatorInfo.getBiomesForGeneration(), generatorInfo.getOceanSize());
+        GenLayer[] layers = BTAGenLayer.initializeAllBiomeGenerators(seed, worldType, generatorInfo);
         this.genBiomes = layers[0];
         this.biomeIndexLayer = layers[1];
 	}

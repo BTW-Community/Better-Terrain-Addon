@@ -144,6 +144,7 @@ public class BTABiomeDecorator
 	protected WorldGenerator graniteGen;
 	protected WorldGenerator andesiteGen;
 	protected WorldGenerator dioriteGen;
+	protected WorldGenerator melonGen;
 
 	public int oasesPerChunk;
 	public int waterLakesPerChunk;
@@ -196,6 +197,7 @@ public class BTABiomeDecorator
 
 		//BTA
 		pumpkinGen = new BTAWorldGenPumpkin();
+		melonGen = new BTAWorldGenMelons();
 		oasisGen = new BTAWorldGenOasis(7, Block.grass.blockID);
 		steppeGen = new BTAWorldGenSteppe(Block.sand.blockID, 0);
 		stoneInGrassGen = new BTAWorldGenMycelium(Block.stone.blockID, 32);
@@ -232,7 +234,12 @@ public class BTABiomeDecorator
 		else
 		{
 			this.currentWorld = par1World;
-			this.generatorInfo = BTAWorldConfigurationInfo.createInfoFromString(this.currentWorld.provider.generatorOptions);
+			if (this.currentWorld.provider.generatorOptions.equals("")) {
+				this.generatorInfo = BTAWorldConfigurationInfo.createDefaultConfigurationLegacy(this.currentWorld.provider.terrainType.isDeco());
+			}
+			else {
+				this.generatorInfo = BTAWorldConfigurationInfo.createInfoFromString(this.currentWorld.provider.generatorOptions);
+			}
 			this.randomGenerator = par2Random;
 			this.chunk_X = par3;
 			this.chunk_Z = par4;
@@ -301,7 +308,7 @@ public class BTABiomeDecorator
 						this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
 		}
 
-		if (generateOutback)
+		if (generateOutback && this.generatorInfo.getCompatMode().isVersionAtOrBelow(BTAEnumVersionCompat.V1_2_1))
 		{
 			this.genStandardOre1(30, outbackGen, 64, 128);
 		}
@@ -456,6 +463,14 @@ public class BTABiomeDecorator
 			var3 = this.randomGenerator.nextInt(128);
 			var4 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 			this.pumpkinGen.generate(this.currentWorld, this.randomGenerator, var2, var3, var4);
+		}
+
+		if (this.randomGenerator.nextInt(32) == 0)
+		{
+			var2 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
+			var3 = this.randomGenerator.nextInt(128);
+			var4 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
+			this.melonGen.generate(this.currentWorld, this.randomGenerator, var2, var3, var4);
 		}
 
 		//BTA modified

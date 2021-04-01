@@ -3,11 +3,11 @@ package net.minecraft.src;
 import java.util.Random;
 
 public class BTABiomeGenMeadow extends BTABiomeGenBase {
-	public BTABiomeGenMeadow(int id) {
-		super(id);
-		this.btaiomeDecorator.treesPerChunk = 1;
-		this.btaiomeDecorator.grassPerChunk = 15;
-		this.btaiomeDecorator.flowersPerChunk = 30;
+	public BTABiomeGenMeadow(int id, BTAEnumClimate climate) {
+		super(id, climate);
+		this.btaBiomeDecorator.treesPerChunk = 1;
+		this.btaBiomeDecorator.grassPerChunk = 15;
+		this.btaBiomeDecorator.flowersPerChunk = 30;
 	}
 
 	/**

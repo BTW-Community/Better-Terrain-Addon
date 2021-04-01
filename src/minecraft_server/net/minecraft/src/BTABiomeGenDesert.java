@@ -4,20 +4,20 @@ import java.util.Random;
 
 public class BTABiomeGenDesert extends BTABiomeGenBase
 {
-    public BTABiomeGenDesert(int par1)
+    public BTABiomeGenDesert(int par1, BTAEnumClimate climate)
     {
-        super(par1);
+        super(par1, climate);
         this.spawnableCreatureList.clear();
         this.topBlockExt = (byte)Block.sand.blockID;
         this.fillerBlockExt = (byte)Block.sand.blockID;
-        this.btaiomeDecorator.treesPerChunk = -999;
-        this.btaiomeDecorator.deadBushPerChunk = 2;
-        this.btaiomeDecorator.cactiPerChunk = 10;
+        this.btaBiomeDecorator.treesPerChunk = -999;
+        this.btaBiomeDecorator.deadBushPerChunk = 2;
+        this.btaBiomeDecorator.cactiPerChunk = 10;
     }
 
-    public void decorate(World par1World, Random par2Random, int par3, int par4)
+    public void decorate(World par1World, Random par2Random, int par3, int par4, BTAWorldConfigurationInfo generatorOptions)
     {
-        super.decorate(par1World, par2Random, par3, par4);
+        super.decorate(par1World, par2Random, par3, par4, generatorOptions);
 
         if (par2Random.nextInt(1000) == 0)
         {

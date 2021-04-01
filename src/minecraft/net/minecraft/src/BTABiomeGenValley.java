@@ -3,8 +3,8 @@ package net.minecraft.src;
 import java.util.Random;
 
 public class BTABiomeGenValley extends BTABiomeGenWoods {
-	public BTABiomeGenValley(int par1) {
-		super(par1);
+	public BTABiomeGenValley(int par1, BTAEnumClimate climate) {
+		super(par1, climate);
 	}
 
     public void decorate(World var1, Random var2, int var3, int var4)

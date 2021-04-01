@@ -2,6 +2,7 @@ package net.minecraft.src;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class BTAWorldConfigurationInfo {
@@ -10,14 +11,18 @@ public class BTAWorldConfigurationInfo {
 
 	private BTAEnumVersionCompat compatMode = BTAEnumVersionCompat.V1_1_3;
 	private int oceanSize = 10;
-	private boolean generatePerlinBeaches = true;
+	private boolean generatePerlinBeaches = false;
+	private boolean climatized = false;
+	private int biomeSize = 2;
 
 	public static BTAWorldConfigurationInfo createDefaultConfiguration(boolean isDeco) {
 		BTAWorldConfigurationInfo info = new BTAWorldConfigurationInfo();
 
 		info.setCompatMode(BTAMod.getInstance().currentVersion);
-		info.setOceanSize(10);
+		info.setOceanSize(5);
 		info.setGeneratePerlinBeaches(true);
+		info.setClimatized(true);
+		info.setBiomeSize(1);
 
 		info.generateBiomeInfoListFromBiomes(BTABiomeConfiguration.biomeListDeco);
 
@@ -46,6 +51,8 @@ public class BTAWorldConfigurationInfo {
 		info.setCompatMode(BTAEnumVersionCompat.V1_1_3);
 		info.setOceanSize(10);
 		info.setGeneratePerlinBeaches(false);
+		info.setClimatized(false);
+		info.setBiomeSize(2);
 
 		info.generateBiomeInfoListFromBiomes(BTABiomeConfiguration.biomeListDecoCompat);
 
@@ -69,6 +76,57 @@ public class BTAWorldConfigurationInfo {
 	}
 
 	public void setInfoFromString(String infoString) {
+		if (!infoString.contains(":")) {
+			this.setInfoFromStringLegacy(infoString);
+		}
+		else {
+			//Ignores whitespace
+			infoString = infoString.replace("\\s", "");
+			
+			String[] infoSplit = infoString.split(";");
+			
+			for (String option : infoSplit) {
+				String[] optionSplit = option.split(":");
+				
+				if (optionSplit[0].equalsIgnoreCase("Version")) {
+					this.compatMode = BTAEnumVersionCompat.fromString(optionSplit[1]);
+				}
+				else if (optionSplit[0].equalsIgnoreCase("Biomes")){
+					String[] biomeSplit = optionSplit[1].split(",");
+
+					this.biomeInfoList.clear();
+
+					for (String s : biomeSplit) {
+						String[] biomeInfoSplit = s.split("=");
+						
+						BTABiomeInfo biomeInfo = BTABiomeConfiguration.biomeInfoMap.get(Integer.parseInt(biomeInfoSplit[0]));
+						biomeInfo.setEnabled(Boolean.parseBoolean(biomeInfoSplit[1]));
+
+						this.biomeInfoList.add(biomeInfo);
+					}
+
+					this.setBiomesForGenerationFromInfo(this.biomeInfoList);
+				}
+				else if (optionSplit[0].equalsIgnoreCase("OceanSize")) {
+					this.oceanSize = Integer.parseInt(optionSplit[1]);
+				}
+				else if (optionSplit[0].equalsIgnoreCase("Shorelines")) {
+					this.generatePerlinBeaches = Boolean.parseBoolean(optionSplit[1]);
+				}
+				else if (optionSplit[0].equalsIgnoreCase("BiomeSize")) {
+					this.biomeSize = Integer.parseInt(optionSplit[1]);
+				}
+				else if (optionSplit[0].equalsIgnoreCase("Climates")) {
+					this.climatized = Boolean.parseBoolean(optionSplit[1]);
+				}
+				else {
+					throw new IllegalArgumentException("Invalid format for generator options");
+				}
+			}
+		}
+	}
+	
+	private void setInfoFromStringLegacy(String infoString) {
 		String[] infoSplit = infoString.split("; ");
 		String[] biomeSplit = infoSplit[0].split(" ");
 
@@ -84,10 +142,10 @@ public class BTAWorldConfigurationInfo {
 		for (int i = 1; i < infoSplit.length; i++) {
 			if (i == 1) {
 				//Done this way for backwards compatibility with older standard
-				if (infoSplit[1].equals("true")) {
+				if (infoSplit[i].equals("true")) {
 					this.compatMode = BTAEnumVersionCompat.V1_1_3;
 				}
-				else if (infoSplit[1].equals("false")) {
+				else if (infoSplit[i].equals("false")) {
 					this.compatMode = BTAEnumVersionCompat.V1_2_0;
 				}
 				else {
@@ -97,21 +155,27 @@ public class BTAWorldConfigurationInfo {
 			if (i == 2) this.oceanSize = Integer.parseInt(infoSplit[i]);
 			if (i == 3) this.generatePerlinBeaches = Boolean.parseBoolean(infoSplit[i]);
 		}
+		
+		this.climatized = false;
+		this.biomeSize = 2;
 
 		this.setBiomesForGenerationFromInfo(this.biomeInfoList);
 	}
 
 	public String toString() {
-		String out = "";
+		String out = "Version:";
+		out += this.compatMode.toString() + ";";
 
+		out += "Biomes:";
 		for (BTABiomeInfo b : this.biomeInfoList) {
-			out += b.toString() + " ";
+			out += b.toString() + ",";
 		}
-
-		out += "; ";
-		out += compatMode + "; ";
-		out += oceanSize + "; ";
-		out += generatePerlinBeaches;
+		out += ";";
+		
+		out += "OceanSize:" + oceanSize + ";";
+		out += "Shorelines:" + generatePerlinBeaches + ";";
+		out += "BiomeSize:" + biomeSize + ";";
+		out += "Climates:" + climatized;
 
 		return out;
 	}
@@ -176,5 +240,22 @@ public class BTAWorldConfigurationInfo {
 	public BTAWorldConfigurationInfo setGeneratePerlinBeaches(boolean generateBeaches) {
 		this.generatePerlinBeaches = generateBeaches;
 		return this;
+	}
+
+	public boolean isClimatized() {
+		return climatized;
+	}
+
+	public BTAWorldConfigurationInfo setClimatized(boolean climatized) {
+		this.climatized = climatized;
+		return this;
+	}
+
+	public int getBiomeSize() {
+		return biomeSize;
+	}
+
+	public void setBiomeSize(int biomeSize) {
+		this.biomeSize = biomeSize;
 	}
 }

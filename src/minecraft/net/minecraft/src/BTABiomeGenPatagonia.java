@@ -1,11 +1,11 @@
 package net.minecraft.src;
 
 public class BTABiomeGenPatagonia extends BTABiomeGenBase {
-	protected BTABiomeGenPatagonia(int id) {
-		super(id);
-		this.btaiomeDecorator.grassPerChunk = 30;
-		this.btaiomeDecorator.sandPerChunk = 0;
-		this.btaiomeDecorator.sandPerChunk2 = 0;
+	protected BTABiomeGenPatagonia(int id, BTAEnumClimate climate) {
+		super(id, climate);
+		this.btaBiomeDecorator.grassPerChunk = 30;
+		this.btaBiomeDecorator.sandPerChunk = 0;
+		this.btaBiomeDecorator.sandPerChunk2 = 0;
 	}
 
     /**

@@ -2,10 +2,13 @@ package net.minecraft.src;
 
 public class BTAGenLayerHills extends GenLayer
 {
-    public BTAGenLayerHills(long par1, GenLayer par3GenLayer)
+	private BTAWorldConfigurationInfo generatorInfo;
+	
+    public BTAGenLayerHills(long par1, GenLayer par3GenLayer, BTAWorldConfigurationInfo generatorInfo)
     {
         super(par1);
         this.parent = par3GenLayer;
+        this.generatorInfo = generatorInfo;
     }
 
     /**
@@ -26,7 +29,7 @@ public class BTAGenLayerHills extends GenLayer
 
                 if (this.nextInt(3) == 0)
                 {
-                    int hillsBiome = BTABiomeConfiguration.getHillsVariantForBiomes(baseBiome);
+                    int hillsBiome = BTABiomeConfiguration.getHillsVariantForBiomes(baseBiome, generatorInfo);
 
                     if (hillsBiome == baseBiome)
                     {
