@@ -12,11 +12,11 @@ public class BTABiomeGenFrozenSpringPond extends BTABiomeGenBase {
     /**
      * Gets a WorldGen appropriate for this biome.
      */
-    public WorldGenerator getRandomWorldGenForTrees(Random rand)
+    public WorldGenerator getRandomWorldGenForTrees(Random rand, BTAWorldConfigurationInfo generatorOptions, WorldType worldType)
     {
     	WorldGenerator gen;
     	
-    	if (rand.nextInt(5) == 0 && BTADecoIntegration.isDecoInstalled()) {
+    	if (rand.nextInt(5) == 0 && BTADecoIntegration.isDecoInstalled() && worldType.isDeco()) {
     		gen = new BTAWorldGenCherryTree();
     	}
     	else {

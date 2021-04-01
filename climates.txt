@@ -9,7 +9,7 @@ Snowy:
 Cold:
 -Birch Forest
 -Alpine
--Confierous Forest
+-Coniferous Forest
 -Patagonia
 -Mountains
 -Boreal forest
