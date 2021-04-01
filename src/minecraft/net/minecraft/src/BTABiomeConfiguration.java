@@ -405,6 +405,9 @@ public class BTABiomeConfiguration {
 		witchHutBiomes.add(willowHills);
 		
 		//Edges
+		reedBiomes.add(jungleEdge);
+		reedBiomes.add(rainforestEdge);
+		
 		jungleTempleBiomes.add(jungleEdge);
 		jungleTempleBiomes.add(rainforestEdge);
 		
