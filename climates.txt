@@ -15,12 +15,12 @@ Cold:
 -Boreal forest
 -Shield
 -Brushland
+-Fungal Forest
 
 Temperate:
 -Woods
 -Steppe
 -Ancient forest
--Fungal Forest
 -Mystic Forest
 -Orchard
 -Heathland
@@ -29,6 +29,7 @@ Temperate:
 -Autumn forest
 -Mangal
 -Temperate Forest
+-Highlands
 
 Tropical:
 -Lush Desert

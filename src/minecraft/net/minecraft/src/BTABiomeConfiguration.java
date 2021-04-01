@@ -21,7 +21,7 @@ public class BTABiomeConfiguration {
     public static final BTABiomeGenBase jungle = new BTABiomeGenJungle(113, BTAEnumClimate.TROPICAL).setColor(5470985).setBiomeName("Better Jungle").func_76733_a(5470985).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.0F, 0.4F);
     public static final BTABiomeGenBase alpine = new BTABiomeGenAlpine(114, BTAEnumClimate.COLD).setColor(747097).setBiomeName("Alpine").func_76733_a(5159473).setTemperatureRainfall(0.2F, 0.8F).setMinMaxHeight(0.5F, 3.0F);
     public static final BTABiomeGenBase aspenGrove = new BTABiomeGenAspenGrove(115, BTAEnumClimate.COLD).setColor(747097).setBiomeName("Aspen Grove").func_76733_a(5159473).setTemperatureRainfall(0.2F, 0.8F).setMinMaxHeight(0.5F, 3.0F); //Spawns within Alpine
-    public static final BTABiomeGenBase fungalForest = new BTABiomeGenFungalForest(116, BTAEnumClimate.TEMPERATE).setColor(522674).setBiomeName("Fungal Forest").func_76733_a(9154376).setMinMaxHeight(-0.1F, 1.2F).setTemperatureRainfall(0.4F, 1.0F);
+    public static final BTABiomeGenBase fungalForest = new BTABiomeGenFungalForest(116, BTAEnumClimate.COLD).setColor(522674).setBiomeName("Fungal Forest").func_76733_a(9154376).setMinMaxHeight(-0.1F, 1.2F).setTemperatureRainfall(0.4F, 1.0F);
 	public static final BTABiomeGenBase coniferousForest = new BTABiomeGenConiferousForest(117, BTAEnumClimate.COLD).setColor(747097).setBiomeName("Coniferous Forest").func_76733_a(5159473).setTemperatureRainfall(0.5F, 0.4F).setMinMaxHeight(0.3F, 1.2F);
 	public static final BTABiomeGenBase coniferousForestClearing = new BTABiomeGenConiferousForestClearing(118, BTAEnumClimate.COLD).setColor(747097).setBiomeName("Coniferous Forest Clearing").func_76733_a(5159473).setTemperatureRainfall(0.5F, 0.4F).setMinMaxHeight(0.3F, 1.2F); // Spawns within coniferous forest
 	public static final BTABiomeGenBase coniferousForestSnow = new BTABiomeGenConiferousForest(119, BTAEnumClimate.SNOWY).setColor(747097).setBiomeName("Snowy Coniferous Forest").func_76733_a(5159473).setEnableSnow().setTemperatureRainfall(0.1F, 0.4F).setMinMaxHeight(0.3F, 1.2F);
@@ -61,7 +61,7 @@ public class BTABiomeConfiguration {
 	public static final BTABiomeGenBase chaparralHills = new BTABiomeGenChaparral(155, BTAEnumClimate.ARID).setColor(9286496).setBiomeName("Chaparral Hills").setTemperatureRainfall(0.8F, 0.4F).setMinMaxHeight(0.3F, 1.0F);
 	public static final BTABiomeGenBase ancientForestHills = new BTABiomeGenAncientForest(156, BTAEnumClimate.TEMPERATE).setColor(353825).setBiomeName("Ancient Forest Hills").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.3F, 1.0F);
     public static final BTABiomeGenBase jungleHills = new BTABiomeGenJungle(157, BTAEnumClimate.TROPICAL).setColor(2900485).setBiomeName("Jungle Hills").func_76733_a(5470985).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(1.8F, 0.5F);
-    public static final BTABiomeGenBase fungalForestFlat = new BTABiomeGenFungalForest(158, BTAEnumClimate.TEMPERATE).setColor(522674).setBiomeName("Fungal Forest Lowlands").func_76733_a(9154376).setMinMaxHeight(-0.1F, 0.5F).setTemperatureRainfall(0.4F, 1.0F);
+    public static final BTABiomeGenBase fungalForestFlat = new BTABiomeGenFungalForest(158, BTAEnumClimate.COLD).setColor(522674).setBiomeName("Fungal Forest Lowlands").func_76733_a(9154376).setMinMaxHeight(-0.1F, 0.5F).setTemperatureRainfall(0.4F, 1.0F);
     public static final BTABiomeGenBase wetlandsHills = new BTABiomeGenWetlands(159, BTAEnumClimate.TROPICAL).setColor(522674).setBiomeName("Wetlands Hills").func_76733_a(9154376).setMinMaxHeight(-0.2F, 0.6F).setTemperatureRainfall(0.8F, 0.9F);
 	public static final BTABiomeGenBase cherryForestHills = new BTABiomeGenCherryForest(160, BTAEnumClimate.TEMPERATE).setColor(353825).setBiomeName("Cherry Forest Hills").func_76733_a(5159473).setTemperatureRainfall(0.7F, 0.8F).setMinMaxHeight(0.3F, 1.0F);
 	public static final BTABiomeGenBase autumnForestHills = new BTABiomeGenAutumnForest(161, BTAEnumClimate.TEMPERATE).setColor(353825).setBiomeName("Autumn Forest Hills").func_76733_a(5159473).setTemperatureRainfall(0.9F, 0.2F).setMinMaxHeight(0.3F, 1.0F);
@@ -336,6 +336,7 @@ public class BTABiomeConfiguration {
 		reedBiomes.add(patagonia);
 		reedBiomes.add(plains);
 		reedBiomes.add(mangroveForest);
+		reedBiomes.add(temperateForest);
 		
 		villageBiomes.add(savanna);
 		villageBiomes.add(desert);
