@@ -5,10 +5,10 @@ class BTAGuiBiomeOptionList extends GuiSlot
     final BTAGuiBiomeOptions guiBiomeOptions;
     public int selected;
 
-    public BTAGuiBiomeOptionList(BTAGuiBiomeOptions guiGeneratorOptions)
+    public BTAGuiBiomeOptionList(BTAGuiBiomeOptions guiBiomeOptions)
     {
-        super(guiGeneratorOptions.mc, guiGeneratorOptions.width, guiGeneratorOptions.height, 43, guiGeneratorOptions.height - 60, 24);
-        this.guiBiomeOptions = guiGeneratorOptions;
+        super(guiBiomeOptions.mc, guiBiomeOptions.width, guiBiomeOptions.height, 43, guiBiomeOptions.height - 60, 24);
+        this.guiBiomeOptions = guiBiomeOptions;
         this.selected = -1;
     }
 
@@ -26,6 +26,18 @@ class BTAGuiBiomeOptionList extends GuiSlot
     protected void elementClicked(int var1, boolean var2)
     {
         this.selected = var1;
+        
+        if (var2) {
+        	BTABiomeInfo selectedBiome = this.guiBiomeOptions.guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().get(this.guiBiomeOptions.guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().size() - this.selected - 1);
+
+			if (selectedBiome.getEnabled()) {
+				selectedBiome.setEnabled(false);
+			}
+			else {
+				selectedBiome.setEnabled(true);
+			}
+        }
+        
         this.guiBiomeOptions.setButtons();
     }
 

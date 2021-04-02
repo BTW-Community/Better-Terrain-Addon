@@ -52,14 +52,13 @@ public class BTAGuiBiomeOptions extends GuiScreen
 	 * Fired when a control is clicked. This is the equivalent of ActionListener.actionPerformed(ActionEvent e).
 	 */
 	protected void actionPerformed(GuiButton button) {
-		int var2 = guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().size() - this.guiBiomeOptionList.selected - 1;
 		BTABiomeInfo selectedBiome;
 
 		if (button.id == id_done) {
 			this.mc.displayGuiScreen(this.guiGeneratorOptions);
 		}
 		else if (button.id == id_enable) {
-			selectedBiome = (BTABiomeInfo)guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().get(guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().size() - this.guiBiomeOptionList.selected - 1);
+			selectedBiome = guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().get(guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().size() - this.guiBiomeOptionList.selected - 1);
 
 			if (selectedBiome.getEnabled()) {
 				selectedBiome.setEnabled(false);
@@ -71,7 +70,7 @@ public class BTAGuiBiomeOptions extends GuiScreen
 		else if (button.id == id_enableAll) {
 			if (!this.all) {
 				for (int i = 0; i < guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().size(); ++i) {
-					selectedBiome = (BTABiomeInfo)guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().get(i);
+					selectedBiome = guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().get(i);
 					selectedBiome.setEnabled(false);
 				}
 
@@ -79,7 +78,7 @@ public class BTAGuiBiomeOptions extends GuiScreen
 			}
 			else {
 				for (int i = 0; i < guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().size(); ++i) {
-					selectedBiome = (BTABiomeInfo)guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().get(i);
+					selectedBiome = guiGeneratorOptions.worldGeneratorInfo.getBiomeInfoList().get(i);
 					selectedBiome.setEnabled(true);
 				}
 

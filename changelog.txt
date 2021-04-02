@@ -1,3 +1,12 @@
+Version 1.3.3
+[list]
+[*]Added new red sandstone desert pyramids which can spawn in outback and badlands.
+[*]Added the ability to double click biomes in the biome configuration menu to toggle whether they are enabled.
+[*]Changed world configuration to have deco generation enabled by default if deco is also installed. Deco generation may still be disabled if you wish.
+[*]Changed world configuration so that enabling deco automatically enables all deco exclusive biomes. Previously it was possible to enable deco but then not get deco biomes becaause you had to specifically re-enable them.
+[*]Fixed an issue where frozen springs, plains, temperate forest, and patagonia were not properly generating reeds.
+[/list]
+
 Version 1.3.2
 [list]
 [*]Added edge variants to rainforest and jungle in new worlds which have slightly less dense vegetation, and which will not spawn melons. This helps provide a transition into the heavy vegetation of these biomes, and makes easy melons harder to obtain by preventing them from spawning at the very edge of these jungle variants.

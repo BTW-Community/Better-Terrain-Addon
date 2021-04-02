@@ -140,6 +140,7 @@ public class BTABiomeConfiguration {
 	private static ArrayList<BiomeGenBase> villageBiomes = new ArrayList();
 	private static ArrayList<BiomeGenBase> jungleTempleBiomes = new ArrayList();
 	private static ArrayList<BiomeGenBase> desertTempleBiomes = new ArrayList();
+	private static ArrayList<BiomeGenBase> redDesertTempleBiomes = new ArrayList();
 	private static ArrayList<BiomeGenBase> witchHutBiomes = new ArrayList();
 	
 	public static void init() {
@@ -378,6 +379,9 @@ public class BTABiomeConfiguration {
 		desertTempleBiomes.add(dunes);
 		desertTempleBiomes.add(steppe);
 		
+		redDesertTempleBiomes.add(outback);
+		redDesertTempleBiomes.add(badlands);
+		
 		witchHutBiomes.add(wetlands);
 		witchHutBiomes.add(fungalForest);
 		witchHutBiomes.add(mysticForest);
@@ -421,6 +425,8 @@ public class BTABiomeConfiguration {
 		
 		jungleTempleBiomes.add(jungleEdge);
 		jungleTempleBiomes.add(rainforestEdge);
+
+		redDesertTempleBiomes.add(badlandsEdge);
 		
 		//Rivers
 		reedBiomes.add(riverRainforest);
@@ -763,6 +769,10 @@ public class BTABiomeConfiguration {
 	
 	public static boolean canBiomeSpawnDesertTemple(BiomeGenBase biome) {
 		return desertTempleBiomes.contains(biome);
+	}
+	
+	public static boolean canBiomeSpawnRedDesertTemple(BiomeGenBase biome) {
+		return redDesertTempleBiomes.contains(biome);
 	}
 	
 	public static boolean canBiomeSpawnWitchHut(BiomeGenBase biome) {

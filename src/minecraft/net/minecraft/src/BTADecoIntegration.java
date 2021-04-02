@@ -6,6 +6,7 @@ public class BTADecoIntegration {
 
 	public static Block redSand;
 	public static Block redSandStone;
+	public static Block redSandStoneStairs;
 	public static Block terracotta;
 	public static Block stainedTerracotta;
 	public static Block cherryLog;
@@ -65,6 +66,7 @@ public class BTADecoIntegration {
 				
 				redSand = (Block) getDecoField("redSand");
 				redSandStone = (Block) getDecoField("redSandStone");
+				redSandStoneStairs = (Block) getDecoField("redSandStoneStairs");
 				terracotta = (Block) getDecoField("terracotta");
 				stainedTerracotta = (Block) getDecoField("stainedTerracotta");
 				cherryLog = (Block) getDecoField("cherryLog");

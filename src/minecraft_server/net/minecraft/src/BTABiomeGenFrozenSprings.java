@@ -5,6 +5,7 @@ import java.util.Random;
 public class BTABiomeGenFrozenSprings extends BTABiomeGenBase {
 	public BTABiomeGenFrozenSprings(int id, BTAEnumClimate climate) {
 		super(id, climate);
+		this.btaBiomeDecorator.reedsPerChunk = 10;
 		this.btaBiomeDecorator.treesPerChunk = 2;
 		this.btaBiomeDecorator.grassPerChunk = 5;
 	}
