@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-public class BTABiomeGenRiverDesert extends BTABiomeGenBase {
+public class BTABiomeGenRiverDesert extends BTABiomeGenRiver {
 	public BTABiomeGenRiverDesert(int par1)
     {
         super(par1, BTABiomeConfiguration.desert.climate);

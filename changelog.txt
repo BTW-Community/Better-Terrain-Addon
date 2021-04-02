@@ -1,6 +1,20 @@
+Version 1.3.2
+[list]
+[*]Added edge variants to rainforest and jungle in new worlds which have slightly less dense vegetation, and which will not spawn melons. This helps provide a transition into the heavy vegetation of these biomes, and makes easy melons harder to obtain by preventing them from spawning at the very edge of these jungle variants.
+[*]Added an edge variant to tropics in new worlds, causing it to be much more likely to spawn as islands instead of connecting to neighboring biomes. When tropics does connect via land, it is likely to do so through sandy beaches.
+[*]Added a BTA version of the vanilla beach, for the same reason as I previously did the same for rivers. This again will not affect anything in your world, but simply allows me to do more with beaches down the line if I wish.
+[*]Added frozen beaches. Snowy woods, frozen springs, siberia, and tundra will now spawn frozen beaches when connecting with oceans. This only affects new worlds.
+[*]Changed how reeds generate in frozen springs slightly to make them a bit more common.
+[*]Changed (increased) the thickness of the border created by all edge variants. This only affects new worlds.
+[*]Changed (increased) the chance of melons spawning in jungle, rainforest, and mangal to offset the large amount of vegetation present (or water in the case of mangal) which could prevent them from spawning.
+[*]Changed (decreased) the chance of melons spawning in tropics given that it is easier to traverse than other jungle variants and has less vegetation.
+[*]Fixed an issue where the game would crash when trying to smooth between climates when no biomes of the transition climate were enabled. The game will now not attempt to smooth climates if no biomes are available for smoothing.
+[*]Fixed an issue where particularly wide rivers could generate with a standard river along the center even if the rest of the river was a different variant. This was most notable as a change in water color but could also show up as missing ice, mismatching riverbed material, or having a random spot of rain in the middle of the river in desert variants.
+[/list]
+
 Version 1.3.1
 [list]
-[*]Fixed an issue causing the game to generate highlands instead of mountains. Any highlands generated in the previous release will be converted to mountains. Worlds created before 1.3.0 will revert to exactly how they were before that 1.3.0. This may cause slight biome color seams in 1.3.0 worlds but given that the two biomes have exactly the same terrain generation will not cause any terrain seams. MCEdit may be used to replace biome id 125 with 145 to make the biomes colors match what they should, or MCEdit can be used to delete any of those chunks and the game will generate them correctly the next time you are in the area.
+[*]Fixed an issue causing the game to generate highlands instead of mountains. Any highlands generated in the previous release will be converted to mountains. Worlds created before 1.3.0 will revert to exactly how they were before 1.3.0. This may cause slight biome color seams in 1.3.0 worlds but given that the two biomes have exactly the same terrain generation will not cause any terrain seams. MCEdit may be used to replace biome id 125 with 145 to make the biomes colors match what they should, or MCEdit can be used to delete any of those chunks and the game will generate them correctly the next time you are in the area.
 [*]Fixed an issue where frozen springs would still generate cherry trees if deco was installed but deco world generation was disabled.
 [/list]
 

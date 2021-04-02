@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-public class BTABiomeGenRiverRainforest extends BTABiomeGenBase {
+public class BTABiomeGenRiverRainforest extends BTABiomeGenRiver {
 	protected BTABiomeGenRiverRainforest(int id) {
 		super(id, BTABiomeConfiguration.rainforest.climate);
 		this.waterColorMultiplier = BTABiomeConfiguration.rainforest.waterColorMultiplier;

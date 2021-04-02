@@ -61,7 +61,8 @@ public class BTASurfaceBuilderLegacy extends BTASurfaceBuilder {
 									fillerBlock = (byte)Block.stone.blockID;
 								}
 								else if (j >= seaLevel - (8 + rand.nextInt(2)) && j <= seaLevel + 1) {
-									if(biome.biomeID == BTABiomeConfiguration.oldValley.biomeID || biome.biomeID == BTABiomeConfiguration.valleyMountains.biomeID || biome.biomeID == BTABiomeConfiguration.valley.biomeID || (biome.biomeID == BTABiomeConfiguration.tropics.biomeID && generatorInfo.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_2_0))) {
+									if(biome.biomeID == BTABiomeConfiguration.oldValley.biomeID || biome.biomeID == BTABiomeConfiguration.valleyMountains.biomeID || biome.biomeID == BTABiomeConfiguration.valley.biomeID || 
+											((biome.biomeID == BTABiomeConfiguration.tropics.biomeID || biome.biomeID == BTABiomeConfiguration.tropicsEdge.biomeID || biome.biomeID == BTABiomeConfiguration.riverTropics.biomeID) && generatorInfo.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_2_0))) {
 										topBlock = (byte)Block.sand.blockID;
 										fillerBlock = (byte)Block.sand.blockID;
 									}

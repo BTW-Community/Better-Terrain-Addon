@@ -40,7 +40,7 @@ public class BTAGenLayerClimateSmooth extends BTAGenLayer {
             	int neighborInt3 = parentArray[k + 1 + (i + 0) * parentSizeX];
             	int neighborInt4 = parentArray[k + 2 + (i + 1) * parentSizeX];
             	
-            	if (climateID == BTAEnumClimate.SNOWY.id) {
+            	if (climateID == BTAEnumClimate.SNOWY.id && biomeCategoryMapCached.get(BTAEnumClimate.COLD).size() > 0) {
             		if (neighborInt1 == BTAEnumClimate.TROPICAL.id || neighborInt1 == BTAEnumClimate.ARID.id || neighborInt1 == BTAEnumClimate.TEMPERATE.id)
             			climateID = BTAEnumClimate.COLD.id;
             		if (neighborInt2 == BTAEnumClimate.TROPICAL.id || neighborInt2 == BTAEnumClimate.ARID.id || neighborInt2 == BTAEnumClimate.TEMPERATE.id)

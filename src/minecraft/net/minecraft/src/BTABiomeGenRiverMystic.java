@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 import java.util.Random;
 
-public class BTABiomeGenRiverMystic extends BTABiomeGenBase {
+public class BTABiomeGenRiverMystic extends BTABiomeGenRiver {
 	public BTABiomeGenRiverMystic(int par1) {
 		super(par1, BTABiomeConfiguration.mysticForest.climate);
 		this.waterColorMultiplier = BTABiomeConfiguration.mysticForest.waterColorMultiplier;
