@@ -6,6 +6,7 @@ public class BTABiomeGenTemperateForest extends BTABiomeGenBase {
 	public BTABiomeGenTemperateForest(int id, BTAEnumClimate climate) {
 		super(id, climate);
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 5, 4, 4));
+		this.btaBiomeDecorator.reedsPerChunk = 10;
         this.btaBiomeDecorator.treesPerChunk = 30;
         this.btaBiomeDecorator.grassPerChunk = 5;
 	}

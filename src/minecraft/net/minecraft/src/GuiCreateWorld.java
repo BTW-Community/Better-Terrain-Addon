@@ -115,6 +115,9 @@ public class GuiCreateWorld extends GuiScreen
         this.buttonCustomize.drawButton = false;
         this.buttonList.add(this.buttonCustomizeBTA = new GuiButton(10, this.width / 2 + 5, 120, 150, 20, var1.translateKey("selectWorld.customizeType")));
         this.buttonCustomizeBTA.drawButton = false;
+        
+        this.isDeco = BTADecoIntegration.isDecoInstalled();
+        
         this.textboxWorldName = new GuiTextField(this.fontRenderer, this.width / 2 - 100, 60, 200, 20);
         this.textboxWorldName.setFocused(true);
         this.textboxWorldName.setText(this.localizedNewWorldText);

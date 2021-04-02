@@ -78,6 +78,13 @@ public class BTAGuiGeneratorOptions extends GuiScreen implements BTAISliderSetti
 		}
 		else if (button.id == id_deco) {
 			this.guiCreateWorld.setDeco(!this.isDeco());
+			
+			for (BTABiomeInfo b : this.worldGeneratorInfo.getBiomeInfoList()) {
+				if (b.isDecoOnly()) {
+					b.setEnabled(true);
+				}
+			}
+			
 			this.updateButtons();
 		}
 		else if (button.id == id_perlinBeaches) {

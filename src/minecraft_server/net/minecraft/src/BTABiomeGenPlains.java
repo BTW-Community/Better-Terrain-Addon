@@ -5,6 +5,7 @@ import java.util.Random;
 public class BTABiomeGenPlains extends BTABiomeGenBase {
 	protected BTABiomeGenPlains(int id, BTAEnumClimate climate) {
 		super(id, climate);
+		this.btaBiomeDecorator.reedsPerChunk = 10;
 		this.btaBiomeDecorator.fractionalTreeChance = 5;
 		this.btaBiomeDecorator.grassPerChunk = 30;
 		this.btaBiomeDecorator.flowersPerChunk = 20;
