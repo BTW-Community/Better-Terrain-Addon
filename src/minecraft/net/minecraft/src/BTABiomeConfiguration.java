@@ -105,9 +105,12 @@ public class BTABiomeConfiguration {
 	public static final BTABiomeGenBase highlandsEdge = new BTABiomeGenHighlands(234, BTAEnumClimate.TEMPERATE).setColor(14090235).setBiomeName("Highlands Edge").setTemperatureRainfall(0.7F, 0.5F).setMinMaxHeight(0.8F, 2.5F);
     public static final BTABiomeGenBase jungleEdge = new BTABiomeGenJungleEdge(235, BTAEnumClimate.TROPICAL).setColor(5470985).setBiomeName("Better Jungle Edge").func_76733_a(5470985).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.0F, 0.4F);
 	public static final BTABiomeGenBase rainforestEdge = new BTABiomeGenRainforestEdge(236, BTAEnumClimate.TROPICAL).setColor(9286496).setBiomeName("Rainforest Edge").setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.3F, 1.5F);
+	public static final BTABiomeGenBase tropicsEdge = new BTABiomeGenTropics(237, BTAEnumClimate.TROPICAL).setColor(16711935).setBiomeName("Tropics Edge").setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(-0.3F, 0.1F);
 	
 	//Beach variants
     public static final BTABiomeGenBase beachOutback = new BTABiomeGenBeachOutback(240, BTAEnumClimate.ARID).setColor(16440917).setBiomeName("Red Sand Beach").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.0F, 0.1F);
+    public static final BTABiomeGenBase beach = new BTABiomeGenBeach(241, BTAEnumClimate.TEMPERATE).setColor(16440917).setBiomeName("Better Beach").setTemperatureRainfall(0.8F, 0.4F).setMinMaxHeight(0.0F, 0.1F);
+    public static final BTABiomeGenBase beachFrozen = new BTABiomeGenBeach(241, BTAEnumClimate.SNOWY).setColor(16440917).setBiomeName("Frozen Beach").setTemperatureRainfall(0.0F, 0.4F).setMinMaxHeight(0.0F, 0.1F);
 	
     //Various biome lists
 	public static ArrayList<BTABiomeGenBase> biomeList = new ArrayList();
@@ -125,6 +128,7 @@ public class BTABiomeConfiguration {
 	public static Map<Integer, BTABiomeInfo> biomeInfoMap = new HashMap();
 
 	private static ArrayList<BiomeGenBase> beachlessBiomes = new ArrayList();
+	private static ArrayList<BiomeGenBase> beachlessBiomes132 = new ArrayList();
 	
 	private static ArrayList<BiomeGenBase> edgeBiomes = new ArrayList();
 	private static ArrayList<BiomeGenBase> noEdgeBiomes = new ArrayList();
@@ -311,6 +315,12 @@ public class BTABiomeConfiguration {
 		beachlessBiomes.add(frozenSprings);
 		beachlessBiomes.add(mangroveForest);
 		beachlessBiomes.add(mangroveForestIsland);
+		
+		beachlessBiomes132.addAll(beachlessBiomes);
+		beachlessBiomes132.remove(snowyWoods);
+		beachlessBiomes132.remove(tundra);
+		beachlessBiomes132.remove(siberia);
+		beachlessBiomes132.remove(frozenSprings);
 	}
 	
 	public static void filterPerlinBeachBiomes() {
@@ -340,6 +350,7 @@ public class BTABiomeConfiguration {
 		reedBiomes.add(plains);
 		reedBiomes.add(mangroveForest);
 		reedBiomes.add(temperateForest);
+		reedBiomes.add(frozenSprings);
 		
 		villageBiomes.add(savanna);
 		villageBiomes.add(desert);
@@ -540,7 +551,7 @@ public class BTABiomeConfiguration {
 		else if (baseBiome == badlands.biomeID || baseBiome == badlandsPlateau.biomeID || baseBiome == badlandsEdge.biomeID) {
 			riverBiome = riverBadlands.biomeID;
 		}
-		else if (baseBiome == tropics.biomeID) {
+		else if (baseBiome == tropics.biomeID || baseBiome == tropicsEdge.biomeID) {
 			riverBiome = riverTropics.biomeID;
 		}
 		else if (baseBiome == orchard.biomeID) {
@@ -568,11 +579,17 @@ public class BTABiomeConfiguration {
 		return riverBiome;
 	}
 	
-	public static int getBeachVariantForBiomes(int baseBiome) {
+	public static int getBeachVariantForBiomes(int baseBiome, BTAWorldConfigurationInfo generatorInfo) {
 		int beachBiome = -1;
 		
 		if (baseBiome == outback.biomeID || baseBiome == badlands.biomeID) {
 			beachBiome = beachOutback.biomeID;
+		}
+		else if ((baseBiome == snowyWoods.biomeID || baseBiome == tundra.biomeID || baseBiome == siberia.biomeID || baseBiome == frozenSprings.biomeID) && generatorInfo.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_3_2)) {
+			beachBiome = beachFrozen.biomeID;
+		}
+		else if (shouldBiomeSpawnBeach(baseBiome, generatorInfo)) {
+			beachBiome = beach.biomeID;
 		}
 		
 		return beachBiome;
@@ -607,6 +624,9 @@ public class BTABiomeConfiguration {
 		}
 		else if (baseBiome == rainforest.biomeID && generatorInfo.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_3_2)) {
 			edgeBiome = rainforestEdge.biomeID;
+		}
+		else if (baseBiome == tropics.biomeID && generatorInfo.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_3_2)) {
+			edgeBiome = tropicsEdge.biomeID;
 		}
 		
 		return edgeBiome;
@@ -666,8 +686,6 @@ public class BTABiomeConfiguration {
 		edgeBiomes.add(badlands);
 		edgeBiomes.add(icyPeaks);
 		edgeBiomes.add(highlands);
-		edgeBiomes.add(jungle);
-		edgeBiomes.add(rainforest);
 	}
 	
 	public static void filterEdgeBiomes() {
@@ -701,9 +719,13 @@ public class BTABiomeConfiguration {
 				biome4 != badlandsPlateau.biomeID);
 	}
 	
-	public static boolean shouldBiomeSpawnBeach(int biomeID) {
-		BiomeGenBase biome = BiomeGenBase.biomeList[biomeID];
-		return !beachlessBiomes.contains(biome);
+	public static boolean shouldBiomeSpawnBeach(int biome, BTAWorldConfigurationInfo generatorInfo) {
+		if (generatorInfo.getCompatMode().isVersionAtOrBelow(BTAEnumVersionCompat.V1_3_1)) {
+			return !beachlessBiomes.contains(BiomeGenBase.biomeList[biome]);
+		}
+		else {
+			return !beachlessBiomes132.contains(BiomeGenBase.biomeList[biome]);
+		}
 	}
 	
 	public static boolean shouldBiomeSpawnPerlinBeach(int biomeID) {
