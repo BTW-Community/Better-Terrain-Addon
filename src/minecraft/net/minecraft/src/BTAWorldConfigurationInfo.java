@@ -81,7 +81,7 @@ public class BTAWorldConfigurationInfo {
 		}
 		else {
 			//Ignores whitespace
-			infoString = infoString.replace("\\s", "");
+			infoString = infoString.replace(" ", "");
 			
 			String[] infoSplit = infoString.split(";");
 			
