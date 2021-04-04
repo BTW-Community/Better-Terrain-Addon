@@ -44,7 +44,7 @@ public class AddonExtHandler {
 		}
 
 		if (!ackCheckFails.isEmpty()) {
-			String message = "";
+			String message = "WARNING: Client missing the following addons, or very high latency connection: ";
 			
 			for (int i = 0; i < ackCheckFails.size(); i++) {
 				if (i > 0)
@@ -52,7 +52,7 @@ public class AddonExtHandler {
 				message += ackCheckFails.get(i);
 			}
 			
-			FCUtilsWorld.SendPacketToPlayer(netServerHandler, new Packet3Chat("WARNING: Client missing the following addons, or very high latency connection: " + message));
+			FCUtilsWorld.SendPacketToPlayer(netServerHandler, new Packet3Chat(message));
 		}
 	}
 }
