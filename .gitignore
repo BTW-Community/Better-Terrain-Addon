@@ -1,4 +1,7 @@
-src deco/
+reobf/
+
+src/minecraft/net/minecraft/src/Addon*
+src/minecraft_server/net/minecraft/src/Addon*
 
 src/minecraft/net/minecraft/server/
 src/minecraft/net/minecraft/src/BlockPane.java

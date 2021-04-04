@@ -1,5 +1,6 @@
 package net.minecraft.src;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
@@ -1210,13 +1211,53 @@ public abstract class World implements IBlockAccess
     /**
      * Called to place all entities as part of a world
      */
-    public boolean spawnEntityInWorld(Entity par1Entity)
-    {
-        int var2 = MathHelper.floor_double(par1Entity.posX / 16.0D);
-        int var3 = MathHelper.floor_double(par1Entity.posZ / 16.0D);
-        boolean var4 = par1Entity.field_98038_p;
+    //ADDON EXTENDED MODIFIED
+    public boolean spawnEntityInWorld(Entity entity) {
+    	return this.spawnEntityInWorld(entity, false);
+    }
+    
+    //ADDON EXTENDED
+    private boolean spawnEntityInWorld(Entity entity, boolean hasItemBeenReplaced) {
+    	if (entity instanceof EntityItem && !hasItemBeenReplaced) {
+    		EntityItem oldEntity = (EntityItem) entity;
+    		Item item = oldEntity.getEntityItem().getItem();
+    		
+    		if (item.hasCustomItemEntity()) {
+				EntityItem newEntity = item.createItemAsEntityInWorld(this, entity.posX, entity.posY, entity.posZ, oldEntity.getEntityItem());
+				
+    			if (newEntity == null) {
+    				Class entityItem = item.getCustomItemEntity();
+    				
+    				try {
+						newEntity = (EntityItem) entityItem.getConstructor(World.class, double.class, double.class, double.class).newInstance(this, entity.posX, entity.posY, entity.posZ);
+					} catch (InstantiationException e) {
+						e.printStackTrace();
+					} catch (IllegalAccessException e) {
+						e.printStackTrace();
+					} catch (IllegalArgumentException e) {
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						e.printStackTrace();
+					} catch (NoSuchMethodException e) {
+						e.printStackTrace();
+					} catch (SecurityException e) {
+						e.printStackTrace();
+					}
+    			}
+    			
+    			newEntity.motionX = oldEntity.motionX;
+    			newEntity.motionY = oldEntity.motionY;
+    			newEntity.motionZ = oldEntity.motionZ;
+    			
+    			this.spawnEntityInWorld(newEntity, true);
+    		}
+    	}
+    	
+        int var2 = MathHelper.floor_double(entity.posX / 16.0D);
+        int var3 = MathHelper.floor_double(entity.posZ / 16.0D);
+        boolean var4 = entity.field_98038_p;
 
-        if (par1Entity instanceof EntityPlayer)
+        if (entity instanceof EntityPlayer)
         {
             var4 = true;
         }
@@ -1227,19 +1268,20 @@ public abstract class World implements IBlockAccess
         }
         else
         {
-            if (par1Entity instanceof EntityPlayer)
+            if (entity instanceof EntityPlayer)
             {
-                EntityPlayer var5 = (EntityPlayer)par1Entity;
+                EntityPlayer var5 = (EntityPlayer)entity;
                 this.playerEntities.add(var5);
                 this.updateAllPlayersSleepingFlag();
             }
 
-            this.getChunkFromChunkCoords(var2, var3).addEntity(par1Entity);
-            this.loadedEntityList.add(par1Entity);
-            this.obtainEntitySkin(par1Entity);
+            this.getChunkFromChunkCoords(var2, var3).addEntity(entity);
+            this.loadedEntityList.add(entity);
+            this.obtainEntitySkin(entity);
             return true;
         }
     }
+    //ADDON EXTENDED
 
     /**
      * Start the skin for this entity downloading, if necessary, and increment its reference counter

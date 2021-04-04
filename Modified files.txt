@@ -1,16 +1,16 @@
 ##Client##
 BlockAnvil
+ComponentMineshaftRoom
+EntitySlime
+FCEntityGhast
 MapGenVillage
 StructureScatteredFeatureStart
 StructureVillageStart
-WorldProvider
-WorldType
-EntitySlime
 StructureComponent
-WorldProviderHell
-FCEntityGhast
-WorldProviderEnd
-ComponentMineshaftRoom
 World
+WorldProvider
+WorldProviderEnd
+WorldProviderHell
+WorldType
 
 GuiCreateWorld

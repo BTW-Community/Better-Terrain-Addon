@@ -8,7 +8,7 @@ import java.util.Random;
 public abstract class BiomeGenBase
 {
     /** An array of all the biomes, indexed by biome id. */
-    public static final BiomeGenBase[] biomeList = new BiomeGenBase[512];
+    public static final BiomeGenBase[] biomeList = new BiomeGenBase[256];
     public static final BiomeGenBase ocean = (new BiomeGenOcean(0)).setColor(112).setBiomeName("Ocean").setMinMaxHeight(-1.0F, 0.4F);
     public static final BiomeGenBase plains = (new BiomeGenPlains(1)).setColor(9286496).setBiomeName("Plains").setTemperatureRainfall(0.8F, 0.4F);
     public static final BiomeGenBase desert = (new FCBiomeGenDesert(2)).setColor(16421912).setBiomeName("Desert").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.1F, 0.2F);
