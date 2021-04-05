@@ -1,3 +1,16 @@
+Version 1.4.0
+[list]
+[*]Added a new surface builder system which allows me much finer control over how biomes are generated. This includes incorporation of K.JPG's OpenSimplex2 (more information in credits section of OP).
+[*]Changed how terracotta layers generate in badlands to be random based on the world seed instead of fixed. This only affects new worlds.
+[*]Fixed an issue where beaches were generating with grass. This may cause surface material seams but can easily be manually fixed.
+[*]Fixed an issue where frozen beaches were generating in places they shouldn't. Existing frozen beaches will revert to normal beaches.
+[/list]
+
+Version 1.3.4
+[list]
+[*]Updated to Extended Addon API 1.1.0.
+[/list]
+
 Version 1.3.3
 [list]
 [*]Added new red sandstone desert pyramids which can spawn in outback and badlands.

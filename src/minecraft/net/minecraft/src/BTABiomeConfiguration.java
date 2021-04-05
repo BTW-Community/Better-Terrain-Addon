@@ -110,7 +110,7 @@ public class BTABiomeConfiguration {
 	//Beach variants
     public static final BTABiomeGenBase beachOutback = new BTABiomeGenBeachOutback(240, BTAEnumClimate.ARID).setColor(16440917).setBiomeName("Red Sand Beach").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.0F, 0.1F);
     public static final BTABiomeGenBase beach = new BTABiomeGenBeach(241, BTAEnumClimate.TEMPERATE).setColor(16440917).setBiomeName("Better Beach").setTemperatureRainfall(0.8F, 0.4F).setMinMaxHeight(0.0F, 0.1F);
-    public static final BTABiomeGenBase beachFrozen = new BTABiomeGenBeach(241, BTAEnumClimate.SNOWY).setColor(16440917).setBiomeName("Frozen Beach").setTemperatureRainfall(0.0F, 0.4F).setMinMaxHeight(0.0F, 0.1F);
+    public static final BTABiomeGenBase beachFrozen = new BTABiomeGenBeach(242, BTAEnumClimate.SNOWY).setColor(16440917).setBiomeName("Frozen Beach").setTemperatureRainfall(0.0F, 0.4F).setMinMaxHeight(0.0F, 0.1F);
 	
     //Various biome lists
 	public static ArrayList<BTABiomeGenBase> biomeList = new ArrayList();
@@ -153,6 +153,7 @@ public class BTABiomeConfiguration {
 		addBiomesToList();
 		initClimateLists();
 		initBiomeInfoList();
+		initSurfaceBuilders();
 	}
 	
 	public static void addBiomesToList() {
@@ -260,6 +261,8 @@ public class BTABiomeConfiguration {
 		badlands.setSurfaceBuilder(new BTASurfaceBuilderBadlands());
 		riverBadlands.setSurfaceBuilder(new BTASurfaceBuilderBadlands());
 		badlandsPlateau.setSurfaceBuilder(new BTASurfaceBuilderBadlandsPlateau());
+		
+		desert.setSurfaceBuilder(new BTASurfaceBuilderOutback());
 	}
 	
 	public static void filterSpawnBiomes() {

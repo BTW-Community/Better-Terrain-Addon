@@ -8,8 +8,8 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 	private static int[] metaLocations;
 
 	@Override
-	public void init(Random rand) {
-		super.init(rand);
+	public void init(Random rand, long seed) {
+		super.init(rand, seed);
 		
 		//Init terracotta striping data - done statically in case multiple badlands variants use this surface builder
 		if (allowedTerracottaMetadata.size() == 0) {
@@ -22,16 +22,18 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 		}
 
 		if (metaLocations == null) {
-			metaLocations = new int[16];
+			metaLocations = new int[128];
 			
-			for (int i = 0; i < 16; i++) {
-				metaLocations[i] = i;
+			for (int i = 0; i < metaLocations.length; i++) {
+				int meta = rand.nextInt(16);
+				
+				if (allowedTerracottaMetadata.contains(meta)) {
+					metaLocations[i] = meta;
+				}
+				else {
+					metaLocations[i] = -1;
+				}
 			}
-			
-			//Randomizes the locations of the stripes based on the seed
-			for (int i = metaLocations.length; i > 1; i--) {
-	            swap(metaLocations, i - 1, rand.nextInt(i));
-	        }
 		}
 	}
 	
@@ -41,20 +43,13 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
         array[j] = temp;
     }
 
-	public void replaceBlocksForBiome(Random rand, int x, int z, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
+	public void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
 		byte seaLevel = 63;
-		double soilDepthNoiseScalar = 0.03125D;
-		this.sandNoise = this.sandNoiseGen.generateNoiseOctaves(this.sandNoise, x, z, 0.0D, 1, 1, 1, soilDepthNoiseScalar, soilDepthNoiseScalar, 1.0D);
-		this.gravelNoise = this.sandNoiseGen.generateNoiseOctaves(this.gravelNoise, x, 109.0134D, z, 1, 1, 1, soilDepthNoiseScalar, 1.0D, soilDepthNoiseScalar);
-		this.soilDepthNoise = this.soilDepthNoiseGen.generateNoiseOctaves(this.soilDepthNoise, x, z, 0, 1, 1, 1, soilDepthNoiseScalar * 2.0D, soilDepthNoiseScalar * 2.0D, soilDepthNoiseScalar * 2.0D);
-
-		int i = x & 15;
-		int k = z & 15;
 
 		float temperature = biome.getFloatTemperature();
-		boolean useSand = this.sandNoise[0] + rand.nextDouble() * 0.2D > 0.0D;
-		boolean useGravel = this.gravelNoise[0] + rand.nextDouble() * 0.2D > 3.0D;
-		int soilDepthNoiseSample = (int)(this.soilDepthNoise[0] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
+		boolean useSand = this.sandNoise[i + k * 16] + rand.nextDouble() * 0.2D > 0.0D;
+		boolean useGravel = this.gravelNoise[i + k * 16] + rand.nextDouble() * 0.2D > 3.0D;
+		int soilDepthNoiseSample = (int)(this.soilDepthNoise[i + k * 16] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
 		int remaingDepth = -1;
 		int topBlock;
 		int fillerBlock;
@@ -125,7 +120,7 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 							blockArray[index] = fillerBlock;
 						}
 						
-						if (blockArray[index] == BTADecoIntegration.terracotta.blockID && allowedTerracottaMetadata.contains(metaLocations[j & 15])) {
+						if (blockArray[index] == BTADecoIntegration.terracotta.blockID && metaLocations[j & 15] != -1) {
 							blockArray[index] = BTADecoIntegration.stainedTerracotta.blockID;
 							metaArray[index] = metaLocations[j & 15];
 						}

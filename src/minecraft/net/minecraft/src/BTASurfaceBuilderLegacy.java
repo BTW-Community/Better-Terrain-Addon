@@ -9,7 +9,7 @@ public class BTASurfaceBuilderLegacy extends BTASurfaceBuilder {
 	private BTABetaNoiseOctaves sandNoiseGenLegacy;
 	private NoiseGeneratorOctaves soilDepthNoiseGenLegacy;
 	
-	public void init(Random rand) {
+	public void init(Random rand, long seed) {
 		this.sandNoiseGenLegacy = new BTABetaNoiseOctaves(rand, 4);
 		this.soilDepthNoiseGenLegacy = new NoiseGeneratorOctaves(rand, 4);
 	}
@@ -147,5 +147,4 @@ public class BTASurfaceBuilderLegacy extends BTASurfaceBuilder {
 			}
 		}
 	}
-
 }

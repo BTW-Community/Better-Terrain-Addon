@@ -2,34 +2,42 @@ package net.minecraft.src;
 
 import java.util.Random;
 
+import net.minecraft.src.opensimplex2.OpenSimplex2F;
+
 public class BTASurfaceBuilderOutback extends BTASurfaceBuilder {
-	protected static double[] grassNoise = new double[1];
+	protected static double[] grassNoise = new double[256];
 	protected static BTABetaNoiseOctaves grassNoiseGen;
+	protected static OpenSimplex2F grassNoiseGenSimplex;
 	
 	@Override
-	public void init(Random rand) {
-		super.init(rand);
+	public void init(Random rand, long seed) {
+		super.init(rand, seed);
 		
 		if (grassNoiseGen == null)
-			this.grassNoiseGen = new BTABetaNoiseOctaves(rand, 4);
+			grassNoiseGen = new BTABetaNoiseOctaves(rand, 4);
+		
+		if (grassNoiseGenSimplex == null)
+			grassNoiseGenSimplex = new OpenSimplex2F(seed);
 	}
 	
-	public void replaceBlocksForBiome(Random rand, int x, int z, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
-		byte seaLevel = 63;
-		double soilDepthNoiseScalar = 0.03125D;
-		this.gravelNoise = this.sandNoiseGen.generateNoiseOctaves(this.gravelNoise, x, 109.0134D, z, 1, 1, 1, soilDepthNoiseScalar, 1.0D, soilDepthNoiseScalar);
-		this.soilDepthNoise = this.soilDepthNoiseGen.generateNoiseOctaves(this.soilDepthNoise, x, z, 0, 1, 1, 1, soilDepthNoiseScalar * 2.0D, soilDepthNoiseScalar * 2.0D, soilDepthNoiseScalar * 2.0D);
-		
-		double grassNoiseScalar = 0.5;
-		this.grassNoise = this.grassNoiseGen.generateNoiseOctaves(this.grassNoise, x, z, 0.0D, 1, 1, 1, grassNoiseScalar, grassNoiseScalar, 1.0D);
+	@Override
+	public void initForChunk(int chunkX, int chunkZ) {
+		super.initForChunk(chunkX, chunkZ);
 
-		int i = x & 15;
-		int k = z & 15;
+		double grassScalar = 0.625D;
+		this.grassNoise = this.grassNoiseGen.generateNoiseOctaves(this.grassNoise, (double)(chunkX * 16), (double)(chunkZ * 16), 0.0D, 16, 16, 1, grassScalar, grassScalar, 1.0D);
+	}
+	
+	public void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
+		byte seaLevel = 63;
 
 		float temperature = biome.getFloatTemperature();
-		boolean useGrass = this.sandNoise[0] + rand.nextDouble() * 0.2D > 0.0D;
-		boolean useGravel = this.gravelNoise[0] + rand.nextDouble() * 0.2D > 3.0D;
-		int soilDepthNoiseSample = (int)(this.soilDepthNoise[0] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
+		//boolean useGrass = this.grassNoise[i + k * 16] + 0.5D > 0;
+		double grassNoiseScale = 0.03125D;
+		boolean useGrass = grassNoiseGenSimplex.noise2((this.chunkX * 16 + k) * grassNoiseScale, (this.chunkZ * 16 + i) * grassNoiseScale) > 0;
+		
+		boolean useGravel = this.gravelNoise[i + k * 16] + rand.nextDouble() * 0.2D > 3.0D;
+		int soilDepthNoiseSample = (int)(this.soilDepthNoise[i + k * 16] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
 		int remaingDepth = -1;
 		int topBlock;
 		int fillerBlock;

@@ -81,6 +81,7 @@ public class BTAChunkProvider implements IChunkProvider
 	private Random m_structureRand;
 	
 	public BTAWorldConfigurationInfo generatorInfo;
+	private long seed;
 
 	public BTAChunkProvider(World par1World, long par2, boolean par4, BTAWorldConfigurationInfo generatorInfo)
 	{
@@ -97,6 +98,7 @@ public class BTAChunkProvider implements IChunkProvider
 		this.noiseGen6 = new NoiseGeneratorOctaves(this.rand, 16);
 		this.sandNoiseGen = new BTABetaNoiseOctaves(this.rand, 4);
 		this.mobSpawnerNoise = new NoiseGeneratorOctaves(this.rand, 8);
+		this.seed = par2;
 	}
 
 	/**
@@ -336,7 +338,7 @@ public class BTAChunkProvider implements IChunkProvider
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
 		
 		//this.replaceBlocksForBiome(chunkX, chunkZ, blockArray, this.biomesForGeneration);
-		BTASurfaceBuilder.replaceSurface(this.rand, chunkX, chunkZ, blockArray, metaArray, biomesForGeneration, generatorInfo);
+		BTASurfaceBuilder.replaceSurface(this.rand, this.seed, chunkX, chunkZ, blockArray, metaArray, biomesForGeneration, generatorInfo);
 		
 		this.caveGenerator.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
 		this.ravineGenerator.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
