@@ -262,7 +262,7 @@ public class BTABiomeConfiguration {
 		riverBadlands.setSurfaceBuilder(new BTASurfaceBuilderBadlands());
 		badlandsPlateau.setSurfaceBuilder(new BTASurfaceBuilderBadlandsPlateau());
 		
-		desert.setSurfaceBuilder(new BTASurfaceBuilderOutback());
+		outback.setSurfaceBuilder(new BTASurfaceBuilderOutback());
 	}
 	
 	public static void filterSpawnBiomes() {

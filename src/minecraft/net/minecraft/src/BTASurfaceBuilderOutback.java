@@ -6,34 +6,22 @@ import net.minecraft.src.opensimplex2.OpenSimplex2F;
 
 public class BTASurfaceBuilderOutback extends BTASurfaceBuilder {
 	protected static double[] grassNoise = new double[256];
-	protected static BTABetaNoiseOctaves grassNoiseGen;
 	protected static OpenSimplex2F grassNoiseGenSimplex;
 	
 	@Override
 	public void init(Random rand, long seed) {
 		super.init(rand, seed);
 		
-		if (grassNoiseGen == null)
-			grassNoiseGen = new BTABetaNoiseOctaves(rand, 4);
-		
 		if (grassNoiseGenSimplex == null)
 			grassNoiseGenSimplex = new OpenSimplex2F(seed);
-	}
-	
-	@Override
-	public void initForChunk(int chunkX, int chunkZ) {
-		super.initForChunk(chunkX, chunkZ);
-
-		double grassScalar = 0.625D;
-		this.grassNoise = this.grassNoiseGen.generateNoiseOctaves(this.grassNoise, (double)(chunkX * 16), (double)(chunkZ * 16), 0.0D, 16, 16, 1, grassScalar, grassScalar, 1.0D);
 	}
 	
 	public void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
 		byte seaLevel = 63;
 
 		float temperature = biome.getFloatTemperature();
-		//boolean useGrass = this.grassNoise[i + k * 16] + 0.5D > 0;
-		double grassNoiseScale = 0.03125D;
+		double grassNoiseScale = 0.0625D;
+		//k and i swapped because apparently I messed something up somewhere
 		boolean useGrass = grassNoiseGenSimplex.noise2((this.chunkX * 16 + k) * grassNoiseScale, (this.chunkZ * 16 + i) * grassNoiseScale) > 0;
 		
 		boolean useGravel = this.gravelNoise[i + k * 16] + rand.nextDouble() * 0.2D > 3.0D;

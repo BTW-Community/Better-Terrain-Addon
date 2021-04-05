@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
+import net.minecraft.src.opensimplex2.OpenSimplex2F;
+
 public class BTASurfaceBuilder {
 	protected static double[] sandNoise = new double[256];
 	protected static double[] gravelNoise = new double[256];
@@ -17,6 +19,9 @@ public class BTASurfaceBuilder {
 	
 	protected int chunkX;
 	protected int chunkZ;
+	
+	protected double treeNoiseScale = 1/64D;
+	protected OpenSimplex2F treeNoiseGen;
 	
 	public static final BTASurfaceBuilder defaultBuilder = new BTASurfaceBuilder();
 	public static final BTASurfaceBuilderLegacy defaultBuilderLegacy = new BTASurfaceBuilderLegacy();
@@ -192,6 +197,45 @@ public class BTASurfaceBuilder {
 					}
 				}
 			}
+		}
+	}
+	
+	public static void generateTrees(World world, Random rand, BTAWorldConfigurationInfo generatorInfo, int chunkX, int chunkZ, BTABiomeGenBase biome) {
+		BTASurfaceBuilder builder = biome.getSurfaceBuilder();
+		
+		if (builder != null) {
+			builder.initForChunk(chunkX, chunkZ);
+			builder.generateTreesForBiome(world, rand, generatorInfo);
+		}
+		else {
+			defaultBuilder.setBiome(biome);
+			defaultBuilder.initForChunk(chunkX, chunkZ);
+			defaultBuilder.generateTreesForBiome(world, rand, generatorInfo);
+		}
+	}
+	
+	public void generateTreesForBiome(World world, Random rand, BTAWorldConfigurationInfo generatorInfo) {
+		int numTrees = ((BTABiomeGenBase) this.biome).btaBiomeDecorator.treesPerChunk;
+
+		if (rand.nextInt(((BTABiomeGenBase) this.biome).btaBiomeDecorator.fractionalTreeChance) == 0)
+			numTrees++;
+
+		for (int i = 0; i < numTrees; ++i)
+		{
+			int x = this.chunkX + rand.nextInt(16) + 8;
+			int z = this.chunkZ + rand.nextInt(16) + 8;
+			
+			WorldGenerator gen;
+			
+			if (biome instanceof BTABiomeGenBase) {
+				gen = ((BTABiomeGenBase) this.biome).getRandomWorldGenForTrees(rand, generatorInfo, world.provider.terrainType);
+			}
+			else {
+				gen = this.biome.getRandomWorldGenForTrees(rand);
+			}
+			
+			gen.setScale(1.0D, 1.0D, 1.0D);
+			gen.generate(world, rand, x, world.getHeightValue(x, z), z);
 		}
 	}
 

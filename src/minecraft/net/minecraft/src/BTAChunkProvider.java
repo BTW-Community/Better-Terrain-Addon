@@ -336,8 +336,6 @@ public class BTAChunkProvider implements IChunkProvider
 		this.generateTerrain(chunkX, chunkZ, blockArray);
 		
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
-		
-		//this.replaceBlocksForBiome(chunkX, chunkZ, blockArray, this.biomesForGeneration);
 		BTASurfaceBuilder.replaceSurface(this.rand, this.seed, chunkX, chunkZ, blockArray, metaArray, biomesForGeneration, generatorInfo);
 		
 		this.caveGenerator.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
@@ -525,27 +523,27 @@ public class BTAChunkProvider implements IChunkProvider
 	/**
 	 * Populates chunk with ores etc etc
 	 */
-	public void populate(IChunkProvider par1IChunkProvider, int par2, int par3)
+	public void populate(IChunkProvider chunkProvider, int chunkX, int chunkZ)
 	{
 		BlockSand.fallInstantly = true;
-		int chunkX = par2 * 16;
-		int chunkZ = par3 * 16;
-		BiomeGenBase b = this.worldObj.getBiomeGenForCoords(chunkX + 16, chunkZ + 16);
+		int x = chunkX * 16;
+		int z = chunkZ * 16;
+		BiomeGenBase b = this.worldObj.getBiomeGenForCoords(x + 16, z + 16);
 		this.rand.setSeed(this.worldObj.getSeed());
 		long var7 = this.rand.nextLong() / 2L * 2L + 1L;
 		long var9 = this.rand.nextLong() / 2L * 2L + 1L;
 		long var11 = this.rand.nextLong() / 2L * 2L + 1L;
 		long var13 = this.rand.nextLong() / 2L * 2L + 1L;
-		this.rand.setSeed((long)par2 * var7 + (long)par3 * var9 ^ this.worldObj.getSeed());
+		this.rand.setSeed((long)chunkX * var7 + (long)chunkZ * var9 ^ this.worldObj.getSeed());
 		boolean var15 = false;
 
 		if (this.mapFeaturesEnabled)
 		{
-			this.mineshaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
-			this.m_structureRand.setSeed((long)par2 * var11 + (long)par3 * var13 ^ this.worldObj.getSeed());
-			var15 = this.villageGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
-			this.strongholdGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
-			this.scatteredFeatureGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, par2, par3);
+			this.mineshaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, chunkX, chunkZ);
+			this.m_structureRand.setSeed((long)chunkX * var11 + (long)chunkZ * var13 ^ this.worldObj.getSeed());
+			var15 = this.villageGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, chunkX, chunkZ);
+			this.strongholdGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, chunkX, chunkZ);
+			this.scatteredFeatureGenerator.generateStructuresInChunk(this.worldObj, this.m_structureRand, chunkX, chunkZ);
 		}
 
 		int var16;
@@ -554,17 +552,17 @@ public class BTAChunkProvider implements IChunkProvider
 
 		if (!var15 && this.rand.nextInt(4) == 0)
 		{
-			var16 = chunkX + this.rand.nextInt(16) + 8;
+			var16 = x + this.rand.nextInt(16) + 8;
 			var17 = this.rand.nextInt(128);
-			var18 = chunkZ + this.rand.nextInt(16) + 8;
+			var18 = z + this.rand.nextInt(16) + 8;
 			(new WorldGenLakes(Block.waterStill.blockID)).generate(this.worldObj, this.rand, var16, var17, var18);
 		}
 
 		if (!var15 && this.rand.nextInt(8) == 0)
 		{
-			var16 = chunkX + this.rand.nextInt(16) + 8;
+			var16 = x + this.rand.nextInt(16) + 8;
 			var17 = this.rand.nextInt(this.rand.nextInt(120) + 8);
-			var18 = chunkZ + this.rand.nextInt(16) + 8;
+			var18 = z + this.rand.nextInt(16) + 8;
 
 			if (var17 < 63 || this.rand.nextInt(10) == 0)
 			{
@@ -574,9 +572,9 @@ public class BTAChunkProvider implements IChunkProvider
 
 		for (var16 = 0; var16 < 8; ++var16)
 		{
-			var17 = chunkX + this.rand.nextInt(16) + 8;
+			var17 = x + this.rand.nextInt(16) + 8;
 			var18 = this.rand.nextInt(128);
-			int var19 = chunkZ + this.rand.nextInt(16) + 8;
+			int var19 = z + this.rand.nextInt(16) + 8;
 
 			if ((new WorldGenDungeons()).generate(this.worldObj, this.rand, var17, var18, var19))
 			{
@@ -585,34 +583,34 @@ public class BTAChunkProvider implements IChunkProvider
 		}
 
 		if (b instanceof BTABiomeGenBase)
-			((BTABiomeGenBase) b).decorate(this.worldObj, this.rand, chunkX, chunkZ, this.generatorInfo);
+			((BTABiomeGenBase) b).decorate(this.worldObj, this.rand, x, z, this.generatorInfo);
 		else
-			b.decorate(this.worldObj, this.rand, chunkX, chunkZ);
-		SpawnerAnimals.performWorldGenSpawning(this.worldObj, b, chunkX + 8, chunkZ + 8, 16, 16, this.rand);
+			b.decorate(this.worldObj, this.rand, x, z);
+		SpawnerAnimals.performWorldGenSpawning(this.worldObj, b, x + 8, z + 8, 16, 16, this.rand);
 
-		chunkX += 8;
-		chunkZ += 8;
+		x += 8;
+		z += 8;
 
 		for (var16 = 0; var16 < 16; ++var16)
 		{
 			for (var17 = 0; var17 < 16; ++var17)
 			{
-				var18 = this.worldObj.getPrecipitationHeight(chunkX + var16, chunkZ + var17);
+				var18 = this.worldObj.getPrecipitationHeight(x + var16, z + var17);
 
-				if (this.worldObj.isBlockFreezable(var16 + chunkX, var18 - 1, var17 + chunkZ))
+				if (this.worldObj.isBlockFreezable(var16 + x, var18 - 1, var17 + z))
 				{
-					this.worldObj.setBlock(var16 + chunkX, var18 - 1, var17 + chunkZ, Block.ice.blockID, 0, 2);
+					this.worldObj.setBlock(var16 + x, var18 - 1, var17 + z, Block.ice.blockID, 0, 2);
 				}
 
-				if (this.worldObj.canSnowAt(var16 + chunkX, var18, var17 + chunkZ))
+				if (this.worldObj.canSnowAt(var16 + x, var18, var17 + z))
 				{
-					this.worldObj.setBlock(var16 + chunkX, var18, var17 + chunkZ, Block.snow.blockID, 0, 2);
+					this.worldObj.setBlock(var16 + x, var18, var17 + z, Block.snow.blockID, 0, 2);
 				}
 			}
 		}
 
 		BlockSand.fallInstantly = false;
-		this.BTWPostProcessChunk(this.worldObj, chunkX - 8, chunkZ - 8);
+		this.BTWPostProcessChunk(this.worldObj, x - 8, z - 8);
 	}
 
 	/**
