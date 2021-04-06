@@ -4,9 +4,9 @@ ComponentMineshaftRoom
 EntitySlime
 FCEntityGhast
 MapGenVillage
+StructureComponent
 StructureScatteredFeatureStart
 StructureVillageStart
-StructureComponent
 World
 WorldProvider
 WorldProviderEnd

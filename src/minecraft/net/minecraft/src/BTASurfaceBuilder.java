@@ -88,14 +88,19 @@ public class BTASurfaceBuilder {
 	public static void generateTrees(World world, Random rand, BTAWorldConfigurationInfo generatorInfo, int chunkX, int chunkZ, BTABiomeGenBase biome) {
 		BTASurfaceBuilder builder = biome.getSurfaceBuilder();
 
-		if (builder != null && generatorInfo.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_4_0)) {
-			builder.initForChunk(chunkX, chunkZ);
-			builder.generateTreesForBiome(world, rand, generatorInfo);
+		if (generatorInfo.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_4_0)) {
+			if (builder != null) {
+				builder.initForChunk(chunkX, chunkZ);
+				builder.generateTreesForBiome(world, rand, generatorInfo);
+			}
+			else {
+				defaultBuilder.setBiome(biome);
+				defaultBuilder.initForChunk(chunkX, chunkZ);
+				defaultBuilder.generateTreesForBiome(world, rand, generatorInfo);
+			}
 		}
 		else {
-			defaultBuilder.setBiome(biome);
-			defaultBuilder.initForChunk(chunkX, chunkZ);
-			defaultBuilder.generateTreesForBiome(world, rand, generatorInfo);
+			legacyBuilder.generateTreesForBiome(world, rand, chunkX, chunkZ, biome, generatorInfo);
 		}
 	}
 
@@ -194,7 +199,7 @@ public class BTASurfaceBuilder {
 				biomeMaxHeightSample /= biomeModifierTotal;
 				biomeMinHeightSample /= biomeModifierTotal;
 				biomeMaxHeightSample = biomeMaxHeightSample * 0.9F + 0.1F;
-				
+
 				if (biomeForNoise == BTABiomeConfiguration.badlandsPlateau) {
 					biomeMinHeightSample = biomeMinHeightSample * 1.5F - 0.5F;
 				}
@@ -242,9 +247,9 @@ public class BTASurfaceBuilder {
 						double sectionHeightModifier = (double)((float)(j - (sizeY - 4)) / 3.0F);
 						noiseSample = noiseSample * (1.0D - sectionHeightModifier) + -10.0D * sectionHeightModifier;
 					}
-					
+
 					noiseArray[blockNoiseIndex] = noiseSample;
-					
+
 					blockNoiseIndex++;
 				}
 			}
@@ -266,7 +271,7 @@ public class BTASurfaceBuilder {
 			biomeHeightNoiseGen = new NoiseGeneratorOctaves(rand, 16);
 
 		Random sandRand = new Random(seed - 1000);
-		
+
 		if (sandNoiseGenSimplex == null)
 			sandNoiseGenSimplex = new BTAOpenSimplexOctaves(sandRand.nextLong(), 8);
 	}
@@ -282,7 +287,7 @@ public class BTASurfaceBuilder {
 	protected void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo, WorldType worldType) {
 		this.replaceBlocksForBiome(rand, i, k, blockArray, metaArray, biomesForGeneration, generatorInfo);
 	}
-	
+
 	protected void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
 		byte seaLevel = 63;
 
@@ -396,10 +401,20 @@ public class BTASurfaceBuilder {
 	}
 
 	protected void generateTreesForBiome(World world, Random rand, BTAWorldConfigurationInfo generatorInfo) {
-		int numTrees = ((BTABiomeGenBase) this.biome).btaBiomeDecorator.treesPerChunk;
+		int numTrees;
 
-		if (rand.nextInt(((BTABiomeGenBase) this.biome).btaBiomeDecorator.fractionalTreeChance) == 0)
-			numTrees++;
+		if (biome instanceof BTABiomeGenBase) {
+			numTrees = ((BTABiomeGenBase) biome).btaBiomeDecorator.treesPerChunk;
+
+			if (rand.nextInt(((BTABiomeGenBase) biome).btaBiomeDecorator.fractionalTreeChance) == 0)
+				numTrees++;
+		}
+		else {
+			numTrees = biome.theBiomeDecorator.treesPerChunk;
+			
+			if (rand.nextInt(10) == 0)
+				numTrees++;
+		}
 
 		for (int i = 0; i < numTrees; ++i)
 		{

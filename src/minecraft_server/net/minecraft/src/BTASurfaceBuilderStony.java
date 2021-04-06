@@ -2,11 +2,34 @@ package net.minecraft.src;
 
 import java.util.Random;
 
-public class BTASurfaceBuilderNoShorelines extends BTASurfaceBuilder {
+import net.minecraft.src.opensimplex2.OpenSimplex2F;
+
+public class BTASurfaceBuilderStony extends BTASurfaceBuilder {
+	protected static BTAOpenSimplexOctaves stoneNoiseGenSimplex;
+	
+	@Override
+	public void init(Random rand, long seed) {
+		super.init(rand, seed);
+		
+		Random stoneRand = new Random(seed + 1000);
+		
+		if (stoneNoiseGenSimplex == null)
+			stoneNoiseGenSimplex = new BTAOpenSimplexOctaves(stoneRand.nextLong(), 2);
+	}
+	
 	public void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
 		byte seaLevel = 63;
 
 		float temperature = biome.getFloatTemperature();
+
+		double sandNoiseScale = 1/256D;
+		//k and i swapped because apparently I messed something up somewhere
+		boolean useSand = sandNoiseGenSimplex.noise2((this.chunkX * 16 + k) * sandNoiseScale, (this.chunkZ * 16 + i) * sandNoiseScale) + rand.nextDouble() * 0.2D > 0;
+		
+		double grassNoiseScale = 1/16D;
+		boolean useStone = stoneNoiseGenSimplex.noise2((this.chunkX * 16 + k) * grassNoiseScale, (this.chunkZ * 16 + i) * grassNoiseScale) - 0.625 > 0;
+		
+		boolean useGravel = this.gravelNoise[i + k * 16] + rand.nextDouble() * 0.2D > 3.0D;
 		int soilDepthNoiseSample = (int)(this.soilDepthNoise[i + k * 16] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
 		int remaingDepth = -1;
 		int topBlock;
@@ -34,12 +57,32 @@ public class BTASurfaceBuilderNoShorelines extends BTASurfaceBuilder {
 							fillerBlock = (byte)Block.stone.blockID;
 						}
 						else if (j >= seaLevel - (8 + rand.nextInt(2)) && j <= seaLevel + 1) {
-							topBlock = ((BTABiomeGenBase) biome).topBlockExt;
-							fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
+							if (generatorInfo.generatePerlinBeaches()) {
+								if (useGravel) {
+									topBlock = 0;
+									fillerBlock = Block.gravel.blockID;
+								}
+
+								if (useSand) {
+									topBlock = Block.sand.blockID;
+									fillerBlock = Block.sand.blockID;
+								}
+							}
 						}
 						else if (j >= seaLevel + 9) {
-							topBlock = ((BTABiomeGenBase) biome).topBlockExt;
-							fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
+							if (biome instanceof BTABiomeGenBase) {
+								topBlock = ((BTABiomeGenBase) biome).topBlockExt;
+								fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
+							}
+							else {
+								topBlock = biome.topBlock;
+								fillerBlock = biome.fillerBlock;
+							}
+						}
+						
+						if (useStone && topBlock == Block.grass.blockID && j >= seaLevel - 1) {
+							topBlock = Block.stone.blockID;
+							fillerBlock = Block.stone.blockID;
 						}
 
 						if (j < seaLevel && topBlock == 0) {
@@ -52,9 +95,6 @@ public class BTASurfaceBuilderNoShorelines extends BTASurfaceBuilder {
 						}
 
 						remaingDepth = soilDepthNoiseSample;
-
-						if (biome.biomeID == BTABiomeConfiguration.badlandsPlateau.biomeID)
-							remaingDepth += 10;
 
 						if (j >= seaLevel - 1) {
 							blockArray[index] = topBlock;

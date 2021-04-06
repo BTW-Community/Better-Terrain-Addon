@@ -2,18 +2,21 @@ Version 1.4.0
 [list]
 [*]Added a new surface builder system which allows much finer control over how biomes are generated. This includes incorporation of K.JPG's OpenSimplex2 (more information in credits section of OP).
 [*]Added areas of podzol and coarse dirt to coniferous forests and snowy coniferous forests in new worlds when deco is enabled.
-[*]Completely overhauled badlands in new worlds. They now match vanilla badlands much more closely. Badlands plateaus now spawn as actual plateaus instead of just normal mountains, and they spawn with occasional wooded sections on top of the plateaus. They will also no longer spawn with random patches of exposed stone.
+[*]Completely overhauled badlands in new worlds. They now match vanilla badlands much more closely. This is detailed more in the changes below.
+[*]Changed badlands plateaus to actually be plateaus instead of just normal mountains.
+[*]Changed badlands plateaus to use normal terracotta as the topmost block at high elevations.
+[*]Changed badlands plateaus to spawn occasional wooded sections atop the plateaus.
+[*]Changed how terracotta layers generate in badlands to be more common and to be random based on the world seed instead of fixed and periodic. This only affects new worlds.
 [*]Changed badlands plateau to use regular badlands as its edge biome rather than having a dedicated badlands edge. Badlands edge will continue to generate in existing worlds but has been deprecated for old worlds.
 [*]Changed grass and foliage color of badlands.
-[*]Changed (reduced) the number of trees slightly in coniferous forest variants.
-[*]Changed how sandy shorelines generate to remove directional artifacting by switching from perlin to simplex noise. This only affects new worlds.
-[*]Changed how terracotta layers generate in badlands to be more common and to be random based on the world seed instead of fixed. This only affects new worlds.
+[*]Changed (reduced) the width of badlands edges in new worlds.
+[*]Changed (reduced) the number of trees slightly in coniferous forest variants in new worlds.
+[*]Changed how sandy shorelines generate to use simplex noise instead of perlin to remove occasional directional artifacting. This only affects new worlds.
 [*]Changed how grass generates in outback to make it based on simplex noise instead of random decorators. This only affects new worlds.
 [*]Changed how surface stone generates in arid forest, chaparral, and shield in new worlds in the same way as outback grass above.
 [*]Changed how trees generate in alpine, steppe, orchard, heathland, coniferous forest, snowy coniferous forest, and icy peaks in new worlds. Instead of relying on sub-biomes to modify tree type or density, tree generation is now based on simplex noise. As a part of this, aspen grove, wooded steppe, orchard clearing, heathland woods, coniferous forest clearing, snowy coniferous forest clearing, and forested icy peaks have been deprecated. These sub-biomes wil continue to generate in existing worlds but have been removed from new worlds.
-[*]Changed alpine to generate fewer trees at high altitudes in new worlds.
+[*]Changed alpine to generate fewer trees at high elevations in new worlds.
 [*]Changed oasis (for real this time!) and steppe to not spawn sandy shorelines in new worlds.
-[*]Changed (decreased) the size of badlands edges.
 [*]Fixed an issue where large oak trees (the vanilla ones) would sometimes all generate at the exact same size in an entire biome.
 [*]Fixed an issue where beaches were generating with grass. This may cause surface material seams but can be manually fixed relatively easily (or old chunks can be deleted in MCEdit and they will regenerate)
 [*]Fixed an issue where frozen beaches were generating in places they shouldn't. Existing frozen beaches will revert to normal beaches.

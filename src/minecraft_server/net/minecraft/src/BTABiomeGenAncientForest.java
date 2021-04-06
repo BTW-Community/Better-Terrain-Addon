@@ -22,7 +22,7 @@ public class BTABiomeGenAncientForest extends BTABiomeGenBase {
     		gen = new BTAWorldGenOldOak(false);
     	}
     	else if (rand.nextInt(2) == 0) {
-    		gen = this.worldGeneratorBigTree;
+    		gen = new WorldGenBigTree(false);
     	}
     	else {
     		gen = new WorldGenTrees(false, 6, 0, 0, false);

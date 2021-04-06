@@ -155,10 +155,10 @@ public class BTABiomeDecorator
 	public boolean generateStoneInGrass;
 	public boolean generateStoneInGrass2;
 	public boolean generateOutback;
-	
+
 	protected int fractionalTreeChance;
 	protected int melonChancePerChunk;
-	
+
 	private BTAWorldConfigurationInfo generatorInfo;
 
 	public BTABiomeDecorator(BiomeGenBase par1BiomeGenBase)
@@ -260,7 +260,7 @@ public class BTABiomeDecorator
 		int var1;
 		int var2;
 		int var3;
-		
+
 		for (var1 = 0; var1 < oasesPerChunk; ++var1)
 		{
 			try
@@ -322,24 +322,9 @@ public class BTABiomeDecorator
 			++var1;
 		}
 
-		int var4;
+		BTASurfaceBuilder.generateTrees(this.currentWorld, this.randomGenerator, this.generatorInfo, this.chunk_X, this.chunk_Z, (BTABiomeGenBase) this.biome);
 
-		for (var2 = 0; var2 < var1; ++var2)
-		{
-			var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
-			var4 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-			
-			WorldGenerator var5;
-			if (biome instanceof BTABiomeGenBase) {
-				var5 = ((BTABiomeGenBase) this.biome).getRandomWorldGenForTrees(this.randomGenerator, this.generatorInfo, this.currentWorld.provider.terrainType);
-			}
-			else {
-				var5 = this.biome.getRandomWorldGenForTrees(this.randomGenerator);
-			}
-			
-			var5.setScale(1.0D, 1.0D, 1.0D);
-			var5.generate(this.currentWorld, this.randomGenerator, var3, this.currentWorld.getHeightValue(var3, var4), var4);
-		}
+		int var4;
 
 		for (var2 = 0; var2 < this.bigMushroomsPerChunk; ++var2)
 		{
@@ -451,14 +436,14 @@ public class BTABiomeDecorator
 			var4 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 			this.mushroomRedGen.generate(this.currentWorld, this.randomGenerator, var2, var3, var4);
 		}
-		
+
 		for (var2 = 0; var2 < this.reedsPerChunk; ++var2)
 		{
 			var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 			var4 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 			var7 = this.randomGenerator.nextInt(128);
 			this.reedGen.generate(this.currentWorld, this.randomGenerator, var3, var7, var4);
-			
+
 			if (this.currentWorld.provider.terrainType.isSky()) {
 				var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 				var4 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
@@ -525,12 +510,12 @@ public class BTABiomeDecorator
 			this.bigRedMushroomGen.generate(this.currentWorld, this.randomGenerator, var3, this.currentWorld.getHeightValue(var3, var4), var4);
 		}
 
-		if (generateStoneInGrass)
+		if (generateStoneInGrass && this.generatorInfo.getCompatMode().isVersionAtOrBelow(BTAEnumVersionCompat.V1_3_4))
 		{
 			this.genStandardOre1(15, stoneInGrassGen, 64, 128);
 		}
 
-		if (generateStoneInGrass2)
+		if (generateStoneInGrass2 && this.generatorInfo.getCompatMode().isVersionAtOrBelow(BTAEnumVersionCompat.V1_3_4))
 		{
 			this.genStandardOre1(20, stoneInGrassGen2, 64, 128);
 		}
