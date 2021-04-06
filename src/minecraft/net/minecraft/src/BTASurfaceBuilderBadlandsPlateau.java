@@ -31,7 +31,14 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 					metaLocations[i] = meta;
 				}
 				else {
-					metaLocations[i] = -1;
+					meta = rand.nextInt(16);
+					
+					if (allowedTerracottaMetadata.contains(meta)) {
+						metaLocations[i] = meta;
+					}
+					else {
+						metaLocations[i] = -1;
+					}
 				}
 			}
 		}
@@ -111,11 +118,6 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 						else {
 							blockArray[index] = fillerBlock;
 						}
-						
-						if (blockArray[index] == BTADecoIntegration.terracotta.blockID && metaLocations[j & 15] != -1) {
-							blockArray[index] = BTADecoIntegration.stainedTerracotta.blockID;
-							metaArray[index] = metaLocations[j & 15];
-						}
 					}
 					else if (remaingDepth > 0) {
 						--remaingDepth;
@@ -131,6 +133,11 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 						}
 					}
 				}
+			}
+			
+			if (blockArray[index] == BTADecoIntegration.terracotta.blockID && metaLocations[j & 15] != -1) {
+				blockArray[index] = BTADecoIntegration.stainedTerracotta.blockID;
+				metaArray[index] = metaLocations[j & 15];
 			}
 		}
 	}
