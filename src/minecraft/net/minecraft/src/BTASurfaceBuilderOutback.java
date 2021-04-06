@@ -5,7 +5,6 @@ import java.util.Random;
 import net.minecraft.src.opensimplex2.OpenSimplex2F;
 
 public class BTASurfaceBuilderOutback extends BTASurfaceBuilder {
-	protected static double[] grassNoise = new double[256];
 	protected static BTAOpenSimplexOctaves grassNoiseGenSimplex;
 	
 	@Override

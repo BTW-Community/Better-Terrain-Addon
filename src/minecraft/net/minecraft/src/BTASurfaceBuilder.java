@@ -212,7 +212,7 @@ public class BTASurfaceBuilder {
 	public static void generateTrees(World world, Random rand, BTAWorldConfigurationInfo generatorInfo, int chunkX, int chunkZ, BTABiomeGenBase biome) {
 		BTASurfaceBuilder builder = biome.getSurfaceBuilder();
 		
-		if (builder != null) {
+		if (builder != null && generatorInfo.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_4_0)) {
 			builder.initForChunk(chunkX, chunkZ);
 			builder.generateTreesForBiome(world, rand, generatorInfo);
 		}

@@ -155,10 +155,10 @@ public class BTABiomeDecorator
 	public boolean generateStoneInGrass;
 	public boolean generateStoneInGrass2;
 	public boolean generateOutback;
-	
+
 	protected int fractionalTreeChance;
 	protected int melonChancePerChunk;
-	
+
 	private BTAWorldConfigurationInfo generatorInfo;
 
 	public BTABiomeDecorator(BiomeGenBase par1BiomeGenBase)
@@ -260,7 +260,7 @@ public class BTABiomeDecorator
 		int var1;
 		int var2;
 		int var3;
-		
+
 		for (var1 = 0; var1 < oasesPerChunk; ++var1)
 		{
 			try
@@ -321,7 +321,7 @@ public class BTABiomeDecorator
 		{
 			++var1;
 		}
-		
+
 		BTASurfaceBuilder.generateTrees(this.currentWorld, this.randomGenerator, this.generatorInfo, this.chunk_X, this.chunk_Z, (BTABiomeGenBase) this.biome);
 
 		int var4;
@@ -436,14 +436,14 @@ public class BTABiomeDecorator
 			var4 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 			this.mushroomRedGen.generate(this.currentWorld, this.randomGenerator, var2, var3, var4);
 		}
-		
+
 		for (var2 = 0; var2 < this.reedsPerChunk; ++var2)
 		{
 			var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 			var4 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 			var7 = this.randomGenerator.nextInt(128);
 			this.reedGen.generate(this.currentWorld, this.randomGenerator, var3, var7, var4);
-			
+
 			if (this.currentWorld.provider.terrainType.isSky()) {
 				var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 				var4 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
