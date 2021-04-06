@@ -12,14 +12,8 @@ public class BTASurfaceBuilderNoShorelines extends BTASurfaceBuilder {
 		int topBlock;
 		int fillerBlock;
 
-		if (biome instanceof BTABiomeGenBase) {
-			topBlock = ((BTABiomeGenBase) biome).topBlockExt;
-			fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
-		}
-		else {
-			topBlock = biome.topBlock;
-			fillerBlock = biome.fillerBlock;
-		}
+		topBlock = ((BTABiomeGenBase) biome).topBlockExt;
+		fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
 
 		for (int j = 127; j >= 0; --j) {
 			int index = (k * 16 + i) * 128 + j;
@@ -40,24 +34,12 @@ public class BTASurfaceBuilderNoShorelines extends BTASurfaceBuilder {
 							fillerBlock = (byte)Block.stone.blockID;
 						}
 						else if (j >= seaLevel - (8 + rand.nextInt(2)) && j <= seaLevel + 1) {
-							if (biome instanceof BTABiomeGenBase) {
-								topBlock = ((BTABiomeGenBase) biome).topBlockExt;
-								fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
-							}
-							else {
-								topBlock = biome.topBlock;
-								fillerBlock = biome.fillerBlock;
-							}
+							topBlock = ((BTABiomeGenBase) biome).topBlockExt;
+							fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
 						}
 						else if (j >= seaLevel + 9) {
-							if (biome instanceof BTABiomeGenBase) {
-								topBlock = ((BTABiomeGenBase) biome).topBlockExt;
-								fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
-							}
-							else {
-								topBlock = biome.topBlock;
-								fillerBlock = biome.fillerBlock;
-							}
+							topBlock = ((BTABiomeGenBase) biome).topBlockExt;
+							fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
 						}
 
 						if (j < seaLevel && topBlock == 0) {

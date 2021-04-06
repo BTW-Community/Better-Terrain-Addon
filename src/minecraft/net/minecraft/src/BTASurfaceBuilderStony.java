@@ -55,9 +55,6 @@ public class BTASurfaceBuilderStony extends BTASurfaceBuilder {
 							fillerBlock = (byte)Block.stone.blockID;
 						}
 						else if (j >= seaLevel - (8 + rand.nextInt(2)) && j <= seaLevel + 1) {
-							topBlock = (byte)Block.sand.blockID;
-							fillerBlock = (byte)Block.sand.blockID;
-
 							if (generatorInfo.generatePerlinBeaches()) {
 								if (useGravel) {
 									topBlock = 0;

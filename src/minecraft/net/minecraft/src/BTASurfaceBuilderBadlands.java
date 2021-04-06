@@ -7,10 +7,6 @@ public class BTASurfaceBuilderBadlands extends BTASurfaceBuilder {
 		byte seaLevel = 63;
 
 		float temperature = biome.getFloatTemperature();
-
-		double sandNoiseScale = 1/256D;
-		//k and i swapped because apparently I messed something up somewhere
-		boolean useSand = sandNoiseGenSimplex.noise2((this.chunkX * 16 + k) * sandNoiseScale, (this.chunkZ * 16 + i) * sandNoiseScale) + rand.nextDouble() * 0.2D > 0;
 		
 		boolean useGravel = this.gravelNoise[i + k * 16] + rand.nextDouble() * 0.2D > 3.0D;
 		int soilDepthNoiseSample = (int)(this.soilDepthNoise[i + k * 16] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
@@ -40,18 +36,10 @@ public class BTASurfaceBuilderBadlands extends BTASurfaceBuilder {
 							fillerBlock = (byte)Block.stone.blockID;
 						}
 						else if (j >= seaLevel - (8 + rand.nextInt(2)) && j <= seaLevel + 1) {
-							topBlock = (byte)Block.sand.blockID;
-							fillerBlock = (byte)Block.sand.blockID;
-
 							if (generatorInfo.generatePerlinBeaches()) {
 								if (useGravel) {
 									topBlock = 0;
 									fillerBlock = Block.gravel.blockID;
-								}
-
-								if (useSand) {
-									topBlock = BTADecoIntegration.redSand.blockID;
-									fillerBlock = BTADecoIntegration.redSand.blockID;
 								}
 							}
 						}
