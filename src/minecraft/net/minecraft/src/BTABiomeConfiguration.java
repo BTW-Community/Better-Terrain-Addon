@@ -640,7 +640,7 @@ public class BTABiomeConfiguration {
 		else if (baseBiome == dunes.biomeID) {
 			edgeBiome = desert.biomeID;
 		}
-		else if (baseBiome == badlands.biomeID || baseBiome == badlandsPlateau.biomeID && (passNum == 1 || generatorInfo.getCompatMode().isVersionAtOrBelow(BTAEnumVersionCompat.V1_3_4))) {
+		else if ((baseBiome == badlands.biomeID || baseBiome == badlandsPlateau.biomeID) && generatorInfo.getCompatMode().isVersionAtOrBelow(BTAEnumVersionCompat.V1_3_4)) {
 			edgeBiome = badlandsEdge.biomeID;
 		}
 		else if (baseBiome == icyPeaks.biomeID) {
@@ -657,6 +657,16 @@ public class BTABiomeConfiguration {
 		}
 		else if (baseBiome == tropics.biomeID && generatorInfo.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_3_2)) {
 			edgeBiome = tropicsEdge.biomeID;
+		}
+		
+		return edgeBiome;
+	}
+	
+	public static int getEdgeVariantForBiomeGuaranteed(int baseBiome, BTAWorldConfigurationInfo generatorInfo) {
+		int edgeBiome = -1;
+		
+		if (baseBiome == badlands.biomeID || baseBiome == badlandsPlateau.biomeID) {
+			edgeBiome = badlandsEdge.biomeID;
 		}
 		
 		return edgeBiome;
