@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 import java.util.Random;
 
-public class BTASurfaceBuilderSteppe extends BTASurfaceBuilder {
+public class BTASurfaceBuilderSteppe extends BTASurfaceBuilderNoShorelines {
 	@Override
 	public void init(Random rand, long seed) {
 		super.init(rand, seed);

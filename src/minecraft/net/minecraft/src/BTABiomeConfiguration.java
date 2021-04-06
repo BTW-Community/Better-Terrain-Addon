@@ -79,7 +79,7 @@ public class BTABiomeConfiguration {
     public static final BTABiomeGenBase outback = new BTABiomeGenOutback(180, BTAEnumClimate.ARID).setColor(16421912).setBiomeName("Outback").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.1F, 0.4F);
 	public static final BTABiomeGenBase cherryForest = new BTABiomeGenCherryForest(181, BTAEnumClimate.TEMPERATE).setColor(353825).setBiomeName("Cherry Forest").func_76733_a(5159473).setTemperatureRainfall(0.9F, 0.8F).setMinMaxHeight(0.1F, 0.5F);
 	public static final BTABiomeGenBase badlands = new BTABiomeGenBadlands(182, BTAEnumClimate.ARID).setColor(16421912).setBiomeName("Badlands").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.1F, 0.1F);
-	public static final BTABiomeGenBase badlandsPlateau = new BTABiomeGenBadlandsPlateau(183, BTAEnumClimate.ARID).setColor(16421912).setBiomeName("Badlands Plateau").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.8F, 2.0F); //Spawns within badlands
+	public static final BTABiomeGenBase badlandsPlateau = new BTABiomeGenBadlandsPlateau(183, BTAEnumClimate.ARID).setColor(16421912).setBiomeName("Badlands Plateau").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(0.8F, 2.0F);
 	public static final BTABiomeGenBase autumnForest = new BTABiomeGenAutumnForest(184, BTAEnumClimate.TEMPERATE).setColor(353825).setBiomeName("Autumn Forest").func_76733_a(5159473).setTemperatureRainfall(0.9F, 0.2F).setMinMaxHeight(0.1F, 0.5F);
 	
 	//River variants
