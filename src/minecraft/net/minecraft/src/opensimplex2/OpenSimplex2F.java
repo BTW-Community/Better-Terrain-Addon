@@ -292,21 +292,21 @@ public class OpenSimplex2F {
 		double asi, bsi;
 		if (aabbScore > ababScore && aabbScore > abbaScore) {
 			if (aabb > 0) {
-				asi = zsi; bsi = wsi; vertexIndex = 0b0011; via = 0b0111; vib = 0b1011;
+				asi = zsi; bsi = wsi; vertexIndex = 3; via = 7; vib = 11;
 			} else {
-				asi = xsi; bsi = ysi; vertexIndex = 0b1100; via = 0b1101; vib = 0b1110;
+				asi = xsi; bsi = ysi; vertexIndex = 12; via = 13; vib = 14;
 			}
 		} else if (ababScore > abbaScore) {
 			if (abab > 0) {
-				asi = ysi; bsi = wsi; vertexIndex = 0b0101; via = 0b0111; vib = 0b1101;
+				asi = ysi; bsi = wsi; vertexIndex = 5; via = 7; vib = 13;
 			} else {
-				asi = xsi; bsi = zsi; vertexIndex = 0b1010; via = 0b1011; vib = 0b1110;
+				asi = xsi; bsi = zsi; vertexIndex = 10; via = 11; vib = 14;
 			}
 		} else {
 			if (abba > 0) {
-				asi = ysi; bsi = zsi; vertexIndex = 0b1001; via = 0b1011; vib = 0b1101;
+				asi = ysi; bsi = zsi; vertexIndex = 9; via = 11; vib = 13;
 			} else {
-				asi = xsi; bsi = wsi; vertexIndex = 0b0110; via = 0b0111; vib = 0b1110;
+				asi = xsi; bsi = wsi; vertexIndex = 6; via = 7; vib = 14;
 			}
 		}
 		if (bsi > asi) {

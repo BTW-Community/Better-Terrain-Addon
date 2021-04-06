@@ -250,8 +250,6 @@ public class BTABiomeConfiguration {
 		willowGrove.setSurfaceBuilder(new BTASurfaceBuilderNoShorelines());
 		wetlands.setSurfaceBuilder(new BTASurfaceBuilderNoShorelines());
 		oasis.setSurfaceBuilder(new BTASurfaceBuilderNoShorelines());
-		//mangroveForest.setSurfaceBuilder(new BTASurfaceBuilderNoShorelines());
-		//mangroveForestIsland.setSurfaceBuilder(new BTASurfaceBuilderNoShorelines());
 		
 		valley.setSurfaceBuilder(new BTASurfaceBuilderTropics());
 		valleyMountains.setSurfaceBuilder(new BTASurfaceBuilderTropics());
@@ -280,6 +278,11 @@ public class BTABiomeConfiguration {
 		coniferousForestSnow.setSurfaceBuilder(new BTASurfaceBuilderConiferousForest());
 		
 		orchard.setSurfaceBuilder(new BTASurfaceBuilderOrchard());
+		
+		chaparral.setSurfaceBuilder(new BTASurfaceBuilderStony());
+		chaparralHills.setSurfaceBuilder(new BTASurfaceBuilderStony());
+		aridForest.setSurfaceBuilder(new BTASurfaceBuilderStony());
+		shield.setSurfaceBuilder(new BTASurfaceBuilderStony());
 	}
 	
 	public static void filterSpawnBiomes() {

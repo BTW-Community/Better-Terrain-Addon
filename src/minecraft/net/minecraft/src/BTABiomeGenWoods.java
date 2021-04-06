@@ -25,10 +25,10 @@ public class BTABiomeGenWoods extends BTABiomeGenBase {
     		gen = new BTAWorldGenLog();
     	}
     	else if (rand.nextInt(10) == 0) {
-    		gen = this.worldGeneratorBigTree;
+    		gen = new WorldGenBigTree(false);
     	}
     	else {
-    		gen = this.worldGeneratorTrees;
+    		gen = new WorldGenTrees(false);
     	}
     	
     	return gen;

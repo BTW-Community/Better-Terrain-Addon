@@ -4,9 +4,11 @@ Version 1.4.0
 [*]Changed how sandy shorelines generate to remove directional artifacting by switching from perlin to simplex noise. This only affects new worlds.
 [*]Changed how terracotta layers generate in badlands to be random based on the world seed instead of fixed. This only affects new worlds.
 [*]Changed how grass generates in outback to make it based on simplex noise instead of random decorators. This only affects new worlds.
-[*]Changed how trees generate in alpine, steppe, orchard, heathland, coniferous forest (and snowy), and icy peaks in new worlds. Instead of relying on sub-biomes to modify trees, tree generation is now based on simplex noise. As a part of this, aspen grove, wooded steppe, orchard clearing, heathland woods, coniferous forest clearing, snowy coniferous forest clearing, and forested icy peaks have been deprecated. These sub-biomes wil continue to generate in existing worlds but have been removed from new worlds.
-[*]Changed alpine to generate fewer trees at high altitudes.
+[*]Changed how surface stone generates in arid forest, chaparral, and shield in new worlds in the same way as outback grass above.
+[*]Changed how trees generate in alpine, steppe, orchard, heathland, coniferous forest, snowy coniferous forest, and icy peaks in new worlds. Instead of relying on sub-biomes to modify tree type or density, tree generation is now based on simplex noise. As a part of this, aspen grove, wooded steppe, orchard clearing, heathland woods, coniferous forest clearing, snowy coniferous forest clearing, and forested icy peaks have been deprecated. These sub-biomes wil continue to generate in existing worlds but have been removed from new worlds.
+[*]Changed alpine to generate fewer trees at high altitudes in new worlds.
 [*]Changed oasis (for real this time!) to not spawn sandy shorelines in new worlds.
+[*]Fixed an issue where large oak trees (the vanilla ones) would sometimes all generate at the exact same size in an entire biome.
 [*]Fixed an issue where beaches were generating with grass. This may cause surface material seams but can be manually fixed relatively easily (or old chunks can be deleted in MCEdit and they will regenerate)
 [*]Fixed an issue where frozen beaches were generating in places they shouldn't. Existing frozen beaches will revert to normal beaches.
 [/list]

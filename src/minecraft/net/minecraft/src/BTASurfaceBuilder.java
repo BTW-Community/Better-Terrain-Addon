@@ -8,10 +8,8 @@ import java.util.Set;
 import net.minecraft.src.opensimplex2.OpenSimplex2F;
 
 public class BTASurfaceBuilder {
-	protected static double[] sandNoise = new double[256];
 	protected static double[] gravelNoise = new double[256];
 	protected static double[] soilDepthNoise = new double[256];
-	protected static BTABetaNoiseOctaves sandNoiseGen;
 	protected static NoiseGeneratorOctaves soilDepthNoiseGen;
 	
 	protected static BTAOpenSimplexOctaves sandNoiseGenSimplex;
@@ -75,8 +73,6 @@ public class BTASurfaceBuilder {
 	}
 
 	public void init(Random rand, long seed) {
-		if (sandNoiseGen == null)
-			sandNoiseGen = new BTABetaNoiseOctaves(rand, 4);
 		if (soilDepthNoiseGen == null)
 			soilDepthNoiseGen = new NoiseGeneratorOctaves(rand, 4);
 
@@ -89,8 +85,6 @@ public class BTASurfaceBuilder {
 		this.chunkZ = chunkZ;
 		
 		double surfaceNoiseScalar = 0.03125D;
-		this.sandNoise = this.sandNoiseGen.generateNoiseOctaves(this.sandNoise, (double)(chunkX * 16), (double)(chunkZ * 16), 0.0D, 16, 16, 1, surfaceNoiseScalar, surfaceNoiseScalar, 1.0D);
-		this.gravelNoise = this.sandNoiseGen.generateNoiseOctaves(this.gravelNoise, (double)(chunkX * 16), 109.0134D, (double)(chunkZ * 16), 16, 1, 16, surfaceNoiseScalar, 1.0D, surfaceNoiseScalar);
 		this.soilDepthNoise = this.soilDepthNoiseGen.generateNoiseOctaves(this.soilDepthNoise, chunkX * 16, chunkZ * 16, 0, 16, 16, 1, surfaceNoiseScalar * 2.0D, surfaceNoiseScalar * 2.0D, surfaceNoiseScalar * 2.0D);
 	}
 

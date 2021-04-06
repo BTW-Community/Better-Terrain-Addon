@@ -510,12 +510,12 @@ public class BTABiomeDecorator
 			this.bigRedMushroomGen.generate(this.currentWorld, this.randomGenerator, var3, this.currentWorld.getHeightValue(var3, var4), var4);
 		}
 
-		if (generateStoneInGrass)
+		if (generateStoneInGrass && this.generatorInfo.getCompatMode().isVersionAtOrBelow(BTAEnumVersionCompat.V1_3_4))
 		{
 			this.genStandardOre1(15, stoneInGrassGen, 64, 128);
 		}
 
-		if (generateStoneInGrass2)
+		if (generateStoneInGrass2 && this.generatorInfo.getCompatMode().isVersionAtOrBelow(BTAEnumVersionCompat.V1_3_4))
 		{
 			this.genStandardOre1(20, stoneInGrassGen2, 64, 128);
 		}
