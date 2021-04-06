@@ -16,6 +16,8 @@ public class BTABiomeGenBadlandsPlateau extends BTABiomeGenBase {
 		this.btaBiomeDecorator.sandPerChunk = 0;
 		this.btaBiomeDecorator.sandPerChunk2 = 0;
 		this.spawnableCreatureList.clear();
+		
+		this.btaBiomeDecorator.treesPerChunk = 7;
 
 		this.initMetaList();
 	}
@@ -41,11 +43,35 @@ public class BTABiomeGenBadlandsPlateau extends BTABiomeGenBase {
 		}
 	}
 
+    /**
+     * Gets a WorldGen appropriate for this biome.
+     */
+    public WorldGenerator getRandomWorldGenForTrees(Random rand)
+    {
+    	return this.worldGeneratorTrees;
+    }
+
 	@Override
 	public boolean CanLightningStrikeInBiome()
 	{
 		return true;
 	}
+
+    /**
+     * Provides the basic grass color based on the biome temperature and rainfall
+     */
+    public int getBiomeGrassColor()
+    {
+    	return 5597999;
+    }
+
+    /**
+     * Provides the basic foliage color based on the biome temperature and rainfall
+     */
+    public int getBiomeFoliageColor()
+    {
+    	return 5597999;
+    }
 
 	private void initMetaList() {
 		allowedTerracottaMetadata.add(1);

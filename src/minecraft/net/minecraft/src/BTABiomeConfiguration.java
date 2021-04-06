@@ -87,7 +87,7 @@ public class BTABiomeConfiguration {
 	public static final BTABiomeGenBase riverMystic = new BTABiomeGenRiverMystic(201).setColor(255).setBiomeName("Mystic River").setTemperatureRainfall(0.9F, 1.0F).setMinMaxHeight(-0.5F, 0.0F);
 	public static final BTABiomeGenBase riverRainforest = new BTABiomeGenRiverRainforest(202).setColor(255).setBiomeName("Rainforest River").setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(-0.5F, 0.0F);
 	public static final BTABiomeGenBase riverOutback = new BTABiomeGenRiverOutback(203).setColor(255).setBiomeName("Outback River").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(-0.5F, 0.0F);
-	public static final BTABiomeGenBase riverBadlands = new BTABiomeGenRiverOutback(204).setColor(255).setBiomeName("Badlands River").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(-0.5F, 0.0F);
+	public static final BTABiomeGenBase riverBadlands = new BTABiomeGenRiverBadlands(204).setColor(255).setBiomeName("Badlands River").setDisableRain().setTemperatureRainfall(2.0F, 0.0F).setMinMaxHeight(-0.5F, 0.0F);
 	public static final BTABiomeGenBase riverTropics = new BTABiomeGenRiverTropics(205).setColor(255).setBiomeName("Tropics River").setTemperatureRainfall(2.0F, 2.0F).setMinMaxHeight(-0.5F, 0.0F);
 	public static final BTABiomeGenBase riverOrchard = new BTABiomeGenRiverOrchard(206).setColor(255).setBiomeName("Orchard River").setTemperatureRainfall(0.7F, 0.5F).setMinMaxHeight(-0.5F, 0.0F);
     public static final BTABiomeGenBase riverJungle = new BTABiomeGenRiverJungle(207).setColor(5470985).setBiomeName("Jungle River").func_76733_a(5470985).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(-0.5F, 0.0F);

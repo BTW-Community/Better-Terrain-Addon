@@ -62,7 +62,7 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 		
 		double grassNoiseScale = 1/256D;
 		//k and i swapped because apparently I messed something up somewhere
-		boolean useGrass = grassNoiseGenSimplex.noise2((this.chunkX * 16 + k) * grassNoiseScale, (this.chunkZ * 16 + i) * grassNoiseScale) > 0;
+		boolean useGrass = grassNoiseGenSimplex.noise2((this.chunkX * 16 + k) * grassNoiseScale, (this.chunkZ * 16 + i) * grassNoiseScale) + rand.nextDouble() * 0.15D > 0;
 
 		boolean useGravel = this.gravelNoise[i + k * 16] + rand.nextDouble() * 0.2D > 3.0D;
 		int soilDepthNoiseSample = (int)(this.soilDepthNoise[i + k * 16] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
@@ -104,7 +104,7 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 							fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
 						}
 						
-						if (useGrass && j >= 85) {
+						if (useGrass && j >= 95) {
 							topBlock = Block.grass.blockID;
 							fillerBlock = Block.dirt.blockID;
 						}
@@ -144,7 +144,7 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 			}
 
 			if (blockArray[index] == BTADecoIntegration.terracotta.blockID && metaLocations[j & 15] != -1) {
-				if (j < 85 || (j < 127 && blockArray[index + 1] != 0)) {
+				if (j < 95 || (j < 127 && blockArray[index + 1] != 0)) {
 					blockArray[index] = BTADecoIntegration.stainedTerracotta.blockID;
 					metaArray[index] = metaLocations[j & 15];
 				}
