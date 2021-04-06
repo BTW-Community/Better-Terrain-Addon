@@ -3,12 +3,12 @@ package net.minecraft.src;
 public class BTAGenLayerShoreGuaranteed extends BTAGenLayer
 {
 	private BTAWorldConfigurationInfo generatorInfo;
-	
+
 	public BTAGenLayerShoreGuaranteed(long par1, GenLayer parent, BTAWorldConfigurationInfo generatorInfo)
 	{
 		super(par1);
 		this.parent = parent;
-        this.generatorInfo = generatorInfo;
+		this.generatorInfo = generatorInfo;
 	}
 
 	/**
@@ -31,91 +31,21 @@ public class BTAGenLayerShoreGuaranteed extends BTAGenLayer
 				int neighbor3;
 				int neighbor4;
 
-				if (currentBiome == BiomeGenBase.mushroomIsland.biomeID)
-				{
-					neighbor1 = parentInts[j + 1 + (i + 1 - 1) * (xSize + 2)];
-					neighbor2 = parentInts[j + 1 + 1 + (i + 1) * (xSize + 2)];
-					neighbor3 = parentInts[j + 1 - 1 + (i + 1) * (xSize + 2)];
-					neighbor4 = parentInts[j + 1 + (i + 1 + 1) * (xSize + 2)];
 
-					if (neighbor1 != BiomeGenBase.ocean.biomeID && neighbor2 != BiomeGenBase.ocean.biomeID && neighbor3 != BiomeGenBase.ocean.biomeID && neighbor4 != BiomeGenBase.ocean.biomeID)
-					{
-						intCache[j + i * xSize] = currentBiome;
-					}
-					else
-					{
-						intCache[j + i * xSize] = BiomeGenBase.mushroomIslandShore.biomeID;
-					}
-				}
-				else if (currentBiome != BiomeGenBase.ocean.biomeID && currentBiome != BiomeGenBase.river.biomeID && currentBiome != BiomeGenBase.swampland.biomeID && currentBiome != BiomeGenBase.extremeHills.biomeID && BTABiomeConfiguration.getEdgeVariantForBiomeGuaranteed(currentBiome, this.generatorInfo) == -1)
-				{
-					neighbor1 = parentInts[j + 1 + (i + 1 - 1) * (xSize + 2)];
-					neighbor2 = parentInts[j + 1 + 1 + (i + 1) * (xSize + 2)];
-					neighbor3 = parentInts[j + 1 - 1 + (i + 1) * (xSize + 2)];
-					neighbor4 = parentInts[j + 1 + (i + 1 + 1) * (xSize + 2)];
+				neighbor1 = parentInts[j + 1 + (i + 1 - 1) * (xSize + 2)];
+				neighbor2 = parentInts[j + 1 + 1 + (i + 1) * (xSize + 2)];
+				neighbor3 = parentInts[j + 1 - 1 + (i + 1) * (xSize + 2)];
+				neighbor4 = parentInts[j + 1 + (i + 1 + 1) * (xSize + 2)];
 
-					if (neighbor1 != BiomeGenBase.ocean.biomeID && neighbor2 != BiomeGenBase.ocean.biomeID && neighbor3 != BiomeGenBase.ocean.biomeID && neighbor4 != BiomeGenBase.ocean.biomeID)
-					{
-						intCache[j + i * xSize] = currentBiome;
-					}
-					else
-					{
-						if (BTABiomeConfiguration.getBeachVariantForBiomes(currentBiome, generatorInfo) != -1) {
-							intCache[j + i * xSize] = BTABiomeConfiguration.getBeachVariantForBiomes(currentBiome, generatorInfo);
-						}
-						else if (BTABiomeConfiguration.shouldBiomeSpawnBeach(currentBiome, this.generatorInfo)){
-							intCache[j + i * xSize] = BiomeGenBase.beach.biomeID;
-						}
-						else {
-							intCache[j + i * xSize] = currentBiome;
-						}
-					}
+				//If all surrounding biomes are the same as the current biome do not form an edge
+				if (neighbor1 == currentBiome && neighbor2 == currentBiome && neighbor3 == currentBiome && neighbor4 == currentBiome) {
+					intCache[j + i * xSize] = currentBiome;
 				}
-				else if (currentBiome == BiomeGenBase.extremeHills.biomeID)
-				{
-					neighbor1 = parentInts[j + 1 + (i + 1 - 1) * (xSize + 2)];
-					neighbor2 = parentInts[j + 1 + 1 + (i + 1) * (xSize + 2)];
-					neighbor3 = parentInts[j + 1 - 1 + (i + 1) * (xSize + 2)];
-					neighbor4 = parentInts[j + 1 + (i + 1 + 1) * (xSize + 2)];
-
-					if (neighbor1 == BiomeGenBase.extremeHills.biomeID && neighbor2 == BiomeGenBase.extremeHills.biomeID && neighbor3 == BiomeGenBase.extremeHills.biomeID && neighbor4 == BiomeGenBase.extremeHills.biomeID)
-					{
-						intCache[j + i * xSize] = currentBiome;
-					}
-					else
-					{
-						intCache[j + i * xSize] = BiomeGenBase.extremeHillsEdge.biomeID;
-					}
+				else if (BTABiomeConfiguration.getEdgeVariantForBiomeGuaranteed(currentBiome, this.generatorInfo) != -1) {
+					intCache[j + i * xSize] = BTABiomeConfiguration.getEdgeVariantForBiomeGuaranteed(currentBiome, this.generatorInfo);
 				}
-				else
-				{
-					neighbor1 = parentInts[j + 1 + (i + 1 - 1) * (xSize + 2)];
-					neighbor2 = parentInts[j + 1 + 1 + (i + 1) * (xSize + 2)];
-					neighbor3 = parentInts[j + 1 - 1 + (i + 1) * (xSize + 2)];
-					neighbor4 = parentInts[j + 1 + (i + 1 + 1) * (xSize + 2)];
-					
-					//If all surrounding biomes are the same as the current biome do not form an edge
-					if (neighbor1 == currentBiome && neighbor2 == currentBiome && neighbor3 == currentBiome && neighbor4 == currentBiome) {
-						intCache[j + i * xSize] = currentBiome;
-					}
-					//If an edge can be formed with any of the adjacent biomes
-					else if ((BTABiomeConfiguration.shouldBiomeConnectWithEdge(neighbor1, this.generatorInfo)) ||
-								(BTABiomeConfiguration.shouldBiomeConnectWithEdge(neighbor2, this.generatorInfo)) ||
-								(BTABiomeConfiguration.shouldBiomeConnectWithEdge(neighbor3, this.generatorInfo)) ||
-								(BTABiomeConfiguration.shouldBiomeConnectWithEdge(neighbor4, this.generatorInfo)) ||
-								BTABiomeConfiguration.doesBiomeIgnoreEdgeRestrictions(currentBiome, neighbor1, neighbor2, neighbor3, neighbor4))
-					{
-						//If current biome is a biome that forms edges
-						if (BTABiomeConfiguration.getEdgeVariantForBiomeGuaranteed(currentBiome, this.generatorInfo) != -1) {
-							intCache[j + i * xSize] = BTABiomeConfiguration.getEdgeVariantForBiomeGuaranteed(currentBiome, this.generatorInfo);
-						}
-						else {
-							intCache[j + i * xSize] = currentBiome;
-						}
-					}
-					else {
-						intCache[j + i * xSize] = currentBiome;
-					}
+				else {
+					intCache[j + i * xSize] = currentBiome;
 				}
 			}
 		}

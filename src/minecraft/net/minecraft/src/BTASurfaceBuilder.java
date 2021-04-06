@@ -196,7 +196,7 @@ public class BTASurfaceBuilder {
 				biomeMaxHeightSample = biomeMaxHeightSample * 0.9F + 0.1F;
 				
 				if (biomeForNoise == BTABiomeConfiguration.badlandsPlateau) {
-					biomeMinHeightSample = biomeMinHeightSample * 2.0F - 1.0F;
+					biomeMinHeightSample = biomeMinHeightSample * 1.5F - 0.5F;
 				}
 				else {
 					biomeMinHeightSample = (biomeMinHeightSample * 4.0F - 1.0F) / 8.0F;
