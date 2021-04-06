@@ -6,8 +6,8 @@ public class BTABiomeGenRiverBadlands extends BTABiomeGenRiver {
 	public BTABiomeGenRiverBadlands(int par1) {
 		super(par1, BTABiomeConfiguration.badlands.climate);
 		if (BTADecoIntegration.isDecoInstalled()) {
-			this.topBlockExt = BTADecoIntegration.terracotta.blockID;
-			this.fillerBlockExt = BTADecoIntegration.terracotta.blockID;
+			this.topBlockExt = BTADecoIntegration.redSand.blockID;
+			this.fillerBlockExt = BTADecoIntegration.redSand.blockID;
 		}
 		this.btaBiomeDecorator.sandPerChunk = 0;
 		this.btaBiomeDecorator.sandPerChunk2 = 0;

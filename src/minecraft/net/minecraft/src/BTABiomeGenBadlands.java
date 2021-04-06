@@ -52,7 +52,7 @@ public class BTABiomeGenBadlands extends BTABiomeGenBase {
      */
     public int getBiomeGrassColor()
     {
-    	return 5597999;
+    	return 9341503;
     }
 
     /**
@@ -60,7 +60,7 @@ public class BTABiomeGenBadlands extends BTABiomeGenBase {
      */
     public int getBiomeFoliageColor()
     {
-    	return 5597999;
+    	return 9341503;
     }
 	
 	private void initMetaList() {

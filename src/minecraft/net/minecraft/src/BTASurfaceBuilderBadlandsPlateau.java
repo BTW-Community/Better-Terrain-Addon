@@ -106,7 +106,6 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 						
 						if (useGrass && j >= 95) {
 							topBlock = Block.grass.blockID;
-							fillerBlock = Block.dirt.blockID;
 						}
 
 						if (j < seaLevel && topBlock == 0) {

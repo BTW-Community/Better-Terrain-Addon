@@ -363,9 +363,6 @@ public class BTASurfaceBuilder {
 
 						remaingDepth = soilDepthNoiseSample;
 
-						if (biome.biomeID == BTABiomeConfiguration.badlandsPlateau.biomeID)
-							remaingDepth += 10;
-
 						if (j >= seaLevel - 1) {
 							blockArray[index] = topBlock;
 						}
