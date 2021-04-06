@@ -257,6 +257,7 @@ public class BTABiomeConfiguration {
 		riverTropics.setSurfaceBuilder(new BTASurfaceBuilderTropics());
 		
 		badlands.setSurfaceBuilder(new BTASurfaceBuilderBadlands());
+		badlandsEdge.setSurfaceBuilder(new BTASurfaceBuilderBadlands());
 		riverBadlands.setSurfaceBuilder(new BTASurfaceBuilderBadlands());
 		badlandsPlateau.setSurfaceBuilder(new BTASurfaceBuilderBadlandsPlateau());
 		beachOutback.setSurfaceBuilder(new BTASurfaceBuilderBadlands());
@@ -624,7 +625,7 @@ public class BTABiomeConfiguration {
 		return beachBiome;
 	}
 	
-	public static int getEdgeVariantForBiome(int baseBiome, BTAWorldConfigurationInfo generatorInfo) {
+	public static int getEdgeVariantForBiome(int baseBiome, BTAWorldConfigurationInfo generatorInfo, int passNum) {
 		int edgeBiome = -1;
 		
 		if (baseBiome == alpine.biomeID) {
@@ -639,7 +640,7 @@ public class BTABiomeConfiguration {
 		else if (baseBiome == dunes.biomeID) {
 			edgeBiome = desert.biomeID;
 		}
-		else if (baseBiome == badlands.biomeID || baseBiome == badlandsPlateau.biomeID) {
+		else if (baseBiome == badlands.biomeID || baseBiome == badlandsPlateau.biomeID && (passNum == 1 || generatorInfo.getCompatMode().isVersionAtOrBelow(BTAEnumVersionCompat.V1_3_4))) {
 			edgeBiome = badlandsEdge.biomeID;
 		}
 		else if (baseBiome == icyPeaks.biomeID) {

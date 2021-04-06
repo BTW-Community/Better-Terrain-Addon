@@ -8,6 +8,7 @@ Version 1.4.0
 [*]Changed how trees generate in alpine, steppe, orchard, heathland, coniferous forest, snowy coniferous forest, and icy peaks in new worlds. Instead of relying on sub-biomes to modify tree type or density, tree generation is now based on simplex noise. As a part of this, aspen grove, wooded steppe, orchard clearing, heathland woods, coniferous forest clearing, snowy coniferous forest clearing, and forested icy peaks have been deprecated. These sub-biomes wil continue to generate in existing worlds but have been removed from new worlds.
 [*]Changed alpine to generate fewer trees at high altitudes in new worlds.
 [*]Changed oasis (for real this time!) to not spawn sandy shorelines in new worlds.
+[*]Changed (decreased) the size of badlands edges.
 [*]Fixed an issue where large oak trees (the vanilla ones) would sometimes all generate at the exact same size in an entire biome.
 [*]Fixed an issue where beaches were generating with grass. This may cause surface material seams but can be manually fixed relatively easily (or old chunks can be deleted in MCEdit and they will regenerate)
 [*]Fixed an issue where frozen beaches were generating in places they shouldn't. Existing frozen beaches will revert to normal beaches.
