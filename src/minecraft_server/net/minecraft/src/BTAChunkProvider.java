@@ -62,12 +62,12 @@ public class BTAChunkProvider implements IChunkProvider
 	private long seed;
 	private int parabolicRadius = 2;
 
-	public BTAChunkProvider(World par1World, long par2, boolean par4, BTAWorldConfigurationInfo generatorInfo)
+	public BTAChunkProvider(World world, long seed, boolean mapFeaturesEnabled, BTAWorldConfigurationInfo generatorInfo)
 	{
-		this.worldObj = par1World;
-		this.mapFeaturesEnabled = par4;
-		this.rand = new Random(par2);
-		this.m_structureRand = new Random(par2);
+		this.worldObj = world;
+		this.mapFeaturesEnabled = mapFeaturesEnabled;
+		this.rand = new Random(seed);
+		this.m_structureRand = new Random(seed);
 		this.generatorInfo = generatorInfo;
 		this.blockNoiseGen1 = new NoiseGeneratorOctaves(this.rand, 16);
 		this.blockNoiseGen2 = new NoiseGeneratorOctaves(this.rand, 16);
@@ -75,7 +75,9 @@ public class BTAChunkProvider implements IChunkProvider
 		this.soilDepthNoiseGen = new NoiseGeneratorOctaves(this.rand, 4);
 		this.biomeHeightNoiseGen = new NoiseGeneratorOctaves(this.rand, 16);
 		this.sandNoiseGen = new BTABetaNoiseOctaves(this.rand, 4);
-		this.seed = par2;
+		this.seed = seed;
+		
+		BTASurfaceBuilder.initForNoiseField(this.seed);
 	}
 
 	/**

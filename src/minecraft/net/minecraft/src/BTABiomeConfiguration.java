@@ -613,10 +613,10 @@ public class BTABiomeConfiguration {
 	public static int getBeachVariantForBiomes(int baseBiome, BTAWorldConfigurationInfo generatorInfo) {
 		int beachBiome = -1;
 		
-		if (baseBiome == outback.biomeID || baseBiome == badlands.biomeID) {
+		if (baseBiome == outback.biomeID || baseBiome == badlands.biomeID || baseBiome == beachOutback.biomeID) {
 			beachBiome = beachOutback.biomeID;
 		}
-		else if ((baseBiome == snowyWoods.biomeID || baseBiome == tundra.biomeID || baseBiome == siberia.biomeID || baseBiome == frozenSprings.biomeID) && generatorInfo.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_3_2)) {
+		else if ((baseBiome == snowyWoods.biomeID || baseBiome == tundra.biomeID || baseBiome == siberia.biomeID || baseBiome == frozenSprings.biomeID || baseBiome == beachFrozen.biomeID) && generatorInfo.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_3_2)) {
 			beachBiome = beachFrozen.biomeID;
 		}
 		else if (shouldBiomeSpawnBeach(baseBiome, generatorInfo)) {
