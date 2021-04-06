@@ -14,6 +14,8 @@ public class BTASurfaceBuilder {
 	protected static BTABetaNoiseOctaves sandNoiseGen;
 	protected static NoiseGeneratorOctaves soilDepthNoiseGen;
 	
+	protected static BTAOpenSimplexOctaves sandNoiseGenSimplex;
+	
 	protected BiomeGenBase biome;
 	protected boolean hasBeenInit = false;
 	
@@ -21,7 +23,7 @@ public class BTASurfaceBuilder {
 	protected int chunkZ;
 	
 	protected double treeNoiseScale = 1/64D;
-	protected OpenSimplex2F treeNoiseGen;
+	protected BTAOpenSimplexOctaves treeNoiseGen;
 	
 	public static final BTASurfaceBuilder defaultBuilder = new BTASurfaceBuilder();
 	public static final BTASurfaceBuilderLegacy defaultBuilderLegacy = new BTASurfaceBuilderLegacy();
@@ -49,6 +51,13 @@ public class BTASurfaceBuilder {
 				}
 			}
 			
+			if (!defaultBuilder.hasBeenInit) {
+				defaultBuilder.init(rand, seed);
+				defaultBuilder.hasBeenInit = true;
+			}
+			
+			defaultBuilder.initForChunk(chunkX, chunkZ);
+			
 			for (int i = 0; i < 16; i++) {
 				for (int k = 0; k < 16; k++) {
 					BiomeGenBase biome = biomesForGeneration[k + i*16];
@@ -57,11 +66,6 @@ public class BTASurfaceBuilder {
 						((BTABiomeGenBase) biome).getSurfaceBuilder().replaceBlocksForBiome(rand, i, k, blockArray, metaArray, biomesForGeneration, generatorInfo);
 					}
 					else {
-						if (!defaultBuilder.hasBeenInit) {
-							defaultBuilder.init(rand, seed);
-							defaultBuilder.hasBeenInit = true;
-						}
-						
 						defaultBuilder.setBiome(biome);
 						defaultBuilder.replaceBlocksForBiome(rand, i, k, blockArray, metaArray, biomesForGeneration, generatorInfo);
 					}
@@ -71,13 +75,13 @@ public class BTASurfaceBuilder {
 	}
 
 	public void init(Random rand, long seed) {
-		if (sandNoiseGen == null) {
+		if (sandNoiseGen == null)
 			sandNoiseGen = new BTABetaNoiseOctaves(rand, 4);
-		}
-		
-		if (soilDepthNoiseGen == null) {
+		if (soilDepthNoiseGen == null)
 			soilDepthNoiseGen = new NoiseGeneratorOctaves(rand, 4);
-		}
+
+		if (sandNoiseGenSimplex == null)
+			sandNoiseGenSimplex = new BTAOpenSimplexOctaves(seed, 8);
 	}
 	
 	public void initForChunk(int chunkX, int chunkZ) {
@@ -94,7 +98,12 @@ public class BTASurfaceBuilder {
 		byte seaLevel = 63;
 
 		float temperature = biome.getFloatTemperature();
-		boolean useSand = sandNoise[i + k * 16] + rand.nextDouble() * 0.2D > 0.0D;
+
+		double sandNoiseScale = 1/256D;
+		//k and i swapped because apparently I messed something up somewhere
+		boolean useSand = sandNoiseGenSimplex.noise2((this.chunkX * 16 + k) * sandNoiseScale, (this.chunkZ * 16 + i) * sandNoiseScale) + rand.nextDouble() * 0.2D > 0;
+		
+		//boolean useSand = sandNoise[i + k * 16] + rand.nextDouble() * 0.2D > 0.0D;
 		boolean useGravel = gravelNoise[i + k * 16] + rand.nextDouble() * 0.2D > 3.0D;
 		int soilDepthNoiseSample = (int)(soilDepthNoise[0] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
 		int remaingDepth = -1;

@@ -47,7 +47,11 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 		byte seaLevel = 63;
 
 		float temperature = biome.getFloatTemperature();
-		boolean useSand = this.sandNoise[i + k * 16] + rand.nextDouble() * 0.2D > 0.0D;
+
+		double sandNoiseScale = 1/256D;
+		//k and i swapped because apparently I messed something up somewhere
+		boolean useSand = sandNoiseGenSimplex.noise2((this.chunkX * 16 + k) * sandNoiseScale, (this.chunkZ * 16 + i) * sandNoiseScale) + rand.nextDouble() * 0.2D > 0;
+		
 		boolean useGravel = this.gravelNoise[i + k * 16] + rand.nextDouble() * 0.2D > 3.0D;
 		int soilDepthNoiseSample = (int)(this.soilDepthNoise[i + k * 16] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
 		int remaingDepth = -1;

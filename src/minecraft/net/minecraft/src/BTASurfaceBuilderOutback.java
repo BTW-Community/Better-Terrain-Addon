@@ -6,14 +6,14 @@ import net.minecraft.src.opensimplex2.OpenSimplex2F;
 
 public class BTASurfaceBuilderOutback extends BTASurfaceBuilder {
 	protected static double[] grassNoise = new double[256];
-	protected static OpenSimplex2F grassNoiseGenSimplex;
+	protected static BTAOpenSimplexOctaves grassNoiseGenSimplex;
 	
 	@Override
 	public void init(Random rand, long seed) {
 		super.init(rand, seed);
 		
 		if (grassNoiseGenSimplex == null)
-			grassNoiseGenSimplex = new OpenSimplex2F(seed);
+			grassNoiseGenSimplex = new BTAOpenSimplexOctaves(seed, 2);
 	}
 	
 	public void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {

@@ -261,8 +261,13 @@ public class BTABiomeConfiguration {
 		badlands.setSurfaceBuilder(new BTASurfaceBuilderBadlands());
 		riverBadlands.setSurfaceBuilder(new BTASurfaceBuilderBadlands());
 		badlandsPlateau.setSurfaceBuilder(new BTASurfaceBuilderBadlandsPlateau());
+		beachOutback.setSurfaceBuilder(new BTASurfaceBuilderBadlands());
 		
 		outback.setSurfaceBuilder(new BTASurfaceBuilderOutback());
+		riverOutback.setSurfaceBuilder(new BTASurfaceBuilderOutback());
+		
+		alpine.setSurfaceBuilder(new BTASurfaceBuilderAlpine());
+		alpineEdge.setSurfaceBuilder(new BTASurfaceBuilderAlpine());
 	}
 	
 	public static void filterSpawnBiomes() {
@@ -470,7 +475,7 @@ public class BTABiomeConfiguration {
         else if (baseBiome == jungle.biomeID) {
         	hillsBiome = jungleHills.biomeID;
         }
-        else if (baseBiome == alpine.biomeID) {
+        else if (baseBiome == alpine.biomeID && generatorOptions.getCompatMode().isVersionAtOrBelow(BTAEnumVersionCompat.V1_3_4)) {
         	hillsBiome = aspenGrove.biomeID;
         }
         else if (baseBiome == coniferousForest.biomeID) {
