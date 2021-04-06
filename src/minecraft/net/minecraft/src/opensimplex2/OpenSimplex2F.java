@@ -318,14 +318,14 @@ public class OpenSimplex2F {
 		if (siSum + asi > 3) {
 			vertexIndex = via;
 			if (siSum + bsi > 4) {
-				vertexIndex = 0b1111;
+				vertexIndex = 15;
 			}
 		}
 		
 		// Now flip back if we're actually in the lower half.
 		if (inLowerHalf) {
 			xsi = 1 - xsi; ysi = 1 - ysi; zsi = 1 - zsi; wsi = 1 - wsi;
-			vertexIndex ^= 0b1111;
+			vertexIndex ^= 15;
 		}
 		
 		// Five points to add, total, from five copies of the A4 lattice.
@@ -357,18 +357,18 @@ public class OpenSimplex2F {
 			
 			// Next point is the closest vertex on the 4-simplex whose base vertex is the aforementioned vertex.
 			double score0 = 1.0 + ssi * (-1.0 / 0.309016994374947); // Seems slightly faster than 1.0-xsi-ysi-zsi-wsi
-			vertexIndex = 0b0000;
+			vertexIndex = 0;
 			if (xsi >= ysi && xsi >= zsi && xsi >= wsi && xsi >= score0) {
-				vertexIndex = 0b0001;
+				vertexIndex = 1;
 			}
 			else if (ysi > xsi && ysi >= zsi && ysi >= wsi && ysi >= score0) {
-				vertexIndex = 0b0010;
+				vertexIndex = 2;
 			}
 			else if (zsi > xsi && zsi > ysi && zsi >= wsi && zsi >= score0) {
-				vertexIndex = 0b0100;
+				vertexIndex = 4;
 			}
 			else if (wsi > xsi && wsi > ysi && wsi > zsi && wsi >= score0) {
-				vertexIndex = 0b1000;
+				vertexIndex = 8;
 			}
 		}
 		
