@@ -103,13 +103,23 @@ public class BTASurfaceBuilder {
 			legacyBuilder.generateTreesForBiome(world, rand, chunkX, chunkZ, biome, generatorInfo);
 		}
 	}
+	
+	public static void initForNoiseField(long seed) {
+		Random rand = new Random(seed);
+		
+		if (blockNoiseGen1 == null)
+			blockNoiseGen1 = new NoiseGeneratorOctaves(rand, 16);
+		if (blockNoiseGen2 == null)
+			blockNoiseGen2 = new NoiseGeneratorOctaves(rand, 16);
+		if (blockModifierNoiseGen == null)
+			blockModifierNoiseGen = new NoiseGeneratorOctaves(rand, 8);
+		if (soilDepthNoiseGen == null)
+			soilDepthNoiseGen = new NoiseGeneratorOctaves(rand, 4);
+		if (biomeHeightNoiseGen == null)
+			biomeHeightNoiseGen = new NoiseGeneratorOctaves(rand, 16);
+	}
 
 	public static double[] initializeNoiseField(Random rand, long seed, double[] noiseArray, int posX, int posY, int posZ, int sizeX, int sizeY, int sizeZ, BiomeGenBase[] biomesForGeneration) {
-		if (!defaultBuilder.hasBeenInit) {
-			defaultBuilder.init(rand, seed);
-			defaultBuilder.hasBeenInit = true;
-		}
-
 		if (noiseArray == null) {
 			noiseArray = new double[sizeX * sizeY * sizeZ];
 		}
@@ -259,17 +269,6 @@ public class BTASurfaceBuilder {
 	}
 
 	protected void init(Random rand, long seed) {
-		if (soilDepthNoiseGen == null)
-			soilDepthNoiseGen = new NoiseGeneratorOctaves(rand, 4);
-		if (blockNoiseGen1 == null)
-			blockNoiseGen1 = new NoiseGeneratorOctaves(rand, 16);
-		if (blockNoiseGen2 == null)
-			blockNoiseGen2 = new NoiseGeneratorOctaves(rand, 16);
-		if (blockModifierNoiseGen == null)
-			blockModifierNoiseGen = new NoiseGeneratorOctaves(rand, 8);
-		if (biomeHeightNoiseGen == null)
-			biomeHeightNoiseGen = new NoiseGeneratorOctaves(rand, 16);
-
 		Random sandRand = new Random(seed - 1000);
 
 		if (sandNoiseGenSimplex == null)
