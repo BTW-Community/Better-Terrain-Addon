@@ -133,6 +133,7 @@ public class BTABiomeConfiguration {
 	private static ArrayList<BiomeGenBase> edgeBiomes = new ArrayList();
 	private static ArrayList<BiomeGenBase> noEdgeBiomes = new ArrayList();
 	private static ArrayList<BiomeGenBase> noEdgeBiomes132 = new ArrayList();
+	private static ArrayList<BiomeGenBase> noEdgeBiomes140 = new ArrayList();
 	private static ArrayList<BiomeGenBase> noPerlinBeachBiomes = new ArrayList();
 	
 	private static ArrayList<BiomeGenBase> pumpkinBiomes = new ArrayList();
@@ -665,8 +666,8 @@ public class BTABiomeConfiguration {
 	public static int getEdgeVariantForBiomeGuaranteed(int baseBiome, BTAWorldConfigurationInfo generatorInfo) {
 		int edgeBiome = -1;
 		
-		if (baseBiome == badlands.biomeID || baseBiome == badlandsPlateau.biomeID) {
-			edgeBiome = badlandsEdge.biomeID;
+		if (baseBiome == badlandsPlateau.biomeID) {
+			edgeBiome = badlands.biomeID;
 		}
 		
 		return edgeBiome;
@@ -740,14 +741,20 @@ public class BTABiomeConfiguration {
 		
 		noEdgeBiomes132.addAll(noEdgeBiomes);
 		noEdgeBiomes132.add(jungleHills);
+		
+		noEdgeBiomes140.addAll(noEdgeBiomes132);
+		noEdgeBiomes140.remove(badlandsPlateau);
 	}
 	
 	public static boolean shouldBiomeConnectWithEdge(int biome, BTAWorldConfigurationInfo generatorInfo) {
-		if (generatorInfo.getCompatMode().isVersionAtOrBelow(BTAEnumVersionCompat.V1_3_1)) {
-			return !noEdgeBiomes.contains(BiomeGenBase.biomeList[biome]);
+		if (generatorInfo.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_4_0)) {
+			return !noEdgeBiomes140.contains(BiomeGenBase.biomeList[biome]);
+		}
+		if (generatorInfo.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_3_2)) {
+			return !noEdgeBiomes132.contains(BiomeGenBase.biomeList[biome]);
 		}
 		else {
-			return !noEdgeBiomes132.contains(BiomeGenBase.biomeList[biome]);
+			return !noEdgeBiomes.contains(BiomeGenBase.biomeList[biome]);
 		}
 	}
 	

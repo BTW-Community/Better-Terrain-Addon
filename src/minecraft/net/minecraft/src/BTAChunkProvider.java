@@ -318,7 +318,7 @@ public class BTAChunkProvider implements IChunkProvider
 		this.generateTerrain(chunkX, chunkZ, blockArray);
 		
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
-		BTASurfaceBuilder.replaceSurface(this.rand, this.seed, chunkX, chunkZ, blockArray, metaArray, biomesForGeneration, generatorInfo);
+		BTASurfaceBuilder.replaceSurface(this.rand, this.seed, chunkX, chunkZ, blockArray, metaArray, biomesForGeneration, generatorInfo, this.worldObj.provider.terrainType);
 		
 		this.caveGenerator.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
 		this.ravineGenerator.generate(this, this.worldObj, chunkX, chunkZ, blockArray);

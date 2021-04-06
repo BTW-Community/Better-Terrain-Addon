@@ -11,8 +11,10 @@ public class BTASurfaceBuilderStony extends BTASurfaceBuilder {
 	public void init(Random rand, long seed) {
 		super.init(rand, seed);
 		
+		Random stoneRand = new Random(seed + 1000);
+		
 		if (stoneNoiseGenSimplex == null)
-			stoneNoiseGenSimplex = new BTAOpenSimplexOctaves(seed, 2);
+			stoneNoiseGenSimplex = new BTAOpenSimplexOctaves(stoneRand.nextLong(), 2);
 	}
 	
 	public void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {

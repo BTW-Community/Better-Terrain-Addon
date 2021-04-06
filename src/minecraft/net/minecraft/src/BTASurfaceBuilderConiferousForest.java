@@ -4,28 +4,35 @@ import java.util.Random;
 
 public class BTASurfaceBuilderConiferousForest extends BTASurfaceBuilder {
 	protected static BTAOpenSimplexOctaves coarseDirtNoiseGenSimplex;
+	protected static BTAOpenSimplexOctaves podzolNoiseGenSimplex;
 
 	@Override
 	public void init(Random rand, long seed) {
 		super.init(rand, seed);
-
-		if (this.treeNoiseGen == null);
-			this.treeNoiseGen = new BTAOpenSimplexOctaves(rand.nextLong(), 2);
-
-		this.treeNoiseScale = 1/256D;
+		
+		Random soilRand = new Random(seed);
 
 		if (coarseDirtNoiseGenSimplex == null)
-			coarseDirtNoiseGenSimplex = new BTAOpenSimplexOctaves(seed, 2);
+			coarseDirtNoiseGenSimplex = new BTAOpenSimplexOctaves(soilRand.nextLong(), 4);
+		if (podzolNoiseGenSimplex == null)
+			podzolNoiseGenSimplex = new BTAOpenSimplexOctaves(soilRand.nextLong(), 4);
+
+		if (this.treeNoiseGen == null);
+			this.treeNoiseGen = new BTAOpenSimplexOctaves(soilRand.nextLong(), 2);
+
+		this.treeNoiseScale = 1/256D;
 	}
 
-	protected void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
+	protected void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo, WorldType worldType) {
 		byte seaLevel = 63;
 
 		float temperature = biome.getFloatTemperature();
 		
-		double grassNoiseScale = 1/128D;
+		double grassNoiseScale = 1/96D;
 		//k and i swapped because apparently I messed something up somewhere
-		boolean useCoarseDirt = coarseDirtNoiseGenSimplex.noise2((this.chunkX * 16 + k) * grassNoiseScale, (this.chunkZ * 16 + i) * grassNoiseScale) > 0;
+		boolean usePodzol = coarseDirtNoiseGenSimplex.noise2((this.chunkX * 16 + k) * grassNoiseScale, (this.chunkZ * 16 + i) * grassNoiseScale) + rand.nextDouble() * 0.1D - .25 > 0;
+		//k and i swapped because apparently I messed something up somewhere
+		boolean useCoarseDirt = podzolNoiseGenSimplex.noise2((this.chunkX * 16 + k) * grassNoiseScale, (this.chunkZ * 16 + i) * grassNoiseScale) + rand.nextDouble() * 0.1D - .25 > 0;
 
 		double sandNoiseScale = 1/256D;
 		//k and i swapped because apparently I messed something up somewhere
@@ -55,6 +62,14 @@ public class BTASurfaceBuilderConiferousForest extends BTASurfaceBuilder {
 				}
 				else if (blockID == Block.stone.blockID) {
 					if (remaingDepth == -1) {
+						if (useCoarseDirt && BTADecoIntegration.isDecoInstalled() && worldType.isDeco()) {
+							topBlock = BTADecoIntegration.coarseDirt.blockID;
+						}
+
+						if (usePodzol && BTADecoIntegration.isDecoInstalled() && worldType.isDeco()) {
+							topBlock = BTADecoIntegration.podzol.blockID;
+						}
+						
 						if (soilDepthNoiseSample <= 0) {
 							topBlock = 0;
 							fillerBlock = (byte)Block.stone.blockID;
@@ -78,10 +93,6 @@ public class BTASurfaceBuilderConiferousForest extends BTASurfaceBuilder {
 						else if (j >= seaLevel + 9) {
 							topBlock = ((BTABiomeGenBase) biome).topBlockExt;
 							fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
-						}
-						
-						if (useCoarseDirt && BTADecoIntegration.isDecoInstalled()) {
-							topBlock = BTADecoIntegration.podzol.blockID;
 						}
 
 						if (j < seaLevel && topBlock == 0) {
@@ -121,7 +132,7 @@ public class BTASurfaceBuilderConiferousForest extends BTASurfaceBuilder {
 	}
 
 	public void generateTreesForBiome(World world, Random rand, BTAWorldConfigurationInfo generatorInfo) {
-		int numTrees = 8;
+		int numTrees = 6;
 
 		for (int i = 0; i < numTrees; ++i)
 		{
@@ -130,7 +141,7 @@ public class BTASurfaceBuilderConiferousForest extends BTASurfaceBuilder {
 
 			WorldGenerator gen;
 
-			if (this.treeNoiseGen.noise2(x, z, this.treeNoiseScale) - .375 > 0 && rand.nextInt(8) < 3) {
+			if (this.treeNoiseGen.noise2(x, z, this.treeNoiseScale) - .375 > 0 && rand.nextInt(6) < 3) {
 				if (rand.nextInt(5) == 0) {
 					gen = new WorldGenTaiga2(false);
 				}

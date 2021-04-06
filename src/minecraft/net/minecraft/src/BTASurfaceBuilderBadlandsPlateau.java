@@ -11,6 +11,8 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 	@Override
 	public void init(Random rand, long seed) {
 		super.init(rand, seed);
+		
+		Random metaRand = new Random(seed);
 
 		//Init terracotta striping data - done statically in case multiple badlands variants use this surface builder
 		if (allowedTerracottaMetadata.size() == 0) {
@@ -26,14 +28,14 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 			metaLocations = new int[128];
 
 			for (int i = 0; i < metaLocations.length; i++) {
-				int meta = rand.nextInt(16);
+				int meta = metaRand.nextInt(16);
 
 				if (allowedTerracottaMetadata.contains(meta)) {
 					metaLocations[i] = meta;
 				}
 				else {
 					//Tries a second time to place a colored stripe
-					meta = rand.nextInt(16);
+					meta = metaRand.nextInt(16);
 
 					if (allowedTerracottaMetadata.contains(meta)) {
 						metaLocations[i] = meta;
@@ -46,7 +48,7 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 		}
 		
 		if (grassNoiseGenSimplex == null)
-			grassNoiseGenSimplex = new BTAOpenSimplexOctaves(seed, 2);
+			grassNoiseGenSimplex = new BTAOpenSimplexOctaves(metaRand.nextLong(), 2);
 	}
 
 	private static void swap(int[] array, int i, int j) {
@@ -62,7 +64,7 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 		
 		double grassNoiseScale = 1/256D;
 		//k and i swapped because apparently I messed something up somewhere
-		boolean useGrass = grassNoiseGenSimplex.noise2((this.chunkX * 16 + k) * grassNoiseScale, (this.chunkZ * 16 + i) * grassNoiseScale) + rand.nextDouble() * 0.15D > 0;
+		boolean useGrass = grassNoiseGenSimplex.noise2((this.chunkX * 16 + k) * grassNoiseScale, (this.chunkZ * 16 + i) * grassNoiseScale) + rand.nextDouble() * 0.15D - 0.125 > 0;
 
 		boolean useGravel = this.gravelNoise[i + k * 16] + rand.nextDouble() * 0.2D > 3.0D;
 		int soilDepthNoiseSample = (int)(this.soilDepthNoise[i + k * 16] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
@@ -87,11 +89,7 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 				}
 				else if (blockID == Block.stone.blockID) {
 					if (remaingDepth == -1) {
-						if (soilDepthNoiseSample <= 0) {
-							topBlock = 0;
-							fillerBlock = (byte)Block.stone.blockID;
-						}
-						else if (j >= seaLevel - (8 + rand.nextInt(2)) && j <= seaLevel + 1) {
+						if (j >= seaLevel - (8 + rand.nextInt(2)) && j <= seaLevel + 1) {
 							if (generatorInfo.generatePerlinBeaches()) {
 								if (useGravel) {
 									topBlock = 0;

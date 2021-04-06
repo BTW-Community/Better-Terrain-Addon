@@ -39,7 +39,7 @@ public class BTASurfaceBuilder {
 	public static final BTASurfaceBuilder defaultBuilder = new BTASurfaceBuilder();
 	public static final BTASurfaceBuilderLegacy legacyBuilder = new BTASurfaceBuilderLegacy();
 
-	public static void replaceSurface(Random rand, long seed, int chunkX, int chunkZ, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
+	public static void replaceSurface(Random rand, long seed, int chunkX, int chunkZ, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo, WorldType worldType) {
 		if (generatorInfo.getCompatMode().isVersionAtOrBelow(BTAEnumVersionCompat.V1_3_4)) {
 			if (!legacyBuilder.hasBeenInit) {
 				legacyBuilder.init(rand, seed);
@@ -74,7 +74,7 @@ public class BTASurfaceBuilder {
 					BiomeGenBase biome = biomesForGeneration[k + i*16];
 
 					if (biome instanceof BTABiomeGenBase && ((BTABiomeGenBase) biome).getSurfaceBuilder() != null) {
-						((BTABiomeGenBase) biome).getSurfaceBuilder().replaceBlocksForBiome(rand, i, k, blockArray, metaArray, biomesForGeneration, generatorInfo);
+						((BTABiomeGenBase) biome).getSurfaceBuilder().replaceBlocksForBiome(rand, i, k, blockArray, metaArray, biomesForGeneration, generatorInfo, worldType);
 					}
 					else {
 						defaultBuilder.setBiome(biome);
@@ -256,8 +256,6 @@ public class BTASurfaceBuilder {
 	protected void init(Random rand, long seed) {
 		if (soilDepthNoiseGen == null)
 			soilDepthNoiseGen = new NoiseGeneratorOctaves(rand, 4);
-		if (sandNoiseGenSimplex == null)
-			sandNoiseGenSimplex = new BTAOpenSimplexOctaves(seed, 8);
 		if (blockNoiseGen1 == null)
 			blockNoiseGen1 = new NoiseGeneratorOctaves(rand, 16);
 		if (blockNoiseGen2 == null)
@@ -266,6 +264,11 @@ public class BTASurfaceBuilder {
 			blockModifierNoiseGen = new NoiseGeneratorOctaves(rand, 8);
 		if (biomeHeightNoiseGen == null)
 			biomeHeightNoiseGen = new NoiseGeneratorOctaves(rand, 16);
+
+		Random sandRand = new Random(seed - 1000);
+		
+		if (sandNoiseGenSimplex == null)
+			sandNoiseGenSimplex = new BTAOpenSimplexOctaves(sandRand.nextLong(), 8);
 	}
 
 	protected void initForChunk(int chunkX, int chunkZ) {
@@ -276,6 +279,10 @@ public class BTASurfaceBuilder {
 		this.soilDepthNoise = this.soilDepthNoiseGen.generateNoiseOctaves(this.soilDepthNoise, chunkX * 16, chunkZ * 16, 0, 16, 16, 1, surfaceNoiseScalar * 2.0D, surfaceNoiseScalar * 2.0D, surfaceNoiseScalar * 2.0D);
 	}
 
+	protected void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo, WorldType worldType) {
+		this.replaceBlocksForBiome(rand, i, k, blockArray, metaArray, biomesForGeneration, generatorInfo);
+	}
+	
 	protected void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
 		byte seaLevel = 63;
 

@@ -1,9 +1,11 @@
 Version 1.4.0
 [list]
-[*]Added a new surface builder system which allows me much finer control over how biomes are generated. This includes incorporation of K.JPG's OpenSimplex2 (more information in credits section of OP).
-[*]Added grass with trees in some areas on top of badlands plateaus. This only affects new worlds.
-[*]Changed badlands plateaus in new worlds to actually be plateaus instead of just normal mountains.
+[*]Added a new surface builder system which allows much finer control over how biomes are generated. This includes incorporation of K.JPG's OpenSimplex2 (more information in credits section of OP).
+[*]Added areas of podzol and coarse dirt to coniferous forests and snowy coniferous forests in new worlds when deco is enabled.
+[*]Completely overhauled badlands in new worlds. They now match vanilla badlands much more closely. Badlands plateaus now spawn as actual plateaus instead of just normal mountains, and they spawn with occasional wooded sections on top of the plateaus. They will also no longer spawn with random patches of exposed stone.
+[*]Changed badlands plateau to use regular badlands as its edge biome rather than having a dedicated badlands edge. Badlands edge will continue to generate in existing worlds but has been deprecated for old worlds.
 [*]Changed grass and foliage color of badlands.
+[*]Changed (reduced) the number of trees slightly in coniferous forest variants.
 [*]Changed how sandy shorelines generate to remove directional artifacting by switching from perlin to simplex noise. This only affects new worlds.
 [*]Changed how terracotta layers generate in badlands to be more common and to be random based on the world seed instead of fixed. This only affects new worlds.
 [*]Changed how grass generates in outback to make it based on simplex noise instead of random decorators. This only affects new worlds.

@@ -11,8 +11,10 @@ public class BTASurfaceBuilderOutback extends BTASurfaceBuilder {
 	public void init(Random rand, long seed) {
 		super.init(rand, seed);
 		
+		Random grassRand = new Random(seed + 3000);
+		
 		if (grassNoiseGenSimplex == null)
-			grassNoiseGenSimplex = new BTAOpenSimplexOctaves(seed, 2);
+			grassNoiseGenSimplex = new BTAOpenSimplexOctaves(grassRand.nextLong(), 2);
 	}
 	
 	public void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
