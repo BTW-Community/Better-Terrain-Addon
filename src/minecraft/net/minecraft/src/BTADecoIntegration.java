@@ -46,6 +46,8 @@ public class BTADecoIntegration {
 	public static Block cherrySidingAndCorner;
 	public static Block andesiteSmoothStairs;
 	public static Block andesiteSmoothMouldingandDecorative;
+	public static Block coarseDirt;
+	public static Block podzol;
 	
 	public static Item pileRedSand;
 	
@@ -106,6 +108,8 @@ public class BTADecoIntegration {
 				cherrySidingAndCorner = (Block) getDecoField("cherrySidingAndCorner");
 				andesiteSmoothStairs = ((Block[]) getDecoField("stoneTypesSmoothStairs"))[1];
 				andesiteSmoothMouldingandDecorative = ((Block[]) getDecoField("stoneTypesSmoothMouldingAndDecorative"))[1];
+				coarseDirt = (Block) getDecoField("coarseDirt");
+				podzol = (Block) getDecoField("podzol");
 				
 				pileRedSand = (Item) getDecoField("pileRedSand");
 			}

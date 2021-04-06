@@ -65,7 +65,7 @@ public class BTAWorldGenTaiga8 extends WorldGenerator
 			{
 				var11 = par1World.getBlockId(x, y - 1, z);
 
-				if ((var11 == Block.grass.blockID || var11 == Block.dirt.blockID) && y < 256 - var6 - 1)
+				if ((var11 == Block.grass.blockID || var11 == Block.dirt.blockID || (BTADecoIntegration.isDecoInstalled() && (var11 == BTADecoIntegration.coarseDirt.blockID || var11 == BTADecoIntegration.podzol.blockID))) && y < 256 - var6 - 1)
 				{
 					this.setBlock(par1World, x, y - 1, z, Block.dirt.blockID);
 					var21 = par2Random.nextInt(2);

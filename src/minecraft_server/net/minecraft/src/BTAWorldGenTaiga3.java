@@ -73,13 +73,13 @@ public class BTAWorldGenTaiga3 extends WorldGenerator
 				var13 = var1.getBlockId(x, y - 1, z - 1);
 				var14 = var1.getBlockId(x - 1, y - 1, z - 1);
 
-				if ((var11 == Block.grass.blockID || var11 == Block.dirt.blockID) && y < 256 - var6 - 1)
+				if ((var11 == Block.grass.blockID || var11 == Block.dirt.blockID || (BTADecoIntegration.isDecoInstalled() && (var11 == BTADecoIntegration.coarseDirt.blockID || var11 == BTADecoIntegration.podzol.blockID))) && y < 256 - var6 - 1)
 				{
-					if ((var24 == Block.grass.blockID || var24 == Block.dirt.blockID) && y < 256 - var6 - 1)
+					if ((var24 == Block.grass.blockID || var24 == Block.dirt.blockID || (BTADecoIntegration.isDecoInstalled() && (var24 == BTADecoIntegration.coarseDirt.blockID || var24 == BTADecoIntegration.podzol.blockID))) && y < 256 - var6 - 1)
 					{
-						if ((var13 == Block.grass.blockID || var24 == Block.dirt.blockID) && y < 256 - var6 - 1)
+						if ((var13 == Block.grass.blockID || var24 == Block.dirt.blockID || (BTADecoIntegration.isDecoInstalled() && (var13 == BTADecoIntegration.coarseDirt.blockID || var13 == BTADecoIntegration.podzol.blockID))) && y < 256 - var6 - 1)
 						{
-							if ((var14 == Block.grass.blockID || var24 == Block.dirt.blockID) && y < 256 - var6 - 1)
+							if ((var14 == Block.grass.blockID || var24 == Block.dirt.blockID || (BTADecoIntegration.isDecoInstalled() && (var14 == BTADecoIntegration.coarseDirt.blockID || var14 == BTADecoIntegration.podzol.blockID))) && y < 256 - var6 - 1)
 							{
 								var1.setBlock(x, y - 1, z, Block.dirt.blockID);
 								var1.setBlock(x - 1, y - 1, z, Block.dirt.blockID);

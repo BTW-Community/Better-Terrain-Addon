@@ -65,12 +65,13 @@ public abstract class BTAGenLayer extends GenLayer {
 
 			if (generatorInfo.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_3_2)) {
 				if (passNum == 0) {
-					layerExtras = new BTAGenLayerShore(1000L, layerExtras, generatorInfo);
+					layerExtras = new BTAGenLayerShore(1000L, layerExtras, generatorInfo, 0);
 				}
 			}
 			
 			if (passNum == 1) {
-				layerExtras = new BTAGenLayerShore(1000L, layerExtras, generatorInfo);
+				layerExtras = new BTAGenLayerShore(1000L, layerExtras, generatorInfo, 1);
+				layerExtras = new BTAGenLayerShoreGuaranteed(1000L, layerExtras, generatorInfo);
 			}
 
 			if (passNum == scale - 3) {

@@ -8,8 +8,8 @@ public class BTASurfaceBuilderLegacy extends BTASurfaceBuilder {
 	private double[] soilDepthNoiseLegacy = new double[256];
 	private BTABetaNoiseOctaves sandNoiseGenLegacy;
 	private NoiseGeneratorOctaves soilDepthNoiseGenLegacy;
-	
-	public void init(Random rand) {
+
+	public void init(Random rand, long seed) {
 		this.sandNoiseGenLegacy = new BTABetaNoiseOctaves(rand, 4);
 		this.soilDepthNoiseGenLegacy = new NoiseGeneratorOctaves(rand, 4);
 	}
@@ -148,4 +148,38 @@ public class BTASurfaceBuilderLegacy extends BTASurfaceBuilder {
 		}
 	}
 
+	protected void generateTreesForBiome(World world, Random rand, int chunkX, int chunkZ, BiomeGenBase biome, BTAWorldConfigurationInfo generatorInfo) {
+		int numTrees;
+
+		if (biome instanceof BTABiomeGenBase) {
+			numTrees = ((BTABiomeGenBase) biome).btaBiomeDecorator.treesPerChunk;
+
+			if (rand.nextInt(((BTABiomeGenBase) biome).btaBiomeDecorator.fractionalTreeChance) == 0)
+				numTrees++;
+		}
+		else {
+			numTrees = biome.theBiomeDecorator.treesPerChunk;
+			
+			if (rand.nextInt(10) == 0)
+				numTrees++;
+		}
+
+		for (int i = 0; i < numTrees; ++i)
+		{
+			int x = chunkX + rand.nextInt(16) + 8;
+			int z = chunkZ + rand.nextInt(16) + 8;
+
+			WorldGenerator gen;
+
+			if (biome instanceof BTABiomeGenBase) {
+				gen = ((BTABiomeGenBase) biome).getRandomWorldGenForTrees(rand, generatorInfo, world.provider.terrainType);
+			}
+			else {
+				gen = biome.getRandomWorldGenForTrees(rand);
+			}
+
+			gen.setScale(1.0D, 1.0D, 1.0D);
+			gen.generate(world, rand, x, world.getHeightValue(x, z), z);
+		}
+	}
 }

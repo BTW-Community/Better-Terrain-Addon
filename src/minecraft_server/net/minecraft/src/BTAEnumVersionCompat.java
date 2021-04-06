@@ -8,7 +8,8 @@ public enum BTAEnumVersionCompat {
 	V1_3_1(1, 3, 1),
 	V1_3_2(1, 3, 2),
 	V1_3_3(1, 3, 3),
-	V1_3_4(1, 3, 4);
+	V1_3_4(1, 3, 4),
+	V1_4_0(1, 4, 0);
 	
 	private final int major;
 	private final int minor;

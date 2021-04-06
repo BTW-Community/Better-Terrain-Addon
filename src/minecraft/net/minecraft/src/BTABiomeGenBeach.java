@@ -6,8 +6,8 @@ public class BTABiomeGenBeach extends BTABiomeGenBase
     {
         super(par1, climate);
         this.spawnableCreatureList.clear();
-        this.topBlock = (byte)Block.sand.blockID;
-        this.fillerBlock = (byte)Block.sand.blockID;
+        this.topBlockExt = (byte)Block.sand.blockID;
+        this.fillerBlockExt = (byte)Block.sand.blockID;
         this.theBiomeDecorator.treesPerChunk = -999;
         this.theBiomeDecorator.deadBushPerChunk = 0;
         this.theBiomeDecorator.reedsPerChunk = 0;

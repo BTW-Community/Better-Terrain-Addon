@@ -46,6 +46,22 @@ public class BTABiomeGenBadlands extends BTABiomeGenBase {
     {
         return true;
     }
+
+    /**
+     * Provides the basic grass color based on the biome temperature and rainfall
+     */
+    public int getBiomeGrassColor()
+    {
+    	return 9341503;
+    }
+
+    /**
+     * Provides the basic foliage color based on the biome temperature and rainfall
+     */
+    public int getBiomeFoliageColor()
+    {
+    	return 9341503;
+    }
 	
 	private void initMetaList() {
 		allowedTerracottaMetadata.add(1);

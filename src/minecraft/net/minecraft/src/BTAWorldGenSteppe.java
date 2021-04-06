@@ -34,7 +34,7 @@ public class BTAWorldGenSteppe extends WorldGenerator
 			int var9 = par4 + par2Random.nextInt(4) - par2Random.nextInt(4);
 			int var10 = par5 + par2Random.nextInt(8) - par2Random.nextInt(8);
 
-			if (par1World.isAirBlock(var8, var9, var10) && (par1World.getBlockId(var8, var9 - 1, var10) == Block.grass.blockID || par1World.getBlockId(var8, var9 - 1, var10) == Block.gravel.blockID))
+			if (par1World.isAirBlock(var8, var9, var10) && par1World.getBlockId(var8, var9 - 1, var10) == Block.grass.blockID)
 			{
 				par1World.setBlock(var8, var9 - 1, var10, Block.sand.blockID);
 				par1World.setBlock(var8, var9, var10, 0);

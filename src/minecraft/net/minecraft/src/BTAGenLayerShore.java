@@ -3,12 +3,14 @@ package net.minecraft.src;
 public class BTAGenLayerShore extends BTAGenLayer
 {
 	private BTAWorldConfigurationInfo generatorInfo;
+	private int passNum;
 	
-	public BTAGenLayerShore(long par1, GenLayer parent, BTAWorldConfigurationInfo generatorInfo)
+	public BTAGenLayerShore(long par1, GenLayer parent, BTAWorldConfigurationInfo generatorInfo, int pass)
 	{
 		super(par1);
 		this.parent = parent;
         this.generatorInfo = generatorInfo;
+        this.passNum = pass;
 	}
 
 	/**
@@ -47,7 +49,7 @@ public class BTAGenLayerShore extends BTAGenLayer
 						intCache[j + i * xSize] = BiomeGenBase.mushroomIslandShore.biomeID;
 					}
 				}
-				else if (currentBiome != BiomeGenBase.ocean.biomeID && currentBiome != BiomeGenBase.river.biomeID && currentBiome != BiomeGenBase.swampland.biomeID && currentBiome != BiomeGenBase.extremeHills.biomeID && BTABiomeConfiguration.getEdgeVariantForBiome(currentBiome, this.generatorInfo) == -1)
+				else if (currentBiome != BiomeGenBase.ocean.biomeID && currentBiome != BiomeGenBase.river.biomeID && currentBiome != BiomeGenBase.swampland.biomeID && currentBiome != BiomeGenBase.extremeHills.biomeID && BTABiomeConfiguration.getEdgeVariantForBiome(currentBiome, this.generatorInfo, this.passNum) == -1)
 				{
 					neighbor1 = parentInts[j + 1 + (i + 1 - 1) * (xSize + 2)];
 					neighbor2 = parentInts[j + 1 + 1 + (i + 1) * (xSize + 2)];
@@ -106,8 +108,8 @@ public class BTAGenLayerShore extends BTAGenLayer
 								BTABiomeConfiguration.doesBiomeIgnoreEdgeRestrictions(currentBiome, neighbor1, neighbor2, neighbor3, neighbor4))
 					{
 						//If current biome is a biome that forms edges
-						if (BTABiomeConfiguration.getEdgeVariantForBiome(currentBiome, this.generatorInfo) != -1) {
-							intCache[j + i * xSize] = BTABiomeConfiguration.getEdgeVariantForBiome(currentBiome, this.generatorInfo);
+						if (BTABiomeConfiguration.getEdgeVariantForBiome(currentBiome, this.generatorInfo, this.passNum) != -1) {
+							intCache[j + i * xSize] = BTABiomeConfiguration.getEdgeVariantForBiome(currentBiome, this.generatorInfo, this.passNum);
 						}
 						else {
 							intCache[j + i * xSize] = currentBiome;

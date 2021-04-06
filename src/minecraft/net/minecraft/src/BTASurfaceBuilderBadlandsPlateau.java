@@ -6,11 +6,14 @@ import java.util.Random;
 public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 	private static ArrayList<Integer> allowedTerracottaMetadata = new ArrayList();
 	private static int[] metaLocations;
+	protected static BTAOpenSimplexOctaves grassNoiseGenSimplex;
 
 	@Override
-	public void init(Random rand) {
-		super.init(rand);
+	public void init(Random rand, long seed) {
+		super.init(rand, seed);
 		
+		Random metaRand = new Random(seed);
+
 		//Init terracotta striping data - done statically in case multiple badlands variants use this surface builder
 		if (allowedTerracottaMetadata.size() == 0) {
 			allowedTerracottaMetadata.add(1);
@@ -22,39 +25,49 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 		}
 
 		if (metaLocations == null) {
-			metaLocations = new int[16];
-			
-			for (int i = 0; i < 16; i++) {
-				metaLocations[i] = i;
+			metaLocations = new int[128];
+
+			for (int i = 0; i < metaLocations.length; i++) {
+				int meta = metaRand.nextInt(16);
+
+				if (allowedTerracottaMetadata.contains(meta)) {
+					metaLocations[i] = meta;
+				}
+				else {
+					//Tries a second time to place a colored stripe
+					meta = metaRand.nextInt(16);
+
+					if (allowedTerracottaMetadata.contains(meta)) {
+						metaLocations[i] = meta;
+					}
+					else {
+						metaLocations[i] = -1;
+					}
+				}
 			}
-			
-			//Randomizes the locations of the stripes based on the seed
-			for (int i = metaLocations.length; i > 1; i--) {
-	            swap(metaLocations, i - 1, rand.nextInt(i));
-	        }
 		}
+		
+		if (grassNoiseGenSimplex == null)
+			grassNoiseGenSimplex = new BTAOpenSimplexOctaves(metaRand.nextLong(), 2);
 	}
-	
+
 	private static void swap(int[] array, int i, int j) {
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
+		int temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
+	}
 
-	public void replaceBlocksForBiome(Random rand, int x, int z, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
+	public void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
 		byte seaLevel = 63;
-		double soilDepthNoiseScalar = 0.03125D;
-		this.sandNoise = this.sandNoiseGen.generateNoiseOctaves(this.sandNoise, x, z, 0.0D, 1, 1, 1, soilDepthNoiseScalar, soilDepthNoiseScalar, 1.0D);
-		this.gravelNoise = this.sandNoiseGen.generateNoiseOctaves(this.gravelNoise, x, 109.0134D, z, 1, 1, 1, soilDepthNoiseScalar, 1.0D, soilDepthNoiseScalar);
-		this.soilDepthNoise = this.soilDepthNoiseGen.generateNoiseOctaves(this.soilDepthNoise, x, z, 0, 1, 1, 1, soilDepthNoiseScalar * 2.0D, soilDepthNoiseScalar * 2.0D, soilDepthNoiseScalar * 2.0D);
-
-		int i = x & 15;
-		int k = z & 15;
 
 		float temperature = biome.getFloatTemperature();
-		boolean useSand = this.sandNoise[0] + rand.nextDouble() * 0.2D > 0.0D;
-		boolean useGravel = this.gravelNoise[0] + rand.nextDouble() * 0.2D > 3.0D;
-		int soilDepthNoiseSample = (int)(this.soilDepthNoise[0] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
+		
+		double grassNoiseScale = 1/256D;
+		//k and i swapped because apparently I messed something up somewhere
+		boolean useGrass = grassNoiseGenSimplex.noise2((this.chunkX * 16 + k) * grassNoiseScale, (this.chunkZ * 16 + i) * grassNoiseScale) + rand.nextDouble() * 0.15D - 0.125 > 0;
+
+		boolean useGravel = this.gravelNoise[i + k * 16] + rand.nextDouble() * 0.2D > 3.0D;
+		int soilDepthNoiseSample = (int)(this.soilDepthNoise[i + k * 16] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
 		int remaingDepth = -1;
 		int topBlock;
 		int fillerBlock;
@@ -76,35 +89,21 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 				}
 				else if (blockID == Block.stone.blockID) {
 					if (remaingDepth == -1) {
-						if (soilDepthNoiseSample <= 0) {
-							topBlock = 0;
-							fillerBlock = (byte)Block.stone.blockID;
-						}
-						else if (j >= seaLevel - (8 + rand.nextInt(2)) && j <= seaLevel + 1) {
-							topBlock = (byte)Block.sand.blockID;
-							fillerBlock = (byte)Block.sand.blockID;
-
+						if (j >= seaLevel - (8 + rand.nextInt(2)) && j <= seaLevel + 1) {
 							if (generatorInfo.generatePerlinBeaches()) {
 								if (useGravel) {
 									topBlock = 0;
 									fillerBlock = Block.gravel.blockID;
 								}
-
-								if (useSand) {
-									topBlock = BTADecoIntegration.redSand.blockID;
-									fillerBlock = BTADecoIntegration.redSand.blockID;
-								}
 							}
 						}
 						else if (j >= seaLevel + 9) {
-							if (biome instanceof BTABiomeGenBase) {
-								topBlock = ((BTABiomeGenBase) biome).topBlockExt;
-								fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
-							}
-							else {
-								topBlock = biome.topBlock;
-								fillerBlock = biome.fillerBlock;
-							}
+							topBlock = ((BTABiomeGenBase) biome).topBlockExt;
+							fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
+						}
+						
+						if (useGrass && j >= 95) {
+							topBlock = Block.grass.blockID;
 						}
 
 						if (j < seaLevel && topBlock == 0) {
@@ -124,11 +123,6 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 						else {
 							blockArray[index] = fillerBlock;
 						}
-						
-						if (blockArray[index] == BTADecoIntegration.terracotta.blockID && allowedTerracottaMetadata.contains(metaLocations[j & 15])) {
-							blockArray[index] = BTADecoIntegration.stainedTerracotta.blockID;
-							metaArray[index] = metaLocations[j & 15];
-						}
 					}
 					else if (remaingDepth > 0) {
 						--remaingDepth;
@@ -143,6 +137,13 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 							fillerBlock = BTADecoIntegration.redSandStone.blockID;
 						}
 					}
+				}
+			}
+
+			if (blockArray[index] == BTADecoIntegration.terracotta.blockID && metaLocations[j & 15] != -1) {
+				if (j < 95 || (j < 127 && blockArray[index + 1] != 0)) {
+					blockArray[index] = BTADecoIntegration.stainedTerracotta.blockID;
+					metaArray[index] = metaLocations[j & 15];
 				}
 			}
 		}
