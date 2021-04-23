@@ -14,6 +14,7 @@ public class BTAWorldConfigurationInfo {
 	private boolean generatePerlinBeaches = false;
 	private boolean climatized = false;
 	private int biomeSize = 2;
+	private BTAEnumTerrainGenerator generator = BTAEnumTerrainGenerator.CLASSIC;
 
 	public static BTAWorldConfigurationInfo createDefaultConfiguration(boolean isDeco) {
 		BTAWorldConfigurationInfo info = new BTAWorldConfigurationInfo();
@@ -23,6 +24,7 @@ public class BTAWorldConfigurationInfo {
 		info.setGeneratePerlinBeaches(true);
 		info.setClimatized(true);
 		info.setBiomeSize(1);
+		info.setGenerator(BTAEnumTerrainGenerator.SIMPLEX);
 
 		info.generateBiomeInfoListFromBiomes(BTABiomeConfiguration.biomeListDeco);
 
@@ -53,6 +55,7 @@ public class BTAWorldConfigurationInfo {
 		info.setGeneratePerlinBeaches(false);
 		info.setClimatized(false);
 		info.setBiomeSize(2);
+		info.setGenerator(BTAEnumTerrainGenerator.CLASSIC);
 
 		info.generateBiomeInfoListFromBiomes(BTABiomeConfiguration.biomeListDecoCompat);
 
@@ -119,6 +122,9 @@ public class BTAWorldConfigurationInfo {
 				else if (optionSplit[0].equalsIgnoreCase("Climates")) {
 					this.climatized = Boolean.parseBoolean(optionSplit[1]);
 				}
+				else if (optionSplit[0].equalsIgnoreCase("Generator")) {
+					this.generator = BTAEnumTerrainGenerator.fromId(Integer.parseInt(optionSplit[1]));
+				}
 				else {
 					throw new IllegalArgumentException("Invalid format for generator options");
 				}
@@ -175,7 +181,8 @@ public class BTAWorldConfigurationInfo {
 		out += "OceanSize:" + oceanSize + ";";
 		out += "Shorelines:" + generatePerlinBeaches + ";";
 		out += "BiomeSize:" + biomeSize + ";";
-		out += "Climates:" + climatized;
+		out += "Climates:" + climatized + ";";
+		out += "Generator:" + generator.id;
 
 		return out;
 	}
@@ -257,5 +264,14 @@ public class BTAWorldConfigurationInfo {
 
 	public void setBiomeSize(int biomeSize) {
 		this.biomeSize = biomeSize;
+	}
+
+	public BTAEnumTerrainGenerator getGenerator() {
+		return generator;
+	}
+
+	public BTAWorldConfigurationInfo setGenerator(BTAEnumTerrainGenerator generator) {
+		this.generator = generator;
+		return this;
 	}
 }

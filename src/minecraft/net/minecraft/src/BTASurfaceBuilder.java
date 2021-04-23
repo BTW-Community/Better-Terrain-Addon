@@ -39,6 +39,44 @@ public class BTASurfaceBuilder {
 	public static final BTASurfaceBuilder defaultBuilder = new BTASurfaceBuilder();
 	public static final BTASurfaceBuilderLegacy legacyBuilder = new BTASurfaceBuilderLegacy();
 
+	//New 3D array format
+	public static void replaceSurface(Random rand, long seed, int chunkX, int chunkZ, int[][][] blockArray, int[][][] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo, WorldType worldType) {
+		Set<BiomeGenBase> biomeSet = new HashSet(Arrays.asList(biomesForGeneration));
+
+		for (BiomeGenBase b : biomeSet) {
+			if (b instanceof BTABiomeGenBase && ((BTABiomeGenBase) b).getSurfaceBuilder() != null) {
+				if (!((BTABiomeGenBase) b).getSurfaceBuilder().hasBeenInit) {
+					((BTABiomeGenBase) b).getSurfaceBuilder().init(rand, seed);
+					((BTABiomeGenBase) b).getSurfaceBuilder().hasBeenInit = true;
+				}
+
+				((BTABiomeGenBase) b).getSurfaceBuilder().initForChunk(chunkX, chunkZ);
+			}
+		}
+
+		if (!defaultBuilder.hasBeenInit) {
+			defaultBuilder.init(rand, seed);
+			defaultBuilder.hasBeenInit = true;
+		}
+
+		defaultBuilder.initForChunk(chunkX, chunkZ);
+
+		for (int i = 0; i < 16; i++) {
+			for (int k = 0; k < 16; k++) {
+				BiomeGenBase biome = biomesForGeneration[k + i*16];
+
+				if (biome instanceof BTABiomeGenBase && ((BTABiomeGenBase) biome).getSurfaceBuilder() != null) {
+					((BTABiomeGenBase) biome).getSurfaceBuilder().replaceBlocksForBiome(rand, k, i, blockArray, metaArray, biomesForGeneration, generatorInfo, worldType);
+				}
+				else {
+					defaultBuilder.setBiome(biome);
+					defaultBuilder.replaceBlocksForBiome(rand, k, i, blockArray, metaArray, biomesForGeneration, generatorInfo, worldType);
+				}
+			}
+		}
+	}
+
+	//Old 1D array format
 	public static void replaceSurface(Random rand, long seed, int chunkX, int chunkZ, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo, WorldType worldType) {
 		if (generatorInfo.getCompatMode().isVersionAtOrBelow(BTAEnumVersionCompat.V1_3_4)) {
 			if (!legacyBuilder.hasBeenInit) {
@@ -103,10 +141,10 @@ public class BTASurfaceBuilder {
 			legacyBuilder.generateTreesForBiome(world, rand, chunkX, chunkZ, biome, generatorInfo);
 		}
 	}
-	
+
 	public static void initForNoiseField(long seed) {
 		Random rand = new Random(seed);
-		
+
 		if (blockNoiseGen1 == null)
 			blockNoiseGen1 = new NoiseGeneratorOctaves(rand, 16);
 		if (blockNoiseGen2 == null)
@@ -283,6 +321,118 @@ public class BTASurfaceBuilder {
 		this.soilDepthNoise = this.soilDepthNoiseGen.generateNoiseOctaves(this.soilDepthNoise, chunkX * 16, chunkZ * 16, 0, 16, 16, 1, surfaceNoiseScalar * 2.0D, surfaceNoiseScalar * 2.0D, surfaceNoiseScalar * 2.0D);
 	}
 
+	//New 3D array format
+	protected void replaceBlocksForBiome(Random rand, int i, int k, int[][][] blockArray, int[][][] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo, WorldType worldType) {
+		byte seaLevel = 100;
+
+		float temperature = biome.getFloatTemperature();
+
+		double sandNoiseScale = 1/256D;
+		//k and i swapped because apparently I messed something up somewhere
+		boolean useSand = sandNoiseGenSimplex.noise2((this.chunkX * 16 + k) * sandNoiseScale, (this.chunkZ * 16 + i) * sandNoiseScale) + rand.nextDouble() * 0.2D > 0;
+
+		//boolean useSand = sandNoise[i + k * 16] + rand.nextDouble() * 0.2D > 0.0D;
+		boolean useGravel = gravelNoise[i + k * 16] + rand.nextDouble() * 0.2D > 3.0D;
+		int soilDepthNoiseSample = (int)(soilDepthNoise[0] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
+		int remaingDepth = -1;
+		int topBlock;
+		int fillerBlock;
+
+		if (biome instanceof BTABiomeGenBase) {
+			topBlock = ((BTABiomeGenBase) biome).topBlockExt;
+			fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
+		}
+		else {
+			topBlock = biome.topBlock;
+			fillerBlock = biome.fillerBlock;
+		}
+
+		for (int j = 255; j >= 0; --j) {
+			if (j <= 0 + rand.nextInt(5)) {
+				blockArray[i][k][j] = (byte)Block.bedrock.blockID;
+			}
+			else {
+				int blockID = blockArray[i][k][j];
+
+				if (blockID == 0) {
+					remaingDepth = -1;
+				}
+				else if (blockID == Block.stone.blockID) {
+					if (remaingDepth == -1) {
+						if (soilDepthNoiseSample <= 0) {
+							topBlock = 0;
+							fillerBlock = (byte)Block.stone.blockID;
+						}
+						else if (j >= seaLevel - (8 + rand.nextInt(2)) && j <= seaLevel + 1) {
+							if (biome instanceof BTABiomeGenBase) {
+								topBlock = ((BTABiomeGenBase) biome).topBlockExt;
+								fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
+							}
+							else {
+								topBlock = biome.topBlock;
+								fillerBlock = biome.fillerBlock;
+							}
+
+							if (generatorInfo.generatePerlinBeaches()) {
+								if (useGravel) {
+									topBlock = 0;
+									fillerBlock = Block.gravel.blockID;
+								}
+
+								if (useSand) {
+									topBlock = Block.sand.blockID;
+									fillerBlock = Block.sand.blockID;
+								}
+							}
+						}
+						else if (j >= seaLevel + 9) {
+							if (biome instanceof BTABiomeGenBase) {
+								topBlock = ((BTABiomeGenBase) biome).topBlockExt;
+								fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
+							}
+							else {
+								topBlock = biome.topBlock;
+								fillerBlock = biome.fillerBlock;
+							}
+						}
+
+						if (j < seaLevel && topBlock == 0) {
+							if (temperature < 0.15F) {
+								topBlock = (byte)Block.ice.blockID;
+							}
+							else {
+								topBlock = (byte)Block.waterStill.blockID;
+							}
+						}
+
+						remaingDepth = soilDepthNoiseSample;
+
+						if (j >= seaLevel - 1) {
+							blockArray[i][k][j] = topBlock;
+						}
+						else {
+							blockArray[i][k][j] = fillerBlock;
+						}
+					}
+					else if (remaingDepth > 0) {
+						--remaingDepth;
+						blockArray[i][k][j] = fillerBlock;
+
+						if (remaingDepth == 0 && fillerBlock == Block.sand.blockID) {
+							remaingDepth = rand.nextInt(4);
+							fillerBlock = (byte)Block.sandStone.blockID;
+						}
+						else if (BTADecoIntegration.isDecoInstalled() && remaingDepth == 0 && fillerBlock == BTADecoIntegration.redSand.blockID) {
+							remaingDepth = rand.nextInt(4);
+							fillerBlock = BTADecoIntegration.redSandStone.blockID;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	//Old 1D array format
 	protected void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo, WorldType worldType) {
 		this.replaceBlocksForBiome(rand, i, k, blockArray, metaArray, biomesForGeneration, generatorInfo);
 	}
@@ -410,7 +560,7 @@ public class BTASurfaceBuilder {
 		}
 		else {
 			numTrees = biome.theBiomeDecorator.treesPerChunk;
-			
+
 			if (rand.nextInt(10) == 0)
 				numTrees++;
 		}

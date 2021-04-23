@@ -2859,7 +2859,7 @@ public abstract class World implements IBlockAccess
         if (this.provider.terrainType.isBTA() && this.getBiomeGenForCoords(x, z) instanceof BTABiomeGenBase && this.generatorInfoCache.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_3_0)) {
         	BTABiomeGenBase btaBiome = (BTABiomeGenBase) biome;
         	
-        	if (y >= btaBiome.climate.minHeightForSnow && y < 256) {
+        	if (y >= btaBiome.climate.minHeightForSnow + this.provider.terrainType.getColdBiomeSnowLevelModifier(this.generatorInfoCache) && y < 256) {
         		return this.getSavedLightValue(EnumSkyBlock.Block, x, y, z) < 10 && FCBlockSnowCover.CanSnowCoverReplaceBlock(this, x, y, z) && Block.snow.canPlaceBlockAt(this, x, y, z);
         	}
         	else {

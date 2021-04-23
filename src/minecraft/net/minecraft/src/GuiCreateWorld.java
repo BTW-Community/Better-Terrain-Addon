@@ -270,7 +270,7 @@ public class GuiCreateWorld extends GuiScreen
                 
                 WorldType type = WorldType.worldTypes[this.worldTypeId];
                 
-                if (isDeco) {
+                if (isDeco && type.hasDeco()) {
                 	type = WorldType.worldTypes[this.worldTypeId + 1];
                 }
                 

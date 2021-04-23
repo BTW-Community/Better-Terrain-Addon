@@ -41,4 +41,28 @@ public class BTAOpenSimplexOctaves {
 		
 		return noise;
 	}
+	
+	public double noise3(double x, double y, double z) {
+		float octaveScale = 1;
+		double noise = 0;
+		
+		for (int i = 0; i < generators.length; i++) {
+			noise += generators[i].noise3_XZBeforeY(x / octaveScale, y / octaveScale, z / octaveScale) * octaveScale;
+			octaveScale /= 2;
+		}
+		
+		return noise;
+	}
+	
+	public double noise3(double x, double y, double z, double treeNoiseScale) {
+		float octaveScale = 1;
+		double noise = 0;
+		
+		for (int i = 0; i < generators.length; i++) {
+			noise += generators[i].noise3_XZBeforeY(x * treeNoiseScale / octaveScale, y * treeNoiseScale / octaveScale, z * treeNoiseScale / octaveScale) * octaveScale;
+			octaveScale /= 2;
+		}
+		
+		return noise;
+	}
 }
