@@ -25,7 +25,7 @@ public class BTASurfaceBuilder {
 	protected static double[] soilDepthNoise = new double[256];
 	protected static NoiseGeneratorOctaves soilDepthNoiseGen;
 
-	protected static BTAOpenSimplexOctaves sandNoiseGenSimplex;
+	protected static BTAOpenSimplexOctavesFast sandNoiseGenSimplex;
 
 	protected BiomeGenBase biome;
 	protected boolean hasBeenInit = false;
@@ -34,7 +34,7 @@ public class BTASurfaceBuilder {
 	protected int chunkZ;
 
 	protected double treeNoiseScale = 1/64D;
-	protected BTAOpenSimplexOctaves treeNoiseGen;
+	protected BTAOpenSimplexOctavesFast treeNoiseGen;
 
 	public static final BTASurfaceBuilder defaultBuilder = new BTASurfaceBuilder();
 	public static final BTASurfaceBuilderLegacy legacyBuilder = new BTASurfaceBuilderLegacy();
@@ -310,7 +310,7 @@ public class BTASurfaceBuilder {
 		Random sandRand = new Random(seed - 1000);
 
 		if (sandNoiseGenSimplex == null)
-			sandNoiseGenSimplex = new BTAOpenSimplexOctaves(sandRand.nextLong(), 8);
+			sandNoiseGenSimplex = new BTAOpenSimplexOctavesFast(sandRand.nextLong(), 8);
 	}
 
 	protected void initForChunk(int chunkX, int chunkZ) {

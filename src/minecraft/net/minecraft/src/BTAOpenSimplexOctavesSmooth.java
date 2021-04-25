@@ -2,19 +2,21 @@ package net.minecraft.src;
 
 import java.util.Random;
 
-import net.minecraft.src.opensimplex2.OpenSimplex2F;
+import net.minecraft.src.opensimplex2.OpenSimplex2;
+import net.minecraft.src.opensimplex2.OpenSimplex2S;
+import net.minecraft.src.opensimplex2.OpenSimplex2S;
 
-public class BTAOpenSimplexOctaves {
-	private OpenSimplex2F[] generators;
-
-	public BTAOpenSimplexOctaves(long seed, int numOctaves) {
+public class BTAOpenSimplexOctavesSmooth {
+	private OpenSimplex2S[] generators;
+	
+	public BTAOpenSimplexOctavesSmooth(long seed, int numOctaves) {
 		Random rand = new Random();
 		rand.setSeed(seed);
 		
-		this.generators = new OpenSimplex2F[numOctaves];
+		this.generators = new OpenSimplex2S[numOctaves];
 		
 		for (int i = 0; i < numOctaves; i++) {
-			this.generators[i] = new OpenSimplex2F(rand.nextLong());
+			this.generators[i] = new OpenSimplex2S(rand.nextLong());
 		}
 	}
 	

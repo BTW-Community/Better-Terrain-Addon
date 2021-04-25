@@ -8,10 +8,8 @@ public class BTAChunkProviderSimplex implements IChunkProvider
 	/** RNG. */
 	private Random rand;
 
-	private BTAOpenSimplexOctaves blockNoiseGen;
-	private BTAOpenSimplexOctaves biomeWaterNoiseGen;
-	private BTAOpenSimplexOctaves blockModifierNoiseGen;
-	public BTAOpenSimplexOctaves biomeHeightNoiseGen;
+	private BTAOpenSimplexOctavesFast blockNoiseGen;
+	public BTAOpenSimplexOctavesSmooth biomeHeightNoiseGen;
 	
 	private NoiseGeneratorOctaves soilDepthNoiseGen;
 
@@ -20,10 +18,7 @@ public class BTAChunkProviderSimplex implements IChunkProvider
 
 	/** are map structures going to be generated (e.g. strongholds) */
 	private final boolean mapFeaturesEnabled;
-
-	/** Holds the overall noise array used in chunk generation */
-	private double[] noiseArray;
-	private double[] soilDepthNoise = new double[256];
+	
 	private BTAMapGenBase caveGenerator = new BTAMapGenCave();
 
 	/** Holds Stronghold Generator */
@@ -46,12 +41,11 @@ public class BTAChunkProviderSimplex implements IChunkProvider
 	 * Used to store the 5x5 parabolic field that is used during terrain generation.
 	 */
 	float[] parabolicField;
-	int[][] field_73219_j = new int[32][32];
 	private Random m_structureRand;
 	
 	public BTAWorldConfigurationInfo generatorInfo;
 	private long seed;
-	private int parabolicRadius = 2;
+	private int parabolicRadius = 3;
 
 	public BTAChunkProviderSimplex(World world, long seed, boolean mapFeaturesEnabled, BTAWorldConfigurationInfo generatorInfo)
 	{
@@ -60,9 +54,8 @@ public class BTAChunkProviderSimplex implements IChunkProvider
 		this.rand = new Random(seed);
 		this.m_structureRand = new Random(seed);
 		this.generatorInfo = generatorInfo;
-		this.blockNoiseGen = new BTAOpenSimplexOctaves(this.rand.nextLong(), 4);
-		this.biomeHeightNoiseGen = new BTAOpenSimplexOctaves(this.rand.nextLong(), 4);
-		this.biomeWaterNoiseGen = new BTAOpenSimplexOctaves(this.rand.nextLong(), 4);
+		this.blockNoiseGen = new BTAOpenSimplexOctavesFast(this.rand.nextLong(), 4);
+		this.biomeHeightNoiseGen = new BTAOpenSimplexOctavesSmooth(this.rand.nextLong(), 4);
 		this.seed = seed;
 		
 		BTASurfaceBuilder.initForNoiseField(this.seed);
@@ -74,10 +67,10 @@ public class BTAChunkProviderSimplex implements IChunkProvider
 	public void generateTerrain(int chunkX, int chunkZ, int[][][] blockArray) {
 		int seaLevel = 100;
 		
-		this.biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, chunkX * 16 - 2, chunkZ * 16 - 2, 16 + 5, 16 + 5);
-		
 		//Parabolic field is used for smoothing between biomes
 		int parabolicDiameter = parabolicRadius * 2 + 1;
+		
+		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16 - parabolicRadius, chunkZ * 16 - parabolicRadius, 16 + parabolicDiameter, 16 + parabolicDiameter);
 		
 		if (this.parabolicField == null) {
 			this.parabolicField = new float[(int) Math.pow(parabolicDiameter, 2)];
@@ -117,27 +110,66 @@ public class BTAChunkProviderSimplex implements IChunkProvider
 				//Scales min and max biome heights based on surrounding biomes
 				biomeMaxHeightSample /= biomeModifierTotal;
 				biomeMinHeightSample /= biomeModifierTotal;
+
+				System.out.println(biome);
+				System.out.println(biomeMaxHeightSample);
+				System.out.println(biomeMinHeightSample);
+				System.out.println("x: " + (chunkX * 16 + i) + ", z: " + (chunkZ * 16 + k) + "\n");
+				
+				double biomeHeightNoise = biomeHeightNoiseGen.noise2(chunkX * 16 + i, chunkZ * 16 + k, 1/256D);
+				
+				double biomeHeightTransitionWidth = .5;
+				double biomeHeightToBlockScalar = 25;
+				
+				int biomeMaxHeightScaled = (int) (biomeMaxHeightSample * biomeHeightToBlockScalar) + seaLevel;
+				int biomeMinHeightScaled = (int) (biomeMinHeightSample * biomeHeightToBlockScalar) + seaLevel;
+				
+				int biomeHeightTarget;
+				
+				if (biomeHeightNoise > biomeHeightTransitionWidth)
+					biomeHeightTarget = biomeMaxHeightScaled;
+				else if (biomeHeightNoise < -biomeHeightTransitionWidth)
+					biomeHeightTarget = biomeMinHeightScaled;
+				else
+					biomeHeightTarget = (int) (biomeMinHeightScaled + (biomeMaxHeightScaled - biomeMinHeightScaled) * (biomeHeightNoise + biomeHeightTransitionWidth) / ( 2 * biomeHeightTransitionWidth));
 				
 				for (int j = 0; j < 256; j++) {
-					double blockNoise = blockNoiseGen.noise3(chunkX * 16 + i, j, chunkZ * 16 + k, 1/192D);
+					double blockNoise = blockNoiseGen.noise3(chunkX * 16 + i, j, chunkZ * 16 + k, 1/512D);
 					
 					//Biases the generation based on y level.
 					//Below min height is guaranteed to be filled, above max height is guaranteed to be air.
 					//Between those is a linear weighting based on height, then modification to target the biome height.
-					int minHeight = 72;
-					int maxHeight = 208;
+					int minHeight = 75;
+					int maxHeight = 200;
 
-					double baseNoise;
+					double baseNoise = 0;
 					
 					if (j > maxHeight)
 						baseNoise = -1;
 					else if (j < minHeight)
 						baseNoise = 1;
 					else {
-						baseNoise = blockNoise + 1 - 2 * ((j - minHeight) / (double) (maxHeight - minHeight));
+						baseNoise = blockNoise + 1 - 2.1 * ((j - minHeight) / (double) (maxHeight - minHeight));
 					}
 					
-					if (baseNoise > 0) {
+					//Modifies the noise based on the distance of the current y value from the target biome height
+					double biomeWeightScale = .8;
+					int biomeHeightFuzzyScaleDistance = 50;
+					
+					int currentBiomeTargetDistance = biomeHeightTarget - j;
+					
+					/*
+					if (currentBiomeTargetDistance > biomeHeightFuzzyScaleDistance)
+						currentBiomeTargetDistance = biomeHeightFuzzyScaleDistance;
+					else if (currentBiomeTargetDistance < -biomeHeightFuzzyScaleDistance)
+						currentBiomeTargetDistance = -biomeHeightFuzzyScaleDistance;
+					*/
+					
+					double biomeNoiseModifier = (currentBiomeTargetDistance) / ((double) biomeHeightFuzzyScaleDistance) * biomeWeightScale;
+					
+					double noise = baseNoise + biomeNoiseModifier;
+					
+					if (noise > 0) {
 						blockArray[i][k][j] = Block.stone.blockID;
 					}
 					else if (j <= seaLevel) {
