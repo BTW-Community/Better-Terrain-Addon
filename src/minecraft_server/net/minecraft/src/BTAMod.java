@@ -17,7 +17,7 @@ public class BTAMod extends AddonExt {
 	public static final WorldType BTAWorldTypeHorizons = new BTAWorldTypeHorizons(15, "BTAHorizons").setCanBeCreated(false);
 	
 	private BTAMod() {
-		super("Better Terrain", "1.4.2", "BTA");
+		super("Better Terrain", "1.4.3", "BTA");
 		this.currentVersion = BTAEnumVersionCompat.fromString(this.getVersionString());
 	}
 
@@ -45,7 +45,7 @@ public class BTAMod extends AddonExt {
 	}
 	
 	public void initMisc() {
-		
+		//ServerCommandManager.registerAddonCommand(new BTACommandBiome());
 	}
 	
 	public static BTAMod getInstance() {

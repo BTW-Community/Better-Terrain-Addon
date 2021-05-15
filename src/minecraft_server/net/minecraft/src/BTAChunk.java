@@ -87,4 +87,33 @@ public class BTAChunk extends Chunk {
             }
         }
 	}
+	
+	public BTAChunk(World world, int[][][] blockArray, int[][][] metaArray, int chunkX, int chunkZ) {
+        super(world, chunkX, chunkZ);
+
+        for (int i = 0; i < 16; ++i)
+        {
+            for (int k = 0; k < 16; ++k)
+            {
+                for (int j = 0; j < 256; ++j)
+                {
+                    int blockID = blockArray[i][k][j];
+                    int meta = metaArray[i][k][j];
+
+                    if (blockID != 0)
+                    {
+                        int extIndex = j >> 4;
+
+                        if (getBlockStorageArray()[extIndex] == null)
+                        {
+                        	getBlockStorageArray()[extIndex] = new ExtendedBlockStorage(extIndex << 4, !world.provider.hasNoSky);
+                        }
+
+                        getBlockStorageArray()[extIndex].setExtBlockID(i, j & 15, k, blockID);
+                        getBlockStorageArray()[extIndex].setExtBlockMetadata(i, j & 15, k, meta);
+                    }
+                }
+            }
+        }
+	}
 }

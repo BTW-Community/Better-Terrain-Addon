@@ -145,15 +145,15 @@ public class BTASurfaceBuilder {
 	public static void initForNoiseField(long seed) {
 		Random rand = new Random(seed);
 
-		if (blockNoiseGen1 == null)
+		//if (blockNoiseGen1 == null)
 			blockNoiseGen1 = new NoiseGeneratorOctaves(rand, 16);
-		if (blockNoiseGen2 == null)
+		//if (blockNoiseGen2 == null)
 			blockNoiseGen2 = new NoiseGeneratorOctaves(rand, 16);
-		if (blockModifierNoiseGen == null)
+		//if (blockModifierNoiseGen == null)
 			blockModifierNoiseGen = new NoiseGeneratorOctaves(rand, 8);
-		if (soilDepthNoiseGen == null)
+		//if (soilDepthNoiseGen == null)
 			soilDepthNoiseGen = new NoiseGeneratorOctaves(rand, 4);
-		if (biomeHeightNoiseGen == null)
+		//if (biomeHeightNoiseGen == null)
 			biomeHeightNoiseGen = new NoiseGeneratorOctaves(rand, 16);
 	}
 
@@ -309,7 +309,7 @@ public class BTASurfaceBuilder {
 	protected void init(Random rand, long seed) {
 		Random sandRand = new Random(seed - 1000);
 
-		if (sandNoiseGenSimplex == null)
+		//if (sandNoiseGenSimplex == null)
 			sandNoiseGenSimplex = new BTAOpenSimplexOctavesFast(sandRand.nextLong(), 8);
 	}
 

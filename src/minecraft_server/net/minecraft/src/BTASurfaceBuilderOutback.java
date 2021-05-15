@@ -5,7 +5,7 @@ import java.util.Random;
 import net.minecraft.src.opensimplex2.OpenSimplex2F;
 
 public class BTASurfaceBuilderOutback extends BTASurfaceBuilder {
-	protected static BTAOpenSimplexOctaves grassNoiseGenSimplex;
+	protected static BTAOpenSimplexOctavesFast grassNoiseGenSimplex;
 	
 	@Override
 	public void init(Random rand, long seed) {
@@ -14,7 +14,7 @@ public class BTASurfaceBuilderOutback extends BTASurfaceBuilder {
 		Random grassRand = new Random(seed + 3000);
 		
 		if (grassNoiseGenSimplex == null)
-			grassNoiseGenSimplex = new BTAOpenSimplexOctaves(grassRand.nextLong(), 2);
+			grassNoiseGenSimplex = new BTAOpenSimplexOctavesFast(grassRand.nextLong(), 2);
 	}
 	
 	public void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {

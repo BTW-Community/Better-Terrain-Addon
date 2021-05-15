@@ -37,6 +37,8 @@ public class BTABetaChunkProvider implements IChunkProvider
 	private Random m_structureRand;
 	
 	private BTAWorldConfigurationInfo generatorInfo;
+	
+	private long seed;
 
 	public BTABetaChunkProvider(World var1, long var2, boolean var4, BTAWorldConfigurationInfo generatorInfo)
 	{
@@ -53,6 +55,9 @@ public class BTABetaChunkProvider implements IChunkProvider
 		this.field_922_a = new BTABetaNoiseOctaves(this.rand, 10);
 		this.field_921_b = new BTABetaNoiseOctaves(this.rand, 16);
 		this.mobSpawnerNoise = new BTABetaNoiseOctaves(this.rand, 8);
+		this.seed = var2;
+		
+		BTASurfaceBuilder.initForNoiseField(this.seed);
 	}
 
 	public void generateTerrain(int var1, int var2, int[] var3, BiomeGenBase[] var4)
@@ -279,26 +284,29 @@ public class BTABetaChunkProvider implements IChunkProvider
 	 * Will return back a chunk, if it doesn't exist and its not a MP client it will generates all the blocks for the
 	 * specified chunk from the map seed and chunk seed
 	 */
-	public Chunk provideChunk(int var1, int var2)
+	public Chunk provideChunk(int chunkX, int chunkZ)
 	{
-		this.rand.setSeed((long)var1 * 341873128712L + (long)var2 * 132897987541L);
-		int[] var3 = new int[32768];
-		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, var1 * 16, var2 * 16, 16, 16);
+		this.rand.setSeed((long)chunkX * 341873128712L + (long)chunkZ * 132897987541L);
+		int[] blockArray = new int[32768];
+		int[] metaArray = new int[32768];
+		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
 
-		this.generateTerrain(var1, var2, var3, this.biomesForGeneration);
-		this.replaceBlocksForBiome(var1, var2, var3, this.biomesForGeneration);
-		this.mapGenCaves.generate(this, this.worldObj, var1, var2, var3);
-		this.ravineGenerator.generate(this, this.worldObj, var1, var2, var3);
+		this.generateTerrain(chunkX, chunkZ, blockArray, this.biomesForGeneration);
+		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
+		BTASurfaceBuilder.replaceSurface(this.rand, this.seed, chunkX, chunkZ, blockArray, metaArray, biomesForGeneration, generatorInfo, this.worldObj.provider.terrainType);
+		
+		this.mapGenCaves.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
+		this.ravineGenerator.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
 
 		if (this.mapFeaturesEnabled)
 		{
-			this.mineshaftGenerator.generate(this, this.worldObj, var1, var2, var3);
-			this.villageGenerator.generate(this, this.worldObj, var1, var2, var3);
-			this.strongholdGenerator.generate(this, this.worldObj, var1, var2, var3);
-			this.scatteredFeatureGenerator.generate(this, this.worldObj, var1, var2, var3);
+			this.mineshaftGenerator.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
+			this.villageGenerator.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
+			this.strongholdGenerator.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
+			this.scatteredFeatureGenerator.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
 		}
 
-		Chunk var5 = new BTAChunk(this.worldObj, var3, var1, var2);
+		Chunk var5 = new BTAChunk(this.worldObj, blockArray, chunkX, chunkZ);
 		byte[] var6 = var5.getBiomeArray();
 
 		for (int var7 = 0; var7 < var6.length; ++var7)
@@ -439,9 +447,9 @@ public class BTABetaChunkProvider implements IChunkProvider
 	public void populate(IChunkProvider par1IChunkProvider, int par2, int par3)
 	{
 		BlockSand.fallInstantly = true;
-		int var4 = par2 * 16;
-		int var5 = par3 * 16;
-		BiomeGenBase b = this.worldObj.getBiomeGenForCoords(var4 + 16, var5 + 16);
+		int x = par2 * 16;
+		int z = par3 * 16;
+		BiomeGenBase b = this.worldObj.getBiomeGenForCoords(x + 16, z + 16);
 		this.rand.setSeed(this.worldObj.getSeed());
 		long var7 = this.rand.nextLong() / 2L * 2L + 1L;
 		long var9 = this.rand.nextLong() / 2L * 2L + 1L;
@@ -465,17 +473,17 @@ public class BTABetaChunkProvider implements IChunkProvider
 
 		if (!var15 && this.rand.nextInt(4) == 0)
 		{
-			var16 = var4 + this.rand.nextInt(16) + 8;
+			var16 = x + this.rand.nextInt(16) + 8;
 			var17 = this.rand.nextInt(128);
-			var18 = var5 + this.rand.nextInt(16) + 8;
+			var18 = z + this.rand.nextInt(16) + 8;
 			(new WorldGenLakes(Block.waterStill.blockID)).generate(this.worldObj, this.rand, var16, var17, var18);
 		}
 
 		if (!var15 && this.rand.nextInt(8) == 0)
 		{
-			var16 = var4 + this.rand.nextInt(16) + 8;
+			var16 = x + this.rand.nextInt(16) + 8;
 			var17 = this.rand.nextInt(this.rand.nextInt(120) + 8);
-			var18 = var5 + this.rand.nextInt(16) + 8;
+			var18 = z + this.rand.nextInt(16) + 8;
 
 			if (var17 < 63 || this.rand.nextInt(10) == 0)
 			{
@@ -485,9 +493,9 @@ public class BTABetaChunkProvider implements IChunkProvider
 
 		for (var16 = 0; var16 < 8; ++var16)
 		{
-			var17 = var4 + this.rand.nextInt(16) + 8;
+			var17 = x + this.rand.nextInt(16) + 8;
 			var18 = this.rand.nextInt(128);
-			int var19 = var5 + this.rand.nextInt(16) + 8;
+			int var19 = z + this.rand.nextInt(16) + 8;
 
 			if ((new WorldGenDungeons()).generate(this.worldObj, this.rand, var17, var18, var19))
 			{
@@ -495,32 +503,36 @@ public class BTABetaChunkProvider implements IChunkProvider
 			}
 		}
 
-		b.decorate(this.worldObj, this.rand, var4, var5);
-		SpawnerAnimals.performWorldGenSpawning(this.worldObj, b, var4 + 8, var5 + 8, 16, 16, this.rand);
 
-		var4 += 8;
-		var5 += 8;
+		if (b instanceof BTABiomeGenBase)
+			((BTABiomeGenBase) b).decorate(this.worldObj, this.rand, x, z, this.generatorInfo);
+		else
+			b.decorate(this.worldObj, this.rand, x, z);
+		SpawnerAnimals.performWorldGenSpawning(this.worldObj, b, x + 8, z + 8, 16, 16, this.rand);
+
+		x += 8;
+		z += 8;
 
 		for (var16 = 0; var16 < 16; ++var16)
 		{
 			for (var17 = 0; var17 < 16; ++var17)
 			{
-				var18 = this.worldObj.getPrecipitationHeight(var4 + var16, var5 + var17);
+				var18 = this.worldObj.getPrecipitationHeight(x + var16, z + var17);
 
-				if (this.worldObj.isBlockFreezable(var16 + var4, var18 - 1, var17 + var5))
+				if (this.worldObj.isBlockFreezable(var16 + x, var18 - 1, var17 + z))
 				{
-					this.worldObj.setBlock(var16 + var4, var18 - 1, var17 + var5, Block.ice.blockID, 0, 2);
+					this.worldObj.setBlock(var16 + x, var18 - 1, var17 + z, Block.ice.blockID, 0, 2);
 				}
 
-				if (this.worldObj.canSnowAt(var16 + var4, var18, var17 + var5))
+				if (this.worldObj.canSnowAt(var16 + x, var18, var17 + z))
 				{
-					this.worldObj.setBlock(var16 + var4, var18, var17 + var5, Block.snow.blockID, 0, 2);
+					this.worldObj.setBlock(var16 + x, var18, var17 + z, Block.snow.blockID, 0, 2);
 				}
 			}
 		}
 
 		BlockSand.fallInstantly = false;
-		this.BTWPostProcessChunk(this.worldObj, var4 - 8, var5 - 8);
+		this.BTWPostProcessChunk(this.worldObj, x - 8, z - 8);
 	}
 
 	private void BTWPostProcessChunk(World var1, int var2, int var3)

@@ -24,7 +24,7 @@ public class BTAWorldConfigurationInfo {
 		info.setGeneratePerlinBeaches(true);
 		info.setClimatized(true);
 		info.setBiomeSize(1);
-		info.setGenerator(BTAEnumTerrainGenerator.SIMPLEX);
+		info.setGenerator(BTAEnumTerrainGenerator.CLASSIC);
 
 		info.generateBiomeInfoListFromBiomes(BTABiomeConfiguration.biomeListDeco);
 
