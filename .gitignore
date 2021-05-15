@@ -1,4 +1,5 @@
 reobf/
+modsrc/
 
 src/minecraft/net/minecraft/src/Addon*
 src/minecraft_server/net/minecraft/src/Addon*

@@ -1,7 +1,15 @@
+Version 1.4.3
+[list]
+[*]Updated to API 1.1.1
+[*]Fixed an issue causing noise generators to not respect the seed after the first world generated after booting the game.
+[*]Fixed an issue where attempting to create a vanilla world type with BTA and deco installed would create the wrong world type if you did not toggle deco beforehand.
+[*]Fixed an issue where beta and skylands worlds generated far too few trees.
+[/list]
+
 Version 1.4.2
 [list]
 [*]Fixed an issue where any changes using random generators would result in the terrain noise being initialized in a different way, causing large world seams if anything was changed (to the point where unrelated mods could affect the generation). This only affected 1.4.X worlds so older worlds are fine. However, the fix for this necessitated causing one more world seam, so any worlds that were generated with 1.4.0 or 1.4.1 will have different generation now. I apologize for any inconvenience this may have caused, but damage should be minimal given the same day release and the fact that old worlds were unaffected by the bug as they do not use the new generator system that 1.4.X worlds do.
-[*]Fixed an issue where frozen beaches and red sand beaches would spawn normal beachs at their edges.
+[*]Fixed an issue where frozen beaches and red sand beaches would spawn normal beaches at their edges.
 [/list]
 
 Version 1.4.1

@@ -6,7 +6,7 @@ import java.util.Random;
 public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 	private static ArrayList<Integer> allowedTerracottaMetadata = new ArrayList();
 	private static int[] metaLocations;
-	protected static BTAOpenSimplexOctaves grassNoiseGenSimplex;
+	protected static BTAOpenSimplexOctavesFast grassNoiseGenSimplex;
 
 	@Override
 	public void init(Random rand, long seed) {
@@ -48,7 +48,7 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 		}
 		
 		if (grassNoiseGenSimplex == null)
-			grassNoiseGenSimplex = new BTAOpenSimplexOctaves(metaRand.nextLong(), 2);
+			grassNoiseGenSimplex = new BTAOpenSimplexOctavesFast(metaRand.nextLong(), 2);
 	}
 
 	private static void swap(int[] array, int i, int j) {

@@ -25,4 +25,29 @@ public class BTAMapGenBase extends MapGenBase {
      * Recursively called by generate() (generate) and optionally by itself.
      */
     protected void recursiveGenerate(World par1World, int par2, int par3, int par4, int par5, int[] blockArray) {}
+    
+    public void generate(IChunkProvider chunkProvider, World world, int x, int z, int[][][] blockArray)
+    {
+        int range = this.range;
+        this.worldObj = world;
+        this.rand.setSeed(world.getSeed());
+        long seedBase1 = this.rand.nextLong();
+        long seedBase2 = this.rand.nextLong();
+
+        for (int i = x - range; i <= x + range; ++i)
+        {
+            for (int k = z - range; k <= z + range; ++k)
+            {
+                long seed1 = (long)i * seedBase1;
+                long seed2 = (long)k * seedBase2;
+                this.rand.setSeed(seed1 ^ seed2 ^ world.getSeed());
+                this.recursiveGenerate(world, i, k, x, z, blockArray);
+            }
+        }
+    }
+
+    /**
+     * Recursively called by generate() (generate) and optionally by itself.
+     */
+    protected void recursiveGenerate(World par1World, int par2, int par3, int par4, int par5, int[][][] blockArray) {}
 }

@@ -38,7 +38,13 @@ public class BTAWorldType extends WorldType {
     		info = BTAWorldConfigurationInfo.createInfoFromString(generatorOptions);
     	}
     	
-    	return new BTAChunkProvider(world, seed, mapFeaturesEnabled, info);
+    	switch (info.getGenerator()) {
+    	default:
+    	case CLASSIC:
+    		return new BTAChunkProvider(world, seed, mapFeaturesEnabled, info);
+    	case SIMPLEX:
+    		return new BTAChunkProviderSimplex(world, seed, mapFeaturesEnabled, info);
+    	}
     }
 
     @Override
@@ -55,4 +61,9 @@ public class BTAWorldType extends WorldType {
     public boolean isBTA() {
     	return true;
     }
+	
+    @Override
+	public int getColdBiomeSnowLevelModifier(BTAWorldConfigurationInfo generatorInfo) {
+		return generatorInfo.getGenerator().equals(BTAEnumTerrainGenerator.SIMPLEX) ? 70 : 0;
+	}
 }

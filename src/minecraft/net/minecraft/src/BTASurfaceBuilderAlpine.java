@@ -10,7 +10,7 @@ public class BTASurfaceBuilderAlpine extends BTASurfaceBuilder {
 		Random treeRand = new Random(seed + 2000);
 		
 		if (this.treeNoiseGen == null);
-			this.treeNoiseGen = new BTAOpenSimplexOctaves(treeRand.nextLong(), 2);
+			this.treeNoiseGen = new BTAOpenSimplexOctavesFast(treeRand.nextLong(), 2);
 	}
 	
 	public void generateTreesForBiome(World world, Random rand, BTAWorldConfigurationInfo generatorInfo) {

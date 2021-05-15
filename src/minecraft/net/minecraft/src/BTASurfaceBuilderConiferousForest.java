@@ -3,8 +3,8 @@ package net.minecraft.src;
 import java.util.Random;
 
 public class BTASurfaceBuilderConiferousForest extends BTASurfaceBuilder {
-	protected static BTAOpenSimplexOctaves coarseDirtNoiseGenSimplex;
-	protected static BTAOpenSimplexOctaves podzolNoiseGenSimplex;
+	protected static BTAOpenSimplexOctavesFast coarseDirtNoiseGenSimplex;
+	protected static BTAOpenSimplexOctavesFast podzolNoiseGenSimplex;
 
 	@Override
 	public void init(Random rand, long seed) {
@@ -13,12 +13,12 @@ public class BTASurfaceBuilderConiferousForest extends BTASurfaceBuilder {
 		Random soilRand = new Random(seed);
 
 		if (coarseDirtNoiseGenSimplex == null)
-			coarseDirtNoiseGenSimplex = new BTAOpenSimplexOctaves(soilRand.nextLong(), 4);
+			coarseDirtNoiseGenSimplex = new BTAOpenSimplexOctavesFast(soilRand.nextLong(), 4);
 		if (podzolNoiseGenSimplex == null)
-			podzolNoiseGenSimplex = new BTAOpenSimplexOctaves(soilRand.nextLong(), 4);
+			podzolNoiseGenSimplex = new BTAOpenSimplexOctavesFast(soilRand.nextLong(), 4);
 
 		if (this.treeNoiseGen == null);
-			this.treeNoiseGen = new BTAOpenSimplexOctaves(soilRand.nextLong(), 2);
+			this.treeNoiseGen = new BTAOpenSimplexOctavesFast(soilRand.nextLong(), 2);
 
 		this.treeNoiseScale = 1/256D;
 	}

@@ -203,4 +203,8 @@ public class WorldType
 		this.parent = parent;
 		return this;
 	}
+	
+	public int getColdBiomeSnowLevelModifier(BTAWorldConfigurationInfo generatorInfo) {
+		return 0;
+	}
 }

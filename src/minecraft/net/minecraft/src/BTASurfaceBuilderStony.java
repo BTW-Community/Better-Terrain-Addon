@@ -5,7 +5,7 @@ import java.util.Random;
 import net.minecraft.src.opensimplex2.OpenSimplex2F;
 
 public class BTASurfaceBuilderStony extends BTASurfaceBuilder {
-	protected static BTAOpenSimplexOctaves stoneNoiseGenSimplex;
+	protected static BTAOpenSimplexOctavesFast stoneNoiseGenSimplex;
 	
 	@Override
 	public void init(Random rand, long seed) {
@@ -14,7 +14,7 @@ public class BTASurfaceBuilderStony extends BTASurfaceBuilder {
 		Random stoneRand = new Random(seed + 1000);
 		
 		if (stoneNoiseGenSimplex == null)
-			stoneNoiseGenSimplex = new BTAOpenSimplexOctaves(stoneRand.nextLong(), 2);
+			stoneNoiseGenSimplex = new BTAOpenSimplexOctavesFast(stoneRand.nextLong(), 2);
 	}
 	
 	public void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {

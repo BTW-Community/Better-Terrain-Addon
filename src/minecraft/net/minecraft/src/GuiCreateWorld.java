@@ -270,14 +270,28 @@ public class GuiCreateWorld extends GuiScreen
                 
                 WorldType type = WorldType.worldTypes[this.worldTypeId];
                 
-                if (isDeco) {
+                if (isDeco && type.hasDeco()) {
                 	type = WorldType.worldTypes[this.worldTypeId + 1];
                 }
                 
                 WorldSettings var6 = new WorldSettings(var2, var8, this.generateStructures, this.isHardcore, type);
                 
-                if (WorldType.worldTypes[this.worldTypeId].isBTA() && this.generatorOptionsToUse.equals(""))
+                if (WorldType.worldTypes[this.worldTypeId].isBTA() && this.generatorOptionsToUse.equals("")) {
                 	this.generatorOptionsToUse = BTAWorldConfigurationInfo.createDefaultConfiguration(isDeco).toString();
+
+    				BTASurfaceBuilder.defaultBuilder.hasBeenInit = false;
+    				BTASurfaceBuilder.legacyBuilder.hasBeenInit = false;
+    				
+                	for (BiomeGenBase b : BTAWorldConfigurationInfo.createInfoFromString(this.generatorOptionsToUse).getBiomesForGeneration()) {
+                		if (b instanceof BTABiomeGenBase) {
+                			BTASurfaceBuilder builder = ((BTABiomeGenBase) b).getSurfaceBuilder();
+                			
+                			if (builder != null) {
+                				builder.hasBeenInit = false;
+                			}
+                		}
+                	}
+                }
                 //System.out.println(this.generatorOptionsToUse);
                 var6.func_82750_a(this.generatorOptionsToUse);
 

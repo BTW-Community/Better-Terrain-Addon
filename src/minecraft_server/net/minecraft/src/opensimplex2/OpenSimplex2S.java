@@ -13,7 +13,7 @@ package net.minecraft.src.opensimplex2;
  * Multiple versions of each function are provided. See the
  * documentation above each, for more info.
  */
-public class OpenSimplex2S {
+public class OpenSimplex2S implements OpenSimplex2 {
 	
 	private static final int PSIZE = 2048;
 	private static final int PMASK = 2047;

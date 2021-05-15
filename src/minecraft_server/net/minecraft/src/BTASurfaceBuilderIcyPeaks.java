@@ -10,7 +10,7 @@ public class BTASurfaceBuilderIcyPeaks extends BTASurfaceBuilder {
 		Random treeRand = new Random(seed + 3000);
 		
 		if (this.treeNoiseGen == null);
-			this.treeNoiseGen = new BTAOpenSimplexOctaves(treeRand.nextLong(), 2);
+			this.treeNoiseGen = new BTAOpenSimplexOctavesFast(treeRand.nextLong(), 2);
 			
 		this.treeNoiseScale = 1/256D;
 	}
