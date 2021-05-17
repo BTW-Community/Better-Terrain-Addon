@@ -15,6 +15,7 @@ public class BTAWorldConfigurationInfo {
 	private boolean climatized = false;
 	private int biomeSize = 2;
 	private BTAEnumTerrainGenerator generator = BTAEnumTerrainGenerator.CLASSIC;
+	private boolean useNewNether = false;
 
 	public static BTAWorldConfigurationInfo createDefaultConfiguration(boolean isDeco) {
 		BTAWorldConfigurationInfo info = new BTAWorldConfigurationInfo();
@@ -25,6 +26,7 @@ public class BTAWorldConfigurationInfo {
 		info.setClimatized(true);
 		info.setBiomeSize(1);
 		info.setGenerator(BTAEnumTerrainGenerator.CLASSIC);
+		info.setUseNewNether(true);
 
 		info.generateBiomeInfoListFromBiomes(BTABiomeConfiguration.biomeListDeco);
 
@@ -56,6 +58,7 @@ public class BTAWorldConfigurationInfo {
 		info.setClimatized(false);
 		info.setBiomeSize(2);
 		info.setGenerator(BTAEnumTerrainGenerator.CLASSIC);
+		info.setUseNewNether(false);
 
 		info.generateBiomeInfoListFromBiomes(BTABiomeConfiguration.biomeListDecoCompat);
 
@@ -272,6 +275,15 @@ public class BTAWorldConfigurationInfo {
 
 	public BTAWorldConfigurationInfo setGenerator(BTAEnumTerrainGenerator generator) {
 		this.generator = generator;
+		return this;
+	}
+
+	public boolean isUseNewNether() {
+		return useNewNether;
+	}
+
+	public BTAWorldConfigurationInfo setUseNewNether(boolean useNewNether) {
+		this.useNewNether = useNewNether;
 		return this;
 	}
 }

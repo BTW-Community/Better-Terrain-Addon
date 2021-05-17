@@ -5,7 +5,8 @@ public enum BTAEnumClimate {
 	COLD(-2, 95),
 	TEMPERATE(-3, 256),
 	TROPICAL(-4, 256),
-	ARID(-5, 256);
+	ARID(-5, 256),
+	HELL(-6, 256);
 	
 	public final int id;
 	public final int minHeightForSnow;
