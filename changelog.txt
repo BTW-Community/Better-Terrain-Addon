@@ -1,3 +1,8 @@
+Version 1.4.4
+[list]
+[*]Fixed an issue where the game could crash when generating sand when better shores is disabled.
+[/list]
+
 Version 1.4.3
 [list]
 [*]Updated to API 1.1.1

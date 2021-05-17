@@ -13,6 +13,7 @@ public enum BTAEnumVersionCompat {
 	V1_4_1(1, 4, 1),
 	V1_4_2(1, 4, 2),
 	V1_4_3(1, 4, 3),
+	V1_4_4(1, 4, 4),
 	V1_5_0(1, 5, 0);
 	
 	private final int major;
