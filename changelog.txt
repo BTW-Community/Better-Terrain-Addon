@@ -13,6 +13,11 @@ Version 2.1.0
 [*]Changed black stone to be able to spawn nether mobs.
 [/list]
 
+Version 2.0.2
+[list]
+[*]Fixed an issue where the last release caused slate to stop generating.
+[/list]
+
 Version 2.0.1
 [list]
 [*]Fixed an issue where simplex noise surface decorators were creating artifacts along chunk boundaries. This was most noticeable in outback but affected several other biomes.
