@@ -1,8 +1,5 @@
 package net.minecraft.src;
 
-import com.prupe.mcpatcher.cc.ColorizeWorld;
-import com.prupe.mcpatcher.cc.Colorizer;
-
 public abstract class WorldProvider
 {
     /** world object being used */
@@ -183,14 +180,6 @@ public abstract class WorldProvider
         float var4 = 0.7529412F;
         float var5 = 0.84705883F;
         float var6 = 1.0F;
-        
-        if (ColorizeWorld.computeFogColor(this, par1))
-        {
-            var4 = Colorizer.setColor[0];
-            var5 = Colorizer.setColor[1];
-            var6 = Colorizer.setColor[2];
-        }
-        
         var4 *= var3 * 0.94F + 0.06F;
         var5 *= var3 * 0.94F + 0.06F;
         var6 *= var3 * 0.91F + 0.09F;

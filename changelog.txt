@@ -13,6 +13,12 @@ Version 2.1.0
 [*]Changed black stone to be able to spawn nether mobs.
 [/list]
 
+Version 2.0.1
+[list]
+[*]Fixed an issue where simplex noise surface decorators were creating artifacts along chunk boundaries. This was most noticeable in outback but affected several other biomes.
+[*]Fixed an issue where the game could crash when trying to generate a village.
+[/list]
+
 Version 2.0.0
 [list]
 [*]Updated to BTW CE 1.1.X.

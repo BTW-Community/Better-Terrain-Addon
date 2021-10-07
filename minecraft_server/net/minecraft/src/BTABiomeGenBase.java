@@ -144,11 +144,6 @@ public class BTABiomeGenBase extends BiomeGenBase {
     {
         return this.CanRainInBiome();
     }
-    
-    @Override
-    public boolean canSlimesSpawnOnSurface() {
-    	return BTABiomeConfiguration.canBiomeSpawnWitchHut(this);
-    }
 
     /**
      * Gets a WorldGen appropriate for this biome.
@@ -161,6 +156,10 @@ public class BTABiomeGenBase extends BiomeGenBase {
     public BTASurfaceBuilder getSurfaceBuilder() {
 		return surfaceBuilder;
 	}
+    
+    public boolean canSlimesSpawnOnSurface() {
+    	return BTABiomeConfiguration.canBiomeSpawnWitchHut(this);
+    }
 
 	public void setSurfaceBuilder(BTASurfaceBuilder surfaceBuilder) {
 		this.surfaceBuilder = surfaceBuilder;

@@ -39,8 +39,6 @@ public class BTASkyChunkProvider implements BTAIChunkProvider
 	private boolean isNether = false;
 	
 	private BTAWorldConfigurationInfo generatorInfo;
-	
-	private long seed;
 
 	public BTASkyChunkProvider(World var1, long var2, boolean var4, BTAWorldConfigurationInfo generatorInfo)
 	{
@@ -57,7 +55,6 @@ public class BTASkyChunkProvider implements BTAIChunkProvider
 		this.field_922_a = new BTABetaNoiseOctaves(this.rand, 10);
 		this.field_921_b = new BTABetaNoiseOctaves(this.rand, 16);
 		this.mobSpawnerNoise = new BTABetaNoiseOctaves(this.rand, 8);
-		this.seed = var2;
 	}
 	
 	public BTASkyChunkProvider setNether() {
@@ -223,29 +220,31 @@ public class BTASkyChunkProvider implements BTAIChunkProvider
 	 * Will return back a chunk, if it doesn't exist and its not a MP client it will generates all the blocks for the
 	 * specified chunk from the map seed and chunk seed
 	 */
-	public Chunk provideChunk(int chunkX, int chunkZ)
+	public Chunk provideChunk(int var1, int var2)
 	{
-		this.rand.setSeed((long)chunkX * 341873128712L + (long)chunkZ * 132897987541L);
-		int[] blockArray = new int[32768];
-		int[] metaArray = new int[32768];
-		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
+		this.rand.setSeed((long)var1 * 341873128712L + (long)var2 * 132897987541L);
+		int[] var3 = new int[32768];
+		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, var1 * 16, var2 * 16, 16, 16);
 
-		this.generateTerrain(chunkX, chunkZ, blockArray, this.biomesForGeneration);
-		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
-		BTASurfaceBuilder.replaceSurface(this.rand, this.seed, chunkX, chunkZ, blockArray, metaArray, biomesForGeneration, generatorInfo, this.worldObj.provider.terrainType);
-		
-		this.mapGenCaves.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
-		this.ravineGenerator.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
+		this.generateTerrain(var1, var2, var3, this.biomesForGeneration);
+		this.replaceBlocksForBiome(var1, var2, var3, this.biomesForGeneration);
+		this.mapGenCaves.generate(this, this.worldObj, var1, var2, var3);
+		this.ravineGenerator.generate(this, this.worldObj, var1, var2, var3);
 
 		if (this.mapFeaturesEnabled)
 		{
-			this.mineshaftGenerator.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
-			//this.villageGenerator.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
-			//this.strongholdGenerator.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
-			this.scatteredFeatureGenerator.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
+			if (this.isNether) {
+		        this.genNetherBridge.generate(this, this.worldObj, var1, var2, var3);
+			}
+			else {
+				this.mineshaftGenerator.generate(this, this.worldObj, var1, var2, var3);
+				//this.villageGenerator.generate(this, this.worldObj, var1, var2, var3);
+				//this.strongholdGenerator.generate(this, this.worldObj, var1, var2, var3);
+				this.scatteredFeatureGenerator.generate(this, this.worldObj, var1, var2, var3);
+			}
 		}
 
-		Chunk var5 = new BTAChunk(this.worldObj, blockArray, chunkX, chunkZ);
+		Chunk var5 = new BTAChunk(this.worldObj, var3, var1, var2);
 		byte[] var6 = var5.getBiomeArray();
 
 		for (int var7 = 0; var7 < var6.length; ++var7)

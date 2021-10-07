@@ -144,7 +144,6 @@ public class BTABiomeDecorator
 	protected WorldGenerator graniteGen;
 	protected WorldGenerator andesiteGen;
 	protected WorldGenerator dioriteGen;
-	protected WorldGenerator slateGen;
 	protected WorldGenerator melonGen;
 
 	public int oasesPerChunk;
@@ -213,7 +212,6 @@ public class BTABiomeDecorator
 			graniteGen = new BTAWorldGenMinable(BTADecoIntegration.stoneTypes.blockID, 0, 32, Block.stone.blockID);
 			andesiteGen = new BTAWorldGenMinable(BTADecoIntegration.stoneTypes.blockID, 1, 32, Block.stone.blockID);
 			dioriteGen = new BTAWorldGenMinable(BTADecoIntegration.stoneTypes.blockID, 2, 32, Block.stone.blockID);
-			slateGen = new BTAWorldGenMinable(Block.stone.blockID, 3, 32, Block.stone.blockID);
 		}
 
 		oasesPerChunk = 0;
@@ -603,7 +601,6 @@ public class BTABiomeDecorator
 			this.genStandardOre1(12, this.graniteGen, 0, 128);
 			this.genStandardOre1(12, this.andesiteGen, 0, 128);
 			this.genStandardOre1(12, this.dioriteGen, 0, 128);
-			this.genStandardOre1(12, this.slateGen, 0, this.currentWorld.provider.terrainType.getStrataLevels()[1]);
 		}
 	}
 }

@@ -19,11 +19,11 @@ public class BTASurfaceBuilderOutback extends BTASurfaceBuilder {
 	
 	public void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
 		byte seaLevel = 63;
-
+		
 		float temperature = biome.getFloatTemperature();
 		double grassNoiseScale = 0.0625D;
 		//k and i swapped because apparently I messed something up somewhere
-		boolean useGrass = grassNoiseGenSimplex.noise2((this.chunkX * 16 + k) * grassNoiseScale, (this.chunkZ * 16 + i) * grassNoiseScale) > 0;
+		boolean useGrass = grassNoiseGenSimplex.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), grassNoiseScale) > 0;
 		
 		boolean useGravel = this.gravelNoise[i + k * 16] + rand.nextDouble() * 0.2D > 3.0D;
 		int soilDepthNoiseSample = (int)(this.soilDepthNoise[i + k * 16] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);

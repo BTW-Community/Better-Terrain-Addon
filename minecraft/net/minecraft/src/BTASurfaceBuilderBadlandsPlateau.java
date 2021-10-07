@@ -64,7 +64,7 @@ public class BTASurfaceBuilderBadlandsPlateau extends BTASurfaceBuilder {
 		
 		double grassNoiseScale = 1/256D;
 		//k and i swapped because apparently I messed something up somewhere
-		boolean useGrass = grassNoiseGenSimplex.noise2((this.chunkX * 16 + k) * grassNoiseScale, (this.chunkZ * 16 + i) * grassNoiseScale) + rand.nextDouble() * 0.15D - 0.125 > 0;
+		boolean useGrass = grassNoiseGenSimplex.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), grassNoiseScale) + rand.nextDouble() * 0.15D - 0.125 > 0;
 
 		boolean useGravel = this.gravelNoise[i + k * 16] + rand.nextDouble() * 0.2D > 3.0D;
 		int soilDepthNoiseSample = (int)(this.soilDepthNoise[i + k * 16] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);

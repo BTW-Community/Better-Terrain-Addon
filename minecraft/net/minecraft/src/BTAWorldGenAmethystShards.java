@@ -17,7 +17,7 @@ public class BTAWorldGenAmethystShards extends WorldGenerator {
 				ArrayList<Integer> validOrientations = new ArrayList(0);
 
 				for (int dir = 0; dir < 6; dir++) {
-					FCUtilsBlockPos pos = new FCUtilsBlockPos(i, j, k, Facing.oppositeSide[dir]);
+					FCUtilsBlockPos pos = new FCUtilsBlockPos(i, j, k, DecoUtilsBlock.getOppositeFacing(dir));
 
 					if (world.getBlockId(pos.i, pos.j, pos.k) == BTADecoIntegration.amethyst.blockID) {
 						validOrientations.add(dir);

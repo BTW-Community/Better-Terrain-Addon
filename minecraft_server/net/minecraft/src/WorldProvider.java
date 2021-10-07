@@ -259,4 +259,9 @@ public abstract class WorldProvider
      * Returns the dimension's name, e.g. "The End", "Nether", or "Overworld".
      */
     public abstract String getDimensionName();
+    
+    public int getWorldType()
+    {
+        return this.dimensionId;
+    }
 }

@@ -66,22 +66,22 @@ public class BlockAnvil extends BlockSand
 
         if (var7 == 0)
         {
-            par1World.setBlockMetadataWithNotify(par2, par3, par4, 2 | var8 << 2);
+            par1World.setBlockMetadata(par2, par3, par4, 2 | var8 << 2, 2);
         }
 
         if (var7 == 1)
         {
-            par1World.setBlockMetadataWithNotify(par2, par3, par4, 3 | var8 << 2);
+            par1World.setBlockMetadata(par2, par3, par4, 3 | var8 << 2, 2);
         }
 
         if (var7 == 2)
         {
-            par1World.setBlockMetadataWithNotify(par2, par3, par4, 0 | var8 << 2);
+            par1World.setBlockMetadata(par2, par3, par4, 0 | var8 << 2, 2);
         }
 
         if (var7 == 3)
         {
-            par1World.setBlockMetadataWithNotify(par2, par3, par4, 1 | var8 << 2);
+            par1World.setBlockMetadata(par2, par3, par4, 1 | var8 << 2, 2);
         }
     }
 
@@ -132,16 +132,6 @@ public class BlockAnvil extends BlockSand
         {
             this.setBlockBounds(0.0F, 0.0F, 0.125F, 1.0F, 1.0F, 0.875F);
         }
-    }
-
-    /**
-     * returns a list of blocks with the same ID, but different meta (eg: wood returns 4 blocks)
-     */
-    public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List)
-    {
-        par3List.add(new ItemStack(par1, 1, 0));
-        par3List.add(new ItemStack(par1, 1, 1));
-        par3List.add(new ItemStack(par1, 1, 2));
     }
 
     /**

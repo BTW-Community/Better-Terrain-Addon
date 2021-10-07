@@ -22,8 +22,8 @@ public class BTASurfaceBuilderCrystalCaverns extends BTASurfaceBuilderNether {
 
 		double amethystNoiseScale = 0.0625D;
 		//k and i swapped because apparently I messed something up somewhere
-		boolean useAmethyst = amethystNoiseGen.noise2((this.chunkX * 16 + k) * amethystNoiseScale, (this.chunkZ * 16 + i) * amethystNoiseScale) > 0.2;
-		boolean useAmethyst2 = amethystNoiseGen2.noise2((this.chunkX * 16 + k) * amethystNoiseScale, (this.chunkZ * 16 + i) * amethystNoiseScale) > 0.2;
+		boolean useAmethyst = amethystNoiseGen.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), amethystNoiseScale) > 0.2;
+		boolean useAmethyst2 = amethystNoiseGen2.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), amethystNoiseScale) > 0.2;
 		
 		int soilDepthNoiseSample = (int)(soilDepthNoise[0] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
 		int remaingDepth = -1;

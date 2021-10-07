@@ -19,7 +19,7 @@ public class BTAMod extends FCAddOn {
 	public static Material netherSand;
 	
 	private BTAMod() {
-		super("Better Terrain", "2.0.0", "BTA");
+		super("Better Terrain", "2.0.1", "BTA");
 		this.currentVersion = BTAEnumVersionCompat.fromString(this.getVersionString());
 	}
 
@@ -29,8 +29,6 @@ public class BTAMod extends FCAddOn {
 		initDecoIntegration();
 		initWorldGen();
 		initDefs();
-		//initEntityRenderers();
-		initMisc();
 		FCAddOnHandler.LogMessage(this.getName() + " Initialized");
 	}
 	
@@ -51,10 +49,6 @@ public class BTAMod extends FCAddOn {
 		Block.slowSand.SetBlockMaterial(netherSand);
 		
 		EntityList.addMapping(BTAEntityCrystalGolem.class, "btaCrystalGolem", 350, 0, 0);
-	}
-	
-	public void initMisc() {
-		//ServerCommandManager.registerAddonCommand(new BTACommandBiome());
 	}
 	
 	public static BTAMod getInstance() {

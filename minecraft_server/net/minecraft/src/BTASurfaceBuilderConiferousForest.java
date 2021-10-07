@@ -30,13 +30,13 @@ public class BTASurfaceBuilderConiferousForest extends BTASurfaceBuilder {
 		
 		double grassNoiseScale = 1/96D;
 		//k and i swapped because apparently I messed something up somewhere
-		boolean usePodzol = coarseDirtNoiseGenSimplex.noise2((this.chunkX * 16 + k) * grassNoiseScale, (this.chunkZ * 16 + i) * grassNoiseScale) + rand.nextDouble() * 0.1D - .25 > 0;
+		boolean usePodzol = coarseDirtNoiseGenSimplex.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), grassNoiseScale) + rand.nextDouble() * 0.1D - .25 > 0;
 		//k and i swapped because apparently I messed something up somewhere
-		boolean useCoarseDirt = podzolNoiseGenSimplex.noise2((this.chunkX * 16 + k) * grassNoiseScale, (this.chunkZ * 16 + i) * grassNoiseScale) + rand.nextDouble() * 0.1D - .25 > 0;
+		boolean useCoarseDirt = podzolNoiseGenSimplex.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), grassNoiseScale) + rand.nextDouble() * 0.1D - .25 > 0;
 
 		double sandNoiseScale = 1/256D;
 		//k and i swapped because apparently I messed something up somewhere
-		boolean useSand = sandNoiseGenSimplex.noise2((this.chunkX * 16 + k) * sandNoiseScale, (this.chunkZ * 16 + i) * sandNoiseScale) + rand.nextDouble() * 0.2D > 0;
+		boolean useSand = sandNoiseGenSimplex.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), sandNoiseScale) + rand.nextDouble() * 0.2D > 0;
 
 		//boolean useSand = sandNoise[i + k * 16] + rand.nextDouble() * 0.2D > 0.0D;
 		boolean useGravel = gravelNoise[i + k * 16] + rand.nextDouble() * 0.2D > 3.0D;
