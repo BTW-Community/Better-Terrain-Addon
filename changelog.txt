@@ -13,6 +13,11 @@ Version 2.1.0
 [*]Changed black stone to be able to spawn nether mobs.
 [/list]
 
+Version 2.0.3
+[list]
+[*]Fixed an issue where some unfinished features would generate in the nether.
+[/list]
+
 Version 2.0.2
 [list]
 [*]Fixed an issue where the last release caused slate to stop generating.
