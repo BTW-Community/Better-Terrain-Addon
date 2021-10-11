@@ -126,12 +126,14 @@ public class BTABiomeConfiguration {
 			.setTemperatureRainfall(0.7F, 0.8F)
 			.setValidHeights(BTAEnumBiomeHeight.FLAT, BTAEnumBiomeHeight.HILLY)
 			.setMinMaxHeight(0.1F, 0.5F);
+	
 	public static final BTABiomeGenBase steppe = new BTABiomeGenSteppe(STEPPE_ID, BTAEnumClimate.TEMPERATE)
 			.setColor(9286496)
 			.setBiomeName("Steppe")
 			.setTemperatureRainfall(0.8F, 0.1F)
 			.setValidHeights(BTAEnumBiomeHeight.FLAT)
 			.setMinMaxHeight(0.3F, 0.5F);
+	
 	public static final BTABiomeGenBase ancientForest = new BTABiomeGenAncientForest(ANCIENT_FOREST_ID, BTAEnumClimate.TEMPERATE)
 			.setColor(353825)
 			.setBiomeName("Ancient Forest")
@@ -139,6 +141,7 @@ public class BTABiomeConfiguration {
 			.setTemperatureRainfall(0.7F, 0.8F)
 			.setValidHeights(BTAEnumBiomeHeight.FLAT, BTAEnumBiomeHeight.HILLY)
 			.setMinMaxHeight(0.1F, 0.5F);
+	
 	public static final BTABiomeGenBase mysticForest = new BTABiomeGenMysticForest(MYSTIC_FOREST_ID, BTAEnumClimate.TEMPERATE)
 			.setColor(10039961)
 			.setBiomeName("Mystic Forest")
@@ -146,18 +149,21 @@ public class BTABiomeConfiguration {
 			.setTemperatureRainfall(0.9F, 1.0F)
 			.setValidHeights(BTAEnumBiomeHeight.HILLY, BTAEnumBiomeHeight.MOUNTAINS)
 			.setMinMaxHeight(0.3F, 1.5F);
+	
 	public static final BTABiomeGenBase orchard = new BTABiomeGenOrchard(ORCHARD_ID, BTAEnumClimate.TEMPERATE)
 			.setColor(353825)
 			.setBiomeName("Orchard")
 			.func_76733_a(5159473)
 			.setTemperatureRainfall(0.7F, 0.5F)
 			.setValidHeights(BTAEnumBiomeHeight.FLAT, BTAEnumBiomeHeight.HILLY);
+	
 	public static final BTABiomeGenBase heathland = new BTABiomeGenHeathland(HEATHLAND_ID, BTAEnumClimate.TEMPERATE)
 			.setColor(9286496)
 			.setBiomeName("Heathland")
 			.setTemperatureRainfall(0.7F, 0.4F)
 			.setValidHeights(BTAEnumBiomeHeight.FLAT)
 			.setMinMaxHeight(0.1F, 0.5F);
+	
 	public static final BTABiomeGenBase temperateForest = new BTABiomeGenTemperateForest(TEMPERATE_FOREST_ID, BTAEnumClimate.TEMPERATE)
 			.setColor(353825)
 			.setBiomeName("Temperate Forest")
@@ -165,12 +171,14 @@ public class BTABiomeConfiguration {
 			.setMinMaxHeight(0.2F, 1.0F)
 			.setTemperatureRainfall(0.6F, 0.7F)
 			.setValidHeights(BTAEnumBiomeHeight.FLAT, BTAEnumBiomeHeight.HILLY, BTAEnumBiomeHeight.MOUNTAINS);
+	
 	public static final BTABiomeGenBase grasslands = new BTABiomeGenGrasslands(GRASSLANDS_ID, BTAEnumClimate.TEMPERATE)
 			.setColor(9286496)
 			.setBiomeName("Grasslands")
 			.setTemperatureRainfall(0.5F, 0.6F)
 			.setValidHeights(BTAEnumBiomeHeight.FLAT)
 			.setMinMaxHeight(0.2F, 0.3F);
+	
     public static final BTABiomeGenBase mangroveForest = new BTABiomeGenMangroveForest(MANGROVE_FOREST_ID, BTAEnumClimate.TEMPERATE)
     		.setColor(522674)
     		.setBiomeName("Mangal")
@@ -178,12 +186,14 @@ public class BTABiomeConfiguration {
     		.setTemperatureRainfall(0.8F, 0.9F)
 			.setValidHeights(BTAEnumBiomeHeight.SHALLOWS)
     		.setMinMaxHeight(-0.3F, 0.2F);
+    
 	public static final BTABiomeGenBase highlands = new BTABiomeGenHighlands(HIGHLANDS_ID, BTAEnumClimate.TEMPERATE)
 			.setColor(14090235)
 			.setBiomeName("Highlands")
 			.setTemperatureRainfall(0.7F, 0.5F)
 			.setValidHeights(BTAEnumBiomeHeight.MOUNTAINS)
 			.setMinMaxHeight(0.8F, 2.5F);
+	
 	public static final BTABiomeGenBase cherryForest = new BTABiomeGenCherryForest(CHERRY_FOREST_ID, BTAEnumClimate.TEMPERATE)
 			.setColor(353825)
 			.setBiomeName("Cherry Forest")
@@ -191,6 +201,7 @@ public class BTABiomeConfiguration {
 			.setTemperatureRainfall(0.9F, 0.8F)
 			.setValidHeights(BTAEnumBiomeHeight.FLAT, BTAEnumBiomeHeight.HILLY)
 			.setMinMaxHeight(0.1F, 0.5F);
+	
 	public static final BTABiomeGenBase autumnForest = new BTABiomeGenAutumnForest(AUTUMN_FOREST_ID, BTAEnumClimate.TEMPERATE)
 			.setColor(353825)
 			.setBiomeName("Autumn Forest")
@@ -207,36 +218,43 @@ public class BTABiomeConfiguration {
 			.setTemperatureRainfall(2.0F, 0.0F)
 			.setValidHeights(BTAEnumBiomeHeight.FLAT, BTAEnumBiomeHeight.HILLY, BTAEnumBiomeHeight.MOUNTAINS)
 			.setMinMaxHeight(0.2F, 0.4F);
+	
 	public static final BTABiomeGenBase savanna = new BTABiomeGenSavanna(SAVANNA_ID, BTAEnumClimate.ARID)
 			.setColor(9286496)
 			.setBiomeName("Savanna")
 			.setTemperatureRainfall(1.5F, 0.1F)
 			.setValidHeights(BTAEnumBiomeHeight.FLAT, BTAEnumBiomeHeight.HILLY)
 			.setMinMaxHeight(0.1F, 0.3F);
+	
 	public static final BTABiomeGenBase chaparral = new BTABiomeGenChaparral(CHAPPARAL_ID, BTAEnumClimate.ARID)
 			.setColor(9286496)
 			.setBiomeName("Chaparral")
 			.setTemperatureRainfall(0.8F, 0.4F)
 			.setValidHeights(BTAEnumBiomeHeight.FLAT, BTAEnumBiomeHeight.HILLY)
 			.setMinMaxHeight(0.3F, 0.6F);
+	
 	public static final BTABiomeGenBase dunes = new BTABiomeGenDunes(DUNES_ID, BTAEnumClimate.ARID)
 			.setColor(16421912)
 			.setBiomeName("Dunes")
 			.setDisableRain()
 			.setTemperatureRainfall(2.0F, 0.0F)
+			.setValidHeights(BTAEnumBiomeHeight.HILLY, BTAEnumBiomeHeight.MOUNTAINS)
 			.setMinMaxHeight(0.5F, 1.5F);
+	
 	public static final BTABiomeGenBase plains = new BTABiomeGenPlains(PLAINS_ID, BTAEnumClimate.ARID)
 			.setColor(9286496)
 			.setBiomeName("Better Plains")
 			.setTemperatureRainfall(0.8F, 0.3F)
 			.setValidHeights(BTAEnumBiomeHeight.FLAT)
 			.setMinMaxHeight(0.2F, 0.4F);
+	
 	public static final BTABiomeGenBase aridForest = new BTABiomeGenAridForest(ARID_FOREST_ID, BTAEnumClimate.ARID)
 			.setColor(9286496)
 			.setBiomeName("Arid Forest")
 			.setTemperatureRainfall(0.8F, 0.3F)
 			.setValidHeights(BTAEnumBiomeHeight.FLAT, BTAEnumBiomeHeight.HILLY)
 			.setMinMaxHeight(0.2F, 0.4F);
+	
     public static final BTABiomeGenBase outback = new BTABiomeGenOutback(OUTBACK_ID, BTAEnumClimate.ARID)
     		.setColor(16421912)
     		.setBiomeName("Outback")
@@ -244,13 +262,15 @@ public class BTABiomeConfiguration {
     		.setTemperatureRainfall(2.0F, 0.0F)
 			.setValidHeights(BTAEnumBiomeHeight.FLAT)
     		.setMinMaxHeight(0.1F, 0.4F);
+    
 	public static final BTABiomeGenBase badlandsPlateau = new BTABiomeGenBadlandsPlateau(BADLANDS_PLATEAU_ID, BTAEnumClimate.ARID)
 			.setColor(16421912)
 			.setBiomeName("Badlands Plateau")
 			.setDisableRain()
 			.setTemperatureRainfall(2.0F, 0.0F)
 			.setValidHeights(BTAEnumBiomeHeight.HILLY, BTAEnumBiomeHeight.MOUNTAINS)
-			.setMinMaxHeight(0.8F, 2.0F);
+			.setMinMaxHeight(0.8F, 2.0F)
+			.setPlateau();
 	
 	//Tropical
 	public static final BTABiomeGenBase lushDesert = new BTABiomeGenLushDesert(LUSH_DESERT_ID, BTAEnumClimate.TROPICAL)
@@ -260,6 +280,7 @@ public class BTABiomeConfiguration {
 			.setTemperatureRainfall(0.9F, 1.0F)
 			.setValidHeights(BTAEnumBiomeHeight.FLAT, BTAEnumBiomeHeight.HILLY, BTAEnumBiomeHeight.MOUNTAINS)
 			.setMinMaxHeight(0.1F, 0.6F);
+	
     public static final BTABiomeGenBase wetlands = new BTABiomeGenWetlands(WETLANDS_ID, BTAEnumClimate.TROPICAL)
     		.setColor(522674)
     		.setBiomeName("Wetlands")
@@ -267,36 +288,153 @@ public class BTABiomeConfiguration {
     		.setMinMaxHeight(-0.1F, 0.3F)
 			.setValidHeights(BTAEnumBiomeHeight.SHALLOWS, BTAEnumBiomeHeight.FLAT, BTAEnumBiomeHeight.HILLY)
     		.setTemperatureRainfall(0.8F, 0.9F);
+    
 	public static final BTABiomeGenBase tropics = new BTABiomeGenTropics(TROPICS_ID, BTAEnumClimate.TROPICAL)
 			.setColor(16711935)
 			.setBiomeName("Tropics")
 			.setTemperatureRainfall(1.2F, 0.9F)
 			.setValidHeights(BTAEnumBiomeHeight.SHALLOWS, BTAEnumBiomeHeight.FLAT, BTAEnumBiomeHeight.HILLY)
 			.setMinMaxHeight(-0.2F, 0.9F);
-    public static final BTABiomeGenBase jungle = new BTABiomeGenJungle(JUNGLE_ID, BTAEnumClimate.TROPICAL).setColor(5470985).setBiomeName("Better Jungle").func_76733_a(5470985).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.0F, 0.4F);
-	public static final BTABiomeGenBase rainforest = new BTABiomeGenRainforest(RAINFOREST_ID, BTAEnumClimate.TROPICAL).setColor(9286496).setBiomeName("Rainforest").setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.3F, 1.5F);
-	public static final BTABiomeGenBase meadow = new BTABiomeGenMeadow(MEADOW_ID, BTAEnumClimate.TROPICAL).setColor(9286496).setBiomeName("Meadow").setTemperatureRainfall(0.7F, 1.0F).setMinMaxHeight(0.1F, 0.4F);
-	public static final BTABiomeGenBase valleyMountains = new BTABiomeGenValley(VALLEY_MOUNTAINS_ID, BTAEnumClimate.TROPICAL).setColor(353825).setBiomeName("Valley Highlands").func_76733_a(5159473).setTemperatureRainfall(1.2F, 0.9F).setMinMaxHeight(0.5F, 3.0F);
-	public static final BTABiomeGenBase willowGrove = new BTABiomeGenWillowGrove(WILLOW_GROVE_ID, BTAEnumClimate.TROPICAL).setColor(522674).setBiomeName("Willow Grove").func_76733_a(9154376).setMinMaxHeight(-0.1F, 0.3F).setTemperatureRainfall(0.8F, 0.8F);
+	
+    public static final BTABiomeGenBase jungle = new BTABiomeGenJungle(JUNGLE_ID, BTAEnumClimate.TROPICAL)
+    		.setColor(5470985)
+    		.setBiomeName("Better Jungle")
+    		.func_76733_a(5470985)
+    		.setTemperatureRainfall(1.2F, 0.9F)
+    		.setMinMaxHeight(0.0F, 0.4F);
+    
+	public static final BTABiomeGenBase rainforest = new BTABiomeGenRainforest(RAINFOREST_ID, BTAEnumClimate.TROPICAL)
+			.setColor(9286496)
+			.setBiomeName("Rainforest")
+			.setTemperatureRainfall(1.2F, 0.9F)
+			.setMinMaxHeight(0.3F, 1.5F);
+	
+	public static final BTABiomeGenBase meadow = new BTABiomeGenMeadow(MEADOW_ID, BTAEnumClimate.TROPICAL)
+			.setColor(9286496)
+			.setBiomeName("Meadow")
+			.setTemperatureRainfall(0.7F, 1.0F)
+			.setMinMaxHeight(0.1F, 0.4F);
+	
+	public static final BTABiomeGenBase valleyMountains = new BTABiomeGenValley(VALLEY_MOUNTAINS_ID, BTAEnumClimate.TROPICAL)
+			.setColor(353825)
+			.setBiomeName("Valley Highlands")
+			.func_76733_a(5159473)
+			.setTemperatureRainfall(1.2F, 0.9F)
+			.setMinMaxHeight(0.5F, 3.0F);
+	
+	public static final BTABiomeGenBase willowGrove = new BTABiomeGenWillowGrove(WILLOW_GROVE_ID, BTAEnumClimate.TROPICAL)
+			.setColor(522674)
+			.setBiomeName("Willow Grove")
+			.func_76733_a(9154376)
+			.setMinMaxHeight(-0.1F, 0.3F)
+			.setTemperatureRainfall(0.8F, 0.8F);
     
 	//Cold
-	public static final BTABiomeGenBase birchForest = new BTABiomeGenBirchForest(BIRCH_FOREST_ID, BTAEnumClimate.COLD).setColor(353825).setBiomeName("Birch Forest").func_76733_a(5159473).setTemperatureRainfall(0.4F, 0.4F).setMinMaxHeight(0.1F, 0.5F);
-    public static final BTABiomeGenBase alpine = new BTABiomeGenAlpine(ALPINE_ID, BTAEnumClimate.COLD).setColor(747097).setBiomeName("Alpine").func_76733_a(5159473).setTemperatureRainfall(0.2F, 0.8F).setMinMaxHeight(0.5F, 3.0F);
-    public static final BTABiomeGenBase fungalForest = new BTABiomeGenFungalForest(FUNGAL_FOREST_ID, BTAEnumClimate.COLD).setColor(522674).setBiomeName("Fungal Forest").func_76733_a(9154376).setMinMaxHeight(-0.1F, 1.2F).setTemperatureRainfall(0.4F, 1.0F);
-	public static final BTABiomeGenBase coniferousForest = new BTABiomeGenConiferousForest(CONIFEROUS_FOREST_ID, BTAEnumClimate.COLD).setColor(747097).setBiomeName("Coniferous Forest").func_76733_a(5159473).setTemperatureRainfall(0.5F, 0.4F).setMinMaxHeight(0.3F, 1.2F);
-	public static final BTABiomeGenBase mountains = new BTABiomeGenMountain(MOUNTAINS_ID, BTAEnumClimate.COLD).setColor(14090235).setBiomeName("Mountains").setTemperatureRainfall(0.5F, 0.1F).setMinMaxHeight(0.8F, 2.5F);
-	public static final BTABiomeGenBase patagonia = new BTABiomeGenPatagonia(PATAGONIA_ID, BTAEnumClimate.COLD).setColor(9286496).setBiomeName("Patagonia").setTemperatureRainfall(0.3F, 0.6F).setMinMaxHeight(0.0F, 0.5F);
-	public static final BTABiomeGenBase borealForest = new BTABiomeGenBorealForest(BOREAL_FOREST_ID, BTAEnumClimate.COLD).setColor(747097).setBiomeName("Boreal Forest").func_76733_a(5159473).setTemperatureRainfall(0.5F, 0.4F).setMinMaxHeight(0.1F, 0.4F);
-	public static final BTABiomeGenBase shield = new BTABiomeGenShield(SHIELD_ID, BTAEnumClimate.COLD).setColor(747097).setBiomeName("Shield").func_76733_a(5159473).setTemperatureRainfall(0.5F, 0.4F).setMinMaxHeight(0.2F, 0.6F);
-	public static final BTABiomeGenBase brushland = new BTABiomeGenBrushland(BRUSHLAND_ID, BTAEnumClimate.COLD).setColor(9286496).setBiomeName("Brushland").setTemperatureRainfall(0.4F, 0.2F).setMinMaxHeight(0.3F, 0.5F);
+	public static final BTABiomeGenBase birchForest = new BTABiomeGenBirchForest(BIRCH_FOREST_ID, BTAEnumClimate.COLD)
+			.setColor(353825)
+			.setBiomeName("Birch Forest")
+			.func_76733_a(5159473)
+			.setTemperatureRainfall(0.4F, 0.4F)
+			.setMinMaxHeight(0.1F, 0.5F);
+	
+    public static final BTABiomeGenBase alpine = new BTABiomeGenAlpine(ALPINE_ID, BTAEnumClimate.COLD)
+    		.setColor(747097)
+    		.setBiomeName("Alpine")
+    		.func_76733_a(5159473)
+    		.setTemperatureRainfall(0.2F, 0.8F)
+    		.setMinMaxHeight(0.5F, 3.0F);
+    
+    public static final BTABiomeGenBase fungalForest = new BTABiomeGenFungalForest(FUNGAL_FOREST_ID, BTAEnumClimate.COLD)
+    		.setColor(522674)
+    		.setBiomeName("Fungal Forest")
+    		.func_76733_a(9154376)
+    		.setMinMaxHeight(-0.1F, 1.2F)
+    		.setTemperatureRainfall(0.4F, 1.0F);
+    
+	public static final BTABiomeGenBase coniferousForest = new BTABiomeGenConiferousForest(CONIFEROUS_FOREST_ID, BTAEnumClimate.COLD)
+			.setColor(747097)
+			.setBiomeName("Coniferous Forest")
+			.func_76733_a(5159473)
+			.setTemperatureRainfall(0.5F, 0.4F)
+			.setMinMaxHeight(0.3F, 1.2F);
+	
+	public static final BTABiomeGenBase mountains = new BTABiomeGenMountain(MOUNTAINS_ID, BTAEnumClimate.COLD)
+			.setColor(14090235)
+			.setBiomeName("Mountains")
+			.setTemperatureRainfall(0.5F, 0.1F)
+			.setMinMaxHeight(0.8F, 2.5F);
+	
+	public static final BTABiomeGenBase patagonia = new BTABiomeGenPatagonia(PATAGONIA_ID, BTAEnumClimate.COLD)
+			.setColor(9286496)
+			.setBiomeName("Patagonia")
+			.setTemperatureRainfall(0.3F, 0.6F)
+			.setMinMaxHeight(0.0F, 0.5F);
+	
+	public static final BTABiomeGenBase borealForest = new BTABiomeGenBorealForest(BOREAL_FOREST_ID, BTAEnumClimate.COLD)
+			.setColor(747097)
+			.setBiomeName("Boreal Forest")
+			.func_76733_a(5159473)
+			.setTemperatureRainfall(0.5F, 0.4F)
+			.setMinMaxHeight(0.1F, 0.4F);
+	
+	public static final BTABiomeGenBase shield = new BTABiomeGenShield(SHIELD_ID, BTAEnumClimate.COLD)
+			.setColor(747097)
+			.setBiomeName("Shield")
+			.func_76733_a(5159473)
+			.setTemperatureRainfall(0.5F, 0.4F)
+			.setMinMaxHeight(0.2F, 0.6F);
+	
+	public static final BTABiomeGenBase brushland = new BTABiomeGenBrushland(BRUSHLAND_ID, BTAEnumClimate.COLD)
+			.setColor(9286496)
+			.setBiomeName("Brushland")
+			.setTemperatureRainfall(0.4F, 0.2F)
+			.setMinMaxHeight(0.3F, 0.5F);
 	
 	//Snowy
-	public static final BTABiomeGenBase snowyWoods = new BTABiomeGenWoods(SNOWY_WOODS_ID, BTAEnumClimate.SNOWY).setColor(353825).setBiomeName("Snowy Woods").func_76733_a(5159473).setEnableSnow().setTemperatureRainfall(0.1F, 0.5F).setMinMaxHeight(0.1F, 0.5F);
-	public static final BTABiomeGenBase coniferousForestSnow = new BTABiomeGenConiferousForest(SNOWY_CONIFEROUS_FOREST_ID, BTAEnumClimate.SNOWY).setColor(747097).setBiomeName("Snowy Coniferous Forest").func_76733_a(5159473).setEnableSnow().setTemperatureRainfall(0.1F, 0.4F).setMinMaxHeight(0.3F, 1.2F);
-	public static final BTABiomeGenBase tundra = new BTABiomeGenTundra(TUNDRA_ID, BTAEnumClimate.SNOWY).setColor(16421912).setBiomeName("Tundra").setEnableSnow().setTemperatureRainfall(0.1F, 0.1F).setMinMaxHeight(0.1F, 0.4F);
-	public static final BTABiomeGenBase icyPeaks = new BTABiomeGenIcyPeaks(ICY_PEAKS_ID, BTAEnumClimate.SNOWY).setColor(16421912).setBiomeName("Icy Peaks").setEnableSnow().setTemperatureRainfall(0.1F, 0.1F).setMinMaxHeight(0.5F, 1.5F);
-	public static final BTABiomeGenBase siberia = new BTABiomeGenSiberia(SIBERIA_ID, BTAEnumClimate.SNOWY).setColor(747097).setBiomeName("Siberia").func_76733_a(5159473).setTemperatureRainfall(0.1F, 0.4F).setMinMaxHeight(0.3F, 0.7F).setEnableSnow();
-	public static final BTABiomeGenBase frozenSprings = new BTABiomeGenFrozenSprings(FROZEN_SPRINGS_ID, BTAEnumClimate.SNOWY).setColor(16421912).setBiomeName("Frozen Springs").setEnableSnow().setTemperatureRainfall(0.1F, 0.1F).setMinMaxHeight(0.2F, 0.6F);
+	public static final BTABiomeGenBase snowyWoods = new BTABiomeGenWoods(SNOWY_WOODS_ID, BTAEnumClimate.SNOWY)
+			.setColor(353825)
+			.setBiomeName("Snowy Woods")
+			.func_76733_a(5159473)
+			.setEnableSnow()
+			.setTemperatureRainfall(0.1F, 0.5F)
+			.setMinMaxHeight(0.1F, 0.5F);
+	
+	public static final BTABiomeGenBase coniferousForestSnow = new BTABiomeGenConiferousForest(SNOWY_CONIFEROUS_FOREST_ID, BTAEnumClimate.SNOWY)
+			.setColor(747097)
+			.setBiomeName("Snowy Coniferous Forest")
+			.func_76733_a(5159473)
+			.setEnableSnow()
+			.setTemperatureRainfall(0.1F, 0.4F)
+			.setMinMaxHeight(0.3F, 1.2F);
+	
+	public static final BTABiomeGenBase tundra = new BTABiomeGenTundra(TUNDRA_ID, BTAEnumClimate.SNOWY)
+			.setColor(16421912)
+			.setBiomeName("Tundra")
+			.setEnableSnow()
+			.setTemperatureRainfall(0.1F, 0.1F)
+			.setMinMaxHeight(0.1F, 0.4F);
+	
+	public static final BTABiomeGenBase icyPeaks = new BTABiomeGenIcyPeaks(ICY_PEAKS_ID, BTAEnumClimate.SNOWY)
+			.setColor(16421912)
+			.setBiomeName("Icy Peaks")
+			.setEnableSnow()
+			.setTemperatureRainfall(0.1F, 0.1F)
+			.setMinMaxHeight(0.5F, 1.5F);
+	
+	public static final BTABiomeGenBase siberia = new BTABiomeGenSiberia(SIBERIA_ID, BTAEnumClimate.SNOWY)
+			.setColor(747097)
+			.setBiomeName("Siberia")
+			.func_76733_a(5159473)
+			.setTemperatureRainfall(0.1F, 0.4F)
+			.setMinMaxHeight(0.3F, 0.7F)
+			.setEnableSnow();
+	
+	public static final BTABiomeGenBase frozenSprings = new BTABiomeGenFrozenSprings(FROZEN_SPRINGS_ID, BTAEnumClimate.SNOWY)
+			.setColor(16421912)
+			.setBiomeName("Frozen Springs")
+			.setTemperatureRainfall(0.1F, 0.1F)
+			.setMinMaxHeight(0.2F, 0.6F)
+			.setEnableSnow();
 
 	// ------ Secondary Biomes ------ //
 	//Variants

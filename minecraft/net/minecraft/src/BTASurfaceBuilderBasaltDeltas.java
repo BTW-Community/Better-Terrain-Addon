@@ -24,7 +24,7 @@ public class BTASurfaceBuilderBasaltDeltas extends BTASurfaceBuilderNether {
 	protected void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
 		byte seaLevel = 32;
 
-		int soilDepthNoiseSample = (int)(soilDepthNoise[0] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
+		int soilDepthNoiseSample = (int)(soilDepthNoiseLegacy[0] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
 		int remaingDepth = -1;
 		int topBlock;
 		int fillerBlock;

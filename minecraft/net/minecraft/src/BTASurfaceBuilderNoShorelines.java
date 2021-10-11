@@ -7,7 +7,7 @@ public class BTASurfaceBuilderNoShorelines extends BTASurfaceBuilder {
 		byte seaLevel = 63;
 
 		float temperature = biome.getFloatTemperature();
-		int soilDepthNoiseSample = (int)(this.soilDepthNoise[i + k * 16] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
+		int soilDepthNoiseSample = (int)(this.soilDepthNoiseLegacy[i + k * 16] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
 		int remaingDepth = -1;
 		int topBlock;
 		int fillerBlock;

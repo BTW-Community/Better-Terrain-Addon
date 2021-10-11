@@ -25,7 +25,7 @@ public class BTASurfaceBuilderAshFields extends BTASurfaceBuilderNether {
 		boolean usePumice = pumiceNoiseGen.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), pumiceNoiseScale) > 0.2;
 		boolean usePumice2 = pumiceNoiseGen2.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), pumiceNoiseScale) > 0.2;
 		
-		int soilDepthNoiseSample = (int)(soilDepthNoise[0] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
+		int soilDepthNoiseSample = (int)(soilDepthNoiseLegacy[0] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
 		int remaingDepth = -1;
 		int topBlock;
 		int fillerBlock;

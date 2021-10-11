@@ -18,6 +18,8 @@ public class BTABiomeGenBase extends BiomeGenBase {
     private BTASurfaceBuilder surfaceBuilder;
     
     private BTAEnumBiomeHeight[] validHeights;
+    
+    private boolean isPlateau;
 
 	protected BTABiomeGenBase(int id, BTAEnumClimate climate) {
 		super(id);
@@ -27,6 +29,7 @@ public class BTABiomeGenBase extends BiomeGenBase {
         this.topBlockExt = Block.grass.blockID;
         this.fillerBlockExt = Block.dirt.blockID;
         this.climate = climate;
+        this.isPlateau = false;
 	}
 	
 	public BTABiomeGenBase setValidHeights(BTAEnumBiomeHeight ... heights) {
@@ -166,6 +169,15 @@ public class BTABiomeGenBase extends BiomeGenBase {
 		if (this.surfaceBuilder.getBiome() == null) {
 			this.surfaceBuilder.setBiome(this);
 		}
+	}
+
+	public boolean isPlateau() {
+		return isPlateau;
+	}
+
+	public BTABiomeGenBase setPlateau() {
+		this.isPlateau = true;
+		return this;
 	}
 
 	public void AddEmeralds(World var1, Random var2, int var3, int var4)

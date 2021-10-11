@@ -8,7 +8,7 @@ public class BTASurfaceBuilderTropics extends BTASurfaceBuilder {
 
 		float temperature = biome.getFloatTemperature();
 		boolean useGravel = this.gravelNoise[i + k * 16] + rand.nextDouble() * 0.2D > 3.0D;
-		int soilDepthNoiseSample = (int)(this.soilDepthNoise[i + k * 16] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
+		int soilDepthNoiseSample = (int)(this.soilDepthNoiseLegacy[i + k * 16] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
 		int remaingDepth = -1;
 		int topBlock;
 		int fillerBlock;
