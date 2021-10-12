@@ -306,16 +306,16 @@ public class BTABetaChunkProvider implements BTAIChunkProvider
 			this.scatteredFeatureGenerator.generate(this, this.worldObj, chunkX, chunkZ, blockArray);
 		}
 
-		Chunk var5 = new BTAChunk(this.worldObj, blockArray, chunkX, chunkZ);
-		byte[] var6 = var5.getBiomeArray();
+		Chunk chunk = new BTAChunk(this.worldObj, blockArray, metaArray, chunkX, chunkZ);
+		byte[] var6 = chunk.getBiomeArray();
 
 		for (int var7 = 0; var7 < var6.length; ++var7)
 		{
 			var6[var7] = (byte)this.biomesForGeneration[var7].biomeID;
 		}
 
-		var5.generateSkylightMap();
-		return var5;
+		chunk.generateSkylightMap();
+		return chunk;
 	}
 
 	private double[] initializeNoiseField(double[] noiseField, int posX, int posY, int posZ, int sizeX, int sizeY, int sizeZ)

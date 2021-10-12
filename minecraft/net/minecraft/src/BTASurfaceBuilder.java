@@ -335,13 +335,11 @@ public class BTASurfaceBuilder {
 		int surfaceJ = -1;
 
 		for (int j = 127; j >= 0; --j) {
-			int index = (k * 16 + i) * 128 + j;
-
-			if (j <= 0 + rand.nextInt(5)) {
+			if (j <= 0 + rand.nextInt(5) && !worldType.isSky()) {
 				setBlockValue(blockArray, i, j, k, Block.bedrock.blockID);
 			}
 			else {
-				int blockID = blockArray[i][k][j];
+				int blockID = getBlockValue(blockArray, i, j, k);
 
 				if (blockID == 0) {
 					remaingDepth = -1;
@@ -405,13 +403,11 @@ public class BTASurfaceBuilder {
 		int surfaceJ = -1;
 
 		for (int j = 127; j >= 0; --j) {
-			int index = (k * 16 + i) * 128 + j;
-
-			if (j <= 0 + rand.nextInt(5)) {
+			if (j <= 0 + rand.nextInt(5) && !worldType.isSky()) {
 				setBlockValue(blockArray, i, j, k, Block.bedrock.blockID);
 			}
 			else {
-				int blockID = blockArray[index];
+				int blockID = getBlockValue(blockArray, i, j, k);
 
 				if (blockID == 0) {
 					remaingDepth = -1;
@@ -524,6 +520,27 @@ public class BTASurfaceBuilder {
 	}
 
 	/**
+	 * Used to set the value on an array at the index provided for the given coordinates
+	 * Can be used to set block id or metadata depending on which array is passed to it
+	 * @param blockArray A 1D or 3D int array to store the data
+	 * @param i Local x value for this chunk
+	 * @param y Absolute y value
+	 * @param k Local z value for this chunk
+	 * @param id Block id or metadata to set
+	 */
+	protected int getBlockValue(Object blockArray, int i, int y, int k) {
+		if (blockArray instanceof int[]) {
+			return ((int[]) blockArray)[(k * 16 + i) * 128 + y];
+		}
+		else if (blockArray instanceof int[][][]) {
+			return ((int[][][]) blockArray)[i][k][y];
+		}
+		else {
+			throw new IllegalArgumentException("blockArray must be of type int[] or int[][][]");
+		}
+	}
+
+	/**
 	 * Gets the block to use for the surface layer for this biome
 	 * @param i Local x value for this chunk
 	 * @param y Absolute y value
@@ -532,7 +549,7 @@ public class BTASurfaceBuilder {
 	 * @param rand
 	 * @param generatorInfo
 	 * @param worldType
-	 * @return A Tuple of blockID, metadata
+	 * @return An int array of blockID, metadata
 	 */protected int[] getSurfaceBlock(int i, int j, int k, int surfaceJ, int soilDepth, SurfaceType surfaceType, int seaLevel, Random rand, BTAWorldConfigurationInfo generatorInfo, WorldType worldType) {
 		int blockID = -1;
 		int metadata = 0;

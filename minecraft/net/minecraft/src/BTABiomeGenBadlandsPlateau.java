@@ -19,6 +19,7 @@ public class BTABiomeGenBadlandsPlateau extends BTABiomeGenBase {
 		
 		this.btaBiomeDecorator.treesPerChunk = 7;
 		this.btaBiomeDecorator.flowersPerChunk = -999;
+        this.btaBiomeDecorator.generateLakes = false;
 
 		this.initMetaList();
 	}
