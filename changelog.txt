@@ -15,6 +15,7 @@ Version 2.1.0
 
 Version 2.0.3
 [list]
+[*]Refactored how surface generation is handled to significantly reduce code duplication and make individual tweaks per biome significantly easier.
 [*]Changed how gravel beaches are formed in new worlds.
 [*]Fixed an issue where soil depth conformed to chunk boundaries.
 [*]Fixed an issue where certain unfinished features would attempt to generate, potentially causing a crash if deco was not installed.
