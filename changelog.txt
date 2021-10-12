@@ -15,7 +15,9 @@ Version 2.1.0
 
 Version 2.0.3
 [list]
-[*]Fixed an issue where some unfinished features would generate in the nether.
+[*]Changed how gravel beaches are formed in new worlds.
+[*]Fixed an issue where soil depth conformed to chunk boundaries.
+[*]Fixed an issue where certain unfinished features would attempt to generate, potentially causing a crash if deco was not installed.
 [/list]
 
 Version 2.0.2

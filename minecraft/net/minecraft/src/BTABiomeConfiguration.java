@@ -646,7 +646,11 @@ public class BTABiomeConfiguration {
 		patagonia.setSurfaceBuilder(new BTASurfaceBuilderNoShorelines());
 		patagoniaMountains.setSurfaceBuilder(new BTASurfaceBuilderNoShorelines());
 		willowGrove.setSurfaceBuilder(new BTASurfaceBuilderNoShorelines());
+		willowHills.setSurfaceBuilder(new BTASurfaceBuilderNoShorelines());
+		riverWillow.setSurfaceBuilder(new BTASurfaceBuilderNoShorelines());
 		wetlands.setSurfaceBuilder(new BTASurfaceBuilderNoShorelines());
+		wetlandsHills.setSurfaceBuilder(new BTASurfaceBuilderNoShorelines());
+		riverWetlands.setSurfaceBuilder(new BTASurfaceBuilderNoShorelines());
 		oasis.setSurfaceBuilder(new BTASurfaceBuilderNoShorelines());
 		
 		valley.setSurfaceBuilder(new BTASurfaceBuilderTropics());
