@@ -4,7 +4,7 @@ import java.util.Random;
 
 import net.minecraft.src.BTASurfaceBuilder.SurfaceType;
 
-public class BTASurfaceBuilderAshFields extends BTASurfaceBuilderNether {
+public class BTASurfaceBuilderAshFields extends BTASurfaceBuilder {
 	protected static BTAUtilsOpenSimplexOctaves pumiceNoiseGen;
 	protected static BTAUtilsOpenSimplexOctaves pumiceNoiseGen2;
 	
@@ -16,8 +16,6 @@ public class BTASurfaceBuilderAshFields extends BTASurfaceBuilderNether {
 		
 		pumiceNoiseGen = new BTAUtilsOpenSimplexOctaves(pumiceRand.nextLong(), 2);
 		pumiceNoiseGen2 = new BTAUtilsOpenSimplexOctaves(pumiceRand.nextLong(), 2);
-		
-		this.useBidirectionalSurfacing = true;
 	}
 	
 	@Override
@@ -28,10 +26,10 @@ public class BTASurfaceBuilderAshFields extends BTASurfaceBuilderNether {
 		boolean usePumice2 = pumiceNoiseGen2.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), pumiceNoiseScale) > 0.2;
 		
 		if (usePumice && BTADecoIntegration.isDecoInstalled() && worldType.isDeco() && surfaceType != SurfaceType.SUBFILLER) {
-			return new int[] {BTADecoIntegration.coarseDirt.blockID, 0};
+			return new int[] {BTADecoIntegration.pumice.blockID, 0};
 		}
 		else if (usePumice2 && BTADecoIntegration.isDecoInstalled() && worldType.isDeco() && surfaceType != SurfaceType.SUBFILLER) {
-			return new int[] {BTADecoIntegration.podzol.blockID, 0};
+			return new int[] {BTADecoIntegration.pumice.blockID, 0};
 		}
 		else {
 			return super.getSurfaceBlock(i, j, k, surfaceJ, soilDepth, surfaceType, seaLevel, rand, generatorInfo, worldType);

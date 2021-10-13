@@ -13,6 +13,7 @@ public class BTABiomeConfiguration {
 			SOUL_SAND_VALLEY_ID = 93,
 			OBSIDIAN_GROVE_ID = 94,
 			CRYSTAL_CAVERNS_ID = 95,
+			PETRIFIED_FOREST_ID = 96,
 	
 			WOODS_ID = 100,
 			DESERT_ID = 101,
@@ -620,32 +621,29 @@ public class BTABiomeConfiguration {
     // ------ Nether Biomes ------ //
 	public static final BTABiomeGenBase netherWastes = new BTABiomeGenNetherWastes(NETHER_WASTES_ID)
 			.setBiomeName("Nether Wastes")
-			.setDisableRain()
-			.setTemperatureRainfall(2.0F, 0.0F);
+    		.setNether();
 	
 	public static final BTABiomeGenBase ashFields = new BTABiomeGenAshFields(ASH_FIELDS_ID)
 			.setBiomeName("Ash Fields")
-			.setDisableRain()
-			.setTemperatureRainfall(2.0F, 0.0F);
+    		.setNether();
 	
 	public static final BTABiomeGenBase basaltDeltas = new BTABiomeGenBasaltDeltas(BASALT_DELTAS_ID)
 			.setBiomeName("Basalt Deltas")
-			.setDisableRain()
-			.setTemperatureRainfall(2.0F, 0.0F);
+    		.setNether();
 	
 	public static final BTABiomeGenBase soulSandValley = new BTABiomeGenSoulSandValley(SOUL_SAND_VALLEY_ID)
 			.setBiomeName("Soul Sand Valley")
-			.setDisableRain()
-			.setTemperatureRainfall(2.0F, 0.0F);
+    		.setNether();
 	
 	public static final BTABiomeGenBase obsidianGrove = null;
 	
 	public static final BTABiomeGenBase crystalCaverns = new BTABiomeGenCrystalCaverns(CRYSTAL_CAVERNS_ID)
 			.setBiomeName("Crystal Caverns")
-			.setDisableRain()
-			.setTemperatureRainfall(2.0F, 0.0F);
+    		.setNether();
 	
-	public static final BTABiomeGenBase petrifiedForest = null;
+	public static final BTABiomeGenBase petrifiedForest = new BTABiomeGenPetrifiedForest(PETRIFIED_FOREST_ID)
+			.setBiomeName("Petrified Forest")
+			.setNether();
     
     // ------ Deprecated ------ //
 	public static final BTABiomeGenBase orchardClearing = new BTABiomeGenOrchardClearing(ORCHARD_CLEARING_ID, BTAEnumClimate.TEMPERATE)
@@ -884,6 +882,7 @@ public class BTABiomeConfiguration {
 		soulSandValley.setSurfaceBuilder(new BTASurfaceBuilderSoulSandValley());
 		basaltDeltas.setSurfaceBuilder(new BTASurfaceBuilderBasaltDeltas());
 		crystalCaverns.setSurfaceBuilder(new BTASurfaceBuilderCrystalCaverns());
+		petrifiedForest.setSurfaceBuilder(new BTASurfaceBuilderPetrifiedForest());
 	}
 	
 	public static void filterSpawnBiomes() {

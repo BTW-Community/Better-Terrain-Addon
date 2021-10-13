@@ -2,25 +2,127 @@ package net.minecraft.src;
 
 import java.util.Random;
 
-public class BTASurfaceBuilderBasaltDeltas extends BTASurfaceBuilderNether {
+import net.minecraft.src.BTASurfaceBuilder.SurfaceProcessingResult;
+import net.minecraft.src.BTASurfaceBuilder.SurfaceType;
+
+public class BTASurfaceBuilderBasaltDeltas extends BTASurfaceBuilder {
 	protected BTAUtilsOpenSimplexOctaves lavaNoiseGen;
 	protected BTAUtilsOpenSimplexOctaves spikeNoiseGen;
 	protected BTAUtilsOpenSimplexOctaves spikeHeightNoiseGen;
 	protected BTAUtilsOpenSimplexOctaves ashNoiseGen;
-	
+
 	@Override
 	public void init(Random rand, long seed) {
 		super.init(rand, seed);
-		
+
 		Random noiseRand = new Random(seed + 2500);
-		
+
 		lavaNoiseGen = new BTAUtilsOpenSimplexOctaves(noiseRand.nextLong(), 8);
 		spikeNoiseGen = new BTAUtilsOpenSimplexOctaves(noiseRand.nextLong(), 8);
 		spikeHeightNoiseGen = new BTAUtilsOpenSimplexOctaves(noiseRand.nextLong(), 8);
 		ashNoiseGen = new BTAUtilsOpenSimplexOctaves(noiseRand.nextLong(), 2);
 	}
+
+	@Override
+	protected void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo, WorldType worldType, boolean isNether) {
+		byte seaLevel = 63;
+
+		if (worldType.isSky() || isNether)
+			seaLevel = 0;
+
+		float temperature = biome.getFloatTemperature();
+
+		int soilDepth = getSoilDepth(i, k, rand, generatorInfo);
+		int remainingDepth = -1;
+
+		boolean useSubfiller = false;
+
+		int surfaceJ = -1;
+
+		for (int j = 127; j >= 0; j--) {
+			if (j <= 0 + rand.nextInt(5) && !worldType.isSky()) {
+				setBlockValue(blockArray, i, j, k, Block.bedrock.blockID);
+			}
+			else {
+				SurfaceProcessingResult result = generateSurfaceAtLocation(blockArray, metaArray, i, j, k, surfaceJ, soilDepth, remainingDepth, useSubfiller, seaLevel, temperature, rand, generatorInfo, worldType);
+				remainingDepth = result.remainingDepth;
+				useSubfiller = result.useSubfiller;
+			}
+		}
+		
+		int lastBlockId = 1;
+		//boolean useSpikes = spikeNoiseGen.noise2(this.chunkX * 16 + k, this.chunkZ * 16 + i, 1/24D) + rand.nextDouble() * 0.2 > 0;
+		int spikeHeightBase = (int) ((spikeHeightNoiseGen.noise2(this.chunkX * 16 + k, this.chunkZ * 16 + i, 1/24D)) * 6);
+		boolean useSpikes = spikeHeightBase > 0;
+		int spikeHeight = spikeHeightBase;
+
+		for (int j = 0; j <= 127; j++) {
+			if (j >= 127 - rand.nextInt(5) && !worldType.isSky()) {
+				setBlockValue(blockArray, i, j, k, Block.bedrock.blockID);
+			}
+			else {
+				
+				int blockID = getBlockValue(blockArray, i, j, k);
+
+				if (blockID == 0) {
+					remainingDepth = -1;
+
+					if ((lastBlockId != 0 && lastBlockId != Block.lavaStill.blockID) && spikeHeight > 0 && useSpikes) {
+						int[] fillerBlock = this.getSurfaceBlock(i, j, k, surfaceJ, soilDepth, SurfaceType.FILLER, seaLevel, rand, generatorInfo, worldType);
+						
+						setBlockValue(blockArray, i, j, k, fillerBlock[0]);
+						setBlockValue(metaArray, i, j, k, fillerBlock[1]);
+
+						spikeHeight -= rand.nextInt(3);
+					}
+				}
+				else if (Block.blocksList[blockID].blockMaterial == Material.lava) {
+					spikeHeight = 0;
+				}
+				else if (blockID == Block.stone.blockID || blockID == Block.netherrack.blockID) {
+					if (remainingDepth == -1) {
+						remainingDepth = soilDepth;
+						surfaceJ = j;
+
+						int[] surfaceBlock = this.getSurfaceBlock(i, j, k, surfaceJ, soilDepth, SurfaceType.TOP, seaLevel, rand, generatorInfo, worldType);
+
+						setBlockValue(blockArray, i, j, k, surfaceBlock[0]);
+						setBlockValue(metaArray, i, j, k, surfaceBlock[1]);
+					}
+					else if (remainingDepth > 0) {
+						remainingDepth--;
+
+						SurfaceType surfaceType = useSubfiller ? SurfaceType.SUBFILLER : SurfaceType.FILLER;
+						
+						int[] fillerBlock = this.getSurfaceBlock(i, j, k, surfaceJ, soilDepth, surfaceType, seaLevel, rand, generatorInfo, worldType);
+						
+						setBlockValue(blockArray, i, j, k, fillerBlock[0]);
+						setBlockValue(metaArray, i, j, k, fillerBlock[1]);
+
+						spikeHeight = spikeHeightBase;
+					}
+				}
+			}
+		}
+	}
 	
 	@Override
+	protected int[] getSurfaceBlock(int i, int j, int k, int surfaceJ, int soilDepth, SurfaceType surfaceType, int seaLevel, Random rand, BTAWorldConfigurationInfo generatorInfo, WorldType worldType) {
+		double ashNoiseScale = 0.0625D;
+		//k and i swapped because apparently I messed something up somewhere
+		boolean useAsh = ashNoiseGen.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), ashNoiseScale) > 0.2;
+		
+		int spikeHeightBase = (int) ((spikeHeightNoiseGen.noise2(this.chunkX * 16 + k, this.chunkZ * 16 + i, 1/24D)) * 6);
+		boolean useSpikes = spikeHeightBase > 0;
+		
+		if (useAsh && BTADecoIntegration.isDecoInstalled() && worldType.isDeco() && surfaceType != SurfaceType.SUBFILLER && !useSpikes) {
+			return new int[] {BTADecoIntegration.ash.blockID, 0};
+		}
+		else {
+			return super.getSurfaceBlock(i, j, k, surfaceJ, soilDepth, surfaceType, seaLevel, rand, generatorInfo, worldType);
+		}
+	}
+
 	protected void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
 		byte seaLevel = 32;
 
@@ -31,62 +133,13 @@ public class BTASurfaceBuilderBasaltDeltas extends BTASurfaceBuilderNether {
 
 		topBlock = ((BTABiomeGenBase) biome).topBlockExt;
 		fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
-		
+
 		int lastBlockId = 1;
 		//boolean useSpikes = spikeNoiseGen.noise2(this.chunkX * 16 + k, this.chunkZ * 16 + i, 1/24D) + rand.nextDouble() * 0.2 > 0;
 		int spikeHeightBase = (int) ((spikeHeightNoiseGen.noise2(this.chunkX * 16 + k, this.chunkZ * 16 + i, 1/24D)) * 6);
 		boolean useSpikes = spikeHeightBase > 0;
 		int spikeHeight = spikeHeightBase;
 
-		double ashNoiseScale = 0.0625D;
-		//k and i swapped because apparently I messed something up somewhere
-		boolean useAsh = ashNoiseGen.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), ashNoiseScale) + rand.nextDouble() * 0.4 > 0.75;
-
-		for (int j = 127; j >= 0; --j) {
-			int index = (k * 16 + i) * 128 + j;
-
-			if (j <= 0 + rand.nextInt(5) || j >= 127 - rand.nextInt(5)) {
-				blockArray[index] = (byte)Block.bedrock.blockID;
-			}
-			else {
-				int blockID = blockArray[index];
-
-				if (blockID == 0) {
-					remaingDepth = -1;
-				}
-				else if (blockID == Block.netherrack.blockID) {
-					if (remaingDepth == -1) {
-						if (j >= seaLevel - (8 + rand.nextInt(2))) {
-							topBlock = ((BTABiomeGenBase) biome).topBlockExt;
-							fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
-						}
-						else if (j >= seaLevel + 9) {
-							topBlock = ((BTABiomeGenBase) biome).topBlockExt;
-							fillerBlock = ((BTABiomeGenBase) biome).fillerBlockExt;
-						}
-						
-						if (useAsh && !useSpikes) {
-							topBlock = BTADecoIntegration.ash.blockID;
-							fillerBlock = BTADecoIntegration.ash.blockID;
-						}
-
-						remaingDepth = soilDepthNoiseSample;
-
-						if (j >= seaLevel - 1) {
-							blockArray[index] = topBlock;
-						}
-						else {
-							blockArray[index] = fillerBlock;
-						}
-					}
-					else if (remaingDepth > 0) {
-						--remaingDepth;
-						blockArray[index] = fillerBlock;
-					}
-				}
-			}
-		}
-		
 		for (int j = 127; j >= 0; --j) {
 			int index = (k * 16 + i) * 128 + (127 - j);
 
@@ -98,10 +151,10 @@ public class BTASurfaceBuilderBasaltDeltas extends BTASurfaceBuilderNether {
 
 				if (blockID == 0) {
 					remaingDepth = -1;
-					
+
 					if ((lastBlockId != 0 && lastBlockId != Block.lavaStill.blockID) && spikeHeight > 0 && useSpikes) {
 						blockArray[index] = ((BTABiomeGenBase) biome).fillerBlockExt;
-						
+
 						spikeHeight -= rand.nextInt(3);
 					}
 				}
@@ -132,7 +185,7 @@ public class BTASurfaceBuilderBasaltDeltas extends BTASurfaceBuilderNether {
 					}
 				}
 			}
-			
+
 			lastBlockId = blockArray[index];
 		}
 	}

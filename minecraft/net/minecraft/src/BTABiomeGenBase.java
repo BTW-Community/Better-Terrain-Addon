@@ -20,6 +20,7 @@ public class BTABiomeGenBase extends BiomeGenBase {
     private BTAEnumBiomeHeight[] validHeights;
     
     private boolean isPlateau;
+    private boolean isNether;
 
 	protected BTABiomeGenBase(int id, BTAEnumClimate climate) {
 		super(id);
@@ -177,6 +178,17 @@ public class BTABiomeGenBase extends BiomeGenBase {
 
 	public BTABiomeGenBase setPlateau() {
 		this.isPlateau = true;
+		return this;
+	}
+
+	public boolean isNether() {
+		return isNether;
+	}
+
+	public BTABiomeGenBase setNether() {
+		this.isNether = true;
+		this.setDisableRain();
+		this.setTemperatureRainfall(2.0F, 0.0F);
 		return this;
 	}
 
