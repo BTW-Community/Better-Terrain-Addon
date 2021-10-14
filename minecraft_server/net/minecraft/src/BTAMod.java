@@ -29,6 +29,7 @@ public class BTAMod extends FCAddOn {
 		initDecoIntegration();
 		initWorldGen();
 		initDefs();
+		initMisc();
 		FCAddOnHandler.LogMessage(this.getName() + " Initialized");
 	}
 	
@@ -49,6 +50,10 @@ public class BTAMod extends FCAddOn {
 		Block.slowSand.SetBlockMaterial(netherSand);
 		
 		EntityList.addMapping(BTAEntityCrystalGolem.class, "btaCrystalGolem", 350, 0, 0);
+	}
+	
+	public void initMisc() {
+		
 	}
 	
 	public static BTAMod getInstance() {

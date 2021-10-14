@@ -486,7 +486,7 @@ public class BTABiomeDecorator
 		}
 
 		//BTA modified
-		if (this.generateLakes)
+		if (this.generateLakes || generatorInfo.getCompatMode().isVersionAtOrBelow(BTAEnumVersionCompat.V2_0_2))
 		{
 			for (var2 = 0; var2 < waterLakesPerChunk; ++var2)
 			{

@@ -26,7 +26,7 @@ public class BTAWorldConfigurationInfo {
 		info.setClimatized(true);
 		info.setBiomeSize(1);
 		info.setGenerator(BTAEnumTerrainGenerator.CLASSIC);
-		info.setUseNewNether(true);
+		info.setUseNewNether(false);
 
 		info.generateBiomeInfoListFromBiomes(BTABiomeConfiguration.biomeListDeco);
 

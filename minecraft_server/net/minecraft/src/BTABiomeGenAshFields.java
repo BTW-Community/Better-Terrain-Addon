@@ -4,8 +4,10 @@ public class BTABiomeGenAshFields extends BTABiomeGenNetherBase {
 	public BTABiomeGenAshFields(int id) {
 		super(id);
 		
-		this.topBlockExt = BTADecoIntegration.ash.blockID;
-		this.fillerBlockExt = BTADecoIntegration.ash.blockID;
+		if (BTADecoIntegration.isDecoInstalled()) {
+			this.topBlockExt = BTADecoIntegration.ash.blockID;
+			this.fillerBlockExt = BTADecoIntegration.ash.blockID;
+		}
 		
         this.spawnableMonsterList.clear();
         this.spawnableCreatureList.clear();

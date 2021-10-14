@@ -40,6 +40,25 @@ public class BTAWorldTypeBeta extends WorldType {
     	
     	return new BTABetaChunkProvider(world, seed, mapFeaturesEnabled, info);
     }
+    
+    @Override
+    public IChunkProvider getChunkProviderNether(World world, long seed, String generatorOptions) {
+    	BTAWorldConfigurationInfo info;
+    	
+    	if (generatorOptions.equals("")) {
+    		info = BTAWorldConfigurationInfo.createDefaultConfigurationLegacy(this.isDeco());
+    	}
+    	else {
+    		info = BTAWorldConfigurationInfo.createInfoFromString(generatorOptions);
+    	}
+    	
+    	if (this.isDeco()) {
+    		return new BTAChunkProviderNether(world, seed, info);
+    	}
+    	else {
+    		return new ChunkProviderHell(world, seed);
+    	}
+    }
 
     @Override
     public IChunkProvider getChunkProviderEnd(World world, long seed) {
