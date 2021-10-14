@@ -882,7 +882,7 @@ public class BTABiomeConfiguration {
 		soulSandValley.setSurfaceBuilder(new BTASurfaceBuilderSoulSandValley());
 		basaltDeltas.setSurfaceBuilder(new BTASurfaceBuilderBasaltDeltas());
 		crystalCaverns.setSurfaceBuilder(new BTASurfaceBuilderCrystalCaverns());
-		petrifiedForest.setSurfaceBuilder(new BTASurfaceBuilderPetrifiedForest());
+		//petrifiedForest.setSurfaceBuilder(new BTASurfaceBuilderPetrifiedForest());
 	}
 	
 	public static void filterSpawnBiomes() {
