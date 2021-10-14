@@ -37,7 +37,7 @@ public class BTAChunkProviderNether implements BTAIChunkProvider
      * Holds the noise used to determine whether something other than netherrack can be generated at a location
      */
     private double[] netherrackExclusivityNoise = new double[256];
-    private BTAMapGenBase netherCaveGenerator = new BTAMapGenCave();
+    private BTAMapGenBase netherCaveGenerator = new BTAMapGenCavesHell();
     double[] noiseData1;
     double[] noiseData2;
     double[] noiseData3;

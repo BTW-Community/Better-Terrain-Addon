@@ -29,7 +29,7 @@ public class BTAGenLayerHills extends GenLayer
 
                 if (this.nextInt(3) == 0)
                 {
-                    int hillsBiome = BTABiomeConfiguration.getHillsVariantForBiomes(baseBiome, generatorInfo);
+                    int hillsBiome = BTABiomeConfiguration.getHillsVariantForBiomes(baseBiome, generatorInfo, this);
 
                     if (hillsBiome == baseBiome)
                     {

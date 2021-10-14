@@ -16,6 +16,7 @@ public class BTABiomeGenBadlands extends BTABiomeGenBase {
 		this.btaBiomeDecorator.sandPerChunk = 0;
 		this.btaBiomeDecorator.sandPerChunk2 = 0;
 		this.spawnableCreatureList.clear();
+        this.btaBiomeDecorator.generateLakes = false;
 		
 		this.initMetaList();
 	}

@@ -9,7 +9,6 @@ public class BTASurfaceBuilderAncientForest extends BTASurfaceBuilder {
 
 		Random treeRand = new Random(seed + 2000);
 
-		if (this.treeNoiseGen == null);
 		this.treeNoiseGen = new BTAUtilsOpenSimplexOctaves(treeRand.nextLong(), 2);
 
 		this.treeNoiseScale = 1/256D;

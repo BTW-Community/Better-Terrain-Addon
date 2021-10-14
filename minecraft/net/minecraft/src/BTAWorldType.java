@@ -60,7 +60,7 @@ public class BTAWorldType extends WorldType {
     		info = BTAWorldConfigurationInfo.createInfoFromString(generatorOptions);
     	}
     	
-    	if (info.useNewNether()) {
+    	if (this.isDeco()) {
     		return new BTAChunkProviderNether(world, seed, info);
     	}
     	else {

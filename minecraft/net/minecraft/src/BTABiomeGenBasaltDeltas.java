@@ -30,8 +30,6 @@ public class BTABiomeGenBasaltDeltas extends BTABiomeGenNetherBase {
 
 	@Override
 	public void decorate(World world, Random rand, int chunkX, int chunkZ, BTAWorldConfigurationInfo generatorOptions) {
-		super.decorate(world, rand, chunkX, chunkZ, generatorOptions);
-
 		BTASurfaceBuilderBasaltDeltas surfaceBuilder = (BTASurfaceBuilderBasaltDeltas) this.getSurfaceBuilder();
 
 		for (int i = chunkX + 8; i < chunkX + 24; i++) {
@@ -99,5 +97,7 @@ public class BTABiomeGenBasaltDeltas extends BTABiomeGenNetherBase {
 				}
 			}
 		}
+		
+		super.decorate(world, rand, chunkX, chunkZ, generatorOptions);
 	}
 }

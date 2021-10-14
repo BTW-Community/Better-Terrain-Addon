@@ -9,8 +9,7 @@ public class BTASurfaceBuilderSteppe extends BTASurfaceBuilderNoShorelines {
 		
 		Random treeRand = new Random(seed + 4000);
 		
-		if (this.treeNoiseGen == null);
-			this.treeNoiseGen = new BTAUtilsOpenSimplexOctaves(treeRand.nextLong(), 2);
+		this.treeNoiseGen = new BTAUtilsOpenSimplexOctaves(treeRand.nextLong(), 2);
 			
 		this.treeNoiseScale = 1/256D;
 	}

@@ -1,7 +1,6 @@
 Version 2.1.0
 [list]
-[*]Added nether biomes, which are detailed further below. This may be toggled at world creation, and all nether related changes only apply to worlds with the new nether enabled. New nether features require Deco 2.16.0 or higher.
-[*]Added nether wastes. This is almost identical to the vanilla nether, except it generates with new BTA features. Ghasts, zombie pigmen, and magma cubes can spawn here.
+[*]Added nether biomes, which are detailed further below. This may be toggled at world creation, and all nether related changes only apply to worlds with the new nether enabled.
 [*]Added basalt deltas. This highly rugged terrain has a surface made of basalt and infused stone filled with frequent lava pools. Magma cubes spawn here in high frequencies.
 [*]Added soul sand valleys. This biome has soul sand as its primary surface block and can spawn skeletons, along with ghasts at a higher frequency than other biomes.
 [*]Added crystal caverns. This biome generates black stone and amethyst in high abundance, with large amethyst spikes and scattered amethyst shards.
@@ -11,6 +10,25 @@ Version 2.1.0
 [*]Changed how fortress mob spawns are handled. Previously, the game would choose the fortress spawn list instead of the biome spawn list. To accommodate new biome-specific spawn lists in the nether, fortresses now add their own unique spawns to the exisitng biome spawns.
 [*]Changed how skeletons determine their type in BTA worlds. Fortress skeletons will now always spawn as wither skeletons (instead of an 80% chance), while skeletons outside fortresses (e.g. in the new biomes) will always spawn as normal skeletons. Vanilla nether is unaffected.
 [*]Changed black stone to be able to spawn nether mobs.
+[/list]
+
+Version 2.0.3
+[list]
+[*]Added Nether Wastes as a new nether biome, replacing the default nether in deco worlds. This is exactly the same as the vanilla nether, but with the following features added:
+[*]Added dried up lavafalls made of basalt.
+[*]Added clusters of magma blocks near the lava ocean.
+[*]Added large clusters of infused stone near the lava ocean.
+[*]Changed (refactored) how surface generation is handled to significantly reduce code duplication and make individual tweaks per biome easier.
+[*]Changed savannas in new worlds to generate plateaus instead of hills.
+[*]Changed how gravel beaches are formed in new worlds.
+[*]Changed desert, dunes, and badlands to no longer generate surface lakes in new worlds.
+[*]Changed the name of Woods Hills to Wooded Hills.
+[*]Fixed an issue where soil depth conformed to chunk boundaries.
+[*]Fixed an issue where certain unfinished features would attempt to generate, potentially causing a crash if deco was not installed.
+[*]Fixed an issue where decoration generation was affected by the first world generated after starting the game.
+[*]Fixed an issue where skylands were not being decorated properly.
+[*]Fixed an issue where badlands terracotta layers were always black in beta and skylands.
+[*]Fixed an issue where the game would crash on load if deco was not installed.
 [/list]
 
 Version 2.0.2

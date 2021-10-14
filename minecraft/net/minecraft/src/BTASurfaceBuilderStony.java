@@ -2,6 +2,7 @@ package net.minecraft.src;
 
 import java.util.Random;
 
+import net.minecraft.src.BTASurfaceBuilder.SurfaceType;
 import net.minecraft.src.opensimplex2.OpenSimplex2F;
 
 public class BTASurfaceBuilderStony extends BTASurfaceBuilder {
@@ -13,8 +14,22 @@ public class BTASurfaceBuilderStony extends BTASurfaceBuilder {
 		
 		Random stoneRand = new Random(seed + 1000);
 		
-		if (stoneNoiseGenSimplex == null)
-			stoneNoiseGenSimplex = new BTAUtilsOpenSimplexOctaves(stoneRand.nextLong(), 2);
+		stoneNoiseGenSimplex = new BTAUtilsOpenSimplexOctaves(stoneRand.nextLong(), 2);
+	}
+	
+	@Override
+	protected int[] getSurfaceBlock(int i, int j, int k, int surfaceJ, int soilDepth, SurfaceType surfaceType, int seaLevel, Random rand, BTAWorldConfigurationInfo generatorInfo, WorldType worldType) {
+		double stoneNoiseScale = 1/16D;
+		boolean useStone = stoneNoiseGenSimplex.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), stoneNoiseScale) - 0.625 > 0;
+		
+		boolean sandOrGravel = (this.useSandAtLocation(i, k, rand) || this.useGravelAtLocation(i, k, rand, generatorInfo)) && surfaceJ <= seaLevel + 1;
+		
+		if (useStone && BTADecoIntegration.isDecoInstalled() && worldType.isDeco() && !sandOrGravel) {
+			return new int[] {Block.stone.blockID, 0};
+		}
+		else {
+			return super.getSurfaceBlock(i, j, k, surfaceJ, soilDepth, surfaceType, seaLevel, rand, generatorInfo, worldType);
+		}
 	}
 	
 	public void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo) {
@@ -30,7 +45,7 @@ public class BTASurfaceBuilderStony extends BTASurfaceBuilder {
 		boolean useStone = stoneNoiseGenSimplex.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), grassNoiseScale) - 0.625 > 0;
 		
 		boolean useGravel = this.gravelNoise[i + k * 16] + rand.nextDouble() * 0.2D > 3.0D;
-		int soilDepthNoiseSample = (int)(this.soilDepthNoise[i + k * 16] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
+		int soilDepthNoiseSample = (int)(this.soilDepthNoiseLegacy[i + k * 16] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
 		int remaingDepth = -1;
 		int topBlock;
 		int fillerBlock;
