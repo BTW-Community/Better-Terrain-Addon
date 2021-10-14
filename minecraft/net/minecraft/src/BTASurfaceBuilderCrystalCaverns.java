@@ -4,7 +4,7 @@ import java.util.Random;
 
 import net.minecraft.src.BTASurfaceBuilder.SurfaceType;
 
-public class BTASurfaceBuilderCrystalCaverns extends BTASurfaceBuilder {
+public class BTASurfaceBuilderCrystalCaverns extends BTASurfaceBuilderNether {
 	protected static BTAUtilsOpenSimplexOctaves amethystNoiseGen;
 	protected static BTAUtilsOpenSimplexOctaves amethystNoiseGen2;
 	
@@ -19,7 +19,7 @@ public class BTASurfaceBuilderCrystalCaverns extends BTASurfaceBuilder {
 	}
 	
 	@Override
-	protected int[] getSurfaceBlock(int i, int j, int k, int surfaceJ, int soilDepth, SurfaceType surfaceType, int seaLevel, Random rand, BTAWorldConfigurationInfo generatorInfo, WorldType worldType) {
+	protected int[] getSurfaceBlock(int i, int j, int k, int surfaceJ, int soilDepth, SurfaceType surfaceType, int seaLevel, boolean isReversed, Random rand, BTAWorldConfigurationInfo generatorInfo, WorldType worldType) {
 		double pumiceNoiseScale = 0.0625D;
 		//k and i swapped because apparently I messed something up somewhere
 		boolean useAmethyst = amethystNoiseGen.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), pumiceNoiseScale) > 0.2;
@@ -32,7 +32,7 @@ public class BTASurfaceBuilderCrystalCaverns extends BTASurfaceBuilder {
 			return new int[] {BTADecoIntegration.amethyst.blockID, 0};
 		}
 		else {
-			return super.getSurfaceBlock(i, j, k, surfaceJ, soilDepth, surfaceType, seaLevel, rand, generatorInfo, worldType);
+			return new int[] {getDefaultSurfaceBlock(i, k, surfaceType, Block.netherrack.blockID), 0};
 		}
 	}
 }

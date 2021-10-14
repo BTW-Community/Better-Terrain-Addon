@@ -7,8 +7,17 @@ public class WorldProviderHell extends WorldProvider
      */
     public void registerWorldChunkManager()
     {
-    	//this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.hell, 1.0F, 0.0F);
-    	this.worldChunkMgr = new WorldChunkManagerHell(BTABiomeConfiguration.petrifiedForest, 1.0F, 0.0F);
+    	WorldType worldType = this.worldObj.worldInfo.getTerrainType();
+    	
+    	System.out.println(worldType.getTranslateName());
+    	
+    	if (worldType.isDeco()) {
+        	this.worldChunkMgr = new WorldChunkManagerHell(BTABiomeConfiguration.netherWastes, 1.0F, 0.0F);
+        	//this.worldChunkMgr = new WorldChunkManagerHell(BTABiomeConfiguration.crystalCaverns, 1.0F, 0.0F);
+    	}
+    	else {
+    		this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.hell, 1.0F, 0.0F);
+    	}
         this.isHellWorld = true;
         this.hasNoSky = true;
         this.dimensionId = -1;

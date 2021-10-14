@@ -4,7 +4,7 @@ import java.util.Random;
 
 import net.minecraft.src.BTASurfaceBuilder.SurfaceType;
 
-public class BTASurfaceBuilderAshFields extends BTASurfaceBuilder {
+public class BTASurfaceBuilderAshFields extends BTASurfaceBuilderNether {
 	protected static BTAUtilsOpenSimplexOctaves pumiceNoiseGen;
 	protected static BTAUtilsOpenSimplexOctaves pumiceNoiseGen2;
 	
@@ -19,7 +19,7 @@ public class BTASurfaceBuilderAshFields extends BTASurfaceBuilder {
 	}
 	
 	@Override
-	protected int[] getSurfaceBlock(int i, int j, int k, int surfaceJ, int soilDepth, SurfaceType surfaceType, int seaLevel, Random rand, BTAWorldConfigurationInfo generatorInfo, WorldType worldType) {
+	protected int[] getSurfaceBlock(int i, int j, int k, int surfaceJ, int soilDepth, SurfaceType surfaceType, int seaLevel, boolean isReversed, Random rand, BTAWorldConfigurationInfo generatorInfo, WorldType worldType) {
 		double pumiceNoiseScale = 0.0625D;
 		//k and i swapped because apparently I messed something up somewhere
 		boolean usePumice = pumiceNoiseGen.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), pumiceNoiseScale) > 0.2;

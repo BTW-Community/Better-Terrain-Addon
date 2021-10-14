@@ -330,16 +330,17 @@ public class BTASurfaceBuilder {
 
 		boolean useSubfiller = false;
 
-		int surfaceJ = -1;
+		int surfaceJ = 127;
 
 		for (int j = 127; j >= 0; --j) {
 			if (j <= 0 + rand.nextInt(5) && !worldType.isSky()) {
 				setBlockValue(blockArray, i, j, k, Block.bedrock.blockID);
 			}
 			else {
-				SurfaceProcessingResult result = generateSurfaceAtLocation(blockArray, metaArray, i, j, k, surfaceJ, soilDepth, remainingDepth, useSubfiller, seaLevel, temperature, rand, generatorInfo, worldType);
+				SurfaceProcessingResult result = generateSurfaceAtLocation(blockArray, metaArray, i, j, k, surfaceJ, soilDepth, remainingDepth, useSubfiller, seaLevel, temperature, false, rand, generatorInfo, worldType);
 				remainingDepth = result.remainingDepth;
 				useSubfiller = result.useSubfiller;
+				surfaceJ = result.surfaceJ;
 			}
 		}
 	}
@@ -357,29 +358,17 @@ public class BTASurfaceBuilder {
 
 		boolean useSubfiller = false;
 
-		int surfaceJ = -1;
+		int surfaceJ = 127;
 
 		for (int j = 127; j >= 0; j--) {
 			if (j <= 0 + rand.nextInt(5) && !worldType.isSky()) {
 				setBlockValue(blockArray, i, j, k, Block.bedrock.blockID);
 			}
 			else {
-				SurfaceProcessingResult result = generateSurfaceAtLocation(blockArray, metaArray, i, j, k, surfaceJ, soilDepth, remainingDepth, useSubfiller, seaLevel, temperature, rand, generatorInfo, worldType);
+				SurfaceProcessingResult result = generateSurfaceAtLocation(blockArray, metaArray, i, j, k, surfaceJ, soilDepth, remainingDepth, useSubfiller, seaLevel, temperature, false, rand, generatorInfo, worldType);
 				remainingDepth = result.remainingDepth;
 				useSubfiller = result.useSubfiller;
-			}
-		}
-		
-		if (isNether) {
-			for (int j = 0; j <= 127; j++) {
-				if (j >= 127 - rand.nextInt(5) && !worldType.isSky()) {
-					setBlockValue(blockArray, i, j, k, Block.bedrock.blockID);
-				}
-				else {
-					SurfaceProcessingResult result = generateSurfaceAtLocation(blockArray, metaArray, i, j, k, surfaceJ, soilDepth, remainingDepth, useSubfiller, seaLevel, temperature, rand, generatorInfo, worldType);
-					remainingDepth = result.remainingDepth;
-					useSubfiller = result.useSubfiller;
-				}
+				surfaceJ = result.surfaceJ;
 			}
 		}
 	}
@@ -388,6 +377,7 @@ public class BTASurfaceBuilder {
 			Object blockArray, Object metaArray, 
 			int i, int j, int k, int surfaceJ, 
 			int soilDepth, int remainingDepth, boolean useSubfiller, int seaLevel, float temperature,
+			boolean isReversed,
 			Random rand, BTAWorldConfigurationInfo generatorInfo, WorldType worldType) 
 	{
 		int blockID = getBlockValue(blockArray, i, j, k);
@@ -401,7 +391,7 @@ public class BTASurfaceBuilder {
 				remainingDepth = soilDepth;
 				surfaceJ = j;
 
-				int[] surfaceBlock = this.getSurfaceBlock(i, j, k, surfaceJ, soilDepth, SurfaceType.TOP, seaLevel, rand, generatorInfo, worldType);
+				int[] surfaceBlock = this.getSurfaceBlock(i, j, k, surfaceJ, soilDepth, SurfaceType.TOP, seaLevel, isReversed, rand, generatorInfo, worldType);
 
 				if (j < seaLevel && surfaceBlock[0] == 0) {
 					if (temperature < 0.15F) {
@@ -422,7 +412,7 @@ public class BTASurfaceBuilder {
 
 				SurfaceType surfaceType = useSubfiller ? SurfaceType.SUBFILLER : SurfaceType.FILLER;
 				
-				int[] fillerBlock = this.getSurfaceBlock(i, j, k, surfaceJ, soilDepth, surfaceType, seaLevel, rand, generatorInfo, worldType);
+				int[] fillerBlock = this.getSurfaceBlock(i, j, k, surfaceJ, soilDepth, surfaceType, seaLevel, isReversed, rand, generatorInfo, worldType);
 				
 				setBlockValue(blockArray, i, j, k, fillerBlock[0]);
 				setBlockValue(metaArray, i, j, k, fillerBlock[1]);
@@ -435,15 +425,17 @@ public class BTASurfaceBuilder {
 			}
 		}
 		
-		return new SurfaceProcessingResult(remainingDepth, useSubfiller);
+		return new SurfaceProcessingResult(remainingDepth, surfaceJ, useSubfiller);
 	}
 	
 	protected static class SurfaceProcessingResult {
 		public int remainingDepth;
+		public int surfaceJ;
 		public boolean useSubfiller;
 		
-		public SurfaceProcessingResult(int remainingDepth, boolean useSubfiller) {
+		public SurfaceProcessingResult(int remainingDepth, int surfaceJ, boolean useSubfiller) {
 			this.remainingDepth = remainingDepth;
+			this.surfaceJ = surfaceJ;
 			this.useSubfiller = useSubfiller;
 		}
 	}
@@ -533,6 +525,10 @@ public class BTASurfaceBuilder {
 		}
 	}
 
+	protected int[] getSurfaceBlock(int i, int j, int k, int surfaceJ, int soilDepth, SurfaceType surfaceType, int seaLevel, boolean isReversed, Random rand, BTAWorldConfigurationInfo generatorInfo, WorldType worldType) {
+		return this.getSurfaceBlock(i, j, k, surfaceJ, soilDepth, surfaceType, seaLevel, rand, generatorInfo, worldType);
+	}
+	
 	/**
 	 * Gets the block to use for the surface layer for this biome
 	 * @param i Local x value for this chunk
@@ -543,7 +539,8 @@ public class BTASurfaceBuilder {
 	 * @param generatorInfo
 	 * @param worldType
 	 * @return An int array of blockID, metadata
-	 */protected int[] getSurfaceBlock(int i, int j, int k, int surfaceJ, int soilDepth, SurfaceType surfaceType, int seaLevel, Random rand, BTAWorldConfigurationInfo generatorInfo, WorldType worldType) {
+	 */
+	protected int[] getSurfaceBlock(int i, int j, int k, int surfaceJ, int soilDepth, SurfaceType surfaceType, int seaLevel, Random rand, BTAWorldConfigurationInfo generatorInfo, WorldType worldType) {
 		int blockID = -1;
 		int metadata = 0;
 
@@ -586,19 +583,13 @@ public class BTASurfaceBuilder {
 				surfaceType = SurfaceType.FILLER;
 			}
 
-			blockID = getDefaultSurfaceBlock(i, k, surfaceType);
+			blockID = getDefaultSurfaceBlock(i, k, surfaceType, Block.stone.blockID);
 		}
 
 		return new int[] {blockID, metadata};
 	}
 	
-
-	protected int getDefaultSurfaceBlock(int i, int k, SurfaceType surfaceType) {
-		int baseBlock = Block.stone.blockID;
-		
-		if (this.biome instanceof BTABiomeGenBase && ((BTABiomeGenBase) this.biome).isNether())
-			baseBlock = Block.netherrack.blockID;
-		
+	protected int getDefaultSurfaceBlock(int i, int k, SurfaceType surfaceType, int baseBlock) {
 		if (this.biome instanceof BTABiomeGenBase) {
 			switch (surfaceType) {
 			case TOP:
@@ -642,18 +633,12 @@ public class BTASurfaceBuilder {
 	}
 
 	protected boolean useSandAtLocation(int i, int k, Random rand) {
-		if (this.biome instanceof BTABiomeGenBase && ((BTABiomeGenBase) this.biome).isNether())
-			return false;
-		
 		double beachNoiseScale = 1/256D;
 		//k and i swapped because apparently I messed something up somewhere
 		return sandNoiseGenSimplex.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), beachNoiseScale) + rand.nextDouble() * 0.2D > 0;
 	}
 
 	protected boolean useGravelAtLocation(int i, int k, Random rand, BTAWorldConfigurationInfo generatorInfo) {
-		if (this.biome instanceof BTABiomeGenBase && ((BTABiomeGenBase) this.biome).isNether())
-			return false;
-		
 		if (generatorInfo.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V2_0_3)) {
 			double beachNoiseScale = 1/384D;
 			//k and i swapped because apparently I messed something up somewhere
