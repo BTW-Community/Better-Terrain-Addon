@@ -71,7 +71,7 @@ public class BTASurfaceBuilderNether extends BTASurfaceBuilder {
 
 	@Override
 	protected boolean useSandAtLocation(int i, int k, Random rand) {
-		double beachNoiseScale = 1/256;
+		double beachNoiseScale = 1/256D;
 		//k and i swapped because apparently I messed something up somewhere
 		return sandNoiseGenSimplex.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), beachNoiseScale) > 0.925;
 	}

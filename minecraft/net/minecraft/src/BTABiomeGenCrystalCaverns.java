@@ -10,7 +10,7 @@ public class BTABiomeGenCrystalCaverns extends BTABiomeGenNetherBase {
 		this.fillerBlockExt = Block.blockNetherQuartz.blockID;
 		
 		this.spawnableMonsterList.clear();
-		this.spawnableMonsterList.add(new SpawnListEntry(BTAEntityCrystalGolem.class, 1, 1, 4));
+		//this.spawnableMonsterList.add(new SpawnListEntry(BTAEntityCrystalGolem.class, 1, 1, 4));
 	}
 	
 	@Override

@@ -12,6 +12,11 @@ Version 2.1.0
 [*]Changed black stone to be able to spawn nether mobs.
 [/list]
 
+Version 2.0.4
+[list]
+[*]Fixed an issue where soul sand was snot generating in the nether.
+[/list]
+
 Version 2.0.3
 [list]
 [*]Added Nether Wastes as a new nether biome, replacing the default nether in deco worlds. This is exactly the same as the vanilla nether, but with the following features added:
