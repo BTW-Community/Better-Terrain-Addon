@@ -19,7 +19,7 @@ public class BTAMod extends FCAddOn {
 	public static Material netherSand;
 	
 	private BTAMod() {
-		super("Better Terrain", "2.0.4", "BTA");
+		super("Better Terrain", "2.0.5", "BTA");
 		this.currentVersion = BTAEnumVersionCompat.fromString(this.getVersionString());
 	}
 
@@ -44,8 +44,8 @@ public class BTAMod extends FCAddOn {
 	public void initDefs() {
 		netherSand = new Material(MapColor.sandColor).setRequiresTool().SetNetherMobsCanSpawnOn();
 	    
-		Block.blockClay = Block.replaceBlock(Block.blockClay.blockID, BTABlockClay.class);
-		FCBetterThanWolves.fcItemBloodMossSpores = Item.replaceItem(FCBetterThanWolves.fcItemBloodMossSpores.itemID, BTAItemBloodMossSpores.class);
+		Block.blockClay = Block.replaceBlock(Block.blockClay.blockID, BTABlockClay.class, instance);
+		FCBetterThanWolves.fcItemBloodMossSpores = Item.replaceItem(FCBetterThanWolves.fcItemBloodMossSpores.itemID, BTAItemBloodMossSpores.class, instance);
 		Block.blockNetherQuartz.SetBlockMaterial(FCBetterThanWolves.fcMaterialNetherRock);
 		Block.slowSand.SetBlockMaterial(netherSand);
 		
@@ -53,7 +53,7 @@ public class BTAMod extends FCAddOn {
 	}
 	
 	public void initMisc() {
-		
+		//ServerCommandManager.registerAddonCommand(new BTACommandBiome());
 	}
 	
 	public static BTAMod getInstance() {
@@ -62,10 +62,5 @@ public class BTAMod extends FCAddOn {
 		}
 		
 		return instance;
-	}
-
-	public String GetLanguageFilePrefix()
-	{
-		return "BTA";
 	}
 }

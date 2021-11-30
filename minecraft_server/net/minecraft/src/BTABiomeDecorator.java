@@ -339,7 +339,7 @@ public class BTABiomeDecorator
 			++var1;
 		}
 
-		BTASurfaceBuilder.generateTrees(this.currentWorld, this.randomGenerator, this.generatorInfo, this.chunk_X, this.chunk_Z, (BTABiomeGenBase) this.biome);
+		BTASurfaceBuilder.generateTrees(this.currentWorld, this.randomGenerator, this.currentWorld.getSeed(), this.generatorInfo, this.chunk_X, this.chunk_Z, (BTABiomeGenBase) this.biome);
 
 		int var4;
 

@@ -22,7 +22,8 @@ public enum BTAEnumVersionCompat {
 	V2_0_1(2, 0, 1),
 	V2_0_2(2, 0, 2),
 	V2_0_3(2, 0, 3),
-	V2_0_4(2, 0, 4);
+	V2_0_4(2, 0, 4),
+	V2_0_5(2, 0, 5);
 	
 	private final int major;
 	private final int minor;

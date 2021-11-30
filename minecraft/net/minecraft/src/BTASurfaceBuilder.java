@@ -126,11 +126,15 @@ public class BTASurfaceBuilder {
 		}
 	}
 
-	public static void generateTrees(World world, Random rand, BTAWorldConfigurationInfo generatorInfo, int chunkX, int chunkZ, BTABiomeGenBase biome) {
+	public static void generateTrees(World world, Random rand, long seed, BTAWorldConfigurationInfo generatorInfo, int chunkX, int chunkZ, BTABiomeGenBase biome) {
 		BTASurfaceBuilder builder = biome.getSurfaceBuilder();
 
 		if (generatorInfo.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_4_0)) {
 			if (builder != null) {
+				if (!builder.hasBeenInit) {
+					builder.init(rand, seed);
+				}
+				
 				builder.initForChunk(chunkX, chunkZ);
 				builder.generateTreesForBiome(world, rand, generatorInfo);
 			}
@@ -347,6 +351,10 @@ public class BTASurfaceBuilder {
 
 	protected void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, BTAWorldConfigurationInfo generatorInfo, WorldType worldType, boolean isNether) {
 		byte seaLevel = 63;
+		
+		if (worldType == BTAMod.BTAWorldTypeBeta || worldType == BTAMod.BTAWorldTypeBetaDeco) {
+			seaLevel = 64;
+		}
 		
 		if (worldType.isSky() || isNether)
 			seaLevel = 0;

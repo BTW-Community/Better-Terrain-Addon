@@ -12,9 +12,16 @@ Version 2.1.0
 [*]Changed black stone to be able to spawn nether mobs.
 [/list]
 
+Version 2.0.5
+[list]
+[*]Updated to BTW CE 1.3.0
+[*]Fixed an issue where some random generators were not being initialized in the correct order and so could sometimes cause a crash when generating trees.
+[*]Fixed an issue where gravel beaches would not flood with water properly when generating 1 block below sea level.
+[/list]
+
 Version 2.0.4
 [list]
-[*]Fixed an issue where soul sand was snot generating in the nether.
+[*]Fixed an issue where soul sand was not generating in the nether.
 [/list]
 
 Version 2.0.3
