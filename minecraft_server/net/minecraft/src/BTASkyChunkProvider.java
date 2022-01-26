@@ -433,7 +433,7 @@ public class BTASkyChunkProvider implements BTAIChunkProvider
 			var16 = var4 + this.rand.nextInt(16) + 8;
 			var17 = var5 + this.rand.nextInt(16) + 8;
 			var18 = this.rand.nextInt(128);
-			new BTAWorldGenReed().generate(this.worldObj, this.rand, var16, var18, var17);
+			new WorldGenReed().generate(this.worldObj, this.rand, var16, var18, var17);
 		}
 
 		if (!var15 && this.rand.nextInt(4) == 0)

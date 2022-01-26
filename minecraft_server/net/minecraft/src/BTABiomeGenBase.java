@@ -162,7 +162,7 @@ public class BTABiomeGenBase extends BiomeGenBase {
 	}
     
     public boolean canSlimesSpawnOnSurface() {
-    	return BTABiomeConfiguration.canBiomeSpawnWitchHut(this);
+    	return StructureScatteredFeatureStart.swampBiomeList.contains(this);
     }
 
 	public void setSurfaceBuilder(BTASurfaceBuilder surfaceBuilder) {
