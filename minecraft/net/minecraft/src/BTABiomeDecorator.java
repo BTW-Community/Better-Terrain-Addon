@@ -179,7 +179,7 @@ public class BTABiomeDecorator
 		this.mushroomBrownGen = new BTAWorldGenFlowers(Block.mushroomBrown.blockID);
 		this.mushroomRedGen = new BTAWorldGenFlowers(Block.mushroomRed.blockID);
 		this.bigMushroomGen = new WorldGenBigMushroom();
-		this.reedGen = new BTAWorldGenReed();
+		this.reedGen = new WorldGenReed();
 		this.cactusGen = new WorldGenCactus();
 		this.waterlilyGen = new WorldGenWaterlily();
 		this.waterlilyPerChunk = 0;
@@ -198,7 +198,7 @@ public class BTABiomeDecorator
 		this.biome = par1BiomeGenBase;
 
 		//BTA
-		pumpkinGen = new BTAWorldGenPumpkin();
+		pumpkinGen = new WorldGenPumpkin();
 		melonGen = new BTAWorldGenMelons();
 		oasisGen = new BTAWorldGenOasis(7, Block.grass.blockID);
 		steppeGen = new BTAWorldGenSteppe(Block.sand.blockID, 0);

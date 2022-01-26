@@ -19,7 +19,7 @@ public class BTAMod extends FCAddOn {
 	public static Material netherSand;
 	
 	private BTAMod() {
-		super("Better Terrain", "2.0.5", "BTA");
+		super("Better Terrain", "2.0.6", "BTA");
 		this.currentVersion = BTAEnumVersionCompat.fromString(this.getVersionString());
 	}
 

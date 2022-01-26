@@ -9,7 +9,7 @@ public class BTABiomeGenFungalForest extends BTABiomeGenBase {
         this.btaBiomeDecorator.grassPerChunk = 2;
         this.btaBiomeDecorator.bigRedMushroomsPerChunk = 5;
         this.btaBiomeDecorator.waterlilyPerChunk = 4;
-        this.spawnableMonsterList.add(new SpawnListEntry(BTAEntitySlime.class, 1, 1, 1));
+        this.spawnableMonsterList.add(new SpawnListEntry(FCEntitySlime.class, 1, 1, 1));
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntityWitch.class, 1, 1, 1));
         this.spawnableCreatureList.clear();
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityChicken.class, 10, 2, 2));

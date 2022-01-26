@@ -954,110 +954,112 @@ public class BTABiomeConfiguration {
 	}
 	
 	public static void addBiomesToStructureGenerators() {
-		pumpkinBiomes.add(chaparral);
-		pumpkinBiomes.add(meadow);
-		pumpkinBiomes.add(heathland);
-		pumpkinBiomes.add(orchard);
-		pumpkinBiomes.add(patagonia);
-		pumpkinBiomes.add(grasslands);
-		pumpkinBiomes.add(plains);
-		pumpkinBiomes.add(brushland);
+		WorldGenPumpkin.addBiomeToGenerator(chaparral);
+		WorldGenPumpkin.addBiomeToGenerator(meadow);
+		WorldGenPumpkin.addBiomeToGenerator(heathland);
+		WorldGenPumpkin.addBiomeToGenerator(orchard);
+		WorldGenPumpkin.addBiomeToGenerator(patagonia);
+		WorldGenPumpkin.addBiomeToGenerator(grasslands);
+		WorldGenPumpkin.addBiomeToGenerator(plains);
+		WorldGenPumpkin.addBiomeToGenerator(brushland);
 		
-		reedBiomes.add(wetlands);
-		reedBiomes.add(tropics);
-		reedBiomes.add(jungle);
-		reedBiomes.add(fungalForest);
-		reedBiomes.add(mysticForest);
-		reedBiomes.add(rainforest);
-		reedBiomes.add(willowGrove);
-		reedBiomes.add(patagonia);
-		reedBiomes.add(plains);
-		reedBiomes.add(mangroveForest);
-		reedBiomes.add(temperateForest);
-		reedBiomes.add(frozenSprings);
+		WorldGenReed.addBiomeToGenerator(wetlands);
+		WorldGenReed.addBiomeToGenerator(tropics);
+		WorldGenReed.addBiomeToGenerator(jungle);
+		WorldGenReed.addBiomeToGenerator(fungalForest);
+		WorldGenReed.addBiomeToGenerator(mysticForest);
+		WorldGenReed.addBiomeToGenerator(rainforest);
+		WorldGenReed.addBiomeToGenerator(willowGrove);
+		WorldGenReed.addBiomeToGenerator(patagonia);
+		WorldGenReed.addBiomeToGenerator(plains);
+		WorldGenReed.addBiomeToGenerator(mangroveForest);
+		WorldGenReed.addBiomeToGenerator(temperateForest);
+		WorldGenReed.addBiomeToGenerator(frozenSprings);
 		
-		villageBiomes.add(savanna);
-		villageBiomes.add(desert);
-		villageBiomes.add(lushDesert);
-		villageBiomes.add(chaparral);
-		villageBiomes.add(meadow);
-		villageBiomes.add(heathland);
-		villageBiomes.add(steppe);
-		villageBiomes.add(orchard);
-		villageBiomes.add(outback);
-		villageBiomes.add(patagonia);
-		villageBiomes.add(grasslands);
-		villageBiomes.add(plains);
-		villageBiomes.add(brushland);
+		MapGenVillage.villageSpawnBiomes.add(savanna);
+		MapGenVillage.villageSpawnBiomes.add(desert);
+		MapGenVillage.villageSpawnBiomes.add(lushDesert);
+		MapGenVillage.villageSpawnBiomes.add(chaparral);
+		MapGenVillage.villageSpawnBiomes.add(meadow);
+		MapGenVillage.villageSpawnBiomes.add(heathland);
+		MapGenVillage.villageSpawnBiomes.add(steppe);
+		MapGenVillage.villageSpawnBiomes.add(orchard);
+		MapGenVillage.villageSpawnBiomes.add(outback);
+		MapGenVillage.villageSpawnBiomes.add(patagonia);
+		MapGenVillage.villageSpawnBiomes.add(grasslands);
+		MapGenVillage.villageSpawnBiomes.add(plains);
+		MapGenVillage.villageSpawnBiomes.add(brushland);
 		
-		MapGenVillage.villageSpawnBiomes.addAll(villageBiomes);
+		ComponentVillageStartPiece.addDesertBiome(desert);
+		ComponentVillageStartPiece.addDesertBiome(lushDesert);
+		ComponentVillageStartPiece.addDesertBiome(steppe);
 		
-		jungleTempleBiomes.add(tropics);
-		jungleTempleBiomes.add(jungle);
-		jungleTempleBiomes.add(rainforest);
-		jungleTempleBiomes.add(mangroveForest);
+		StructureScatteredFeatureStart.addJungleBiome(tropics);
+		StructureScatteredFeatureStart.addJungleBiome(jungle);
+		StructureScatteredFeatureStart.addJungleBiome(rainforest);
+		StructureScatteredFeatureStart.addJungleBiome(mangroveForest);
 		
-		desertTempleBiomes.add(desert);
-		desertTempleBiomes.add(lushDesert);
-		desertTempleBiomes.add(dunes);
-		desertTempleBiomes.add(steppe);
+		StructureScatteredFeatureStart.addDesertBiome(desert);
+		StructureScatteredFeatureStart.addDesertBiome(lushDesert);
+		StructureScatteredFeatureStart.addDesertBiome(dunes);
+		StructureScatteredFeatureStart.addDesertBiome(steppe);
 		
 		redDesertTempleBiomes.add(outback);
 		redDesertTempleBiomes.add(badlands);
 		
-		witchHutBiomes.add(wetlands);
-		witchHutBiomes.add(fungalForest);
-		witchHutBiomes.add(mysticForest);
-		witchHutBiomes.add(willowGrove);
+		StructureScatteredFeatureStart.addSwampBiome(wetlands);
+		StructureScatteredFeatureStart.addSwampBiome(fungalForest);
+		StructureScatteredFeatureStart.addSwampBiome(mysticForest);
+		StructureScatteredFeatureStart.addSwampBiome(willowGrove);
 		
 		BTAMapGenScatteredFeature.biomelist.addAll(jungleTempleBiomes);
 		BTAMapGenScatteredFeature.biomelist.addAll(desertTempleBiomes);
 		BTAMapGenScatteredFeature.biomelist.addAll(witchHutBiomes);
 		
 		//Hill variants
-		pumpkinBiomes.add(savannaHills);
-		pumpkinBiomes.add(chaparralHills);
-		pumpkinBiomes.add(heathlandWoods);
-		pumpkinBiomes.add(orchardClearing);
+		WorldGenPumpkin.addBiomeToGenerator(savannaHills);
+		WorldGenPumpkin.addBiomeToGenerator(chaparralHills);
+		WorldGenPumpkin.addBiomeToGenerator(heathlandWoods);
+		WorldGenPumpkin.addBiomeToGenerator(orchardClearing);
 		
-		reedBiomes.add(jungleHills);
-		reedBiomes.add(fungalForestFlat);
-		reedBiomes.add(wetlandsHills);
-		reedBiomes.add(willowHills);
-		reedBiomes.add(frozenSpringsPond);
-		reedBiomes.add(mangroveForestIsland);
+		WorldGenReed.addBiomeToGenerator(jungleHills);
+		WorldGenReed.addBiomeToGenerator(fungalForestFlat);
+		WorldGenReed.addBiomeToGenerator(wetlandsHills);
+		WorldGenReed.addBiomeToGenerator(willowHills);
+		WorldGenReed.addBiomeToGenerator(frozenSpringsPond);
+		WorldGenReed.addBiomeToGenerator(mangroveForestIsland);
 
-		villageBiomes.add(oasis);
-		villageBiomes.add(woodedSteppe);
-		villageBiomes.add(heathlandWoods);
-		villageBiomes.add(orchardClearing);
+		MapGenVillage.villageSpawnBiomes.add(oasis);
+		MapGenVillage.villageSpawnBiomes.add(woodedSteppe);
+		MapGenVillage.villageSpawnBiomes.add(heathlandWoods);
+		MapGenVillage.villageSpawnBiomes.add(orchardClearing);
 
-		jungleTempleBiomes.add(jungleHills);
-		jungleTempleBiomes.add(mangroveForestIsland);
+		StructureScatteredFeatureStart.addJungleBiome(jungleHills);
+		StructureScatteredFeatureStart.addJungleBiome(mangroveForestIsland);
 
-		desertTempleBiomes.add(desertHills);
-		desertTempleBiomes.add(woodedSteppe);
+		StructureScatteredFeatureStart.addDesertBiome(desertHills);
+		StructureScatteredFeatureStart.addDesertBiome(woodedSteppe);
 
-		witchHutBiomes.add(fungalForestFlat);
-		witchHutBiomes.add(wetlandsHills);
-		witchHutBiomes.add(willowHills);
+		StructureScatteredFeatureStart.addSwampBiome(fungalForestFlat);
+		StructureScatteredFeatureStart.addSwampBiome(wetlandsHills);
+		StructureScatteredFeatureStart.addSwampBiome(willowHills);
 		
 		//Edges
-		reedBiomes.add(jungleEdge);
-		reedBiomes.add(rainforestEdge);
+		WorldGenReed.addBiomeToGenerator(jungleEdge);
+		WorldGenReed.addBiomeToGenerator(rainforestEdge);
 		
-		jungleTempleBiomes.add(jungleEdge);
-		jungleTempleBiomes.add(rainforestEdge);
+		StructureScatteredFeatureStart.addJungleBiome(jungleEdge);
+		StructureScatteredFeatureStart.addJungleBiome(rainforestEdge);
 
 		redDesertTempleBiomes.add(badlandsEdge);
 		
 		//Rivers
-		reedBiomes.add(riverRainforest);
-		reedBiomes.add(riverTropics);
-		reedBiomes.add(riverJungle);
-		reedBiomes.add(riverMystic);
-		reedBiomes.add(riverWetlands);
-		reedBiomes.add(riverWillow);
+		WorldGenReed.addBiomeToGenerator(riverRainforest);
+		WorldGenReed.addBiomeToGenerator(riverTropics);
+		WorldGenReed.addBiomeToGenerator(riverJungle);
+		WorldGenReed.addBiomeToGenerator(riverMystic);
+		WorldGenReed.addBiomeToGenerator(riverWetlands);
+		WorldGenReed.addBiomeToGenerator(riverWillow);
 	}
 	
 	public static int getHillsVariantForBiomes(int baseBiome, BTAWorldConfigurationInfo generatorOptions, BTAGenLayerHills layer) {
@@ -1397,44 +1399,16 @@ public class BTABiomeConfiguration {
 		return biomeListDeco;
 	}
 	
-	public static boolean canBiomeSpawnPumpkin(BiomeGenBase biome) {
-		return pumpkinBiomes.contains(biome);
-	}
-	
 	public static boolean canBiomeSpawnMelon(BiomeGenBase biome) {
 		return jungleTempleBiomes.contains(biome);
-	}
-	
-	public static boolean canBiomeSpawnReeds(BiomeGenBase biome) {
-		return reedBiomes.contains(biome);
-	}
-	
-	public static boolean canBiomeSpawnVillage(BiomeGenBase biome) {
-		return getVillageBiomes().contains(biome);
-	}
-	
-	public static boolean canBiomeSpawnJungleTemple(BiomeGenBase biome) {
-		return jungleTempleBiomes.contains(biome);
-	}
-	
-	public static boolean canBiomeSpawnDesertTemple(BiomeGenBase biome) {
-		return desertTempleBiomes.contains(biome);
 	}
 	
 	public static boolean canBiomeSpawnRedDesertTemple(BiomeGenBase biome) {
 		return redDesertTempleBiomes.contains(biome);
 	}
 	
-	public static boolean canBiomeSpawnWitchHut(BiomeGenBase biome) {
-		return witchHutBiomes.contains(biome);
-	}
-	
 	public static boolean canBiomeSpawnStronghold(BiomeGenBase biome) {
 		return biome != BiomeGenBase.ocean && biome != BiomeGenBase.frozenOcean;
-	}
-
-	public static ArrayList<BiomeGenBase> getVillageBiomes() {
-		return villageBiomes;
 	}
 	
 	public static ArrayList<BiomeGenBase> getEdgeBiomes(BTAWorldConfigurationInfo generatorInfo) {

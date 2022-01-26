@@ -66,7 +66,7 @@ public class BTAMapGenVillage extends BTAMapGenStructure
 
         if (var3 == var5 && var4 == var6)
         {
-            boolean var8 = this.worldObj.getWorldChunkManager().areBiomesViable(var3 * 16 + 8, var4 * 16 + 8, 0, BTABiomeConfiguration.getVillageBiomes());
+            boolean var8 = this.worldObj.getWorldChunkManager().areBiomesViable(var3 * 16 + 8, var4 * 16 + 8, 0, MapGenVillage.villageSpawnBiomes);
 
             if (var8)
             {
