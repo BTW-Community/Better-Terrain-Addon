@@ -21,6 +21,8 @@ public class BTABiomeGenBase extends BiomeGenBase {
     
     private boolean isPlateau;
     private boolean isNether;
+    
+    private static BTAWorldConfigurationInfo generatorInfoCache;
 
 	protected BTABiomeGenBase(int id, BTAEnumClimate climate) {
 		super(id);
@@ -191,6 +193,44 @@ public class BTABiomeGenBase extends BiomeGenBase {
 		this.setTemperatureRainfall(2.0F, 0.0F);
 		return this;
 	}
+    
+	@Override
+    public boolean canSnowAt(World world, int x, int y, int z) {
+		if (generatorInfoCache == null || !generatorInfoCache.toString().equals(world.provider.generatorOptions)) {
+			if (world.provider.generatorOptions.equals("")) {
+				generatorInfoCache = BTAWorldConfigurationInfo.createDefaultConfigurationLegacy(world.provider.terrainType.isDeco());
+			}
+			else {
+				generatorInfoCache = BTAWorldConfigurationInfo.createInfoFromString(world.provider.generatorOptions);
+			}
+		}
+		
+		if (generatorInfoCache.getCompatMode().isVersionAtLeast(BTAEnumVersionCompat.V1_3_0)) {
+			int minHeightForSnow = this.climate.minHeightForSnow;
+			
+			BTASurfaceBuilder surfaceBuilder;
+			
+			if (this.surfaceBuilder == null) {
+				surfaceBuilder = BTASurfaceBuilder.defaultBuilder;
+				surfaceBuilder.setBiome(this);
+			}
+			else {
+				surfaceBuilder = this.surfaceBuilder;
+			}
+			
+			if (!surfaceBuilder.hasBeenInit()) {
+				surfaceBuilder.init(world.rand, world.getSeed());
+				surfaceBuilder.setHasBeenInit(true);
+			}
+			
+			minHeightForSnow += surfaceBuilder.getSnowHeightOffset(x, z, world.rand);
+			
+			return y >= minHeightForSnow;
+		}
+		else {
+			return this.getEnableSnow();
+		}
+    }
 
 	public void AddEmeralds(World var1, Random var2, int var3, int var4)
     {

@@ -33,7 +33,7 @@ public class BTAWorldGenTallGrass extends WorldGenerator
             {
                 par1World.setBlock(var8, var9, var10, this.tallGrassID, this.tallGrassMetadata, 2);
                 
-                if (par1World.getBiomeGenForCoords(var8, var10).getEnableSnow() && par1World.isAirBlock(var8, var9 + 1, var10) && par1World.canBlockSeeTheSky(var8, var9 + 1, var10)) {
+                if (par1World.getBiomeGenForCoords(var8, var10).canSnowAt(par1World, par3, par4, par5) && par1World.isAirBlock(var8, var9 + 1, var10) && par1World.canBlockSeeTheSky(var8, var9 + 1, var10)) {
                 	par1World.setBlock(var8, var9 + 1, var10, Block.snow.blockID);
                 }
             }

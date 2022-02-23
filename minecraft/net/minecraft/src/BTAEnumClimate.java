@@ -27,4 +27,8 @@ public enum BTAEnumClimate {
 		
 		return null;
 	}
+	
+	public boolean hasSnowVariance() {
+		return this.minHeightForSnow != 0 && this.minHeightForSnow != 256;
+	}
 }
