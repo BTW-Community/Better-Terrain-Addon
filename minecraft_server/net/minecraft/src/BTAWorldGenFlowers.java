@@ -24,7 +24,7 @@ public class BTAWorldGenFlowers extends WorldGenerator
             {
                 par1World.setBlock(var7, var8, var9, this.plantBlockId, 0, 2);
                 
-                if (par1World.getBiomeGenForCoords(var7, var9).getEnableSnow() && par1World.isAirBlock(var7, var8 + 1, var9) && par1World.canBlockSeeTheSky(var7, var8, var9)) {
+                if (par1World.getBiomeGenForCoords(var7, var9).canSnowAt(par1World, par3, par4, par5) && par1World.isAirBlock(var7, var8 + 1, var9) && par1World.canBlockSeeTheSky(var7, var8, var9)) {
                 	par1World.setBlock(var7, var8 + 1, var9, Block.snow.blockID);
                 }
             }

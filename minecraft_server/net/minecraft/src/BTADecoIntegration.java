@@ -2,7 +2,7 @@ package net.minecraft.src;
 
 public class BTADecoIntegration {
 	private static boolean isDecoInstalled = false;
-	private static Class decoDefs = null;
+	private static FCAddOn decoManager = null;
 
 	public static Block redSand;
 	public static Block redSandStone;
@@ -35,17 +35,11 @@ public class BTADecoIntegration {
 	
 	public static void init() {
 		try {
-			try {
-				decoDefs = Class.forName("DecoDefs");
-			} catch (ClassNotFoundException e) {
-				try {
-					decoDefs = Class.forName("net.minecraft.src.DecoDefs");
-				} catch (ClassNotFoundException e1) {
-					
-				}
+			if (FCAddOnHandler.isModInstalled("Deco Addon")) {
+				decoManager = FCAddOnHandler.getModByName("Deco Addon");
 			}
 			
-			if (decoDefs != null) {
+			if (decoManager != null) {
 				isDecoInstalled = true;
 				
 				redSand = (Block) getDecoField("redSand");
@@ -89,7 +83,11 @@ public class BTADecoIntegration {
 	}
 	
 	private static Object getDecoField(String fieldName) throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {
-		return decoDefs.getDeclaredField(fieldName).get(null);
+		if (isDecoInstalled) {
+			return ((DecoManager) decoManager).decoDefs.getClass().getDeclaredField(fieldName).get(null);
+		}
+		
+		return null;
 	}
 	
 	public static boolean isDecoInstalled() {

@@ -30,6 +30,8 @@ public class BTASurfaceBuilder {
 	protected static BTAUtilsOpenSimplexOctaves soilDepthNoiseGenSimplex;
 	protected static BTAUtilsOpenSimplexOctaves gravelNoiseGenSimplex;
 
+	protected static BTAUtilsOpenSimplexOctaves snowHeightNoiseGenSimplex;
+
 	protected BiomeGenBase biome;
 	protected boolean hasBeenInit = false;
 
@@ -313,6 +315,7 @@ public class BTASurfaceBuilder {
 
 		sandNoiseGenSimplex = new BTAUtilsOpenSimplexOctaves(sandRand.nextLong(), 8);
 		gravelNoiseGenSimplex = new BTAUtilsOpenSimplexOctaves(sandRand.nextLong(), 8);
+		snowHeightNoiseGenSimplex = new BTAUtilsOpenSimplexOctaves(sandRand.nextLong(), 8);
 	}
 
 	protected void initForChunk(int chunkX, int chunkZ) {
@@ -661,8 +664,22 @@ public class BTASurfaceBuilder {
 		return (int) (soilDepthNoiseLegacy[k * 16 + i] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
 	}
 	
+	protected int getSnowHeightOffset(int x, int z, Random rand) {
+		double snowNoiseScale = 1/96D;
+		int snowOffset = (int) (snowHeightNoiseGenSimplex.noise2(x, z, snowNoiseScale) * 5);
+		return snowOffset;
+	}
+	
 	protected int getSubsurfaceDepth(Random rand) {
 		return rand.nextInt(4);
+	}
+	
+	public boolean hasBeenInit() {
+		return this.hasBeenInit;
+	}
+	
+	public void setHasBeenInit(boolean hasBeenInit) {
+		this.hasBeenInit = hasBeenInit;
 	}
 
 	public enum SurfaceType {
