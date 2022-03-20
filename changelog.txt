@@ -21,6 +21,7 @@ Version 2.0.7
 [*]Fixed an issue where grassy clay ore rendered incorrectly.
 [*]Fixed an issue where clay ore variants could not be silk touched.
 [*]Refactored deco integration to use newer hooks added by CE.
+[*]Removed a few base class edits.
 [/list]
 
 Version 2.0.6
