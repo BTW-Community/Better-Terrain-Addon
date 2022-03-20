@@ -1060,6 +1060,12 @@ public class BTABiomeConfiguration {
 		WorldGenReed.addBiomeToGenerator(riverMystic);
 		WorldGenReed.addBiomeToGenerator(riverWetlands);
 		WorldGenReed.addBiomeToGenerator(riverWillow);
+		
+		//Extra processing
+		BTAMapGenScatteredFeature.biomelist.clear();
+		BTAMapGenScatteredFeature.biomelist.addAll(StructureScatteredFeatureStart.desertBiomeList);
+		BTAMapGenScatteredFeature.biomelist.addAll(StructureScatteredFeatureStart.jungleBiomeList);
+		BTAMapGenScatteredFeature.biomelist.addAll(StructureScatteredFeatureStart.swampBiomeList);
 	}
 	
 	public static int getHillsVariantForBiomes(int baseBiome, BTAWorldConfigurationInfo generatorOptions, BTAGenLayerHills layer) {

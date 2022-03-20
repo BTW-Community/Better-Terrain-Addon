@@ -1,4 +1,4 @@
-Version 2.2.0
+Version 2.X.0
 [list]
 [*]Added nether biomes, which are detailed further below. This may be toggled at world creation, and all nether related changes only apply to worlds with the new nether enabled.
 [*]Added basalt deltas. This highly rugged terrain has a surface made of basalt and infused stone filled with frequent lava pools. Magma cubes spawn here in high frequencies.
@@ -10,6 +10,18 @@ Version 2.2.0
 [*]Changed how fortress mob spawns are handled. Previously, the game would choose the fortress spawn list instead of the biome spawn list. To accommodate new biome-specific spawn lists in the nether, fortresses now add their own unique spawns to the exisitng biome spawns.
 [*]Changed how skeletons determine their type in BTA worlds. Fortress skeletons will now always spawn as wither skeletons (instead of an 80% chance), while skeletons outside fortresses (e.g. in the new biomes) will always spawn as normal skeletons. Vanilla nether is unaffected.
 [*]Changed black stone to be able to spawn nether mobs.
+[/list]
+
+Version 2.0.7
+[list]
+[*]Updated to BTW CE 1.3.8
+[*]Changed snow height in cold climates to vary by a few blocks instead of being at a fixed level. This should make the transition look more natural.
+[*]Fixed an issue where scattered features such as temples and witch huts were not generating.
+[*]Fixed an issue where tall grass and flowers at high altitude in cold climates would not spawn with snow surrounding them.
+[*]Fixed an issue where grassy clay ore rendered incorrectly.
+[*]Fixed an issue where clay ore variants could not be silk touched.
+[*]Refactored deco integration to use newer hooks added by CE.
+[*]Removed a few base class edits.
 [/list]
 
 Version 2.0.6
