@@ -1,2 +1,7 @@
+tile.fcBlockClay.dirt.name=Clay Ore
+tile.fcBlockClay.sand.name=Sandy Clay Ore
+tile.fcBlockClay.redSand.name=Red Sandy Clay Ore
+tile.fcBlockClay.grass.name=Grassy Clay Ore
+
 selectWorld.isDeco=Deco Enabled:
 selectWorld.isSmall=Smaller Biomes:
