@@ -1,5 +1,7 @@
 package net.minecraft.src;
 
+import betterterrain.BTAWorldConfigurationInfo;
+
 public class WorldType
 {
     /** List of world types. */

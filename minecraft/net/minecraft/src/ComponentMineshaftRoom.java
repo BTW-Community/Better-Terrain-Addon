@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import betterterrain.BTAStructureMineshaftPieces;
+
 public class ComponentMineshaftRoom extends StructureComponent
 {
     /** List of other Mineshaft components linked to this room. */

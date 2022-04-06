@@ -2,6 +2,8 @@ package net.minecraft.src;
 
 import java.util.List;
 
+import betterterrain.BTAMod;
+
 public class BlockAnvil extends BlockSand
 {
 	static {

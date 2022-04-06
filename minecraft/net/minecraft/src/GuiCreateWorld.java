@@ -3,6 +3,12 @@ package net.minecraft.src;
 import java.util.Random;
 import org.lwjgl.input.Keyboard;
 
+import betterterrain.BTADecoIntegration;
+import betterterrain.BTAGuiGeneratorOptions;
+import betterterrain.BTASurfaceBuilder;
+import betterterrain.BTAWorldConfigurationInfo;
+import betterterrain.biome.biomes.BTABiomeGenBase;
+
 public class GuiCreateWorld extends GuiScreen
 {
     private GuiScreen parentGuiScreen;

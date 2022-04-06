@@ -3,6 +3,9 @@ package net.minecraft.src;
 import java.util.ArrayList;
 import java.util.Random;
 
+import betterterrain.BTAComponentScatteredFeatureRedDesertPyramid;
+import betterterrain.biome.BTABiomeConfiguration;
+
 public class StructureScatteredFeatureStart extends StructureStart
 {
 	public static ArrayList<BiomeGenBase> desertBiomeList = new ArrayList();

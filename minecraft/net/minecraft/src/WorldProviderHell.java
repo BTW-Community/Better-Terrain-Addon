@@ -1,5 +1,8 @@
 package net.minecraft.src;
 
+import betterterrain.biome.BTABiomeConfiguration;
+import betterterrain.biome.biomes.BTABiomeGenNetherBase;
+
 public class WorldProviderHell extends WorldProvider
 {
     /**
