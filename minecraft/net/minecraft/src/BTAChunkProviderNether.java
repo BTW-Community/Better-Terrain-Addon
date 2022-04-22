@@ -418,7 +418,7 @@ public class BTAChunkProviderNether implements BTAIChunkProvider
 				List spawnList = this.genNetherBridge.getSpawnList();
 
 				if (spawnList != null) {
-					spawnList.addAll(biome.getSpawnableList(creatureType));
+					//spawnList.addAll(biome.getSpawnableList(creatureType));
 					return spawnList;
 				}
 				else {
@@ -443,7 +443,7 @@ public class BTAChunkProviderNether implements BTAIChunkProvider
 				List spawnList = this.genNetherBridge.getSpawnList();
 
 				if (spawnList != null) {
-					spawnList.addAll(biome.getSpawnableList(creatureType));
+					//spawnList.addAll(biome.getSpawnableList(creatureType));
 					return spawnList;
 				}
 			}
@@ -471,6 +471,6 @@ public class BTAChunkProviderNether implements BTAIChunkProvider
 
     public void recreateStructures(int par1, int par2)
     {
-        this.genNetherBridge.generate(this, this.worldObj, par1, par2, (byte[])null);
+        this.genNetherBridge.generate(this, this.worldObj, par1, par2, (int[])null);
     }
 }

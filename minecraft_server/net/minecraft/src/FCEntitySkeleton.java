@@ -24,7 +24,7 @@ public class FCEntitySkeleton extends EntitySkeleton
 
 	public void PreInitCreature() {
 		if (this.worldObj.provider.dimensionId == -1) {
-			if (this.worldObj.provider.terrainType.isBTA()) {
+			/*if (this.worldObj.provider.terrainType.isBTA()) {
 				if (!(this.worldObj.chunkProvider instanceof ChunkProviderServer)) {
 					if (((BTAIChunkProvider) this.worldObj.chunkProvider).doesStructureExistAtCoords((int) this.posX, (int) this.posY, (int) this.posZ) && 
 							((BTAIChunkProvider) this.worldObj.chunkProvider).getPossibleCreaturesStructuresOnly(EnumCreatureType.monster, (int) this.posX, (int) this.posY, (int) this.posZ).contains(this.getClass())) {
@@ -32,7 +32,7 @@ public class FCEntitySkeleton extends EntitySkeleton
 					}
 				}
 			}
-			else if (this.getRNG().nextInt(5) > 0) {
+			else*/ if (this.getRNG().nextInt(5) > 0) {
 				this.setSkeletonType(1);
 			}
 		}

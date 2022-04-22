@@ -26,7 +26,7 @@ public class BTASkyChunkProvider implements BTAIChunkProvider
 	private BTAMapGenMineshaft mineshaftGenerator = new BTAMapGenMineshaft();
 	private BTAMapGenScatteredFeature scatteredFeatureGenerator = new BTAMapGenScatteredFeature();
 	private BTAMapGenBase ravineGenerator = new BTAMapGenRavine();
-    private BTAMapGenNetherBridge genNetherBridge = new BTAMapGenNetherBridge();
+    public BTAMapGenNetherBridge genNetherBridge = new BTAMapGenNetherBridge();
 	private BiomeGenBase[] biomesForGeneration;
 	private int worldtype;
 	double[] field_4185_d;
@@ -695,7 +695,7 @@ public class BTASkyChunkProvider implements BTAIChunkProvider
 				List spawnList = this.genNetherBridge.getSpawnList();
 
 				if (spawnList != null) {
-					spawnList.addAll(biome.getSpawnableList(creatureType));
+					//spawnList.addAll(biome.getSpawnableList(creatureType));
 					return spawnList;
 				}
 				else {
@@ -763,10 +763,10 @@ public class BTASkyChunkProvider implements BTAIChunkProvider
 		if (this.mapFeaturesEnabled)
 		{
 			if (this.isNether) {
-				this.genNetherBridge.generate(this, this.worldObj, var1, var2, (byte[])null);
+				this.genNetherBridge.generate(this, this.worldObj, var1, var2, (int[])null);
 			}
 			else {
-				this.strongholdGenerator.generate(this, this.worldObj, var1, var2, (byte[])null);
+				this.strongholdGenerator.generate(this, this.worldObj, var1, var2, (int[])null);
 			}
 		}
 	}

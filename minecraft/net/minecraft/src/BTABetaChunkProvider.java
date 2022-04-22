@@ -689,11 +689,14 @@ public class BTABetaChunkProvider implements BTAIChunkProvider
 		return 0;
 	}
 
-	public void recreateStructures(int var1, int var2)
+	public void recreateStructures(int par1, int par2)
 	{
 		if (this.mapFeaturesEnabled)
 		{
-			this.strongholdGenerator.generate(this, this.worldObj, var1, var2, (byte[])null);
+			this.mineshaftGenerator.generate(this, this.worldObj, par1, par2, (int[])null);
+			this.villageGenerator.generate(this, this.worldObj, par1, par2, (int[])null);
+			this.strongholdGenerator.generate(this, this.worldObj, par1, par2, (int[])null);
+			this.scatteredFeatureGenerator.generate(this, this.worldObj, par1, par2, (int[])null);
 		}
 	}
 
