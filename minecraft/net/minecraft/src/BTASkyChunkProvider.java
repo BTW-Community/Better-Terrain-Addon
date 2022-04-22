@@ -763,10 +763,10 @@ public class BTASkyChunkProvider implements BTAIChunkProvider
 		if (this.mapFeaturesEnabled)
 		{
 			if (this.isNether) {
-				this.genNetherBridge.generate(this, this.worldObj, var1, var2, (byte[])null);
+				this.genNetherBridge.generate(this, this.worldObj, var1, var2, (int[])null);
 			}
 			else {
-				this.strongholdGenerator.generate(this, this.worldObj, var1, var2, (byte[])null);
+				this.strongholdGenerator.generate(this, this.worldObj, var1, var2, (int[])null);
 			}
 		}
 	}
