@@ -18,6 +18,7 @@ public abstract class BTAMapGenStructure extends BTAMapGenBase
     /**
      * Recursively called by generate() (generate) and optionally by itself.
      */
+    @Override
     protected void recursiveGenerate(World par1World, int par2, int par3, int par4, int par5, int[] blockArray)
     {
         if (!this.structureMap.containsKey(Long.valueOf(ChunkCoordIntPair.chunkXZ2Int(par2, par3))))

@@ -26,7 +26,7 @@ public class BTASkyChunkProvider implements BTAIChunkProvider
 	private BTAMapGenMineshaft mineshaftGenerator = new BTAMapGenMineshaft();
 	private BTAMapGenScatteredFeature scatteredFeatureGenerator = new BTAMapGenScatteredFeature();
 	private BTAMapGenBase ravineGenerator = new BTAMapGenRavine();
-    private BTAMapGenNetherBridge genNetherBridge = new BTAMapGenNetherBridge();
+    public BTAMapGenNetherBridge genNetherBridge = new BTAMapGenNetherBridge();
 	private BiomeGenBase[] biomesForGeneration;
 	private int worldtype;
 	double[] field_4185_d;

@@ -12,6 +12,13 @@ Version 2.X.0
 [*]Changed black stone to be able to spawn nether mobs.
 [/list]
 
+Version 2.0.8
+[list]
+[*]Fixed an issue where eyes of ender could not locate strongholds.
+[*]Fixed an issue where soul sand piles could not locate nether fortresses.
+[*]Fixed an issue where nether fortress mobs would not spawn.
+[/list]
+
 Version 2.0.7
 [list]
 [*]Updated to BTW CE 1.3.8
