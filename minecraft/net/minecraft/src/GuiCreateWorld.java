@@ -3,11 +3,11 @@ package net.minecraft.src;
 import java.util.Random;
 import org.lwjgl.input.Keyboard;
 
-import betterterrain.BTADecoIntegration;
-import betterterrain.BTAGuiGeneratorOptions;
-import betterterrain.BTASurfaceBuilder;
-import betterterrain.BTAWorldConfigurationInfo;
-import betterterrain.biome.biomes.BTABiomeGenBase;
+import betterterrain.DecoIntegration;
+import betterterrain.biome.biomes.BTABiome;
+import betterterrain.gui.GeneratorOptionsGui;
+import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.generate.surface.SurfaceBuilder;
 
 public class GuiCreateWorld extends GuiScreen
 {
@@ -122,7 +122,7 @@ public class GuiCreateWorld extends GuiScreen
         this.buttonList.add(this.buttonCustomizeBTA = new GuiButton(10, this.width / 2 + 5, 120, 150, 20, var1.translateKey("selectWorld.customizeType")));
         this.buttonCustomizeBTA.drawButton = false;
         
-        this.isDeco = BTADecoIntegration.isDecoInstalled();
+        this.isDeco = DecoIntegration.isDecoInstalled();
         
         this.textboxWorldName = new GuiTextField(this.fontRenderer, this.width / 2 - 100, 60, 200, 20);
         this.textboxWorldName.setFocused(true);
@@ -283,14 +283,14 @@ public class GuiCreateWorld extends GuiScreen
                 WorldSettings var6 = new WorldSettings(var2, var8, this.generateStructures, this.isHardcore, type);
                 
                 if (WorldType.worldTypes[this.worldTypeId].isBTA() && this.generatorOptionsToUse.equals("")) {
-                	this.generatorOptionsToUse = BTAWorldConfigurationInfo.createDefaultConfiguration(isDeco).toString();
+                	this.generatorOptionsToUse = WorldConfigurationInfo.createDefaultConfiguration(isDeco).toString();
 
-    				BTASurfaceBuilder.defaultBuilder.hasBeenInit = false;
-    				BTASurfaceBuilder.legacyBuilder.hasBeenInit = false;
+    				SurfaceBuilder.defaultBuilder.hasBeenInit = false;
+    				SurfaceBuilder.legacyBuilder.hasBeenInit = false;
     				
-                	for (BiomeGenBase b : BTAWorldConfigurationInfo.createInfoFromString(this.generatorOptionsToUse).getBiomesForGeneration()) {
-                		if (b instanceof BTABiomeGenBase) {
-                			BTASurfaceBuilder builder = ((BTABiomeGenBase) b).getSurfaceBuilder();
+                	for (BiomeGenBase b : WorldConfigurationInfo.createInfoFromString(this.generatorOptionsToUse).getBiomesForGeneration()) {
+                		if (b instanceof BTABiome) {
+                			SurfaceBuilder builder = ((BTABiome) b).getSurfaceBuilder();
                 			
                 			if (builder != null) {
                 				builder.hasBeenInit = false;
@@ -411,7 +411,7 @@ public class GuiCreateWorld extends GuiScreen
             	this.updateButtonText();
             }
             else if (par1GuiButton.id == 10) {
-            	this.mc.displayGuiScreen(new BTAGuiGeneratorOptions(this, this.generatorOptionsToUse));
+            	this.mc.displayGuiScreen(new GeneratorOptionsGui(this, this.generatorOptionsToUse));
             }
         }
     }

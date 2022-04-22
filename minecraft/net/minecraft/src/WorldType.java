@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import betterterrain.BTAWorldConfigurationInfo;
+import betterterrain.world.WorldConfigurationInfo;
 
 public class WorldType
 {
@@ -206,7 +206,7 @@ public class WorldType
 		return this;
 	}
 	
-	public int getColdBiomeSnowLevelModifier(BTAWorldConfigurationInfo generatorInfo) {
+	public int getColdBiomeSnowLevelModifier(WorldConfigurationInfo generatorInfo) {
 		return 0;
 	}
 }

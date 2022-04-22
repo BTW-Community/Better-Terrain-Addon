@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import betterterrain.BTAIChunkProvider;
+import betterterrain.world.generate.BTAChunkProvider;
 
 public class FCEntitySkeleton extends EntitySkeleton
 {
