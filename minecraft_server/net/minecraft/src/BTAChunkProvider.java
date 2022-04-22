@@ -685,10 +685,10 @@ public class BTAChunkProvider implements BTAIChunkProvider
 	{
 		if (this.mapFeaturesEnabled)
 		{
-			this.mineshaftGenerator.generate(this, this.worldObj, par1, par2, (byte[])null);
-			this.villageGenerator.generate(this, this.worldObj, par1, par2, (byte[])null);
-			this.strongholdGenerator.generate(this, this.worldObj, par1, par2, (byte[])null);
-			this.scatteredFeatureGenerator.generate(this, this.worldObj, par1, par2, (byte[])null);
+			this.mineshaftGenerator.generate(this, this.worldObj, par1, par2, (int[])null);
+			this.villageGenerator.generate(this, this.worldObj, par1, par2, (int[])null);
+			this.strongholdGenerator.generate(this, this.worldObj, par1, par2, (int[])null);
+			this.scatteredFeatureGenerator.generate(this, this.worldObj, par1, par2, (int[])null);
 		}
 	}
 

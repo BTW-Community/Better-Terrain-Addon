@@ -695,7 +695,7 @@ public class BTASkyChunkProvider implements BTAIChunkProvider
 				List spawnList = this.genNetherBridge.getSpawnList();
 
 				if (spawnList != null) {
-					spawnList.addAll(biome.getSpawnableList(creatureType));
+					//spawnList.addAll(biome.getSpawnableList(creatureType));
 					return spawnList;
 				}
 				else {
@@ -727,7 +727,7 @@ public class BTASkyChunkProvider implements BTAIChunkProvider
 				List spawnList = this.genNetherBridge.getSpawnList();
 
 				if (spawnList != null) {
-					spawnList.addAll(biome.getSpawnableList(creatureType));
+					//spawnList.addAll(biome.getSpawnableList(creatureType));
 					return spawnList;
 				}
 			}
