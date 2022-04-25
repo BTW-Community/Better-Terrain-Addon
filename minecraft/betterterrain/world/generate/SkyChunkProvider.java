@@ -807,4 +807,14 @@ public class SkyChunkProvider implements BTAChunkProvider
 	}
 
 	public void func_104112_b() {}
+
+	@Override
+	public boolean isNether() {
+		return this.isNether;
+	}
+
+	@Override
+	public BTAMapGenNetherBridge getNetherBridgeGenerator() {
+		return this.isNether ? this.genNetherBridge : null;
+	}
 }

@@ -10,6 +10,7 @@ import betterterrain.biome.BiomeConfiguration;
 import betterterrain.structure.mapgen.BTAMapGenBase;
 import betterterrain.structure.mapgen.BTAMapGenCave;
 import betterterrain.structure.mapgen.BTAMapGenMineshaft;
+import betterterrain.structure.mapgen.BTAMapGenNetherBridge;
 import betterterrain.structure.mapgen.BTAMapGenRavine;
 import betterterrain.structure.mapgen.BTAMapGenScatteredFeature;
 import betterterrain.structure.mapgen.BTAMapGenStronghold;
@@ -777,5 +778,15 @@ public class BTADefaultChunkProvider implements BTAChunkProvider
 				}
 			}
 		}
+	}
+
+	@Override
+	public boolean isNether() {
+		return false;
+	}
+
+	@Override
+	public BTAMapGenNetherBridge getNetherBridgeGenerator() {
+		return null;
 	}
 }

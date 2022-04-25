@@ -2,6 +2,7 @@
 
 package betterterrain.item;
 
+import betterterrain.world.generate.BTAChunkProvider;
 import betterterrain.world.generate.NetherChunkProvider;
 import betterterrain.world.generate.SkyChunkProvider;
 import net.minecraft.src.ChunkProviderHell;
@@ -60,13 +61,12 @@ public class BTAItemPileSoulSand extends FCItemPileSoulSand
 	        				ChunkProviderHell hellProvider = (ChunkProviderHell) provider;
 	        				closestFortress = hellProvider.genNetherBridge.GetClosestStructureWithinRangeSq(player.posX, player.posZ, 90000); // 300 block range
 	        			}
-	        			else if (provider instanceof NetherChunkProvider) {
-	        				NetherChunkProvider hellProvider = (NetherChunkProvider) provider;
-	        				closestFortress = hellProvider.genNetherBridge.GetClosestStructureWithinRangeSq(player.posX, player.posZ, 90000); // 300 block range
-	        			}
-	        			else if (provider instanceof SkyChunkProvider) {
-	        				SkyChunkProvider hellProvider = (SkyChunkProvider) provider;
-	        				closestFortress = hellProvider.genNetherBridge.GetClosestStructureWithinRangeSq(player.posX, player.posZ, 90000); // 300 block range
+	        			else if (provider instanceof BTAChunkProvider) {
+	        				BTAChunkProvider btaProvider = (BTAChunkProvider) provider;
+	        				
+	        				if (btaProvider.isNether()) {
+	        					closestFortress = btaProvider.getNetherBridgeGenerator().GetClosestStructureWithinRangeSq(player.posX, player.posZ, 90000); // 300 block range
+	        				}
 	        			}
 	        			
 	        			if (closestFortress != null) {

@@ -492,4 +492,14 @@ public class NetherChunkProvider implements BTAChunkProvider
     {
         this.genNetherBridge.generate(this, this.worldObj, par1, par2, (int[])null);
     }
+
+	@Override
+	public boolean isNether() {
+		return true;
+	}
+
+	@Override
+	public BTAMapGenNetherBridge getNetherBridgeGenerator() {
+		return this.genNetherBridge;
+	}
 }
