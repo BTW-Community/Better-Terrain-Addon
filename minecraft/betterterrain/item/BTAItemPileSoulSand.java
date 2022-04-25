@@ -2,8 +2,8 @@
 
 package betterterrain.item;
 
-import net.minecraft.src.BTAChunkProviderNether;
-import net.minecraft.src.BTASkyChunkProvider;
+import betterterrain.world.generate.NetherChunkProvider;
+import betterterrain.world.generate.SkyChunkProvider;
 import net.minecraft.src.ChunkProviderHell;
 import net.minecraft.src.ChunkProviderServer;
 import net.minecraft.src.CreativeTabs;
@@ -11,25 +11,18 @@ import net.minecraft.src.EntityList;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.FCBetterThanWolves;
 import net.minecraft.src.FCEntitySoulSand;
+import net.minecraft.src.FCItemPileSoulSand;
 import net.minecraft.src.FCSpawnLocation;
 import net.minecraft.src.FCSpawnLocationList;
 import net.minecraft.src.IChunkProvider;
-import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.StructureStart;
 import net.minecraft.src.World;
 
-public class BTAItemPileSoulSand extends Item
+public class BTAItemPileSoulSand extends FCItemPileSoulSand
 {
     public BTAItemPileSoulSand(int itemID) {
         super(itemID);
-        
-        SetBellowsBlowDistance(1);
-		SetFilterableProperties(m_iFilterable_Fine);
-        
-        setUnlocalizedName("fcItemPileSoulSand");
-        
-        setCreativeTab(CreativeTabs.tabMaterials);
     }
 
     @Override
@@ -67,12 +60,12 @@ public class BTAItemPileSoulSand extends Item
 	        				ChunkProviderHell hellProvider = (ChunkProviderHell) provider;
 	        				closestFortress = hellProvider.genNetherBridge.GetClosestStructureWithinRangeSq(player.posX, player.posZ, 90000); // 300 block range
 	        			}
-	        			else if (provider instanceof BTAChunkProviderNether) {
-	        				BTAChunkProviderNether hellProvider = (BTAChunkProviderNether) provider;
+	        			else if (provider instanceof NetherChunkProvider) {
+	        				NetherChunkProvider hellProvider = (NetherChunkProvider) provider;
 	        				closestFortress = hellProvider.genNetherBridge.GetClosestStructureWithinRangeSq(player.posX, player.posZ, 90000); // 300 block range
 	        			}
-	        			else if (provider instanceof BTASkyChunkProvider) {
-	        				BTASkyChunkProvider hellProvider = (BTASkyChunkProvider) provider;
+	        			else if (provider instanceof SkyChunkProvider) {
+	        				SkyChunkProvider hellProvider = (SkyChunkProvider) provider;
 	        				closestFortress = hellProvider.genNetherBridge.GetClosestStructureWithinRangeSq(player.posX, player.posZ, 90000); // 300 block range
 	        			}
 	        			
