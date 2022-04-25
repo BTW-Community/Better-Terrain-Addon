@@ -1,6 +1,6 @@
 package betterterrain.biome.biomes;
 
-import betterterrain.DecoIntegration;
+import betterbiomes.DecoIntegration;
 import betterterrain.biome.BiomeConfiguration;
 
 public class OutbackRiverBiome extends RiverBiome {

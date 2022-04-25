@@ -1,5 +1,6 @@
 package betterterrain.biome.biomes;
 
+import betterterrain.biome.BTANetherBiome;
 import net.minecraft.src.Block;
 import net.minecraft.src.FCEntityGhast;
 import net.minecraft.src.FCEntitySkeleton;

@@ -2,6 +2,7 @@ package betterterrain.biome.biomes;
 
 import java.util.Random;
 
+import betterterrain.biome.BTANetherBiome;
 import betterterrain.feature.AmethystShardsGen;
 import betterterrain.feature.CrystalGen;
 import betterterrain.world.WorldConfigurationInfo;

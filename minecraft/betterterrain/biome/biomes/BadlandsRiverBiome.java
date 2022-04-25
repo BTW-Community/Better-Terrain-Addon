@@ -2,7 +2,7 @@ package betterterrain.biome.biomes;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
+import betterbiomes.DecoIntegration;
 import betterterrain.biome.BiomeConfiguration;
 
 public class BadlandsRiverBiome extends RiverBiome {

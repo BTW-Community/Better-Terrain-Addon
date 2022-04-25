@@ -2,8 +2,8 @@ package betterterrain.world.generate.surface;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
-import betterterrain.biome.biomes.BTABiome;
+import betterbiomes.DecoIntegration;
+import betterterrain.biome.BTABiome;
 import betterterrain.world.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.SurfaceBuilder.SurfaceType;

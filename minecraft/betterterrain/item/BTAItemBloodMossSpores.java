@@ -2,8 +2,8 @@ package betterterrain.item;
 
 import java.util.List;
 
+import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.biome.biomes.BTABiome;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.BiomeGenHell;
 import net.minecraft.src.Block;

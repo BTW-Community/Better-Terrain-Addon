@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import betterterrain.biome.BTABiome;
 import betterterrain.biome.BiomeConfiguration;
-import betterterrain.biome.biomes.BTABiome;
 import betterterrain.biome.layer.BTALayer;
 import net.minecraft.src.BiomeCache;
 import net.minecraft.src.BiomeGenBase;

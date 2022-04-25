@@ -1,6 +1,6 @@
 package betterterrain;
 
-public enum Version {
+public enum BTAVersion {
 	V1_1_3(1, 1, 3),
 	
 	V1_2_0(1, 2, 0),
@@ -34,7 +34,7 @@ public enum Version {
 	private final int minor;
 	private final int patch;
 	
-	private Version(int major, int minor, int patch) {
+	private BTAVersion(int major, int minor, int patch) {
 		this.major = major;
 		this.minor = minor;
 		this.patch = patch;
@@ -44,7 +44,7 @@ public enum Version {
 		return this.major + "." + this.minor + "." + this.patch;
 	}
 	
-	public static Version fromString(String info) {
+	public static BTAVersion fromString(String info) {
 		String[] infoSplit = info.split("\\.");
 		
 		if (infoSplit.length != 3) {
@@ -52,7 +52,7 @@ public enum Version {
 		}
 		
 		try {
-			for (Version version : Version.values()) {
+			for (BTAVersion version : BTAVersion.values()) {
 				if (version.major == Integer.parseInt(infoSplit[0]) && version.minor == Integer.parseInt(infoSplit[1]) && version.patch == Integer.parseInt(infoSplit[2]) ) {
 					return version;
 				}
@@ -65,7 +65,7 @@ public enum Version {
 		}
 	}
 	
-	public boolean isVersionAtOrBelow(Version version) {
+	public boolean isVersionAtOrBelow(BTAVersion version) {
 		if (this.major > version.major) {
 			return false;
 		}
@@ -83,7 +83,7 @@ public enum Version {
 		return true;
 	}
 	
-	public boolean isVersionAtLeast(Version version) {
+	public boolean isVersionAtLeast(BTAVersion version) {
 		if (this.major < version.major) {
 			return false;
 		}

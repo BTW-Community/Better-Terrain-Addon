@@ -2,7 +2,7 @@ package betterterrain.world.generate.surface;
 
 import java.util.Random;
 
-import betterterrain.Version;
+import betterterrain.BTAVersion;
 import betterterrain.feature.OldOakGen;
 import betterterrain.world.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
@@ -24,7 +24,7 @@ public class AncientForestSurfaceBuilder extends SurfaceBuilder {
 	}
 
 	public void generateTreesForBiome(World world, Random rand, WorldConfigurationInfo generatorInfo) {
-		if (generatorInfo.getCompatMode().isVersionAtLeast(Version.V2_0_0)) {
+		if (generatorInfo.getCompatMode().isVersionAtLeast(BTAVersion.V2_0_0)) {
 			int numTrees = (int) (8 + 2.9 * treeNoiseGen.noise2(this.chunkX + 16, this.chunkZ + 16, treeNoiseScale));
 
 			for (int i = 0; i < numTrees; ++i)

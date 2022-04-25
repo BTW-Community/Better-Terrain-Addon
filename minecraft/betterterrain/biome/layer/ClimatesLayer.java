@@ -5,9 +5,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import betterterrain.biome.BTABiome;
 import betterterrain.biome.BiomeConfiguration;
 import betterterrain.biome.Climate;
-import betterterrain.biome.biomes.BTABiome;
 import net.minecraft.src.GenLayer;
 import net.minecraft.src.IntCache;
 

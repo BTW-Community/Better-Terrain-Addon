@@ -2,7 +2,7 @@ package betterterrain.world.generate.surface;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
+import betterbiomes.DecoIntegration;
 import betterterrain.feature.TaigaGen3;
 import betterterrain.feature.TaigaGen4;
 import betterterrain.feature.TaigaGen5;

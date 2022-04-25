@@ -2,7 +2,7 @@ package betterterrain.block;
 
 import java.util.List;
 
-import betterterrain.DecoIntegration;
+import betterbiomes.DecoIntegration;
 import net.minecraft.src.Block;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.FCBetterThanWolves;

@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
+import betterterrain.biome.BTANetherBiome;
 import betterterrain.biome.BiomeConfiguration;
-import betterterrain.biome.biomes.BTANetherBiome;
 
 public class WorldProviderHell extends WorldProvider
 {

@@ -3,9 +3,9 @@ package betterterrain.world.generate;
 import java.util.List;
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
+import betterbiomes.DecoIntegration;
+import betterterrain.biome.BTABiome;
 import betterterrain.biome.BiomeConfiguration;
-import betterterrain.biome.biomes.BTABiome;
 import betterterrain.structure.mapgen.BTAMapGenBase;
 import betterterrain.structure.mapgen.BTAMapGenCave;
 import betterterrain.structure.mapgen.BTAMapGenMineshaft;

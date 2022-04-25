@@ -1,9 +1,8 @@
-package betterterrain.biome.biomes;
+package betterterrain.biome;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
-import betterterrain.biome.Climate;
+import betterbiomes.DecoIntegration;
 import betterterrain.feature.BasaltPillarGen;
 import betterterrain.feature.GlowstoneGen;
 import betterterrain.feature.OreGen;

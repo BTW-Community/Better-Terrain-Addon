@@ -3,7 +3,7 @@ package betterterrain.world.generate;
 import java.util.List;
 import java.util.Random;
 
-import betterterrain.biome.biomes.BTABiome;
+import betterterrain.biome.BTABiome;
 import betterterrain.structure.mapgen.BTAMapGenBase;
 import betterterrain.structure.mapgen.BTAMapGenCavesHell;
 import betterterrain.structure.mapgen.BTAMapGenNetherBridge;

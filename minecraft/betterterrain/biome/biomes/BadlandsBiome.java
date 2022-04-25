@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
-import betterterrain.Version;
+import betterbiomes.DecoIntegration;
+import betterterrain.BTAVersion;
+import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.world.WorldConfigurationInfo;
 import net.minecraft.src.World;
@@ -31,7 +32,7 @@ public class BadlandsBiome extends BTABiome {
 	{
 		super.decorate(world, rand, startX, startZ, generatorOptions);
 
-		if (generatorOptions.getCompatMode().isVersionAtOrBelow(Version.V1_2_1)) {
+		if (generatorOptions.getCompatMode().isVersionAtOrBelow(BTAVersion.V1_2_1)) {
 			for (int i = startX; i < startX + 16; i++) {
 				for (int j = 50; j < 127; j++) {
 					int metaForY = Math.abs(Arrays.hashCode(new int[] {(int) world.getSeed() >> 32, j}) % 16);

@@ -1,6 +1,7 @@
 package betterterrain.biome.biomes;
 
-import betterterrain.DecoIntegration;
+import betterbiomes.DecoIntegration;
+import betterterrain.biome.BTANetherBiome;
 import net.minecraft.src.FCEntitySkeleton;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.Vec3;

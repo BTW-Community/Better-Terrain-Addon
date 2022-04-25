@@ -2,7 +2,7 @@ package betterterrain.biome.layer;
 
 import java.util.ArrayList;
 
-import betterterrain.biome.biomes.BTABiome;
+import betterterrain.biome.BTABiome;
 import net.minecraft.src.GenLayer;
 import net.minecraft.src.IntCache;
 import net.minecraft.src.WorldType;

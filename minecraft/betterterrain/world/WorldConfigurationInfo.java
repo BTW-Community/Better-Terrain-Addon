@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import betterterrain.Version;
+import betterterrain.BTAVersion;
 import betterterrain.BTAMod;
+import betterterrain.biome.BTABiome;
 import betterterrain.biome.BiomeConfiguration;
 import betterterrain.biome.BiomeInfo;
-import betterterrain.biome.biomes.BTABiome;
 import betterterrain.world.generate.TerrainGenerator;
 import net.minecraft.src.BiomeGenBase;
 
@@ -17,7 +17,7 @@ public class WorldConfigurationInfo {
 	private ArrayList<BiomeInfo> biomeInfoList = new ArrayList();
 	private ArrayList<BTABiome> biomesForGeneration = new ArrayList();
 
-	private Version compatMode = Version.V1_1_3;
+	private BTAVersion compatMode = BTAVersion.V1_1_3;
 	private int oceanSize = 10;
 	private boolean generatePerlinBeaches = false;
 	private boolean climatized = false;
@@ -60,7 +60,7 @@ public class WorldConfigurationInfo {
 	public static WorldConfigurationInfo createDefaultConfigurationLegacy(boolean isDeco) {
 		WorldConfigurationInfo info = new WorldConfigurationInfo();
 
-		info.setCompatMode(Version.V1_1_3);
+		info.setCompatMode(BTAVersion.V1_1_3);
 		info.setOceanSize(10);
 		info.setGeneratePerlinBeaches(false);
 		info.setClimatized(false);
@@ -103,7 +103,7 @@ public class WorldConfigurationInfo {
 				String[] optionSplit = option.split(":");
 				
 				if (optionSplit[0].equalsIgnoreCase("Version")) {
-					this.compatMode = Version.fromString(optionSplit[1]);
+					this.compatMode = BTAVersion.fromString(optionSplit[1]);
 				}
 				else if (optionSplit[0].equalsIgnoreCase("Biomes")){
 					String[] biomeSplit = optionSplit[1].split(",");
@@ -163,13 +163,13 @@ public class WorldConfigurationInfo {
 			if (i == 1) {
 				//Done this way for backwards compatibility with older standard
 				if (infoSplit[i].equals("true")) {
-					this.compatMode = Version.V1_1_3;
+					this.compatMode = BTAVersion.V1_1_3;
 				}
 				else if (infoSplit[i].equals("false")) {
-					this.compatMode = Version.V1_2_0;
+					this.compatMode = BTAVersion.V1_2_0;
 				}
 				else {
-					this.compatMode = Version.fromString(infoSplit[i]);
+					this.compatMode = BTAVersion.fromString(infoSplit[i]);
 				}
 			}
 			if (i == 2) this.oceanSize = Integer.parseInt(infoSplit[i]);
@@ -238,11 +238,11 @@ public class WorldConfigurationInfo {
 		return this;
 	}
 
-	public Version getCompatMode() {
+	public BTAVersion getCompatMode() {
 		return compatMode;
 	}
 
-	public void setCompatMode(Version compatMode) {
+	public void setCompatMode(BTAVersion compatMode) {
 		this.compatMode = compatMode;
 	}
 

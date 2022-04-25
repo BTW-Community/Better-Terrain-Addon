@@ -1,11 +1,8 @@
-package betterterrain.biome.biomes;
+package betterterrain.biome;
 
 import java.util.Random;
 
-import betterterrain.Version;
-import betterterrain.biome.BiomeDecorator;
-import betterterrain.biome.BiomeHeight;
-import betterterrain.biome.Climate;
+import betterterrain.BTAVersion;
 import betterterrain.feature.OreGen;
 import betterterrain.feature.TallGrassGen;
 import betterterrain.world.WorldConfigurationInfo;
@@ -218,7 +215,7 @@ public class BTABiome extends BiomeGenBase {
 			}
 		}
 		
-		if (generatorInfoCache.getCompatMode().isVersionAtLeast(Version.V1_3_0)) {
+		if (generatorInfoCache.getCompatMode().isVersionAtLeast(BTAVersion.V1_3_0)) {
 			int minHeightForSnow = this.climate.minHeightForSnow;
 			
 			SurfaceBuilder surfaceBuilder;

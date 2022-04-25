@@ -1,5 +1,6 @@
 package betterterrain.biome.biomes;
 
+import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import net.minecraft.src.Block;
 

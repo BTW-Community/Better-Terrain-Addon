@@ -2,7 +2,7 @@ package betterterrain.structure.component;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
+import betterbiomes.DecoIntegration;
 import net.minecraft.src.Block;
 import net.minecraft.src.ComponentScatteredFeature;
 import net.minecraft.src.Direction;

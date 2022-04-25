@@ -2,9 +2,8 @@ package betterterrain.biome;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
-import betterterrain.Version;
-import betterterrain.biome.biomes.BTABiome;
+import betterbiomes.DecoIntegration;
+import betterterrain.BTAVersion;
 import betterterrain.feature.SkyClayGen;
 import betterterrain.feature.ClayGen;
 import betterterrain.feature.DecoFlowerGen;
@@ -328,7 +327,7 @@ public class BiomeDecorator
 			var3 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 			if (this.currentWorld.provider.terrainType.canPerlinBeachesBeToggled() && !(this.currentWorld.getChunkProvider() instanceof ChunkProviderServer))
 				if (!this.generatorInfo.generatePerlinBeaches())
-					if (this.biome != BiomeConfiguration.tropics || ((BTADefaultChunkProvider) this.currentWorld.getChunkProvider()).generatorInfo.getCompatMode().isVersionAtOrBelow(Version.V1_1_3))
+					if (this.biome != BiomeConfiguration.tropics || ((BTADefaultChunkProvider) this.currentWorld.getChunkProvider()).generatorInfo.getCompatMode().isVersionAtOrBelow(BTAVersion.V1_1_3))
 						this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
 		}
 
@@ -353,11 +352,11 @@ public class BiomeDecorator
 			var3 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 			if (this.currentWorld.provider.terrainType.canPerlinBeachesBeToggled() && !(this.currentWorld.getChunkProvider() instanceof ChunkProviderServer))
 				if (!this.generatorInfo.generatePerlinBeaches())
-					if (this.biome != BiomeConfiguration.tropics || ((BTADefaultChunkProvider) this.currentWorld.getChunkProvider()).generatorInfo.getCompatMode().isVersionAtOrBelow(Version.V1_1_3))
+					if (this.biome != BiomeConfiguration.tropics || ((BTADefaultChunkProvider) this.currentWorld.getChunkProvider()).generatorInfo.getCompatMode().isVersionAtOrBelow(BTAVersion.V1_1_3))
 						this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
 		}
 
-		if (generateOutback && this.generatorInfo.getCompatMode().isVersionAtOrBelow(Version.V1_2_1))
+		if (generateOutback && this.generatorInfo.getCompatMode().isVersionAtOrBelow(BTAVersion.V1_2_1))
 		{
 			this.genStandardOre1(30, outbackGen, 64, 128);
 		}
@@ -516,7 +515,7 @@ public class BiomeDecorator
 		}
 
 		//BTA modified
-		if (this.generateLakes || generatorInfo.getCompatMode().isVersionAtOrBelow(Version.V2_0_2))
+		if (this.generateLakes || generatorInfo.getCompatMode().isVersionAtOrBelow(BTAVersion.V2_0_2))
 		{
 			for (var2 = 0; var2 < waterLakesPerChunk; ++var2)
 			{
@@ -557,12 +556,12 @@ public class BiomeDecorator
 			this.bigRedMushroomGen.generate(this.currentWorld, this.randomGenerator, var3, this.currentWorld.getHeightValue(var3, var4), var4);
 		}
 
-		if (generateStoneInGrass && this.generatorInfo.getCompatMode().isVersionAtOrBelow(Version.V1_3_4))
+		if (generateStoneInGrass && this.generatorInfo.getCompatMode().isVersionAtOrBelow(BTAVersion.V1_3_4))
 		{
 			this.genStandardOre1(15, stoneInGrassGen, 64, 128);
 		}
 
-		if (generateStoneInGrass2 && this.generatorInfo.getCompatMode().isVersionAtOrBelow(Version.V1_3_4))
+		if (generateStoneInGrass2 && this.generatorInfo.getCompatMode().isVersionAtOrBelow(BTAVersion.V1_3_4))
 		{
 			this.genStandardOre1(20, stoneInGrassGen2, 64, 128);
 		}

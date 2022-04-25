@@ -2,6 +2,7 @@ package betterterrain.biome.biomes;
 
 import java.util.Random;
 
+import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import net.minecraft.src.WorldGenerator;
 

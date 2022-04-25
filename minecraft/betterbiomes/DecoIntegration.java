@@ -1,4 +1,4 @@
-package betterterrain;
+package betterbiomes;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.DecoManager;

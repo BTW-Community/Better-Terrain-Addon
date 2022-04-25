@@ -2,12 +2,14 @@ package net.minecraft.src;
 
 import java.util.List;
 
+import betterbiomes.BetterBiomesMod;
 import betterterrain.BTAMod;
 
 public class BlockAnvil extends BlockSand
 {
 	static {
 		BTAMod.getInstance();
+		BetterBiomesMod.getInstance();
 	}
 	
 	/** List of types/statues the Anvil can be in. */

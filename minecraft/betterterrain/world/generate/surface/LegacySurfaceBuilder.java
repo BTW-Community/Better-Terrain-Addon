@@ -2,10 +2,10 @@ package betterterrain.world.generate.surface;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
-import betterterrain.Version;
+import betterbiomes.DecoIntegration;
+import betterterrain.BTAVersion;
+import betterterrain.biome.BTABiome;
 import betterterrain.biome.BiomeConfiguration;
-import betterterrain.biome.biomes.BTABiome;
 import betterterrain.world.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.BetaNoiseOctaves;
 import net.minecraft.src.BiomeGenBase;
@@ -74,7 +74,7 @@ public class LegacySurfaceBuilder extends SurfaceBuilder {
 								}
 								else if (j >= seaLevel - (8 + rand.nextInt(2)) && j <= seaLevel + 1) {
 									if(biome.biomeID == BiomeConfiguration.oldValley.biomeID || biome.biomeID == BiomeConfiguration.valleyMountains.biomeID || biome.biomeID == BiomeConfiguration.valley.biomeID || 
-											((biome.biomeID == BiomeConfiguration.tropics.biomeID || biome.biomeID == BiomeConfiguration.tropicsEdge.biomeID || biome.biomeID == BiomeConfiguration.riverTropics.biomeID) && generatorInfo.getCompatMode().isVersionAtLeast(Version.V1_2_0))) {
+											((biome.biomeID == BiomeConfiguration.tropics.biomeID || biome.biomeID == BiomeConfiguration.tropicsEdge.biomeID || biome.biomeID == BiomeConfiguration.riverTropics.biomeID) && generatorInfo.getCompatMode().isVersionAtLeast(BTAVersion.V1_2_0))) {
 										topBlock = (byte)Block.sand.blockID;
 										fillerBlock = (byte)Block.sand.blockID;
 									}

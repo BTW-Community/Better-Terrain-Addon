@@ -2,7 +2,8 @@ package betterterrain.biome.biomes;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
+import betterbiomes.DecoIntegration;
+import betterterrain.biome.BTANetherBiome;
 import betterterrain.world.WorldConfigurationInfo;
 import betterterrain.world.generate.surface.BasaltDeltasSurfaceBuilder;
 import net.minecraft.src.Block;

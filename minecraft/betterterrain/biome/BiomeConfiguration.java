@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import betterterrain.Version;
+import betterterrain.BTAVersion;
 import betterterrain.biome.biomes.AlpineBiome;
 import betterterrain.biome.biomes.AncientForestBiome;
 import betterterrain.biome.biomes.AridForestBiome;
@@ -15,7 +15,6 @@ import betterterrain.biome.biomes.AutmnForestBiome;
 import betterterrain.biome.biomes.BadlandsBiome;
 import betterterrain.biome.biomes.BadlandsPlateauBiome;
 import betterterrain.biome.biomes.BasaltDeltasBiome;
-import betterterrain.biome.biomes.BTABiome;
 import betterterrain.biome.biomes.BeachBiome;
 import betterterrain.biome.biomes.OutbackBeachBiome;
 import betterterrain.biome.biomes.BirchForestBiome;
@@ -1187,7 +1186,7 @@ public class BiomeConfiguration {
             hillsBiome = desertHills.biomeID;
         }
         else if (baseBiome == savanna.biomeID){
-        	if (generatorOptions.getCompatMode().isVersionAtLeast(Version.V2_0_3)) {
+        	if (generatorOptions.getCompatMode().isVersionAtLeast(BTAVersion.V2_0_3)) {
         		if (rand.nextInt(3) == 0) {
         			hillsBiome = savannaPlateau.biomeID;
         		}
@@ -1202,7 +1201,7 @@ public class BiomeConfiguration {
         else if (baseBiome == snowyWoods.biomeID) {
         	hillsBiome = snowyWoodsHills.biomeID; 
         }
-        else if (baseBiome == steppe.biomeID && generatorOptions.getCompatMode().isVersionAtOrBelow(Version.V1_3_4)) {
+        else if (baseBiome == steppe.biomeID && generatorOptions.getCompatMode().isVersionAtOrBelow(BTAVersion.V1_3_4)) {
         	hillsBiome = woodedSteppe.biomeID;
         }
         else if (baseBiome == chaparral.biomeID) {
@@ -1214,16 +1213,16 @@ public class BiomeConfiguration {
         else if (baseBiome == jungle.biomeID) {
         	hillsBiome = jungleHills.biomeID;
         }
-        else if (baseBiome == alpine.biomeID && generatorOptions.getCompatMode().isVersionAtOrBelow(Version.V1_3_4)) {
+        else if (baseBiome == alpine.biomeID && generatorOptions.getCompatMode().isVersionAtOrBelow(BTAVersion.V1_3_4)) {
         	hillsBiome = aspenGrove.biomeID;
         }
-        else if (baseBiome == coniferousForest.biomeID && generatorOptions.getCompatMode().isVersionAtOrBelow(Version.V1_3_4)) {
+        else if (baseBiome == coniferousForest.biomeID && generatorOptions.getCompatMode().isVersionAtOrBelow(BTAVersion.V1_3_4)) {
         	hillsBiome = coniferousForestClearing.biomeID;
         }
-        else if (baseBiome == coniferousForestSnow.biomeID && generatorOptions.getCompatMode().isVersionAtOrBelow(Version.V1_3_4)) {
+        else if (baseBiome == coniferousForestSnow.biomeID && generatorOptions.getCompatMode().isVersionAtOrBelow(BTAVersion.V1_3_4)) {
         	hillsBiome = coniferousForestClearingSnow.biomeID;
         }
-        else if (baseBiome == heathland.biomeID && generatorOptions.getCompatMode().isVersionAtOrBelow(Version.V1_3_4)) {
+        else if (baseBiome == heathland.biomeID && generatorOptions.getCompatMode().isVersionAtOrBelow(BTAVersion.V1_3_4)) {
         	hillsBiome = heathlandWoods.biomeID;
         }
         else if (baseBiome == cherryForest.biomeID) {
@@ -1235,7 +1234,7 @@ public class BiomeConfiguration {
         else if (baseBiome == valleyMountains.biomeID) {
         	hillsBiome = valley.biomeID;
         }
-        else if (baseBiome == orchard.biomeID && generatorOptions.getCompatMode().isVersionAtOrBelow(Version.V1_3_4)) {
+        else if (baseBiome == orchard.biomeID && generatorOptions.getCompatMode().isVersionAtOrBelow(BTAVersion.V1_3_4)) {
         	hillsBiome = orchardClearing.biomeID;
         }
         else if (baseBiome == fungalForest.biomeID) {
@@ -1244,7 +1243,7 @@ public class BiomeConfiguration {
         else if (baseBiome == badlandsPlateau.biomeID){
             hillsBiome = badlands.biomeID;
         }
-        else if (baseBiome == icyPeaks.biomeID && generatorOptions.getCompatMode().isVersionAtOrBelow(Version.V1_3_4)) {
+        else if (baseBiome == icyPeaks.biomeID && generatorOptions.getCompatMode().isVersionAtOrBelow(BTAVersion.V1_3_4)) {
         	hillsBiome = icyPeaksForested.biomeID;
         }
         else if (baseBiome == grasslands.biomeID) {
@@ -1254,7 +1253,7 @@ public class BiomeConfiguration {
         	hillsBiome = patagoniaMountains.biomeID;
         }
         else if (baseBiome == plains.biomeID) {
-        	if (generatorOptions.getCompatMode().isVersionAtOrBelow(Version.V1_2_1))
+        	if (generatorOptions.getCompatMode().isVersionAtOrBelow(BTAVersion.V1_2_1))
         		hillsBiome = woods.biomeID;
         	else
         		hillsBiome = aridForest.biomeID;
@@ -1338,7 +1337,7 @@ public class BiomeConfiguration {
 		if (baseBiome == outback.biomeID || baseBiome == badlands.biomeID || baseBiome == beachOutback.biomeID) {
 			beachBiome = beachOutback.biomeID;
 		}
-		else if ((baseBiome == snowyWoods.biomeID || baseBiome == tundra.biomeID || baseBiome == siberia.biomeID || baseBiome == frozenSprings.biomeID || baseBiome == beachFrozen.biomeID) && generatorInfo.getCompatMode().isVersionAtLeast(Version.V1_3_2)) {
+		else if ((baseBiome == snowyWoods.biomeID || baseBiome == tundra.biomeID || baseBiome == siberia.biomeID || baseBiome == frozenSprings.biomeID || baseBiome == beachFrozen.biomeID) && generatorInfo.getCompatMode().isVersionAtLeast(BTAVersion.V1_3_2)) {
 			beachBiome = beachFrozen.biomeID;
 		}
 		else if (shouldBiomeSpawnBeach(baseBiome, generatorInfo)) {
@@ -1363,7 +1362,7 @@ public class BiomeConfiguration {
 		else if (baseBiome == dunes.biomeID) {
 			edgeBiome = desert.biomeID;
 		}
-		else if ((baseBiome == badlands.biomeID || baseBiome == badlandsPlateau.biomeID) && generatorInfo.getCompatMode().isVersionAtOrBelow(Version.V1_3_4)) {
+		else if ((baseBiome == badlands.biomeID || baseBiome == badlandsPlateau.biomeID) && generatorInfo.getCompatMode().isVersionAtOrBelow(BTAVersion.V1_3_4)) {
 			edgeBiome = badlandsEdge.biomeID;
 		}
 		else if (baseBiome == icyPeaks.biomeID) {
@@ -1372,13 +1371,13 @@ public class BiomeConfiguration {
 		else if (baseBiome == highlands.biomeID) {
 			edgeBiome = highlandsEdge.biomeID;
 		}
-		else if (baseBiome == jungle.biomeID && generatorInfo.getCompatMode().isVersionAtLeast(Version.V1_3_2)) {
+		else if (baseBiome == jungle.biomeID && generatorInfo.getCompatMode().isVersionAtLeast(BTAVersion.V1_3_2)) {
 			edgeBiome = jungleEdge.biomeID;
 		}
-		else if (baseBiome == rainforest.biomeID && generatorInfo.getCompatMode().isVersionAtLeast(Version.V1_3_2)) {
+		else if (baseBiome == rainforest.biomeID && generatorInfo.getCompatMode().isVersionAtLeast(BTAVersion.V1_3_2)) {
 			edgeBiome = rainforestEdge.biomeID;
 		}
-		else if (baseBiome == tropics.biomeID && generatorInfo.getCompatMode().isVersionAtLeast(Version.V1_3_2)) {
+		else if (baseBiome == tropics.biomeID && generatorInfo.getCompatMode().isVersionAtLeast(BTAVersion.V1_3_2)) {
 			edgeBiome = tropicsEdge.biomeID;
 		}
 		
@@ -1469,10 +1468,10 @@ public class BiomeConfiguration {
 	}
 	
 	public static boolean shouldBiomeConnectWithEdge(int biome, WorldConfigurationInfo generatorInfo) {
-		if (generatorInfo.getCompatMode().isVersionAtLeast(Version.V1_4_0)) {
+		if (generatorInfo.getCompatMode().isVersionAtLeast(BTAVersion.V1_4_0)) {
 			return !noEdgeBiomes140.contains(BiomeGenBase.biomeList[biome]);
 		}
-		if (generatorInfo.getCompatMode().isVersionAtLeast(Version.V1_3_2)) {
+		if (generatorInfo.getCompatMode().isVersionAtLeast(BTAVersion.V1_3_2)) {
 			return !noEdgeBiomes132.contains(BiomeGenBase.biomeList[biome]);
 		}
 		else {
@@ -1489,7 +1488,7 @@ public class BiomeConfiguration {
 	}
 	
 	public static boolean shouldBiomeSpawnBeach(int biome, WorldConfigurationInfo generatorInfo) {
-		if (generatorInfo.getCompatMode().isVersionAtOrBelow(Version.V1_3_1)) {
+		if (generatorInfo.getCompatMode().isVersionAtOrBelow(BTAVersion.V1_3_1)) {
 			return !beachlessBiomes.contains(BiomeGenBase.biomeList[biome]);
 		}
 		else {
