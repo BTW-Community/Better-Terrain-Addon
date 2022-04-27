@@ -2,15 +2,15 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
-import betterterrain.biome.BiomeConfiguration;
+import betterbiomes.biome.BetterBiomesConfiguration;
 import net.minecraft.src.FCEntitySlime;
 import net.minecraft.src.FCEntityWitch;
 import net.minecraft.src.SpawnListEntry;
 
 public class MysticRiverBiome extends RiverBiome {
 	public MysticRiverBiome(int par1) {
-		super(par1, BiomeConfiguration.mysticForest.climate);
-		this.waterColorMultiplier = BiomeConfiguration.mysticForest.waterColorMultiplier;
+		super(par1, BetterBiomesConfiguration.mysticForest.climate);
+		this.waterColorMultiplier = BetterBiomesConfiguration.mysticForest.waterColorMultiplier;
         this.spawnableCreatureList.clear();
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntitySlime.class, 1, 1, 1));
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntityWitch.class, 1, 1, 1));
@@ -21,7 +21,7 @@ public class MysticRiverBiome extends RiverBiome {
      */
     public int getBiomeGrassColor()
     {
-    	return BiomeConfiguration.mysticForest.getBiomeGrassColor();
+    	return BetterBiomesConfiguration.mysticForest.getBiomeGrassColor();
     }
 
     /**
@@ -29,6 +29,6 @@ public class MysticRiverBiome extends RiverBiome {
      */
     public int getBiomeFoliageColor()
     {
-    	return BiomeConfiguration.mysticForest.getBiomeFoliageColor();
+    	return BetterBiomesConfiguration.mysticForest.getBiomeFoliageColor();
     }
 }

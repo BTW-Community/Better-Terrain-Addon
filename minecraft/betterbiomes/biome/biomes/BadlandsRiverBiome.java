@@ -3,11 +3,11 @@ package betterbiomes.biome.biomes;
 import java.util.Random;
 
 import betterbiomes.DecoIntegration;
-import betterterrain.biome.BiomeConfiguration;
+import betterbiomes.biome.BetterBiomesConfiguration;
 
 public class BadlandsRiverBiome extends RiverBiome {
 	public BadlandsRiverBiome(int par1) {
-		super(par1, BiomeConfiguration.badlands.climate);
+		super(par1, BetterBiomesConfiguration.badlands.climate);
 		if (DecoIntegration.isDecoInstalled()) {
 			this.topBlockExt = DecoIntegration.redSand.blockID;
 			this.fillerBlockExt = DecoIntegration.redSand.blockID;
@@ -22,7 +22,7 @@ public class BadlandsRiverBiome extends RiverBiome {
      */
     public int getBiomeGrassColor()
     {
-    	return BiomeConfiguration.badlands.getBiomeGrassColor();
+    	return BetterBiomesConfiguration.badlands.getBiomeGrassColor();
     }
 
     /**
@@ -30,6 +30,6 @@ public class BadlandsRiverBiome extends RiverBiome {
      */
     public int getBiomeFoliageColor()
     {
-    	return BiomeConfiguration.badlands.getBiomeFoliageColor();
+    	return BetterBiomesConfiguration.badlands.getBiomeFoliageColor();
     }
 }

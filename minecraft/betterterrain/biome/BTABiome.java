@@ -215,7 +215,7 @@ public class BTABiome extends BiomeGenBase {
 			}
 		}
 		
-		if (generatorInfoCache.getCompatMode().isVersionAtLeast(BTAVersion.V1_3_0)) {
+		if (generatorInfoCache.getBTAVersion().isVersionAtLeast(BTAVersion.V1_3_0)) {
 			int minHeightForSnow = this.climate.minHeightForSnow;
 			
 			SurfaceBuilder surfaceBuilder;

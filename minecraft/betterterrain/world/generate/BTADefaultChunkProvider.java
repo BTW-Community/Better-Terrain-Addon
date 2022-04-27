@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Random;
 
 import betterbiomes.DecoIntegration;
+import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.BTAVersion;
 import betterterrain.biome.BTABiome;
-import betterterrain.biome.BiomeConfiguration;
 import betterterrain.structure.mapgen.BTAMapGenBase;
 import betterterrain.structure.mapgen.BTAMapGenCave;
 import betterterrain.structure.mapgen.BTAMapGenMineshaft;
@@ -126,7 +126,7 @@ public class BTADefaultChunkProvider implements BTAChunkProvider
 		int var9 = var4 + 1;
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, chunkX * 4 - 2, chunkZ * 4 - 2, var7 + 5, var9 + 5);
 
-		if (this.generatorInfo.getCompatMode().isVersionAtLeast(BTAVersion.V1_4_0)) {
+		if (this.generatorInfo.getBTAVersion().isVersionAtLeast(BTAVersion.V1_4_0)) {
 			this.noiseArray = SurfaceBuilder.initializeNoiseField(this.rand, this.seed, this.noiseArray, chunkX * var4, 0, chunkZ * var4, var7, var8, var9, biomesForGeneration);
 		}
 		else {
@@ -246,7 +246,7 @@ public class BTADefaultChunkProvider implements BTAChunkProvider
 									fillerBlock = (byte)Block.stone.blockID;
 								}
 								else if (j >= seaLevel - (8 + rand.nextInt(2)) && j <= seaLevel + 1) {
-									if(biome.biomeID == BiomeConfiguration.oldValley.biomeID || biome.biomeID == BiomeConfiguration.valleyMountains.biomeID || biome.biomeID == BiomeConfiguration.valley.biomeID || (biome.biomeID == BiomeConfiguration.tropics.biomeID && this.generatorInfo.getCompatMode().isVersionAtLeast(BTAVersion.V1_2_0))) {
+									if(biome.biomeID == BetterBiomesConfiguration.oldValley.biomeID || biome.biomeID == BetterBiomesConfiguration.valleyMountains.biomeID || biome.biomeID == BetterBiomesConfiguration.valley.biomeID || (biome.biomeID == BetterBiomesConfiguration.tropics.biomeID && this.generatorInfo.getBTAVersion().isVersionAtLeast(BTAVersion.V1_2_0))) {
 										topBlock = (byte)Block.sand.blockID;
 										fillerBlock = (byte)Block.sand.blockID;
 									}
@@ -261,15 +261,15 @@ public class BTADefaultChunkProvider implements BTAChunkProvider
 										}
 									}
 
-									if (this.generatorInfo.generatePerlinBeaches() && BiomeConfiguration.shouldBiomeSpawnPerlinBeach(biome.biomeID)) {
+									if (this.generatorInfo.generatePerlinBeaches() && BetterBiomesConfiguration.shouldBiomeSpawnPerlinBeach(biome.biomeID)) {
 										if (useGravel) {
 											topBlock = 0;
 											fillerBlock = Block.gravel.blockID;
 										}
 
 										if (useSand) {
-											if (biome == BiomeConfiguration.badlands || biome == BiomeConfiguration.badlandsPlateau || biome == BiomeConfiguration.badlandsEdge || biome == BiomeConfiguration.riverBadlands || 
-													biome == BiomeConfiguration.outback || biome == BiomeConfiguration.riverOutback || biome == BiomeConfiguration.beachOutback) {
+											if (biome == BetterBiomesConfiguration.badlands || biome == BetterBiomesConfiguration.badlandsPlateau || biome == BetterBiomesConfiguration.badlandsEdge || biome == BetterBiomesConfiguration.riverBadlands || 
+													biome == BetterBiomesConfiguration.outback || biome == BetterBiomesConfiguration.riverOutback || biome == BetterBiomesConfiguration.beachOutback) {
 												topBlock = DecoIntegration.redSand.blockID;
 												fillerBlock = DecoIntegration.redSand.blockID;
 											}
@@ -302,7 +302,7 @@ public class BTADefaultChunkProvider implements BTAChunkProvider
 
 								remaingDepth = soilDepthNoiseSample;
 
-								if (biome.biomeID == BiomeConfiguration.badlandsPlateau.biomeID)
+								if (biome.biomeID == BetterBiomesConfiguration.badlandsPlateau.biomeID)
 									remaingDepth += 10;
 
 								if (j >= seaLevel - 1) {

@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Random;
 
 import betterbiomes.DecoIntegration;
+import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.biome.BTABiome;
-import betterterrain.biome.BiomeConfiguration;
 import betterterrain.structure.mapgen.BTAHorizonsMapGenCave;
 import betterterrain.structure.mapgen.BTAMapGenBase;
 import betterterrain.structure.mapgen.BTAMapGenMineshaft;
@@ -383,7 +383,7 @@ public class HorizonsChunkProvider implements IChunkProvider
 									fillerBlock = (byte)Block.stone.blockID;
 								}
 								else if (j >= seaLevel - 4 && j <= seaLevel + 1) {
-									if(biome.biomeID == BiomeConfiguration.oldValley.biomeID || biome.biomeID == BiomeConfiguration.valleyMountains.biomeID || biome.biomeID == BiomeConfiguration.valley.biomeID) {
+									if(biome.biomeID == BetterBiomesConfiguration.oldValley.biomeID || biome.biomeID == BetterBiomesConfiguration.valleyMountains.biomeID || biome.biomeID == BetterBiomesConfiguration.valley.biomeID) {
 										topBlock = (byte)Block.sand.blockID;
 										fillerBlock = (byte)Block.sand.blockID;
 									}
@@ -399,7 +399,7 @@ public class HorizonsChunkProvider implements IChunkProvider
 									}
 								}
 								else if (j >= seaLevel + 9) {
-									if(biome.biomeID == BiomeConfiguration.badlands.biomeID || biome.biomeID == BiomeConfiguration.riverBadlands.biomeID) {
+									if(biome.biomeID == BetterBiomesConfiguration.badlands.biomeID || biome.biomeID == BetterBiomesConfiguration.riverBadlands.biomeID) {
 										topBlock = DecoIntegration.terracotta.blockID;
 										fillerBlock = DecoIntegration.terracotta.blockID;
 									}
@@ -426,7 +426,7 @@ public class HorizonsChunkProvider implements IChunkProvider
 
 								remainingFillerDepth = stoneNoiseSample;
 								
-								if (biome.biomeID == BiomeConfiguration.badlandsPlateau.biomeID)
+								if (biome.biomeID == BetterBiomesConfiguration.badlandsPlateau.biomeID)
 									remainingFillerDepth += 10;
 
 								if (j >= seaLevel - 1) {

@@ -1,7 +1,7 @@
 package betterterrain.biome.layer;
 
+import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.BTAVersion;
-import betterterrain.biome.BiomeConfiguration;
 import betterterrain.world.WorldConfigurationInfo;
 import net.minecraft.src.GenLayer;
 import net.minecraft.src.IntCache;
@@ -29,8 +29,8 @@ public class SporadicLayer extends GenLayer
                 this.initChunkSeed((long)(k + xOffset), (long)(i + zOffset));
                 int currentBiome = parentInts[k + 1 + (i + 1) * (xSize + 2)];
 
-                if (BiomeConfiguration.getSporadicVariantForBiome(currentBiome) != -1 && this.nextInt(BiomeConfiguration.getSporadicChanceForBiome(currentBiome)) == 0 && generatorInfo.getCompatMode().isVersionAtLeast(BTAVersion.V1_3_0)) {
-                    cache[k + i * xSize] = BiomeConfiguration.getSporadicVariantForBiome(currentBiome);
+                if (BetterBiomesConfiguration.getSporadicVariantForBiome(currentBiome) != -1 && this.nextInt(BetterBiomesConfiguration.getSporadicChanceForBiome(currentBiome)) == 0 && generatorInfo.getBTAVersion().isVersionAtLeast(BTAVersion.V1_3_0)) {
+                    cache[k + i * xSize] = BetterBiomesConfiguration.getSporadicVariantForBiome(currentBiome);
                 }
                 else {
                     cache[k + i * xSize] = currentBiome;

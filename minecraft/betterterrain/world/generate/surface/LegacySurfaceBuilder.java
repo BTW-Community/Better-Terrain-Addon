@@ -3,9 +3,9 @@ package betterterrain.world.generate.surface;
 import java.util.Random;
 
 import betterbiomes.DecoIntegration;
+import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.BTAVersion;
 import betterterrain.biome.BTABiome;
-import betterterrain.biome.BiomeConfiguration;
 import betterterrain.world.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.BetaNoiseOctaves;
 import net.minecraft.src.BiomeGenBase;
@@ -73,8 +73,8 @@ public class LegacySurfaceBuilder extends SurfaceBuilder {
 									fillerBlock = (byte)Block.stone.blockID;
 								}
 								else if (j >= seaLevel - (8 + rand.nextInt(2)) && j <= seaLevel + 1) {
-									if(biome.biomeID == BiomeConfiguration.oldValley.biomeID || biome.biomeID == BiomeConfiguration.valleyMountains.biomeID || biome.biomeID == BiomeConfiguration.valley.biomeID || 
-											((biome.biomeID == BiomeConfiguration.tropics.biomeID || biome.biomeID == BiomeConfiguration.tropicsEdge.biomeID || biome.biomeID == BiomeConfiguration.riverTropics.biomeID) && generatorInfo.getCompatMode().isVersionAtLeast(BTAVersion.V1_2_0))) {
+									if(biome.biomeID == BetterBiomesConfiguration.oldValley.biomeID || biome.biomeID == BetterBiomesConfiguration.valleyMountains.biomeID || biome.biomeID == BetterBiomesConfiguration.valley.biomeID || 
+											((biome.biomeID == BetterBiomesConfiguration.tropics.biomeID || biome.biomeID == BetterBiomesConfiguration.tropicsEdge.biomeID || biome.biomeID == BetterBiomesConfiguration.riverTropics.biomeID) && generatorInfo.getBTAVersion().isVersionAtLeast(BTAVersion.V1_2_0))) {
 										topBlock = (byte)Block.sand.blockID;
 										fillerBlock = (byte)Block.sand.blockID;
 									}
@@ -89,15 +89,15 @@ public class LegacySurfaceBuilder extends SurfaceBuilder {
 										}
 									}
 
-									if (generatorInfo.generatePerlinBeaches() && BiomeConfiguration.shouldBiomeSpawnPerlinBeach(biome.biomeID)) {
+									if (generatorInfo.generatePerlinBeaches() && BetterBiomesConfiguration.shouldBiomeSpawnPerlinBeach(biome.biomeID)) {
 										if (useGravel) {
 											topBlock = 0;
 											fillerBlock = Block.gravel.blockID;
 										}
 
 										if (useSand) {
-											if (biome == BiomeConfiguration.badlands || biome == BiomeConfiguration.badlandsPlateau || biome == BiomeConfiguration.badlandsEdge || biome == BiomeConfiguration.riverBadlands || 
-													biome == BiomeConfiguration.outback || biome == BiomeConfiguration.riverOutback || biome == BiomeConfiguration.beachOutback) {
+											if (biome == BetterBiomesConfiguration.badlands || biome == BetterBiomesConfiguration.badlandsPlateau || biome == BetterBiomesConfiguration.badlandsEdge || biome == BetterBiomesConfiguration.riverBadlands || 
+													biome == BetterBiomesConfiguration.outback || biome == BetterBiomesConfiguration.riverOutback || biome == BetterBiomesConfiguration.beachOutback) {
 												topBlock = DecoIntegration.redSand.blockID;
 												fillerBlock = DecoIntegration.redSand.blockID;
 											}
@@ -130,7 +130,7 @@ public class LegacySurfaceBuilder extends SurfaceBuilder {
 
 								remaingDepth = soilDepthNoiseSample;
 
-								if (biome.biomeID == BiomeConfiguration.badlandsPlateau.biomeID)
+								if (biome.biomeID == BetterBiomesConfiguration.badlandsPlateau.biomeID)
 									remaingDepth += 10;
 
 								if (j >= seaLevel - 1) {

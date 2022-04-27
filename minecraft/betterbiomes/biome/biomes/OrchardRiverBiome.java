@@ -1,10 +1,10 @@
 package betterbiomes.biome.biomes;
 
-import betterterrain.biome.BiomeConfiguration;
+import betterbiomes.biome.BetterBiomesConfiguration;
 
 public class OrchardRiverBiome extends RiverBiome {
 	public OrchardRiverBiome(int par1) {
-		super(par1, BiomeConfiguration.orchard.climate);
+		super(par1, BetterBiomesConfiguration.orchard.climate);
 	}
 
     /**
@@ -12,6 +12,6 @@ public class OrchardRiverBiome extends RiverBiome {
      */
     public int getBiomeGrassColor()
     {
-    	return BiomeConfiguration.orchard.getBiomeGrassColor();
+    	return BetterBiomesConfiguration.orchard.getBiomeGrassColor();
     }
 }

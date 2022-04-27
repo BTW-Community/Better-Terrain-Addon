@@ -1,14 +1,14 @@
 package betterbiomes.biome.biomes;
 
-import betterterrain.biome.BiomeConfiguration;
+import betterbiomes.biome.BetterBiomesConfiguration;
 import net.minecraft.src.FCEntitySlime;
 import net.minecraft.src.FCEntityWitch;
 import net.minecraft.src.SpawnListEntry;
 
 public class WetlandsRiverBiome extends RiverBiome {
 	public WetlandsRiverBiome(int par1) {
-		super(par1, BiomeConfiguration.wetlands.climate);
-		this.waterColorMultiplier = BiomeConfiguration.wetlands.waterColorMultiplier;
+		super(par1, BetterBiomesConfiguration.wetlands.climate);
+		this.waterColorMultiplier = BetterBiomesConfiguration.wetlands.waterColorMultiplier;
         this.btaBiomeDecorator.waterlilyPerChunk = 4;
         this.spawnableCreatureList.clear();
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntitySlime.class, 1, 1, 1));
@@ -20,7 +20,7 @@ public class WetlandsRiverBiome extends RiverBiome {
      */
     public int getBiomeGrassColor()
     {
-    	return BiomeConfiguration.wetlands.getBiomeGrassColor();
+    	return BetterBiomesConfiguration.wetlands.getBiomeGrassColor();
     }
 
     /**
@@ -28,6 +28,6 @@ public class WetlandsRiverBiome extends RiverBiome {
      */
     public int getBiomeFoliageColor()
     {
-    	return BiomeConfiguration.wetlands.getBiomeFoliageColor();
+    	return BetterBiomesConfiguration.wetlands.getBiomeFoliageColor();
     }
 }

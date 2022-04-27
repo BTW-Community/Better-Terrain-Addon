@@ -3,7 +3,7 @@ package net.minecraft.src;
 import java.util.ArrayList;
 import java.util.Random;
 
-import betterterrain.biome.BiomeConfiguration;
+import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.structure.component.BTAComponentScatteredFeatureRedDesertPyramid;
 
 public class StructureScatteredFeatureStart extends StructureStart
@@ -38,7 +38,7 @@ public class StructureScatteredFeatureStart extends StructureStart
 			ComponentScatteredFeatureDesertPyramid var8 = new ComponentScatteredFeatureDesertPyramid(rand, chunkX * 16, chunkZ * 16);
 			this.components.add(var8);
 		}
-		else if (BiomeConfiguration.canBiomeSpawnRedDesertTemple(biome))
+		else if (BetterBiomesConfiguration.canBiomeSpawnRedDesertTemple(biome))
 		{
 			BTAComponentScatteredFeatureRedDesertPyramid var8 = new BTAComponentScatteredFeatureRedDesertPyramid(rand, chunkX * 16, chunkZ * 16);
 			this.components.add(var8);

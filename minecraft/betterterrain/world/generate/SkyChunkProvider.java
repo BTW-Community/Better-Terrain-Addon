@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Random;
 
 import betterbiomes.DecoIntegration;
+import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.biome.BTABiome;
-import betterterrain.biome.BiomeConfiguration;
 import betterterrain.structure.mapgen.BTAMapGenBase;
 import betterterrain.structure.mapgen.BTAMapGenCave;
 import betterterrain.structure.mapgen.BTAMapGenMineshaft;
@@ -223,7 +223,7 @@ public class SkyChunkProvider implements BTAChunkProvider
                             var3[var18] = var15;
                             var14 = var13;
 
-							if (var10.biomeID == BiomeConfiguration.badlandsPlateau.biomeID)
+							if (var10.biomeID == BetterBiomesConfiguration.badlandsPlateau.biomeID)
 								var14 += 10;
                         }
                         else if (var14 > 0)

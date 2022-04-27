@@ -60,7 +60,7 @@ public abstract class BTALayer extends GenLayer {
 
 			GenLayer layerMangnifyBiome = GenLayerZoom.magnify(1000L, layerMushroomIsland, 0);
 			GenLayer layerBiome;
-			if (generatorInfo.isClimatized() && generatorInfo.getCompatMode().isVersionAtLeast(BTAVersion.V1_3_0)) {
+			if (generatorInfo.isClimatized() && generatorInfo.getBTAVersion().isVersionAtLeast(BTAVersion.V1_3_0)) {
 				GenLayer layerClimateZoom = GenLayerZoom.magnify(1000l, layerClimates, 2);
 				GenLayer layerClimateSmooth = new ClimateSmoothLayer(2000L, layerClimateZoom, generatorInfo.getBiomesForGeneration());
 				layerClimateSmooth = new ClimateSmoothLayer2(2000L, layerClimateSmooth, generatorInfo.getBiomesForGeneration());
@@ -82,7 +82,7 @@ public abstract class BTALayer extends GenLayer {
 					layerExtras = new GenLayerAddIsland(3L, layerExtras);
 				}
 
-				if (generatorInfo.getCompatMode().isVersionAtLeast(BTAVersion.V1_3_2)) {
+				if (generatorInfo.getBTAVersion().isVersionAtLeast(BTAVersion.V1_3_2)) {
 					if (passNum == 0) {
 						layerExtras = new ShoreLayer(1000L, layerExtras, generatorInfo, 0);
 					}
@@ -91,7 +91,7 @@ public abstract class BTALayer extends GenLayer {
 				if (passNum == 1) {
 					layerExtras = new ShoreLayer(1000L, layerExtras, generatorInfo, 1);
 
-					if (generatorInfo.getCompatMode().isVersionAtLeast(BTAVersion.V1_4_0))
+					if (generatorInfo.getBTAVersion().isVersionAtLeast(BTAVersion.V1_4_0))
 						layerExtras = new GuaranteedShoreLayer(1000L, layerExtras, generatorInfo);
 				}
 

@@ -1,6 +1,6 @@
 package betterterrain.biome.layer;
 
-import betterterrain.biome.BiomeConfiguration;
+import betterbiomes.biome.BetterBiomesConfiguration;
 import net.minecraft.src.GenLayer;
 import net.minecraft.src.GenLayerAddIsland;
 import net.minecraft.src.GenLayerAddMushroomIsland;
@@ -44,7 +44,7 @@ public abstract class HorizonsLayer extends GenLayer {
         GenLayerRiver var14 = new GenLayerRiver(1L, var5);
         GenLayerSmooth var16 = new GenLayerSmooth(1000L, var14);
         GenLayer var6 = GenLayerZoom.magnify(1000L, var15, 0);
-        BiomeLayer var17 = new BiomeLayer(200L, var6, worldType, BiomeConfiguration.biomeListDeco);
+        BiomeLayer var17 = new BiomeLayer(200L, var6, worldType, BetterBiomesConfiguration.biomeListDeco);
         var6 = GenLayerZoom.magnify(1000L, var17, 2);
         Object var18 = new GenLayerHills(1000L, var6);
 

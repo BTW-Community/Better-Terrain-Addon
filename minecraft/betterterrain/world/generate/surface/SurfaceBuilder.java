@@ -96,7 +96,7 @@ public class SurfaceBuilder {
 
 	//Old 1D array format
 	public static void replaceSurface(Random rand, long seed, int chunkX, int chunkZ, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, WorldConfigurationInfo generatorInfo, WorldType worldType) {
-		if (generatorInfo.getCompatMode().isVersionAtOrBelow(BTAVersion.V1_3_4)) {
+		if (generatorInfo.getBTAVersion().isVersionAtOrBelow(BTAVersion.V1_3_4)) {
 			if (!legacyBuilder.hasBeenInit) {
 				legacyBuilder.init(rand, seed);
 				legacyBuilder.hasBeenInit = true;
@@ -144,7 +144,7 @@ public class SurfaceBuilder {
 	public static void generateTrees(World world, Random rand, long seed, WorldConfigurationInfo generatorInfo, int chunkX, int chunkZ, BTABiome biome) {
 		SurfaceBuilder builder = biome.getSurfaceBuilder();
 
-		if (generatorInfo.getCompatMode().isVersionAtLeast(BTAVersion.V1_4_0)) {
+		if (generatorInfo.getBTAVersion().isVersionAtLeast(BTAVersion.V1_4_0)) {
 			if (builder != null) {
 				if (!builder.hasBeenInit) {
 					builder.init(rand, seed);
@@ -452,7 +452,7 @@ public class SurfaceBuilder {
 		return new SurfaceProcessingResult(remainingDepth, surfaceJ, useSubfiller);
 	}
 	
-	protected static class SurfaceProcessingResult {
+	public static class SurfaceProcessingResult {
 		public int remainingDepth;
 		public int surfaceJ;
 		public boolean useSubfiller;
@@ -663,7 +663,7 @@ public class SurfaceBuilder {
 	}
 
 	protected boolean useGravelAtLocation(int i, int k, Random rand, WorldConfigurationInfo generatorInfo) {
-		if (generatorInfo.getCompatMode().isVersionAtLeast(BTAVersion.V2_0_3)) {
+		if (generatorInfo.getBTAVersion().isVersionAtLeast(BTAVersion.V2_0_3)) {
 			double beachNoiseScale = 1/384D;
 			//k and i swapped because apparently I messed something up somewhere
 			return gravelNoiseGenSimplex.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), beachNoiseScale) > 0.925;

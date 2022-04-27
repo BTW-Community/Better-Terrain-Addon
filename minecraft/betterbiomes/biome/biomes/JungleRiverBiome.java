@@ -1,6 +1,6 @@
 package betterbiomes.biome.biomes;
 
-import betterterrain.biome.BiomeConfiguration;
+import betterbiomes.biome.BetterBiomesConfiguration;
 import net.minecraft.src.FCEntityCreeper;
 import net.minecraft.src.FCEntityEnderman;
 import net.minecraft.src.FCEntityJungleSpider;
@@ -13,8 +13,8 @@ import net.minecraft.src.SpawnListEntry;
 
 public class JungleRiverBiome extends RiverBiome {
 	public JungleRiverBiome(int id) {
-		super(id, BiomeConfiguration.jungle.climate);
-		this.waterColorMultiplier = BiomeConfiguration.jungle.waterColorMultiplier;
+		super(id, BetterBiomesConfiguration.jungle.climate);
+		this.waterColorMultiplier = BetterBiomesConfiguration.jungle.waterColorMultiplier;
 		this.btaBiomeDecorator.sandPerChunk = 100;
 		this.btaBiomeDecorator.sandPerChunk2 = 100;
         this.btaBiomeDecorator.waterlilyPerChunk = 4;
@@ -35,7 +35,7 @@ public class JungleRiverBiome extends RiverBiome {
      */
     public int getBiomeGrassColor()
     {
-    	return BiomeConfiguration.jungle.getBiomeGrassColor();
+    	return BetterBiomesConfiguration.jungle.getBiomeGrassColor();
     }
 
     /**
@@ -43,6 +43,6 @@ public class JungleRiverBiome extends RiverBiome {
      */
     public int getBiomeFoliageColor()
     {
-    	return BiomeConfiguration.jungle.getBiomeFoliageColor();
+    	return BetterBiomesConfiguration.jungle.getBiomeFoliageColor();
     }
 }

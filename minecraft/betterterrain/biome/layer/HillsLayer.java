@@ -1,6 +1,6 @@
 package betterterrain.biome.layer;
 
-import betterterrain.biome.BiomeConfiguration;
+import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.world.WorldConfigurationInfo;
 import net.minecraft.src.GenLayer;
 import net.minecraft.src.IntCache;
@@ -34,7 +34,7 @@ public class HillsLayer extends GenLayer
 
                 if (this.nextInt(3) == 0)
                 {
-                    int hillsBiome = BiomeConfiguration.getHillsVariantForBiomes(baseBiome, generatorInfo, this);
+                    int hillsBiome = BetterBiomesConfiguration.getHillsVariantForBiomes(baseBiome, generatorInfo, this);
 
                     if (hillsBiome == baseBiome)
                     {
@@ -65,7 +65,7 @@ public class HillsLayer extends GenLayer
                 
                 if (this.nextInt(5) != 0)
                 {
-                    int hillsBiome = BiomeConfiguration.getHillsVariantForBiomes2(baseBiome);
+                    int hillsBiome = BetterBiomesConfiguration.getHillsVariantForBiomes2(baseBiome);
 
                     if (hillsBiome == baseBiome)
                     {

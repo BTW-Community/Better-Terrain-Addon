@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.biome.BTABiome;
-import betterterrain.biome.BiomeConfiguration;
 import betterterrain.biome.Climate;
 import net.minecraft.src.GenLayer;
 import net.minecraft.src.IntCache;
@@ -21,7 +21,7 @@ public class ClimateSmoothLayer extends BTALayer {
 		
 		for (Climate c : Climate.values()) {
 			if (c.isOverworld) {
-				biomeCategoryMapCached.put(c, BiomeConfiguration.getClimateListForGenerator(c, this.biomesForGeneration));
+				biomeCategoryMapCached.put(c, BetterBiomesConfiguration.getClimateListForGenerator(c, this.biomesForGeneration));
 			}
 		}
     }

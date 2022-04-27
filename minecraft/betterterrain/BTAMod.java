@@ -1,7 +1,7 @@
 package betterterrain;
 
 import betterbiomes.DecoIntegration;
-import betterterrain.biome.BiomeConfiguration;
+import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.block.BTABlockClay;
 import betterterrain.entity.BTAEntityCrystalGolem;
 import betterterrain.entity.BTARenderCrystalGolem;

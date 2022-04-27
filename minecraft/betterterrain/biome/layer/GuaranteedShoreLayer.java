@@ -1,6 +1,6 @@
 package betterterrain.biome.layer;
 
-import betterterrain.biome.BiomeConfiguration;
+import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.world.WorldConfigurationInfo;
 import net.minecraft.src.GenLayer;
 import net.minecraft.src.IntCache;
@@ -46,8 +46,8 @@ public class GuaranteedShoreLayer extends BTALayer
 				if (neighbor1 == currentBiome && neighbor2 == currentBiome && neighbor3 == currentBiome && neighbor4 == currentBiome) {
 					intCache[j + i * xSize] = currentBiome;
 				}
-				else if (BiomeConfiguration.getEdgeVariantForBiomeGuaranteed(currentBiome, this.generatorInfo) != -1) {
-					intCache[j + i * xSize] = BiomeConfiguration.getEdgeVariantForBiomeGuaranteed(currentBiome, this.generatorInfo);
+				else if (BetterBiomesConfiguration.getEdgeVariantForBiomeGuaranteed(currentBiome, this.generatorInfo) != -1) {
+					intCache[j + i * xSize] = BetterBiomesConfiguration.getEdgeVariantForBiomeGuaranteed(currentBiome, this.generatorInfo);
 				}
 				else {
 					intCache[j + i * xSize] = currentBiome;

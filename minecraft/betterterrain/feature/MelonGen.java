@@ -2,7 +2,7 @@ package betterterrain.feature;
 
 import java.util.Random;
 
-import betterterrain.biome.BiomeConfiguration;
+import betterbiomes.biome.BetterBiomesConfiguration;
 import net.minecraft.src.Block;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
@@ -10,7 +10,7 @@ import net.minecraft.src.WorldGenerator;
 public class MelonGen extends WorldGenerator {
 	public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
     {
-        boolean var6 = BiomeConfiguration.canBiomeSpawnMelon(par1World.getBiomeGenForCoords(par3, par5));
+        boolean var6 = BetterBiomesConfiguration.canBiomeSpawnMelon(par1World.getBiomeGenForCoords(par3, par5));
         int var7 = 0;
 
         for (int var9 = 0; var9 < 64; ++var9)

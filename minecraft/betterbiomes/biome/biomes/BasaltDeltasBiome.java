@@ -3,9 +3,9 @@ package betterbiomes.biome.biomes;
 import java.util.Random;
 
 import betterbiomes.DecoIntegration;
+import betterbiomes.world.generate.surface.BasaltDeltasSurfaceBuilder;
 import betterterrain.biome.BTANetherBiome;
 import betterterrain.world.WorldConfigurationInfo;
-import betterterrain.world.generate.surface.BasaltDeltasSurfaceBuilder;
 import net.minecraft.src.Block;
 import net.minecraft.src.FCEntityMagmaCube;
 import net.minecraft.src.FCUtilsBlockPos;

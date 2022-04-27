@@ -1,9 +1,9 @@
 package betterbiomes;
 
+import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.BTAAddon;
 import betterterrain.BTAMod;
 import betterterrain.BTAVersion;
-import betterterrain.biome.BiomeConfiguration;
 import betterterrain.block.BTABlockClay;
 import betterterrain.entity.BTAEntityCrystalGolem;
 import betterterrain.entity.BTARenderCrystalGolem;
@@ -42,7 +42,7 @@ public class BetterBiomesMod extends BTAAddon {
 	}
 	
 	public void initWorldGen() {
-		BiomeConfiguration.init();
+		BetterBiomesConfiguration.init();
 	}
 	
 	public void initDefs() {

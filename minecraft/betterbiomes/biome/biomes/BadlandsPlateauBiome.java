@@ -5,9 +5,9 @@ import java.util.Arrays;
 import java.util.Random;
 
 import betterbiomes.DecoIntegration;
+import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.BTAVersion;
 import betterterrain.biome.BTABiome;
-import betterterrain.biome.BiomeConfiguration;
 import betterterrain.biome.Climate;
 import betterterrain.world.WorldConfigurationInfo;
 import net.minecraft.src.World;
@@ -37,7 +37,7 @@ public class BadlandsPlateauBiome extends BTABiome {
 	{
 		super.decorate(world, rand, startX, startZ, generatorOptions);
 
-		if (generatorOptions.getCompatMode().isVersionAtOrBelow(BTAVersion.V1_2_1)) {
+		if (generatorOptions.getBTAVersion().isVersionAtOrBelow(BTAVersion.V1_2_1)) {
 			for (int i = startX; i < startX + 16; i++) {
 				for (int j = 50; j < 127; j++) {
 					int metaForY = Math.abs(Arrays.hashCode(new int[] {(int) world.getSeed() >> 32, j}) % 16);
@@ -73,7 +73,7 @@ public class BadlandsPlateauBiome extends BTABiome {
      */
     public int getBiomeGrassColor()
     {
-    	return BiomeConfiguration.badlands.getBiomeGrassColor();
+    	return BetterBiomesConfiguration.badlands.getBiomeGrassColor();
     }
 
     /**
@@ -81,7 +81,7 @@ public class BadlandsPlateauBiome extends BTABiome {
      */
     public int getBiomeFoliageColor()
     {
-    	return BiomeConfiguration.badlands.getBiomeFoliageColor();
+    	return BetterBiomesConfiguration.badlands.getBiomeFoliageColor();
     }
 
 	private void initMetaList() {
