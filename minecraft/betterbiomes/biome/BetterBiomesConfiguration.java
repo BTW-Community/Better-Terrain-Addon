@@ -808,13 +808,6 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 	public static ArrayList<BTABiome> biomeListCompat = new ArrayList();
 	public static ArrayList<BTABiome> biomeListDecoCompat = new ArrayList();
 
-	public static ArrayList<BTABiome> snowyList = new ArrayList();
-	public static ArrayList<BTABiome> coldList = new ArrayList();
-	public static ArrayList<BTABiome> temperateList = new ArrayList();
-	public static ArrayList<BTABiome> tropicalList = new ArrayList();
-	public static ArrayList<BTABiome> aridList = new ArrayList();
-	public static Map<Climate, ArrayList<BTABiome>> biomeCategoryMap = new HashMap();
-
 	public static Map<Integer, BiomeInfo> biomeInfoMap = new HashMap();
 
 	private static ArrayList<BiomeGenBase> beachlessBiomes = new ArrayList();
@@ -1529,17 +1522,5 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 
 	public static ArrayList<BiomeGenBase> getEdgeBiomes(WorldConfigurationInfo generatorInfo) {
 		return edgeBiomes;
-	}
-
-	public static ArrayList<BTABiome> getClimateListForGenerator(Climate climate, ArrayList<BTABiome> biomesForGeneration) {
-		ArrayList<BTABiome> newClimateList = new ArrayList<BTABiome>();
-
-		for (BTABiome b : biomeCategoryMap.get(climate)) {
-			if (biomesForGeneration.contains(b)) {
-				newClimateList.add(b);
-			}
-		}
-
-		return newClimateList;
 	}
 }

@@ -3,8 +3,8 @@ package betterbiomes.biome.biomes;
 import java.util.Random;
 
 import betterterrain.biome.BTANetherBiome;
-import betterterrain.feature.AmethystShardsGen;
-import betterterrain.feature.CrystalGen;
+import betterterrain.feature.terrain.AmethystShardsGen;
+import betterterrain.feature.terrain.CrystalGen;
 import betterterrain.world.WorldConfigurationInfo;
 import net.minecraft.src.Block;
 import net.minecraft.src.Vec3;

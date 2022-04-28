@@ -4,7 +4,7 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.AcaciaGen;
+import betterterrain.feature.tree.AcaciaGen;
 import net.minecraft.src.WorldGenShrub;
 import net.minecraft.src.WorldGenerator;
 

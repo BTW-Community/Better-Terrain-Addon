@@ -4,7 +4,7 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.AutmnTreeGen;
+import betterterrain.feature.tree.AutmnTreeGen;
 import net.minecraft.src.FCEntityWolf;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenerator;

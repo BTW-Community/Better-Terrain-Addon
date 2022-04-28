@@ -4,10 +4,10 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.MassiveOakGen;
-import betterterrain.feature.MysticTreeGen;
-import betterterrain.feature.TallSwampTreeGen;
-import betterterrain.feature.TallGrassGen;
+import betterterrain.feature.plant.TallGrassGen;
+import betterterrain.feature.tree.MassiveOakGen;
+import betterterrain.feature.tree.MysticTreeGen;
+import betterterrain.feature.tree.TallSwampTreeGen;
 import net.minecraft.src.Block;
 import net.minecraft.src.FCEntityChicken;
 import net.minecraft.src.FCEntityPig;

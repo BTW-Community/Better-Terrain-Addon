@@ -4,7 +4,7 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.PalmTreeSmallGen;
+import betterterrain.feature.tree.PalmTreeSmallGen;
 import net.minecraft.src.WorldGenerator;
 
 public class OasisBiome extends BTABiome {

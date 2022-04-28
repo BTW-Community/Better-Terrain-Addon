@@ -7,6 +7,7 @@ import java.util.Map;
 
 import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.biome.BTABiome;
+import betterterrain.biome.BiomeConfiguration;
 import betterterrain.biome.Climate;
 import net.minecraft.src.GenLayer;
 import net.minecraft.src.IntCache;
@@ -23,7 +24,7 @@ public class ClimatesLayer extends BTALayer {
 
 		for (Climate c : Climate.values()) {
 			if (c.isOverworld) {
-				this.biomeCategoryMapCached.put(c, BetterBiomesConfiguration.getClimateListForGenerator(c, this.biomesForGeneration));
+				this.biomeCategoryMapCached.put(c, BiomeConfiguration.getClimateListForGenerator(c, this.biomesForGeneration));
 
 				if (biomeCategoryMapCached.get(c).size() != 0) {
 					climateIDsForGeneration.add(c.id);

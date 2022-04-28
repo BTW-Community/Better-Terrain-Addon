@@ -4,8 +4,8 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.MeadowTreeGen1;
-import betterterrain.feature.MeadowTreeGen2;
+import betterterrain.feature.tree.MeadowTreeGen1;
+import betterterrain.feature.tree.MeadowTreeGen2;
 import net.minecraft.src.WorldGenerator;
 
 public class MeadowBiome extends BTABiome {

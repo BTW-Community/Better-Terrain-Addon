@@ -2,8 +2,8 @@ package betterbiomes.world.generate.surface;
 
 import java.util.Random;
 
-import betterterrain.feature.SmallShrubGen;
-import betterterrain.feature.TinyShrubGen;
+import betterterrain.feature.tree.SmallShrubGen;
+import betterterrain.feature.tree.TinyShrubGen;
 import betterterrain.world.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.NoShorelineSurfaceBuilder;

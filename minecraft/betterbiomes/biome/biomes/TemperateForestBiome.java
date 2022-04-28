@@ -4,8 +4,8 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.TemperateBirchGen;
-import betterterrain.feature.TaigaGen6;
+import betterterrain.feature.tree.TaigaGen6;
+import betterterrain.feature.tree.TemperateBirchGen;
 import net.minecraft.src.FCEntityWolf;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenShrub;

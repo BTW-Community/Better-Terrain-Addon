@@ -3,8 +3,8 @@ package betterterrain.biome;
 import java.util.Random;
 
 import betterterrain.BTAVersion;
-import betterterrain.feature.OreGen;
-import betterterrain.feature.TallGrassGen;
+import betterterrain.feature.plant.TallGrassGen;
+import betterterrain.feature.terrain.OreGen;
 import betterterrain.world.WorldConfigurationInfo;
 import betterterrain.world.generate.surface.SurfaceBuilder;
 import net.minecraft.src.BiomeGenBase;

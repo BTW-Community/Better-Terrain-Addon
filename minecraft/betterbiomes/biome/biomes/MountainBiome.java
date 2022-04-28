@@ -4,7 +4,7 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.PineTreeGen;
+import betterterrain.feature.tree.PineTreeGen;
 import betterterrain.world.WorldConfigurationInfo;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;

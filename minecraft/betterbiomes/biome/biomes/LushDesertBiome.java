@@ -4,7 +4,7 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.PalmTreeSmallGen;
+import betterterrain.feature.tree.PalmTreeSmallGen;
 import betterterrain.world.WorldConfigurationInfo;
 import net.minecraft.src.Block;
 import net.minecraft.src.World;

@@ -4,8 +4,8 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.SmallShrubGen;
-import betterterrain.feature.TinyShrubGen;
+import betterterrain.feature.tree.SmallShrubGen;
+import betterterrain.feature.tree.TinyShrubGen;
 import net.minecraft.src.WorldGenBigTree;
 import net.minecraft.src.WorldGenShrub;
 import net.minecraft.src.WorldGenerator;

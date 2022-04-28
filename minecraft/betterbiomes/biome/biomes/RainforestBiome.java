@@ -4,8 +4,8 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.RainforestGen1;
-import betterterrain.feature.RainforestGen2;
+import betterterrain.feature.tree.RainforestGen1;
+import betterterrain.feature.tree.RainforestGen2;
 import betterterrain.world.WorldConfigurationInfo;
 import net.minecraft.src.FCEntityChicken;
 import net.minecraft.src.FCEntityCreeper;

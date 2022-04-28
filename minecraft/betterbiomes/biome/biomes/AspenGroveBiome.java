@@ -3,8 +3,8 @@ package betterbiomes.biome.biomes;
 import java.util.Random;
 
 import betterterrain.biome.Climate;
-import betterterrain.feature.PineTreeGen;
-import betterterrain.feature.TaigaGen5;
+import betterterrain.feature.tree.PineTreeGen;
+import betterterrain.feature.tree.TaigaGen5;
 import betterterrain.world.WorldConfigurationInfo;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;

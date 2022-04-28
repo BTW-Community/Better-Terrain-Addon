@@ -5,7 +5,7 @@ import java.util.Random;
 import betterbiomes.DecoIntegration;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.CherryTreeGen;
+import betterterrain.feature.tree.CherryTreeGen;
 import betterterrain.world.WorldConfigurationInfo;
 import net.minecraft.src.WorldGenerator;
 import net.minecraft.src.WorldType;

@@ -4,8 +4,8 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.PalmTreeSmallGen;
-import betterterrain.feature.TallGrassGen;
+import betterterrain.feature.plant.TallGrassGen;
+import betterterrain.feature.tree.PalmTreeSmallGen;
 import net.minecraft.src.Block;
 import net.minecraft.src.FCEntityChicken;
 import net.minecraft.src.FCEntityCreeper;

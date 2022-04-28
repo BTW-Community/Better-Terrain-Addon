@@ -4,9 +4,9 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.TaigaGen5;
-import betterterrain.feature.TaigaGen7;
-import betterterrain.feature.TallGrassGen;
+import betterterrain.feature.plant.TallGrassGen;
+import betterterrain.feature.tree.TaigaGen5;
+import betterterrain.feature.tree.TaigaGen7;
 import net.minecraft.src.Block;
 import net.minecraft.src.FCEntityWolf;
 import net.minecraft.src.SpawnListEntry;

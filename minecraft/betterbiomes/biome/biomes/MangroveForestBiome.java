@@ -4,7 +4,7 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.MangroveGen;
+import betterterrain.feature.tree.MangroveGen;
 import net.minecraft.src.FCEntityChicken;
 import net.minecraft.src.FCEntityCreeper;
 import net.minecraft.src.FCEntityEnderman;

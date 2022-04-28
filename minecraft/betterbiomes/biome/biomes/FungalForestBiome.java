@@ -4,8 +4,8 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.MassiveOakGen;
-import betterterrain.feature.TallSwampTreeGen;
+import betterterrain.feature.tree.MassiveOakGen;
+import betterterrain.feature.tree.TallSwampTreeGen;
 import net.minecraft.src.FCEntityChicken;
 import net.minecraft.src.FCEntityPig;
 import net.minecraft.src.FCEntitySlime;

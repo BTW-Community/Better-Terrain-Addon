@@ -3,7 +3,7 @@ package betterbiomes.biome.biomes;
 import java.util.Random;
 
 import betterterrain.biome.BTANetherBiome;
-import betterterrain.feature.PetrifiedTreeGen;
+import betterterrain.feature.tree.PetrifiedTreeGen;
 import net.minecraft.src.WorldGenerator;
 
 public class PetrifiedForestBiome extends BTANetherBiome {

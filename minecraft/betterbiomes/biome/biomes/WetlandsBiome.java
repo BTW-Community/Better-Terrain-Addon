@@ -4,8 +4,8 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.TallSwampTreeGen;
-import betterterrain.feature.TaigaGen5;
+import betterterrain.feature.tree.TaigaGen5;
+import betterterrain.feature.tree.TallSwampTreeGen;
 import betterterrain.world.WorldConfigurationInfo;
 import net.minecraft.src.FCEntityChicken;
 import net.minecraft.src.FCEntityPig;
