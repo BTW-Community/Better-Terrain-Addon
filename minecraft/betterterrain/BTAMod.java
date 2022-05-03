@@ -1,15 +1,10 @@
 package betterterrain;
 
-import betterbiomes.DecoIntegration;
-import betterbiomes.biome.BetterBiomesConfiguration;
-import betterterrain.block.BTABlockClay;
-import betterterrain.entity.BTAEntityCrystalGolem;
-import betterterrain.entity.BTARenderCrystalGolem;
+import betterterrain.biome.BiomeConfiguration;
 import betterterrain.item.BTAItemBloodMossSpores;
 import betterterrain.item.BTAItemPileSoulSand;
 import betterterrain.world.type.BTADefaultWorldType;
 import betterterrain.world.type.BetaWorldType;
-import betterterrain.world.type.HorizonsWorldType;
 import betterterrain.world.type.SkyWorldType;
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityList;
@@ -37,8 +32,6 @@ public class BTAMod extends FCAddOn {
 	public static final WorldType BTAWorldTypeSkyDeco = new SkyWorldType(9, "BTASkyDeco").setIsDeco().setCanBeCreated(false).setParent(BTAWorldTypeSky);
 	public static final WorldType BTAWorldTypeSmall = new BTADefaultWorldType(10, "BTASmall").setCanBeCreated(false).setParent(BTAWorldType);
 	public static final WorldType BTAWorldTypeSmallDeco = new BTADefaultWorldType(11, "BTASmallDeco").setIsDeco().setCanBeCreated(false).setParent(BTAWorldType);
-
-	public static final WorldType BTAWorldTypeHorizons = new HorizonsWorldType(15, "BTAHorizons").setCanBeCreated(false);
 	
 	private BTAMod() {
 		super("Better Terrain", "3.0.0", "BTA");

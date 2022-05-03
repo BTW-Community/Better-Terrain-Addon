@@ -1,4 +1,4 @@
-package betterterrain.entity;
+package betterbiomes.entity;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;

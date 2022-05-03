@@ -1,4 +1,4 @@
-package betterterrain.entity;
+package betterbiomes.entity;
 
 import net.minecraft.src.EntityAIAttackOnCollide;
 import net.minecraft.src.EntityAINearestAttackableTarget;

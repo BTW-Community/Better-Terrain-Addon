@@ -5,9 +5,9 @@ import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import net.minecraft.src.Block;
 
-public class OutbackBeachBiome extends BTABiome
+public class RedSandBeachBiome extends BTABiome
 {
-    public OutbackBeachBiome(int id, Climate climate) {
+    public RedSandBeachBiome(int id, Climate climate) {
         super(id, climate);
         this.spawnableCreatureList.clear();
         this.topBlock = (byte)Block.sand.blockID;

@@ -1,16 +1,26 @@
 package betterterrain.biome;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import betterterrain.BTAVersion;
+import betterterrain.biome.layer.HillsLayer;
+import betterterrain.feature.plant.MelonGen;
 import betterterrain.feature.plant.TallGrassGen;
 import betterterrain.feature.terrain.OreGen;
+import betterterrain.structure.mapgen.BTAMapGenScatteredFeature;
+import betterterrain.structure.mapgen.BTAMapGenVillage;
 import betterterrain.world.WorldConfigurationInfo;
 import betterterrain.world.generate.surface.SurfaceBuilder;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;
+import net.minecraft.src.ComponentVillageStartPiece;
+import net.minecraft.src.MapGenVillage;
 import net.minecraft.src.StructureScatteredFeatureStart;
 import net.minecraft.src.World;
+import net.minecraft.src.WorldGenPumpkin;
+import net.minecraft.src.WorldGenReed;
 import net.minecraft.src.WorldGenerator;
 import net.minecraft.src.WorldType;
 
@@ -27,14 +37,12 @@ public class BTABiome extends BiomeGenBase {
 	public BiomeDecorator btaBiomeDecorator;
     private SurfaceBuilder surfaceBuilder;
     
-    private BiomeHeight[] validHeights;
-    
     private boolean isPlateau;
     private boolean isNether;
     
     private static WorldConfigurationInfo generatorInfoCache;
-
-	protected BTABiome(int id, Climate climate) {
+    
+    public BTABiome(int id, Climate climate) {
 		super(id);
 		this.enableRain = true;
 		this.isSpawnable = true;
@@ -43,11 +51,6 @@ public class BTABiome extends BiomeGenBase {
         this.fillerBlockExt = Block.dirt.blockID;
         this.climate = climate;
         this.isPlateau = false;
-	}
-	
-	public BTABiome setValidHeights(BiomeHeight ... heights) {
-		this.validHeights = heights;
-		return this;
 	}
 
     /**
@@ -177,11 +180,14 @@ public class BTABiome extends BiomeGenBase {
     	return StructureScatteredFeatureStart.swampBiomeList.contains(this);
     }
 
-	public void setSurfaceBuilder(SurfaceBuilder surfaceBuilder) {
+	public BTABiome setSurfaceBuilder(SurfaceBuilder surfaceBuilder) {
 		this.surfaceBuilder = surfaceBuilder;
+		
 		if (this.surfaceBuilder.getBiome() == null) {
 			this.surfaceBuilder.setBiome(this);
 		}
+		
+		return this;
 	}
 
 	public boolean isPlateau() {
@@ -241,66 +247,250 @@ public class BTABiome extends BiomeGenBase {
 			return this.getEnableSnow();
 		}
     }
+	
+	//------ Compatibility Functionality ------//
+	
+	boolean isDecoOnly;
+	boolean isLegacyCompatible;
+	
+	public boolean isDecoOnly() {
+		return isDecoOnly;
+	}
 
-	public void AddEmeralds(World var1, Random var2, int var3, int var4)
-    {
-        int var5 = 3 + var2.nextInt(6);
+	public BTABiome setDecoOnly() {
+		this.isDecoOnly = true;
+		return this;
+	}
 
-        for (int var6 = 0; var6 < var5; ++var6)
-        {
-            int var7 = var3 + var2.nextInt(16);
-            int var8 = var2.nextInt(28) + 4;
-            int var9 = var4 + var2.nextInt(16);
+	public boolean isLegacyCompatible() {
+		return isLegacyCompatible;
+	}
 
-            if (var1.getBlockId(var7, var8, var9) == Block.stone.blockID)
-            {
-            	int var11 = 0;
+	/**
+	 * Only used for biomes in BTA 1.1.3 or before
+	 * DO NOT USE except for those biomes as it will break backwards compatibility if you do
+	 */
+	public BTABiome setLegacyCompatible() {
+		this.isLegacyCompatible = true;
+		return this;
+	}
+	
+	//------ Biome Variant Functionality ------//
+
+	//Different biome variants which spawn within the larger biome
+	private Map<BTABiome, WorldConfigurationInfo.Condition> subBiomeVariants = new HashMap();
+	private Map<BTABiome, WorldConfigurationInfo.Condition> subBiomeVariantsCommon = new HashMap();
+	
+	//Rare small sub biomes
+	private Map<BTABiome, WorldConfigurationInfo.Condition> sporadicVariants = new HashMap();
+	
+	private Map<BTABiome, WorldConfigurationInfo.Condition> beachVariants = new HashMap();
+	
+	private Map<BTABiome, WorldConfigurationInfo.Condition> riverVariants = new HashMap();
+	
+	private Map<BTABiome, WorldConfigurationInfo.Condition> edgeVariants = new HashMap();
+	
+	public BTABiome addSubVariant(BTABiome biome) {
+		return this.addSubVariant(biome, null);
+	}
+	
+	public BTABiome addSubVariant(BTABiome biome, WorldConfigurationInfo.Condition condition) {
+		this.subBiomeVariants.put(biome, condition);
+		return this;
+	}
+	
+	public BTABiome addSubVariantCommon(BTABiome biome) {
+		return this.addSubVariant(biome, null);
+	}
+	
+	public BTABiome addSubVariantCommon(BTABiome biome, WorldConfigurationInfo.Condition condition) {
+		this.subBiomeVariantsCommon.put(biome, condition);
+		return this;
+	}
+	
+	public int getSubVariant(WorldConfigurationInfo generatorOptions, HillsLayer layer) {
+		return this.getSubVariant(generatorOptions);
+	}
+
+	public int getSubVariant(WorldConfigurationInfo generatorOptions) {
+		if (!this.subBiomeVariants.isEmpty()) {
+			for (BTABiome biome : this.subBiomeVariants.keySet()) {
+				if (this.subBiomeVariants.get(biome) == null || this.subBiomeVariants.get(biome).satisfiesContraints(generatorOptions)) {
+					return biome.biomeID;
+				}
+			}
+		}
+		
+		return this.biomeID;
+	}
+	
+	public int getSubVariantCommon(WorldConfigurationInfo generatorOptions, HillsLayer layer) {
+		return this.getSubVariantCommon(generatorOptions);
+	}
+
+	public int getSubVariantCommon(WorldConfigurationInfo generatorOptions) {
+		if (!this.subBiomeVariantsCommon.isEmpty()) {
+			for (BTABiome biome : this.subBiomeVariantsCommon.keySet()) {
+				if (this.subBiomeVariantsCommon.get(biome) == null || this.subBiomeVariantsCommon.get(biome).satisfiesContraints(generatorOptions)) {
+					return biome.biomeID;
+				}
+			}
+		}
+		
+		return this.biomeID;
+	}
+	
+	//------ Biome type Functionality ------//
+	
+	private boolean isEdge;
+	private boolean isRiver;
+	private boolean isBeach;
+	
+	public BTABiome setEdge() {
+		this.isEdge = true;
+		return this;
+	}
+	
+	public boolean isEdge() {
+		return this.isEdge;
+	}
+	
+	public BTABiome setRiver() {
+		this.isRiver = true;
+		return this;
+	}
+	
+	public boolean isRiver() {
+		return this.isRiver;
+	}
+	
+	public BTABiome setBeach() {
+		this.isBeach = true;
+		return this;
+	}
+	
+	public boolean isBeach() {
+		return this.isBeach;
+	}
+	
+	//------ Structure Functionality ------//
+	
+	private boolean canSpawnStronghold = true;
+	
+	public BTABiome setSpawnsVillages(boolean isDesert) {
+		MapGenVillage.villageSpawnBiomes.add(this);
+		
+		if (isDesert) {
+			ComponentVillageStartPiece.addDesertBiome(this);
+		}
+		
+		return this;
+	}
+	
+	public BTABiome setSpawnsDesertTemples() {
+		BTAMapGenScatteredFeature.biomelist.add(this);
+		StructureScatteredFeatureStart.addDesertBiome(this);
+		return this;
+	}
+	
+	public BTABiome setSpawnsRedDesertTemples() {
+		BTAMapGenScatteredFeature.biomelist.add(this);
+		StructureScatteredFeatureStart.addRedDesertBiome(this);
+		return this;
+	}
+	
+	public BTABiome setSpawnsJungleTemples() {
+		BTAMapGenScatteredFeature.biomelist.add(this);
+		StructureScatteredFeatureStart.addJungleBiome(this);
+		return this;
+	}
+	
+	public BTABiome setSpawnsWitchHuts() {
+		BTAMapGenScatteredFeature.biomelist.add(this);
+		StructureScatteredFeatureStart.addSwampBiome(this);
+		return this;
+	}
+	
+	public BTABiome setSpawnsPumpkins() {
+		WorldGenPumpkin.addBiomeToGenerator(this);
+		return this;
+	}
+	
+	public BTABiome setSpawnsMelons() {
+		MelonGen.addBiomeToGenerator(this);
+		return this;
+	}
+	
+	public BTABiome setSpawnsSugarCane() {
+		WorldGenReed.addBiomeToGenerator(this);
+		return this;
+	}
+	
+	public BTABiome setCannotSpawnStronghold() {
+		this.canSpawnStronghold = false;
+		return this;
+	}
+	
+	public boolean canSpawnStronghold() {
+		return this.canSpawnStronghold;
+	}
+	
+	//------ Generator Functionality ------//
+
+	public void addEmeralds(World world, Random rand, int startX, int startZ) {
+        int count = 3 + rand.nextInt(6);
+
+        for (int i = 0; i < count; ++i) {
+            int x = startX + rand.nextInt(16);
+            int y = rand.nextInt(28) + 4;
+            int z = startZ + rand.nextInt(16);
+
+            if (world.getBlockId(x, y, z) == Block.stone.blockID) {
+            	int oreMeta = 0;
                 
-                int[] stratas = var1.provider.terrainType.getStrataLevels();
+                int[] stratas = world.provider.terrainType.getStrataLevels();
                 
                 int strata1Height = stratas[0];
                 int strata2Height = stratas[1];
                 int strata3Height = -2;
                 
-                if (stratas.length > 2)
+                if (stratas.length > 2) {
                 	strata3Height = stratas[2];
+                }
             	
-                if (var8 <= strata1Height + var1.rand.nextInt(2))
-                {
-                    var11 = 1;
+                if (y <= strata1Height + world.rand.nextInt(2)) {
+                    oreMeta = 1;
 
-                    if (var8 <= strata2Height + var1.rand.nextInt(2))
+                    if (y <= strata2Height + world.rand.nextInt(2))
                     {
-                        var11 = 2;
+                        oreMeta = 2;
                     }
 
-                    if (var8 <= strata3Height + var1.rand.nextInt(2))
+                    if (y <= strata3Height + world.rand.nextInt(2))
                     {
-                        var11 = 3;
+                        oreMeta = 3;
                     }
                 }
 
-                var1.setBlock(var7, var8, var9, Block.oreEmerald.blockID, var11, 2);
+                world.setBlock(x, y, z, Block.oreEmerald.blockID, oreMeta, 2);
             }
         }
     }
 
-    public void AddSilverfishBlocks(World var1, Random var2, int var3, int var4)
-    {
-        for (int var5 = 0; var5 < 7; ++var5)
-        {
-            int var6 = var3 + var2.nextInt(16);
-            int var7 = var2.nextInt(64);
-            int var8 = var4 + var2.nextInt(16);
-            new OreGen(Block.silverfish.blockID, 0, 8, Block.stone.blockID).generate(var1, var2, var6, var7, var8);
+    public void addSilverfishBlocks(World world, Random rand, int startX, int startZ) {
+        for (int i = 0; i < 7; ++i) {
+            int x = startX + rand.nextInt(16);
+            int y = rand.nextInt(64);
+            int z = startZ + rand.nextInt(16);
+            new OreGen(Block.silverfish.blockID, 0, 8, Block.stone.blockID).generate(world, rand, x, y, z);
         }
     }
     
-    public void genStandardOre1(World world, Random rand, int count, WorldGenerator generator, int chunkX, int chunkZ, int minY, int maxY) {
+    public void genStandardOre1(World world, Random rand, int count, WorldGenerator generator, int startX, int startZ, int minY, int maxY) {
 		for (int i = 0; i < count; ++i) {
-			int x = chunkX + rand.nextInt(16);
+			int x = startX + rand.nextInt(16);
 			int y = rand.nextInt(maxY - minY) + minY;
-			int z = chunkZ + rand.nextInt(16);
+			int z = startZ + rand.nextInt(16);
 			generator.generate(world, rand, x, y, z);
 		}
 	}

@@ -1,4 +1,4 @@
-package betterterrain.entity;
+package betterbiomes.entity;
 
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityLiving;

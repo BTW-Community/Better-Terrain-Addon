@@ -399,7 +399,7 @@ public class HorizonsChunkProvider implements IChunkProvider
 									}
 								}
 								else if (j >= seaLevel + 9) {
-									if(biome.biomeID == BetterBiomesConfiguration.badlands.biomeID || biome.biomeID == BetterBiomesConfiguration.riverBadlands.biomeID) {
+									if(biome.biomeID == BetterBiomesConfiguration.badlands.biomeID || biome.biomeID == BetterBiomesConfiguration.badlandsRiver.biomeID) {
 										topBlock = DecoIntegration.terracotta.blockID;
 										fillerBlock = DecoIntegration.terracotta.blockID;
 									}

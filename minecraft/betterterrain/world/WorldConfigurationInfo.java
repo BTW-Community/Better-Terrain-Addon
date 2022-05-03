@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.BTAVersion;
 import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
+import betterterrain.biome.BiomeConfiguration;
 import betterterrain.biome.BiomeInfo;
 import betterterrain.world.generate.TerrainGenerator;
 import net.minecraft.src.BiomeGenBase;
@@ -34,7 +34,7 @@ public class WorldConfigurationInfo {
 		info.setBiomeSize(1);
 		info.setGenerator(TerrainGenerator.CLASSIC);
 
-		info.generateBiomeInfoListFromBiomes(BetterBiomesConfiguration.biomeListDeco);
+		info.generateBiomeInfoListFromBiomes(BiomeConfiguration.getBiomeList(), true, false);
 
 		if (!isDeco) {
 			for (BiomeInfo b : info.getBiomeInfoList()) {
@@ -65,7 +65,7 @@ public class WorldConfigurationInfo {
 		info.setBiomeSize(2);
 		info.setGenerator(TerrainGenerator.CLASSIC);
 
-		info.generateBiomeInfoListFromBiomes(BetterBiomesConfiguration.biomeListDecoCompat);
+		info.generateBiomeInfoListFromBiomes(BiomeConfiguration.getBiomeList(), true, true);
 
 		if (!isDeco) {
 			for (BiomeInfo b : info.getBiomeInfoList()) {
@@ -110,7 +110,7 @@ public class WorldConfigurationInfo {
 					for (String s : biomeSplit) {
 						String[] biomeInfoSplit = s.split("=");
 						
-						BiomeInfo biomeInfo = BetterBiomesConfiguration.biomeInfoMap.get(Integer.parseInt(biomeInfoSplit[0]));
+						BiomeInfo biomeInfo = BiomeConfiguration.getBiomeInfoMap().get(Integer.parseInt(biomeInfoSplit[0]));
 						biomeInfo.setEnabled(Boolean.parseBoolean(biomeInfoSplit[1]));
 
 						this.biomeInfoList.add(biomeInfo);
@@ -147,7 +147,7 @@ public class WorldConfigurationInfo {
 		for (String s : biomeSplit) {
 			String[] biomeInfoSplit = s.split("=");
 
-			BiomeInfo biomeInfo = BetterBiomesConfiguration.biomeInfoMap.get(Integer.parseInt(biomeInfoSplit[0]));
+			BiomeInfo biomeInfo = BiomeConfiguration.getBiomeInfoMap().get(Integer.parseInt(biomeInfoSplit[0]));
 			biomeInfo.setEnabled(Boolean.parseBoolean(biomeInfoSplit[1]));
 
 			this.biomeInfoList.add(biomeInfo);
@@ -195,9 +195,22 @@ public class WorldConfigurationInfo {
 		return out;
 	}
 
-	public void generateBiomeInfoListFromBiomes(ArrayList<BTABiome> biomeList) {
+	public void generateBiomeInfoListFromBiomes(ArrayList<BTABiome> biomeList, boolean allowDeco, boolean legacyCompatibility) {
 		for (BTABiome b : biomeList) {
-			this.biomeInfoList.add(BetterBiomesConfiguration.biomeInfoMap.get(b.biomeID).copy().setEnabled(true));
+			boolean addBiome = false;
+			
+			if (b.isDecoOnly()) {
+				if (allowDeco) {
+					addBiome = true;
+				}
+			}
+			else if (b.isLegacyCompatible() || !legacyCompatibility) {
+				addBiome = true;
+			}
+			
+			if (addBiome) {
+				this.biomeInfoList.add(BiomeConfiguration.getBiomeInfoMap().get(b.biomeID).copy().setEnabled(true));
+			}
 		}
 	}
 
@@ -281,5 +294,9 @@ public class WorldConfigurationInfo {
 	public WorldConfigurationInfo setGenerator(TerrainGenerator generator) {
 		this.generator = generator;
 		return this;
+	}
+	
+	public static interface Condition {
+		public boolean satisfiesContraints(WorldConfigurationInfo info);
 	}
 }

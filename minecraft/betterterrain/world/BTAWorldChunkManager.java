@@ -6,6 +6,7 @@ import java.util.Random;
 
 import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.biome.BTABiome;
+import betterterrain.biome.BiomeConfiguration;
 import betterterrain.biome.layer.BTALayer;
 import net.minecraft.src.BiomeCache;
 import net.minecraft.src.BiomeGenBase;
@@ -33,7 +34,7 @@ public class BTAWorldChunkManager extends WorldChunkManager {
         this.biomeCache = new BiomeCache(this);
         this.biomesToSpawnIn = new ArrayList();
         
-        for (BTABiome b : BetterBiomesConfiguration.biomeList) {
+        for (BTABiome b : BetterBiomesConfiguration.getBiomeList()) {
         	if (b.isSpawnable()) {
         		biomesToSpawnIn.add(b);
         	}
@@ -276,7 +277,7 @@ public class BTAWorldChunkManager extends WorldChunkManager {
             int var17 = var7 + var15 / var10 << 2;
             BiomeGenBase var18 = BiomeGenBase.biomeList[var12[var15]];
 
-            if (BetterBiomesConfiguration.canBiomeSpawnStronghold(var18) && (var13 == null || par5Random.nextInt(var14 + 1) == 0))
+            if (BiomeConfiguration.canBiomeSpawnStronghold(var18) && (var13 == null || par5Random.nextInt(var14 + 1) == 0))
             {
                 var13 = new ChunkPosition(var16, 0, var17);
                 ++var14;

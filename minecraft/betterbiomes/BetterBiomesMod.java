@@ -1,12 +1,13 @@
 package betterbiomes;
 
 import betterbiomes.biome.BetterBiomesConfiguration;
+import betterbiomes.entity.BTAEntityCrystalGolem;
+import betterbiomes.entity.BTARenderCrystalGolem;
 import betterterrain.BTAAddon;
 import betterterrain.BTAMod;
 import betterterrain.BTAVersion;
+import betterterrain.biome.BiomeConfiguration;
 import betterterrain.block.BTABlockClay;
-import betterterrain.entity.BTAEntityCrystalGolem;
-import betterterrain.entity.BTARenderCrystalGolem;
 import betterterrain.item.BTAItemBloodMossSpores;
 import betterterrain.item.BTAItemPileSoulSand;
 import net.minecraft.src.Block;
@@ -66,6 +67,11 @@ public class BetterBiomesMod extends BTAAddon {
 		}
 		
 		return instance;
+	}
+
+	@Override
+	public BiomeConfiguration getBiomeConfiguration() {
+		return BetterBiomesConfiguration.getInstance();
 	}
 	
 	// ------ Client only ------ //

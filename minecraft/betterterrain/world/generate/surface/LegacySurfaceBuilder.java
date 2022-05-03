@@ -74,7 +74,7 @@ public class LegacySurfaceBuilder extends SurfaceBuilder {
 								}
 								else if (j >= seaLevel - (8 + rand.nextInt(2)) && j <= seaLevel + 1) {
 									if(biome.biomeID == BetterBiomesConfiguration.oldValley.biomeID || biome.biomeID == BetterBiomesConfiguration.valleyMountains.biomeID || biome.biomeID == BetterBiomesConfiguration.valley.biomeID || 
-											((biome.biomeID == BetterBiomesConfiguration.tropics.biomeID || biome.biomeID == BetterBiomesConfiguration.tropicsEdge.biomeID || biome.biomeID == BetterBiomesConfiguration.riverTropics.biomeID) && generatorInfo.getBTAVersion().isVersionAtLeast(BTAVersion.V1_2_0))) {
+											((biome.biomeID == BetterBiomesConfiguration.tropics.biomeID || biome.biomeID == BetterBiomesConfiguration.tropicsEdge.biomeID || biome.biomeID == BetterBiomesConfiguration.tropicsRiver.biomeID) && generatorInfo.getBTAVersion().isVersionAtLeast(BTAVersion.V1_2_0))) {
 										topBlock = (byte)Block.sand.blockID;
 										fillerBlock = (byte)Block.sand.blockID;
 									}
@@ -89,15 +89,15 @@ public class LegacySurfaceBuilder extends SurfaceBuilder {
 										}
 									}
 
-									if (generatorInfo.generatePerlinBeaches() && BetterBiomesConfiguration.shouldBiomeSpawnPerlinBeach(biome.biomeID)) {
+									if (generatorInfo.generatePerlinBeaches() && biome instanceof BTABiome && !(((BTABiome) biome).getSurfaceBuilder() instanceof NoShorelineSurfaceBuilder)) {
 										if (useGravel) {
 											topBlock = 0;
 											fillerBlock = Block.gravel.blockID;
 										}
 
 										if (useSand) {
-											if (biome == BetterBiomesConfiguration.badlands || biome == BetterBiomesConfiguration.badlandsPlateau || biome == BetterBiomesConfiguration.badlandsEdge || biome == BetterBiomesConfiguration.riverBadlands || 
-													biome == BetterBiomesConfiguration.outback || biome == BetterBiomesConfiguration.riverOutback || biome == BetterBiomesConfiguration.beachOutback) {
+											if (biome == BetterBiomesConfiguration.badlands || biome == BetterBiomesConfiguration.badlandsPlateau || biome == BetterBiomesConfiguration.badlandsEdge || biome == BetterBiomesConfiguration.badlandsRiver || 
+													biome == BetterBiomesConfiguration.outback || biome == BetterBiomesConfiguration.outbackRiver || biome == BetterBiomesConfiguration.redSandBeach) {
 												topBlock = DecoIntegration.redSand.blockID;
 												fillerBlock = DecoIntegration.redSand.blockID;
 											}

@@ -9,11 +9,16 @@ import betterterrain.structure.component.BTAComponentScatteredFeatureRedDesertPy
 public class StructureScatteredFeatureStart extends StructureStart
 {
 	public static ArrayList<BiomeGenBase> desertBiomeList = new ArrayList();
+	public static ArrayList<BiomeGenBase> redDesertBiomeList = new ArrayList();
 	public static ArrayList<BiomeGenBase> jungleBiomeList = new ArrayList();
 	public static ArrayList<BiomeGenBase> swampBiomeList = new ArrayList();
 	
 	public static void addDesertBiome(BiomeGenBase biome) {
 		desertBiomeList.add(biome);
+	}
+	
+	public static void addRedDesertBiome(BiomeGenBase biome) {
+		redDesertBiomeList.add(biome);
 	}
 	
 	public static void addJungleBiome(BiomeGenBase biome) {
@@ -38,7 +43,7 @@ public class StructureScatteredFeatureStart extends StructureStart
 			ComponentScatteredFeatureDesertPyramid var8 = new ComponentScatteredFeatureDesertPyramid(rand, chunkX * 16, chunkZ * 16);
 			this.components.add(var8);
 		}
-		else if (BetterBiomesConfiguration.canBiomeSpawnRedDesertTemple(biome))
+		else if (redDesertBiomeList.contains(biome))
 		{
 			BTAComponentScatteredFeatureRedDesertPyramid var8 = new BTAComponentScatteredFeatureRedDesertPyramid(rand, chunkX * 16, chunkZ * 16);
 			this.components.add(var8);

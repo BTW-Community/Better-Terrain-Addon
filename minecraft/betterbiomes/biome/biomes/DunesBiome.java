@@ -35,8 +35,8 @@ public class DunesBiome extends BTABiome
             var7.generate(par1World, par2Random, var5, par1World.getHeightValue(var5, var6) + 1, var6);
         }
         
-        this.AddEmeralds(par1World, par2Random, par3, par4);
-        this.AddSilverfishBlocks(par1World, par2Random, par3, par4);
+        this.addEmeralds(par1World, par2Random, par3, par4);
+        this.addSilverfishBlocks(par1World, par2Random, par3, par4);
     }
 
     public boolean CanLightningStrikeInBiome()
