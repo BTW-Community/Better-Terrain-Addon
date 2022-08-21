@@ -121,7 +121,7 @@ public class WorldConfigurationInfoLegacy {
 				else if (optionSplit[0].equalsIgnoreCase("Generator")) {
 					this.generator = TerrainGenerator.fromId(Integer.parseInt(optionSplit[1]));
 				}
-				else {
+				else if (!optionSplit[0].equalsIgnoreCase("Nether")) {
 					throw new IllegalArgumentException("Invalid format for generator options");
 				}
 			}
