@@ -9,15 +9,15 @@ import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.BTAVersion;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
 
 public class BadlandsPlateauBiome extends BTABiome {
 	private ArrayList<Integer> allowedTerracottaMetadata = new ArrayList();
 
-	public BadlandsPlateauBiome(int id, Climate climate) {
-		super(id, climate);
+	public BadlandsPlateauBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
 		if (DecoIntegration.isDecoInstalled()) {
 			this.topBlockExt = DecoIntegration.terracotta.blockID;
 			this.fillerBlockExt = DecoIntegration.terracotta.blockID;

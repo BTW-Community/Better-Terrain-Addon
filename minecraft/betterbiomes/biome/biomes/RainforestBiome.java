@@ -2,11 +2,11 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
+import betterbiomes.feature.tree.RainforestGen1;
+import betterbiomes.feature.tree.RainforestGen2;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.tree.RainforestGen1;
-import betterterrain.feature.tree.RainforestGen2;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.FCEntityChicken;
 import net.minecraft.src.FCEntityCreeper;
 import net.minecraft.src.FCEntityEnderman;
@@ -26,8 +26,8 @@ import net.minecraft.src.WorldGenerator;
 
 public class RainforestBiome extends BTABiome {
 
-	public RainforestBiome(int id, Climate climate) {
-		super(id, climate);
+	public RainforestBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
 		this.btaBiomeDecorator.treesPerChunk = 25;
 		this.btaBiomeDecorator.grassPerChunk = 7;
 		this.btaBiomeDecorator.reedsPerChunk = 10;

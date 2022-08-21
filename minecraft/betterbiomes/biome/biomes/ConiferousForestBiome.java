@@ -2,20 +2,20 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
+import betterbiomes.feature.plant.TallGrassGen;
+import betterbiomes.feature.tree.TaigaGen3;
+import betterbiomes.feature.tree.TaigaGen4;
+import betterbiomes.feature.tree.TaigaGen7;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.plant.TallGrassGen;
-import betterterrain.feature.tree.TaigaGen3;
-import betterterrain.feature.tree.TaigaGen4;
-import betterterrain.feature.tree.TaigaGen7;
 import net.minecraft.src.Block;
 import net.minecraft.src.FCEntityWolf;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenerator;
 
 public class ConiferousForestBiome extends BTABiome {
-	public ConiferousForestBiome(int id, Climate climate) {
-		super(id, climate);
+	public ConiferousForestBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
 		spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 8, 4, 4));
         this.btaBiomeDecorator.treesPerChunk = 8;
         this.btaBiomeDecorator.grassPerChunk = 10;

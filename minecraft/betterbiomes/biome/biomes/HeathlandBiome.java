@@ -8,8 +8,8 @@ import net.minecraft.src.WorldGenShrub;
 import net.minecraft.src.WorldGenerator;
 
 public class HeathlandBiome extends BTABiome {
-	public HeathlandBiome(int id, Climate climate) {
-		super(id, climate);
+	public HeathlandBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
 		this.btaBiomeDecorator.treesPerChunk = 7;
 		this.btaBiomeDecorator.grassPerChunk = 30;
 		this.btaBiomeDecorator.flowersPerChunk = 15;

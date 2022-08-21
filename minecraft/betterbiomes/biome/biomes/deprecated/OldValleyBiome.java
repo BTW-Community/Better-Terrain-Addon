@@ -7,8 +7,8 @@ import betterterrain.biome.Climate;
 import net.minecraft.src.WorldGenerator;
 
 public class OldValleyBiome extends BTABiome {
-	public OldValleyBiome(int id, Climate climate) {
-		super(id, climate);
+	public OldValleyBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
         this.btaBiomeDecorator.treesPerChunk = 4;
         this.btaBiomeDecorator.grassPerChunk = 4;
 	}

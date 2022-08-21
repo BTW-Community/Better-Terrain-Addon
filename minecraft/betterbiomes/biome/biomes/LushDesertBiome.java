@@ -2,10 +2,10 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
+import betterbiomes.feature.tree.PalmTreeSmallGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.tree.PalmTreeSmallGen;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.Block;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenDesertWells;
@@ -13,9 +13,8 @@ import net.minecraft.src.WorldGenerator;
 
 public class LushDesertBiome extends BTABiome
 {
-    public LushDesertBiome(int par1, Climate climate)
-    {
-        super(par1, climate);
+    public LushDesertBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
         this.spawnableCreatureList.clear();
         this.topBlockExt = (byte)Block.sand.blockID;
         this.fillerBlockExt = (byte)Block.sand.blockID;

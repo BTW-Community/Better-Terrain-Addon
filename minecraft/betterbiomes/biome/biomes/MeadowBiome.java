@@ -2,15 +2,15 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
+import betterbiomes.feature.tree.MeadowTreeGen1;
+import betterbiomes.feature.tree.MeadowTreeGen2;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.tree.MeadowTreeGen1;
-import betterterrain.feature.tree.MeadowTreeGen2;
 import net.minecraft.src.WorldGenerator;
 
 public class MeadowBiome extends BTABiome {
-	public MeadowBiome(int id, Climate climate) {
-		super(id, climate);
+	public MeadowBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
 		this.btaBiomeDecorator.treesPerChunk = 1;
 		this.btaBiomeDecorator.grassPerChunk = 15;
 		this.btaBiomeDecorator.flowersPerChunk = 30;

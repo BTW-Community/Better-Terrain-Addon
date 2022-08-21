@@ -2,17 +2,17 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
+import betterbiomes.feature.tree.PineTreeGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.tree.PineTreeGen;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
 
 public class MountainBiome extends BTABiome {
 
-	public MountainBiome(int id, Climate climate) {
-		super(id, climate);
+	public MountainBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
 		this.btaBiomeDecorator.treesPerChunk = 2;
 		this.btaBiomeDecorator.grassPerChunk = 3;
 	}

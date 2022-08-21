@@ -8,8 +8,8 @@ import net.minecraft.src.Block;
 import net.minecraft.src.World;
 
 public class PatagoniaMountainBiome extends BTABiome {
-	public PatagoniaMountainBiome(int id, Climate climate) {
-		super(id, climate);
+	public PatagoniaMountainBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
 		this.topBlockExt = Block.stone.blockID;
 		this.fillerBlockExt = Block.stone.blockID;
 	}

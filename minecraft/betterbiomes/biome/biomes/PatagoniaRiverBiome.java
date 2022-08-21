@@ -3,8 +3,8 @@ package betterbiomes.biome.biomes;
 import betterbiomes.biome.BetterBiomesConfiguration;
 
 public class PatagoniaRiverBiome extends RiverBiome {
-	public PatagoniaRiverBiome(int par1) {
-		super(par1, BetterBiomesConfiguration.patagonia.climate);
+	public PatagoniaRiverBiome(int id, String internalName) {
+		super(id, internalName, BetterBiomesConfiguration.patagonia.climate);
 	}
 
     /**

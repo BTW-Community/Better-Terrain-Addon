@@ -2,18 +2,18 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
+import betterbiomes.feature.terrain.AmethystShardsGen;
+import betterbiomes.feature.terrain.CrystalGen;
 import betterterrain.biome.BTANetherBiome;
-import betterterrain.feature.terrain.AmethystShardsGen;
-import betterterrain.feature.terrain.CrystalGen;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.Block;
 import net.minecraft.src.Vec3;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
 
 public class CrystalCavernsBiome extends BTANetherBiome {
-	public CrystalCavernsBiome(int id) {
-		super(id);
+	public CrystalCavernsBiome(int id, String internalName) {
+		super(id, internalName);
 		
 		this.topBlockExt = Block.blockNetherQuartz.blockID;
 		this.fillerBlockExt = Block.blockNetherQuartz.blockID;

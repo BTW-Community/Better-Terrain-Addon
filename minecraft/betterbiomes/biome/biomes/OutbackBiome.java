@@ -3,11 +3,11 @@ package betterbiomes.biome.biomes;
 import java.util.Random;
 
 import betterbiomes.DecoIntegration;
+import betterbiomes.feature.plant.TallGrassGen;
+import betterbiomes.feature.tree.SmallShrubGen;
+import betterbiomes.feature.tree.TinyShrubGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.plant.TallGrassGen;
-import betterterrain.feature.tree.SmallShrubGen;
-import betterterrain.feature.tree.TinyShrubGen;
 import net.minecraft.src.Block;
 import net.minecraft.src.FCEntityChicken;
 import net.minecraft.src.FCEntityPig;
@@ -16,8 +16,8 @@ import net.minecraft.src.WorldGenShrub;
 import net.minecraft.src.WorldGenerator;
 
 public class OutbackBiome extends BTABiome {
-	public OutbackBiome(int id, Climate climate) {
-		super(id, climate);
+	public OutbackBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
 		if (DecoIntegration.isDecoInstalled()) {
 			this.topBlockExt = DecoIntegration.redSand.blockID;
 			this.fillerBlockExt = DecoIntegration.redSand.blockID;

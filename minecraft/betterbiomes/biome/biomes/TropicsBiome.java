@@ -2,10 +2,10 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
+import betterbiomes.feature.plant.TallGrassGen;
+import betterbiomes.feature.tree.PalmTreeSmallGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.plant.TallGrassGen;
-import betterterrain.feature.tree.PalmTreeSmallGen;
 import net.minecraft.src.Block;
 import net.minecraft.src.FCEntityChicken;
 import net.minecraft.src.FCEntityCreeper;
@@ -22,9 +22,8 @@ import net.minecraft.src.WorldGenShrub;
 import net.minecraft.src.WorldGenerator;
 
 public class TropicsBiome extends BTABiome {
-	public TropicsBiome(int par1, Climate climate)
-	{
-		super(par1, climate);
+	public TropicsBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
 		this.btaBiomeDecorator.treesPerChunk = 10;
 		this.btaBiomeDecorator.grassPerChunk = 2;
 		this.btaBiomeDecorator.sandPerChunk = 100;

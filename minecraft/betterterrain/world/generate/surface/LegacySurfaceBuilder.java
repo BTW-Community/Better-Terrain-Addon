@@ -6,7 +6,7 @@ import betterbiomes.DecoIntegration;
 import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.BTAVersion;
 import betterterrain.biome.BTABiome;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.BetaNoiseOctaves;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;

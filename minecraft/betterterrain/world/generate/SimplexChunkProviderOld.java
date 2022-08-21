@@ -12,7 +12,7 @@ import betterterrain.structure.mapgen.BTAMapGenScatteredFeature;
 import betterterrain.structure.mapgen.BTAMapGenStronghold;
 import betterterrain.structure.mapgen.BTAMapGenVillage;
 import betterterrain.world.BTAChunk;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.FastNoiseOctaves;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.SurfaceBuilder;

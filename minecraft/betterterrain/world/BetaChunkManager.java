@@ -8,6 +8,7 @@ import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.BiomeConfiguration;
 import betterterrain.biome.layer.BTALayer;
+import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.BiomeCache;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.ChunkPosition;

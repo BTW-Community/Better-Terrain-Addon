@@ -1,7 +1,7 @@
 package betterterrain.biome.layer;
 
 import betterbiomes.biome.BetterBiomesConfiguration;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.GenLayer;
 import net.minecraft.src.IntCache;
@@ -77,22 +77,6 @@ public class ShoreLayer extends BTALayer
 						else {
 							intCache[j + i * xSize] = currentBiome;
 						}
-					}
-				}
-				else if (currentBiome == BiomeGenBase.extremeHills.biomeID)
-				{
-					neighbor1 = parentInts[j + 1 + (i + 1 - 1) * (xSize + 2)];
-					neighbor2 = parentInts[j + 1 + 1 + (i + 1) * (xSize + 2)];
-					neighbor3 = parentInts[j + 1 - 1 + (i + 1) * (xSize + 2)];
-					neighbor4 = parentInts[j + 1 + (i + 1 + 1) * (xSize + 2)];
-
-					if (neighbor1 == BiomeGenBase.extremeHills.biomeID && neighbor2 == BiomeGenBase.extremeHills.biomeID && neighbor3 == BiomeGenBase.extremeHills.biomeID && neighbor4 == BiomeGenBase.extremeHills.biomeID)
-					{
-						intCache[j + i * xSize] = currentBiome;
-					}
-					else
-					{
-						intCache[j + i * xSize] = BiomeGenBase.extremeHillsEdge.biomeID;
 					}
 				}
 				else

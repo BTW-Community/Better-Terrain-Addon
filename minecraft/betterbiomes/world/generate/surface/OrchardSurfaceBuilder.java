@@ -2,8 +2,8 @@ package betterbiomes.world.generate.surface;
 
 import java.util.Random;
 
-import betterterrain.feature.tree.OldOakGen;
-import betterterrain.world.WorldConfigurationInfo;
+import betterbiomes.feature.tree.OldOakGen;
+import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.SurfaceBuilder;
 import net.minecraft.src.World;

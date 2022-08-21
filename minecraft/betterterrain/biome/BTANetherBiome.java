@@ -3,11 +3,11 @@ package betterterrain.biome;
 import java.util.Random;
 
 import betterbiomes.DecoIntegration;
-import betterterrain.feature.terrain.BasaltPillarGen;
-import betterterrain.feature.terrain.GlowstoneGen;
-import betterterrain.feature.terrain.NetherLavaGen;
-import betterterrain.feature.terrain.OreGen;
-import betterterrain.world.WorldConfigurationInfo;
+import betterbiomes.feature.terrain.BasaltPillarGen;
+import betterbiomes.feature.terrain.GlowstoneGen;
+import betterbiomes.feature.terrain.NetherLavaGen;
+import betterbiomes.feature.terrain.OreGen;
+import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.Block;
 import net.minecraft.src.FCEntityGhast;
 import net.minecraft.src.FCEntityMagmaCube;
@@ -24,8 +24,8 @@ public abstract class BTANetherBiome extends BTABiome {
 	
 	protected int magmaPerChunk = 4;
 	
-	public BTANetherBiome(int id) {
-		super(id, Climate.HELL);
+	public BTANetherBiome(int id, String internalName) {
+		super(id, internalName, Climate.HELL);
 		
 		this.topBlockExt = Block.netherrack.blockID;
 		this.fillerBlockExt = Block.netherrack.blockID;

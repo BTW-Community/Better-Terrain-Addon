@@ -6,8 +6,8 @@ import net.minecraft.src.FCEntityWitch;
 import net.minecraft.src.SpawnListEntry;
 
 public class WillowRiverBiome extends RiverBiome {
-	public WillowRiverBiome(int par1) {
-		super(par1, BetterBiomesConfiguration.willowGrove.climate);
+	public WillowRiverBiome(int id, String internalName) {
+		super(id, internalName, BetterBiomesConfiguration.willowGrove.climate);
 		this.waterColorMultiplier = BetterBiomesConfiguration.willowGrove.waterColorMultiplier;
         this.btaBiomeDecorator.waterlilyPerChunk = 4;
         this.spawnableCreatureList.clear();

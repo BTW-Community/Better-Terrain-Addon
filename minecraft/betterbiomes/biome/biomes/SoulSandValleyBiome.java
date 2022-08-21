@@ -1,6 +1,7 @@
 package betterbiomes.biome.biomes;
 
 import betterterrain.biome.BTANetherBiome;
+import betterterrain.biome.Climate;
 import net.minecraft.src.Block;
 import net.minecraft.src.FCEntityGhast;
 import net.minecraft.src.FCEntitySkeleton;
@@ -9,8 +10,8 @@ import net.minecraft.src.Vec3;
 import net.minecraft.src.World;
 
 public class SoulSandValleyBiome extends BTANetherBiome {
-	public SoulSandValleyBiome(int id) {
-		super(id);
+	public SoulSandValleyBiome(int id, String internalName) {
+		super(id, internalName);
 		
 		this.topBlockExt = Block.slowSand.blockID;
 		this.fillerBlockExt = Block.slowSand.blockID;

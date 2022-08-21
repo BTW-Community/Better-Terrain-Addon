@@ -5,7 +5,7 @@ import java.util.Random;
 import betterbiomes.DecoIntegration;
 import betterbiomes.world.generate.surface.BasaltDeltasSurfaceBuilder;
 import betterterrain.biome.BTANetherBiome;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.Block;
 import net.minecraft.src.FCEntityMagmaCube;
 import net.minecraft.src.FCUtilsBlockPos;
@@ -15,8 +15,8 @@ import net.minecraft.src.Vec3;
 import net.minecraft.src.World;
 
 public class BasaltDeltasBiome extends BTANetherBiome {
-	public BasaltDeltasBiome(int id) {
-		super(id);
+	public BasaltDeltasBiome(int id, String internalName) {
+		super(id, internalName);
 
 		if (DecoIntegration.isDecoInstalled()) {
 			this.topBlockExt = DecoIntegration.basalt.blockID;

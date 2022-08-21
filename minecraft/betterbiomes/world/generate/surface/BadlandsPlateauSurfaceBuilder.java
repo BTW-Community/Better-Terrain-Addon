@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import betterbiomes.DecoIntegration;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.SurfaceBuilder;
 import betterterrain.world.generate.surface.SurfaceBuilder.SurfaceType;

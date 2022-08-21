@@ -8,8 +8,8 @@ import net.minecraft.src.FCEntityWitch;
 import net.minecraft.src.SpawnListEntry;
 
 public class MysticRiverBiome extends RiverBiome {
-	public MysticRiverBiome(int par1) {
-		super(par1, BetterBiomesConfiguration.mysticForest.climate);
+	public MysticRiverBiome(int id, String internalName) {
+		super(id, internalName, BetterBiomesConfiguration.mysticForest.climate);
 		this.waterColorMultiplier = BetterBiomesConfiguration.mysticForest.waterColorMultiplier;
         this.spawnableCreatureList.clear();
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntitySlime.class, 1, 1, 1));

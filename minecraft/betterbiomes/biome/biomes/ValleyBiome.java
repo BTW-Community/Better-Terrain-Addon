@@ -6,8 +6,8 @@ import betterterrain.biome.Climate;
 import net.minecraft.src.World;
 
 public class ValleyBiome extends WoodsBiome {
-	public ValleyBiome(int par1, Climate climate) {
-		super(par1, climate);
+	public ValleyBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
 	}
 
     public void decorate(World var1, Random var2, int var3, int var4)

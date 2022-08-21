@@ -2,10 +2,10 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
+import betterbiomes.feature.plant.TallGrassGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.plant.TallGrassGen;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.Block;
 import net.minecraft.src.FCEntityChicken;
 import net.minecraft.src.FCEntityCreeper;
@@ -27,9 +27,8 @@ import net.minecraft.src.WorldGenerator;
 
 public class JungleEdgeBiome extends BTABiome
 {
-    public JungleEdgeBiome(int par1, Climate climate)
-    {
-        super(par1, climate);
+    public JungleEdgeBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
         this.btaBiomeDecorator.treesPerChunk = 5;
         this.btaBiomeDecorator.grassPerChunk = 25;
         this.btaBiomeDecorator.flowersPerChunk = 4;

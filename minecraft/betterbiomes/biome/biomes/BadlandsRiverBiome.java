@@ -6,8 +6,8 @@ import betterbiomes.DecoIntegration;
 import betterbiomes.biome.BetterBiomesConfiguration;
 
 public class BadlandsRiverBiome extends RiverBiome {
-	public BadlandsRiverBiome(int par1) {
-		super(par1, BetterBiomesConfiguration.badlands.climate);
+	public BadlandsRiverBiome(int id, String internalName) {
+		super(id, internalName, BetterBiomesConfiguration.badlands.climate);
 		if (DecoIntegration.isDecoInstalled()) {
 			this.topBlockExt = DecoIntegration.redSand.blockID;
 			this.fillerBlockExt = DecoIntegration.redSand.blockID;

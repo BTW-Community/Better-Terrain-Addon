@@ -12,8 +12,8 @@ import net.minecraft.src.FCEntityZombie;
 import net.minecraft.src.SpawnListEntry;
 
 public class TropicsRiverBiome extends RiverBiome {
-	public TropicsRiverBiome(int id) {
-		super(id, BetterBiomesConfiguration.tropics.climate);
+	public TropicsRiverBiome(int id, String internalName) {
+		super(id, internalName, BetterBiomesConfiguration.tropics.climate);
 		this.waterColorMultiplier = BetterBiomesConfiguration.tropics.waterColorMultiplier;
 		this.spawnableCreatureList.clear();
 		this.spawnableMonsterList.clear();

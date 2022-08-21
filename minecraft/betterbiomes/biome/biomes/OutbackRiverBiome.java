@@ -4,9 +4,8 @@ import betterbiomes.DecoIntegration;
 import betterbiomes.biome.BetterBiomesConfiguration;
 
 public class OutbackRiverBiome extends RiverBiome {
-	public OutbackRiverBiome(int par1)
-    {
-        super(par1, BetterBiomesConfiguration.outback.climate);
+	public OutbackRiverBiome(int id, String internalName) {
+		super(id, internalName, BetterBiomesConfiguration.outback.climate);
         this.spawnableCreatureList.clear();
 		if (DecoIntegration.isDecoInstalled()) {
 			this.topBlockExt = DecoIntegration.redSand.blockID;

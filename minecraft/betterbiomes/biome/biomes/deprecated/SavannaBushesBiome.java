@@ -2,16 +2,16 @@ package betterbiomes.biome.biomes.deprecated;
 
 import java.util.Random;
 
+import betterbiomes.feature.tree.AcaciaGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.tree.AcaciaGen;
 import net.minecraft.src.WorldGenShrub;
 import net.minecraft.src.WorldGenerator;
 
 public class SavannaBushesBiome extends BTABiome {
 
-	public SavannaBushesBiome(int id, Climate climate) {
-		super(id, climate);
+	public SavannaBushesBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
         this.btaBiomeDecorator.treesPerChunk = 10;
         this.btaBiomeDecorator.grassPerChunk = 25;
 	}

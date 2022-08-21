@@ -7,8 +7,8 @@ import net.minecraft.src.Block;
 
 public class RedSandBeachBiome extends BTABiome
 {
-    public RedSandBeachBiome(int id, Climate climate) {
-        super(id, climate);
+    public RedSandBeachBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
         this.spawnableCreatureList.clear();
         this.topBlock = (byte)Block.sand.blockID;
         this.fillerBlock = (byte)Block.sand.blockID;

@@ -1,11 +1,10 @@
 package betterterrain.world.generate;
 
 public enum TerrainGenerator {
-	CLASSIC(0, "Classic"),
-	SIMPLEX(1, "BTA"),
-	SIMPLEX_OLD(2, "BTA"),
-	BETA(3, "Beta"),
-	SKYLANDS(4, "Skylands");
+	CLASSIC(0, "classic"),
+	SIMPLEX(1, "simplex"),
+	BETA(2, "beta"),
+	SKYLANDS(3, "skylands");
 	
 	public final int id;
 	public final String name;
@@ -18,6 +17,16 @@ public enum TerrainGenerator {
 	public static TerrainGenerator fromId(int id) {
 		for (TerrainGenerator gen : values()) {
 			if (gen.id == id) {
+				return gen;
+			}
+		}
+		
+		return null;
+	}
+	
+	public static TerrainGenerator fromName(String name) {
+		for (TerrainGenerator gen : values()) {
+			if (gen.name.equals(name)) {
 				return gen;
 			}
 		}

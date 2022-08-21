@@ -4,14 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import betterbiomes.feature.plant.MelonGen;
+import betterbiomes.feature.plant.TallGrassGen;
+import betterbiomes.feature.terrain.OreGen;
 import betterterrain.BTAVersion;
 import betterterrain.biome.layer.HillsLayer;
-import betterterrain.feature.plant.MelonGen;
-import betterterrain.feature.plant.TallGrassGen;
-import betterterrain.feature.terrain.OreGen;
 import betterterrain.structure.mapgen.BTAMapGenScatteredFeature;
 import betterterrain.structure.mapgen.BTAMapGenVillage;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfoLegacy;
 import betterterrain.world.generate.surface.SurfaceBuilder;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;
@@ -42,14 +43,22 @@ public class BTABiome extends BiomeGenBase {
     
     private static WorldConfigurationInfo generatorInfoCache;
     
-    public BTABiome(int id, Climate climate) {
+    private String internalName;
+    
+    public BTABiome(int id, String internalName, Climate climate) {
 		super(id);
+		
+        this.setInternalName(internalName);
+        
 		this.enableRain = true;
 		this.isSpawnable = true;
 		this.btaBiomeDecorator = new BiomeDecorator(this);
+		
         this.topBlockExt = Block.grass.blockID;
         this.fillerBlockExt = Block.dirt.blockID;
+        
         this.climate = climate;
+        
         this.isPlateau = false;
 	}
 
@@ -214,7 +223,7 @@ public class BTABiome extends BiomeGenBase {
     public boolean canSnowAt(World world, int x, int y, int z) {
 		if (generatorInfoCache == null || !generatorInfoCache.toString().equals(world.provider.generatorOptions)) {
 			if (world.provider.generatorOptions.equals("")) {
-				generatorInfoCache = WorldConfigurationInfo.createDefaultConfigurationLegacy(world.provider.terrainType.isDeco());
+				generatorInfoCache = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(world.provider.terrainType.isDeco());
 			}
 			else {
 				generatorInfoCache = WorldConfigurationInfo.createInfoFromString(world.provider.generatorOptions);
@@ -493,5 +502,25 @@ public class BTABiome extends BiomeGenBase {
 			int z = startZ + rand.nextInt(16);
 			generator.generate(world, rand, x, y, z);
 		}
+	}
+    
+    public static int getIDFromInternalName(String internalName) {
+    	for (int i = 0; i < BiomeGenBase.biomeList.length; i++) {
+    		BiomeGenBase b = BiomeGenBase.biomeList[i];
+    		
+    		if (b != null && b instanceof BTABiome && ((BTABiome) b).getInternalName().equals(internalName)) {
+    			return b.biomeID;
+    		}
+    	}
+    	
+    	return -1;
+    }
+
+	public String getInternalName() {
+		return internalName;
+	}
+
+	public void setInternalName(String internalName) {
+		this.internalName = internalName;
 	}
 }

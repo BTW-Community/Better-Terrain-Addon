@@ -2,7 +2,7 @@ package betterterrain.biome.layer;
 
 import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.biome.BiomeConfiguration;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.GenLayer;
 import net.minecraft.src.IntCache;
 

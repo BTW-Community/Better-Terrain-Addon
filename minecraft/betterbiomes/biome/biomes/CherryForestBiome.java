@@ -2,18 +2,18 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
+import betterbiomes.feature.plant.TallGrassGen;
+import betterbiomes.feature.tree.CherryTreeGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.plant.TallGrassGen;
-import betterterrain.feature.tree.CherryTreeGen;
 import net.minecraft.src.Block;
 import net.minecraft.src.FCEntityWolf;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenerator;
 
 public class CherryForestBiome extends BTABiome {
-    public CherryForestBiome(int par1, Climate climate) {
-        super(par1, climate);
+    public CherryForestBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 5, 4, 4));
         this.btaBiomeDecorator.treesPerChunk = 10;
         this.btaBiomeDecorator.grassPerChunk = 5;

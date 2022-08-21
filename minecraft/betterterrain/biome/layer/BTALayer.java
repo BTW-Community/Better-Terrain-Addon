@@ -3,8 +3,8 @@ package betterterrain.biome.layer;
 import java.util.ArrayList;
 
 import betterterrain.BTAVersion;
+import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.BTAMod;
-import betterterrain.world.WorldConfigurationInfo;
 import net.minecraft.src.GenLayer;
 import net.minecraft.src.GenLayerAddIsland;
 import net.minecraft.src.GenLayerAddMushroomIsland;

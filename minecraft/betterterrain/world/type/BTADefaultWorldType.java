@@ -1,7 +1,8 @@
 package betterterrain.world.type;
 
 import betterterrain.world.BTAWorldChunkManager;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfoLegacy;
 import betterterrain.world.generate.BTADefaultChunkProvider;
 import betterterrain.world.generate.EndChunkProvider;
 import betterterrain.world.generate.NetherChunkProvider;
@@ -32,7 +33,7 @@ public class BTADefaultWorldType extends WorldType {
     	WorldConfigurationInfo info;
     	
     	if (generatorOptions.equals("")) {
-    		info = WorldConfigurationInfo.createDefaultConfigurationLegacy(this.isDeco());
+    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(this.isDeco());
     	}
     	else {
     		info = WorldConfigurationInfo.createInfoFromString(generatorOptions);
@@ -46,7 +47,7 @@ public class BTADefaultWorldType extends WorldType {
     	WorldConfigurationInfo info;
     	
     	if (generatorOptions.equals("")) {
-    		info = WorldConfigurationInfo.createDefaultConfigurationLegacy(this.isDeco());
+    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(this.isDeco());
     	}
     	else {
     		info = WorldConfigurationInfo.createInfoFromString(generatorOptions);
@@ -56,8 +57,6 @@ public class BTADefaultWorldType extends WorldType {
     	default:
     	case CLASSIC:
     		return new BTADefaultChunkProvider(world, seed, mapFeaturesEnabled, info);
-    	case SIMPLEX_OLD:
-    		return new SimplexChunkProviderOld(world, seed, mapFeaturesEnabled, info);
     	case SIMPLEX:
     		return new SimplexChunkProvider(world, seed, mapFeaturesEnabled, info);
     	}
@@ -68,7 +67,7 @@ public class BTADefaultWorldType extends WorldType {
     	WorldConfigurationInfo info;
     	
     	if (generatorOptions.equals("")) {
-    		info = WorldConfigurationInfo.createDefaultConfigurationLegacy(this.isDeco());
+    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(this.isDeco());
     	}
     	else {
     		info = WorldConfigurationInfo.createInfoFromString(generatorOptions);

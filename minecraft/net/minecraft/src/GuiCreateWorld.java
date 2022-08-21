@@ -6,7 +6,7 @@ import org.lwjgl.input.Keyboard;
 import betterbiomes.DecoIntegration;
 import betterterrain.biome.BTABiome;
 import betterterrain.gui.GeneratorOptionsGui;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.surface.SurfaceBuilder;
 
 public class GuiCreateWorld extends GuiScreen
@@ -285,6 +285,8 @@ public class GuiCreateWorld extends GuiScreen
                 if (WorldType.worldTypes[this.worldTypeId].isBTA() && this.generatorOptionsToUse.equals("")) {
                 	this.generatorOptionsToUse = WorldConfigurationInfo.createDefaultConfiguration(isDeco).toString();
 
+                    System.out.println(this.generatorOptionsToUse);
+
     				SurfaceBuilder.defaultBuilder.hasBeenInit = false;
     				SurfaceBuilder.legacyBuilder.hasBeenInit = false;
     				
@@ -298,7 +300,6 @@ public class GuiCreateWorld extends GuiScreen
                 		}
                 	}
                 }
-                //System.out.println(this.generatorOptionsToUse);
                 var6.func_82750_a(this.generatorOptionsToUse);
 
                 if (this.bonusItems && !this.isHardcore)

@@ -8,8 +8,8 @@ import net.minecraft.src.Vec3;
 import net.minecraft.src.World;
 
 public class AshFieldsBiome extends BTANetherBiome {
-	public AshFieldsBiome(int id) {
-		super(id);
+	public AshFieldsBiome(int id, String internalName) {
+		super(id, internalName);
 		
 		if (DecoIntegration.isDecoInstalled()) {
 			this.topBlockExt = DecoIntegration.ash.blockID;

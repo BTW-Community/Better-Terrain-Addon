@@ -4,17 +4,18 @@ import java.util.Random;
 
 import betterbiomes.DecoIntegration;
 import betterbiomes.biome.BetterBiomesConfiguration;
+import betterbiomes.feature.plant.DecoFlowerGen;
+import betterbiomes.feature.plant.FlowerGen;
+import betterbiomes.feature.plant.MelonGen;
+import betterbiomes.feature.plant.MyceliumGen;
+import betterbiomes.feature.terrain.ClayGen;
+import betterbiomes.feature.terrain.OasisGen;
+import betterbiomes.feature.terrain.OreGen;
+import betterbiomes.feature.terrain.SkyClayGen;
+import betterbiomes.feature.terrain.SteppeGen;
 import betterterrain.BTAVersion;
-import betterterrain.feature.plant.DecoFlowerGen;
-import betterterrain.feature.plant.FlowerGen;
-import betterterrain.feature.plant.MelonGen;
-import betterterrain.feature.plant.MyceliumGen;
-import betterterrain.feature.terrain.ClayGen;
-import betterterrain.feature.terrain.OasisGen;
-import betterterrain.feature.terrain.OreGen;
-import betterterrain.feature.terrain.SkyClayGen;
-import betterterrain.feature.terrain.SteppeGen;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfoLegacy;
 import betterterrain.world.generate.BTADefaultChunkProvider;
 import betterterrain.world.generate.surface.SurfaceBuilder;
 import net.minecraft.src.BiomeGenBase;
@@ -269,7 +270,7 @@ public class BiomeDecorator
 		{
 			this.currentWorld = par1World;
 			if (this.currentWorld.provider.generatorOptions.equals("")) {
-				this.generatorInfo = WorldConfigurationInfo.createDefaultConfigurationLegacy(this.currentWorld.provider.terrainType.isDeco());
+				this.generatorInfo = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(this.currentWorld.provider.terrainType.isDeco());
 			}
 			else {
 				this.generatorInfo = WorldConfigurationInfo.createInfoFromString(this.currentWorld.provider.generatorOptions);
@@ -286,7 +287,7 @@ public class BiomeDecorator
 	public void init(World par1World, Random par2Random, int par3, int par4) {
 		this.currentWorld = par1World;
 		if (this.currentWorld.provider.generatorOptions.equals("")) {
-			this.generatorInfo = WorldConfigurationInfo.createDefaultConfigurationLegacy(this.currentWorld.provider.terrainType.isDeco());
+			this.generatorInfo = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(this.currentWorld.provider.terrainType.isDeco());
 		}
 		else {
 			this.generatorInfo = WorldConfigurationInfo.createInfoFromString(this.currentWorld.provider.generatorOptions);

@@ -2,12 +2,12 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
+import betterbiomes.feature.plant.TallGrassGen;
+import betterbiomes.feature.tree.MassiveOakGen;
+import betterbiomes.feature.tree.MysticTreeGen;
+import betterbiomes.feature.tree.TallSwampTreeGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.plant.TallGrassGen;
-import betterterrain.feature.tree.MassiveOakGen;
-import betterterrain.feature.tree.MysticTreeGen;
-import betterterrain.feature.tree.TallSwampTreeGen;
 import net.minecraft.src.Block;
 import net.minecraft.src.FCEntityChicken;
 import net.minecraft.src.FCEntityPig;
@@ -17,8 +17,8 @@ import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenerator;
 
 public class MysticForestBiome extends BTABiome {
-	public MysticForestBiome(int id, Climate climate) {
-		super(id, climate);
+	public MysticForestBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
 		waterColorMultiplier = 15349914;
 		this.btaBiomeDecorator.treesPerChunk = 15;
 		this.btaBiomeDecorator.grassPerChunk = 7;

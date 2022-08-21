@@ -2,7 +2,7 @@ package betterterrain.world.generate.surface;
 
 import java.util.Random;
 
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.surface.SurfaceBuilder.SurfaceProcessingResult;
 import betterterrain.world.generate.surface.SurfaceBuilder.SurfaceType;
 import net.minecraft.src.BiomeGenBase;

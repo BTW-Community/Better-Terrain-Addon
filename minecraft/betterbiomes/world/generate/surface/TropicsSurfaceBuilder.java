@@ -2,7 +2,7 @@ package betterbiomes.world.generate.surface;
 
 import java.util.Random;
 
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.surface.SurfaceBuilder;
 
 public class TropicsSurfaceBuilder extends SurfaceBuilder {

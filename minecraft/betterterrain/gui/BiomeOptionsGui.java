@@ -1,7 +1,7 @@
 package betterterrain.gui;
 
 import betterterrain.biome.BiomeInfo;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.GuiButton;
 import net.minecraft.src.GuiCreateWorld;
 import net.minecraft.src.GuiScreen;

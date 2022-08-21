@@ -2,9 +2,9 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
+import betterbiomes.feature.tree.MangroveGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.tree.MangroveGen;
 import net.minecraft.src.FCEntityChicken;
 import net.minecraft.src.FCEntityCreeper;
 import net.minecraft.src.FCEntityEnderman;
@@ -20,8 +20,8 @@ import net.minecraft.src.WorldGenerator;
 
 public class MangroveForestBiome extends BTABiome {
 
-	public MangroveForestBiome(int id, Climate climate) {
-		super(id, climate);
+	public MangroveForestBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
         this.btaBiomeDecorator.treesPerChunk = 3;
         this.btaBiomeDecorator.flowersPerChunk = -999;
         this.btaBiomeDecorator.mushroomsPerChunk = 8;

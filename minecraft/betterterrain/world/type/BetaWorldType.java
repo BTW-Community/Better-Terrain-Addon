@@ -1,7 +1,8 @@
 package betterterrain.world.type;
 
 import betterterrain.world.BetaChunkManager;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfoLegacy;
 import betterterrain.world.generate.BetaChunkProvider;
 import betterterrain.world.generate.EndChunkProvider;
 import betterterrain.world.generate.NetherChunkProvider;
@@ -29,7 +30,7 @@ public class BetaWorldType extends WorldType {
     	WorldConfigurationInfo info;
     	
     	if (generatorOptions.equals("")) {
-    		info = WorldConfigurationInfo.createDefaultConfigurationLegacy(this.isDeco());
+    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(this.isDeco());
     	}
     	else {
     		info = WorldConfigurationInfo.createInfoFromString(generatorOptions);
@@ -43,7 +44,7 @@ public class BetaWorldType extends WorldType {
     	WorldConfigurationInfo info;
     	
     	if (generatorOptions.equals("")) {
-    		info = WorldConfigurationInfo.createDefaultConfigurationLegacy(this.isDeco());
+    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(this.isDeco());
     	}
     	else {
     		info = WorldConfigurationInfo.createInfoFromString(generatorOptions);
@@ -57,7 +58,7 @@ public class BetaWorldType extends WorldType {
     	WorldConfigurationInfo info;
     	
     	if (generatorOptions.equals("")) {
-    		info = WorldConfigurationInfo.createDefaultConfigurationLegacy(this.isDeco());
+    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(this.isDeco());
     	}
     	else {
     		info = WorldConfigurationInfo.createInfoFromString(generatorOptions);

@@ -4,16 +4,15 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.Block;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenDesertWells;
 
 public class DunesBiome extends BTABiome
 {
-    public DunesBiome(int par1, Climate climate)
-    {
-        super(par1, climate);
+    public DunesBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
         this.spawnableCreatureList.clear();
         this.topBlockExt = (byte)Block.sand.blockID;
         this.fillerBlockExt = (byte)Block.sand.blockID;

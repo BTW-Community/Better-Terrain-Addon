@@ -3,8 +3,8 @@ package betterbiomes.biome.biomes;
 import betterbiomes.biome.BetterBiomesConfiguration;
 
 public class OrchardRiverBiome extends RiverBiome {
-	public OrchardRiverBiome(int par1) {
-		super(par1, BetterBiomesConfiguration.orchard.climate);
+	public OrchardRiverBiome(int id, String internalName) {
+		super(id, internalName, BetterBiomesConfiguration.orchard.climate);
 	}
 
     /**

@@ -8,14 +8,14 @@ import betterbiomes.DecoIntegration;
 import betterterrain.BTAVersion;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.World;
 
 public class BadlandsBiome extends BTABiome {
 	private ArrayList<Integer> allowedTerracottaMetadata = new ArrayList();
 	
-	public BadlandsBiome(int id, Climate climate) {
-		super(id, climate);
+	public BadlandsBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
 		if (DecoIntegration.isDecoInstalled()) {
 			this.topBlockExt = DecoIntegration.redSand.blockID;
 			this.fillerBlockExt = DecoIntegration.redSand.blockID;

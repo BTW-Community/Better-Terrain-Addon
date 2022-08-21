@@ -2,13 +2,13 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
+import betterbiomes.feature.plant.TallGrassGen;
+import betterbiomes.feature.tree.SmallShrubGen;
+import betterbiomes.feature.tree.TaigaGen5;
+import betterbiomes.feature.tree.TaigaGen6;
+import betterbiomes.feature.tree.TaigaGen7;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.plant.TallGrassGen;
-import betterterrain.feature.tree.SmallShrubGen;
-import betterterrain.feature.tree.TaigaGen5;
-import betterterrain.feature.tree.TaigaGen6;
-import betterterrain.feature.tree.TaigaGen7;
 import net.minecraft.src.Block;
 import net.minecraft.src.FCEntityWolf;
 import net.minecraft.src.SpawnListEntry;
@@ -16,8 +16,8 @@ import net.minecraft.src.WorldGenTaiga2;
 import net.minecraft.src.WorldGenerator;
 
 public class SiberiaBiome extends BTABiome {
-	public SiberiaBiome(int id, Climate climate) {
-		super(id, climate);
+	public SiberiaBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 5, 4, 4));
         this.btaBiomeDecorator.treesPerChunk = 20;
         this.btaBiomeDecorator.grassPerChunk = 2;

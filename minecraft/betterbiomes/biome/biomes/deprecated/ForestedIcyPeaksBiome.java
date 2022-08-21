@@ -2,17 +2,17 @@ package betterbiomes.biome.biomes.deprecated;
 
 import java.util.Random;
 
+import betterbiomes.feature.tree.TaigaGen5;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.tree.TaigaGen5;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenTaiga2;
 import net.minecraft.src.WorldGenerator;
 
 public class ForestedIcyPeaksBiome extends BTABiome {
-	public ForestedIcyPeaksBiome(int id, Climate climate) {
-		super(id, climate);
+	public ForestedIcyPeaksBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
 		this.btaBiomeDecorator.treesPerChunk = 3;
         this.btaBiomeDecorator.grassPerChunk = 2;
 	}

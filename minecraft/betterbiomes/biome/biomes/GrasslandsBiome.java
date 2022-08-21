@@ -2,15 +2,15 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
+import betterbiomes.feature.tree.OldOakGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.tree.OldOakGen;
 import net.minecraft.src.WorldGenBigTree;
 import net.minecraft.src.WorldGenerator;
 
 public class GrasslandsBiome extends BTABiome {
-	public GrasslandsBiome(int id, Climate climate) {
-		super(id, climate);
+	public GrasslandsBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
 		this.btaBiomeDecorator.grassPerChunk = 30;
 		this.btaBiomeDecorator.flowersPerChunk = 20;
 	}

@@ -2,16 +2,16 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
+import betterbiomes.feature.tree.OldOakGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.tree.OldOakGen;
 import net.minecraft.src.WorldGenBigTree;
 import net.minecraft.src.WorldGenTrees;
 import net.minecraft.src.WorldGenerator;
 
 public class OrchardBiome extends BTABiome {
-	public OrchardBiome(int id, Climate climate) {
-		super(id, climate);
+	public OrchardBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
 		this.btaBiomeDecorator.treesPerChunk = 3;
 		this.btaBiomeDecorator.grassPerChunk = 30;
 		this.btaBiomeDecorator.flowersPerChunk = 20;

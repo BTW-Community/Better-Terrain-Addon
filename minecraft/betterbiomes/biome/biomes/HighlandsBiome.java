@@ -4,15 +4,15 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenShrub;
 import net.minecraft.src.WorldGenerator;
 
 public class HighlandsBiome extends BTABiome {
 
-	public HighlandsBiome(int id, Climate climate) {
-		super(id, climate);
+	public HighlandsBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
 		this.btaBiomeDecorator.fractionalTreeChance = 2;
 		this.btaBiomeDecorator.grassPerChunk = 3;
 	}

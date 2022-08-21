@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 
 public class WorldType
 {

@@ -2,13 +2,13 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
+import betterbiomes.feature.tree.PetrifiedTreeGen;
 import betterterrain.biome.BTANetherBiome;
-import betterterrain.feature.tree.PetrifiedTreeGen;
 import net.minecraft.src.WorldGenerator;
 
 public class PetrifiedForestBiome extends BTANetherBiome {
-	public PetrifiedForestBiome(int id) {
-		super(id);
+	public PetrifiedForestBiome(int id, String internalName) {
+		super(id, internalName);
 		this.btaBiomeDecorator.fractionalTreeChance = 10;
 	}
 	

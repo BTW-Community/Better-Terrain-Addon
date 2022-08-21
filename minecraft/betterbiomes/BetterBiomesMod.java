@@ -1,8 +1,11 @@
 package betterbiomes;
 
+import java.util.Set;
+
 import betterbiomes.biome.BetterBiomesConfiguration;
 import betterbiomes.entity.BTAEntityCrystalGolem;
 import betterbiomes.entity.BTARenderCrystalGolem;
+import betterterrain.AddonVersion;
 import betterterrain.BTAAddon;
 import betterterrain.BTAMod;
 import betterterrain.BTAVersion;
@@ -22,8 +25,6 @@ import net.minecraft.src.RenderManager;
 public class BetterBiomesMod extends BTAAddon {
 	private static BetterBiomesMod instance;
 	
-	public static Material netherSand;
-	
 	private BetterBiomesMod() {
 		super("Better Biomes", "3.0.0", "BB");
 	}
@@ -37,6 +38,11 @@ public class BetterBiomesMod extends BTAAddon {
 		initEntityRenderers();
 		FCAddOnHandler.LogMessage(this.getName() + " Initialized");
 	}
+
+	@Override
+	public void setValidVersions(Set<AddonVersion> versions) {
+		versions.add(BBVersions.V3_0_0);
+	}
 	
 	public void initDecoIntegration() {
 		DecoIntegration.init();
@@ -47,17 +53,6 @@ public class BetterBiomesMod extends BTAAddon {
 	}
 	
 	public void initDefs() {
-		netherSand = new Material(MapColor.sandColor).setRequiresTool().SetNetherMobsCanSpawnOn();
-	    
-		FCBetterThanWolves.fcItemPileSoulSand = Item.replaceItem(FCBetterThanWolves.fcItemPileSoulSand.itemID, BTAItemPileSoulSand.class, instance);
-		
-		Block.blockClay = Block.replaceBlock(Block.blockClay.blockID, BTABlockClay.class, instance);
-		Item.itemsList[Block.blockClay.blockID] = new ItemMultiTextureTile(Block.blockClay.blockID - 256, Block.blockClay, new String[] {"dirt", "sand", "redSand", "grass"});
-		
-		FCBetterThanWolves.fcItemBloodMossSpores = Item.replaceItem(FCBetterThanWolves.fcItemBloodMossSpores.itemID, BTAItemBloodMossSpores.class, instance);
-		Block.blockNetherQuartz.SetBlockMaterial(FCBetterThanWolves.fcMaterialNetherRock);
-		Block.slowSand.SetBlockMaterial(netherSand);
-		
 		//EntityList.addMapping(BTAEntityCrystalGolem.class, "btaCrystalGolem", 350, 0, 0);
 	}
 	

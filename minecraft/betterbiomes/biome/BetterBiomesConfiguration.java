@@ -103,7 +103,7 @@ import betterbiomes.biome.biomes.deprecated.WoodedSteppeBiome;
 import betterbiomes.biome.biomes.WoodsBiome;
 import betterterrain.biome.layer.HillsLayer;
 import betterterrain.structure.mapgen.BTAMapGenScatteredFeature;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.surface.NetherSurfaceBuilder;
 import betterterrain.world.generate.surface.NoShorelineSurfaceBuilder;
 import betterterrain.world.generate.surface.StonySurfaceBuilder;
@@ -231,34 +231,34 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 
 	// ------ Primary Biomes ------ //
 	//Temperate
-	public static final BTABiome ancientForest = new AncientForestBiome(ANCIENT_FOREST_ID, Climate.TEMPERATE)
+	public static final BTABiome ancientForest = new AncientForestBiome(ANCIENT_FOREST_ID, "betterbiomes:ancient_forest", Climate.TEMPERATE)
 			.setBiomeName("Ancient Forest")
 			.setSurfaceBuilder(new AncientForestSurfaceBuilder())
 			.setTemperatureRainfall(0.7F, 0.8F)
 			.setMinMaxHeight(0.1F, 0.5F)
 			.setLegacyCompatible();
 
-	public static final BTABiome autumnForest = new AutmnForestBiome(AUTUMN_FOREST_ID, Climate.TEMPERATE)
+	public static final BTABiome autumnForest = new AutmnForestBiome(AUTUMN_FOREST_ID, "betterbiomes:autumn_forest", Climate.TEMPERATE)
 			.setBiomeName("Autumn Forest")
 			.setTemperatureRainfall(0.9F, 0.2F)
 			.setMinMaxHeight(0.1F, 0.5F)
 			.setDecoOnly()
 			.setLegacyCompatible();
 
-	public static final BTABiome cherryForest = new CherryForestBiome(CHERRY_FOREST_ID, Climate.TEMPERATE)
+	public static final BTABiome cherryForest = new CherryForestBiome(CHERRY_FOREST_ID, "betterbiomes:cherry_forest", Climate.TEMPERATE)
 			.setBiomeName("Cherry Forest")
 			.setTemperatureRainfall(0.9F, 0.8F)
 			.setMinMaxHeight(0.1F, 0.5F)
 			.setDecoOnly()
 			.setLegacyCompatible();
 
-	public static final BTABiome grasslands = new GrasslandsBiome(GRASSLANDS_ID, Climate.TEMPERATE)
+	public static final BTABiome grasslands = new GrasslandsBiome(GRASSLANDS_ID, "betterbiomes:grasslands", Climate.TEMPERATE)
 			.setBiomeName("Grasslands")
 			.setSpawnsPumpkins()
 			.setSpawnsVillages(false)
 			.setTemperatureRainfall(0.5F, 0.6F);
 
-	public static final BTABiome heathland = new HeathlandBiome(HEATHLAND_ID, Climate.TEMPERATE)
+	public static final BTABiome heathland = new HeathlandBiome(HEATHLAND_ID, "betterbiomes:heathland", Climate.TEMPERATE)
 			.setBiomeName("Heathland")
 			.setSurfaceBuilder(new HeathlandSurfaceBuilder())
 			.setSpawnsPumpkins()
@@ -267,19 +267,19 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.1F, 0.5F)
 			.setLegacyCompatible();
 
-	public static final BTABiome highlands = new HighlandsBiome(HIGHLANDS_ID, Climate.TEMPERATE)
+	public static final BTABiome highlands = new HighlandsBiome(HIGHLANDS_ID, "betterbiomes:highlands", Climate.TEMPERATE)
 			.setBiomeName("Highlands")
 			.setTemperatureRainfall(0.7F, 0.5F)
 			.setMinMaxHeight(0.8F, 2.5F);
 
-	public static final BTABiome mangroveForest = new MangroveForestBiome(MANGROVE_FOREST_ID, Climate.TEMPERATE)
+	public static final BTABiome mangroveForest = new MangroveForestBiome(MANGROVE_FOREST_ID, "betterbiomes:mangrove_forest", Climate.TEMPERATE)
 			.setBiomeName("Mangal")
 			.setSpawnsSugarCane()
 			.setSpawnsJungleTemples()
 			.setTemperatureRainfall(0.8F, 0.9F)
 			.setMinMaxHeight(-0.3F, 0.2F);
 
-	public static final BTABiome mysticForest = new MysticForestBiome(MYSTIC_FOREST_ID, Climate.TEMPERATE)
+	public static final BTABiome mysticForest = new MysticForestBiome(MYSTIC_FOREST_ID, "betterbiomes:mystic_forest", Climate.TEMPERATE)
 			.setBiomeName("Mystic Forest")
 			.setSpawnsSugarCane()
 			.setSpawnsWitchHuts()
@@ -287,7 +287,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.3F, 1.5F)
 			.setLegacyCompatible();
 
-	public static final BTABiome orchard = new OrchardBiome(ORCHARD_ID, Climate.TEMPERATE)
+	public static final BTABiome orchard = new OrchardBiome(ORCHARD_ID, "betterbiomes:orchard", Climate.TEMPERATE)
 			.setBiomeName("Orchard")
 			.setSurfaceBuilder(new OrchardSurfaceBuilder())
 			.setSpawnsPumpkins()
@@ -295,7 +295,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(0.7F, 0.5F)
 			.setLegacyCompatible();
 
-	public static final BTABiome steppe = new SteppeBiome(STEPPE_ID, Climate.TEMPERATE)
+	public static final BTABiome steppe = new SteppeBiome(STEPPE_ID, "betterbiomes:steppe", Climate.TEMPERATE)
 			.setBiomeName("Steppe")
 			.setSurfaceBuilder(new SteppeSurfaceBuilder())
 			.setSpawnsVillages(true)
@@ -305,27 +305,27 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setLegacyCompatible()
 			.setNotSpawnable();
 
-	public static final BTABiome temperateForest = new TemperateForestBiome(TEMPERATE_FOREST_ID, Climate.TEMPERATE)
+	public static final BTABiome temperateForest = new TemperateForestBiome(TEMPERATE_FOREST_ID, "betterbiomes:temperate_forest", Climate.TEMPERATE)
 			.setBiomeName("Temperate Forest")
 			.setSpawnsSugarCane()
 			.setTemperatureRainfall(0.6F, 0.7F)
 			.setMinMaxHeight(0.2F, 1.0F)
 			.setLegacyCompatible();
 	
-	public static final BTABiome woods = new WoodsBiome(WOODS_ID, Climate.TEMPERATE)
+	public static final BTABiome woods = new WoodsBiome(WOODS_ID, "betterbiomes:woods", Climate.TEMPERATE)
 			.setBiomeName("Woods")
 			.setTemperatureRainfall(0.7F, 0.8F)
 			.setMinMaxHeight(0.1F, 0.5F)
 			.setLegacyCompatible();
 
 	//Arid
-	public static final BTABiome aridForest = new AridForestBiome(ARID_FOREST_ID, Climate.ARID)
+	public static final BTABiome aridForest = new AridForestBiome(ARID_FOREST_ID, "betterbiomes:arid_forest", Climate.ARID)
 			.setBiomeName("Arid Forest")
 			.setSurfaceBuilder(new StonySurfaceBuilder())
 			.setTemperatureRainfall(0.8F, 0.3F)
 			.setMinMaxHeight(0.2F, 0.4F);
 
-	public static final BTABiome badlandsPlateau = new BadlandsPlateauBiome(BADLANDS_PLATEAU_ID, Climate.ARID)
+	public static final BTABiome badlandsPlateau = new BadlandsPlateauBiome(BADLANDS_PLATEAU_ID, "betterbiomes:badlands_plateau", Climate.ARID)
 			.setBiomeName("Badlands Plateau")
 			.setSurfaceBuilder(new BadlandsPlateauSurfaceBuilder())
 			.setDisableRain()
@@ -335,7 +335,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setDecoOnly()
 			.setLegacyCompatible();
 	
-	public static final BTABiome chaparral = new ChapparalBiome(CHAPPARAL_ID, Climate.ARID)
+	public static final BTABiome chaparral = new ChapparalBiome(CHAPPARAL_ID, "betterbiomes:chapparal", Climate.ARID)
 			.setBiomeName("Chaparral")
 			.setSurfaceBuilder(new StonySurfaceBuilder())
 			.setSpawnsPumpkins()
@@ -344,7 +344,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.3F, 0.6F)
 			.setLegacyCompatible();
 	
-	public static final BTABiome desert = new DesertBiome(DESERT_ID, Climate.ARID)
+	public static final BTABiome desert = new DesertBiome(DESERT_ID, "betterbiomes:desert", Climate.ARID)
 			.setBiomeName("Better Desert")
 			.setSpawnsVillages(true)
 			.setDisableRain()
@@ -354,7 +354,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setNotSpawnable()
 			.setLegacyCompatible();
 
-	public static final BTABiome dunes = new DunesBiome(DUNES_ID, Climate.ARID)
+	public static final BTABiome dunes = new DunesBiome(DUNES_ID, "betterbiomes:dunes", Climate.ARID)
 			.setBiomeName("Dunes")
 			.setDisableRain()
 			.setSpawnsDesertTemples()
@@ -363,7 +363,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setNotSpawnable()
 			.setLegacyCompatible();
 
-	public static final BTABiome outback = new OutbackBiome(OUTBACK_ID, Climate.ARID)
+	public static final BTABiome outback = new OutbackBiome(OUTBACK_ID, "betterbiomes:outback", Climate.ARID)
 			.setBiomeName("Outback")
 			.setSurfaceBuilder(new OutbackSurfaceBuilder())
 			.setSpawnsVillages(false)
@@ -375,7 +375,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setLegacyCompatible()
 			.setNotSpawnable();
 
-	public static final BTABiome plains = new PlainsBiome(PLAINS_ID, Climate.ARID)
+	public static final BTABiome plains = new PlainsBiome(PLAINS_ID, "betterbiomes:plains", Climate.ARID)
 			.setBiomeName("Better Plains")
 			.setSpawnsPumpkins()
 			.setSpawnsSugarCane()
@@ -383,7 +383,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(0.8F, 0.3F)
 			.setMinMaxHeight(0.2F, 0.4F);
 
-	public static final BTABiome savanna = new SavannaBiome(SAVANNA_ID, Climate.ARID)
+	public static final BTABiome savanna = new SavannaBiome(SAVANNA_ID, "betterbiomes:savanna", Climate.ARID)
 			.setBiomeName("Savanna")
 			.setSpawnsPumpkins()
 			.setSpawnsVillages(false)
@@ -392,7 +392,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setLegacyCompatible();
 
 	//Tropical
-	public static final BTABiome jungle = new JungleBiome(JUNGLE_ID, Climate.TROPICAL)
+	public static final BTABiome jungle = new JungleBiome(JUNGLE_ID, "betterbiomes:jungle", Climate.TROPICAL)
 			.setBiomeName("Better Jungle")
 			.setSpawnsSugarCane()
 			.setSpawnsJungleTemples()
@@ -401,7 +401,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setLegacyCompatible()
 			.setNotSpawnable();
 
-	public static final BTABiome lushDesert = new LushDesertBiome(LUSH_DESERT_ID, Climate.TROPICAL)
+	public static final BTABiome lushDesert = new LushDesertBiome(LUSH_DESERT_ID, "betterbiomes:lush_desert", Climate.TROPICAL)
 			.setBiomeName("Lush Desert")
 			.setSpawnsVillages(true)
 			.setSpawnsDesertTemples()
@@ -411,7 +411,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setLegacyCompatible()
 			.setNotSpawnable();
 
-	public static final BTABiome meadow = new MeadowBiome(MEADOW_ID, Climate.TROPICAL)
+	public static final BTABiome meadow = new MeadowBiome(MEADOW_ID, "betterbiomes:meadow", Climate.TROPICAL)
 			.setBiomeName("Meadow")
 			.setSpawnsPumpkins()
 			.setSpawnsVillages(false)
@@ -419,7 +419,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.1F, 0.4F)
 			.setLegacyCompatible();
 
-	public static final BTABiome rainforest = new RainforestBiome(RAINFOREST_ID, Climate.TROPICAL)
+	public static final BTABiome rainforest = new RainforestBiome(RAINFOREST_ID, "betterbiomes:rainforest", Climate.TROPICAL)
 			.setBiomeName("Rainforest")
 			.setSpawnsSugarCane()
 			.setSpawnsJungleTemples()
@@ -428,7 +428,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setLegacyCompatible()
 			.setNotSpawnable();
 
-	public static final BTABiome tropics = new TropicsBiome(TROPICS_ID, Climate.TROPICAL)
+	public static final BTABiome tropics = new TropicsBiome(TROPICS_ID, "betterbiomes:tropics", Climate.TROPICAL)
 			.setBiomeName("Tropics")
 			.setSurfaceBuilder(new TropicsSurfaceBuilder())
 			.setSpawnsSugarCane()
@@ -438,14 +438,14 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setLegacyCompatible()
 			.setNotSpawnable();
 
-	public static final BTABiome valleyMountains = new ValleyBiome(VALLEY_MOUNTAINS_ID, Climate.TROPICAL)
+	public static final BTABiome valleyMountains = new ValleyBiome(VALLEY_MOUNTAINS_ID, "betterbiomes:valley_highlands", Climate.TROPICAL)
 			.setBiomeName("Valley Highlands")
 			.setSurfaceBuilder(new TropicsSurfaceBuilder())
 			.setTemperatureRainfall(1.2F, 0.9F)
 			.setMinMaxHeight(0.5F, 3.0F)
 			.setLegacyCompatible();
 
-	public static final BTABiome wetlands = new WetlandsBiome(WETLANDS_ID, Climate.TROPICAL)
+	public static final BTABiome wetlands = new WetlandsBiome(WETLANDS_ID, "betterbiomes:wetlands", Climate.TROPICAL)
 			.setBiomeName("Wetlands")
 			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
 			.setSpawnsSugarCane()
@@ -454,7 +454,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(0.8F, 0.9F)
 			.setLegacyCompatible();
 
-	public static final BTABiome willowGrove = new WillowGroveBiome(WILLOW_GROVE_ID, Climate.TROPICAL)
+	public static final BTABiome willowGrove = new WillowGroveBiome(WILLOW_GROVE_ID, "betterbiomes:willow_grove", Climate.TROPICAL)
 			.setBiomeName("Willow Grove")
 			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
 			.setSpawnsSugarCane()
@@ -463,39 +463,39 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(0.8F, 0.8F);
 
 	//Cold
-	public static final BTABiome alpine = new AlpineBiome(ALPINE_ID, Climate.COLD)
+	public static final BTABiome alpine = new AlpineBiome(ALPINE_ID, "betterbiomes:alpine", Climate.COLD)
 			.setBiomeName("Alpine")
 			.setSurfaceBuilder(new AlpineSurfaceBuilder())
 			.setTemperatureRainfall(0.2F, 0.8F)
 			.setMinMaxHeight(0.5F, 3.0F)
 			.setLegacyCompatible();
 
-	public static final BTABiome birchForest = new BirchForestBiome(BIRCH_FOREST_ID, Climate.COLD)
+	public static final BTABiome birchForest = new BirchForestBiome(BIRCH_FOREST_ID, "betterbiomes:birch_forest", Climate.COLD)
 			.setBiomeName("Birch Forest")
 			.setTemperatureRainfall(0.4F, 0.4F)
 			.setMinMaxHeight(0.1F, 0.5F)
 			.setLegacyCompatible();
 
-	public static final BTABiome borealForest = new BorealForestBiome(BOREAL_FOREST_ID, Climate.COLD)
+	public static final BTABiome borealForest = new BorealForestBiome(BOREAL_FOREST_ID, "betterbiomes:boreal_forest", Climate.COLD)
 			.setBiomeName("Boreal Forest")
 			.setTemperatureRainfall(0.5F, 0.4F)
 			.setMinMaxHeight(0.1F, 0.4F);
 
-	public static final BTABiome brushland = new BrushlandBiome(BRUSHLAND_ID, Climate.COLD)
+	public static final BTABiome brushland = new BrushlandBiome(BRUSHLAND_ID, "betterbiomes:brushland", Climate.COLD)
 			.setBiomeName("Brushland")
 			.setSpawnsPumpkins()
 			.setSpawnsVillages(false)
 			.setTemperatureRainfall(0.4F, 0.2F)
 			.setMinMaxHeight(0.3F, 0.5F);
 
-	public static final BTABiome coniferousForest = new ConiferousForestBiome(CONIFEROUS_FOREST_ID, Climate.COLD)
+	public static final BTABiome coniferousForest = new ConiferousForestBiome(CONIFEROUS_FOREST_ID, "betterbiomes:coniferous_forest", Climate.COLD)
 			.setBiomeName("Coniferous Forest")
 			.setSurfaceBuilder(new ConiferousForestSurfaceBuilder())
 			.setTemperatureRainfall(0.5F, 0.4F)
 			.setMinMaxHeight(0.3F, 1.2F)
 			.setLegacyCompatible();
 
-	public static final BTABiome fungalForest = new FungalForestBiome(FUNGAL_FOREST_ID, Climate.COLD)
+	public static final BTABiome fungalForest = new FungalForestBiome(FUNGAL_FOREST_ID, "betterbiomes:fungal_forest", Climate.COLD)
 			.setBiomeName("Fungal Forest")
 			.setSpawnsSugarCane()
 			.setSpawnsWitchHuts()
@@ -503,13 +503,13 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(-0.1F, 1.2F)
 			.setLegacyCompatible();
 
-	public static final BTABiome mountains = new MountainBiome(MOUNTAINS_ID, Climate.COLD)
+	public static final BTABiome mountains = new MountainBiome(MOUNTAINS_ID, "betterbiomes:mountains", Climate.COLD)
 			.setBiomeName("Mountains")
 			.setTemperatureRainfall(0.5F, 0.1F)
 			.setMinMaxHeight(0.8F, 2.5F)
 			.setLegacyCompatible();
 
-	public static final BTABiome patagonia = new PatagoniaBiome(PATAGONIA_ID, Climate.COLD)
+	public static final BTABiome patagonia = new PatagoniaBiome(PATAGONIA_ID, "betterbiomes:patagonia", Climate.COLD)
 			.setBiomeName("Patagonia")
 			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
 			.setSpawnsPumpkins()
@@ -518,21 +518,21 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(0.3F, 0.6F)
 			.setMinMaxHeight(0.0F, 0.5F);
 
-	public static final BTABiome shield = new ShieldBiome(SHIELD_ID, Climate.COLD)
+	public static final BTABiome shield = new ShieldBiome(SHIELD_ID, "betterbiomes:shield", Climate.COLD)
 			.setBiomeName("Shield")
 			.setSurfaceBuilder(new StonySurfaceBuilder())
 			.setTemperatureRainfall(0.5F, 0.4F)
 			.setMinMaxHeight(0.2F, 0.6F);
 
 	//Snowy
-	public static final BTABiome frozenSprings = new FrozenSpringsBiome(FROZEN_SPRINGS_ID, Climate.SNOWY)
+	public static final BTABiome frozenSprings = new FrozenSpringsBiome(FROZEN_SPRINGS_ID, "betterbiomes:frozen_springs", Climate.SNOWY)
 			.setBiomeName("Frozen Springs")
 			.setSpawnsSugarCane()
 			.setTemperatureRainfall(0.1F, 0.1F)
 			.setMinMaxHeight(0.2F, 0.6F)
 			.setEnableSnow();
 
-	public static final BTABiome icyPeaks = new IcyPeaksBiome(ICY_PEAKS_ID, Climate.SNOWY)
+	public static final BTABiome icyPeaks = new IcyPeaksBiome(ICY_PEAKS_ID, "betterbiomes:icy_peaks", Climate.SNOWY)
 			.setBiomeName("Icy Peaks")
 			.setSurfaceBuilder(new IcyPeaksSurfaceBuilder())
 			.setTemperatureRainfall(0.1F, 0.1F)
@@ -540,13 +540,13 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setEnableSnow()
 			.setNotSpawnable();
 
-	public static final BTABiome siberia = new SiberiaBiome(SIBERIA_ID, Climate.SNOWY)
+	public static final BTABiome siberia = new SiberiaBiome(SIBERIA_ID, "betterbiomes:siberia", Climate.SNOWY)
 			.setBiomeName("Siberia")
 			.setTemperatureRainfall(0.1F, 0.4F)
 			.setMinMaxHeight(0.3F, 0.7F)
 			.setEnableSnow();
 
-	public static final BTABiome snowyConiferousForest = new ConiferousForestBiome(SNOWY_CONIFEROUS_FOREST_ID, Climate.SNOWY)
+	public static final BTABiome snowyConiferousForest = new ConiferousForestBiome(SNOWY_CONIFEROUS_FOREST_ID, "betterbiomes:snowy_coniferous_forest", Climate.SNOWY)
 			.setBiomeName("Snowy Coniferous Forest")
 			.setSurfaceBuilder(new ConiferousForestSurfaceBuilder())
 			.setTemperatureRainfall(0.1F, 0.4F)
@@ -554,14 +554,14 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setEnableSnow()
 			.setLegacyCompatible();
 
-	public static final BTABiome snowyWoods = new WoodsBiome(SNOWY_WOODS_ID, Climate.SNOWY)
+	public static final BTABiome snowyWoods = new WoodsBiome(SNOWY_WOODS_ID, "betterbiomes:snowy_woods", Climate.SNOWY)
 			.setBiomeName("Snowy Woods")
 			.setTemperatureRainfall(0.1F, 0.5F)
 			.setMinMaxHeight(0.1F, 0.5F)
 			.setEnableSnow()
 			.setLegacyCompatible();
 
-	public static final BTABiome tundra = new TundraBiome(TUNDRA_ID, Climate.SNOWY)
+	public static final BTABiome tundra = new TundraBiome(TUNDRA_ID, "betterbiomes:tundra", Climate.SNOWY)
 			.setBiomeName("Tundra")
 			.setTemperatureRainfall(0.1F, 0.1F)
 			.setMinMaxHeight(0.1F, 0.4F)
@@ -571,17 +571,17 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 
 	// ------ Secondary Biomes ------ //
 	//Variants
-	public static final BTABiome ancientForestHills = new AncientForestBiome(ANCIENT_FOREST_HILLS_ID, Climate.TEMPERATE)
+	public static final BTABiome ancientForestHills = new AncientForestBiome(ANCIENT_FOREST_HILLS_ID, "betterbiomes:ancient_forest_hills", Climate.TEMPERATE)
 			.setBiomeName("Ancient Forest Hills")
 			.setTemperatureRainfall(0.7F, 0.8F)
 			.setMinMaxHeight(0.3F, 1.0F);
 
-	public static final BTABiome autumnForestHills = new AutmnForestBiome(AUTUMN_FOREST_HILLS_ID, Climate.TEMPERATE)
+	public static final BTABiome autumnForestHills = new AutmnForestBiome(AUTUMN_FOREST_HILLS_ID, "betterbiomes:autumn_forest_hills", Climate.TEMPERATE)
 			.setBiomeName("Autumn Forest Hills")
 			.setTemperatureRainfall(0.9F, 0.2F)
 			.setMinMaxHeight(0.3F, 1.0F);
 
-	public static final BTABiome badlands = new BadlandsBiome(BADLANDS_ID, Climate.ARID)
+	public static final BTABiome badlands = new BadlandsBiome(BADLANDS_ID, "betterbiomes:badlands", Climate.ARID)
 			.setBiomeName("Badlands")
 			.setSurfaceBuilder(new BadlandsSurfaceBuilder())
 			.setSpawnsRedDesertTemples()
@@ -590,29 +590,29 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.1F, 0.1F)
 			.setNotSpawnable();
 
-	public static final BTABiome birchForestHills = new BirchForestBiome(BIRCH_FOREST_HILLS_ID, Climate.COLD)
+	public static final BTABiome birchForestHills = new BirchForestBiome(BIRCH_FOREST_HILLS_ID, "betterbiomes:birch_forest_hills", Climate.COLD)
 			.setBiomeName("Birch Forest Hills")
 			.setTemperatureRainfall(0.4F, 0.4F)
 			.setMinMaxHeight(0.3F, 1.0F);
 
-	public static final BTABiome borealForestHills = new BorealForestBiome(BOREAL_FOREST_HILLS_ID, Climate.COLD)
+	public static final BTABiome borealForestHills = new BorealForestBiome(BOREAL_FOREST_HILLS_ID, "betterbiomes:boreal_forest_hills", Climate.COLD)
 			.setBiomeName("Boreal Forest Hills")
 			.setTemperatureRainfall(0.5F, 0.4F)
 			.setMinMaxHeight(0.3F, 1.0F);
 
-	public static final BTABiome chaparralHills = new ChapparalBiome(CHAPPARAL_HILLS_ID, Climate.ARID)
+	public static final BTABiome chaparralHills = new ChapparalBiome(CHAPPARAL_HILLS_ID, "betterbiomes:chapparal_hills", Climate.ARID)
 			.setBiomeName("Chaparral Hills")
 			.setSurfaceBuilder(new StonySurfaceBuilder())
 			.setSpawnsPumpkins()
 			.setTemperatureRainfall(0.8F, 0.4F)
 			.setMinMaxHeight(0.3F, 1.0F);
 
-	public static final BTABiome cherryForestHills = new CherryForestBiome(CHERRY_FOREST_HILLS_ID, Climate.TEMPERATE)
+	public static final BTABiome cherryForestHills = new CherryForestBiome(CHERRY_FOREST_HILLS_ID, "betterbiomes:cherry_forest_hills", Climate.TEMPERATE)
 			.setBiomeName("Cherry Forest Hills")
 			.setTemperatureRainfall(0.7F, 0.8F)
 			.setMinMaxHeight(0.3F, 1.0F);
 
-	public static final BTABiome desertHills = new DesertBiome(DESERT_HILLS_ID, Climate.ARID)
+	public static final BTABiome desertHills = new DesertBiome(DESERT_HILLS_ID, "betterbiomes:desert_hills", Climate.ARID)
 			.setBiomeName("Better Desert Hills")
 			.setDisableRain()
 			.setSpawnsDesertTemples()
@@ -620,25 +620,25 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.3F, 1.0F)
 			.setNotSpawnable();
 
-	public static final BTABiome frozenSpringsPond = new FrozenSpringsPondBiome(FROZEN_SPRINGS_POND_ID, Climate.SNOWY)
+	public static final BTABiome frozenSpringsPond = new FrozenSpringsPondBiome(FROZEN_SPRINGS_POND_ID, "betterbiomes:frozen_springs", Climate.SNOWY)
 			.setBiomeName("Frozen Springs Pond")
 			.setSpawnsSugarCane()
 			.setTemperatureRainfall(0.2F, 0.1F)
 			.setMinMaxHeight(-0.3F, 0.0F);
 
-	public static final BTABiome fungalForestFlat = new FungalForestBiome(FUNGAL_FOREST_FLAT_ID, Climate.COLD)
+	public static final BTABiome fungalForestFlat = new FungalForestBiome(FUNGAL_FOREST_FLAT_ID, "betterbiomes:fungal_forest", Climate.COLD)
 			.setBiomeName("Fungal Forest Lowlands")
 			.setSpawnsSugarCane()
 			.setSpawnsWitchHuts()
 			.setMinMaxHeight(-0.1F, 0.5F)
 			.setTemperatureRainfall(0.4F, 1.0F);
 
-	public static final BTABiome grasslandsLake = new GrasslandsLakeBiome(GRASSLANDS_LAKE_ID, Climate.TEMPERATE)
+	public static final BTABiome grasslandsLake = new GrasslandsLakeBiome(GRASSLANDS_LAKE_ID, "betterbiomes:grasslands_lake", Climate.TEMPERATE)
 			.setBiomeName("Grasslands Lake")
 			.setTemperatureRainfall(0.5F, 0.6F)
 			.setMinMaxHeight(-0.3F, 0.0F);
 
-	public static final BTABiome jungleHills = new JungleBiome(JUNGLE_HILLS_ID, Climate.TROPICAL)
+	public static final BTABiome jungleHills = new JungleBiome(JUNGLE_HILLS_ID, "betterbiomes:jungle_hills", Climate.TROPICAL)
 			.setBiomeName("Better Jungle Hills")
 			.setSpawnsSugarCane()
 			.setSpawnsJungleTemples()
@@ -646,7 +646,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(1.8F, 0.5F)
 			.setNotSpawnable();
 
-	public static final BTABiome mangroveForestIsland = new MangroveForestBiome(MANGROVE_FOREST_ISLAND_ID, Climate.TEMPERATE)
+	public static final BTABiome mangroveForestIsland = new MangroveForestBiome(MANGROVE_FOREST_ISLAND_ID, "betterbiomes:mangrove_forest", Climate.TEMPERATE)
 			.setBiomeName("Mangal Island")
 			.setSpawnsSugarCane()
 			.setSpawnsJungleTemples()
@@ -654,7 +654,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(0.8F, 0.9F)
 			.setNotSpawnable();
 
-	public static final BTABiome oasis = new OasisBiome(OASIS_ID, Climate.TROPICAL)
+	public static final BTABiome oasis = new OasisBiome(OASIS_ID, "betterbiomes:oasis", Climate.TROPICAL)
 			.setBiomeName("Oasis")
 			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
 			.setSpawnsVillages(true)
@@ -663,38 +663,38 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(-0.2F, 0.1F)
 			.setNotSpawnable();
 
-	public static final BTABiome patagoniaMountains = new PatagoniaMountainBiome(PATAGONIA_MOUNTAINS_ID, Climate.COLD)
+	public static final BTABiome patagoniaMountains = new PatagoniaMountainBiome(PATAGONIA_MOUNTAINS_ID, "betterbiomes:patagonia_mountains", Climate.COLD)
 			.setBiomeName("Patagonia Mountains")
 			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
 			.setTemperatureRainfall(0.1F, 0.6F)
 			.setMinMaxHeight(2.0F, 4.0F)
 			.setEnableSnow();
 
-	public static final BTABiome savannaHills = new SavannaBiome(SAVANNA_HILLS_ID, Climate.ARID)
+	public static final BTABiome savannaHills = new SavannaBiome(SAVANNA_HILLS_ID, "betterbiomes:savanna_hills", Climate.ARID)
 			.setBiomeName("Savanna Hills")
 			.setSpawnsPumpkins()
 			.setTemperatureRainfall(1.5F, 0.1F)
 			.setMinMaxHeight(0.3F, 0.8F);
 
-	public static final BTABiome savannaPlateau = new SavannaBiome(SAVANNA_PLATEAU_ID, Climate.ARID)
+	public static final BTABiome savannaPlateau = new SavannaBiome(SAVANNA_PLATEAU_ID, "betterbiomes:savanna_plateau", Climate.ARID)
 			.setBiomeName("Savanna Plateau")
 			.setTemperatureRainfall(1.5F, 0.1F)
 			.setMinMaxHeight(0.3F, 0.8F)
 			.setPlateau();
 
-	public static final BTABiome snowyWoodsHills = new WoodsBiome(SNOWY_WOODS_HILLS, Climate.SNOWY)
+	public static final BTABiome snowyWoodsHills = new WoodsBiome(SNOWY_WOODS_HILLS, "betterbiomes:snowy_woods_hills", Climate.SNOWY)
 			.setBiomeName("Snowy Woods Hills")
 			.setEnableSnow()
 			.setTemperatureRainfall(0.1F, 0.5F)
 			.setMinMaxHeight(0.3F, 1.0F);
 
-	public static final BTABiome valley = new ValleyBiome(VALLEY_ID, Climate.TROPICAL)
+	public static final BTABiome valley = new ValleyBiome(VALLEY_ID, "betterbiomes:valley", Climate.TROPICAL)
 			.setBiomeName("Valley")
 			.setSurfaceBuilder(new TropicsSurfaceBuilder())
 			.setTemperatureRainfall(1.2F, 0.9F)
 			.setMinMaxHeight(0.1F, 0.6F);
 
-	public static final BTABiome wetlandsHills = new WetlandsBiome(WETLANDS_HILLS_ID, Climate.TROPICAL)
+	public static final BTABiome wetlandsHills = new WetlandsBiome(WETLANDS_HILLS_ID, "betterbiomes:wetlands_hills", Climate.TROPICAL)
 			.setBiomeName("Wetlands Hills")
 			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
 			.setSpawnsSugarCane()
@@ -702,7 +702,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(-0.2F, 0.6F)
 			.setTemperatureRainfall(0.8F, 0.9F);
 
-	public static final BTABiome willowHills = new WillowGroveBiome(WILLOW_HILLS_ID, Climate.TROPICAL)
+	public static final BTABiome willowHills = new WillowGroveBiome(WILLOW_HILLS_ID, "betterbiomes:willow_hills", Climate.TROPICAL)
 			.setBiomeName("Willow Hills")
 			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
 			.setSpawnsSugarCane()
@@ -710,13 +710,13 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.2F, 0.6F)
 			.setTemperatureRainfall(0.8F, 0.8F);
 
-	public static final BTABiome woodsHills = new WoodsBiome(WOODS_HILLS_ID, Climate.TEMPERATE)
+	public static final BTABiome woodsHills = new WoodsBiome(WOODS_HILLS_ID, "betterbiomes:woods_hills", Climate.TEMPERATE)
 			.setBiomeName("Wooded Hills")
 			.setTemperatureRainfall(0.7F, 0.8F)
 			.setMinMaxHeight(0.3F, 1.0F);
 
 	//Rivers
-	public static final BTABiome badlandsRiver = new BadlandsRiverBiome(BADLANDS_RIVER_ID)
+	public static final BTABiome badlandsRiver = new BadlandsRiverBiome(BADLANDS_RIVER_ID, "betterbiomes:badlands_river")
 			.setBiomeName("Badlands River")
 			.setSurfaceBuilder(new BadlandsSurfaceBuilder())
 			.setDisableRain()
@@ -725,7 +725,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setRiver()
 			.setNotSpawnable();
 
-	public static final BTABiome desertRiver = new DesertRiverBiome(DESERT_RIVER_ID)
+	public static final BTABiome desertRiver = new DesertRiverBiome(DESERT_RIVER_ID, "betterbiomes:desert_river")
 			.setBiomeName("Desert River")
 			.setDisableRain()
 			.setTemperatureRainfall(2.0F, 0.0F)
@@ -733,14 +733,14 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setRiver()
 			.setNotSpawnable();
 
-	public static final BTABiome frozenRiver = new RiverBiome(FROZEN_RIVER_ID, Climate.SNOWY)
+	public static final BTABiome frozenRiver = new RiverBiome(FROZEN_RIVER_ID, "betterbiomes:frozen_river", Climate.SNOWY)
 			.setBiomeName("Better Frozen River")
 			.setEnableSnow()
 			.setMinMaxHeight(-0.5F, 0.0F)
 			.setTemperatureRainfall(0.0F, 0.5F)
 			.setRiver();
 
-	public static final BTABiome jungleRiver = new JungleRiverBiome(JUNGLE_RIVER_ID)
+	public static final BTABiome jungleRiver = new JungleRiverBiome(JUNGLE_RIVER_ID, "betterbiomes:jungle_river")
 			.setBiomeName("Jungle River")
 			.setSpawnsSugarCane()
 			.setTemperatureRainfall(1.2F, 0.9F)
@@ -748,20 +748,20 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setRiver()
 			.setNotSpawnable();
 
-	public static final BTABiome mysticRiver = new MysticRiverBiome(MYSTIC_RIVER_ID)
+	public static final BTABiome mysticRiver = new MysticRiverBiome(MYSTIC_RIVER_ID, "betterbiomes:mystic_river")
 			.setBiomeName("Mystic River")
 			.setSpawnsSugarCane()
 			.setTemperatureRainfall(0.9F, 1.0F)
 			.setMinMaxHeight(-0.5F, 0.0F)
 			.setRiver();
 
-	public static final BTABiome orchardRiver = new OrchardRiverBiome(ORCHARD_RIVER_ID)
+	public static final BTABiome orchardRiver = new OrchardRiverBiome(ORCHARD_RIVER_ID, "betterbiomes:orchard_river")
 			.setBiomeName("Orchard River")
 			.setTemperatureRainfall(0.7F, 0.5F)
 			.setMinMaxHeight(-0.5F, 0.0F)
 			.setRiver();
 
-	public static final BTABiome outbackRiver = new OutbackRiverBiome(OUTBACK_RIVER_ID)
+	public static final BTABiome outbackRiver = new OutbackRiverBiome(OUTBACK_RIVER_ID, "betterbiomes:outback_river")
 			.setBiomeName("Outback River")
 			.setSurfaceBuilder(new OutbackSurfaceBuilder())
 			.setDisableRain()
@@ -770,14 +770,14 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setRiver()
 			.setNotSpawnable();
 
-	public static final BTABiome patagoniaRiver = new PatagoniaRiverBiome(PATAGONIA_RIVER_ID)
+	public static final BTABiome patagoniaRiver = new PatagoniaRiverBiome(PATAGONIA_RIVER_ID, "betterbiomes:patagonia_river")
 			.setBiomeName("Patagonia River")
 			.setSpawnsSugarCane()
 			.setTemperatureRainfall(0.3F, 0.6F)
 			.setMinMaxHeight(-0.5F, 0.0F)
 			.setRiver();
 
-	public static final BTABiome rainforestRiver = new RainforestRiverBiome(RAINFOREST_RIVER_ID)
+	public static final BTABiome rainforestRiver = new RainforestRiverBiome(RAINFOREST_RIVER_ID, "betterbiomes:rainforest_river")
 			.setBiomeName("Rainforest River")
 			.setSpawnsSugarCane()
 			.setTemperatureRainfall(1.2F, 0.9F)
@@ -785,12 +785,12 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setRiver()
 			.setNotSpawnable();
 
-	public static final BTABiome river = new RiverBiome(RIVER_ID, Climate.TEMPERATE)
+	public static final BTABiome river = new RiverBiome(RIVER_ID, "betterbiomes:river", Climate.TEMPERATE)
 			.setBiomeName("Better River")
 			.setMinMaxHeight(-0.5F, 0.0F)
 			.setRiver();
 
-	public static final BTABiome tropicsRiver = new TropicsRiverBiome(TROPICS_RIVER_ID)
+	public static final BTABiome tropicsRiver = new TropicsRiverBiome(TROPICS_RIVER_ID, "betterbiomes:tropics_river")
 			.setBiomeName("Tropics River")
 			.setSpawnsSugarCane()
 			.setSurfaceBuilder(new TropicsSurfaceBuilder())
@@ -799,7 +799,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setRiver()
 			.setNotSpawnable();
 
-	public static final BTABiome wetlandsRiver = new WetlandsRiverBiome(WETLANDS_RIVER_ID)
+	public static final BTABiome wetlandsRiver = new WetlandsRiverBiome(WETLANDS_RIVER_ID, "betterbiomes:wetlands_river")
 			.setBiomeName("Wetlands River")
 			.setSpawnsSugarCane()
 			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
@@ -807,7 +807,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(-0.5F, 0.0F)
 			.setRiver();
 
-	public static final BTABiome willowRiver = new WillowRiverBiome(WILLOW_GROVE_RIVER_ID)
+	public static final BTABiome willowRiver = new WillowRiverBiome(WILLOW_GROVE_RIVER_ID, "betterbiomes:willow_grove_river")
 			.setBiomeName("Willow Grove River")
 			.setSpawnsSugarCane()
 			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
@@ -816,20 +816,20 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setRiver();
 
 	//Edges
-	public static final BTABiome alpineEdge = new AlpineBiome(ALPINE_EDGE_ID, Climate.COLD)
+	public static final BTABiome alpineEdge = new AlpineBiome(ALPINE_EDGE_ID, "betterbiomes:alpine_edge", Climate.COLD)
 			.setBiomeName("Alpine Edge")
 			.setSurfaceBuilder(new AlpineSurfaceBuilder())
 			.setTemperatureRainfall(0.2F, 0.8F)
 			.setMinMaxHeight(0.2F, 0.5F)
 			.setEdge();
 
-	public static final BTABiome highlandsEdge = new HighlandsBiome(HIGHLANDS_EDGE_ID, Climate.TEMPERATE)
+	public static final BTABiome highlandsEdge = new HighlandsBiome(HIGHLANDS_EDGE_ID, "betterbiomes:highlands_edge", Climate.TEMPERATE)
 			.setBiomeName("Highlands Edge")
 			.setTemperatureRainfall(0.7F, 0.5F)
 			.setMinMaxHeight(0.8F, 2.5F)
 			.setEdge();
 
-	public static final BTABiome icyPeaksEdge = new IcyPeaksBiome(ICY_PEAKS_EDGE_ID, Climate.SNOWY)
+	public static final BTABiome icyPeaksEdge = new IcyPeaksBiome(ICY_PEAKS_EDGE_ID, "betterbiomes:icy_peaks_edge", Climate.SNOWY)
 			.setBiomeName("Icy Peaks Edge")
 			.setSurfaceBuilder(new IcyPeaksSurfaceBuilder())
 			.setEnableSnow()
@@ -837,7 +837,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.1F, 0.5F)
 			.setEdge();
 
-	public static final BTABiome jungleEdge = new JungleEdgeBiome(JUNGLE_EDGE_ID, Climate.TROPICAL)
+	public static final BTABiome jungleEdge = new JungleEdgeBiome(JUNGLE_EDGE_ID, "betterbiomes:jungle_edge", Climate.TROPICAL)
 			.setBiomeName("Better Jungle Edge")
 			.setSpawnsSugarCane()
 			.setSpawnsJungleTemples()
@@ -846,13 +846,13 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setEdge()
 			.setNotSpawnable();
 
-	public static final BTABiome mountainEdge = new MountainBiome(MOUNTAIN_EDGE_ID, Climate.COLD)
+	public static final BTABiome mountainEdge = new MountainBiome(MOUNTAIN_EDGE_ID, "betterbiomes:mountain_edge", Climate.COLD)
 			.setBiomeName("Mountains Edge")
 			.setTemperatureRainfall(0.5F, 0.1F)
 			.setMinMaxHeight(0.2F, 0.5F)
 			.setEdge();
 
-	public static final BTABiome rainforestEdge = new RainforestEdgeBiome(RAINFOREST_EDGE_ID, Climate.TROPICAL)
+	public static final BTABiome rainforestEdge = new RainforestEdgeBiome(RAINFOREST_EDGE_ID, "betterbiomes:rainforest_edge", Climate.TROPICAL)
 			.setBiomeName("Rainforest Edge")
 			.setSpawnsSugarCane()
 			.setSpawnsJungleTemples()
@@ -861,7 +861,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setEdge()
 			.setNotSpawnable();
 
-	public static final BTABiome tropicsEdge = new TropicsBiome(TROPICS_EDGE_ID, Climate.TROPICAL)
+	public static final BTABiome tropicsEdge = new TropicsBiome(TROPICS_EDGE_ID, "betterbiomes:tropics_edge", Climate.TROPICAL)
 			.setBiomeName("Tropics Edge")
 			.setTemperatureRainfall(1.2F, 0.9F)
 			.setMinMaxHeight(-0.3F, 0.1F)
@@ -869,7 +869,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setNotSpawnable();
 
 	//Beaches
-	public static final BTABiome redSandBeach = new RedSandBeachBiome(RED_SAND_BEACH_ID, Climate.ARID)
+	public static final BTABiome redSandBeach = new RedSandBeachBiome(RED_SAND_BEACH_ID, "betterbiomes:red_sand_beach", Climate.ARID)
 			.setBiomeName("Red Sand Beach")
 			.setSurfaceBuilder(new BadlandsSurfaceBuilder())
 			.setDisableRain()
@@ -878,14 +878,14 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setBeach()
 			.setNotSpawnable();
 
-	public static final BTABiome beach = new BeachBiome(BEACH_ID, Climate.TEMPERATE)
+	public static final BTABiome beach = new BeachBiome(BEACH_ID, "betterbiomes:beach", Climate.TEMPERATE)
 			.setBiomeName("Better Beach")
 			.setTemperatureRainfall(0.8F, 0.4F)
 			.setMinMaxHeight(0.0F, 0.1F)
 			.setBeach()
 			.setNotSpawnable();
 
-	public static final BTABiome frozenBeach = new BeachBiome(FROZEN_BEACH_ID, Climate.SNOWY)
+	public static final BTABiome frozenBeach = new BeachBiome(FROZEN_BEACH_ID, "betterbiomes:frozen_beach", Climate.SNOWY)
 			.setBiomeName("Frozen Beach")
 			.setTemperatureRainfall(0.0F, 0.4F)
 			.setMinMaxHeight(0.0F, 0.1F)
@@ -894,45 +894,45 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setNotSpawnable();
 
 	// ------ Nether Biomes ------ //
-	public static final BTABiome netherWastes = new NetherWastesBiome(NETHER_WASTES_ID)
+	public static final BTABiome netherWastes = new NetherWastesBiome(NETHER_WASTES_ID, "betterbiomes:nether_wastes")
 			.setBiomeName("Nether Wastes")
 			.setSurfaceBuilder(new NetherSurfaceBuilder())
 			.setNether();
 
-	public static final BTABiome ashFields = new AshFieldsBiome(ASH_FIELDS_ID)
+	public static final BTABiome ashFields = new AshFieldsBiome(ASH_FIELDS_ID, "betterbiomes:ash_fields")
 			.setBiomeName("Ash Fields")
 			.setSurfaceBuilder(new AshFieldsSurfaceBuilder())
 			.setNether();
 
-	public static final BTABiome basaltDeltas = new BasaltDeltasBiome(BASALT_DELTAS_ID)
+	public static final BTABiome basaltDeltas = new BasaltDeltasBiome(BASALT_DELTAS_ID, "betterbiomes:basalt_deltas")
 			.setBiomeName("Basalt Deltas")
 			.setSurfaceBuilder(new BasaltDeltasSurfaceBuilder())
 			.setNether();
 
-	public static final BTABiome soulSandValley = new SoulSandValleyBiome(SOUL_SAND_VALLEY_ID)
+	public static final BTABiome soulSandValley = new SoulSandValleyBiome(SOUL_SAND_VALLEY_ID, "betterbiomes:soul_sand_valley")
 			.setBiomeName("Soul Sand Valley")
 			.setSurfaceBuilder(new SoulSandValleySurfaceBuilder())
 			.setNether();
 
 	public static final BTABiome obsidianGrove = null;
 
-	public static final BTABiome crystalCaverns = new CrystalCavernsBiome(CRYSTAL_CAVERNS_ID)
+	public static final BTABiome crystalCaverns = new CrystalCavernsBiome(CRYSTAL_CAVERNS_ID, "betterbiomes:crystal_caverns")
 			.setBiomeName("Crystal Caverns")
 			.setSurfaceBuilder(new CrystalCavernsSurfaceBuilder())
 			.setNether();
 
-	public static final BTABiome petrifiedForest = new PetrifiedForestBiome(PETRIFIED_FOREST_ID)
+	public static final BTABiome petrifiedForest = new PetrifiedForestBiome(PETRIFIED_FOREST_ID, "betterbiomes:petrified_forest")
 			.setBiomeName("Petrified Forest")
 			.setSurfaceBuilder(new NetherSurfaceBuilder())
 			.setNether();
 
 	// ------ Deprecated ------ //
-	public static final BTABiome aspenGrove = new AspenGroveBiome(ASPEN_GROVE_ID, Climate.COLD)
+	public static final BTABiome aspenGrove = new AspenGroveBiome(ASPEN_GROVE_ID, "betterbiomes:aspen_grove", Climate.COLD)
 			.setBiomeName("Aspen Grove")
 			.setTemperatureRainfall(0.2F, 0.8F)
 			.setMinMaxHeight(0.5F, 3.0F);
 
-	public static final BTABiome badlandsEdge = new BadlandsBiome(BADLANDS_EDGE_ID, Climate.ARID)
+	public static final BTABiome badlandsEdge = new BadlandsBiome(BADLANDS_EDGE_ID, "betterbiomes:badlands_edge", Climate.ARID)
 			.setBiomeName("Badlands Edge")
 			.setSurfaceBuilder(new BadlandsSurfaceBuilder())
 			.setSpawnsRedDesertTemples()
@@ -941,42 +941,42 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.1F, 0.1F)
 			.setEdge();
 
-	public static final BTABiome coniferousForestClearing = new ConiferousForestClearingBiome(CONIFEROUS_FOREST_CLEARING_ID, Climate.COLD)
+	public static final BTABiome coniferousForestClearing = new ConiferousForestClearingBiome(CONIFEROUS_FOREST_CLEARING_ID, "betterbiomes:coniferous_forest_clearing", Climate.COLD)
 			.setBiomeName("Coniferous Forest Clearing")
 			.setTemperatureRainfall(0.5F, 0.4F)
 			.setMinMaxHeight(0.3F, 1.2F);
 
-	public static final BTABiome heathlandWoods = new HeathlandWoodsBiome(HEATHLAND_WOODS_ID, Climate.TEMPERATE)
+	public static final BTABiome heathlandWoods = new HeathlandWoodsBiome(HEATHLAND_WOODS_ID, "betterbiomes:heathland_woods", Climate.TEMPERATE)
 			.setBiomeName("Heathland Woods")
 			.setSpawnsPumpkins()
 			.setSpawnsVillages(false)
 			.setTemperatureRainfall(0.7F, 0.4F)
 			.setMinMaxHeight(0.1F, 0.5F);
 
-	public static final BTABiome icyPeaksForested = new ForestedIcyPeaksBiome(ICY_PEAKS_FORESTED_ID, Climate.SNOWY)
+	public static final BTABiome icyPeaksForested = new ForestedIcyPeaksBiome(ICY_PEAKS_FORESTED_ID, "betterbiomes:icy_peaks_forested", Climate.SNOWY)
 			.setBiomeName("Forested Icy Peaks")
 			.setEnableSnow()
 			.setTemperatureRainfall(0.1F, 0.1F)
 			.setMinMaxHeight(0.5F, 1.5F);
 
-	public static final BTABiome oldValley = new OldValleyBiome(OLD_VALLEY_ID, Climate.TROPICAL)
+	public static final BTABiome oldValley = new OldValleyBiome(OLD_VALLEY_ID, "betterbiomes:old_valley", Climate.TROPICAL)
 			.setBiomeName("Old Valley")
 			.setTemperatureRainfall(0.7F, 0.8F)
 			.setMinMaxHeight(0.1F, 0.8F);
 	
-	public static final BTABiome orchardClearing = new OrchardClearingBiome(ORCHARD_CLEARING_ID, Climate.TEMPERATE)
+	public static final BTABiome orchardClearing = new OrchardClearingBiome(ORCHARD_CLEARING_ID, "betterbiomes:orchard_clearing", Climate.TEMPERATE)
 			.setBiomeName("Orchard Clearing")
 			.setSpawnsVillages(false)
 			.setSpawnsPumpkins()
 			.setTemperatureRainfall(0.7F, 0.5F);
 
-	public static final BTABiome snowyConiferousForestClearing = new ConiferousForestClearingBiome(SNOWY_CONIFEROUS_FOREST_CLEARING_ID, Climate.SNOWY)
+	public static final BTABiome snowyConiferousForestClearing = new ConiferousForestClearingBiome(SNOWY_CONIFEROUS_FOREST_CLEARING_ID, "betterbiomes:snowy_coniferous_forest_clearing", Climate.SNOWY)
 			.setBiomeName("Snowy Coniferous Forest Clearing")
 			.setEnableSnow()
 			.setTemperatureRainfall(0.1F, 0.4F)
 			.setMinMaxHeight(0.3F, 1.2F);
 
-	public static final BTABiome woodedSteppe = new WoodedSteppeBiome(WOODED_STEPPE_ID, Climate.TEMPERATE)
+	public static final BTABiome woodedSteppe = new WoodedSteppeBiome(WOODED_STEPPE_ID, "betterbiomes:wooded_steppe", Climate.TEMPERATE)
 			.setBiomeName("Wooded Steppe")
 			.setSpawnsVillages(true)
 			.setSpawnsDesertTemples()

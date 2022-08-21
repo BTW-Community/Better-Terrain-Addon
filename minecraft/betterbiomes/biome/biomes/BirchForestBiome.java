@@ -9,8 +9,8 @@ import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenerator;
 
 public class BirchForestBiome extends BTABiome {
-    public BirchForestBiome(int id, Climate climate) {
-        super(id, climate);
+    public BirchForestBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 5, 4, 4));
         this.btaBiomeDecorator.treesPerChunk = 10;
         this.btaBiomeDecorator.grassPerChunk = 2;

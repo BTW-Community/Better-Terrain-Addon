@@ -2,15 +2,14 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
+import betterbiomes.feature.tree.PalmTreeSmallGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.tree.PalmTreeSmallGen;
 import net.minecraft.src.WorldGenerator;
 
 public class OasisBiome extends BTABiome {
-	public OasisBiome(int par1, Climate climate)
-	{
-		super(par1, climate);
+	public OasisBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
 		this.btaBiomeDecorator.treesPerChunk = 10;
 		this.btaBiomeDecorator.grassPerChunk = 2;
 		this.btaBiomeDecorator.sandPerChunk = 0;

@@ -2,11 +2,11 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
+import betterbiomes.feature.tree.TaigaGen5;
+import betterbiomes.feature.tree.TallSwampTreeGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.tree.TaigaGen5;
-import betterterrain.feature.tree.TallSwampTreeGen;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.FCEntityChicken;
 import net.minecraft.src.FCEntityPig;
 import net.minecraft.src.FCEntitySlime;
@@ -18,8 +18,8 @@ import net.minecraft.src.WorldGenerator;
 
 public class WetlandsBiome extends BTABiome {
 
-	public WetlandsBiome(int id, Climate climate) {
-		super(id, climate);
+	public WetlandsBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
         this.btaBiomeDecorator.treesPerChunk = 10;
         this.btaBiomeDecorator.flowersPerChunk = -999;
         this.btaBiomeDecorator.deadBushPerChunk = 1;

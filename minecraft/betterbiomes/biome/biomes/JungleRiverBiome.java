@@ -12,8 +12,8 @@ import net.minecraft.src.FCEntityZombie;
 import net.minecraft.src.SpawnListEntry;
 
 public class JungleRiverBiome extends RiverBiome {
-	public JungleRiverBiome(int id) {
-		super(id, BetterBiomesConfiguration.jungle.climate);
+	public JungleRiverBiome(int id, String internalName) {
+		super(id, internalName, BetterBiomesConfiguration.jungle.climate);
 		this.waterColorMultiplier = BetterBiomesConfiguration.jungle.waterColorMultiplier;
 		this.btaBiomeDecorator.sandPerChunk = 100;
 		this.btaBiomeDecorator.sandPerChunk2 = 100;

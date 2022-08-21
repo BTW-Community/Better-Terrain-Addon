@@ -2,10 +2,10 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
+import betterbiomes.feature.tree.TaigaGen6;
+import betterbiomes.feature.tree.TemperateBirchGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.tree.TaigaGen6;
-import betterterrain.feature.tree.TemperateBirchGen;
 import net.minecraft.src.FCEntityWolf;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenShrub;
@@ -13,8 +13,8 @@ import net.minecraft.src.WorldGenTrees;
 import net.minecraft.src.WorldGenerator;
 
 public class TemperateForestBiome extends BTABiome {
-	public TemperateForestBiome(int id, Climate climate) {
-		super(id, climate);
+	public TemperateForestBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 5, 4, 4));
 		this.btaBiomeDecorator.reedsPerChunk = 10;
         this.btaBiomeDecorator.treesPerChunk = 30;

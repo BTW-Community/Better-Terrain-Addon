@@ -2,10 +2,10 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
+import betterbiomes.feature.tree.MassiveOakGen;
+import betterbiomes.feature.tree.TallSwampTreeGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.tree.MassiveOakGen;
-import betterterrain.feature.tree.TallSwampTreeGen;
 import net.minecraft.src.FCEntityChicken;
 import net.minecraft.src.FCEntityPig;
 import net.minecraft.src.FCEntitySlime;
@@ -14,8 +14,8 @@ import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenerator;
 
 public class FungalForestBiome extends BTABiome {
-	public FungalForestBiome(int id, Climate climate) {
-		super(id, climate);
+	public FungalForestBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
         this.btaBiomeDecorator.treesPerChunk = 15;
         this.btaBiomeDecorator.grassPerChunk = 2;
         this.btaBiomeDecorator.bigRedMushroomsPerChunk = 5;

@@ -6,7 +6,7 @@ import java.util.Map;
 
 import betterterrain.BTAAddon;
 import betterterrain.biome.layer.HillsLayer;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.FCAddOn;
 import net.minecraft.src.FCAddOnHandler;
@@ -84,7 +84,7 @@ public abstract class BiomeConfiguration {
 			return biome.getSubVariant(generatorOptions, layer);
 		}
 		else {
-			return -1;
+			return baseBiome;
 		}
 	}
 	
@@ -97,7 +97,7 @@ public abstract class BiomeConfiguration {
 			return biome.getSubVariantCommon(generatorOptions, layer);
 		}
 		else {
-			return -1;
+			return baseBiome;
 		}
 	}
 	

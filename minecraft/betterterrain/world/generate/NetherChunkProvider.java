@@ -8,7 +8,7 @@ import betterterrain.structure.mapgen.BTAMapGenBase;
 import betterterrain.structure.mapgen.BTAMapGenCavesHell;
 import betterterrain.structure.mapgen.BTAMapGenNetherBridge;
 import betterterrain.world.BTAChunk;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.surface.SurfaceBuilder;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;

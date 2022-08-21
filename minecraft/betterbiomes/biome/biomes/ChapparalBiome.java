@@ -2,16 +2,16 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
+import betterbiomes.feature.tree.SmallShrubGen;
+import betterbiomes.feature.tree.TinyShrubGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.tree.SmallShrubGen;
-import betterterrain.feature.tree.TinyShrubGen;
 import net.minecraft.src.WorldGenShrub;
 import net.minecraft.src.WorldGenerator;
 
 public class ChapparalBiome extends BTABiome {
-	public ChapparalBiome(int id, Climate climate) {
-		super(id, climate);
+	public ChapparalBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
 		btaBiomeDecorator.treesPerChunk = 8;
 		btaBiomeDecorator.grassPerChunk = 20;
 		btaBiomeDecorator.generateStoneInGrass = true;

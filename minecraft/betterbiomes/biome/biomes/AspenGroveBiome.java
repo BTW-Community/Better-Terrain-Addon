@@ -2,16 +2,16 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
+import betterbiomes.feature.tree.PineTreeGen;
+import betterbiomes.feature.tree.TaigaGen5;
 import betterterrain.biome.Climate;
-import betterterrain.feature.tree.PineTreeGen;
-import betterterrain.feature.tree.TaigaGen5;
-import betterterrain.world.WorldConfigurationInfo;
+import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
 
 public class AspenGroveBiome extends AlpineBiome {
-	public AspenGroveBiome(int id, Climate climate) {
-		super(id, climate);
+	public AspenGroveBiome(int id, String internalName, Climate climate) {
+		super(id, internalName, climate);
 	}
 
     /**
