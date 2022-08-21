@@ -1,6 +1,8 @@
 package betterterrain.biome.layer;
 
 import betterbiomes.biome.BetterBiomesConfiguration;
+import betterterrain.biome.BiomeConfiguration;
+import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.GenLayer;
 import net.minecraft.src.IntCache;
@@ -10,11 +12,14 @@ public class RiverLayer extends BTALayer
     private GenLayer biomePatternGeneratorChain;
     private GenLayer riverPatternGeneratorChain;
 
-    public RiverLayer(long par1, GenLayer par3GenLayer, GenLayer par4GenLayer)
+	private WorldConfigurationInfo generatorInfo;
+
+    public RiverLayer(long par1, GenLayer par3GenLayer, GenLayer par4GenLayer, WorldConfigurationInfo generatorInfo)
     {
         super(par1);
         this.biomePatternGeneratorChain = par3GenLayer;
         this.riverPatternGeneratorChain = par4GenLayer;
+        this.generatorInfo = generatorInfo;
     }
 
     /**
@@ -46,9 +51,9 @@ public class RiverLayer extends BTALayer
             }
             else if (var6[var8] >= 0)
             {
-                if (BetterBiomesConfiguration.getRiverVariantForBiomes(var5[var8]) != -1)
+                if (BiomeConfiguration.getRiverVariantForBiomes(var5[var8], generatorInfo, this) != var5[var8])
                 {
-                    var7[var8] = BetterBiomesConfiguration.getRiverVariantForBiomes(var5[var8]);
+                    var7[var8] = BiomeConfiguration.getRiverVariantForBiomes(var5[var8], generatorInfo, this);
                 }
                 else if (var5[var8] != BiomeGenBase.mushroomIsland.biomeID && var5[var8] != BiomeGenBase.mushroomIslandShore.biomeID)
                 {

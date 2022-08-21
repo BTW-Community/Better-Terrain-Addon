@@ -1,6 +1,6 @@
 package betterterrain.biome.layer;
 
-import betterbiomes.biome.BetterBiomesConfiguration;
+import betterterrain.biome.BiomeConfiguration;
 import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.GenLayer;
@@ -55,7 +55,7 @@ public class ShoreLayer extends BTALayer
 						intCache[j + i * xSize] = BiomeGenBase.mushroomIslandShore.biomeID;
 					}
 				}
-				else if (currentBiome != BiomeGenBase.ocean.biomeID && currentBiome != BiomeGenBase.river.biomeID && currentBiome != BiomeGenBase.swampland.biomeID && currentBiome != BiomeGenBase.extremeHills.biomeID && BetterBiomesConfiguration.getEdgeVariantForBiome(currentBiome, this.generatorInfo, this.passNum) == -1)
+				else if (currentBiome != BiomeGenBase.ocean.biomeID && BiomeConfiguration.getEdgeVariantForBiomes(currentBiome, this.generatorInfo, this) == currentBiome)
 				{
 					neighbor1 = parentInts[j + 1 + (i + 1 - 1) * (xSize + 2)];
 					neighbor2 = parentInts[j + 1 + 1 + (i + 1) * (xSize + 2)];
@@ -68,10 +68,10 @@ public class ShoreLayer extends BTALayer
 					}
 					else
 					{
-						if (BetterBiomesConfiguration.getBeachVariantForBiomes(currentBiome, generatorInfo) != -1) {
-							intCache[j + i * xSize] = BetterBiomesConfiguration.getBeachVariantForBiomes(currentBiome, generatorInfo);
+						if (BiomeConfiguration.getBeachVariantForBiomes(currentBiome, generatorInfo, this) != currentBiome) {
+							intCache[j + i * xSize] = BiomeConfiguration.getBeachVariantForBiomes(currentBiome, generatorInfo, this);
 						}
-						else if (BetterBiomesConfiguration.shouldBiomeSpawnBeach(currentBiome, this.generatorInfo)){
+						else if (BiomeConfiguration.shouldBiomeSpawnBeach(currentBiome, this.generatorInfo, this)){
 							intCache[j + i * xSize] = BiomeGenBase.beach.biomeID;
 						}
 						else {
@@ -91,15 +91,14 @@ public class ShoreLayer extends BTALayer
 						intCache[j + i * xSize] = currentBiome;
 					}
 					//If an edge can be formed with any of the adjacent biomes
-					else if ((BetterBiomesConfiguration.shouldBiomeConnectWithEdge(neighbor1, this.generatorInfo)) ||
-								(BetterBiomesConfiguration.shouldBiomeConnectWithEdge(neighbor2, this.generatorInfo)) ||
-								(BetterBiomesConfiguration.shouldBiomeConnectWithEdge(neighbor3, this.generatorInfo)) ||
-								(BetterBiomesConfiguration.shouldBiomeConnectWithEdge(neighbor4, this.generatorInfo)) ||
-								BetterBiomesConfiguration.doesBiomeIgnoreEdgeRestrictions(currentBiome, neighbor1, neighbor2, neighbor3, neighbor4))
+					else if ((BiomeConfiguration.shouldBiomeConnectWithEdge(neighbor1, this.generatorInfo, this)) ||
+								(BiomeConfiguration.shouldBiomeConnectWithEdge(neighbor2, this.generatorInfo, this)) ||
+								(BiomeConfiguration.shouldBiomeConnectWithEdge(neighbor3, this.generatorInfo, this)) ||
+								(BiomeConfiguration.shouldBiomeConnectWithEdge(neighbor4, this.generatorInfo, this)))
 					{
 						//If current biome is a biome that forms edges
-						if (BetterBiomesConfiguration.getEdgeVariantForBiome(currentBiome, this.generatorInfo, this.passNum) != -1) {
-							intCache[j + i * xSize] = BetterBiomesConfiguration.getEdgeVariantForBiome(currentBiome, this.generatorInfo, this.passNum);
+						if (BiomeConfiguration.getEdgeVariantForBiomes(currentBiome, this.generatorInfo, this) != currentBiome) {
+							intCache[j + i * xSize] = BiomeConfiguration.getEdgeVariantForBiomes(currentBiome, this.generatorInfo, this);
 						}
 						else {
 							intCache[j + i * xSize] = currentBiome;

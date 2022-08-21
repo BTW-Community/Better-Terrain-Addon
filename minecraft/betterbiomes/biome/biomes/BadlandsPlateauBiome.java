@@ -54,6 +54,11 @@ public class BadlandsPlateauBiome extends BTABiome {
 		}
 	}
 
+	@Override
+	public boolean shouldConnectWithEdge(WorldConfigurationInfo generatorOptions) {
+		return true;
+	}
+
     /**
      * Gets a WorldGen appropriate for this biome.
      */

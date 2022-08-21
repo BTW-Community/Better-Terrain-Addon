@@ -9,6 +9,8 @@ import betterbiomes.feature.plant.TallGrassGen;
 import betterbiomes.feature.terrain.OreGen;
 import betterterrain.BTAVersion;
 import betterterrain.biome.layer.HillsLayer;
+import betterterrain.biome.layer.RiverLayer;
+import betterterrain.biome.layer.ShoreLayer;
 import betterterrain.structure.mapgen.BTAMapGenScatteredFeature;
 import betterterrain.structure.mapgen.BTAMapGenVillage;
 import betterterrain.world.config.WorldConfigurationInfo;
@@ -287,17 +289,26 @@ public class BTABiome extends BiomeGenBase {
 	//------ Biome Variant Functionality ------//
 
 	//Different biome variants which spawn within the larger biome
-	private Map<BTABiome, WorldConfigurationInfo.Condition> subBiomeVariants = new HashMap();
-	private Map<BTABiome, WorldConfigurationInfo.Condition> subBiomeVariantsCommon = new HashMap();
+	protected Map<BTABiome, WorldConfigurationInfo.Condition> subBiomeVariants = new HashMap();
+	protected Map<BTABiome, WorldConfigurationInfo.Condition> subBiomeVariantsCommon = new HashMap();
 	
 	//Rare small sub biomes
-	private Map<BTABiome, WorldConfigurationInfo.Condition> sporadicVariants = new HashMap();
+	protected Map<BTABiome, WorldConfigurationInfo.Condition> sporadicVariants = new HashMap();
+	//Chance the sporadic variant will generate
+	protected Map<BTABiome, WorldConfigurationInfo.Condition> sporadicChance = new HashMap();
 	
-	private Map<BTABiome, WorldConfigurationInfo.Condition> beachVariants = new HashMap();
+	//Beach variants
+	protected Map<BTABiome, WorldConfigurationInfo.Condition> beachVariants = new HashMap();
+	//Keeps track of whether the biome should spawn a beach
+	protected Map<WorldConfigurationInfo.Condition, Boolean> hasBeach = new HashMap();
 	
-	private Map<BTABiome, WorldConfigurationInfo.Condition> riverVariants = new HashMap();
+	//River biome to use when a river cuts through
+	protected Map<BTABiome, WorldConfigurationInfo.Condition> riverVariants = new HashMap();
 	
-	private Map<BTABiome, WorldConfigurationInfo.Condition> edgeVariants = new HashMap();
+	//Edge variants, used when transitioning disparate biomes
+	protected Map<BTABiome, WorldConfigurationInfo.Condition> edgeVariants = new HashMap();
+	//Controls whether an edge should be formed with this biome
+	protected Map<WorldConfigurationInfo.Condition, Boolean> shouldConnectWithEdge = new HashMap();
 	
 	public BTABiome addSubVariant(BTABiome biome) {
 		return this.addSubVariant(biome, null);
@@ -314,6 +325,51 @@ public class BTABiome extends BiomeGenBase {
 	
 	public BTABiome addSubVariantCommon(BTABiome biome, WorldConfigurationInfo.Condition condition) {
 		this.subBiomeVariantsCommon.put(biome, condition);
+		return this;
+	}
+	
+	public BTABiome addBeachVariant(BTABiome biome) {
+		return this.addBeachVariant(biome, null);
+	}
+	
+	public BTABiome addBeachVariant(BTABiome biome, WorldConfigurationInfo.Condition condition) {
+		this.beachVariants.put(biome, condition);
+		return this;
+	}
+	
+	public BTABiome setHasBeach(boolean connect) {
+		return this.setHasBeach(connect, null);
+	}
+	
+	public BTABiome setHasBeach(boolean connect, WorldConfigurationInfo.Condition condition) {
+		this.shouldConnectWithEdge.put(condition, connect);
+		return this;
+	}
+	
+	public BTABiome addRiverVariant(BTABiome biome) {
+		return this.addRiverVariant(biome, null);
+	}
+	
+	public BTABiome addRiverVariant(BTABiome biome, WorldConfigurationInfo.Condition condition) {
+		this.riverVariants.put(biome, condition);
+		return this;
+	}
+	
+	public BTABiome addEdgeVariant(BTABiome biome) {
+		return this.addEdgeVariant(biome, null);
+	}
+	
+	public BTABiome addEdgeVariant(BTABiome biome, WorldConfigurationInfo.Condition condition) {
+		this.edgeVariants.put(biome, condition);
+		return this;
+	}
+	
+	public BTABiome setConnectToEdge(boolean connect) {
+		return this.setConnectToEdge(connect, null);
+	}
+	
+	public BTABiome setConnectToEdge(boolean connect, WorldConfigurationInfo.Condition condition) {
+		this.shouldConnectWithEdge.put(condition, connect);
 		return this;
 	}
 	
@@ -347,6 +403,86 @@ public class BTABiome extends BiomeGenBase {
 		}
 		
 		return this.biomeID;
+	}
+	
+	public int getBeachVariant(WorldConfigurationInfo generatorOptions, ShoreLayer layer) {
+		return this.getBeachVariant(generatorOptions);
+	}
+
+	public int getBeachVariant(WorldConfigurationInfo generatorOptions) {
+		if (!this.beachVariants.isEmpty()) {
+			for (BTABiome biome : this.beachVariants.keySet()) {
+				if (this.beachVariants.get(biome) == null || this.beachVariants.get(biome).satisfiesContraints(generatorOptions)) {
+					return biome.biomeID;
+				}
+			}
+		}
+		
+		return this.biomeID;
+	}
+	
+	public boolean hasBeach(WorldConfigurationInfo generatorOptions, ShoreLayer layer) {
+		return this.hasBeach(generatorOptions);
+	}
+
+	public boolean hasBeach(WorldConfigurationInfo generatorOptions) {
+		if (!this.hasBeach.isEmpty()) {
+			for (WorldConfigurationInfo.Condition condition : this.hasBeach.keySet()) {
+				if (condition == null || condition.satisfiesContraints(generatorOptions)) {
+					return this.hasBeach.get(condition);
+				}
+			}
+		}
+		
+		return true;
+	}
+	
+	public int getRiverVariant(WorldConfigurationInfo generatorOptions, RiverLayer layer) {
+		return this.getRiverVariant(generatorOptions);
+	}
+
+	public int getRiverVariant(WorldConfigurationInfo generatorOptions) {
+		if (!this.riverVariants.isEmpty()) {
+			for (BTABiome biome : this.riverVariants.keySet()) {
+				if (this.riverVariants.get(biome) == null || this.riverVariants.get(biome).satisfiesContraints(generatorOptions)) {
+					return biome.biomeID;
+				}
+			}
+		}
+		
+		return this.biomeID;
+	}
+	
+	public int getEdgeVariant(WorldConfigurationInfo generatorOptions, ShoreLayer layer) {
+		return this.getEdgeVariant(generatorOptions);
+	}
+
+	public int getEdgeVariant(WorldConfigurationInfo generatorOptions) {
+		if (!this.edgeVariants.isEmpty()) {
+			for (BTABiome biome : this.edgeVariants.keySet()) {
+				if (this.edgeVariants.get(biome) == null || this.edgeVariants.get(biome).satisfiesContraints(generatorOptions)) {
+					return biome.biomeID;
+				}
+			}
+		}
+		
+		return this.biomeID;
+	}
+	
+	public boolean shouldConnectWithEdge(WorldConfigurationInfo generatorOptions, ShoreLayer layer) {
+		return this.shouldConnectWithEdge(generatorOptions);
+	}
+
+	public boolean shouldConnectWithEdge(WorldConfigurationInfo generatorOptions) {
+		if (!this.shouldConnectWithEdge.isEmpty()) {
+			for (WorldConfigurationInfo.Condition condition : this.shouldConnectWithEdge.keySet()) {
+				if (condition == null || condition.satisfiesContraints(generatorOptions)) {
+					return this.shouldConnectWithEdge.get(condition) && this.getEdgeVariant(generatorOptions) == this.biomeID;
+				}
+			}
+		}
+		
+		return getEdgeVariant(generatorOptions) == this.biomeID;
 	}
 	
 	//------ Biome type Functionality ------//

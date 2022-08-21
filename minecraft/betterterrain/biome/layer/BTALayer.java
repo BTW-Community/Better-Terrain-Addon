@@ -101,7 +101,7 @@ public abstract class BTALayer extends GenLayer {
 			}
 
 			GenLayerSmooth layerSmoothBiome = new GenLayerSmooth(1000L, layerExtras);
-			RiverLayer layerRiverMix = new RiverLayer(100L, layerSmoothBiome, layerSmoothRivers);
+			RiverLayer layerRiverMix = new RiverLayer(100L, layerSmoothBiome, layerSmoothRivers, generatorInfo);
 			GenLayerVoronoiZoom layerVoronoiZoom = new GenLayerVoronoiZoom(10L, layerRiverMix);
 
 			layerRiverMix.initWorldGenSeed(seed);

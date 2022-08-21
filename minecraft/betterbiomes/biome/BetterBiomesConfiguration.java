@@ -1003,60 +1003,63 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 	private static Random rand = new Random();
 	private static long lastRandSeed = 0;
 	
+	private static ArrayList<BTABiome> betterBiomes = new ArrayList();
+	
 	private BetterBiomesConfiguration() {}
 
 	public static void init() {
-		filterBeachBiomes();
 		addBiomesWithEdge();
 		filterEdgeBiomes();
 	}
 
 	public void addBiomesToList(ArrayList<BTABiome> biomeList) {
-		biomeList.add(woods);
-		biomeList.add(desert);
-		biomeList.add(lushDesert);
-		biomeList.add(savanna);
-		biomeList.add(wetlands);
-		biomeList.add(birchForest);
-		biomeList.add(snowyWoods);
-		biomeList.add(chaparral);
-		biomeList.add(ancientForest);
-		biomeList.add(tropics);
-		biomeList.add(jungle);
-		biomeList.add(alpine);
-		biomeList.add(fungalForest);
-		biomeList.add(coniferousForest);
-		biomeList.add(snowyConiferousForest);
-		biomeList.add(mysticForest);
-		biomeList.add(rainforest);
-		biomeList.add(meadow);
-		biomeList.add(mountains);
-		biomeList.add(dunes);
-		biomeList.add(heathland);
-		biomeList.add(temperateForest);
-		biomeList.add(valleyMountains);
-		biomeList.add(tundra);
-		biomeList.add(orchard);
-		biomeList.add(steppe);
+		betterBiomes.add(woods);
+		betterBiomes.add(desert);
+		betterBiomes.add(lushDesert);
+		betterBiomes.add(savanna);
+		betterBiomes.add(wetlands);
+		betterBiomes.add(birchForest);
+		betterBiomes.add(snowyWoods);
+		betterBiomes.add(chaparral);
+		betterBiomes.add(ancientForest);
+		betterBiomes.add(tropics);
+		betterBiomes.add(jungle);
+		betterBiomes.add(alpine);
+		betterBiomes.add(fungalForest);
+		betterBiomes.add(coniferousForest);
+		betterBiomes.add(snowyConiferousForest);
+		betterBiomes.add(mysticForest);
+		betterBiomes.add(rainforest);
+		betterBiomes.add(meadow);
+		betterBiomes.add(mountains);
+		betterBiomes.add(dunes);
+		betterBiomes.add(heathland);
+		betterBiomes.add(temperateForest);
+		betterBiomes.add(valleyMountains);
+		betterBiomes.add(tundra);
+		betterBiomes.add(orchard);
+		betterBiomes.add(steppe);
 		
-		biomeList.add(willowGrove);
-		biomeList.add(icyPeaks);
-		biomeList.add(patagonia);
-		biomeList.add(grasslands);
-		biomeList.add(siberia);
-		biomeList.add(plains);
-		biomeList.add(frozenSprings);
-		biomeList.add(mangroveForest);
-		biomeList.add(aridForest);
-		biomeList.add(borealForest);
-		biomeList.add(shield);
-		biomeList.add(brushland);
-		biomeList.add(highlands);
+		betterBiomes.add(willowGrove);
+		betterBiomes.add(icyPeaks);
+		betterBiomes.add(patagonia);
+		betterBiomes.add(grasslands);
+		betterBiomes.add(siberia);
+		betterBiomes.add(plains);
+		betterBiomes.add(frozenSprings);
+		betterBiomes.add(mangroveForest);
+		betterBiomes.add(aridForest);
+		betterBiomes.add(borealForest);
+		betterBiomes.add(shield);
+		betterBiomes.add(brushland);
+		betterBiomes.add(highlands);
 
-		biomeList.add(outback);
-		biomeList.add(cherryForest);
-		biomeList.add(badlandsPlateau);
-		biomeList.add(autumnForest);
+		betterBiomes.add(outback);
+		betterBiomes.add(cherryForest);
+		betterBiomes.add(badlandsPlateau);
+		betterBiomes.add(autumnForest);
+		
+		biomeList.addAll(betterBiomes);
 	}
 	
 	public void setBiomeVariants() {
@@ -1110,105 +1113,96 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		
 		//Sporadic
 		
+		//Beaches
+		WorldConfigurationInfo.Condition pre132 = new WorldConfigurationInfo.Condition() {
+			@Override
+			public boolean satisfiesContraints(WorldConfigurationInfo info) {
+				return info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V1_3_1);
+			}
+		};
+		
+		alpine.setHasBeach(false);
+		fungalForest.setHasBeach(false);
+		fungalForestFlat.setHasBeach(false);
+		coniferousForest.setHasBeach(false);
+		snowyConiferousForest.setHasBeach(false);
+		mysticForest.setHasBeach(false);
+		mountains.setHasBeach(false);
+		temperateForest.setHasBeach(false);
+		oldValley.setHasBeach(false);
+		valleyMountains.setHasBeach(false);
+		tundra.setHasBeach(false, pre132);
+		snowyWoods.setHasBeach(false, pre132);
+		snowyWoodsHills.setHasBeach(false);
+		badlandsPlateau.setHasBeach(false);
+		rainforest.setHasBeach(false);
+		tropics.setHasBeach(false);
+		icyPeaks.setHasBeach(false);
+		patagoniaMountains.setHasBeach(false);
+		siberia.setHasBeach(false, pre132);
+		frozenSprings.setHasBeach(false, pre132);
+		mangroveForest.setHasBeach(false);
+		mangroveForestIsland.setHasBeach(false);
+		
+		outback.addBeachVariant(redSandBeach);
+		badlands.addBeachVariant(redSandBeach);
+		redSandBeach.addBeachVariant(redSandBeach);
+
+		WorldConfigurationInfo.Condition post132 = new WorldConfigurationInfo.Condition() {
+			@Override
+			public boolean satisfiesContraints(WorldConfigurationInfo info) {
+				return info.getBTAVersion().isVersionAtLeast(BTAVersion.V1_3_2);
+			}
+		};
+		
+		snowyWoods.addBeachVariant(frozenBeach, post132);
+		tundra.addBeachVariant(frozenBeach, post132);
+		siberia.addBeachVariant(frozenBeach, post132);
+		frozenSprings.addBeachVariant(frozenBeach, post132);
+		frozenBeach.addBeachVariant(frozenBeach, post132);
+		
 		//Rivers
+		desert.addRiverVariant(desertRiver);
+		desertHills.addRiverVariant(desertRiver);
+		dunes.addRiverVariant(desertRiver);
+
+		mysticForest.addRiverVariant(mysticRiver);
+
+		rainforest.addRiverVariant(rainforestRiver);
+		rainforestEdge.addRiverVariant(rainforestRiver);
+		
+		outback.addRiverVariant(outbackRiver);
+		
+		badlands.addRiverVariant(badlandsRiver);
+		badlandsPlateau.addRiverVariant(badlandsRiver);
+		badlandsEdge.addRiverVariant(badlandsRiver);
+		
+		tropics.addRiverVariant(tropicsRiver);
+		tropicsEdge.addRiverVariant(tropicsRiver);
+		
+		orchard.addRiverVariant(orchardRiver);
+		orchardClearing.addRiverVariant(orchardRiver);
+		
+		jungle.addRiverVariant(jungleRiver);
+		jungleHills.addRiverVariant(jungleRiver);
+		jungleEdge.addRiverVariant(jungleRiver);
+		
+		wetlands.addRiverVariant(wetlandsRiver);
+		wetlandsHills.addRiverVariant(wetlandsRiver);
+		
+		willowGrove.addRiverVariant(willowRiver);
+		willowHills.addRiverVariant(willowRiver);
+		
+		patagonia.addRiverVariant(patagoniaRiver);
+		patagoniaMountains.addRiverVariant(patagoniaRiver);
+		
+		for (BTABiome b : betterBiomes) {
+			if (b.getEnableSnow()) {
+				b.addRiverVariant(frozenRiver);
+			}
+		}
 		
 		//Edges
-	}
-
-	public static void filterBeachBiomes() {
-		beachlessBiomes.add(alpine);
-		beachlessBiomes.add(fungalForest);
-		beachlessBiomes.add(fungalForestFlat);
-		beachlessBiomes.add(coniferousForest);
-		beachlessBiomes.add(snowyConiferousForest);
-		beachlessBiomes.add(mysticForest);
-		beachlessBiomes.add(mountains);
-		beachlessBiomes.add(temperateForest);
-		beachlessBiomes.add(oldValley);
-		beachlessBiomes.add(valleyMountains);
-		beachlessBiomes.add(tundra);
-		beachlessBiomes.add(snowyWoods);
-		beachlessBiomes.add(snowyWoodsHills);
-		beachlessBiomes.add(badlandsPlateau);
-		beachlessBiomes.add(rainforest);
-		beachlessBiomes.add(tropics);
-		beachlessBiomes.add(icyPeaks);
-		beachlessBiomes.add(patagoniaMountains);
-		beachlessBiomes.add(siberia);
-		beachlessBiomes.add(frozenSprings);
-		beachlessBiomes.add(mangroveForest);
-		beachlessBiomes.add(mangroveForestIsland);
-
-		beachlessBiomes132.addAll(beachlessBiomes);
-		beachlessBiomes132.remove(snowyWoods);
-		beachlessBiomes132.remove(tundra);
-		beachlessBiomes132.remove(siberia);
-		beachlessBiomes132.remove(frozenSprings);
-	}
-
-	public static int getRiverVariantForBiomes(int baseBiome) {
-		int riverBiome = -1;
-
-		if (BiomeGenBase.biomeList[baseBiome] instanceof RiverBiome) {
-			riverBiome = baseBiome;
-		}
-		else if (baseBiome == desert.biomeID || baseBiome == desertHills.biomeID || baseBiome == dunes.biomeID) {
-			riverBiome = desertRiver.biomeID;
-		}
-		else if (baseBiome == mysticForest.biomeID) {
-			riverBiome = mysticRiver.biomeID;
-		}
-		else if (baseBiome == rainforest.biomeID || baseBiome == rainforestEdge.biomeID) {
-			riverBiome = rainforestRiver.biomeID;
-		}
-		else if (baseBiome == outback.biomeID) {
-			riverBiome = outbackRiver.biomeID;
-		}
-		else if (baseBiome == badlands.biomeID || baseBiome == badlandsPlateau.biomeID || baseBiome == badlandsEdge.biomeID) {
-			riverBiome = badlandsRiver.biomeID;
-		}
-		else if (baseBiome == tropics.biomeID || baseBiome == tropicsEdge.biomeID) {
-			riverBiome = tropicsRiver.biomeID;
-		}
-		else if (baseBiome == orchard.biomeID) {
-			riverBiome = orchardRiver.biomeID;
-		}
-		else if (baseBiome == jungle.biomeID || baseBiome == jungleHills.biomeID || baseBiome == jungleEdge.biomeID) {
-			riverBiome = jungleRiver.biomeID;
-		}
-		else if (baseBiome == wetlands.biomeID || baseBiome == wetlandsHills.biomeID) {
-			riverBiome = wetlandsRiver.biomeID;
-		}
-		else if (baseBiome == willowGrove.biomeID || baseBiome == willowHills.biomeID) {
-			riverBiome = willowRiver.biomeID;
-		}
-		else if (baseBiome == patagonia.biomeID || baseBiome == patagoniaMountains.biomeID) {
-			riverBiome = patagoniaRiver.biomeID;
-		}
-		else if (BiomeGenBase.biomeList[baseBiome].getEnableSnow()) {
-			riverBiome = frozenRiver.biomeID;
-		}
-		else {
-			riverBiome = river.biomeID;
-		}
-
-		return riverBiome;
-	}
-
-	public static int getBeachVariantForBiomes(int baseBiome, WorldConfigurationInfo generatorInfo) {
-		int beachBiome = -1;
-
-		if (baseBiome == outback.biomeID || baseBiome == badlands.biomeID || baseBiome == redSandBeach.biomeID) {
-			beachBiome = redSandBeach.biomeID;
-		}
-		else if ((baseBiome == snowyWoods.biomeID || baseBiome == tundra.biomeID || baseBiome == siberia.biomeID || baseBiome == frozenSprings.biomeID || baseBiome == frozenBeach.biomeID) && generatorInfo.getBTAVersion().isVersionAtLeast(BTAVersion.V1_3_2)) {
-			beachBiome = frozenBeach.biomeID;
-		}
-		else if (shouldBiomeSpawnBeach(baseBiome, generatorInfo)) {
-			beachBiome = beach.biomeID;
-		}
-
-		return beachBiome;
 	}
 
 	public static int getEdgeVariantForBiome(int baseBiome, WorldConfigurationInfo generatorInfo, int passNum) {

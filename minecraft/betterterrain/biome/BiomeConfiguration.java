@@ -6,6 +6,8 @@ import java.util.Map;
 
 import betterterrain.BTAAddon;
 import betterterrain.biome.layer.HillsLayer;
+import betterterrain.biome.layer.RiverLayer;
+import betterterrain.biome.layer.ShoreLayer;
 import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.FCAddOn;
@@ -98,6 +100,71 @@ public abstract class BiomeConfiguration {
 		}
 		else {
 			return baseBiome;
+		}
+	}
+	
+	public static int getBeachVariantForBiomes(int baseBiome, WorldConfigurationInfo generatorOptions, ShoreLayer layer) {
+		BiomeGenBase b = BiomeGenBase.biomeList[baseBiome];
+		
+		if (b instanceof BTABiome) {
+			BTABiome biome = (BTABiome) b;
+			
+			return biome.getBeachVariant(generatorOptions, layer);
+		}
+		else {
+			return baseBiome;
+		}
+	}
+	
+	public static boolean shouldBiomeSpawnBeach(int baseBiome, WorldConfigurationInfo generatorOptions, ShoreLayer layer) {
+		BiomeGenBase b = BiomeGenBase.biomeList[baseBiome];
+		
+		if (b instanceof BTABiome) {
+			BTABiome biome = (BTABiome) b;
+			
+			return biome.hasBeach(generatorOptions, layer);
+		}
+		else {
+			return true;
+		}
+	}
+	
+	public static int getRiverVariantForBiomes(int baseBiome, WorldConfigurationInfo generatorOptions, RiverLayer layer) {
+		BiomeGenBase b = BiomeGenBase.biomeList[baseBiome];
+		
+		if (b instanceof BTABiome) {
+			BTABiome biome = (BTABiome) b;
+			
+			return biome.getRiverVariant(generatorOptions, layer);
+		}
+		else {
+			return baseBiome;
+		}
+	}
+	
+	public static int getEdgeVariantForBiomes(int baseBiome, WorldConfigurationInfo generatorOptions, ShoreLayer layer) {
+		BiomeGenBase b = BiomeGenBase.biomeList[baseBiome];
+		
+		if (b instanceof BTABiome) {
+			BTABiome biome = (BTABiome) b;
+			
+			return biome.getEdgeVariant(generatorOptions, layer);
+		}
+		else {
+			return baseBiome;
+		}
+	}
+	
+	public static boolean shouldBiomeConnectWithEdge(int baseBiome, WorldConfigurationInfo generatorOptions, ShoreLayer layer) {
+		BiomeGenBase b = BiomeGenBase.biomeList[baseBiome];
+		
+		if (b instanceof BTABiome) {
+			BTABiome biome = (BTABiome) b;
+			
+			return biome.shouldConnectWithEdge(generatorOptions, layer);
+		}
+		else {
+			return true;
 		}
 	}
 	
