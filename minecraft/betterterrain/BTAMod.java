@@ -57,6 +57,13 @@ public class BTAMod extends FCAddOn {
 		FCBetterThanWolves.fcItemBloodMossSpores = Item.replaceItem(FCBetterThanWolves.fcItemBloodMossSpores.itemID, BTAItemBloodMossSpores.class, instance);
 		Block.blockNetherQuartz.SetBlockMaterial(FCBetterThanWolves.fcMaterialNetherRock);
 		Block.slowSand.SetBlockMaterial(netherSand);
+		
+		for (FCAddOn mod : FCAddOnHandler.m_ModList.values()) {
+			if (mod instanceof BTAAddon) {
+				BTAAddon addon = (BTAAddon) mod;
+				addon.currentVersion = AddonVersion.fromString(addon.getVersionString(), addon);
+			}
+		}
 	}
 	
 	@Override

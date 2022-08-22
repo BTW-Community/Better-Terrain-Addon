@@ -26,30 +26,16 @@ import net.minecraft.src.RenderManager;
 public class BetterBiomesMod extends BTAAddon {
 	private static BetterBiomesMod instance;
 	
+	public static final AddonVersion V3_0_0 = new AddonVersion(3, 0, 0, getInstance());
+	
 	private BetterBiomesMod() {
-		super("Better Biomes", "betterterrain", "3.0.0", "BB");
+		super("Better Biomes", "betterbiomes", "3.0.0", "BB");
 	}
 	
 	@Override
 	public void Initialize() {
 		FCAddOnHandler.LogMessage(this.getName() + " Version " + this.getVersionString() + " Initializing...");
-		initWorldGen();
-		initDefs();
-		initEntityRenderers();
 		FCAddOnHandler.LogMessage(this.getName() + " Initialized");
-	}
-
-	@Override
-	public void setValidVersions(Set<AddonVersion> versions) {
-		versions.add(BBVersions.V3_0_0);
-	}
-	
-	public void initWorldGen() {
-		BetterBiomesConfiguration.init();
-	}
-	
-	public void initDefs() {
-		//EntityList.addMapping(BTAEntityCrystalGolem.class, "btaCrystalGolem", 350, 0, 0);
 	}
 	
 	public static BetterBiomesMod getInstance() {
@@ -63,10 +49,5 @@ public class BetterBiomesMod extends BTAAddon {
 	@Override
 	public BiomeConfiguration getBiomeConfiguration() {
 		return BetterBiomesConfiguration.getInstance();
-	}
-	
-	// ------ Client only ------ //
-	public void initEntityRenderers() {
-		RenderManager.AddEntityRenderer(BTAEntityCrystalGolem.class, new BTARenderCrystalGolem());
 	}
 }

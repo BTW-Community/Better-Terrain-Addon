@@ -8,22 +8,22 @@ import java.util.Set;
 import betterterrain.BTAVersion;
 
 public class AddonVersion {
-	private static final Map<Class<? extends BTAAddon>, Set<AddonVersion>> versions = new HashMap();
+	private static final Map<BTAAddon, Set<AddonVersion>> versions = new HashMap();
 	
 	private final int major;
 	private final int minor;
 	private final int patch;
 	
-	public AddonVersion(int major, int minor, int patch, Class<? extends BTAAddon> addonClass) {
+	public AddonVersion(int major, int minor, int patch, BTAAddon addon) {
 		this.major = major;
 		this.minor = minor;
 		this.patch = patch;
 		
-		if (versions.get(addonClass) == null) {
-			versions.put(addonClass, new HashSet());
+		if (versions.get(addon) == null) {
+			versions.put(addon, new HashSet());
 		}
 		
-		versions.get(addonClass).add(this);
+		versions.get(addon).add(this);
 	}
 	
 	public String toString() {
@@ -38,7 +38,7 @@ public class AddonVersion {
 		}
 		
 		try {
-			for (AddonVersion version : versions.get(addon.getClass())) {
+			for (AddonVersion version : versions.get(addon)) {
 				if (version.major == Integer.parseInt(infoSplit[0]) && version.minor == Integer.parseInt(infoSplit[1]) && version.patch == Integer.parseInt(infoSplit[2]) ) {
 					return version;
 				}

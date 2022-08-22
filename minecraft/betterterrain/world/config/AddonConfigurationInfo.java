@@ -25,7 +25,7 @@ public class AddonConfigurationInfo {
 	
 	public final void parseJsonObject(JsonObject json) {
 		this.name = json.get("name").getAsString();
-		this.version = AddonVersion.fromString(json.get("version").getAsString(), (BTAAddon) FCAddOnHandler.getModByName(this.name));
+		this.version = AddonVersion.fromString(json.get("version").getAsString(), BTAAddon.getAddonByInternalName(this.name));
 		
 		this.parseConfigSettings(json.get("settings").getAsJsonObject());
 	}

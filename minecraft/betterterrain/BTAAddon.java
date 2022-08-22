@@ -13,12 +13,11 @@ import net.minecraft.src.FCAddOnHandler;
 public abstract class BTAAddon extends FCAddOn {
 	public final String internalName;
 	
-	public final AddonVersion currentVersion;
+	public AddonVersion currentVersion;
 	
 	public BTAAddon(String addonName, String internalName, String version, String prefix) {
 		super(addonName, version, prefix);
 		this.internalName = internalName;
-		this.currentVersion = AddonVersion.fromString(this.getVersionString(), this);
 	}
 	
 	//------ World Configuration Functionality ------//
