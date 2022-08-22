@@ -8,6 +8,7 @@ import betterterrain.BTAAddon;
 import betterterrain.biome.layer.HillsLayer;
 import betterterrain.biome.layer.RiverLayer;
 import betterterrain.biome.layer.ShoreLayer;
+import betterterrain.biome.layer.SporadicLayer;
 import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.FCAddOn;
@@ -97,6 +98,32 @@ public abstract class BiomeConfiguration {
 			BTABiome biome = (BTABiome) b;
 			
 			return biome.getSubVariantCommon(generatorOptions, layer);
+		}
+		else {
+			return baseBiome;
+		}
+	}
+	
+	public static int getSporadicVariantForBiomes(int baseBiome, WorldConfigurationInfo generatorOptions, SporadicLayer layer) {
+		BiomeGenBase b = BiomeGenBase.biomeList[baseBiome];
+		
+		if (b instanceof BTABiome) {
+			BTABiome biome = (BTABiome) b;
+			
+			return biome.getSporadicVariant(generatorOptions, layer);
+		}
+		else {
+			return baseBiome;
+		}
+	}
+	
+	public static int getSporadicChanceForBiomes(int baseBiome, WorldConfigurationInfo generatorOptions, SporadicLayer layer) {
+		BiomeGenBase b = BiomeGenBase.biomeList[baseBiome];
+		
+		if (b instanceof BTABiome) {
+			BTABiome biome = (BTABiome) b;
+			
+			return biome.getSporadicChance(generatorOptions, layer);
 		}
 		else {
 			return baseBiome;

@@ -1,6 +1,5 @@
 package betterterrain.biome.layer;
 
-import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.biome.BiomeConfiguration;
 import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.GenLayer;
