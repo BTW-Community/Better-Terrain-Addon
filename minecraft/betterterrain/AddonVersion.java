@@ -1,18 +1,29 @@
 package betterterrain;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import betterterrain.BTAVersion;
 
 public class AddonVersion {
+	private static final Map<Class<? extends BTAAddon>, Set<AddonVersion>> versions = new HashMap();
+	
 	private final int major;
 	private final int minor;
 	private final int patch;
 	
-	public AddonVersion(int major, int minor, int patch) {
+	public AddonVersion(int major, int minor, int patch, Class<? extends BTAAddon> addonClass) {
 		this.major = major;
 		this.minor = minor;
 		this.patch = patch;
+		
+		if (versions.get(addonClass) == null) {
+			versions.put(addonClass, new HashSet());
+		}
+		
+		versions.get(addonClass).add(this);
 	}
 	
 	public String toString() {
@@ -27,7 +38,7 @@ public class AddonVersion {
 		}
 		
 		try {
-			for (AddonVersion version : addon.validVersions) {
+			for (AddonVersion version : versions.get(addon.getClass())) {
 				if (version.major == Integer.parseInt(infoSplit[0]) && version.minor == Integer.parseInt(infoSplit[1]) && version.patch == Integer.parseInt(infoSplit[2]) ) {
 					return version;
 				}
@@ -36,7 +47,7 @@ public class AddonVersion {
 			throw new IllegalArgumentException("Specified version " + info + " not found for addon " + addon.getName());
 		}
 		catch (NumberFormatException e) {
-			throw new IllegalArgumentException("Incorrect format for version comnpatibility string. String must be in the format of <X.X.X> where X are integers.");
+			throw new IllegalArgumentException("Incorrect format for version compatibility string. String must be in the format of <X.X.X> where X are integers.");
 		}
 	}
 	

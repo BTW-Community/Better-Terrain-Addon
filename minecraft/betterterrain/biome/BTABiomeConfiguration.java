@@ -66,12 +66,6 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 	
 	//------ Primary Biomes ------//
 	
-	public static final BTABiome woods = new WoodsBiome(WOODS_ID, "betterterrain:woods", Climate.TEMPERATE)
-			.setBiomeName("Woods")
-			.setTemperatureRainfall(0.7F, 0.8F)
-			.setMinMaxHeight(0.1F, 0.5F)
-			.setLegacyCompatible();
-	
 	public static final BTABiome desert = new DesertBiome(DESERT_ID, "betterterrain:desert", Climate.ARID)
 			.setBiomeName("Better Desert")
 			.setSpawnsVillages(true)
@@ -82,13 +76,13 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 			.setNotSpawnable()
 			.setLegacyCompatible();
 
-	public static final BTABiome plains = new PlainsBiome(PLAINS_ID, "betterterrain:plains", Climate.ARID)
-			.setBiomeName("Better Plains")
-			.setSpawnsPumpkins()
-			.setSpawnsSugarCane()
-			.setSpawnsVillages(false)
-			.setTemperatureRainfall(0.8F, 0.3F)
-			.setMinMaxHeight(0.2F, 0.4F);
+	public static final BTABiome icyPeaks = new IcyPeaksBiome(ICY_PEAKS_ID, "betterterrain:icy_peaks", Climate.SNOWY)
+			.setBiomeName("Icy Peaks")
+			.setSurfaceBuilder(new IcyPeaksSurfaceBuilder())
+			.setTemperatureRainfall(0.1F, 0.1F)
+			.setMinMaxHeight(0.5F, 1.5F)
+			.setEnableSnow()
+			.setNotSpawnable();
 
 	public static final BTABiome jungle = new JungleBiome(JUNGLE_ID, "betterterrain:jungle", Climate.TROPICAL)
 			.setBiomeName("Better Jungle")
@@ -105,6 +99,20 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.8F, 2.5F)
 			.setLegacyCompatible();
 
+	public static final BTABiome plains = new PlainsBiome(PLAINS_ID, "betterterrain:plains", Climate.ARID)
+			.setBiomeName("Better Plains")
+			.setSpawnsPumpkins()
+			.setSpawnsSugarCane()
+			.setSpawnsVillages(false)
+			.setTemperatureRainfall(0.8F, 0.3F)
+			.setMinMaxHeight(0.2F, 0.4F);
+
+	public static final BTABiome siberia = new SiberiaBiome(SIBERIA_ID, "betterterrain:siberia", Climate.SNOWY)
+			.setBiomeName("Siberia")
+			.setTemperatureRainfall(0.1F, 0.4F)
+			.setMinMaxHeight(0.3F, 0.7F)
+			.setEnableSnow();
+
 	public static final BTABiome tundra = new TundraBiome(TUNDRA_ID, "betterbiomes:tundra", Climate.SNOWY)
 			.setBiomeName("Tundra")
 			.setTemperatureRainfall(0.1F, 0.1F)
@@ -113,20 +121,6 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 			.setLegacyCompatible()
 			.setNotSpawnable();
 
-	public static final BTABiome icyPeaks = new IcyPeaksBiome(ICY_PEAKS_ID, "betterterrain:icy_peaks", Climate.SNOWY)
-			.setBiomeName("Icy Peaks")
-			.setSurfaceBuilder(new IcyPeaksSurfaceBuilder())
-			.setTemperatureRainfall(0.1F, 0.1F)
-			.setMinMaxHeight(0.5F, 1.5F)
-			.setEnableSnow()
-			.setNotSpawnable();
-
-	public static final BTABiome siberia = new SiberiaBiome(SIBERIA_ID, "betterterrain:siberia", Climate.SNOWY)
-			.setBiomeName("Siberia")
-			.setTemperatureRainfall(0.1F, 0.4F)
-			.setMinMaxHeight(0.3F, 0.7F)
-			.setEnableSnow();
-
 	public static final BTABiome swamp = new SwampBiome(SWAMP_ID, "betterterrain:swamp", Climate.TROPICAL)
 			.setBiomeName("Better Swamp")
 			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
@@ -134,6 +128,12 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 			.setSpawnsWitchHuts()
 			.setMinMaxHeight(-0.1F, 0.3F)
 			.setTemperatureRainfall(0.8F, 0.9F);
+	
+	public static final BTABiome woods = new WoodsBiome(WOODS_ID, "betterterrain:woods", Climate.TEMPERATE)
+			.setBiomeName("Woods")
+			.setTemperatureRainfall(0.7F, 0.8F)
+			.setMinMaxHeight(0.1F, 0.5F)
+			.setLegacyCompatible();
 	
 	public static final BTABiome netherWastes = new NetherWastesBiome(NETHER_WASTES_ID, "betterterrain:nether_wastes")
 			.setBiomeName("Nether Wastes")

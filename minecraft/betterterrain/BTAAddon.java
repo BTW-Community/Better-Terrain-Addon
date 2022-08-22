@@ -14,19 +14,14 @@ public abstract class BTAAddon extends FCAddOn {
 	public final String internalName;
 	
 	public final AddonVersion currentVersion;
-	public final Set<AddonVersion> validVersions;
 	
 	public BTAAddon(String addonName, String internalName, String version, String prefix) {
 		super(addonName, version, prefix);
 		this.internalName = internalName;
-		this.validVersions = new HashSet();
-		this.setValidVersions(validVersions);
 		this.currentVersion = AddonVersion.fromString(this.getVersionString(), this);
 	}
 	
 	//------ World Configuration Functionality ------//
-	
-	public abstract void setValidVersions(Set<AddonVersion> versions);
 	
 	public abstract BiomeConfiguration getBiomeConfiguration();
 	
