@@ -1,6 +1,7 @@
 package net.minecraft.src;
 
 import betterbiomes.biome.BetterBiomesConfiguration;
+import betterterrain.biome.BTABiomeConfiguration;
 import betterterrain.biome.BTANetherBiome;
 
 public class WorldProviderHell extends WorldProvider
@@ -12,11 +13,8 @@ public class WorldProviderHell extends WorldProvider
     {
     	WorldType worldType = this.worldObj.worldInfo.getTerrainType();
     	
-    	System.out.println(worldType.getTranslateName());
-    	
     	if (worldType.isDeco()) {
-        	this.worldChunkMgr = new WorldChunkManagerHell(BetterBiomesConfiguration.netherWastes, 1.0F, 0.0F);
-        	//this.worldChunkMgr = new WorldChunkManagerHell(BTABiomeConfiguration.crystalCaverns, 1.0F, 0.0F);
+        	this.worldChunkMgr = new WorldChunkManagerHell(BTABiomeConfiguration.netherWastes, 1.0F, 0.0F);
     	}
     	else {
     		this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.hell, 1.0F, 0.0F);

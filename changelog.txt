@@ -15,8 +15,10 @@ Version 3.X.0
 Version 3.0.0
 [list]
 [*]Refactored the entire mod into two separate mods. The Better Terrain Addon now acts as a library for world generation, while the biomes themselves previously present in BTA have been splint into Better Biomes. Note that this is still backwards compatible with old worlds, but will require both mods to be installed.
+[*]Increased the maximum number of biome ids to 4096.
 [*]Changed the format of the world configuration info to use json. Old worlds will still be processed corrently.
 [*]Changed savannas to be able to spawn pumpkins.
+[*]Fixed an issue where red desert pyramids spawned with regular sandstone stairs.
 [/list]
 
 Version 2.0.8

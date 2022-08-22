@@ -3,8 +3,8 @@ package betterterrain.world.generate;
 import java.util.List;
 import java.util.Random;
 
-import betterbiomes.DecoIntegration;
 import betterbiomes.biome.BetterBiomesConfiguration;
+import betterterrain.DecoIntegration;
 import betterterrain.biome.BTABiome;
 import betterterrain.structure.mapgen.BTAMapGenBase;
 import betterterrain.structure.mapgen.BTAMapGenCave;

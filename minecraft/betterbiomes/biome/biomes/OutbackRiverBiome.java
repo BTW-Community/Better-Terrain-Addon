@@ -1,7 +1,8 @@
 package betterbiomes.biome.biomes;
 
-import betterbiomes.DecoIntegration;
 import betterbiomes.biome.BetterBiomesConfiguration;
+import betterterrain.DecoIntegration;
+import betterterrain.biome.biomes.RiverBiome;
 
 public class OutbackRiverBiome extends RiverBiome {
 	public OutbackRiverBiome(int id, String internalName) {

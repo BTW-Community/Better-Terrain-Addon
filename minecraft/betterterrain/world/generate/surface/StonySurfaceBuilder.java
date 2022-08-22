@@ -2,7 +2,7 @@ package betterterrain.world.generate.surface;
 
 import java.util.Random;
 
-import betterbiomes.DecoIntegration;
+import betterterrain.DecoIntegration;
 import betterterrain.biome.BTABiome;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;

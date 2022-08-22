@@ -2,8 +2,8 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.DecoIntegration;
 import betterbiomes.feature.tree.CherryTreeGen;
+import betterterrain.DecoIntegration;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.world.config.WorldConfigurationInfo;

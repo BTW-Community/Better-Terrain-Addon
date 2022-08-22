@@ -9,6 +9,7 @@ import betterterrain.AddonVersion;
 import betterterrain.BTAAddon;
 import betterterrain.BTAMod;
 import betterterrain.BTAVersion;
+import betterterrain.DecoIntegration;
 import betterterrain.biome.BiomeConfiguration;
 import betterterrain.block.BTABlockClay;
 import betterterrain.item.BTAItemBloodMossSpores;

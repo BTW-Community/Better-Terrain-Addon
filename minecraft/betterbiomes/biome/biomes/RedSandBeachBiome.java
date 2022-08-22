@@ -1,6 +1,6 @@
 package betterbiomes.biome.biomes;
 
-import betterbiomes.DecoIntegration;
+import betterterrain.DecoIntegration;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import net.minecraft.src.Block;

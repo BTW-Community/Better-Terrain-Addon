@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Random;
 
-import betterbiomes.DecoIntegration;
+import betterterrain.DecoIntegration;
 import net.minecraft.src.DecoUtilsBlock;
 import net.minecraft.src.FCUtilsBlockPos;
 import net.minecraft.src.World;

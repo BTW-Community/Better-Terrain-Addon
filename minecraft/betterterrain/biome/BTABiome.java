@@ -4,14 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import betterbiomes.feature.plant.MelonGen;
-import betterbiomes.feature.plant.TallGrassGen;
-import betterbiomes.feature.terrain.OreGen;
 import betterterrain.BTAVersion;
 import betterterrain.biome.layer.HillsLayer;
 import betterterrain.biome.layer.RiverLayer;
 import betterterrain.biome.layer.ShoreLayer;
 import betterterrain.biome.layer.SporadicLayer;
+import betterterrain.feature.plant.MelonGen;
+import betterterrain.feature.plant.TallGrassGen;
+import betterterrain.feature.terrain.OreGen;
 import betterterrain.structure.mapgen.BTAMapGenScatteredFeature;
 import betterterrain.structure.mapgen.BTAMapGenVillage;
 import betterterrain.world.config.WorldConfigurationInfo;
@@ -643,6 +643,13 @@ public class BTABiome extends BiomeGenBase {
 	}
 	
 	//------ Generator Functionality ------//
+	
+	/**
+	 * Only used if better beaches is turned off
+	 */
+	public boolean spawnSand(WorldConfigurationInfo info) {
+		return true;
+	}
 
 	public void addEmeralds(World world, Random rand, int startX, int startZ) {
         int count = 3 + rand.nextInt(6);

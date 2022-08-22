@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.BiomeConfiguration;
 import betterterrain.biome.layer.BTALayer;
@@ -34,7 +33,7 @@ public class BetaChunkManager extends BTAWorldChunkManager {
         this.biomeCache = new BiomeCache(this);
         this.biomesToSpawnIn = new ArrayList();
         
-        for (BTABiome b : BetterBiomesConfiguration.getBiomeList()) {
+        for (BTABiome b : BiomeConfiguration.getBiomeList()) {
         	if (b.isSpawnable()) {
         		biomesToSpawnIn.add(b);
         	}

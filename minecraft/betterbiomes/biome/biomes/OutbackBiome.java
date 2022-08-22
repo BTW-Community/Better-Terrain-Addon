@@ -2,12 +2,12 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.DecoIntegration;
-import betterbiomes.feature.plant.TallGrassGen;
 import betterbiomes.feature.tree.SmallShrubGen;
 import betterbiomes.feature.tree.TinyShrubGen;
+import betterterrain.DecoIntegration;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
+import betterterrain.feature.plant.TallGrassGen;
 import net.minecraft.src.Block;
 import net.minecraft.src.FCEntityChicken;
 import net.minecraft.src.FCEntityPig;

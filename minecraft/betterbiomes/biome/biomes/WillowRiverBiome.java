@@ -1,6 +1,7 @@
 package betterbiomes.biome.biomes;
 
 import betterbiomes.biome.BetterBiomesConfiguration;
+import betterterrain.biome.biomes.RiverBiome;
 import net.minecraft.src.FCEntitySlime;
 import net.minecraft.src.FCEntityWitch;
 import net.minecraft.src.SpawnListEntry;

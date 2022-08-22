@@ -2,7 +2,7 @@ package betterterrain.structure.component;
 
 import java.util.Random;
 
-import betterbiomes.DecoIntegration;
+import betterterrain.DecoIntegration;
 import net.minecraft.src.Block;
 import net.minecraft.src.ComponentScatteredFeature;
 import net.minecraft.src.Direction;
@@ -50,22 +50,22 @@ public class BTAComponentScatteredFeatureRedDesertPyramid extends ComponentScatt
             }
         }
 
-        var5 = this.getMetadataWithOffset(Block.stairsSandStone.blockID, 3);
-        var6 = this.getMetadataWithOffset(Block.stairsSandStone.blockID, 2);
-        int var7 = this.getMetadataWithOffset(Block.stairsSandStone.blockID, 0);
-        int var8 = this.getMetadataWithOffset(Block.stairsSandStone.blockID, 1);
+        var5 = this.getMetadataWithOffset(DecoIntegration.redSandStoneStairs.blockID, 3);
+        var6 = this.getMetadataWithOffset(DecoIntegration.redSandStoneStairs.blockID, 2);
+        int var7 = this.getMetadataWithOffset(DecoIntegration.redSandStoneStairs.blockID, 0);
+        int var8 = this.getMetadataWithOffset(DecoIntegration.redSandStoneStairs.blockID, 1);
         this.fillWithBlocks(par1World, par3StructureBoundingBox, 0, 0, 0, 4, 9, 4, DecoIntegration.redSandStone.blockID, 0, false);
         this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 10, 1, 3, 10, 3, DecoIntegration.redSandStone.blockID, DecoIntegration.redSandStone.blockID, false);
-        this.placeBlockAtCurrentPosition(par1World, Block.stairsSandStone.blockID, var5, 2, 10, 0, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.stairsSandStone.blockID, var6, 2, 10, 4, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.stairsSandStone.blockID, var7, 0, 10, 2, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.stairsSandStone.blockID, var8, 4, 10, 2, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, DecoIntegration.redSandStoneStairs.blockID, var5, 2, 10, 0, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, DecoIntegration.redSandStoneStairs.blockID, var6, 2, 10, 4, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, DecoIntegration.redSandStoneStairs.blockID, var7, 0, 10, 2, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, DecoIntegration.redSandStoneStairs.blockID, var8, 4, 10, 2, par3StructureBoundingBox);
         this.fillWithBlocks(par1World, par3StructureBoundingBox, this.scatteredFeatureSizeX - 5, 0, 0, this.scatteredFeatureSizeX - 1, 9, 4, DecoIntegration.redSandStone.blockID, 0, false);
         this.fillWithBlocks(par1World, par3StructureBoundingBox, this.scatteredFeatureSizeX - 4, 10, 1, this.scatteredFeatureSizeX - 2, 10, 3, DecoIntegration.redSandStone.blockID, DecoIntegration.redSandStone.blockID, false);
-        this.placeBlockAtCurrentPosition(par1World, Block.stairsSandStone.blockID, var5, this.scatteredFeatureSizeX - 3, 10, 0, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.stairsSandStone.blockID, var6, this.scatteredFeatureSizeX - 3, 10, 4, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.stairsSandStone.blockID, var7, this.scatteredFeatureSizeX - 5, 10, 2, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.stairsSandStone.blockID, var8, this.scatteredFeatureSizeX - 1, 10, 2, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, DecoIntegration.redSandStoneStairs.blockID, var5, this.scatteredFeatureSizeX - 3, 10, 0, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, DecoIntegration.redSandStoneStairs.blockID, var6, this.scatteredFeatureSizeX - 3, 10, 4, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, DecoIntegration.redSandStoneStairs.blockID, var7, this.scatteredFeatureSizeX - 5, 10, 2, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, DecoIntegration.redSandStoneStairs.blockID, var8, this.scatteredFeatureSizeX - 1, 10, 2, par3StructureBoundingBox);
         this.fillWithBlocks(par1World, par3StructureBoundingBox, 8, 0, 0, 12, 4, 4, DecoIntegration.redSandStone.blockID, 0, false);
         this.fillWithBlocks(par1World, par3StructureBoundingBox, 9, 1, 0, 11, 3, 4, 0, 0, false);
         this.placeBlockAtCurrentPosition(par1World, DecoIntegration.redSandStone.blockID, 2, 9, 1, 1, par3StructureBoundingBox);
@@ -99,18 +99,18 @@ public class BTAComponentScatteredFeatureRedDesertPyramid extends ComponentScatt
         this.placeBlockAtCurrentPosition(par1World, 0, 0, this.scatteredFeatureSizeX - 7, 6, 10, par3StructureBoundingBox);
         this.fillWithBlocks(par1World, par3StructureBoundingBox, 2, 4, 4, 2, 6, 4, 0, 0, false);
         this.fillWithBlocks(par1World, par3StructureBoundingBox, this.scatteredFeatureSizeX - 3, 4, 4, this.scatteredFeatureSizeX - 3, 6, 4, 0, 0, false);
-        this.placeBlockAtCurrentPosition(par1World, Block.stairsSandStone.blockID, var5, 2, 4, 5, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.stairsSandStone.blockID, var5, 2, 3, 4, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.stairsSandStone.blockID, var5, this.scatteredFeatureSizeX - 3, 4, 5, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.stairsSandStone.blockID, var5, this.scatteredFeatureSizeX - 3, 3, 4, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, DecoIntegration.redSandStoneStairs.blockID, var5, 2, 4, 5, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, DecoIntegration.redSandStoneStairs.blockID, var5, 2, 3, 4, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, DecoIntegration.redSandStoneStairs.blockID, var5, this.scatteredFeatureSizeX - 3, 4, 5, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, DecoIntegration.redSandStoneStairs.blockID, var5, this.scatteredFeatureSizeX - 3, 3, 4, par3StructureBoundingBox);
         this.fillWithBlocks(par1World, par3StructureBoundingBox, 1, 1, 3, 2, 2, 3, DecoIntegration.redSandStone.blockID, DecoIntegration.redSandStone.blockID, false);
         this.fillWithBlocks(par1World, par3StructureBoundingBox, this.scatteredFeatureSizeX - 3, 1, 3, this.scatteredFeatureSizeX - 2, 2, 3, DecoIntegration.redSandStone.blockID, DecoIntegration.redSandStone.blockID, false);
-        this.placeBlockAtCurrentPosition(par1World, Block.stairsSandStone.blockID, 0, 1, 1, 2, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.stairsSandStone.blockID, 0, this.scatteredFeatureSizeX - 2, 1, 2, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, DecoIntegration.redSandStoneStairs.blockID, 0, 1, 1, 2, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, DecoIntegration.redSandStoneStairs.blockID, 0, this.scatteredFeatureSizeX - 2, 1, 2, par3StructureBoundingBox);
         this.placeBlockAtCurrentPosition(par1World, Block.stoneSingleSlab.blockID, 1, 1, 2, 2, par3StructureBoundingBox);
         this.placeBlockAtCurrentPosition(par1World, Block.stoneSingleSlab.blockID, 1, this.scatteredFeatureSizeX - 2, 2, 2, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.stairsSandStone.blockID, var8, 2, 1, 2, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, Block.stairsSandStone.blockID, var7, this.scatteredFeatureSizeX - 3, 1, 2, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, DecoIntegration.redSandStoneStairs.blockID, var8, 2, 1, 2, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, DecoIntegration.redSandStoneStairs.blockID, var7, this.scatteredFeatureSizeX - 3, 1, 2, par3StructureBoundingBox);
         this.fillWithBlocks(par1World, par3StructureBoundingBox, 4, 3, 5, 4, 3, 18, DecoIntegration.redSandStone.blockID, DecoIntegration.redSandStone.blockID, false);
         this.fillWithBlocks(par1World, par3StructureBoundingBox, this.scatteredFeatureSizeX - 5, 3, 5, this.scatteredFeatureSizeX - 5, 3, 17, DecoIntegration.redSandStone.blockID, DecoIntegration.redSandStone.blockID, false);
         this.fillWithBlocks(par1World, par3StructureBoundingBox, 3, 1, 5, 4, 2, 16, 0, 0, false);

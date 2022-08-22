@@ -1,6 +1,5 @@
 package betterterrain;
 
-import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.biome.BiomeConfiguration;
 import betterterrain.block.BTABlockClay;
 import betterterrain.item.BTAItemBloodMossSpores;

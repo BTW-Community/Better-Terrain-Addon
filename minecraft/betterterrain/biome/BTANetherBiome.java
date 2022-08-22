@@ -2,11 +2,11 @@ package betterterrain.biome;
 
 import java.util.Random;
 
-import betterbiomes.DecoIntegration;
-import betterbiomes.feature.terrain.BasaltPillarGen;
-import betterbiomes.feature.terrain.GlowstoneGen;
-import betterbiomes.feature.terrain.NetherLavaGen;
-import betterbiomes.feature.terrain.OreGen;
+import betterterrain.DecoIntegration;
+import betterterrain.feature.terrain.BasaltPillarGen;
+import betterterrain.feature.terrain.GlowstoneGen;
+import betterterrain.feature.terrain.NetherLavaGen;
+import betterterrain.feature.terrain.OreGen;
 import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.Block;
 import net.minecraft.src.FCEntityGhast;

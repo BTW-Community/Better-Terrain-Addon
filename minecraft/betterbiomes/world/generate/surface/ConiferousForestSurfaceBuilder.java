@@ -2,11 +2,11 @@ package betterbiomes.world.generate.surface;
 
 import java.util.Random;
 
-import betterbiomes.DecoIntegration;
 import betterbiomes.feature.tree.TaigaGen3;
 import betterbiomes.feature.tree.TaigaGen4;
 import betterbiomes.feature.tree.TaigaGen5;
 import betterbiomes.feature.tree.TaigaGen7;
+import betterterrain.DecoIntegration;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.SurfaceBuilder;

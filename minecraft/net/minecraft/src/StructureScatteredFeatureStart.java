@@ -3,7 +3,6 @@ package net.minecraft.src;
 import java.util.ArrayList;
 import java.util.Random;
 
-import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.structure.component.BTAComponentScatteredFeatureRedDesertPyramid;
 
 public class StructureScatteredFeatureStart extends StructureStart

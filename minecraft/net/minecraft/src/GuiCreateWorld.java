@@ -3,7 +3,7 @@ package net.minecraft.src;
 import java.util.Random;
 import org.lwjgl.input.Keyboard;
 
-import betterbiomes.DecoIntegration;
+import betterterrain.DecoIntegration;
 import betterterrain.biome.BTABiome;
 import betterterrain.gui.GeneratorOptionsGui;
 import betterterrain.world.config.WorldConfigurationInfo;

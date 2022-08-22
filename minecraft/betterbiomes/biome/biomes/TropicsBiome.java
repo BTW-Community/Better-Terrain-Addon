@@ -2,10 +2,12 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.feature.plant.TallGrassGen;
 import betterbiomes.feature.tree.PalmTreeSmallGen;
+import betterterrain.BTAVersion;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
+import betterterrain.feature.plant.TallGrassGen;
+import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.Block;
 import net.minecraft.src.FCEntityChicken;
 import net.minecraft.src.FCEntityCreeper;
@@ -43,6 +45,11 @@ public class TropicsBiome extends BTABiome {
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntitySlime.class, 10, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntityEnderman.class, 1, 1, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntityOcelot.class, 2, 1, 1));
+	}
+	
+	@Override
+	public boolean spawnSand(WorldConfigurationInfo info) {
+		return info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V1_1_3);
 	}
 
 	/**

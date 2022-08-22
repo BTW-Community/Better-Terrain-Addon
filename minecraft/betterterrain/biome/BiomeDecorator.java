@@ -2,18 +2,17 @@ package betterterrain.biome;
 
 import java.util.Random;
 
-import betterbiomes.DecoIntegration;
-import betterbiomes.biome.BetterBiomesConfiguration;
-import betterbiomes.feature.plant.DecoFlowerGen;
-import betterbiomes.feature.plant.FlowerGen;
-import betterbiomes.feature.plant.MelonGen;
-import betterbiomes.feature.plant.MyceliumGen;
-import betterbiomes.feature.terrain.ClayGen;
-import betterbiomes.feature.terrain.OasisGen;
-import betterbiomes.feature.terrain.OreGen;
-import betterbiomes.feature.terrain.SkyClayGen;
-import betterbiomes.feature.terrain.SteppeGen;
 import betterterrain.BTAVersion;
+import betterterrain.DecoIntegration;
+import betterterrain.feature.plant.DecoFlowerGen;
+import betterterrain.feature.plant.FlowerGen;
+import betterterrain.feature.plant.MelonGen;
+import betterterrain.feature.plant.MyceliumGen;
+import betterterrain.feature.terrain.ClayGen;
+import betterterrain.feature.terrain.OasisGen;
+import betterterrain.feature.terrain.OreGen;
+import betterterrain.feature.terrain.SkyClayGen;
+import betterterrain.feature.terrain.SteppeGen;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.config.WorldConfigurationInfoLegacy;
 import betterterrain.world.generate.BTADefaultChunkProvider;
@@ -329,7 +328,7 @@ public class BiomeDecorator
 			var3 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 			if (this.currentWorld.provider.terrainType.canPerlinBeachesBeToggled() && !(this.currentWorld.getChunkProvider() instanceof ChunkProviderServer))
 				if (!this.generatorInfo.generatePerlinBeaches())
-					if (this.biome != BetterBiomesConfiguration.tropics || ((BTADefaultChunkProvider) this.currentWorld.getChunkProvider()).generatorInfo.getBTAVersion().isVersionAtOrBelow(BTAVersion.V1_1_3))
+					if ((this.biome instanceof BTABiome && ((BTABiome) this.biome).spawnSand(this.generatorInfo)))
 						this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
 		}
 
@@ -354,7 +353,7 @@ public class BiomeDecorator
 			var3 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 			if (this.currentWorld.provider.terrainType.canPerlinBeachesBeToggled() && !(this.currentWorld.getChunkProvider() instanceof ChunkProviderServer))
 				if (!this.generatorInfo.generatePerlinBeaches())
-					if (this.biome != BetterBiomesConfiguration.tropics || ((BTADefaultChunkProvider) this.currentWorld.getChunkProvider()).generatorInfo.getBTAVersion().isVersionAtOrBelow(BTAVersion.V1_1_3))
+					if ((this.biome instanceof BTABiome && ((BTABiome) this.biome).spawnSand(this.generatorInfo)))
 						this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
 		}
 

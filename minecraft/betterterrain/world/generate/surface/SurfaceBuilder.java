@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-import betterbiomes.DecoIntegration;
 import betterterrain.BTAVersion;
+import betterterrain.DecoIntegration;
 import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
 import betterterrain.world.config.WorldConfigurationInfo;

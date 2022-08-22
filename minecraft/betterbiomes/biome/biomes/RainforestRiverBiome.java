@@ -1,6 +1,7 @@
 package betterbiomes.biome.biomes;
 
 import betterbiomes.biome.BetterBiomesConfiguration;
+import betterterrain.biome.biomes.RiverBiome;
 import net.minecraft.src.FCEntityCreeper;
 import net.minecraft.src.FCEntityEnderman;
 import net.minecraft.src.FCEntityJungleSpider;

@@ -3,6 +3,7 @@ package betterbiomes.biome.biomes;
 import java.util.Random;
 
 import betterterrain.biome.Climate;
+import betterterrain.biome.biomes.WoodsBiome;
 import net.minecraft.src.World;
 
 public class ValleyBiome extends WoodsBiome {

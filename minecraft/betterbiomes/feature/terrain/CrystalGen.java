@@ -2,7 +2,7 @@ package betterbiomes.feature.terrain;
 
 import java.util.Random;
 
-import betterbiomes.DecoIntegration;
+import betterterrain.DecoIntegration;
 import net.minecraft.src.Block;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;

@@ -1,6 +1,6 @@
 package betterterrain.gui;
 
-import betterbiomes.DecoIntegration;
+import betterterrain.DecoIntegration;
 import betterterrain.biome.BiomeInfo;
 import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.GuiButton;
