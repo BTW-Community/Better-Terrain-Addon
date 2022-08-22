@@ -2,10 +2,10 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.feature.tree.TaigaGen6;
 import betterbiomes.feature.tree.TemperateBirchGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
+import betterterrain.feature.tree.TaigaGen6;
 import net.minecraft.src.FCEntityWolf;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenShrub;

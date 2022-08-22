@@ -42,11 +42,13 @@ public class WorldConfigurationInfo {
 		info.setBTAVersion(BTAMod.getInstance().currentVersion);
 		info.setOceanSize(5);
 		info.setGeneratePerlinBeaches(true);
-		info.setClimatized(true);
 		info.setBiomeSize(1);
 		info.setGenerator(TerrainGenerator.CLASSIC);
 
 		info.generateBiomeInfoListFromBiomes(BiomeConfiguration.getBiomeList(), true, false);
+
+		// Climates default to off if not enough biomes are installed - cutoff is somewhat arbitrary 
+		info.setClimatized(info.biomeInfoList.size() > 16);
 
 		if (!isDeco) {
 			for (BiomeInfo b : info.getBiomeInfoList()) {

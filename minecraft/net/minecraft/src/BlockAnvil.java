@@ -9,7 +9,14 @@ public class BlockAnvil extends BlockSand
 {
 	static {
 		BTAMod.getInstance();
-		BetterBiomesMod.getInstance();
+		
+		try {
+			if (Class.forName("betterbiomes.BetterBiomesMod") != null) {
+				//BetterBiomesMod.getInstance();
+			}
+		} catch (ClassNotFoundException e) {
+			// Don't do anything
+		}
 	}
 	
 	/** List of types/statues the Anvil can be in. */

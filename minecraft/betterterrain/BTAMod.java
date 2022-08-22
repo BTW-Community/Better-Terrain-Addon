@@ -45,6 +45,8 @@ public class BTAMod extends FCAddOn {
 	public void Initialize() {
 		ServerCommandManager.registerAddonCommand(new BiomeCommand());
 		
+		DecoIntegration.init();
+		
 		netherSand = new Material(MapColor.sandColor).setRequiresTool().SetNetherMobsCanSpawnOn();
 	    
 		FCBetterThanWolves.fcItemPileSoulSand = Item.replaceItem(FCBetterThanWolves.fcItemPileSoulSand.itemID, BTAItemPileSoulSand.class, instance);

@@ -18,16 +18,20 @@ import betterterrain.biome.biomes.NetherWastesBiome;
 import betterterrain.biome.biomes.PlainsBiome;
 import betterterrain.biome.biomes.RiverBiome;
 import betterterrain.biome.biomes.SiberiaBiome;
+import betterterrain.biome.biomes.SwampBiome;
+import betterterrain.biome.biomes.SwampRiverBiome;
 import betterterrain.biome.biomes.TundraBiome;
 import betterterrain.biome.biomes.WoodsBiome;
 import betterterrain.biome.biomes.deprecated.ForestedIcyPeaksBiome;
 import betterterrain.world.generate.surface.NetherSurfaceBuilder;
+import betterterrain.world.generate.surface.NoShorelineSurfaceBuilder;
 import betterterrain.world.generate.surface.StonySurfaceBuilder;
 import net.minecraft.src.FCAddOnHandler;
 
 public class BTABiomeConfiguration extends BiomeConfiguration {
 	public static final int
-	
+	SWAMP_ID = 50,
+	SWAMP_RIVER_ID = 51,
 	
 	NETHER_WASTES_ID = 90,
 	
@@ -101,6 +105,14 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.8F, 2.5F)
 			.setLegacyCompatible();
 
+	public static final BTABiome tundra = new TundraBiome(TUNDRA_ID, "betterbiomes:tundra", Climate.SNOWY)
+			.setBiomeName("Tundra")
+			.setTemperatureRainfall(0.1F, 0.1F)
+			.setMinMaxHeight(0.1F, 0.4F)
+			.setEnableSnow()
+			.setLegacyCompatible()
+			.setNotSpawnable();
+
 	public static final BTABiome icyPeaks = new IcyPeaksBiome(ICY_PEAKS_ID, "betterterrain:icy_peaks", Climate.SNOWY)
 			.setBiomeName("Icy Peaks")
 			.setSurfaceBuilder(new IcyPeaksSurfaceBuilder())
@@ -115,13 +127,13 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.3F, 0.7F)
 			.setEnableSnow();
 
-	public static final BTABiome tundra = new TundraBiome(TUNDRA_ID, "betterbiomes:tundra", Climate.SNOWY)
-			.setBiomeName("Tundra")
-			.setTemperatureRainfall(0.1F, 0.1F)
-			.setMinMaxHeight(0.1F, 0.4F)
-			.setEnableSnow()
-			.setLegacyCompatible()
-			.setNotSpawnable();
+	public static final BTABiome swamp = new SwampBiome(SWAMP_ID, "betterterrain:swamp", Climate.TROPICAL)
+			.setBiomeName("Better Swamp")
+			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
+			.setSpawnsSugarCane()
+			.setSpawnsWitchHuts()
+			.setMinMaxHeight(-0.1F, 0.3F)
+			.setTemperatureRainfall(0.8F, 0.9F);
 	
 	public static final BTABiome netherWastes = new NetherWastesBiome(NETHER_WASTES_ID, "betterterrain:nether_wastes")
 			.setBiomeName("Nether Wastes")
@@ -189,6 +201,14 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 			.setRiver()
 			.setNotSpawnable();
 
+	public static final BTABiome swampRiver = new SwampRiverBiome(SWAMP_RIVER_ID, "betterterrain:swamp_river")
+			.setBiomeName("Swamp River")
+			.setSpawnsSugarCane()
+			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
+			.setTemperatureRainfall(0.8F, 0.9F)
+			.setMinMaxHeight(-0.5F, 0.0F)
+			.setRiver();
+
 	public static final BTABiome frozenRiver = new RiverBiome(FROZEN_RIVER_ID, "betterterrain:frozen_river", Climate.SNOWY)
 			.setBiomeName("Better Frozen River")
 			.setEnableSnow()
@@ -240,9 +260,10 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 			biomeList.add(tundra);
 			biomeList.add(icyPeaks);
 			biomeList.add(siberia);
+			biomeList.add(plains);
 		}
 		
-		
+		biomeList.add(swamp);
 	}
 
 	@Override
@@ -304,6 +325,10 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 		jungle.addRiverVariant(jungleRiver);
 		jungleHills.addRiverVariant(jungleRiver);
 		jungleEdge.addRiverVariant(jungleRiver);
+		swamp.addRiverVariant(swampRiver);
+		tundra.addRiverVariant(frozenRiver);
+		icyPeaks.addRiverVariant(frozenRiver);
+		siberia.addRiverVariant(frozenRiver);
 
 		mountains.addEdgeVariant(mountainEdge);
 		icyPeaks.addEdgeVariant(icyPeaksEdge);
@@ -314,5 +339,14 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 			}
 		});
 	}
-
+	
+	private static BTABiomeConfiguration instance;
+	
+	public static BTABiomeConfiguration getInstance() {
+		if (instance == null) {
+			instance = new BTABiomeConfiguration();
+		}
+		
+		return instance;
+	}
 }

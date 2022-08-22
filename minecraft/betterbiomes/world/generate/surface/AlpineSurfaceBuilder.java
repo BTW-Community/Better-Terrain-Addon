@@ -2,8 +2,8 @@ package betterbiomes.world.generate.surface;
 
 import java.util.Random;
 
-import betterbiomes.feature.tree.PineTreeGen;
-import betterbiomes.feature.tree.TaigaGen5;
+import betterterrain.feature.tree.PineTreeGen;
+import betterterrain.feature.tree.TaigaGen5;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.SurfaceBuilder;

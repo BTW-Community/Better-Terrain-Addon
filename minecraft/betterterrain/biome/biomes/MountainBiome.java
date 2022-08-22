@@ -2,9 +2,9 @@ package betterterrain.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.feature.tree.PineTreeGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
+import betterterrain.feature.tree.PineTreeGen;
 import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;

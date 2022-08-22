@@ -2,11 +2,11 @@ package betterbiomes.biome.biomes.deprecated;
 
 import java.util.Random;
 
-import betterbiomes.feature.tree.TaigaGen5;
-import betterbiomes.feature.tree.TaigaGen7;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.feature.plant.TallGrassGen;
+import betterterrain.feature.tree.TaigaGen5;
+import betterterrain.feature.tree.TaigaGen7;
 import net.minecraft.src.Block;
 import net.minecraft.src.FCEntityWolf;
 import net.minecraft.src.SpawnListEntry;

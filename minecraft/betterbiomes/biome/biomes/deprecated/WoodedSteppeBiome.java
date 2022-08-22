@@ -3,9 +3,9 @@ package betterbiomes.biome.biomes.deprecated;
 import java.util.Random;
 
 import betterbiomes.biome.biomes.SteppeBiome;
-import betterbiomes.feature.tree.SmallShrubGen;
-import betterbiomes.feature.tree.TinyShrubGen;
 import betterterrain.biome.Climate;
+import betterterrain.feature.tree.SmallShrubGen;
+import betterterrain.feature.tree.TinyShrubGen;
 import net.minecraft.src.WorldGenShrub;
 import net.minecraft.src.WorldGenerator;
 

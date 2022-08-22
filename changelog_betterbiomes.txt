@@ -1,0 +1,5 @@
+Version 3.0.0
+[list]
+[*]Changed savannas to be able to spawn pumpkins.
+[*]Fixed an issue where red desert pyramids spawned with regular sandstone stairs.
+[/list]

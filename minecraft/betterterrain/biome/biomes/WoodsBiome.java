@@ -2,10 +2,10 @@ package betterterrain.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.feature.tree.LogGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.feature.plant.TallGrassGen;
+import betterterrain.feature.tree.LogGen;
 import net.minecraft.src.Block;
 import net.minecraft.src.FCEntityWolf;
 import net.minecraft.src.SpawnListEntry;

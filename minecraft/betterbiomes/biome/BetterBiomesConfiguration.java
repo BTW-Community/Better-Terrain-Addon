@@ -354,14 +354,6 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setLegacyCompatible()
 			.setNotSpawnable();
 
-	public static final BTABiome plains = new PlainsBiome(PLAINS_ID, "betterbiomes:plains", Climate.ARID)
-			.setBiomeName("Better Plains")
-			.setSpawnsPumpkins()
-			.setSpawnsSugarCane()
-			.setSpawnsVillages(false)
-			.setTemperatureRainfall(0.8F, 0.3F)
-			.setMinMaxHeight(0.2F, 0.4F);
-
 	public static final BTABiome savanna = new SavannaBiome(SAVANNA_ID, "betterbiomes:savanna", Climate.ARID)
 			.setBiomeName("Savanna")
 			.setSpawnsPumpkins()
@@ -884,7 +876,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		betterBiomes.add(patagonia);
 		betterBiomes.add(grasslands);
 		betterBiomes.add(BTABiomeConfiguration.siberia);
-		betterBiomes.add(plains);
+		betterBiomes.add(BTABiomeConfiguration.plains);
 		betterBiomes.add(frozenSprings);
 		betterBiomes.add(mangroveForest);
 		betterBiomes.add(BTABiomeConfiguration.aridForest);
@@ -899,6 +891,14 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		betterBiomes.add(autumnForest);
 		
 		biomeList.addAll(betterBiomes);
+		
+		//BTA vanilla biomes added in to keep backwards compatible order
+		for (int i = 0; i < betterBiomes.size(); i++) {
+			if (betterBiomes.get(i).getInternalName().startsWith("betterterrain")) {
+				betterBiomes.remove(i);
+				i--;
+			}
+		}
 	}
 	
 	public void setBiomeVariants() {

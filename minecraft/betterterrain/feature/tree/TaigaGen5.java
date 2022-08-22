@@ -1,4 +1,4 @@
-package betterbiomes.feature.tree;
+package betterterrain.feature.tree;
 
 import java.util.Random;
 
@@ -7,34 +7,34 @@ import net.minecraft.src.Block;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
 
-public class TaigaGen6 extends WorldGenerator
+public class TaigaGen5 extends WorldGenerator
 {
-	public TaigaGen6(boolean par1)
+	public TaigaGen5(boolean par1)
 	{
 		super(par1);
 	}
 
 	@Override
-	public boolean generate(World par1World, Random par2Random, int x, int y, int z)
+	public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
 	{
-		int var6 = par2Random.nextInt(9) + 13;
-		int var7 = 4 + par2Random.nextInt(4);
+		int var6 = par2Random.nextInt(9) + 9;
+		int var7 = 2 + par2Random.nextInt(4);
 		int var8 = var6 - var7;
-		int var9 = 2;
+		int var9 = 2 + par2Random.nextInt(2);
 		boolean var10 = true;
 
-		if (y >= 1 && y + var6 + 1 <= 256)
+		if (par4 >= 1 && par4 + var6 + 1 <= 256)
 		{
 			int var11;
 			int var13;
 			int var15;
 			int var21;
 
-			for (var11 = y; var11 <= y + 1 + var6 && var10; ++var11)
+			for (var11 = par4; var11 <= par4 + 1 + var6 && var10; ++var11)
 			{
 				boolean var12 = true;
 
-				if (var11 - y < var7)
+				if (var11 - par4 < var7)
 				{
 					var21 = 0;
 				}
@@ -43,9 +43,9 @@ public class TaigaGen6 extends WorldGenerator
 					var21 = var9;
 				}
 
-				for (var13 = x - var21; var13 <= x + var21 && var10; ++var13)
+				for (var13 = par3 - var21; var13 <= par3 + var21 && var10; ++var13)
 				{
-					for (int var14 = z - var21; var14 <= z + var21 && var10; ++var14)
+					for (int var14 = par5 - var21; var14 <= par5 + var21 && var10; ++var14)
 					{
 						if (var11 >= 0 && var11 < 256)
 						{
@@ -68,11 +68,11 @@ public class TaigaGen6 extends WorldGenerator
 				return false;
 			else
 			{
-				var11 = par1World.getBlockId(x, y - 1, z);
+				var11 = par1World.getBlockId(par3, par4 - 1, par5);
 
-				if ((var11 == Block.grass.blockID || var11 == Block.dirt.blockID || (DecoIntegration.isDecoInstalled() && (var11 == DecoIntegration.coarseDirt.blockID || var11 == DecoIntegration.podzol.blockID))) && y < 256 - var6 - 1)
+				if ((var11 == Block.grass.blockID || var11 == Block.dirt.blockID || (DecoIntegration.isDecoInstalled() && (var11 == DecoIntegration.coarseDirt.blockID || var11 == DecoIntegration.podzol.blockID))) && par4 < 256 - var6 - 1)
 				{
-					this.setBlock(par1World, x, y - 1, z, Block.dirt.blockID);
+					this.setBlock(par1World, par3, par4 - 1, par5, Block.dirt.blockID);
 					var21 = par2Random.nextInt(2);
 					var13 = 1;
 					byte var22 = 0;
@@ -81,15 +81,15 @@ public class TaigaGen6 extends WorldGenerator
 
 					for (var15 = 0; var15 <= var8; ++var15)
 					{
-						var16 = y + var6 - var15;
+						var16 = par4 + var6 - var15;
 
-						for (var17 = x - var21; var17 <= x + var21; ++var17)
+						for (var17 = par3 - var21; var17 <= par3 + var21; ++var17)
 						{
-							int var18 = var17 - x;
+							int var18 = var17 - par3;
 
-							for (int var19 = z - var21; var19 <= z + var21; ++var19)
+							for (int var19 = par5 - var21; var19 <= par5 + var21; ++var19)
 							{
-								int var20 = var19 - z;
+								int var20 = var19 - par5;
 
 								if ((Math.abs(var18) != var21 || Math.abs(var20) != var21 || var21 <= 0) && !Block.opaqueCubeLookup[par1World.getBlockId(var17, var16, var19)])
 								{
@@ -119,14 +119,15 @@ public class TaigaGen6 extends WorldGenerator
 
 					for (var16 = 0; var16 < var6 - var15; ++var16)
 					{
-						var17 = par1World.getBlockId(x, y + var16, z);
+						var17 = par1World.getBlockId(par3, par4 + var16, par5);
 
 						if (var17 == 0 || var17 == Block.leaves.blockID)
 						{
-							this.setBlockAndMetadata(par1World, x, y + var16, z, Block.wood.blockID, 1);
+							this.setBlockAndMetadata(par1World, par3, par4 + var16, par5, Block.wood.blockID, 1);
 						}
 					}
-					par1World.setBlockMetadataWithClient(x, y, z, 1 | 12); // place stump
+
+					par1World.setBlockMetadataWithClient(par3, par4, par5, 1 | 12); // place stump
 
 					return true;
 				} else

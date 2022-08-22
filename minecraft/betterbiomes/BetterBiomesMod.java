@@ -33,7 +33,6 @@ public class BetterBiomesMod extends BTAAddon {
 	@Override
 	public void Initialize() {
 		FCAddOnHandler.LogMessage(this.getName() + " Version " + this.getVersionString() + " Initializing...");
-		initDecoIntegration();
 		initWorldGen();
 		initDefs();
 		initEntityRenderers();
@@ -43,10 +42,6 @@ public class BetterBiomesMod extends BTAAddon {
 	@Override
 	public void setValidVersions(Set<AddonVersion> versions) {
 		versions.add(BBVersions.V3_0_0);
-	}
-	
-	public void initDecoIntegration() {
-		DecoIntegration.init();
 	}
 	
 	public void initWorldGen() {

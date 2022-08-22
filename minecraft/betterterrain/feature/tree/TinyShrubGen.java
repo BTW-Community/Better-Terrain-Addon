@@ -1,4 +1,4 @@
-package betterbiomes.feature.tree;
+package betterterrain.feature.tree;
 
 import java.util.Random;
 

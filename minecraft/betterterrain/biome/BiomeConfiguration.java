@@ -16,6 +16,10 @@ import net.minecraft.src.FCAddOnHandler;
 
 public abstract class BiomeConfiguration {
 	public static void init() {
+		BTABiomeConfiguration btaConfig = BTABiomeConfiguration.getInstance();
+		btaConfig.addBiomesToList(biomeList);
+		btaConfig.setBiomeVariants();
+		
 		for (FCAddOn mod : FCAddOnHandler.m_ModList) {
 			if (mod instanceof BTAAddon) {
 				BTAAddon addon = (BTAAddon) mod;

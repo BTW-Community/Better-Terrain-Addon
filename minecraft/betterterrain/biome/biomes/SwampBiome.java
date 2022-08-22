@@ -1,12 +1,13 @@
-package betterbiomes.biome.biomes;
+package betterterrain.biome.biomes;
 
 import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.tree.TaigaGen5;
 import betterterrain.feature.tree.TallSwampTreeGen;
 import betterterrain.world.config.WorldConfigurationInfo;
+import net.minecraft.src.ColorizerFoliage;
+import net.minecraft.src.ColorizerGrass;
 import net.minecraft.src.FCEntityChicken;
 import net.minecraft.src.FCEntityPig;
 import net.minecraft.src.FCEntitySlime;
@@ -16,9 +17,9 @@ import net.minecraft.src.World;
 import net.minecraft.src.WorldGenVines;
 import net.minecraft.src.WorldGenerator;
 
-public class WetlandsBiome extends BTABiome {
+public class SwampBiome extends BTABiome {
 
-	public WetlandsBiome(int id, String internalName, Climate climate) {
+	public SwampBiome(int id, String internalName, Climate climate) {
 		super(id, internalName, climate);
         this.btaBiomeDecorator.treesPerChunk = 10;
         this.btaBiomeDecorator.flowersPerChunk = -999;
@@ -32,8 +33,28 @@ public class WetlandsBiome extends BTABiome {
         this.spawnableCreatureList.clear();
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityChicken.class, 10, 2, 2));
         this.spawnableCreatureList.add(new SpawnListEntry(FCEntityPig.class, 10, 2, 2));
-        this.waterColorMultiplier = 10083127;
+        this.waterColorMultiplier = 14745518;
 	}
+
+    /**
+     * Provides the basic grass color based on the biome temperature and rainfall
+     */
+    public int getBiomeGrassColor()
+    {
+        double var1 = (double)this.getFloatTemperature();
+        double var3 = (double)this.getFloatRainfall();
+        return ((ColorizerGrass.getGrassColor(var1, var3) & 16711422) + 5115470) / 2;
+    }
+
+    /**
+     * Provides the basic foliage color based on the biome temperature and rainfall
+     */
+    public int getBiomeFoliageColor()
+    {
+        double var1 = (double)this.getFloatTemperature();
+        double var3 = (double)this.getFloatRainfall();
+        return ((ColorizerFoliage.getFoliageColor(var1, var3) & 16711422) + 5115470) / 2;
+    }
 
     /**
      * Gets a WorldGen appropriate for this biome.
@@ -42,11 +63,8 @@ public class WetlandsBiome extends BTABiome {
     {
     	WorldGenerator gen;
     	
-    	if (rand.nextInt(7) == 0) {
+    	if (rand.nextInt(4) == 0) {
     		gen = new TallSwampTreeGen();
-    	}
-    	else if (rand.nextInt(3) == 0) {
-    		gen = new TaigaGen5(false);
     	}
     	else {
     		gen = this.worldGeneratorSwamp;
