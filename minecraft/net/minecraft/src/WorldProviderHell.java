@@ -1,6 +1,5 @@
 package net.minecraft.src;
 
-import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.biome.BTABiomeConfiguration;
 import betterterrain.biome.BTANetherBiome;
 

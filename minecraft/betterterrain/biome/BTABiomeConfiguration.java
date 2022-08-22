@@ -229,13 +229,13 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(0.7F, 0.8F)
 			.setMinMaxHeight(0.3F, 1.0F);
 	
-	public static final BTABiome aridForest = new AridForestBiome(ARID_FOREST_ID, "betterbiomes:arid_forest", Climate.ARID)
+	public static final BTABiome aridForest = new AridForestBiome(ARID_FOREST_ID, "betterterrain:arid_forest", Climate.ARID)
 			.setBiomeName("Arid Forest")
 			.setSurfaceBuilder(new StonySurfaceBuilder())
 			.setTemperatureRainfall(0.8F, 0.3F)
 			.setMinMaxHeight(0.2F, 0.4F);
 
-	public static final BTABiome jungleHills = new JungleBiome(JUNGLE_HILLS_ID, "betterbiomes:jungle_hills", Climate.TROPICAL)
+	public static final BTABiome jungleHills = new JungleBiome(JUNGLE_HILLS_ID, "betterterrain:jungle_hills", Climate.TROPICAL)
 			.setBiomeName("Better Jungle Hills")
 			.setSpawnsSugarCane()
 			.setSpawnsJungleTemples()
@@ -243,7 +243,9 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(1.8F, 0.5F)
 			.setNotSpawnable();
 	
-	public static final BTABiome icyPeaksForested = new ForestedIcyPeaksBiome(ICY_PEAKS_FORESTED_ID, "betterbiomes:icy_peaks_forested", Climate.SNOWY)
+	//------ Deprecated Biomes ------//
+	
+	public static final BTABiome icyPeaksForested = new ForestedIcyPeaksBiome(ICY_PEAKS_FORESTED_ID, "betterterrain:icy_peaks_forested", Climate.SNOWY)
 			.setBiomeName("Forested Icy Peaks")
 			.setEnableSnow()
 			.setTemperatureRainfall(0.1F, 0.1F)
@@ -338,6 +340,7 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 				return info.getBTAVersion().isVersionAtLeast(BTAVersion.V1_3_2);
 			}
 		});
+		jungleHills.setConnectToEdge(false);
 	}
 	
 	private static BTABiomeConfiguration instance;

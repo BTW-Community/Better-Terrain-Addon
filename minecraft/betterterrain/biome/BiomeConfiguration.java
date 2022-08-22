@@ -20,7 +20,7 @@ public abstract class BiomeConfiguration {
 		btaConfig.addBiomesToList(biomeList);
 		btaConfig.setBiomeVariants();
 		
-		for (FCAddOn mod : FCAddOnHandler.m_ModList) {
+		for (FCAddOn mod : FCAddOnHandler.m_ModList.values()) {
 			if (mod instanceof BTAAddon) {
 				BTAAddon addon = (BTAAddon) mod;
 				BiomeConfiguration biomeConfig = addon.getBiomeConfiguration();

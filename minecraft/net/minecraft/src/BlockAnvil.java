@@ -12,7 +12,7 @@ public class BlockAnvil extends BlockSand
 		
 		try {
 			if (Class.forName("betterbiomes.BetterBiomesMod") != null) {
-				//BetterBiomesMod.getInstance();
+				BetterBiomesMod.getInstance();
 			}
 		} catch (ClassNotFoundException e) {
 			// Don't do anything

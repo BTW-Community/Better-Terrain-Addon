@@ -64,7 +64,7 @@ public class WorldConfigurationInfo {
 			}
 		}
 		
-		for (FCAddOn mod : FCAddOnHandler.m_ModList) {
+		for (FCAddOn mod : FCAddOnHandler.m_ModList.values()) {
 			if (mod instanceof BTAAddon) {
 				BTAAddon addon = (BTAAddon) mod;
 				AddonConfigurationInfo addonInfo = addon.createDefaultConfigInfo();
