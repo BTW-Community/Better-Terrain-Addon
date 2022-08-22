@@ -20,7 +20,9 @@ import betterterrain.world.generate.surface.SurfaceBuilder;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;
 import net.minecraft.src.ChunkProviderServer;
+import net.minecraft.src.FCAddOn;
 import net.minecraft.src.FCAddOnHandler;
+import net.minecraft.src.FCIBiomeDecorator;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenBigMushroom;
 import net.minecraft.src.WorldGenCactus;
@@ -32,7 +34,7 @@ import net.minecraft.src.WorldGenSand;
 import net.minecraft.src.WorldGenWaterlily;
 import net.minecraft.src.WorldGenerator;
 
-public class BiomeDecorator
+public class BiomeDecorator implements FCIBiomeDecorator
 {
 	/** The world the BiomeDecorator is currently decorating */
 	protected World currentWorld;
@@ -574,6 +576,12 @@ public class BiomeDecorator
 			var7 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 			this.cactusGen.generate(this.currentWorld, this.randomGenerator, var3, var4, var7);
 		}
+        
+        for (FCAddOn mod : FCAddOnHandler.m_ModList.values()) {
+        	if (!((BTABiome) this.biome).interceptCustomDecorator(this, this.currentWorld, this.randomGenerator, this.chunk_X, this.chunk_Z)) {
+        		mod.decorateWorld(this, this.currentWorld, this.randomGenerator, this.chunk_X, this.chunk_Z, this.biome);
+        	}
+        }
 	}
 
 	/**

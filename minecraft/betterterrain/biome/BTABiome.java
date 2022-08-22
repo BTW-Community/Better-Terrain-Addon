@@ -20,6 +20,7 @@ import betterterrain.world.generate.surface.SurfaceBuilder;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;
 import net.minecraft.src.ComponentVillageStartPiece;
+import net.minecraft.src.FCIBiomeDecorator;
 import net.minecraft.src.MapGenVillage;
 import net.minecraft.src.StructureScatteredFeatureStart;
 import net.minecraft.src.World;
@@ -708,6 +709,14 @@ public class BTABiome extends BiomeGenBase {
 			generator.generate(world, rand, x, y, z);
 		}
 	}
+    
+    /**
+     * Allows for intercepting other mods' custom decorators in case you want to use your own custom implementation
+     * @return true if the decorator was intercepted, false otherwise
+     */
+    public boolean interceptCustomDecorator(FCIBiomeDecorator decorator, World world, Random rand, int x, int y) {
+    	return false;
+    }
     
     public static int getIDFromInternalName(String internalName) {
     	for (int i = 0; i < BiomeGenBase.biomeList.length; i++) {
