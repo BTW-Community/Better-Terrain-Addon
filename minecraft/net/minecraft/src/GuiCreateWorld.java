@@ -71,7 +71,7 @@ public class GuiCreateWorld extends GuiScreen
 
     /** E.g. New World, Neue Welt, Nieuwe wereld, Neuvo Mundo */
     private String localizedNewWorldText;
-    private int worldTypeId = 0;
+    private int worldTypeId = 4;
 
     /** Generator options to use when creating the world. */
     public String generatorOptionsToUse = "";

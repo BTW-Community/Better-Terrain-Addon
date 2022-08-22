@@ -116,7 +116,7 @@ public class WorldConfigurationInfo {
 		for (JsonElement element : addons) {
 			JsonObject addonObject = element.getAsJsonObject();
 			
-			BTAAddon addon = (BTAAddon) FCAddOnHandler.getModByName(addonObject.get("name").getAsString());
+			BTAAddon addon = (BTAAddon) BTAAddon.getAddonByInternalName(addonObject.get("name").getAsString());
 			AddonConfigurationInfo addonInfo = addon.createConfigInfo();
 			addonInfo.parseJsonObject(addonObject);
 			

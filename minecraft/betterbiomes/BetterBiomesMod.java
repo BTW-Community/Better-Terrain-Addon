@@ -27,7 +27,7 @@ public class BetterBiomesMod extends BTAAddon {
 	private static BetterBiomesMod instance;
 	
 	private BetterBiomesMod() {
-		super("Better Biomes", "3.0.0", "BB");
+		super("Better Biomes", "betterterrain", "3.0.0", "BB");
 	}
 	
 	@Override

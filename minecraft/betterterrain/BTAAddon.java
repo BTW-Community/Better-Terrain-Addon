@@ -8,14 +8,18 @@ import com.google.gson.JsonObject;
 import betterterrain.biome.BiomeConfiguration;
 import betterterrain.world.config.AddonConfigurationInfo;
 import net.minecraft.src.FCAddOn;
+import net.minecraft.src.FCAddOnHandler;
 
 public abstract class BTAAddon extends FCAddOn {
+	public final String internalName;
+	
 	public final AddonVersion currentVersion;
 	public final Set<AddonVersion> validVersions;
 	
-	public BTAAddon(String addonName, String version, String prefix) {
+	public BTAAddon(String addonName, String internalName, String version, String prefix) {
 		super(addonName, version, prefix);
-		validVersions = new HashSet();
+		this.internalName = internalName;
+		this.validVersions = new HashSet();
 		this.setValidVersions(validVersions);
 		this.currentVersion = AddonVersion.fromString(this.getVersionString(), this);
 	}
@@ -29,7 +33,7 @@ public abstract class BTAAddon extends FCAddOn {
 	public final AddonConfigurationInfo createDefaultConfigInfo() {
 		AddonConfigurationInfo info = createConfigInfo();
 		
-		info.setName(this.getName());
+		info.setName(this.internalName);
 		info.setVersion(this.currentVersion);
 		
 		this.setDefaultSettings(info);
@@ -42,4 +46,16 @@ public abstract class BTAAddon extends FCAddOn {
 	}
 	
 	public void setDefaultSettings(AddonConfigurationInfo info) {}
+	
+	//------ Other Functionality ------//
+	
+	public static BTAAddon getAddonByInternalName(String name) {
+		for (FCAddOn mod : FCAddOnHandler.m_ModList.values()) {
+			if (mod instanceof BTAAddon && ((BTAAddon) mod).internalName.equals(name)) {
+				return (BTAAddon) mod;
+			}
+		}
+		
+		return null;
+	}
 }
