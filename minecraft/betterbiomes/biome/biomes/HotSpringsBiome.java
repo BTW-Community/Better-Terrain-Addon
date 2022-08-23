@@ -29,6 +29,8 @@ public class HotSpringsBiome extends BTABiome {
 		
         this.btaBiomeDecorator.treesPerChunk = 8;
         this.btaBiomeDecorator.grassPerChunk = 15;
+        // Clay messes up the hot springs
+        this.btaBiomeDecorator.clayPerChunk = 0;
 		
 		this.waterColorMultiplier =  0x00ffaa;
 	}
@@ -108,9 +110,6 @@ public class HotSpringsBiome extends BTABiome {
 								
 								if (neighborID == 0 || neighborAboveID != 0) {
 									numBlockNeighbors--;
-
-									if (numBlockNeighbors < 3)
-										break;
 								}
 							}
 
