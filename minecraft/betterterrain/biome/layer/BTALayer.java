@@ -52,6 +52,11 @@ public abstract class BTALayer extends GenLayer {
 		layerMagnifyRiver = GenLayerZoom.magnify(1000L, layerRiverInit, scale + 2);
 		GenLayerRiver layerRiver = new GenLayerRiver(1L, layerMagnifyRiver);
 		GenLayerSmooth layerSmoothRivers = new GenLayerSmooth(1000L, layerRiver);
+		GenLayer layerRivers = layerSmoothRivers;
+		
+		if (generatorInfo.hasWideRivers()) {
+			layerRivers = GenLayerZoom.magnify(2500L, layerRivers, 2);
+		}
 
 		GenLayer layerMangnifyBiome = GenLayerZoom.magnify(1000L, layerMushroomIsland, 0);
 		GenLayer layerBiome;
@@ -98,7 +103,7 @@ public abstract class BTALayer extends GenLayer {
 		}
 
 		GenLayerSmooth layerSmoothBiome = new GenLayerSmooth(1000L, layerExtras);
-		RiverLayer layerRiverMix = new RiverLayer(100L, layerSmoothBiome, layerSmoothRivers, generatorInfo);
+		RiverLayer layerRiverMix = new RiverLayer(100L, layerSmoothBiome, layerRivers, generatorInfo);
 		GenLayerVoronoiZoom layerVoronoiZoom = new GenLayerVoronoiZoom(10L, layerRiverMix);
 
 		layerRiverMix.initWorldGenSeed(seed);

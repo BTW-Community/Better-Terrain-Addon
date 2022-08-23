@@ -27,9 +27,13 @@ public class WorldConfigurationInfo {
 	private ArrayList<BiomeInfo> biomeInfoList = new ArrayList();
 	private ArrayList<BTABiome> biomesForGeneration = new ArrayList();
 
+	// Values initialized to default values prior to setting introduction
+	// Initialized values are different from the default values
 	private BTAVersion btaVersion = BTAVersion.V1_1_3;
 	private int oceanSize = 10;
 	private boolean generatePerlinBeaches = false;
+	private boolean wideRivers = false;
+
 	private boolean climatized = false;
 	private int biomeSize = 2;
 	private TerrainGenerator generator = TerrainGenerator.CLASSIC;
@@ -42,6 +46,7 @@ public class WorldConfigurationInfo {
 		info.setBTAVersion(BTAMod.getInstance().currentVersion);
 		info.setOceanSize(5);
 		info.setGeneratePerlinBeaches(true);
+		info.setWideRivers(true);
 		info.setBiomeSize(1);
 		info.setGenerator(TerrainGenerator.CLASSIC);
 
@@ -96,6 +101,11 @@ public class WorldConfigurationInfo {
 		JsonObject globalSettings = root.get("global_settings").getAsJsonObject();
 		oceanSize = globalSettings.get("ocean_size").getAsInt();
 		generatePerlinBeaches = globalSettings.get("better_beaches").getAsBoolean();
+		
+		if (globalSettings.has("wide_rivers")) {
+			wideRivers = globalSettings.get("wide_rivers").getAsBoolean();
+		}
+		
 		climatized = globalSettings.get("climates").getAsBoolean();
 		biomeSize = globalSettings.get("biome_size").getAsInt();
 		generator = TerrainGenerator.fromName(globalSettings.get("generator").getAsString());
@@ -131,6 +141,7 @@ public class WorldConfigurationInfo {
 		JsonObject globalSettings = new JsonObject();
 		globalSettings.addProperty("ocean_size", oceanSize);
 		globalSettings.addProperty("better_beaches", generatePerlinBeaches);
+		globalSettings.addProperty("wide_rivers", wideRivers);
 		globalSettings.addProperty("climates", climatized);
 		globalSettings.addProperty("biome_size", biomeSize);
 		globalSettings.addProperty("generator", generator.name);
@@ -231,6 +242,13 @@ public class WorldConfigurationInfo {
 	public WorldConfigurationInfo setGeneratePerlinBeaches(boolean generateBeaches) {
 		this.generatePerlinBeaches = generateBeaches;
 		return this;
+	}
+	public boolean hasWideRivers() {
+		return wideRivers;
+	}
+
+	public void setWideRivers(boolean wideRivers) {
+		this.wideRivers = wideRivers;
 	}
 
 	public boolean isClimatized() {

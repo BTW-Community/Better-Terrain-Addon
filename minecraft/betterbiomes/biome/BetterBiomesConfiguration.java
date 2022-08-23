@@ -14,6 +14,7 @@ import betterbiomes.world.generate.surface.BasaltDeltasSurfaceBuilder;
 import betterbiomes.world.generate.surface.ConiferousForestSurfaceBuilder;
 import betterbiomes.world.generate.surface.CrystalCavernsSurfaceBuilder;
 import betterbiomes.world.generate.surface.HeathlandSurfaceBuilder;
+import betterbiomes.world.generate.surface.HotSpringsSurfaceBuilder;
 import betterbiomes.world.generate.surface.OrchardSurfaceBuilder;
 import betterbiomes.world.generate.surface.OutbackSurfaceBuilder;
 import betterbiomes.world.generate.surface.SoulSandValleySurfaceBuilder;
@@ -68,6 +69,7 @@ import betterbiomes.biome.biomes.GrasslandsLakeBiome;
 import betterbiomes.biome.biomes.HeathlandBiome;
 import betterbiomes.biome.biomes.deprecated.HeathlandWoodsBiome;
 import betterbiomes.biome.biomes.HighlandsBiome;
+import betterbiomes.biome.biomes.HotSpringsBiome;
 import betterbiomes.biome.biomes.LushDesertBiome;
 import betterbiomes.biome.biomes.MangroveForestBiome;
 import betterbiomes.biome.biomes.MeadowBiome;
@@ -146,7 +148,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 	CONIFEROUS_FOREST_CLEARING_ID = 118,
 	SNOWY_CONIFEROUS_FOREST_ID = 119,
 	SNOWY_CONIFEROUS_FOREST_CLEARING_ID = 120,
-	MYSTIC_FOREST_ID = 121,
+	MYSTIC_Valley_ID = 121,
 	RAINFOREST_ID = 122,
 	MEADOW_ID = 123,
 	ORCHARD_ID = 124,
@@ -171,6 +173,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 	SHIELD_ID = 143,
 	BRUSHLAND_ID = 144,
 	HIGHLANDS_ID = 145,
+	HOT_SPRINGS_ID = 146,
 
 	WOODS_HILLS_ID = 150,
 	DESERT_HILLS_ID = 151,
@@ -280,8 +283,8 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(0.8F, 0.9F)
 			.setMinMaxHeight(-0.3F, 0.2F);
 
-	public static final BTABiome mysticForest = new MysticForestBiome(MYSTIC_FOREST_ID, "betterbiomes:mystic_forest", Climate.TEMPERATE)
-			.setBiomeName("Mystic Forest")
+	public static final BTABiome mysticValley = new MysticForestBiome(MYSTIC_Valley_ID, "betterbiomes:mystic_valley", Climate.TEMPERATE)
+			.setBiomeName("Mystic Valley")
 			.setSpawnsSugarCane()
 			.setSpawnsWitchHuts()
 			.setTemperatureRainfall(0.9F, 1.0F)
@@ -340,6 +343,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(2.0F, 0.0F)
 			.setMinMaxHeight(0.5F, 1.5F)
 			.setNotSpawnable()
+			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
 			.setLegacyCompatible();
 
 	public static final BTABiome outback = new OutbackBiome(OUTBACK_ID, "betterbiomes:outback", Climate.ARID)
@@ -371,6 +375,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(0.9F, 1.0F)
 			.setMinMaxHeight(0.1F, 0.6F)
 			.setLegacyCompatible()
+			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
 			.setNotSpawnable();
 
 	public static final BTABiome meadow = new MeadowBiome(MEADOW_ID, "betterbiomes:meadow", Climate.TROPICAL)
@@ -464,6 +469,13 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(0.4F, 1.0F)
 			.setMinMaxHeight(-0.1F, 1.2F)
 			.setLegacyCompatible();
+	
+	public static final BTABiome hotSprings = new HotSpringsBiome(HOT_SPRINGS_ID, "betterbiomes:hot_springs", Climate.COLD)
+			.setBiomeName("Hot Springs")
+			.setSurfaceBuilder(new HotSpringsSurfaceBuilder())
+			.setTemperatureRainfall(0.5F, 0.4F)
+			.setMinMaxHeight(0.8F, 1.2F)
+			.setDecoOnly();
 
 	public static final BTABiome patagonia = new PatagoniaBiome(PATAGONIA_ID, "betterbiomes:patagonia", Climate.COLD)
 			.setBiomeName("Patagonia")
@@ -819,25 +831,6 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(0.8F, 0.1F)
 			.setMinMaxHeight(0.3F, 0.5F)
 			.setNotSpawnable();
-
-	private static ArrayList<BiomeGenBase> beachlessBiomes = new ArrayList();
-	private static ArrayList<BiomeGenBase> beachlessBiomes132 = new ArrayList();
-
-	private static ArrayList<BiomeGenBase> edgeBiomes = new ArrayList();
-	private static ArrayList<BiomeGenBase> noEdgeBiomes = new ArrayList();
-	private static ArrayList<BiomeGenBase> noEdgeBiomes132 = new ArrayList();
-	private static ArrayList<BiomeGenBase> noEdgeBiomes140 = new ArrayList();
-
-	private static ArrayList<BiomeGenBase> pumpkinBiomes = new ArrayList();
-	private static ArrayList<BiomeGenBase> reedBiomes = new ArrayList();
-	private static ArrayList<BiomeGenBase> villageBiomes = new ArrayList();
-	private static ArrayList<BiomeGenBase> jungleTempleBiomes = new ArrayList();
-	private static ArrayList<BiomeGenBase> desertTempleBiomes = new ArrayList();
-	private static ArrayList<BiomeGenBase> redDesertTempleBiomes = new ArrayList();
-	private static ArrayList<BiomeGenBase> witchHutBiomes = new ArrayList();
-
-	private static Random rand = new Random();
-	private static long lastRandSeed = 0;
 	
 	private static ArrayList<BTABiome> betterBiomes = new ArrayList();
 	
@@ -859,7 +852,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		betterBiomes.add(fungalForest);
 		betterBiomes.add(coniferousForest);
 		betterBiomes.add(snowyConiferousForest);
-		betterBiomes.add(mysticForest);
+		betterBiomes.add(mysticValley);
 		betterBiomes.add(rainforest);
 		betterBiomes.add(meadow);
 		betterBiomes.add(BTABiomeConfiguration.mountains);
@@ -889,6 +882,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		betterBiomes.add(cherryForest);
 		betterBiomes.add(badlandsPlateau);
 		betterBiomes.add(autumnForest);
+		betterBiomes.add(hotSprings);
 		
 		biomeList.addAll(betterBiomes);
 		
@@ -970,7 +964,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		fungalForestFlat.setHasBeach(false);
 		coniferousForest.setHasBeach(false);
 		snowyConiferousForest.setHasBeach(false);
-		mysticForest.setHasBeach(false);
+		mysticValley.setHasBeach(false);
 		temperateForest.setHasBeach(false);
 		oldValley.setHasBeach(false);
 		valleyMountains.setHasBeach(false);
@@ -1000,7 +994,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		//Rivers
 		dunes.addRiverVariant(BTABiomeConfiguration.desertRiver);
 
-		mysticForest.addRiverVariant(mysticRiver);
+		mysticValley.addRiverVariant(mysticRiver);
 
 		rainforest.addRiverVariant(rainforestRiver);
 		rainforestEdge.addRiverVariant(rainforestRiver);
@@ -1039,7 +1033,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		badlandsPlateau.addEdgeVariant(badlands, new WorldConfigurationInfo.Condition() {
 			@Override
 			public boolean satisfiesContraints(WorldConfigurationInfo info) {
-				return info.getBTAVersion().isVersionAtLeast(BTAVersion.V1_4_0);
+				return info.getBTAVersion().isVersionAtLeast(BTAVersion.V3_0_0);
 			}
 		});
 		badlands.addEdgeVariant(badlandsEdge, pre140);

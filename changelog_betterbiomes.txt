@@ -1,5 +1,8 @@
 Version 3.0.0
 [list]
 [*]Changed savannas to be able to spawn pumpkins.
+[*]Changed the name of Mystic Forest to Mystic Valley.
+[*]Revamped Mystic Valley generation to be more varied.
+[*]Changed the biome colors of Mystic Valley.
 [*]Fixed an issue where red desert pyramids spawned with regular sandstone stairs.
 [/list]

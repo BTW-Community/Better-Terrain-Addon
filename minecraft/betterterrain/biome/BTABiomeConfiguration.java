@@ -73,6 +73,7 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 			.setSpawnsDesertTemples()
 			.setTemperatureRainfall(2.0F, 0.0F)
 			.setMinMaxHeight(0.2F, 0.4F)
+			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
 			.setNotSpawnable()
 			.setLegacyCompatible();
 

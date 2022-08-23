@@ -17,8 +17,9 @@ Version 3.0.0
 [*]Updated to CE 1.4.1
 [*]Refactored the entire mod into two separate mods. The Better Terrain Addon now acts as a library for world generation, while the biomes themselves previously present in BTA have been split into Better Biomes. Note that this is still backwards compatible with old worlds, but will require both mods to be installed. BTA now only maintains variants of vanilla biomes which generate using BTA features. Most of these have been ported from existing biomes, while an additional swamp variant has been added.
 [*]Added the ability for addons to decorate BTA Biomes using the standard FCAddOn hook. Note that BTA biomes may deny this in case they wish to use a custom decorator for that addon's features.
+[*]Changed rivers to be much larger. This can be disabled at world creation, and only affects new worlds.
+[*]Changed deserts to no longer spawn gravel beaches.
 [*]Changed climates to default to off if there are not enough biomes installed (note that climates may still be enabled if desired).
-[*]Increased the maximum number of biome ids to 4096.
 [*]Changed the format of the world configuration info to use json. Old worlds will still be processed correctly.
 [*]Changed the world type when creating a new world to default to Better Terrain.
 [/list]

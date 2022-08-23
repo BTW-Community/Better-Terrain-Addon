@@ -10,8 +10,8 @@ import net.minecraft.src.SpawnListEntry;
 
 public class MysticRiverBiome extends RiverBiome {
 	public MysticRiverBiome(int id, String internalName) {
-		super(id, internalName, BetterBiomesConfiguration.mysticForest.climate);
-		this.waterColorMultiplier = BetterBiomesConfiguration.mysticForest.waterColorMultiplier;
+		super(id, internalName, BetterBiomesConfiguration.mysticValley.climate);
+		this.waterColorMultiplier = BetterBiomesConfiguration.mysticValley.waterColorMultiplier;
         this.spawnableCreatureList.clear();
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntitySlime.class, 1, 1, 1));
         this.spawnableMonsterList.add(new SpawnListEntry(FCEntityWitch.class, 1, 1, 1));
@@ -22,7 +22,7 @@ public class MysticRiverBiome extends RiverBiome {
      */
     public int getBiomeGrassColor()
     {
-    	return BetterBiomesConfiguration.mysticForest.getBiomeGrassColor();
+    	return BetterBiomesConfiguration.mysticValley.getBiomeGrassColor();
     }
 
     /**
@@ -30,6 +30,6 @@ public class MysticRiverBiome extends RiverBiome {
      */
     public int getBiomeFoliageColor()
     {
-    	return BetterBiomesConfiguration.mysticForest.getBiomeFoliageColor();
+    	return BetterBiomesConfiguration.mysticValley.getBiomeFoliageColor();
     }
 }
