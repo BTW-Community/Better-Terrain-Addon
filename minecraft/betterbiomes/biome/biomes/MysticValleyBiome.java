@@ -6,6 +6,7 @@ import betterbiomes.feature.terrain.MysticShardsGen;
 import betterbiomes.feature.tree.MassiveOakGen;
 import betterbiomes.feature.tree.MysticTreeGen;
 import betterbiomes.feature.tree.TemperateBirchGen;
+import betterterrain.DecoIntegration;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.feature.plant.TallGrassGen;
@@ -21,8 +22,8 @@ import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
 
-public class MysticForestBiome extends BTABiome {
-	public MysticForestBiome(int id, String internalName, Climate climate) {
+public class MysticValleyBiome extends BTABiome {
+	public MysticValleyBiome(int id, String internalName, Climate climate) {
 		super(id, internalName, climate);
 		waterColorMultiplier = 0xa78cff;
 		this.btaBiomeDecorator.treesPerChunk = 15;
@@ -77,17 +78,19 @@ public class MysticForestBiome extends BTABiome {
 	public void decorate(World world, Random rand, int chunkX, int chunkZ, WorldConfigurationInfo generatorOptions) {
 		super.decorate(world, rand, chunkX, chunkZ, generatorOptions);
 
-		WorldGenerator gen;
+		if (DecoIntegration.isDecoInstalled()) {
+			WorldGenerator gen;
 
-		//Small amethyst shards
-		gen = new MysticShardsGen();
+			//Small amethyst shards
+			gen = new MysticShardsGen();
 
-		if (rand.nextInt(3) == 0) {
-			int x = chunkX + rand.nextInt(16) + 8;
-			int z = chunkZ + rand.nextInt(16) + 8;
-			int y = world.getTopSolidOrLiquidBlock(x, z);
+			if (rand.nextInt(3) == 0) {
+				int x = chunkX + rand.nextInt(16) + 8;
+				int z = chunkZ + rand.nextInt(16) + 8;
+				int y = world.getTopSolidOrLiquidBlock(x, z);
 
-			gen.generate(world, rand, x, y, z);
+				gen.generate(world, rand, x, y, z);
+			}
 		}
 	}
 }

@@ -73,7 +73,7 @@ import betterbiomes.biome.biomes.HotSpringsBiome;
 import betterbiomes.biome.biomes.LushDesertBiome;
 import betterbiomes.biome.biomes.MangroveForestBiome;
 import betterbiomes.biome.biomes.MeadowBiome;
-import betterbiomes.biome.biomes.MysticForestBiome;
+import betterbiomes.biome.biomes.MysticValleyBiome;
 import betterbiomes.biome.biomes.OasisBiome;
 import betterbiomes.biome.biomes.deprecated.OldValleyBiome;
 import betterbiomes.biome.biomes.OrchardBiome;
@@ -283,7 +283,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(0.8F, 0.9F)
 			.setMinMaxHeight(-0.3F, 0.2F);
 
-	public static final BTABiome mysticValley = new MysticForestBiome(MYSTIC_Valley_ID, "betterbiomes:mystic_valley", Climate.TEMPERATE)
+	public static final BTABiome mysticValley = new MysticValleyBiome(MYSTIC_Valley_ID, "betterbiomes:mystic_valley", Climate.TEMPERATE)
 			.setBiomeName("Mystic Valley")
 			.setSpawnsSugarCane()
 			.setSpawnsWitchHuts()

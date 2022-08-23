@@ -22,15 +22,11 @@ public class HotSpringsSurfaceBuilder extends NoShorelineSurfaceBuilder {
 
 		springsNoiseGen = new OpenSimplexOctaves(noiseRand.nextLong(), 6);
 		coarseDirtNoiseGenSimplex = new OpenSimplexOctaves(noiseRand.nextLong(), 4);
-
-		this.treeNoiseGen = new OpenSimplexOctaves(noiseRand.nextLong(), 2);
-
-		this.treeNoiseScale = 1/256D;
 	}
 	
 	@Override
 	protected int[] getSurfaceBlock(int i, int j, int k, int surfaceJ, int soilDepth, SurfaceType surfaceType, int seaLevel, Random rand, WorldConfigurationInfo generatorInfo, WorldType worldType) {
-		double grassNoiseScale = 1/96D;
+		double grassNoiseScale = 1/48D;
 		//k and i swapped because apparently I messed something up somewhere
 		boolean useCoarseDirt = coarseDirtNoiseGenSimplex.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), grassNoiseScale) + rand.nextDouble() * 0.1D - .25 > 0;
 		

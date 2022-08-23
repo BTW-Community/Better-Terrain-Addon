@@ -6,6 +6,7 @@ import betterbiomes.world.generate.surface.HotSpringsSurfaceBuilder;
 import betterterrain.DecoIntegration;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
+import betterterrain.feature.plant.TallGrassGen;
 import betterterrain.feature.tree.PineTreeGen;
 import betterterrain.feature.tree.TaigaGen5;
 import betterterrain.feature.tree.TaigaGen6;
@@ -27,7 +28,7 @@ public class HotSpringsBiome extends BTABiome {
 		spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 8, 4, 4));
 		
         this.btaBiomeDecorator.treesPerChunk = 8;
-        this.btaBiomeDecorator.grassPerChunk = 10;
+        this.btaBiomeDecorator.grassPerChunk = 15;
 		
 		this.waterColorMultiplier =  0x00ffaa;
 	}
@@ -52,6 +53,10 @@ public class HotSpringsBiome extends BTABiome {
     	return gen;
     }
 	
+	@Override
+	public WorldGenerator getRandomWorldGenForGrass(Random rand) {
+		return rand.nextInt(2) == 0 ? new TallGrassGen(Block.tallGrass.blockID, 2) : new TallGrassGen(Block.tallGrass.blockID, 1);
+	}
 
 	@Override
     public boolean canSnowAt(World world, int x, int y, int z) {
