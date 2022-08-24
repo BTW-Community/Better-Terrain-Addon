@@ -90,7 +90,7 @@ public class HotSpringsBiome extends BTABiome {
 						nextBlockID = world.getBlockId(i, j + 1, k);
 					}
 					
-					if (nextBlockID != 0 && Block.blocksList[nextBlockID].blockMaterial.isReplaceable()) {
+					if (nextBlockID != 0 && Block.blocksList[nextBlockID].blockMaterial.isReplaceable() && Block.blocksList[nextBlockID].blockMaterial != Material.water) {
 						world.setBlockToAir(i, j + 1, k);
 						nextBlockID = 0;
 					}
@@ -100,20 +100,24 @@ public class HotSpringsBiome extends BTABiome {
 							nextBlockID == 0)
 					{
 						if (waterNoise > 0.825) {
-							int numBlockNeighbors = 4;
+							int numBlockNeighbors = 8;
 							
-							for (int facing = 2; facing <= 5; facing++) {
-								FCUtilsBlockPos pos = new FCUtilsBlockPos(i, j, k, facing);
-
-								int neighborID = world.getBlockId(pos.i, pos.j, pos.k);
-								int neighborAboveID = world.getBlockId(pos.i, pos.j + 1, pos.k);
-								
-								if (neighborID == 0 || neighborAboveID != 0) {
-									numBlockNeighbors--;
+							for (int offsetI = -1; offsetI <= 1; offsetI++) {
+								for (int offsetK = -1; offsetK <= 1; offsetK++) {
+									if (offsetI == 0 && offsetK == 0) {
+										continue;
+									}
+									
+									int neighborID = world.getBlockId(i + offsetI, j, k + offsetK);
+									int neighborAboveID = world.getBlockId(i + offsetI, j + 1, k + offsetK);
+									
+									if (neighborID == 0 || neighborAboveID != 0) {
+										numBlockNeighbors--;
+									}
 								}
 							}
 
-							if (numBlockNeighbors == 4) {
+							if (numBlockNeighbors == 8) {
 								world.setBlock(i, j, k, Block.waterStill.blockID);
 								fillToDepth(world, i, j - 1, k, 3, DecoIntegration.stainedTerracotta.blockID, FCUtilsColor.YELLOW.colorID);
 							}
@@ -121,14 +125,17 @@ public class HotSpringsBiome extends BTABiome {
 								fillToDepth(world, i, j, k, 4, DecoIntegration.redSand.blockID, 0);
 							}
 							
-							if (surfaceBuilder.springsNoiseGen.noise2(i - 1, k, waterNoiseScale) <= 0.825)
-								fillToDepth(world, i - 1, j, k, 4, DecoIntegration.redSand.blockID, 0);
-							if (surfaceBuilder.springsNoiseGen.noise2(i + 1, k, waterNoiseScale) <= 0.825)
-								fillToDepth(world, i + 1, j, k, 4, DecoIntegration.redSand.blockID, 0);
-							if (surfaceBuilder.springsNoiseGen.noise2(i, k - 1, waterNoiseScale) <= 0.825)
-								fillToDepth(world, i, j, k - 1, 4, DecoIntegration.redSand.blockID, 0);
-							if (surfaceBuilder.springsNoiseGen.noise2(i, k + 1, waterNoiseScale) <= 0.825)
-								fillToDepth(world, i, j, k + 1, 4, DecoIntegration.redSand.blockID, 0);
+							for (int offsetI = -1; offsetI <= 1; offsetI++) {
+								for (int offsetK = -1; offsetK <= 1; offsetK++) {
+									if (offsetI == 0 && offsetK == 0) {
+										break;
+									}
+									
+									if (surfaceBuilder.springsNoiseGen.noise2(i + offsetI, k + offsetK, waterNoiseScale) <= 0.825) {
+										fillToDepth(world, i + offsetI, j, k + offsetK, 4, DecoIntegration.redSand.blockID, 0);
+									}
+								}
+							}
 						}
 						else if (waterNoise > 0.75) {
 							fillToDepth(world, i, j, k, 4, DecoIntegration.redSand.blockID, 0);
@@ -154,13 +161,17 @@ public class HotSpringsBiome extends BTABiome {
 			for (int k = chunkZ + 8; k < chunkZ + 24; k++) {
 				for (int j = 32; j < 108; j++) {
 					if (world.getBlockId(i, j, k) == DecoIntegration.redSand.blockID) {
-						for (int facing = 2; facing <= 5; facing++) {
-							FCUtilsBlockPos pos = new FCUtilsBlockPos(i, j, k, facing);
-							
-							int blockID = world.getBlockId(pos.i, pos.j, pos.k);
-							
-							if (blockID != 0 && Block.blocksList[blockID].blockMaterial == Material.water) {
-								fillToDepth(world, i, j, k, 1, DecoIntegration.stainedTerracotta.blockID, FCUtilsColor.YELLOW.colorID);
+						for (int offsetI = -1; offsetI <= 1; offsetI++) {
+							for (int offsetK = -1; offsetK <= 1; offsetK++) {
+								if (offsetI == 0 && offsetK == 0) {
+									break;
+								}
+								
+								int blockID = world.getBlockId(i + offsetI, j, k + offsetK);
+								
+								if (blockID != 0 && Block.blocksList[blockID].blockMaterial == Material.water) {
+									fillToDepth(world, i, j, k, 1, DecoIntegration.stainedTerracotta.blockID, FCUtilsColor.YELLOW.colorID);
+								}
 							}
 						}
 					}

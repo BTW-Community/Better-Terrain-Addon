@@ -20,6 +20,8 @@ import betterbiomes.world.generate.surface.OutbackSurfaceBuilder;
 import betterbiomes.world.generate.surface.SoulSandValleySurfaceBuilder;
 import betterbiomes.world.generate.surface.SteppeSurfaceBuilder;
 import betterbiomes.world.generate.surface.TropicsSurfaceBuilder;
+import betterbiomes.world.generate.surface.VolcanicBeachSurfaceBuilder;
+import betterbiomes.world.generate.surface.VolcanicJungleSurfaceBuilder;
 import betterterrain.BTAVersion;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.BTABiomeConfiguration;
@@ -100,6 +102,7 @@ import betterbiomes.biome.biomes.SteppeBiome;
 import betterbiomes.biome.biomes.TemperateForestBiome;
 import betterbiomes.biome.biomes.TropicsBiome;
 import betterbiomes.biome.biomes.ValleyBiome;
+import betterbiomes.biome.biomes.VolcanicJungle;
 import betterbiomes.biome.biomes.WetlandsBiome;
 import betterbiomes.biome.biomes.WillowGroveBiome;
 import betterbiomes.biome.biomes.deprecated.WoodedSteppeBiome;
@@ -174,6 +177,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 	BRUSHLAND_ID = 144,
 	HIGHLANDS_ID = 145,
 	HOT_SPRINGS_ID = 146,
+	VOLCANIC_JUNGLE_ID = 147,
 
 	WOODS_HILLS_ID = 150,
 	DESERT_HILLS_ID = 151,
@@ -217,6 +221,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 	PATAGONIA_RIVER_ID = 210,
 	RIVER_ID = 211,
 	FROZEN_RIVER_ID = 212,
+	VOLCANIC_RIVER_ID = 213,
 
 	ALPINE_EDGE_ID = 230,
 	MOUNTAIN_EDGE_ID = 231,
@@ -230,6 +235,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 	RED_SAND_BEACH_ID = 240,
 	BEACH_ID = 241,
 	FROZEN_BEACH_ID = 242,
+	VOLCANIC_BEACH_ID = 243,
 
 	max_id = 256;
 
@@ -411,6 +417,15 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(1.2F, 0.9F)
 			.setMinMaxHeight(0.5F, 3.0F)
 			.setLegacyCompatible();
+
+	public static final BTABiome volcanicJungle = new VolcanicJungle(VOLCANIC_JUNGLE_ID, "betterbiomes:volcanic_jungle", Climate.TROPICAL)
+			.setBiomeName("Volcanic Jungle")
+			.setSpawnsSugarCane()
+			.setSpawnsJungleTemples()
+			.setTemperatureRainfall(1.2F, 0.9F)
+			.setMinMaxHeight(0.2F, 1.0F)
+			.setSurfaceBuilder(new VolcanicJungleSurfaceBuilder())
+			.setDecoOnly();
 
 	public static final BTABiome wetlands = new WetlandsBiome(WETLANDS_ID, "betterbiomes:wetlands", Climate.TROPICAL)
 			.setBiomeName("Wetlands")
@@ -696,6 +711,15 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setRiver()
 			.setNotSpawnable();
 
+	public static final BTABiome volcanicRiver = new TropicsRiverBiome(VOLCANIC_RIVER_ID, "betterbiomes:volcanic_river")
+			.setBiomeName("Volcanic River")
+			.setSpawnsSugarCane()
+			.setSurfaceBuilder(new VolcanicBeachSurfaceBuilder())
+			.setTemperatureRainfall(2.0F, 2.0F)
+			.setMinMaxHeight(-0.5F, 0.0F)
+			.setRiver()
+			.setNotSpawnable();
+
 	public static final BTABiome wetlandsRiver = new WetlandsRiverBiome(WETLANDS_RIVER_ID, "betterbiomes:wetlands_river")
 			.setBiomeName("Wetlands River")
 			.setSpawnsSugarCane()
@@ -748,6 +772,13 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setSurfaceBuilder(new BadlandsSurfaceBuilder())
 			.setDisableRain()
 			.setTemperatureRainfall(2.0F, 0.0F)
+			.setMinMaxHeight(0.0F, 0.1F)
+			.setBeach()
+			.setNotSpawnable();
+	public static final BTABiome volcanicBeach = new BeachBiome(VOLCANIC_BEACH_ID, "betterbiomes:volcanic_beach", Climate.TROPICAL)
+			.setBiomeName("Volcanic Beach")
+			.setSurfaceBuilder(new VolcanicBeachSurfaceBuilder())
+			.setTemperatureRainfall(1.2F, 0.9F)
 			.setMinMaxHeight(0.0F, 0.1F)
 			.setBeach()
 			.setNotSpawnable();
@@ -883,6 +914,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		betterBiomes.add(badlandsPlateau);
 		betterBiomes.add(autumnForest);
 		betterBiomes.add(hotSprings);
+		betterBiomes.add(volcanicJungle);
 		
 		biomeList.addAll(betterBiomes);
 		
@@ -980,6 +1012,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		
 		outback.addBeachVariant(redSandBeach);
 		badlands.addBeachVariant(redSandBeach);
+		volcanicJungle.addBeachVariant(volcanicBeach);
 
 		WorldConfigurationInfo.Condition post132 = new WorldConfigurationInfo.Condition() {
 			@Override
@@ -1019,6 +1052,9 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		
 		patagonia.addRiverVariant(patagoniaRiver);
 		patagoniaMountains.addRiverVariant(patagoniaRiver);
+		
+		volcanicJungle.addRiverVariant(volcanicRiver);
+		volcanicBeach.addRiverVariant(volcanicRiver);
 		
 		for (BTABiome b : betterBiomes) {
 			if (b.getEnableSnow()) {
