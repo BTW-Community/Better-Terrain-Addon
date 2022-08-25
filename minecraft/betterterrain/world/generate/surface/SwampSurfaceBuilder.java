@@ -115,17 +115,17 @@ public class SwampSurfaceBuilder extends NoShorelineSurfaceBuilder {
 
 		if (y == 63)
 		{
-			if (DecoIntegration.isDecoInstalled() && world.provider.terrainType.isDeco() && rand.nextInt(2) == 0) {
-				x = chunkX + rand.nextInt(16) + 8;
-				z = chunkZ + rand.nextInt(16) + 8;
-				this.orchidGen.generate(world, rand, x, y, z);
-			}
-
 			for (int i = 0; i < 5; i++) {
 				x = chunkX + rand.nextInt(16) + 8;
 				z = chunkZ + rand.nextInt(16) + 8;
 				this.fernGen.generate(world, rand, x, y, z);
 			}
+		}
+		
+		if (DecoIntegration.isDecoInstalled() && world.provider.terrainType.isDeco() && rand.nextInt(2) == 0) {
+			x = chunkX + rand.nextInt(16) + 8;
+			z = chunkZ + rand.nextInt(16) + 8;
+			this.orchidGen.generate(world, rand, x, y, z);
 		}
 	}
 }

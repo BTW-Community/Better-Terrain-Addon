@@ -8,6 +8,8 @@ import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.feature.plant.TallGrassGen;
 import betterterrain.feature.tree.TallSwampTreeGen;
+import betterterrain.feature.tree.TemperateBirchGen;
+import betterterrain.feature.tree.WillowGen;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.surface.SwampSurfaceBuilder;
 import net.minecraft.src.Block;
@@ -35,7 +37,7 @@ public class SwampBiome extends BTABiome {
 		this.btaBiomeDecorator.mushroomsPerChunk = 8;
 		this.btaBiomeDecorator.reedsPerChunk = 10;
 		this.btaBiomeDecorator.clayPerChunk = 1;
-		this.btaBiomeDecorator.waterlilyPerChunk = 4;
+		this.btaBiomeDecorator.waterlilyPerChunk = 10;
 		this.spawnableMonsterList.add(new SpawnListEntry(FCEntitySlime.class, 1, 1, 1));
 		this.spawnableMonsterList.add(new SpawnListEntry(FCEntityWitch.class, 1, 1, 1));
 		this.spawnableCreatureList.clear();
@@ -58,7 +60,13 @@ public class SwampBiome extends BTABiome {
 	public WorldGenerator getRandomWorldGenForTrees(Random rand) {
 		WorldGenerator gen;
 
-		if (rand.nextInt(4) == 0) {
+		if (rand.nextInt(20) == 0) {
+			gen = new WillowGen();
+		}
+		else if (rand.nextInt(10) == 0) {
+			gen = new TemperateBirchGen();
+		}
+		else if (rand.nextInt(4) == 0) {
 			gen = new TallSwampTreeGen();
 		}
 		else {
