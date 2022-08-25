@@ -26,6 +26,7 @@ import betterterrain.biome.biomes.deprecated.ForestedIcyPeaksBiome;
 import betterterrain.world.generate.surface.NetherSurfaceBuilder;
 import betterterrain.world.generate.surface.NoShorelineSurfaceBuilder;
 import betterterrain.world.generate.surface.StonySurfaceBuilder;
+import betterterrain.world.generate.surface.SwampSurfaceBuilder;
 import net.minecraft.src.FCAddOnHandler;
 
 public class BTABiomeConfiguration extends BiomeConfiguration {
@@ -124,7 +125,7 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 
 	public static final BTABiome swamp = new SwampBiome(SWAMP_ID, "betterterrain:swamp", Climate.TROPICAL)
 			.setBiomeName("Better Swamp")
-			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
+			.setSurfaceBuilder(new SwampSurfaceBuilder())
 			.setSpawnsSugarCane()
 			.setSpawnsWitchHuts()
 			.setMinMaxHeight(-0.1F, 0.3F)
@@ -205,7 +206,7 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 	public static final BTABiome swampRiver = new SwampRiverBiome(SWAMP_RIVER_ID, "betterterrain:swamp_river")
 			.setBiomeName("Swamp River")
 			.setSpawnsSugarCane()
-			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
+			.setSurfaceBuilder(new SwampSurfaceBuilder())
 			.setTemperatureRainfall(0.8F, 0.9F)
 			.setMinMaxHeight(-0.5F, 0.0F)
 			.setRiver();
