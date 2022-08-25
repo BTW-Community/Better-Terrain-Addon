@@ -672,6 +672,12 @@ public class SurfaceBuilder {
 			return gravelNoise[k * 16 + i] + rand.nextDouble() * 0.2D > 3.0D;
 		}
 	}
+	
+	/**
+	 * Used for post-generation processing
+	 * It is generally better to use getSurfaceBlock() for better performance unless behavior depends on neighboring blocks
+	 */
+	public void decorateSurface(World world, Random rand, BTABiome biome, int chunkX, int chunkZ, WorldConfigurationInfo generatorOptions) {}
 
 	protected int getSoilDepth(int i, int k, Random rand, WorldConfigurationInfo generatorInfo) {
 		return (int) (soilDepthNoiseLegacy[k * 16 + i] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
