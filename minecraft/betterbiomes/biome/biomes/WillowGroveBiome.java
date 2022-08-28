@@ -2,9 +2,9 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.feature.tree.WillowGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
+import betterterrain.feature.tree.WillowGen;
 import net.minecraft.src.FCEntityChicken;
 import net.minecraft.src.FCEntityPig;
 import net.minecraft.src.FCEntitySlime;

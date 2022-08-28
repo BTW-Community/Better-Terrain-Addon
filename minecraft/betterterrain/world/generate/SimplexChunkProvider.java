@@ -30,6 +30,7 @@ import net.minecraft.src.World;
 import net.minecraft.src.WorldGenDungeons;
 import net.minecraft.src.WorldGenFlowers;
 import net.minecraft.src.WorldGenLakes;
+import net.minecraft.src.WorldType;
 
 public class SimplexChunkProvider implements IChunkProvider
 {
@@ -456,10 +457,13 @@ public class SimplexChunkProvider implements IChunkProvider
 			}
 		}
 
-		if (b instanceof BTABiome)
+		if (b instanceof BTABiome) {
+			((BTABiome) b).getSurfaceBuilder().decorateSurface(worldObj, this.rand, (BTABiome) b, x, z, this.generatorInfo);
 			((BTABiome) b).decorate(this.worldObj, this.rand, x, z, this.generatorInfo);
-		else
+		}
+		else {
 			b.decorate(this.worldObj, this.rand, x, z);
+		}
 		SpawnerAnimals.performWorldGenSpawning(this.worldObj, b, x + 8, z + 8, 16, 16, this.rand);
 
 		x += 8;

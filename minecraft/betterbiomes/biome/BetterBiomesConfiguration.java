@@ -9,10 +9,11 @@ import betterbiomes.world.generate.surface.AlpineSurfaceBuilder;
 import betterbiomes.world.generate.surface.AncientForestSurfaceBuilder;
 import betterbiomes.world.generate.surface.AshFieldsSurfaceBuilder;
 import betterbiomes.world.generate.surface.BadlandsPlateauSurfaceBuilder;
-import betterbiomes.world.generate.surface.BadlandsSurfaceBuilder;
 import betterbiomes.world.generate.surface.BasaltDeltasSurfaceBuilder;
 import betterbiomes.world.generate.surface.ConiferousForestSurfaceBuilder;
 import betterbiomes.world.generate.surface.CrystalCavernsSurfaceBuilder;
+import betterbiomes.world.generate.surface.FirCanyonSurfaceBuilder;
+import betterbiomes.world.generate.surface.FirCanyonValleySurfaceBuilder;
 import betterbiomes.world.generate.surface.HeathlandSurfaceBuilder;
 import betterbiomes.world.generate.surface.HotSpringsSurfaceBuilder;
 import betterbiomes.world.generate.surface.OrchardSurfaceBuilder;
@@ -63,6 +64,7 @@ import betterbiomes.biome.biomes.ConiferousForestBiome;
 import betterbiomes.biome.biomes.deprecated.ConiferousForestClearingBiome;
 import betterbiomes.biome.biomes.CrystalCavernsBiome;
 import betterbiomes.biome.biomes.DunesBiome;
+import betterbiomes.biome.biomes.FirCanyonBiome;
 import betterbiomes.biome.biomes.FrozenSpringsPondBiome;
 import betterbiomes.biome.biomes.FrozenSpringsBiome;
 import betterbiomes.biome.biomes.FungalForestBiome;
@@ -178,7 +180,8 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 	HIGHLANDS_ID = 145,
 	HOT_SPRINGS_ID = 146,
 	VOLCANIC_JUNGLE_ID = 147,
-
+	FIR_CANYON_ID = 148,
+	
 	WOODS_HILLS_ID = 150,
 	DESERT_HILLS_ID = 151,
 	SAVANNA_HILLS_ID = 152,
@@ -201,6 +204,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 	MANGROVE_FOREST_ISLAND_ID = 169,
 	BOREAL_FOREST_HILLS_ID = 170,
 	SAVANNA_PLATEAU_ID = 171,
+	FIR_CANYON_VALLEY_ID = 172,
 
 	OUTBACK_ID = 180,
 	CHERRY_FOREST_ID = 181,
@@ -351,6 +355,14 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setNotSpawnable()
 			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
 			.setLegacyCompatible();
+	
+	public static final BTABiome firCanyon = new FirCanyonBiome(FIR_CANYON_ID, "betterbiomes:fir_canyon", Climate.ARID)
+			.setBiomeName("Fir Canyon")
+			.setSurfaceBuilder(new FirCanyonSurfaceBuilder())
+			.setDisableRain()
+			.setTemperatureRainfall(1.0F, 0.1F)
+			.setMinMaxHeight(0.8F, 2.0F)
+			.setDecoOnly();
 
 	public static final BTABiome outback = new OutbackBiome(OUTBACK_ID, "betterbiomes:outback", Climate.ARID)
 			.setBiomeName("Outback")
@@ -425,7 +437,8 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(1.2F, 0.9F)
 			.setMinMaxHeight(0.2F, 1.0F)
 			.setSurfaceBuilder(new VolcanicJungleSurfaceBuilder())
-			.setDecoOnly();
+			.setDecoOnly()
+			.setNotSpawnable();
 
 	public static final BTABiome wetlands = new WetlandsBiome(WETLANDS_ID, "betterbiomes:wetlands", Climate.TROPICAL)
 			.setBiomeName("Wetlands")
@@ -544,7 +557,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 
 	public static final BTABiome badlands = new BadlandsBiome(BADLANDS_ID, "betterbiomes:badlands", Climate.ARID)
 			.setBiomeName("Badlands")
-			.setSurfaceBuilder(new BadlandsSurfaceBuilder())
+			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
 			.setSpawnsRedDesertTemples()
 			.setDisableRain()
 			.setTemperatureRainfall(2.0F, 0.0F)
@@ -572,6 +585,14 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setBiomeName("Cherry Forest Hills")
 			.setTemperatureRainfall(0.7F, 0.8F)
 			.setMinMaxHeight(0.3F, 1.0F);
+	
+	public static final BTABiome firCanyonValley = new FirCanyonBiome(FIR_CANYON_VALLEY_ID, "betterbiomes:fir_canyon", Climate.ARID)
+			.setBiomeName("Fir Canyon Valley")
+			.setSurfaceBuilder(new FirCanyonValleySurfaceBuilder())
+			.setDisableRain()
+			.setTemperatureRainfall(1.0F, 0.1F)
+			.setMinMaxHeight(0.1F, 0.7F)
+			.setDecoOnly();
 
 	public static final BTABiome frozenSpringsPond = new FrozenSpringsPondBiome(FROZEN_SPRINGS_POND_ID, "betterbiomes:frozen_springs", Climate.SNOWY)
 			.setBiomeName("Frozen Springs Pond")
@@ -658,7 +679,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 	//Rivers
 	public static final BTABiome badlandsRiver = new BadlandsRiverBiome(BADLANDS_RIVER_ID, "betterbiomes:badlands_river")
 			.setBiomeName("Badlands River")
-			.setSurfaceBuilder(new BadlandsSurfaceBuilder())
+			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
 			.setDisableRain()
 			.setTemperatureRainfall(2.0F, 0.0F)
 			.setMinMaxHeight(-0.5F, 0.0F)
@@ -769,7 +790,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 	//Beaches
 	public static final BTABiome redSandBeach = new RedSandBeachBiome(RED_SAND_BEACH_ID, "betterbiomes:red_sand_beach", Climate.ARID)
 			.setBiomeName("Red Sand Beach")
-			.setSurfaceBuilder(new BadlandsSurfaceBuilder())
+			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
 			.setDisableRain()
 			.setTemperatureRainfall(2.0F, 0.0F)
 			.setMinMaxHeight(0.0F, 0.1F)
@@ -819,7 +840,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 
 	public static final BTABiome badlandsEdge = new BadlandsBiome(BADLANDS_EDGE_ID, "betterbiomes:badlands_edge", Climate.ARID)
 			.setBiomeName("Badlands Edge")
-			.setSurfaceBuilder(new BadlandsSurfaceBuilder())
+			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
 			.setSpawnsRedDesertTemples()
 			.setDisableRain()
 			.setTemperatureRainfall(2.0F, 0.0F)
@@ -915,6 +936,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		betterBiomes.add(autumnForest);
 		betterBiomes.add(hotSprings);
 		betterBiomes.add(volcanicJungle);
+		betterBiomes.add(firCanyon);
 		
 		biomeList.addAll(betterBiomes);
 		
@@ -945,6 +967,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		chaparral.addSubVariant(chaparralHills);
 		cherryForest.addSubVariant(cherryForestHills);
 		coniferousForest.addSubVariant(coniferousForestClearing, pre140);
+		firCanyon.addSubVariant(firCanyonValley);
 		fungalForest.addSubVariant(fungalForestFlat);
 		grasslands.addSubVariant(grasslandsLake);
 		heathland.addSubVariant(heathlandWoods, pre140);
@@ -1012,6 +1035,8 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		
 		outback.addBeachVariant(redSandBeach);
 		badlands.addBeachVariant(redSandBeach);
+		firCanyon.addBeachVariant(redSandBeach);
+		firCanyonValley.addBeachVariant(redSandBeach);
 		volcanicJungle.addBeachVariant(volcanicBeach);
 
 		WorldConfigurationInfo.Condition post132 = new WorldConfigurationInfo.Condition() {
@@ -1037,6 +1062,8 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		badlands.addRiverVariant(badlandsRiver);
 		badlandsPlateau.addRiverVariant(badlandsRiver);
 		badlandsEdge.addRiverVariant(badlandsRiver);
+		firCanyon.addRiverVariant(badlandsRiver);
+		firCanyonValley.addRiverVariant(badlandsRiver);
 		
 		tropics.addRiverVariant(tropicsRiver);
 		tropicsEdge.addRiverVariant(tropicsRiver);
@@ -1074,6 +1101,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		});
 		badlands.addEdgeVariant(badlandsEdge, pre140);
 		badlandsPlateau.addEdgeVariant(badlandsEdge, pre140);
+		firCanyon.addEdgeVariant(firCanyonValley);
 		highlands.addEdgeVariant(highlandsEdge);
 		rainforest.addEdgeVariant(rainforestEdge, post132);
 		tropics.addEdgeVariant(tropicsEdge, post132);

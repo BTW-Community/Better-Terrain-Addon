@@ -21,6 +21,7 @@ import net.minecraft.src.IProgressUpdate;
 import net.minecraft.src.NoiseGeneratorOctaves;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenFlowers;
+import net.minecraft.src.WorldType;
 
 public class NetherChunkProvider implements BTAChunkProvider
 {
@@ -382,12 +383,14 @@ public class NetherChunkProvider implements BTAChunkProvider
             var9 = z + this.hellRNG.nextInt(16) + 8;
             (new WorldGenFlowers(Block.mushroomRed.blockID)).generate(this.worldObj, this.hellRNG, var7, var8, var9);
         }
-        
-        if (b instanceof BTABiome)
-			((BTABiome) b).decorate(this.worldObj, this.hellRNG, x, z, this.generatorInfo);
-		else
-			b.decorate(this.worldObj, this.hellRNG, x, z);
 
+		if (b instanceof BTABiome) {
+			((BTABiome) b).getSurfaceBuilder().decorateSurface(worldObj, this.hellRNG, (BTABiome) b, x, z, this.generatorInfo);
+			((BTABiome) b).decorate(this.worldObj, this.hellRNG, x, z, this.generatorInfo);
+		}
+		else {
+			b.decorate(this.worldObj, this.hellRNG, x, z);
+		}
         BlockSand.fallInstantly = false;
     }
 

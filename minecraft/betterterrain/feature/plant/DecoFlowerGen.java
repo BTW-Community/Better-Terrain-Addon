@@ -19,10 +19,16 @@ public class DecoFlowerGen extends WorldGenerator
 		plantMetadata = -1;
 	}
 
-	public DecoFlowerGen(int par1)
+	public DecoFlowerGen(int blockID)
 	{
-		this.plantBlockId = par1;
+		this.plantBlockId = blockID;
 		plantMetadata = 0;
+	}
+	
+	public DecoFlowerGen(int blockID, int metadata)
+	{
+		this.plantBlockId = blockID;
+		plantMetadata = metadata;
 	}
 
 	public boolean generate(World par1World, Random rand, int par3, int par4, int par5)

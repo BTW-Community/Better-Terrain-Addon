@@ -37,6 +37,7 @@ import net.minecraft.src.WorldGenHellLava;
 import net.minecraft.src.WorldGenLakes;
 import net.minecraft.src.WorldGenMinable;
 import net.minecraft.src.WorldGenReed;
+import net.minecraft.src.WorldType;
 
 public class SkyChunkProvider implements BTAChunkProvider
 {
@@ -431,9 +432,9 @@ public class SkyChunkProvider implements BTAChunkProvider
 		}
 		
 		BlockSand.fallInstantly = true;
-		int var4 = par2 * 16;
-		int var5 = par3 * 16;
-		BiomeGenBase b = this.worldObj.getBiomeGenForCoords(var4 + 16, var5 + 16);
+		int x = par2 * 16;
+		int z = par3 * 16;
+		BiomeGenBase b = this.worldObj.getBiomeGenForCoords(x + 16, z + 16);
 		this.rand.setSeed(this.worldObj.getSeed());
 		long var7 = this.rand.nextLong() / 2L * 2L + 1L;
 		long var9 = this.rand.nextLong() / 2L * 2L + 1L;
@@ -457,25 +458,25 @@ public class SkyChunkProvider implements BTAChunkProvider
 
 		if (!var15 && this.rand.nextInt(1) == 0)
 		{
-			var16 = var4 + this.rand.nextInt(16) + 8;
+			var16 = x + this.rand.nextInt(16) + 8;
 			var17 = this.rand.nextInt(128);
-			var18 = var5 + this.rand.nextInt(16) + 8;
+			var18 = z + this.rand.nextInt(16) + 8;
 			(new WorldGenLakes(Block.waterStill.blockID)).generate(this.worldObj, this.rand, var16, var17, var18);
 		}
 		
 		for (int i = 0; i < 20; i++)
 		{
-			var16 = var4 + this.rand.nextInt(16) + 8;
-			var17 = var5 + this.rand.nextInt(16) + 8;
+			var16 = x + this.rand.nextInt(16) + 8;
+			var17 = z + this.rand.nextInt(16) + 8;
 			var18 = this.rand.nextInt(128);
 			new WorldGenReed().generate(this.worldObj, this.rand, var16, var18, var17);
 		}
 
 		if (!var15 && this.rand.nextInt(4) == 0)
 		{
-			var16 = var4 + this.rand.nextInt(16) + 8;
+			var16 = x + this.rand.nextInt(16) + 8;
 			var17 = this.rand.nextInt(this.rand.nextInt(120) + 8);
-			var18 = var5 + this.rand.nextInt(16) + 8;
+			var18 = z + this.rand.nextInt(16) + 8;
 
 			if (var17 < 63 || this.rand.nextInt(10) == 0)
 			{
@@ -485,9 +486,9 @@ public class SkyChunkProvider implements BTAChunkProvider
 
 		for (var16 = 0; var16 < 16; ++var16)
 		{
-			var17 = var4 + this.rand.nextInt(16) + 8;
+			var17 = x + this.rand.nextInt(16) + 8;
 			var18 = this.rand.nextInt(128);
-			int var19 = var5 + this.rand.nextInt(16) + 8;
+			int var19 = z + this.rand.nextInt(16) + 8;
 
 			if ((new WorldGenDungeons()).generate(this.worldObj, this.rand, var17, var18, var19))
 			{
@@ -495,35 +496,38 @@ public class SkyChunkProvider implements BTAChunkProvider
 			}
 		}
 
-		if (b instanceof BTABiome)
-			((BTABiome) b).decorate(this.worldObj, this.rand, var4, var5, this.generatorInfo);
-		else
-			b.decorate(this.worldObj, this.rand, var4, var5);
-		SpawnerAnimals.performWorldGenSpawning(this.worldObj, b, var4 + 8, var5 + 8, 16, 16, this.rand);
+		if (b instanceof BTABiome) {
+			((BTABiome) b).getSurfaceBuilder().decorateSurface(worldObj, this.rand, (BTABiome) b, x, z, this.generatorInfo);
+			((BTABiome) b).decorate(this.worldObj, this.rand, x, z, this.generatorInfo);
+		}
+		else {
+			b.decorate(this.worldObj, this.rand, x, z);
+		}
+		SpawnerAnimals.performWorldGenSpawning(this.worldObj, b, x + 8, z + 8, 16, 16, this.rand);
 
-		var4 += 8;
-		var5 += 8;
+		x += 8;
+		z += 8;
 
 		for (var16 = 0; var16 < 16; ++var16)
 		{
 			for (var17 = 0; var17 < 16; ++var17)
 			{
-				var18 = this.worldObj.getPrecipitationHeight(var4 + var16, var5 + var17);
+				var18 = this.worldObj.getPrecipitationHeight(x + var16, z + var17);
 
-				if (this.worldObj.isBlockFreezable(var16 + var4, var18 - 1, var17 + var5))
+				if (this.worldObj.isBlockFreezable(var16 + x, var18 - 1, var17 + z))
 				{
-					this.worldObj.setBlock(var16 + var4, var18 - 1, var17 + var5, Block.ice.blockID, 0, 2);
+					this.worldObj.setBlock(var16 + x, var18 - 1, var17 + z, Block.ice.blockID, 0, 2);
 				}
 
-				if (this.worldObj.canSnowAt(var16 + var4, var18, var17 + var5))
+				if (this.worldObj.canSnowAt(var16 + x, var18, var17 + z))
 				{
-					this.worldObj.setBlock(var16 + var4, var18, var17 + var5, Block.snow.blockID, 0, 2);
+					this.worldObj.setBlock(var16 + x, var18, var17 + z, Block.snow.blockID, 0, 2);
 				}
 			}
 		}
 
 		BlockSand.fallInstantly = false;
-		this.BTWPostProcessChunk(this.worldObj, var4 - 8, var5 - 8);
+		this.BTWPostProcessChunk(this.worldObj, x - 8, z - 8);
 	}
 
     /**
