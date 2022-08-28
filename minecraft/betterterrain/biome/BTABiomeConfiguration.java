@@ -296,6 +296,8 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 		
 		jungle.addSporadicVariant(jungleRiver);
 		jungle.addSporadicChance(8);
+		swamp.addSporadicVariant(swampRiver);
+		swamp.addSporadicChance(5);
 
 		mountains.setHasBeach(false);
 		tundra.setHasBeach(false, new WorldConfigurationInfo.Condition() {
