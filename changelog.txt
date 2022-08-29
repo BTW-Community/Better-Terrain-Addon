@@ -22,6 +22,7 @@ Version 3.0.0
 [*]Changed climates to default to off if there are not enough biomes installed (note that climates may still be enabled if desired).
 [*]Changed the format of the world configuration info to use json. Old worlds will still be processed correctly.
 [*]Changed the world type when creating a new world to default to Better Terrain.
+[*]Removed patches of exposed stone.
 [/list]
 
 Version 2.0.8

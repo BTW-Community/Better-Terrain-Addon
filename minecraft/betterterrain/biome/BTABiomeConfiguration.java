@@ -28,6 +28,7 @@ import betterterrain.world.generate.surface.NoShorelineSurfaceBuilder;
 import betterterrain.world.generate.surface.StonySurfaceBuilder;
 import betterterrain.world.generate.surface.SwampSurfaceBuilder;
 import net.minecraft.src.FCAddOnHandler;
+import net.minecraft.src.FCUtilsHardcoreSpawn;
 
 public class BTABiomeConfiguration extends BiomeConfiguration {
 	public static final int
@@ -268,6 +269,11 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 		}
 		
 		biomeList.add(swamp);
+		
+		FCUtilsHardcoreSpawn.blacklistedBiomes.add(jungle);
+		FCUtilsHardcoreSpawn.blacklistedBiomes.add(jungleRiver);
+		FCUtilsHardcoreSpawn.blacklistedBiomes.add(jungleHills);
+		FCUtilsHardcoreSpawn.blacklistedBiomes.add(jungleEdge);
 	}
 
 	@Override

@@ -6,10 +6,12 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 
 import betterterrain.BTAVersion;
@@ -110,13 +112,20 @@ public class WorldConfigurationInfo {
 		biomeSize = globalSettings.get("biome_size").getAsInt();
 		generator = TerrainGenerator.fromName(globalSettings.get("generator").getAsString());
 		
-		JsonArray biomes = globalSettings.get("biomes").getAsJsonArray();
+		JsonObject biomes = globalSettings.get("biomes").getAsJsonObject();
 		
-		for (JsonElement biome : biomes) {
-			BiomeInfo biomeInfo = BiomeConfiguration.getBiomeInfoMap().get(BTABiome.getIDFromInternalName(biome.getAsString()));
-			biomeInfo.setEnabled(true);
+		for (Entry<String, JsonElement> biomeEntry : biomes.entrySet()) {
+			int biomeID = BTABiome.getIDFromInternalName(biomeEntry.getKey());
+			
+			try {
+				BiomeInfo biomeInfo = BiomeConfiguration.getBiomeInfoMap().get(biomeID);
+				biomeInfo.setEnabled(biomeEntry.getValue().getAsBoolean());
 
-			this.biomeInfoList.add(biomeInfo);
+				this.biomeInfoList.add(biomeInfo);
+			}
+			catch (NullPointerException e) {
+				throw new JsonParseException("Could not find biome info for biome id: " + biomeID + " (" + biomeEntry.getKey() + ")");
+			}
 		}
 		
 		this.setBiomesForGenerationFromInfo(this.biomeInfoList);
@@ -146,12 +155,10 @@ public class WorldConfigurationInfo {
 		globalSettings.addProperty("biome_size", biomeSize);
 		globalSettings.addProperty("generator", generator.name);
 		
-		JsonArray biomes = new JsonArray();
+		JsonObject biomes = new JsonObject();
 		
 		for (BiomeInfo biomeInfo : this.biomeInfoList) {
-			if (biomeInfo.getEnabled()) {
-				biomes.add(((BTABiome) BiomeGenBase.biomeList[biomeInfo.getID()]).getInternalName());
-			}
+			biomes.addProperty(((BTABiome) BiomeGenBase.biomeList[biomeInfo.getID()]).getInternalName(), biomeInfo.getEnabled());
 		}
 		
 		globalSettings.add("biomes", biomes);

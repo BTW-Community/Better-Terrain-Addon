@@ -42,6 +42,10 @@ public class SwampSurfaceBuilder extends NoShorelineSurfaceBuilder {
 
 		for (int i = chunkX + 8; i < chunkX + 24; i++) {
 			for (int k = chunkZ + 8; k < chunkZ + 24; k++) {
+				if (world.getBiomeGenForCoords(i, k).biomeID != this.biome.biomeID) {
+					continue;
+				}
+				
 				double waterNoise = waterNoiseGen.noise2(i, k, waterNoiseScale);
 
 				int j = 62;

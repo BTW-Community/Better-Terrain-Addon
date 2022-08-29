@@ -13,9 +13,9 @@ import betterbiomes.world.generate.surface.BasaltDeltasSurfaceBuilder;
 import betterbiomes.world.generate.surface.ConiferousForestSurfaceBuilder;
 import betterbiomes.world.generate.surface.CrystalCavernsSurfaceBuilder;
 import betterbiomes.world.generate.surface.FirCanyonSurfaceBuilder;
-import betterbiomes.world.generate.surface.FirCanyonValleySurfaceBuilder;
 import betterbiomes.world.generate.surface.HeathlandSurfaceBuilder;
 import betterbiomes.world.generate.surface.HotSpringsSurfaceBuilder;
+import betterbiomes.world.generate.surface.IvoryHillsSurfaceBuilder;
 import betterbiomes.world.generate.surface.OrchardSurfaceBuilder;
 import betterbiomes.world.generate.surface.OutbackSurfaceBuilder;
 import betterbiomes.world.generate.surface.SoulSandValleySurfaceBuilder;
@@ -65,6 +65,8 @@ import betterbiomes.biome.biomes.deprecated.ConiferousForestClearingBiome;
 import betterbiomes.biome.biomes.CrystalCavernsBiome;
 import betterbiomes.biome.biomes.DunesBiome;
 import betterbiomes.biome.biomes.FirCanyonBiome;
+import betterbiomes.biome.biomes.FloralForestBiome;
+import betterbiomes.biome.biomes.FloralPlateauBiome;
 import betterbiomes.biome.biomes.FrozenSpringsPondBiome;
 import betterbiomes.biome.biomes.FrozenSpringsBiome;
 import betterbiomes.biome.biomes.FungalForestBiome;
@@ -74,6 +76,7 @@ import betterbiomes.biome.biomes.HeathlandBiome;
 import betterbiomes.biome.biomes.deprecated.HeathlandWoodsBiome;
 import betterbiomes.biome.biomes.HighlandsBiome;
 import betterbiomes.biome.biomes.HotSpringsBiome;
+import betterbiomes.biome.biomes.IvoryHillsBiome;
 import betterbiomes.biome.biomes.LushDesertBiome;
 import betterbiomes.biome.biomes.MangroveForestBiome;
 import betterbiomes.biome.biomes.MeadowBiome;
@@ -117,6 +120,7 @@ import betterterrain.world.generate.surface.NoShorelineSurfaceBuilder;
 import betterterrain.world.generate.surface.StonySurfaceBuilder;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.ComponentVillageStartPiece;
+import net.minecraft.src.FCUtilsHardcoreSpawn;
 import net.minecraft.src.MapGenVillage;
 import net.minecraft.src.StructureScatteredFeatureStart;
 import net.minecraft.src.WorldGenPumpkin;
@@ -124,124 +128,135 @@ import net.minecraft.src.WorldGenReed;
 
 public class BetterBiomesConfiguration extends BiomeConfiguration {
 	public static final int
-	NETHER_WASTES_ID = 90,
-	ASH_FIELDS_ID = 91,
-	BASALT_DELTAS_ID = 92,
-	SOUL_SAND_VALLEY_ID = 93,
-	OBSIDIAN_GROVE_ID = 94,
-	CRYSTAL_CAVERNS_ID = 95,
-	PETRIFIED_FOREST_ID = 96,
-
-	WOODS_ID = 100,
-	DESERT_ID = 101,
-	LUSH_DESERT_ID = 102,
-	OASIS_ID = 103,
-	SAVANNA_ID = 104,
-	WETLANDS_ID = 105,
-	BIRCH_FOREST_ID = 106,
-	SNOWY_WOODS_ID = 107,
-	STEPPE_ID = 108,
-	WOODED_STEPPE_ID = 109,
-	CHAPPARAL_ID = 110,
-	ANCIENT_FOREST_ID = 111,
-	TROPICS_ID = 112,
-	JUNGLE_ID = 113,
-	ALPINE_ID = 114,
-	ASPEN_GROVE_ID = 115,
-	FUNGAL_FOREST_ID = 116,
-	CONIFEROUS_FOREST_ID = 117,
-	CONIFEROUS_FOREST_CLEARING_ID = 118,
-	SNOWY_CONIFEROUS_FOREST_ID = 119,
-	SNOWY_CONIFEROUS_FOREST_CLEARING_ID = 120,
-	MYSTIC_Valley_ID = 121,
-	RAINFOREST_ID = 122,
-	MEADOW_ID = 123,
-	ORCHARD_ID = 124,
-	MOUNTAINS_ID = 125,
-	DUNES_ID = 126,
-	HEATHLAND_ID = 127,
-	HEATHLAND_WOODS_ID = 128,
-	TEMPERATE_FOREST_ID = 129,
-	VALLEY_MOUNTAINS_ID = 130,
-	OLD_VALLEY_ID = 131,
-	TUNDRA_ID = 132,
-	WILLOW_GROVE_ID = 133,
-	ICY_PEAKS_ID = 134,
-	PATAGONIA_ID = 135,
-	GRASSLANDS_ID = 136,
-	SIBERIA_ID = 137,
-	PLAINS_ID = 138,
-	FROZEN_SPRINGS_ID = 139,
-	MANGROVE_FOREST_ID = 140,
-	BOREAL_FOREST_ID = 141,
-	ARID_FOREST_ID = 142,
-	SHIELD_ID = 143,
-	BRUSHLAND_ID = 144,
-	HIGHLANDS_ID = 145,
-	HOT_SPRINGS_ID = 146,
-	VOLCANIC_JUNGLE_ID = 147,
-	FIR_CANYON_ID = 148,
+	//Nether
+			NETHER_WASTES_ID = 90,
+			ASH_FIELDS_ID = 91,
+			BASALT_DELTAS_ID = 92,
+			SOUL_SAND_VALLEY_ID = 93,
+			OBSIDIAN_GROVE_ID = 94,
+			CRYSTAL_CAVERNS_ID = 95,
+			PETRIFIED_FOREST_ID = 96,
+	//Primary
+			WOODS_ID = 100,
+			DESERT_ID = 101,
+			LUSH_DESERT_ID = 102,
+			OASIS_ID = 103,
+			SAVANNA_ID = 104,
+			WETLANDS_ID = 105,
+			BIRCH_FOREST_ID = 106,
+			SNOWY_WOODS_ID = 107,
+			STEPPE_ID = 108,
+			WOODED_STEPPE_ID = 109,
+			CHAPPARAL_ID = 110,
+			ANCIENT_FOREST_ID = 111,
+			TROPICS_ID = 112,
+			JUNGLE_ID = 113,
+			ALPINE_ID = 114,
+			ASPEN_GROVE_ID = 115,
+			FUNGAL_FOREST_ID = 116,
+			CONIFEROUS_FOREST_ID = 117,
+			CONIFEROUS_FOREST_CLEARING_ID = 118,
+			SNOWY_CONIFEROUS_FOREST_ID = 119,
+			SNOWY_CONIFEROUS_FOREST_CLEARING_ID = 120,
+			MYSTIC_Valley_ID = 121,
+			RAINFOREST_ID = 122,
+			MEADOW_ID = 123,
+			ORCHARD_ID = 124,
+			MOUNTAINS_ID = 125,
+			DUNES_ID = 126,
+			HEATHLAND_ID = 127,
+			HEATHLAND_WOODS_ID = 128,
+			TEMPERATE_FOREST_ID = 129,
+			VALLEY_MOUNTAINS_ID = 130,
+			OLD_VALLEY_ID = 131,
+			TUNDRA_ID = 132,
+			WILLOW_GROVE_ID = 133,
+			ICY_PEAKS_ID = 134,
+			PATAGONIA_ID = 135,
+			GRASSLANDS_ID = 136,
+			SIBERIA_ID = 137,
+			PLAINS_ID = 138,
+			FROZEN_SPRINGS_ID = 139,
+			MANGROVE_FOREST_ID = 140,
+			BOREAL_FOREST_ID = 141,
+			ARID_FOREST_ID = 142,
+			SHIELD_ID = 143,
+			BRUSHLAND_ID = 144,
+			HIGHLANDS_ID = 145,
+			FLORAL_FOREST_ID = 146,
+			
+	//Sub biomes
+			WOODS_HILLS_ID = 150,
+			DESERT_HILLS_ID = 151,
+			SAVANNA_HILLS_ID = 152,
+			BIRCH_FOREST_HILLS_ID = 153,
+			SNOWY_WOODS_HILLS = 154,
+			CHAPPARAL_HILLS_ID = 155,
+			ANCIENT_FOREST_HILLS_ID = 156,
+			JUNGLE_HILLS_ID = 157,
+			FUNGAL_FOREST_FLAT_ID = 158,
+			WETLANDS_HILLS_ID = 159,
+			CHERRY_FOREST_HILLS_ID = 160,
+			AUTUMN_FOREST_HILLS_ID = 161,
+			VALLEY_ID = 162,
+			ORCHARD_CLEARING_ID = 163,
+			WILLOW_HILLS_ID = 164,
+			ICY_PEAKS_FORESTED_ID = 165,
+			PATAGONIA_MOUNTAINS_ID = 166,
+			GRASSLANDS_LAKE_ID = 167,
+			FROZEN_SPRINGS_POND_ID = 168,
+			MANGROVE_FOREST_ISLAND_ID = 169,
+			BOREAL_FOREST_HILLS_ID = 170,
+			SAVANNA_PLATEAU_ID = 171,
+			FIR_CANYON_VALLEY_ID = 172,
+			FLORAL_PLATEAU_ID = 173,
+			
+	//Deco only
+			OUTBACK_ID = 180,
+			CHERRY_FOREST_ID = 181,
+			BADLANDS_ID = 182,
+			BADLANDS_PLATEAU_ID = 183,
+			AUTUMN_FOREST_ID = 184,
+			IVORY_HILLS_ID = 185,
+			HOT_SPRINGS_ID = 186,
+			VOLCANIC_JUNGLE_ID = 187,
+			FIR_CANYON_ID = 188,
+		
+	//Rivers
+			DESERT_RIVER_ID = 200,
+			MYSTIC_RIVER_ID = 201,
+			RAINFOREST_RIVER_ID = 202,
+			OUTBACK_RIVER_ID = 203,
+			BADLANDS_RIVER_ID = 204,
+			TROPICS_RIVER_ID = 205,
+			ORCHARD_RIVER_ID = 206,
+			JUNGLE_RIVER_ID = 207,
+			WETLANDS_RIVER_ID = 208,
+			WILLOW_GROVE_RIVER_ID = 209,
+			PATAGONIA_RIVER_ID = 210,
+			RIVER_ID = 211,
+			FROZEN_RIVER_ID = 212,
+			VOLCANIC_RIVER_ID = 213,
 	
-	WOODS_HILLS_ID = 150,
-	DESERT_HILLS_ID = 151,
-	SAVANNA_HILLS_ID = 152,
-	BIRCH_FOREST_HILLS_ID = 153,
-	SNOWY_WOODS_HILLS = 154,
-	CHAPPARAL_HILLS_ID = 155,
-	ANCIENT_FOREST_HILLS_ID = 156,
-	JUNGLE_HILLS_ID = 157,
-	FUNGAL_FOREST_FLAT_ID = 158,
-	WETLANDS_HILLS_ID = 159,
-	CHERRY_FOREST_HILLS_ID = 160,
-	AUTUMN_FOREST_HILLS_ID = 161,
-	VALLEY_ID = 162,
-	ORCHARD_CLEARING_ID = 163,
-	WILLOW_HILLS_ID = 164,
-	ICY_PEAKS_FORESTED_ID = 165,
-	PATAGONIA_MOUNTAINS_ID = 166,
-	GRASSLANDS_LAKE_ID = 167,
-	FROZEN_SPRINGS_POND_ID = 168,
-	MANGROVE_FOREST_ISLAND_ID = 169,
-	BOREAL_FOREST_HILLS_ID = 170,
-	SAVANNA_PLATEAU_ID = 171,
-	FIR_CANYON_VALLEY_ID = 172,
-
-	OUTBACK_ID = 180,
-	CHERRY_FOREST_ID = 181,
-	BADLANDS_ID = 182,
-	BADLANDS_PLATEAU_ID = 183,
-	AUTUMN_FOREST_ID = 184,
-
-	DESERT_RIVER_ID = 200,
-	MYSTIC_RIVER_ID = 201,
-	RAINFOREST_RIVER_ID = 202,
-	OUTBACK_RIVER_ID = 203,
-	BADLANDS_RIVER_ID = 204,
-	TROPICS_RIVER_ID = 205,
-	ORCHARD_RIVER_ID = 206,
-	JUNGLE_RIVER_ID = 207,
-	WETLANDS_RIVER_ID = 208,
-	WILLOW_GROVE_RIVER_ID = 209,
-	PATAGONIA_RIVER_ID = 210,
-	RIVER_ID = 211,
-	FROZEN_RIVER_ID = 212,
-	VOLCANIC_RIVER_ID = 213,
-
-	ALPINE_EDGE_ID = 230,
-	MOUNTAIN_EDGE_ID = 231,
-	BADLANDS_EDGE_ID = 232,
-	ICY_PEAKS_EDGE_ID = 233,
-	HIGHLANDS_EDGE_ID = 234,
-	JUNGLE_EDGE_ID = 235,
-	RAINFOREST_EDGE_ID = 236,
-	TROPICS_EDGE_ID = 237,
-
-	RED_SAND_BEACH_ID = 240,
-	BEACH_ID = 241,
-	FROZEN_BEACH_ID = 242,
-	VOLCANIC_BEACH_ID = 243,
-
-	max_id = 256;
+	//Edges
+			ALPINE_EDGE_ID = 230,
+			MOUNTAIN_EDGE_ID = 231,
+			BADLANDS_EDGE_ID = 232,
+			ICY_PEAKS_EDGE_ID = 233,
+			HIGHLANDS_EDGE_OLD_ID = 234,
+			JUNGLE_EDGE_ID = 235,
+			RAINFOREST_EDGE_ID = 236,
+			TROPICS_EDGE_ID = 237,
+			HOT_SPRINGS_EDGE_ID = 238,
+			HIGHLANDS_EDGE_ID = 239,
+	//Beaches
+			RED_SAND_BEACH_ID = 240,
+			BEACH_ID = 241,
+			FROZEN_BEACH_ID = 242,
+			VOLCANIC_BEACH_ID = 243,
+			IVORY_BEACH_ID = 244,
+		
+			max_id = 256;
 
 	// ------ Primary Biomes ------ //
 	//Temperate
@@ -265,6 +280,11 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.1F, 0.5F)
 			.setDecoOnly()
 			.setLegacyCompatible();
+	
+	public static final BTABiome floralForest = new FloralForestBiome(FLORAL_FOREST_ID, "betterbiomes:floral_forest", Climate.TEMPERATE)
+			.setBiomeName("Floral Forest")
+			.setTemperatureRainfall(0.9F, 0.8F)
+			.setMinMaxHeight(0.2F, 0.5F);
 
 	public static final BTABiome grasslands = new GrasslandsBiome(GRASSLANDS_ID, "betterbiomes:grasslands", Climate.TEMPERATE)
 			.setBiomeName("Grasslands")
@@ -358,10 +378,18 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 	
 	public static final BTABiome firCanyon = new FirCanyonBiome(FIR_CANYON_ID, "betterbiomes:fir_canyon", Climate.ARID)
 			.setBiomeName("Fir Canyon")
-			.setSurfaceBuilder(new FirCanyonSurfaceBuilder())
-			.setDisableRain()
+			.setSurfaceBuilder(new FirCanyonSurfaceBuilder(true))
 			.setTemperatureRainfall(1.0F, 0.1F)
 			.setMinMaxHeight(0.8F, 2.0F)
+			.setDecoOnly();
+	
+	public static final BTABiome ivoryHills = new IvoryHillsBiome(IVORY_HILLS_ID, "betterbiomes:ivory_hills", Climate.ARID)
+			.setBiomeName("Ivory Hills")
+			.setSurfaceBuilder(new IvoryHillsSurfaceBuilder())
+			.setDisableRain()
+			.setTemperatureRainfall(1.5F, 0.1F)
+			.setMinMaxHeight(0.8F, 2.0F)
+			.setPlateau()
 			.setDecoOnly();
 
 	public static final BTABiome outback = new OutbackBiome(OUTBACK_ID, "betterbiomes:outback", Climate.ARID)
@@ -500,7 +528,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 	
 	public static final BTABiome hotSprings = new HotSpringsBiome(HOT_SPRINGS_ID, "betterbiomes:hot_springs", Climate.COLD)
 			.setBiomeName("Hot Springs")
-			.setSurfaceBuilder(new HotSpringsSurfaceBuilder())
+			.setSurfaceBuilder(new HotSpringsSurfaceBuilder(HOT_SPRINGS_ID, true))
 			.setTemperatureRainfall(0.5F, 0.4F)
 			.setMinMaxHeight(0.8F, 1.2F)
 			.setDecoOnly();
@@ -586,13 +614,19 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(0.7F, 0.8F)
 			.setMinMaxHeight(0.3F, 1.0F);
 	
-	public static final BTABiome firCanyonValley = new FirCanyonBiome(FIR_CANYON_VALLEY_ID, "betterbiomes:fir_canyon", Climate.ARID)
+	public static final BTABiome firCanyonValley = new FirCanyonBiome(FIR_CANYON_VALLEY_ID, "betterbiomes:fir_canyon_valley", Climate.ARID)
 			.setBiomeName("Fir Canyon Valley")
-			.setSurfaceBuilder(new FirCanyonValleySurfaceBuilder())
+			.setSurfaceBuilder(new FirCanyonSurfaceBuilder(false))
 			.setDisableRain()
 			.setTemperatureRainfall(1.0F, 0.1F)
 			.setMinMaxHeight(0.1F, 0.7F)
 			.setDecoOnly();
+	
+	public static final BTABiome floralPlateau = new FloralPlateauBiome(FLORAL_PLATEAU_ID, "betterbiomes:floral_plateau", Climate.ARID)
+			.setBiomeName("Floral Plateau")
+			.setTemperatureRainfall(0.9F, 0.8F)
+			.setMinMaxHeight(0.8F, 2.0F)
+			.setPlateau();
 
 	public static final BTABiome frozenSpringsPond = new FrozenSpringsPondBiome(FROZEN_SPRINGS_POND_ID, "betterbiomes:frozen_springs", Climate.SNOWY)
 			.setBiomeName("Frozen Springs Pond")
@@ -611,6 +645,13 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setBiomeName("Grasslands Lake")
 			.setTemperatureRainfall(0.5F, 0.6F)
 			.setMinMaxHeight(-0.3F, 0.0F);
+	
+	public static final BTABiome ivoryPlains = new SavannaBiome(IVORY_BEACH_ID, "betterbiomes:ivory_plains", Climate.ARID)
+			.setBiomeName("Ivory Plains")
+			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
+			.setTemperatureRainfall(1.5F, 0.1F)
+			.setMinMaxHeight(0.1F, 0.3F)
+			.setBeach();
 
 	public static final BTABiome mangroveForestIsland = new MangroveForestBiome(MANGROVE_FOREST_ISLAND_ID, "betterbiomes:mangrove_forest", Climate.TEMPERATE)
 			.setBiomeName("Mangal Island")
@@ -768,8 +809,15 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 	public static final BTABiome highlandsEdge = new HighlandsBiome(HIGHLANDS_EDGE_ID, "betterbiomes:highlands_edge", Climate.TEMPERATE)
 			.setBiomeName("Highlands Edge")
 			.setTemperatureRainfall(0.7F, 0.5F)
-			.setMinMaxHeight(0.8F, 2.5F)
+			.setMinMaxHeight(0.2F, 0.5F)
 			.setEdge();
+	
+	public static final BTABiome hotSpringsEdge = new HotSpringsBiome(HOT_SPRINGS_EDGE_ID, "betterbiomes:hot_springs_edge", Climate.COLD)
+			.setBiomeName("Hot Springs Edge")
+			.setSurfaceBuilder(new HotSpringsSurfaceBuilder(HOT_SPRINGS_EDGE_ID, false))
+			.setTemperatureRainfall(0.5F, 0.4F)
+			.setMinMaxHeight(0.8F, 1.2F)
+			.setDecoOnly();
 
 	public static final BTABiome rainforestEdge = new RainforestEdgeBiome(RAINFOREST_EDGE_ID, "betterbiomes:rainforest_edge", Climate.TROPICAL)
 			.setBiomeName("Rainforest Edge")
@@ -796,6 +844,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.0F, 0.1F)
 			.setBeach()
 			.setNotSpawnable();
+	
 	public static final BTABiome volcanicBeach = new BeachBiome(VOLCANIC_BEACH_ID, "betterbiomes:volcanic_beach", Climate.TROPICAL)
 			.setBiomeName("Volcanic Beach")
 			.setSurfaceBuilder(new VolcanicBeachSurfaceBuilder())
@@ -858,6 +907,12 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setSpawnsVillages(false)
 			.setTemperatureRainfall(0.7F, 0.4F)
 			.setMinMaxHeight(0.1F, 0.5F);
+
+	public static final BTABiome highlandsEdgeOld = new HighlandsBiome(HIGHLANDS_EDGE_OLD_ID, "betterbiomes:highlands_edge_old", Climate.TEMPERATE)
+			.setBiomeName("Highlands Edge")
+			.setTemperatureRainfall(0.7F, 0.5F)
+			.setMinMaxHeight(0.8F, 2.5F)
+			.setEdge();
 
 	public static final BTABiome oldValley = new OldValleyBiome(OLD_VALLEY_ID, "betterbiomes:old_valley", Climate.TROPICAL)
 			.setBiomeName("Old Valley")
@@ -929,6 +984,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		betterBiomes.add(shield);
 		betterBiomes.add(brushland);
 		betterBiomes.add(highlands);
+		betterBiomes.add(floralForest);
 
 		betterBiomes.add(outback);
 		betterBiomes.add(cherryForest);
@@ -937,6 +993,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		betterBiomes.add(hotSprings);
 		betterBiomes.add(volcanicJungle);
 		betterBiomes.add(firCanyon);
+		betterBiomes.add(ivoryHills);
 		
 		biomeList.addAll(betterBiomes);
 		
@@ -947,6 +1004,17 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 				i--;
 			}
 		}
+
+		FCUtilsHardcoreSpawn.blacklistedBiomes.add(tropics);
+		FCUtilsHardcoreSpawn.blacklistedBiomes.add(tropicsRiver);
+		FCUtilsHardcoreSpawn.blacklistedBiomes.add(tropicsEdge);
+		
+		FCUtilsHardcoreSpawn.blacklistedBiomes.add(rainforest);
+		FCUtilsHardcoreSpawn.blacklistedBiomes.add(rainforestRiver);
+		FCUtilsHardcoreSpawn.blacklistedBiomes.add(rainforestEdge);
+
+		FCUtilsHardcoreSpawn.blacklistedBiomes.add(volcanicJungle);
+		FCUtilsHardcoreSpawn.blacklistedBiomes.add(volcanicBeach);
 	}
 	
 	public void setBiomeVariants() {
@@ -971,8 +1039,21 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		fungalForest.addSubVariant(fungalForestFlat);
 		grasslands.addSubVariant(grasslandsLake);
 		heathland.addSubVariant(heathlandWoods, pre140);
+		ivoryHills.addSubVariant(ivoryPlains);
 		orchard.addSubVariant(orchardClearing, pre140);
 		patagonia.addSubVariant(patagoniaMountains);
+		savanna.addSubVariant(savannaHills, new WorldConfigurationInfo.Condition() {
+			@Override
+			public boolean satisfiesContraints(WorldConfigurationInfo info) {
+				return info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V2_0_2);
+			}
+		});
+		savanna.addSubVariant(savannaPlateau, new WorldConfigurationInfo.Condition() {
+			@Override
+			public boolean satisfiesContraints(WorldConfigurationInfo info) {
+				return info.getBTAVersion().isVersionAtLeast(BTAVersion.V2_0_3);
+			}
+		});
 		snowyConiferousForest.addSubVariant(snowyConiferousForestClearing, pre140);
 		snowyWoods.addSubVariant(snowyWoodsHills);
 		steppe.addSubVariant(woodedSteppe, pre140);
@@ -980,6 +1061,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		
 		//Sub biomes (Common)
 		lushDesert.addSubVariantCommon(oasis);
+		floralForest.addSubVariantCommon(floralPlateau);
 		wetlands.addSubVariantCommon(wetlandsHills);
 		willowGrove.addSubVariantCommon(willowHills);
 		
@@ -1015,6 +1097,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		};
 		
 		alpine.setHasBeach(false);
+		alpineEdge.setHasBeach(false);
 		fungalForest.setHasBeach(false);
 		fungalForestFlat.setHasBeach(false);
 		coniferousForest.setHasBeach(false);
@@ -1032,11 +1115,16 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		frozenSprings.setHasBeach(false, pre132);
 		mangroveForest.setHasBeach(false);
 		mangroveForestIsland.setHasBeach(false);
+		highlands.setHasBeach(false);
+		highlandsEdge.setHasBeach(false);
 		
 		outback.addBeachVariant(redSandBeach);
 		badlands.addBeachVariant(redSandBeach);
 		firCanyon.addBeachVariant(redSandBeach);
 		firCanyonValley.addBeachVariant(redSandBeach);
+		
+		ivoryHills.addBeachVariant(ivoryPlains);
+		
 		volcanicJungle.addBeachVariant(volcanicBeach);
 
 		WorldConfigurationInfo.Condition post132 = new WorldConfigurationInfo.Condition() {
@@ -1102,7 +1190,19 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		badlands.addEdgeVariant(badlandsEdge, pre140);
 		badlandsPlateau.addEdgeVariant(badlandsEdge, pre140);
 		firCanyon.addEdgeVariant(firCanyonValley);
-		highlands.addEdgeVariant(highlandsEdge);
+		highlands.addEdgeVariant(highlandsEdgeOld, new WorldConfigurationInfo.Condition() {
+			@Override
+			public boolean satisfiesContraints(WorldConfigurationInfo info) {
+				return info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V2_0_8);
+			}
+		});
+		highlands.addEdgeVariant(highlandsEdge, new WorldConfigurationInfo.Condition() {
+			@Override
+			public boolean satisfiesContraints(WorldConfigurationInfo info) {
+				return info.getBTAVersion().isVersionAtLeast(BTAVersion.V3_0_0);
+			}
+		});
+		//hotSprings.addEdgeVariant(hotSpringsEdge);
 		rainforest.addEdgeVariant(rainforestEdge, post132);
 		tropics.addEdgeVariant(tropicsEdge, post132);
 	}

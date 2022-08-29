@@ -453,7 +453,12 @@ public class BTADefaultChunkProvider implements BTAChunkProvider
 		}
 
 		if (b instanceof BTABiome) {
-			((BTABiome) b).getSurfaceBuilder().decorateSurface(worldObj, this.rand, (BTABiome) b, x, z, this.generatorInfo);
+			SurfaceBuilder surfaceBuilder = ((BTABiome) b).getSurfaceBuilder();
+			
+			if (surfaceBuilder != null) {
+				surfaceBuilder.decorateSurface(worldObj, this.rand, (BTABiome) b, x, z, this.generatorInfo);
+			}
+			
 			((BTABiome) b).decorate(this.worldObj, this.rand, x, z, this.generatorInfo);
 		}
 		else {

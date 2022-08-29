@@ -1,9 +1,11 @@
 Version 3.0.0
 [list]
-[*]Added Hot Springs and Volcanic Jungle as new deco exclusive biomes.
+[*]Added Floral Forest as a new biome.
+[*]Added Hot Springs, Volcanic Jungle, Ivory Hills, and Fir Canyon as new deco exclusive biomes.
 [*]Changed the name of Mystic Forest to Mystic Valley.
 [*]Revamped Mystic Valley generation to be more varied.
 [*]Changed the biome colors of Mystic Valley.
 [*]Changed savannas to be able to spawn pumpkins.
 [*]Fixed an issue where red desert pyramids spawned with regular sandstone stairs.
+[*]Fixed an issue where highlands edge did not have less intense mountains to smooth the terrain. This only affects new worlds to avoid creating seams in old worlds.
 [/list]

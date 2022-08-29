@@ -64,7 +64,7 @@ public class BadlandsPlateauSurfaceBuilder extends SurfaceBuilder {
 		//k and i swapped because apparently I messed something up somewhere
 		boolean useGrass = grassNoiseGenSimplex.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), grassNoiseScale) + rand.nextDouble() * 0.15D - 0.125 > 0;
 		
-		if (useGrass && DecoIntegration.isDecoInstalled() && worldType.isDeco() && surfaceType == SurfaceType.TOP && j >= 95) {
+		if (useGrass && surfaceType == SurfaceType.TOP && j >= 95) {
 			return new int[] {Block.grass.blockID, 0};
 		}
 		else {

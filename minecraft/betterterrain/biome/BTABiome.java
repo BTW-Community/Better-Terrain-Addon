@@ -1,6 +1,7 @@
 package betterterrain.biome;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
 
@@ -270,8 +271,8 @@ public class BTABiome extends BiomeGenBase {
 	//--- Sub Biomes ---//
 
 	//Different biome variants which spawn within the larger biome
-	protected Map<BTABiome, WorldConfigurationInfo.Condition> subBiomeVariants = new HashMap();
-	protected Map<BTABiome, WorldConfigurationInfo.Condition> subBiomeVariantsCommon = new HashMap();
+	protected Map<BTABiome, WorldConfigurationInfo.Condition> subBiomeVariants = new LinkedHashMap();
+	protected Map<BTABiome, WorldConfigurationInfo.Condition> subBiomeVariantsCommon = new LinkedHashMap();
 	
 	public BTABiome addSubVariant(BTABiome biome) {
 		return this.addSubVariant(biome, null);
@@ -326,9 +327,9 @@ public class BTABiome extends BiomeGenBase {
 	//--- Sporadic Biomes ---//
 	
 	//Rare small sub biomes
-	protected Map<BTABiome, WorldConfigurationInfo.Condition> sporadicVariants = new HashMap();
+	protected Map<BTABiome, WorldConfigurationInfo.Condition> sporadicVariants = new LinkedHashMap();
 	//Chance the sporadic variant will generate
-	protected Map<Integer, WorldConfigurationInfo.Condition> sporadicChances = new HashMap();
+	protected Map<Integer, WorldConfigurationInfo.Condition> sporadicChances = new LinkedHashMap();
 	
 	public BTABiome addSporadicVariant(BTABiome biome) {
 		return this.addSporadicVariant(biome, null);
@@ -383,9 +384,9 @@ public class BTABiome extends BiomeGenBase {
 	//--- Beaches ---//
 	
 	//Beach variants
-	protected Map<BTABiome, WorldConfigurationInfo.Condition> beachVariants = new HashMap();
+	protected Map<BTABiome, WorldConfigurationInfo.Condition> beachVariants = new LinkedHashMap();
 	//Keeps track of whether the biome should spawn a beach
-	protected Map<WorldConfigurationInfo.Condition, Boolean> hasBeach = new HashMap();
+	protected Map<WorldConfigurationInfo.Condition, Boolean> hasBeach = new LinkedHashMap();
 	
 	public BTABiome addBeachVariant(BTABiome biome) {
 		return this.addBeachVariant(biome, null);
@@ -417,7 +418,7 @@ public class BTABiome extends BiomeGenBase {
 	}
 	
 	public BTABiome setHasBeach(boolean connect, WorldConfigurationInfo.Condition condition) {
-		this.shouldConnectWithEdge.put(condition, connect);
+		this.hasBeach.put(condition, connect);
 		return this;
 	}
 	
@@ -440,7 +441,7 @@ public class BTABiome extends BiomeGenBase {
 	//--- Rivers ---//
 	
 	//River biome to use when a river cuts through
-	protected Map<BTABiome, WorldConfigurationInfo.Condition> riverVariants = new HashMap();
+	protected Map<BTABiome, WorldConfigurationInfo.Condition> riverVariants = new LinkedHashMap();
 	
 	public BTABiome addRiverVariant(BTABiome biome) {
 		return this.addRiverVariant(biome, null);
@@ -470,9 +471,9 @@ public class BTABiome extends BiomeGenBase {
 	//--- Edges ---//
 	
 	//Edge variants, used when transitioning disparate biomes
-	protected Map<BTABiome, WorldConfigurationInfo.Condition> edgeVariants = new HashMap();
+	protected Map<BTABiome, WorldConfigurationInfo.Condition> edgeVariants = new LinkedHashMap();
 	//Controls whether an edge should be formed with this biome
-	protected Map<WorldConfigurationInfo.Condition, Boolean> shouldConnectWithEdge = new HashMap();
+	protected Map<WorldConfigurationInfo.Condition, Boolean> shouldConnectWithEdge = new LinkedHashMap();
 	
 	public BTABiome addEdgeVariant(BTABiome biome) {
 		return this.addEdgeVariant(biome, null);

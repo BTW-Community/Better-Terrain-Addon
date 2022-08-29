@@ -1,5 +1,6 @@
 package betterterrain.biome.layer;
 
+import betterterrain.biome.BTABiome;
 import betterterrain.biome.BiomeConfiguration;
 import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.BiomeGenBase;
@@ -68,7 +69,7 @@ public class ShoreLayer extends BTALayer
 					}
 					else
 					{
-						if (BiomeConfiguration.getBeachVariantForBiomes(currentBiome, generatorInfo, this) != currentBiome) {
+						if (BiomeConfiguration.getBeachVariantForBiomes(currentBiome, generatorInfo, this) != currentBiome || (BiomeGenBase.biomeList[currentBiome] instanceof BTABiome && ((BTABiome) BiomeGenBase.biomeList[currentBiome]).isBeach())) {
 							intCache[j + i * xSize] = BiomeConfiguration.getBeachVariantForBiomes(currentBiome, generatorInfo, this);
 						}
 						else if (BiomeConfiguration.shouldBiomeSpawnBeach(currentBiome, this.generatorInfo, this)){

@@ -3,6 +3,7 @@ package betterbiomes.biome.biomes;
 import java.util.Random;
 
 import betterbiomes.feature.terrain.MysticShardsGen;
+import betterbiomes.feature.tree.CherryTreeGen;
 import betterbiomes.feature.tree.MassiveOakGen;
 import betterbiomes.feature.tree.MysticTreeGen;
 import betterterrain.DecoIntegration;
@@ -37,11 +38,14 @@ public class MysticValleyBiome extends BTABiome {
 	}
 
 	@Override
-	public WorldGenerator getRandomWorldGenForTrees(Random rand) {
+	public WorldGenerator getRandomWorldGenForTrees(Random rand, WorldConfigurationInfo generatorOptions) {
 		WorldGenerator gen;
 
 		if (rand.nextInt(10) == 0) {
 			gen = new MassiveOakGen(false);
+		}
+		else if (DecoIntegration.isDecoInstalled() && rand.nextInt(8) == 0) {
+			gen = new CherryTreeGen();
 		}
 		else if (rand.nextInt(8) == 0) {
 			gen = new TallSwampTreeGen();
