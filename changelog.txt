@@ -1,4 +1,4 @@
-Version 2.X.0
+Version 3.X.0
 [list]
 [*]Added nether biomes, which are detailed further below. This may be toggled at world creation, and all nether related changes only apply to worlds with the new nether enabled.
 [*]Added basalt deltas. This highly rugged terrain has a surface made of basalt and infused stone filled with frequent lava pools. Magma cubes spawn here in high frequencies.
@@ -10,6 +10,19 @@ Version 2.X.0
 [*]Changed how fortress mob spawns are handled. Previously, the game would choose the fortress spawn list instead of the biome spawn list. To accommodate new biome-specific spawn lists in the nether, fortresses now add their own unique spawns to the exisitng biome spawns.
 [*]Changed how skeletons determine their type in BTA worlds. Fortress skeletons will now always spawn as wither skeletons (instead of an 80% chance), while skeletons outside fortresses (e.g. in the new biomes) will always spawn as normal skeletons. Vanilla nether is unaffected.
 [*]Changed black stone to be able to spawn nether mobs.
+[/list]
+
+Version 3.0.0
+[list]
+[*]Updated to CE 1.4.1
+[*]Refactored the entire mod into two separate mods. The Better Terrain Addon now acts as a library for world generation, while the biomes themselves previously present in BTA have been split into Better Biomes. Note that this is still backwards compatible with old worlds, but will require both mods to be installed. BTA now only maintains variants of vanilla biomes which generate using BTA features. Most of these have been ported from existing biomes, while an additional swamp variant has been added.
+[*]Added the ability for addons to decorate BTA Biomes using the standard FCAddOn hook. Note that BTA biomes may deny this in case they wish to use a custom decorator for that addon's features.
+[*]Changed rivers to be much larger. This can be disabled at world creation, and only affects new worlds.
+[*]Changed deserts to no longer spawn gravel beaches.
+[*]Changed climates to default to off if there are not enough biomes installed (note that climates may still be enabled if desired).
+[*]Changed the format of the world configuration info to use json. Old worlds will still be processed correctly.
+[*]Changed the world type when creating a new world to default to Better Terrain.
+[*]Removed patches of exposed stone.
 [/list]
 
 Version 2.0.8

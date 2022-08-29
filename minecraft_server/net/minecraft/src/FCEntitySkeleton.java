@@ -1,5 +1,7 @@
 package net.minecraft.src;
 
+import betterterrain.world.generate.BTAChunkProvider;
+
 public class FCEntitySkeleton extends EntitySkeleton
 {
 	private FCEntityAISkeletonArrowAttack m_aiRangedAttack;

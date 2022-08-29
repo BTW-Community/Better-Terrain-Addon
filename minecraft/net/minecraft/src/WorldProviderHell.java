@@ -1,5 +1,8 @@
 package net.minecraft.src;
 
+import betterterrain.biome.BTABiomeConfiguration;
+import betterterrain.biome.BTANetherBiome;
+
 public class WorldProviderHell extends WorldProvider
 {
     /**
@@ -9,11 +12,8 @@ public class WorldProviderHell extends WorldProvider
     {
     	WorldType worldType = this.worldObj.worldInfo.getTerrainType();
     	
-    	System.out.println(worldType.getTranslateName());
-    	
     	if (worldType.isDeco()) {
         	this.worldChunkMgr = new WorldChunkManagerHell(BTABiomeConfiguration.netherWastes, 1.0F, 0.0F);
-        	//this.worldChunkMgr = new WorldChunkManagerHell(BTABiomeConfiguration.crystalCaverns, 1.0F, 0.0F);
     	}
     	else {
     		this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.hell, 1.0F, 0.0F);
@@ -30,12 +30,12 @@ public class WorldProviderHell extends WorldProvider
     {
         BiomeGenBase biome =  this.worldObj.getBiomeGenForCoords(x, z);
         
-        if (biome instanceof BTABiomeGenNetherBase) {
+        if (biome instanceof BTANetherBiome) {
         	Vec3[][] biomeColors = new Vec3[5][5];
         	
         	for (int i = 0; i < 5; i++) {
         		for (int j = 0; j < 5; j++) {
-        			biomeColors[i][j] = ((BTABiomeGenNetherBase) this.worldObj.getBiomeGenForCoords(x - 2 + i, z - 2 + j)).getFogColor(this.worldObj);
+        			biomeColors[i][j] = ((BTANetherBiome) this.worldObj.getBiomeGenForCoords(x - 2 + i, z - 2 + j)).getFogColor(this.worldObj);
         		}
         	}
         	
