@@ -18,7 +18,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(GuiCreateWorld.class)
 public abstract class GuiCreateWorldMixin extends GuiScreen implements GuiCreateWorldInterface {
     private boolean isDeco;
-    private GuiButton buttonCustomizeBTA;
 
     @Shadow
     private int worldTypeId;
@@ -26,20 +25,12 @@ public abstract class GuiCreateWorldMixin extends GuiScreen implements GuiCreate
     public String generatorOptionsToUse;
     @Shadow
     private boolean moreOptions;
-
-    @Inject(method = "<init>", at = @At("RETURN"))
-    public void setConstructorValues(GuiScreen guiScreen, CallbackInfo ci) {
-        // Default to BTA world type
-        this.worldTypeId = ((WorldType) BTAMod.BTAWorldType).getWorldTypeID();
-    }
+    @Shadow
+    private GuiButton buttonCustomize;
 
     @Inject(method = "initGui", at = @At("HEAD"))
     public void initBTAGUI(CallbackInfo ci) {
-        StringTranslate stringTranslate = StringTranslate.getInstance();
-
-        this.buttonList.add(this.buttonCustomizeBTA = new GuiButton(10, this.width / 2 + 5, 120, 150, 20, stringTranslate.translateKey("selectWorld.customizeType")));
-        this.buttonCustomizeBTA.drawButton = false;
-
+        this.worldTypeId = ((WorldType) BTAMod.BTAWorldType).getWorldTypeID();
         this.isDeco = BTAMod.isDecoInstalled();
     }
 
@@ -79,16 +70,19 @@ public abstract class GuiCreateWorldMixin extends GuiScreen implements GuiCreate
         return newSettings;
     }
 
-    @Inject(method = "actionPerformed", at = @At("TAIL"))
+    @Inject(method = "actionPerformed", at = @At("HEAD"), cancellable = true)
     public void handleBTAButtons(GuiButton guiButton, CallbackInfo ci) {
-        if (guiButton.id == 10) {
+        if (guiButton.enabled && guiButton.id == this.buttonCustomize.id && ((WorldTypeInterface) WorldType.worldTypes[this.worldTypeId]).isBTA()) {
             this.mc.displayGuiScreen(new GeneratorOptionsGui((GuiCreateWorld) (Object) this, this.generatorOptionsToUse));
+            ci.cancel();
         }
     }
 
     @Inject(method = "func_82288_a", at = @At("TAIL"))
     public void setBTAButtons(boolean par1, CallbackInfo ci) {
-        this.buttonCustomizeBTA.drawButton = this.moreOptions && (((WorldTypeInterface) WorldType.worldTypes[this.worldTypeId]).isBTA());
+        this.buttonCustomize.drawButton = this.moreOptions &&
+                (WorldType.worldTypes[this.worldTypeId] == WorldType.FLAT ||
+                ((WorldTypeInterface) WorldType.worldTypes[this.worldTypeId]).isBTA());
     }
 
     @Inject(method = "func_82286_a", at = @At("TAIL"))
