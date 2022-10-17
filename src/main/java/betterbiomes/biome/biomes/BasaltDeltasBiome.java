@@ -9,11 +9,7 @@ import betterterrain.world.config.WorldConfigurationInfo;
 import btw.entity.mob.MagmaCubeEntity;
 import btw.world.util.BlockPos;
 import deco.block.DecoBlocks;
-import net.minecraft.src.Block;
-import net.minecraft.src.Material;
-import net.minecraft.src.SpawnListEntry;
-import net.minecraft.src.Vec3;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 
 public class BasaltDeltasBiome extends BTANetherBiome {
 	public BasaltDeltasBiome(int id, String internalName) {

@@ -6,6 +6,7 @@ import betterterrain.BTAMod;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.NetherSurfaceBuilder;
+import betterterrain.world.util.WorldTypeInterface;
 import deco.block.DecoBlocks;
 import net.minecraft.src.WorldType;
 
@@ -30,10 +31,10 @@ public class AshFieldsSurfaceBuilder extends NetherSurfaceBuilder {
 		boolean usePumice = pumiceNoiseGen.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), pumiceNoiseScale) > 0.2;
 		boolean usePumice2 = pumiceNoiseGen2.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), pumiceNoiseScale) > 0.2;
 		
-		if (usePumice && BTAMod.isDecoInstalled() && (worldType).isDeco() && surfaceType != SurfaceType.SUBFILLER) {
+		if (usePumice && BTAMod.isDecoInstalled() && ((WorldTypeInterface) worldType).isDeco() && surfaceType != SurfaceType.SUBFILLER) {
 			return new int[] {DecoBlocks.pumice.blockID, 0};
 		}
-		else if (usePumice2 && BTAMod.isDecoInstalled() && (worldType).isDeco() && surfaceType != SurfaceType.SUBFILLER) {
+		else if (usePumice2 && BTAMod.isDecoInstalled() && ((WorldTypeInterface) worldType).isDeco() && surfaceType != SurfaceType.SUBFILLER) {
 			return new int[] {DecoBlocks.pumice.blockID, 0};
 		}
 		else {

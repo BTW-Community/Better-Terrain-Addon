@@ -1,5 +1,7 @@
 package net.minecraft.src;
 
+import betterterrain.world.util.WorldTypeInterface;
+
 public abstract class WorldProvider
 {
     /** world object being used */
@@ -67,7 +69,7 @@ public abstract class WorldProvider
         }
         else
         {
-            this.worldChunkMgr = this.terrainType.getChunkManager(this.worldObj, this.generatorOptions);
+            this.worldChunkMgr = ((WorldTypeInterface) this.terrainType).getChunkManager(this.worldObj, this.generatorOptions);
         }
     }
 
@@ -80,7 +82,7 @@ public abstract class WorldProvider
     		return new ChunkProviderFlat(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), this.generatorOptions);
     	}
     	else {
-    		return this.terrainType.getChunkProviderOverworld(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), this.generatorOptions);
+    		return ((WorldTypeInterface) this.terrainType).getChunkProviderOverworld(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), this.generatorOptions);
     	}
     }
 
@@ -204,7 +206,7 @@ public abstract class WorldProvider
      */
     public float getCloudHeight()
     {
-    	return this.terrainType.getCloudHeight();
+    	return ((WorldTypeInterface) this.terrainType).getCloudHeight();
     }
 
     public boolean isSkyColored()
@@ -225,7 +227,7 @@ public abstract class WorldProvider
     	if (this.terrainType == WorldType.FLAT)
     		return 4;
     	else
-    		return this.terrainType.getAverageGroundLevel();
+    		return ((WorldTypeInterface) this.terrainType).getAverageGroundLevel();
     }
 
     /**

@@ -9,6 +9,7 @@ import java.util.Random;
 import java.util.Map.Entry;
 
 import betterterrain.world.BTAWorldChunkManager;
+import betterterrain.world.util.WorldTypeInterface;
 import net.minecraft.src.ChunkCoordIntPair;
 import net.minecraft.src.ChunkPosition;
 import net.minecraft.src.ComponentStrongholdStairs2;
@@ -135,7 +136,7 @@ public class BTAMapGenStronghold extends BTAMapGenStructure
 
     protected StructureStart getStructureStart(int par1, int par2)
     {
-    	if (this.worldObj.provider.terrainType.isSky()) {
+    	if (((WorldTypeInterface) this.worldObj.provider.terrainType).isSky()) {
     		StructureStrongholdStart var3;
     		
 	        for (var3 = new StructureStrongholdStart(this.worldObj, this.rand, par1, par2); var3.getComponents().isEmpty() || ((ComponentStrongholdStairs2)var3.getComponents().get(0)).strongholdPortalRoom == null; var3 = new StructureStrongholdStart(this.worldObj, this.rand, par1, par2))

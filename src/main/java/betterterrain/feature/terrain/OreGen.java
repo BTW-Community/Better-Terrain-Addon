@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
+import betterterrain.world.util.WorldTypeInterface;
 import net.minecraft.src.Block;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.World;
@@ -108,7 +109,7 @@ public class OreGen extends WorldGenerator
 									int var47 = this.meta;
                                     Block var48 = Block.blocksList[this.minableBlockId];
                                     
-                                    int[] stratas = par1World.provider.terrainType.getStrataLevels();
+                                    int[] stratas = ((WorldTypeInterface) par1World.provider.terrainType).getStrataLevels();
                                     
                                     int strata1Height = stratas[0];
                                     int strata2Height = stratas[1];

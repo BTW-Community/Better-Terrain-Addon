@@ -9,7 +9,9 @@
     "SoulSandPileItemMixin",
 
     "BiomeDecoratorAccessor",
-    "GenLayerAccessor"
+    "GenLayerAccessor",
+    "WorldTypeAccessor",
+    "WorldTypeMixin"
   ],
   "client": [
     "GuiScreenAccessor"

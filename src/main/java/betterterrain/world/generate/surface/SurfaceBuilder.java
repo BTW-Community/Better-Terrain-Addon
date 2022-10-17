@@ -11,6 +11,7 @@ import betterterrain.biome.BTABiome;
 import betterterrain.mixins.BiomeDecoratorAccessor;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
+import betterterrain.world.util.WorldTypeInterface;
 import deco.block.DecoBlocks;
 import net.minecraft.src.*;
 
@@ -346,7 +347,7 @@ public class SurfaceBuilder {
 		int surfaceJ = 127;
 
 		for (int j = 127; j >= 0; --j) {
-			if (j <= 0 + rand.nextInt(5) && !(worldType).isSky()) {
+			if (j <= 0 + rand.nextInt(5) && !((WorldTypeInterface) worldType).isSky()) {
 				setBlockValue(blockArray, i, j, k, Block.bedrock.blockID);
 			}
 			else {
@@ -365,7 +366,7 @@ public class SurfaceBuilder {
 			seaLevel = 64;
 		}
 		
-		if (worldType.isSky() || isNether)
+		if (((WorldTypeInterface) worldType).isSky() || isNether)
 			seaLevel = 0;
 
 		float temperature = biome.getFloatTemperature();
@@ -378,7 +379,7 @@ public class SurfaceBuilder {
 		int surfaceJ = 127;
 
 		for (int j = 127; j >= 0; j--) {
-			if (j <= 0 + rand.nextInt(5) && !worldType.isSky()) {
+			if (j <= 0 + rand.nextInt(5) && !((WorldTypeInterface) worldType).isSky()) {
 				setBlockValue(blockArray, i, j, k, Block.bedrock.blockID);
 			}
 			else {

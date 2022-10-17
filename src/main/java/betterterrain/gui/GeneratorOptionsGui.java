@@ -3,6 +3,7 @@ package betterterrain.gui;
 import betterterrain.BTAMod;
 import betterterrain.biome.BiomeInfo;
 import betterterrain.world.config.WorldConfigurationInfo;
+import betterterrain.world.util.WorldTypeInterface;
 import net.minecraft.src.*;
 
 public class GeneratorOptionsGui extends GuiScreen implements SliderSettingHandler
@@ -150,12 +151,12 @@ public class GeneratorOptionsGui extends GuiScreen implements SliderSettingHandl
 	public void setButtons() {
         this.buttonDeco.enabled = BTAMod.isDecoInstalled();
 		
-		if (!WorldType.worldTypes[this.guiCreateWorld.getWorldTypeId()].canPerlinBeachesBeToggled()) {
+		if (!((WorldTypeInterface) WorldType.worldTypes[this.guiCreateWorld.getWorldTypeId()]).canPerlinBeachesBeToggled()) {
 			this.buttonPerlinBeaches.enabled = false;
-			this.worldGeneratorInfo.setGeneratePerlinBeaches(WorldType.worldTypes[this.guiCreateWorld.getWorldTypeId()].getDefaultPerlinBeachState());
+			this.worldGeneratorInfo.setGeneratePerlinBeaches(((WorldTypeInterface) WorldType.worldTypes[this.guiCreateWorld.getWorldTypeId()]).getDefaultPerlinBeachState());
 		}
 		
-		if (!WorldType.worldTypes[this.guiCreateWorld.getWorldTypeId()].hasOceans()) {
+		if (!((WorldTypeInterface) WorldType.worldTypes[this.guiCreateWorld.getWorldTypeId()]).hasOceans()) {
 			this.buttonOceanSizeDummy.enabled = false;
 			this.buttonOceanSizeDummy.drawButton = true;
 			this.sliderOceanSize.drawButton = false;

@@ -2,6 +2,7 @@ package betterbiomes.feature.tree;
 
 import java.util.Random;
 
+import betterterrain.world.util.WorldTypeInterface;
 import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.World;
@@ -37,7 +38,7 @@ public class AcaciaGen extends WorldGenerator
 	
 	@Override
 	public boolean generate(World par1World, Random par2Random, int x, int y, int z) {
-		if (!par1World.provider.terrainType.isDeco()) {
+		if (!((WorldTypeInterface) par1World.provider.terrainType).isDeco()) {
 			return this.generateOak(par1World, par2Random, x, y, z);
 		}
 		else {

@@ -6,6 +6,7 @@ import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
+import betterterrain.world.util.WorldTypeInterface;
 import deco.block.DecoBlocks;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;
@@ -30,7 +31,7 @@ public class StonySurfaceBuilder extends SurfaceBuilder {
 		
 		boolean sandOrGravel = (this.useSandAtLocation(i, k, rand) || this.useGravelAtLocation(i, k, rand, generatorInfo)) && surfaceJ <= seaLevel + 1;
 		
-		if (useStone && BTAMod.isDecoInstalled() && worldType.isDeco() && !sandOrGravel) {
+		if (useStone && BTAMod.isDecoInstalled() && ((WorldTypeInterface) worldType).isDeco() && !sandOrGravel) {
 			return new int[] {Block.stone.blockID, 0};
 		}
 		else {

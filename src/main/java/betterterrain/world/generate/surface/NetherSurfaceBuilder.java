@@ -3,6 +3,7 @@ package betterterrain.world.generate.surface;
 import java.util.Random;
 
 import betterterrain.world.config.WorldConfigurationInfo;
+import betterterrain.world.util.WorldTypeInterface;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;
 import net.minecraft.src.WorldType;
@@ -45,7 +46,7 @@ public class NetherSurfaceBuilder extends SurfaceBuilder {
 		int surfaceJ = 127;
 
 		for (int j = 127; j >= 0; j--) {
-			if (j <= 0 + rand.nextInt(5) && !(worldType).isSky()) {
+			if (j <= 0 + rand.nextInt(5) && !((WorldTypeInterface) worldType).isSky()) {
 				setBlockValue(blockArray, i, j, k, Block.bedrock.blockID);
 			}
 			else {
@@ -59,7 +60,7 @@ public class NetherSurfaceBuilder extends SurfaceBuilder {
 		surfaceJ = 0;
 
 		for (int j = 0; j <= 127; j++) {
-			if (j >= 127 - rand.nextInt(5) && !(worldType).isSky()) {
+			if (j >= 127 - rand.nextInt(5) && !((WorldTypeInterface) worldType).isSky()) {
 				setBlockValue(blockArray, i, j, k, Block.bedrock.blockID);
 			}
 			else {

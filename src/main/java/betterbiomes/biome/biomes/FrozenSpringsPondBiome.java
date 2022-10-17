@@ -7,6 +7,7 @@ import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.world.config.WorldConfigurationInfo;
+import betterterrain.world.util.WorldTypeInterface;
 import net.minecraft.src.WorldGenerator;
 import net.minecraft.src.WorldType;
 
@@ -25,7 +26,7 @@ public class FrozenSpringsPondBiome extends BTABiome {
     {
     	WorldGenerator gen;
     	
-    	if (rand.nextInt(5) == 0 && BTAMod.isDecoInstalled() && (worldType).isDeco()) {
+    	if (rand.nextInt(5) == 0 && BTAMod.isDecoInstalled() && ((WorldTypeInterface) worldType).isDeco()) {
     		gen = new CherryTreeGen();
     	}
     	else {

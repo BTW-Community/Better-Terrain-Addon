@@ -6,6 +6,7 @@ import betterterrain.BTAMod;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.SurfaceBuilder;
+import betterterrain.world.util.WorldTypeInterface;
 import deco.block.DecoBlocks;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;
@@ -34,7 +35,7 @@ public class BasaltDeltasSurfaceBuilder extends SurfaceBuilder {
 	protected void replaceBlocksForBiome(Random rand, int i, int k, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, WorldConfigurationInfo generatorInfo, WorldType worldType, boolean isNether) {
 		byte seaLevel = 63;
 
-		if ((worldType).isSky() || isNether)
+		if (((WorldTypeInterface) worldType).isSky() || isNether)
 			seaLevel = 0;
 
 		float temperature = biome.getFloatTemperature();
@@ -47,7 +48,7 @@ public class BasaltDeltasSurfaceBuilder extends SurfaceBuilder {
 		int surfaceJ = 127;
 
 		for (int j = 127; j >= 0; j--) {
-			if (j <= 0 + rand.nextInt(5) && !(worldType).isSky()) {
+			if (j <= 0 + rand.nextInt(5) && !((WorldTypeInterface) worldType).isSky()) {
 				setBlockValue(blockArray, i, j, k, Block.bedrock.blockID);
 			}
 			else {
@@ -67,7 +68,7 @@ public class BasaltDeltasSurfaceBuilder extends SurfaceBuilder {
 		int spikeHeight = spikeHeightBase;
 
 		for (int j = 0; j <= 127; j++) {
-			if (j >= 127 - rand.nextInt(5) && !worldType.isSky()) {
+			if (j >= 127 - rand.nextInt(5) && !((WorldTypeInterface) worldType).isSky()) {
 				setBlockValue(blockArray, i, j, k, Block.bedrock.blockID);
 			}
 			else {
@@ -125,7 +126,7 @@ public class BasaltDeltasSurfaceBuilder extends SurfaceBuilder {
 		int spikeHeightBase = (int) ((spikeHeightNoiseGen.noise2(this.chunkX * 16 + k, this.chunkZ * 16 + i, 1/24D)) * 6);
 		boolean useSpikes = spikeHeightBase > 0;
 		
-		if (useAsh && BTAMod.isDecoInstalled() && (worldType).isDeco() && surfaceType != SurfaceType.SUBFILLER && !useSpikes) {
+		if (useAsh && BTAMod.isDecoInstalled() && ((WorldTypeInterface) worldType).isDeco() && surfaceType != SurfaceType.SUBFILLER && !useSpikes) {
 			return new int[] {DecoBlocks.ash.blockID, 0};
 		}
 		else {

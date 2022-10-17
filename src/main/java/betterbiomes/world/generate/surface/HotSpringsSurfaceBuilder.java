@@ -8,6 +8,7 @@ import betterterrain.biome.BTABiome;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.NoShorelineSurfaceBuilder;
+import betterterrain.world.util.WorldTypeInterface;
 import btw.util.ColorUtils;
 import deco.block.DecoBlocks;
 import deco.block.blocks.StoneVariantsBlock;
@@ -46,7 +47,7 @@ public class HotSpringsSurfaceBuilder extends NoShorelineSurfaceBuilder {
 		//k and i swapped because apparently I messed something up somewhere
 		boolean useCoarseDirt = coarseDirtNoiseGen.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), grassNoiseScale) + rand.nextDouble() * 0.1D - .25 > 0;
 
-		if (useCoarseDirt && BTAMod.isDecoInstalled() && worldType.isDeco() && surfaceType == SurfaceType.TOP) {
+		if (useCoarseDirt && BTAMod.isDecoInstalled() && ((WorldTypeInterface) worldType).isDeco() && surfaceType == SurfaceType.TOP) {
 			return new int[] {DecoBlocks.coarseDirt.blockID, 0};
 		}
 		else {

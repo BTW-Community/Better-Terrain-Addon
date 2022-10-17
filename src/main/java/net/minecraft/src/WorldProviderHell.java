@@ -2,6 +2,7 @@ package net.minecraft.src;
 
 import betterterrain.biome.BTABiomeConfiguration;
 import betterterrain.biome.BTANetherBiome;
+import betterterrain.world.util.WorldTypeInterface;
 
 public class WorldProviderHell extends WorldProvider
 {
@@ -12,7 +13,7 @@ public class WorldProviderHell extends WorldProvider
     {
     	WorldType worldType = this.worldObj.worldInfo.getTerrainType();
     	
-    	if (worldType.isDeco()) {
+    	if (((WorldTypeInterface) worldType).isDeco()) {
         	this.worldChunkMgr = new WorldChunkManagerHell(BTABiomeConfiguration.netherWastes, 1.0F, 0.0F);
     	}
     	else {
@@ -75,7 +76,7 @@ public class WorldProviderHell extends WorldProvider
      */
     public IChunkProvider createChunkGenerator()
     {
-    	return this.terrainType.getChunkProviderNether(this.worldObj, this.worldObj.getSeed(), this.generatorOptions);
+    	return ((WorldTypeInterface) this.terrainType).getChunkProviderNether(this.worldObj, this.worldObj.getSeed(), this.generatorOptions);
     }
 
     /**

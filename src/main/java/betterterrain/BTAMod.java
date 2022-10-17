@@ -1,9 +1,11 @@
 package betterterrain;
 
 import betterterrain.biome.BiomeConfiguration;
+import betterterrain.mixins.WorldTypeAccessor;
 import betterterrain.world.type.BTADefaultWorldType;
 import betterterrain.world.type.BetaWorldType;
 import betterterrain.world.type.SkyWorldType;
+import betterterrain.world.util.WorldTypeInterface;
 import btw.AddonHandler;
 import btw.BTWAddon;
 import btw.block.BTWBlocks;
@@ -14,14 +16,14 @@ public class BTAMod extends BTWAddon {
 	
 	public final BTAVersion currentVersion;
 	
-	public static final WorldType BTAWorldType = new BTADefaultWorldType(4, "BTA");
-	public static final WorldType BTAWorldTypeDeco = (new BTADefaultWorldType(5, "BTADeco").setCanBeCreated(false)).setIsDeco().setParent(BTAWorldType);
-	public static final WorldType BTAWorldTypeBeta = new BetaWorldType(6, "BTABeta");
-	public static final WorldType BTAWorldTypeBetaDeco = new BetaWorldType(7, "BTABetaDeco").setIsDeco().setCanBeCreated(false).setParent(BTAWorldTypeBeta);
-	public static final WorldType BTAWorldTypeSky = new SkyWorldType(8, "BTASky");
-	public static final WorldType BTAWorldTypeSkyDeco = new SkyWorldType(9, "BTASkyDeco").setIsDeco().setCanBeCreated(false).setParent(BTAWorldTypeSky);
-	public static final WorldType BTAWorldTypeSmall = new BTADefaultWorldType(10, "BTASmall").setCanBeCreated(false).setParent(BTAWorldType);
-	public static final WorldType BTAWorldTypeSmallDeco = new BTADefaultWorldType(11, "BTASmallDeco").setIsDeco().setCanBeCreated(false).setParent(BTAWorldType);
+	public static final WorldTypeInterface BTAWorldType = (WorldTypeInterface) new BTADefaultWorldType(4, "BTA");
+	public static final WorldTypeInterface BTAWorldTypeDeco = ((WorldTypeInterface) ((WorldTypeAccessor) new BTADefaultWorldType(5, "BTADeco")).setCanBeCreated(false)).setIsDeco().setParent(BTAWorldType);
+	public static final WorldTypeInterface BTAWorldTypeBeta = (WorldTypeInterface) new BetaWorldType(6, "BTABeta");
+	public static final WorldTypeInterface BTAWorldTypeBetaDeco = ((WorldTypeInterface) ((WorldTypeAccessor) new BetaWorldType(7, "BTABetaDeco")).setCanBeCreated(false)).setIsDeco().setParent(BTAWorldTypeBeta);
+	public static final WorldTypeInterface BTAWorldTypeSky = (WorldTypeInterface) new SkyWorldType(8, "BTASky");
+	public static final WorldTypeInterface BTAWorldTypeSkyDeco = ((WorldTypeInterface) ((WorldTypeAccessor) new SkyWorldType(9, "BTASkyDeco")).setCanBeCreated(false)).setIsDeco().setParent(BTAWorldTypeSky);
+	public static final WorldTypeInterface BTAWorldTypeSmall = ((WorldTypeInterface) ((WorldTypeAccessor) new BTADefaultWorldType(10, "BTASmall")).setCanBeCreated(false)).setParent(BTAWorldType);
+	public static final WorldTypeInterface BTAWorldTypeSmallDeco = ((WorldTypeInterface) ((WorldTypeAccessor) new BTADefaultWorldType(11, "BTASmallDeco")).setCanBeCreated(false)).setIsDeco().setParent(BTAWorldType);
 	
 	public static Material netherSand;
 	
@@ -34,7 +36,7 @@ public class BTAMod extends BTWAddon {
 	public void initialize() {
 		this.registerAddonCommand(new BiomeCommand());
 		
-		netherSand = new Material(MapColor.sandColor).setRequiresTool().SetNetherMobsCanSpawnOn();
+		netherSand = new Material(MapColor.sandColor).setRequiresTool().setNetherMobsCanSpawnOn();
 
 		Item.itemsList[Block.blockClay.blockID] = null;
 		Item.itemsList[Block.blockClay.blockID] = new ItemMultiTextureTile(Block.blockClay.blockID - 256, Block.blockClay, new String[] {"dirt", "sand", "redSand", "grass"});

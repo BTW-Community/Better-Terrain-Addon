@@ -16,6 +16,7 @@ import betterterrain.structure.mapgen.BTAMapGenScatteredFeature;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.config.WorldConfigurationInfoLegacy;
 import betterterrain.world.generate.surface.SurfaceBuilder;
+import betterterrain.world.util.WorldTypeInterface;
 import btw.world.biome.BiomeDecoratorBase;
 import net.minecraft.src.*;
 
@@ -194,7 +195,7 @@ public class BTABiome extends BiomeGenBase {
     public boolean canSnowAt(World world, int x, int y, int z) {
 		if (generatorInfoCache == null || !generatorInfoCache.toString().equals(world.provider.generatorOptions)) {
 			if (world.provider.generatorOptions.equals("")) {
-				generatorInfoCache = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(world.provider.terrainType.isDeco());
+				generatorInfoCache = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(((WorldTypeInterface) world.provider.terrainType).isDeco());
 			}
 			else {
 				generatorInfoCache = WorldConfigurationInfo.createInfoFromString(world.provider.generatorOptions);
@@ -653,7 +654,7 @@ public class BTABiome extends BiomeGenBase {
             if (world.getBlockId(x, y, z) == Block.stone.blockID) {
             	int oreMeta = 0;
                 
-                int[] stratas = world.provider.terrainType.getStrataLevels();
+                int[] stratas = ((WorldTypeInterface) world.provider.terrainType).getStrataLevels();
                 
                 int strata1Height = stratas[0];
                 int strata2Height = stratas[1];

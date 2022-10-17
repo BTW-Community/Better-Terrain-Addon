@@ -1,5 +1,7 @@
 package net.minecraft.src;
 
+import betterterrain.world.util.WorldTypeInterface;
+
 public class WorldProviderEnd extends WorldProvider
 {
     /**
@@ -17,7 +19,7 @@ public class WorldProviderEnd extends WorldProvider
      */
     public IChunkProvider createChunkGenerator()
     {
-    	return this.terrainType.getChunkProviderEnd(this.worldObj, this.worldObj.getSeed());
+    	return ((WorldTypeInterface) this.terrainType).getChunkProviderEnd(this.worldObj, this.worldObj.getSeed());
     }
 
     /**

@@ -6,6 +6,7 @@ import betterterrain.BTAMod;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.SurfaceBuilder;
+import betterterrain.world.util.WorldTypeInterface;
 import net.minecraft.src.Block;
 import net.minecraft.src.WorldType;
 
@@ -29,7 +30,7 @@ public class OutbackSurfaceBuilder extends SurfaceBuilder {
 		
 		boolean useGravel = this.useGravelAtLocation(i, k, rand, generatorInfo) && surfaceJ <= seaLevel + 1;
 		
-		if (useGrass && BTAMod.isDecoInstalled() && worldType.isDeco() && !useGravel) {
+		if (useGrass && BTAMod.isDecoInstalled() && ((WorldTypeInterface) worldType).isDeco() && !useGravel) {
 			if (surfaceType == SurfaceType.TOP) {
 				return new int[] {Block.grass.blockID, 0};
 			}

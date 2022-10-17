@@ -5,6 +5,7 @@ import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.config.WorldConfigurationInfoLegacy;
 import betterterrain.world.generate.EndChunkProvider;
 import betterterrain.world.generate.SkyChunkProvider;
+import betterterrain.world.util.WorldTypeInterface;
 import net.minecraft.src.IChunkProvider;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldChunkManager;
@@ -23,12 +24,12 @@ public class SkyWorldType extends WorldType {
         return "Skylands";
     }
 
-    @Override
+    // @Override
     public WorldChunkManager getChunkManager(World world, String generatorOptions) {
     	WorldConfigurationInfo info;
     	
     	if (generatorOptions.equals("")) {
-    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(this.isDeco());
+    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(((WorldTypeInterface) this).isDeco());
     	}
     	else {
     		info = WorldConfigurationInfo.createInfoFromString(generatorOptions);
@@ -37,12 +38,12 @@ public class SkyWorldType extends WorldType {
     	return new BetaChunkManager(world, info);
     }
 
-    @Override
+    // @Override
     public IChunkProvider getChunkProviderOverworld(World world, long seed, boolean mapFeaturesEnabled, String generatorOptions) {
     	WorldConfigurationInfo info;
     	
     	if (generatorOptions.equals("")) {
-    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(this.isDeco());
+    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(((WorldTypeInterface) this).isDeco());
     	}
     	else {
     		info = WorldConfigurationInfo.createInfoFromString(generatorOptions);
@@ -51,12 +52,12 @@ public class SkyWorldType extends WorldType {
     	return new SkyChunkProvider(world, seed, mapFeaturesEnabled, info);
     }
 
-    @Override
+    // @Override
     public IChunkProvider getChunkProviderNether(World world, long seed, String generatorOptions) {
     	WorldConfigurationInfo info;
     	
     	if (generatorOptions.equals("")) {
-    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(this.isDeco());
+    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(((WorldTypeInterface) this).isDeco());
     	}
     	else {
     		info = WorldConfigurationInfo.createInfoFromString(generatorOptions);
@@ -65,54 +66,57 @@ public class SkyWorldType extends WorldType {
     	return new SkyChunkProvider(world, seed, true, info).setNether();
     }
 
-    @Override
+    // @Override
     public IChunkProvider getChunkProviderEnd(World world, long seed) {
     	return new EndChunkProvider(world, seed);
     }
 
-    @Override
+    // @Override
     public float getCloudHeight() {
     	return -8F;
     }
 
-    @Override
+    // @Override
     public int getAverageGroundLevel() {
     	return 16;
     }
 
-    @Override
+    // @Override
     public double getHorizon() {
     	return 0F;
     }
 
-    @Override
+    // @Override
     public int[] getStrataLevels() {
     	return new int[] {48, 32};
     }
 
-    @Override
+    // @Override
     public boolean isSky() {
     	return true;
     }
 
-    @Override
+    // @Override
     public boolean hasDeco() {
     	return true;
     }
 
-    @Override
+    // @Override
     public boolean isBTA() {
     	return true;
     }
-    
+
+    // @Override
     public boolean hasOceans() {
     	return false;
     }
-    
+
+    // @Override
     public boolean canPerlinBeachesBeToggled() {
     	return false;
     }
-    
+
+    // @Override
     public boolean getDefaultPerlinBeachState() {
     	return false;
     }

@@ -2,6 +2,7 @@ package betterterrain.structure.mapgen;
 
 import java.util.Random;
 
+import betterterrain.world.util.WorldTypeInterface;
 import net.minecraft.src.Block;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.World;
@@ -171,7 +172,7 @@ public class BTAMapGenRavine extends BTAMapGenBase
 
                                             if (var52 == Block.stone.blockID || var52 == Block.dirt.blockID || var52 == Block.grass.blockID)
                                             {
-                                                if (var49 < 10 && !this.worldObj.provider.terrainType.isSky())
+                                                if (var49 < 10 && !((WorldTypeInterface) this.worldObj.provider.terrainType).isSky())
                                                 {
                                                     blockArray[var47] = (byte)Block.lavaMoving.blockID;
                                                 }

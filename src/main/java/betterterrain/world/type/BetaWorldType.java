@@ -6,6 +6,7 @@ import betterterrain.world.config.WorldConfigurationInfoLegacy;
 import betterterrain.world.generate.BetaChunkProvider;
 import betterterrain.world.generate.EndChunkProvider;
 import betterterrain.world.generate.NetherChunkProvider;
+import betterterrain.world.util.WorldTypeInterface;
 import net.minecraft.src.*;
 
 public class BetaWorldType extends WorldType {
@@ -20,13 +21,13 @@ public class BetaWorldType extends WorldType {
     {
         return "Beta";
     }
-    
-    @Override
+
+	// @Override
     public WorldChunkManager getChunkManager(World world, String generatorOptions) {
     	WorldConfigurationInfo info;
     	
     	if (generatorOptions.equals("")) {
-    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(this.isDeco());
+    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(((WorldTypeInterface) this).isDeco());
     	}
     	else {
     		info = WorldConfigurationInfo.createInfoFromString(generatorOptions);
@@ -35,12 +36,12 @@ public class BetaWorldType extends WorldType {
     	return new BetaChunkManager(world, info);
     }
 
-    @Override
+	// @Override
     public IChunkProvider getChunkProviderOverworld(World world, long seed, boolean mapFeaturesEnabled, String generatorOptions) {
     	WorldConfigurationInfo info;
     	
     	if (generatorOptions.equals("")) {
-    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(this.isDeco());
+    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(((WorldTypeInterface) this).isDeco());
     	}
     	else {
     		info = WorldConfigurationInfo.createInfoFromString(generatorOptions);
@@ -48,19 +49,19 @@ public class BetaWorldType extends WorldType {
     	
     	return new BetaChunkProvider(world, seed, mapFeaturesEnabled, info);
     }
-    
-    @Override
+
+	// @Override
     public IChunkProvider getChunkProviderNether(World world, long seed, String generatorOptions) {
     	WorldConfigurationInfo info;
     	
     	if (generatorOptions.equals("")) {
-    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(this.isDeco());
+    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(((WorldTypeInterface) this).isDeco());
     	}
     	else {
     		info = WorldConfigurationInfo.createInfoFromString(generatorOptions);
     	}
     	
-    	if (this.isDeco()) {
+    	if (((WorldTypeInterface) this).isDeco()) {
     		return new NetherChunkProvider(world, seed, info);
     	}
     	else {
@@ -68,29 +69,32 @@ public class BetaWorldType extends WorldType {
     	}
     }
 
-    @Override
+	// @Override
     public IChunkProvider getChunkProviderEnd(World world, long seed) {
     	return new EndChunkProvider(world, seed);
     }
 
-    @Override
+	// @Override
     public boolean hasDeco() {
     	return true;
     }
 
-    @Override
+    // @Override
     public boolean isBTA() {
     	return true;
     }
-    
+
+	// @Override
     public boolean hasOceans() {
     	return false;
     }
-    
+
+	// @Override
     public boolean canPerlinBeachesBeToggled() {
     	return false;
     }
-    
+
+	// @Override
     public boolean getDefaultPerlinBeachState() {
     	return true;
     }

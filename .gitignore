@@ -9,7 +9,9 @@
 src/btw/**
 
 # Ignore local Minecraft folder
-.minecraft
+run
+release
+reobfuscated
 
 # IntelliJ
 *.iml

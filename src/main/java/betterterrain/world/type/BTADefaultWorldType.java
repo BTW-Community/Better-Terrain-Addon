@@ -8,6 +8,7 @@ import betterterrain.world.generate.EndChunkProvider;
 import betterterrain.world.generate.NetherChunkProvider;
 import betterterrain.world.generate.SimplexChunkProvider;
 import betterterrain.world.generate.TerrainGenerator;
+import betterterrain.world.util.WorldTypeInterface;
 import net.minecraft.src.*;
 
 public class BTADefaultWorldType extends WorldType {
@@ -28,7 +29,7 @@ public class BTADefaultWorldType extends WorldType {
     	WorldConfigurationInfo info;
     	
     	if (generatorOptions.equals("")) {
-    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy((this).isDeco());
+    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(((WorldTypeInterface) this).isDeco());
     	}
     	else {
     		info = WorldConfigurationInfo.createInfoFromString(generatorOptions);
@@ -42,7 +43,7 @@ public class BTADefaultWorldType extends WorldType {
     	WorldConfigurationInfo info;
     	
     	if (generatorOptions.equals("")) {
-    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy((this).isDeco());
+    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(((WorldTypeInterface) this).isDeco());
     	}
     	else {
     		info = WorldConfigurationInfo.createInfoFromString(generatorOptions);
@@ -62,13 +63,13 @@ public class BTADefaultWorldType extends WorldType {
     	WorldConfigurationInfo info;
     	
     	if (generatorOptions.equals("")) {
-    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy((this).isDeco());
+    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(((WorldTypeInterface) this).isDeco());
     	}
     	else {
     		info = WorldConfigurationInfo.createInfoFromString(generatorOptions);
     	}
     	
-    	if ((this).isDeco()) {
+    	if (((WorldTypeInterface) this).isDeco()) {
     		return new NetherChunkProvider(world, seed, info);
     	}
     	else {

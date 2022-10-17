@@ -16,6 +16,7 @@ import betterterrain.feature.terrain.SteppeGen;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.config.WorldConfigurationInfoLegacy;
 import betterterrain.world.generate.surface.SurfaceBuilder;
+import betterterrain.world.util.WorldTypeInterface;
 import btw.AddonHandler;
 import btw.BTWAddon;
 import btw.world.biome.BiomeDecoratorBase;
@@ -272,7 +273,7 @@ public class BiomeDecorator implements BiomeDecoratorBase
 		{
 			this.currentWorld = par1World;
 			if (this.currentWorld.provider.generatorOptions.equals("")) {
-				this.generatorInfo = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(this.currentWorld.provider.terrainType.isDeco());
+				this.generatorInfo = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(((WorldTypeInterface) this.currentWorld.provider.terrainType).isDeco());
 			}
 			else {
 				this.generatorInfo = WorldConfigurationInfo.createInfoFromString(this.currentWorld.provider.generatorOptions);
@@ -289,7 +290,7 @@ public class BiomeDecorator implements BiomeDecoratorBase
 	public void init(World par1World, Random par2Random, int par3, int par4) {
 		this.currentWorld = par1World;
 		if (this.currentWorld.provider.generatorOptions.equals("")) {
-			this.generatorInfo = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(this.currentWorld.provider.terrainType.isDeco());
+			this.generatorInfo = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(((WorldTypeInterface) this.currentWorld.provider.terrainType).isDeco());
 		}
 		else {
 			this.generatorInfo = WorldConfigurationInfo.createInfoFromString(this.currentWorld.provider.generatorOptions);
@@ -329,7 +330,7 @@ public class BiomeDecorator implements BiomeDecoratorBase
 		{
 			var2 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 			var3 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-			if (this.currentWorld.provider.terrainType.canPerlinBeachesBeToggled() && !(this.currentWorld.getChunkProvider() instanceof ChunkProviderServer))
+			if (((WorldTypeInterface) this.currentWorld.provider.terrainType).canPerlinBeachesBeToggled() && !(this.currentWorld.getChunkProvider() instanceof ChunkProviderServer))
 				if (!this.generatorInfo.generatePerlinBeaches())
 					if ((this.biome instanceof BTABiome && ((BTABiome) this.biome).spawnSand(this.generatorInfo)))
 						this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
@@ -340,7 +341,7 @@ public class BiomeDecorator implements BiomeDecoratorBase
 			if (this.currentWorld.rand.nextInt(3) != 0) {
 				var2 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 				var3 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-				if (this.currentWorld.provider.terrainType.isSky()) {
+				if (((WorldTypeInterface) this.currentWorld.provider.terrainType).isSky()) {
 					if (this.randomGenerator.nextInt(5) == 0)
 						this.clayGenSky.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
 				}
@@ -354,7 +355,7 @@ public class BiomeDecorator implements BiomeDecoratorBase
 		{
 			var2 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 			var3 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-			if (this.currentWorld.provider.terrainType.canPerlinBeachesBeToggled() && !(this.currentWorld.getChunkProvider() instanceof ChunkProviderServer))
+			if (((WorldTypeInterface) this.currentWorld.provider.terrainType).canPerlinBeachesBeToggled() && !(this.currentWorld.getChunkProvider() instanceof ChunkProviderServer))
 				if (!this.generatorInfo.generatePerlinBeaches())
 					if ((this.biome instanceof BTABiome && ((BTABiome) this.biome).spawnSand(this.generatorInfo)))
 						this.sandGen.generate(this.currentWorld, this.randomGenerator, var2, this.currentWorld.getTopSolidOrLiquidBlock(var2, var3), var3);
@@ -387,7 +388,7 @@ public class BiomeDecorator implements BiomeDecoratorBase
 
 		for (var2 = 0; var2 < this.flowersPerChunk; ++var2)
 		{
-			if (BTAMod.isDecoInstalled() && (this.currentWorld.provider.terrainType.isDeco())) {
+			if (BTAMod.isDecoInstalled() && (((WorldTypeInterface) this.currentWorld.provider.terrainType).isDeco())) {
 				if (this.randomGenerator.nextInt(24) > 1) {
 					var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 					var4 = this.randomGenerator.nextInt(128);
@@ -494,7 +495,7 @@ public class BiomeDecorator implements BiomeDecoratorBase
 			var7 = this.randomGenerator.nextInt(128);
 			this.reedGen.generate(this.currentWorld, this.randomGenerator, var3, var7, var4);
 
-			if (this.currentWorld.provider.terrainType.isSky()) {
+			if (((WorldTypeInterface) this.currentWorld.provider.terrainType).isSky()) {
 				var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 				var4 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
 				var7 = this.randomGenerator.nextInt(128);
@@ -621,7 +622,7 @@ public class BiomeDecorator implements BiomeDecoratorBase
 		this.genStandardOre1(20, this.dirtGen, 0, 128);
 		this.genStandardOre1(10, this.gravelGen, 0, 128);
 
-		if (this.currentWorld.provider.terrainType.isSky()) {
+		if (((WorldTypeInterface) this.currentWorld.provider.terrainType).isSky()) {
 			this.genStandardOre1(20, this.coalGen, 0, 128);
 			this.genStandardOre1(24, this.ironGen, 0, 80);
 			this.genStandardOre1(3, this.goldGen, 0, 48);
@@ -638,11 +639,11 @@ public class BiomeDecorator implements BiomeDecoratorBase
 			this.genStandardOre2(1, this.lapisGen, 16, 16);
 		}
 
-		if (BTAMod.isDecoInstalled() && (this.currentWorld.provider.terrainType.isDeco())) {
+		if (BTAMod.isDecoInstalled() && (((WorldTypeInterface) this.currentWorld.provider.terrainType).isDeco())) {
 			this.genStandardOre1(12, this.graniteGen, 0, 128);
 			this.genStandardOre1(12, this.andesiteGen, 0, 128);
 			this.genStandardOre1(12, this.dioriteGen, 0, 128);
-			this.genStandardOre1(12, this.slateGen, 0, this.currentWorld.provider.terrainType.getStrataLevels()[1]);
+			this.genStandardOre1(12, this.slateGen, 0, ((WorldTypeInterface) this.currentWorld.provider.terrainType).getStrataLevels()[1]);
 		}
 	}
 }

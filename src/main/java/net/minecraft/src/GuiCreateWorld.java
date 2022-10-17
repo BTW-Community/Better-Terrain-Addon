@@ -3,6 +3,7 @@ package net.minecraft.src;
 import java.util.Random;
 
 import betterterrain.BTAMod;
+import betterterrain.world.util.WorldTypeInterface;
 import org.lwjgl.input.Keyboard;
 
 import betterterrain.biome.BTABiome;
@@ -277,13 +278,13 @@ public class GuiCreateWorld extends GuiScreen
                 
                 WorldType type = WorldType.worldTypes[this.worldTypeId];
                 
-                if (isDeco && type.hasDeco()) {
+                if (isDeco && ((WorldTypeInterface) type).hasDeco()) {
                 	type = WorldType.worldTypes[this.worldTypeId + 1];
                 }
                 
                 WorldSettings var6 = new WorldSettings(var2, var8, this.generateStructures, this.isHardcore, type);
                 
-                if (WorldType.worldTypes[this.worldTypeId].isBTA() && this.generatorOptionsToUse.equals("")) {
+                if (((WorldTypeInterface) WorldType.worldTypes[this.worldTypeId]).isBTA() && this.generatorOptionsToUse.equals("")) {
                 	this.generatorOptionsToUse = WorldConfigurationInfo.createDefaultConfiguration(isDeco).toString();
 
                     System.out.println(this.generatorOptionsToUse);
@@ -433,7 +434,7 @@ public class GuiCreateWorld extends GuiScreen
         this.buttonWorldType.drawButton = this.moreOptions;
         this.buttonAllowCommands.drawButton = this.moreOptions;
         this.buttonCustomize.drawButton = this.moreOptions && WorldType.worldTypes[this.worldTypeId] == WorldType.FLAT;
-        this.buttonCustomizeBTA.drawButton = this.moreOptions && (WorldType.worldTypes[this.worldTypeId].isBTA());
+        this.buttonCustomizeBTA.drawButton = this.moreOptions && (((WorldTypeInterface) WorldType.worldTypes[this.worldTypeId]).isBTA());
         StringTranslate var2;
 
         if (this.moreOptions)
@@ -544,8 +545,8 @@ public class GuiCreateWorld extends GuiScreen
         }
         
         WorldType currentType = WorldType.worldTypes[this.worldTypeId];
-        this.isDeco = currentType.isDeco();
-        this.worldTypeId = currentType.getParent().getWorldTypeID();
+        this.isDeco = ((WorldTypeInterface) currentType).isDeco();
+        this.worldTypeId = ((WorldType) ((WorldTypeInterface) currentType).getParent()).getWorldTypeID();
     }
 
 	public boolean isDeco() {

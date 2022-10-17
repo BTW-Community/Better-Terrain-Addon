@@ -7,6 +7,7 @@ import betterterrain.BTAMod;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.NoShorelineSurfaceBuilder;
+import betterterrain.world.util.WorldTypeInterface;
 import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.WorldType;
@@ -73,7 +74,7 @@ public class FirCanyonSurfaceBuilder extends NoShorelineSurfaceBuilder {
 		//k and i swapped because apparently I messed something up somewhere
 		boolean useCoarseDirt = coarseDirtNoiseGen.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), dirtNoiseScale) + rand.nextDouble() * 0.15D > -0.125;
 		
-		if (useCoarseDirt && BTAMod.isDecoInstalled() && worldType.isDeco()) {
+		if (useCoarseDirt && BTAMod.isDecoInstalled() && ((WorldTypeInterface) worldType).isDeco()) {
 			double grassNoiseScale = 1/48D;
 			//k and i swapped because apparently I messed something up somewhere
 			boolean useGrass = grassNoiseGen.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), grassNoiseScale) + rand.nextDouble() * 0.15D > -0.125;

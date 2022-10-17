@@ -10,6 +10,7 @@ import betterterrain.feature.tree.TaigaGen7;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.SurfaceBuilder;
+import betterterrain.world.util.WorldTypeInterface;
 import deco.block.DecoBlocks;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenTaiga2;
@@ -43,10 +44,10 @@ public class ConiferousForestSurfaceBuilder extends SurfaceBuilder {
 		
 		boolean sandOrGravel = (this.useSandAtLocation(i, k, rand) || this.useGravelAtLocation(i, k, rand, generatorInfo)) && surfaceJ <= seaLevel + 1;
 		
-		if (useCoarseDirt && BTAMod.isDecoInstalled() && (worldType).isDeco() && surfaceType == SurfaceType.TOP && !sandOrGravel) {
+		if (useCoarseDirt && BTAMod.isDecoInstalled() && ((WorldTypeInterface) worldType).isDeco() && surfaceType == SurfaceType.TOP && !sandOrGravel) {
 			return new int[] {DecoBlocks.coarseDirt.blockID, 0};
 		}
-		else if (usePodzol && BTAMod.isDecoInstalled() && (worldType).isDeco() && surfaceType == SurfaceType.TOP && !sandOrGravel) {
+		else if (usePodzol && BTAMod.isDecoInstalled() && ((WorldTypeInterface) worldType).isDeco() && surfaceType == SurfaceType.TOP && !sandOrGravel) {
 			return new int[] {DecoBlocks.podzol.blockID, 0};
 		}
 		else {

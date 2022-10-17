@@ -8,6 +8,7 @@ import betterterrain.feature.plant.DecoFlowerGen;
 import betterterrain.feature.plant.TallGrassGen;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
+import betterterrain.world.util.WorldTypeInterface;
 import deco.block.DecoBlocks;
 import deco.block.util.FlowerHelper;
 import net.minecraft.src.Block;
@@ -84,7 +85,7 @@ public class SwampSurfaceBuilder extends NoShorelineSurfaceBuilder {
 							for (int offset = -1; offset <= 1; offset += 2) {
 								int blockID = world.getBlockId(i + offset, j, k);
 
-								if (BTAMod.isDecoInstalled() && world.provider.terrainType.isDeco()) {
+								if (BTAMod.isDecoInstalled() && ((WorldTypeInterface) world.provider.terrainType).isDeco()) {
 									if (blockID != 0 && Block.blocksList[blockID].blockMaterial != Material.water) {
 										world.setBlock(i + offset, j, k, DecoBlocks.podzol.blockID);
 									}
@@ -99,7 +100,7 @@ public class SwampSurfaceBuilder extends NoShorelineSurfaceBuilder {
 						}
 					}
 
-					if (BTAMod.isDecoInstalled() && world.provider.terrainType.isDeco() &&
+					if (BTAMod.isDecoInstalled() && ((WorldTypeInterface) world.provider.terrainType).isDeco() &&
 							waterNoise + rand.nextDouble() * 0.1 > -0.5
 							&& world.getBlockId(i, j, k) != 0 && Block.blocksList[world.getBlockId(i, j, k)].blockMaterial != Material.water
 							&& world.getBlockId(i, j + 1, k) == 0)
@@ -123,7 +124,7 @@ public class SwampSurfaceBuilder extends NoShorelineSurfaceBuilder {
 			}
 		}
 		
-		if (BTAMod.isDecoInstalled() && world.provider.terrainType.isDeco() && rand.nextInt(2) == 0) {
+		if (BTAMod.isDecoInstalled() && ((WorldTypeInterface) world.provider.terrainType).isDeco() && rand.nextInt(2) == 0) {
 			x = chunkX + rand.nextInt(16) + 8;
 			z = chunkZ + rand.nextInt(16) + 8;
 			this.orchidGen.generate(world, rand, x, y, z);
