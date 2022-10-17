@@ -17,6 +17,7 @@
     "WorldTypeMixin"
   ],
   "client": [
+    "GuiCreateWorldMixin",
     "GuiScreenAccessor"
   ],
   "injectors": {

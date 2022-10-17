@@ -132,6 +132,6 @@ public class BiomeOptionsGui extends GuiScreen
 	}
 
 	public boolean isDeco() {
-		return this.guiCreateWorld.isDeco();
+		return ((GuiCreateWorldInterface) this.guiCreateWorld).isDeco();
 	}
 }

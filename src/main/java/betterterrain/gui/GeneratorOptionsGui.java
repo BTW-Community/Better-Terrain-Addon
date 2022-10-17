@@ -35,7 +35,7 @@ public class GeneratorOptionsGui extends GuiScreen implements SliderSettingHandl
 	public GeneratorOptionsGui(GuiCreateWorld createWorldGui, String infoString) {
 		this.guiCreateWorld = createWorldGui;
 		if (infoString.equals(""))
-			worldGeneratorInfo = WorldConfigurationInfo.createDefaultConfiguration(this.guiCreateWorld.isDeco());
+			worldGeneratorInfo = WorldConfigurationInfo.createDefaultConfiguration(((GuiCreateWorldInterface) this.guiCreateWorld).isDeco());
 		else
 			worldGeneratorInfo = WorldConfigurationInfo.createInfoFromString(infoString);
 	}
@@ -90,7 +90,7 @@ public class GeneratorOptionsGui extends GuiScreen implements SliderSettingHandl
 			this.mc.displayGuiScreen(this.guiCreateWorld);
 		}
 		else if (button.id == id_deco) {
-			this.guiCreateWorld.setDeco(!this.isDeco());
+			((GuiCreateWorldInterface) this.guiCreateWorld).setDeco(!this.isDeco());
 			
 			for (BiomeInfo b : this.worldGeneratorInfo.getBiomeInfoList()) {
 				if (b.isDecoOnly()) {
@@ -151,12 +151,12 @@ public class GeneratorOptionsGui extends GuiScreen implements SliderSettingHandl
 	public void setButtons() {
         this.buttonDeco.enabled = BTAMod.isDecoInstalled();
 		
-		if (!((WorldTypeInterface) WorldType.worldTypes[this.guiCreateWorld.getWorldTypeId()]).canPerlinBeachesBeToggled()) {
+		if (!((WorldTypeInterface) WorldType.worldTypes[((GuiCreateWorldInterface) this.guiCreateWorld).getWorldTypeId()]).canPerlinBeachesBeToggled()) {
 			this.buttonPerlinBeaches.enabled = false;
-			this.worldGeneratorInfo.setGeneratePerlinBeaches(((WorldTypeInterface) WorldType.worldTypes[this.guiCreateWorld.getWorldTypeId()]).getDefaultPerlinBeachState());
+			this.worldGeneratorInfo.setGeneratePerlinBeaches(((WorldTypeInterface) WorldType.worldTypes[((GuiCreateWorldInterface) this.guiCreateWorld).getWorldTypeId()]).getDefaultPerlinBeachState());
 		}
 		
-		if (!((WorldTypeInterface) WorldType.worldTypes[this.guiCreateWorld.getWorldTypeId()]).hasOceans()) {
+		if (!((WorldTypeInterface) WorldType.worldTypes[((GuiCreateWorldInterface) this.guiCreateWorld).getWorldTypeId()]).hasOceans()) {
 			this.buttonOceanSizeDummy.enabled = false;
 			this.buttonOceanSizeDummy.drawButton = true;
 			this.sliderOceanSize.drawButton = false;
@@ -276,6 +276,6 @@ public class GeneratorOptionsGui extends GuiScreen implements SliderSettingHandl
 	}
 
 	public boolean isDeco() {
-		return this.guiCreateWorld.isDeco();
+		return ((GuiCreateWorldInterface) this.guiCreateWorld).isDeco();
 	}
 }
