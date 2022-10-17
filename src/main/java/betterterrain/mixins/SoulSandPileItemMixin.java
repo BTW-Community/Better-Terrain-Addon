@@ -47,7 +47,7 @@ public class SoulSandPileItemMixin extends Item {
                 if (provider != null && provider instanceof ChunkProviderServer) {
                     ChunkProviderServer serverProvider = (ChunkProviderServer)provider;
 
-                    provider = serverProvider.GetCurrentProvider();
+                    provider = serverProvider.getCurrentProvider();
 
                     if (provider != null) {
                         StructureStart closestFortress = null;

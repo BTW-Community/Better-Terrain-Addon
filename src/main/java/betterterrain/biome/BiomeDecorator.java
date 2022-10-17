@@ -16,25 +16,14 @@ import betterterrain.feature.terrain.SteppeGen;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.config.WorldConfigurationInfoLegacy;
 import betterterrain.world.generate.surface.SurfaceBuilder;
+import betterterrain.world.util.WorldProviderInterface;
 import betterterrain.world.util.WorldTypeInterface;
 import btw.AddonHandler;
 import btw.BTWAddon;
 import btw.world.biome.BiomeDecoratorBase;
 import deco.block.DecoBlocks;
 import deco.block.blocks.StoneVariantsBlock;
-import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.Block;
-import net.minecraft.src.ChunkProviderServer;
-import net.minecraft.src.World;
-import net.minecraft.src.WorldGenBigMushroom;
-import net.minecraft.src.WorldGenCactus;
-import net.minecraft.src.WorldGenDeadBush;
-import net.minecraft.src.WorldGenLiquids;
-import net.minecraft.src.WorldGenPumpkin;
-import net.minecraft.src.WorldGenReed;
-import net.minecraft.src.WorldGenSand;
-import net.minecraft.src.WorldGenWaterlily;
-import net.minecraft.src.WorldGenerator;
+import net.minecraft.src.*;
 
 public class BiomeDecorator implements BiomeDecoratorBase
 {
@@ -272,11 +261,11 @@ public class BiomeDecorator implements BiomeDecoratorBase
 		else
 		{
 			this.currentWorld = par1World;
-			if (this.currentWorld.provider.generatorOptions.equals("")) {
+			if (((WorldProviderInterface) this.currentWorld.provider).getGeneratorOptions().equals("")) {
 				this.generatorInfo = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(((WorldTypeInterface) this.currentWorld.provider.terrainType).isDeco());
 			}
 			else {
-				this.generatorInfo = WorldConfigurationInfo.createInfoFromString(this.currentWorld.provider.generatorOptions);
+				this.generatorInfo = WorldConfigurationInfo.createInfoFromString(((WorldProviderInterface) this.currentWorld.provider).getGeneratorOptions());
 			}
 			this.randomGenerator = par2Random;
 			this.chunk_X = par3;
@@ -289,11 +278,11 @@ public class BiomeDecorator implements BiomeDecoratorBase
 
 	public void init(World par1World, Random par2Random, int par3, int par4) {
 		this.currentWorld = par1World;
-		if (this.currentWorld.provider.generatorOptions.equals("")) {
+		if (((WorldProviderInterface) this.currentWorld.provider).getGeneratorOptions().equals("")) {
 			this.generatorInfo = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(((WorldTypeInterface) this.currentWorld.provider.terrainType).isDeco());
 		}
 		else {
-			this.generatorInfo = WorldConfigurationInfo.createInfoFromString(this.currentWorld.provider.generatorOptions);
+			this.generatorInfo = WorldConfigurationInfo.createInfoFromString(((WorldProviderInterface) this.currentWorld.provider).getGeneratorOptions());
 		}
 		this.randomGenerator = par2Random;
 		this.chunk_X = par3;

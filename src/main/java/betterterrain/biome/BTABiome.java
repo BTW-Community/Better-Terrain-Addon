@@ -16,6 +16,7 @@ import betterterrain.structure.mapgen.BTAMapGenScatteredFeature;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.config.WorldConfigurationInfoLegacy;
 import betterterrain.world.generate.surface.SurfaceBuilder;
+import betterterrain.world.util.WorldProviderInterface;
 import betterterrain.world.util.WorldTypeInterface;
 import btw.world.biome.BiomeDecoratorBase;
 import net.minecraft.src.*;
@@ -193,12 +194,12 @@ public class BTABiome extends BiomeGenBase {
     
 	@Override
     public boolean canSnowAt(World world, int x, int y, int z) {
-		if (generatorInfoCache == null || !generatorInfoCache.toString().equals(world.provider.generatorOptions)) {
-			if (world.provider.generatorOptions.equals("")) {
+		if (generatorInfoCache == null || !generatorInfoCache.toString().equals(((WorldProviderInterface)world.provider).getGeneratorOptions())) {
+			if (((WorldProviderInterface)world.provider).getGeneratorOptions().equals("")) {
 				generatorInfoCache = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(((WorldTypeInterface) world.provider.terrainType).isDeco());
 			}
 			else {
-				generatorInfoCache = WorldConfigurationInfo.createInfoFromString(world.provider.generatorOptions);
+				generatorInfoCache = WorldConfigurationInfo.createInfoFromString(((WorldProviderInterface)world.provider).getGeneratorOptions());
 			}
 		}
 		

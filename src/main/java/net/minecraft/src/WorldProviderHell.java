@@ -76,7 +76,7 @@ public class WorldProviderHell extends WorldProvider
      */
     public IChunkProvider createChunkGenerator()
     {
-    	return ((WorldTypeInterface) this.terrainType).getChunkProviderNether(this.worldObj, this.worldObj.getSeed(), this.generatorOptions);
+    	return ((WorldTypeInterface) this.terrainType).getChunkProviderNether(this.worldObj, this.worldObj.getSeed(), this.field_82913_c);
     }
 
     /**
