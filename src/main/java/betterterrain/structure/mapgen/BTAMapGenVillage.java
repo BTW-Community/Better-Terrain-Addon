@@ -1,19 +1,14 @@
 package betterterrain.structure.mapgen;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.Map.Entry;
 
-import net.minecraft.src.MapGenVillage;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.StructureStart;
-import net.minecraft.src.StructureVillageStart;
+import net.minecraft.src.*;
 
 public class BTAMapGenVillage extends BTAMapGenStructure
 {
+    public static final ArrayList<BiomeGenBase> villageSpawnBiomes = new ArrayList<BiomeGenBase>(Arrays.asList(new BiomeGenBase[] {BiomeGenBase.plains, BiomeGenBase.desert}));
+
     /** World terrain type, 0 for normal, 1 for flat map */
     private int terrainType;
     private int field_82665_g;
@@ -71,7 +66,7 @@ public class BTAMapGenVillage extends BTAMapGenStructure
 
         if (var3 == var5 && var4 == var6)
         {
-            boolean var8 = this.worldObj.getWorldChunkManager().areBiomesViable(var3 * 16 + 8, var4 * 16 + 8, 0, MapGenVillage.villageSpawnBiomes);
+            boolean var8 = this.worldObj.getWorldChunkManager().areBiomesViable(var3 * 16 + 8, var4 * 16 + 8, 0, villageSpawnBiomes);
 
             if (var8)
             {

@@ -13,6 +13,7 @@ import betterterrain.feature.plant.MelonGen;
 import betterterrain.feature.plant.TallGrassGen;
 import betterterrain.feature.terrain.OreGen;
 import betterterrain.structure.mapgen.BTAMapGenScatteredFeature;
+import betterterrain.structure.mapgen.BTAMapGenVillage;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.config.WorldConfigurationInfoLegacy;
 import betterterrain.world.generate.surface.SurfaceBuilder;
@@ -578,7 +579,7 @@ public class BTABiome extends BiomeGenBase {
 	private boolean canSpawnStronghold = true;
 	
 	public BTABiome setSpawnsVillages(boolean isDesert) {
-		MapGenVillage.villageSpawnBiomes.add(this);
+		BTAMapGenVillage.villageSpawnBiomes.add(this);
 		
 		if (isDesert) {
 			ComponentVillageStartPiece.addDesertBiome(this);

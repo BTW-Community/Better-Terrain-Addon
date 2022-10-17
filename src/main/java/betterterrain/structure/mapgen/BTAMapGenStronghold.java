@@ -1,7 +1,6 @@
 package betterterrain.structure.mapgen;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +14,6 @@ import net.minecraft.src.ChunkPosition;
 import net.minecraft.src.ComponentStrongholdStairs2;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.StructureStart;
-import net.minecraft.src.StructureStrongholdStart;
 
 public class BTAMapGenStronghold extends BTAMapGenStructure
 {
