@@ -3,7 +3,6 @@ package betterterrain.world.generate;
 import java.util.List;
 import java.util.Random;
 
-import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
 import betterterrain.structure.mapgen.BTAMapGenBase;
@@ -249,7 +248,7 @@ public class BetaChunkProvider implements BTAChunkProvider
 
 									if (useSand)
 									{
-										if (var10 == BetterBiomesConfiguration.badlands || var10 == BetterBiomesConfiguration.badlandsPlateau || var10 == BetterBiomesConfiguration.outback) {
+										if (var10.biomeID == 182 /*badlands*/ || var10.biomeID == 183 /*badlands plateau*/ || var10.biomeID == 180 /*outback*/) {
 											var15 = DecoBlocks.legacyRedSand.blockID;
 											var16 = DecoBlocks.legacyRedSand.blockID;
 										}
@@ -267,7 +266,7 @@ public class BetaChunkProvider implements BTAChunkProvider
 
 								var14 = var13;
 
-								if (var10.biomeID == BetterBiomesConfiguration.badlandsPlateau.biomeID)
+								if (var10.biomeID == 183 /*badlands plateau*/)
 									var14 += 10;
 
 								if (var17 >= var5 - 1)

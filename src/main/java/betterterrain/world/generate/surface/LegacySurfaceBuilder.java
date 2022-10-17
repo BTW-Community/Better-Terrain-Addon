@@ -2,7 +2,6 @@ package betterterrain.world.generate.surface;
 
 import java.util.Random;
 
-import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.BTAMod;
 import betterterrain.BTAVersion;
 import betterterrain.biome.BTABiome;
@@ -75,8 +74,8 @@ public class LegacySurfaceBuilder extends SurfaceBuilder {
 									fillerBlock = (byte)Block.stone.blockID;
 								}
 								else if (j >= seaLevel - (8 + rand.nextInt(2)) && j <= seaLevel + 1) {
-									if(biome.biomeID == BetterBiomesConfiguration.oldValley.biomeID || biome.biomeID == BetterBiomesConfiguration.valleyMountains.biomeID || biome.biomeID == BetterBiomesConfiguration.valley.biomeID || 
-											((biome.biomeID == BetterBiomesConfiguration.tropics.biomeID || biome.biomeID == BetterBiomesConfiguration.tropicsEdge.biomeID || biome.biomeID == BetterBiomesConfiguration.tropicsRiver.biomeID) && generatorInfo.getBTAVersion().isVersionAtLeast(BTAVersion.V1_2_0))) {
+									if(biome.biomeID == 131 /*old valley*/ || biome.biomeID == 130 /*valley mountains*/ || biome.biomeID == 162 /*valley*/ ||
+											((biome.biomeID == 112 /*tropics*/ || biome.biomeID == 237 /*tropics edge*/ || biome.biomeID == 205 /*tropics river*/) && generatorInfo.getBTAVersion().isVersionAtLeast(BTAVersion.V1_2_0))) {
 										topBlock = (byte)Block.sand.blockID;
 										fillerBlock = (byte)Block.sand.blockID;
 									}
@@ -98,8 +97,8 @@ public class LegacySurfaceBuilder extends SurfaceBuilder {
 										}
 
 										if (useSand) {
-											if (biome == BetterBiomesConfiguration.badlands || biome == BetterBiomesConfiguration.badlandsPlateau || biome == BetterBiomesConfiguration.badlandsEdge || biome == BetterBiomesConfiguration.badlandsRiver || 
-													biome == BetterBiomesConfiguration.outback || biome == BetterBiomesConfiguration.outbackRiver || biome == BetterBiomesConfiguration.redSandBeach) {
+											if (biome.biomeID == 182 /*badlands*/ || biome.biomeID == 183 /*badlands plateau*/ || biome.biomeID == 232 /*badlands edge*/ || biome.biomeID == 204 /*badlands river*/ ||
+													biome.biomeID == 180 /*outback*/ || biome.biomeID == 203 /*outback river*/ || biome.biomeID == 240 /*red sand beach*/) {
 												topBlock = DecoBlocks.legacyRedSand.blockID;
 												fillerBlock = DecoBlocks.legacyRedSand.blockID;
 											}
@@ -132,7 +131,7 @@ public class LegacySurfaceBuilder extends SurfaceBuilder {
 
 								remaingDepth = soilDepthNoiseSample;
 
-								if (biome.biomeID == BetterBiomesConfiguration.badlandsPlateau.biomeID)
+								if (biome.biomeID == 183 /*badlands plateau*/)
 									remaingDepth += 10;
 
 								if (j >= seaLevel - 1) {

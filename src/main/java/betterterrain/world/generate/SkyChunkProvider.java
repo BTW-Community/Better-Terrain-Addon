@@ -3,7 +3,6 @@ package betterterrain.world.generate;
 import java.util.List;
 import java.util.Random;
 
-import betterbiomes.biome.BetterBiomesConfiguration;
 import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
 import betterterrain.structure.mapgen.BTAMapGenBase;
@@ -224,7 +223,7 @@ public class SkyChunkProvider implements BTAChunkProvider
                             var3[var18] = var15;
                             var14 = var13;
 
-							if (var10.biomeID == BetterBiomesConfiguration.badlandsPlateau.biomeID)
+							if (var10.biomeID == 183 /*badlands plateau*/)
 								var14 += 10;
                         }
                         else if (var14 > 0)

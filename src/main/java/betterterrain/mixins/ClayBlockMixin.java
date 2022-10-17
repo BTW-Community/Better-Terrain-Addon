@@ -1,6 +1,8 @@
 package betterterrain.mixins;
 
+import betterterrain.BTAMod;
 import betterterrain.block.util.ClayHelper;
+import btw.BTWAddon;
 import btw.block.blocks.ClayBlock;
 import btw.item.BTWItems;
 import net.fabricmc.api.EnvType;
@@ -18,6 +20,11 @@ import java.util.List;
 public class ClayBlockMixin extends Block {
     protected ClayBlockMixin(int blockID, Material material) {
         super(blockID, material);
+    }
+
+    static {
+        // BTA for some reason isn't loaded without this?
+        BTWAddon bta = BTAMod.getInstance();
     }
 
     @Inject(method = "dropBlockAsItemWithChance", at = @At("HEAD"), cancellable = true)

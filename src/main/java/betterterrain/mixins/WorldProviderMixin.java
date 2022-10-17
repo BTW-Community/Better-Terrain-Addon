@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(WorldProvider.class)
@@ -22,9 +23,20 @@ public abstract class WorldProviderMixin implements WorldProviderInterface {
     @Shadow
     public String field_82913_c; // generator options
 
-    @Inject(method = "createChunkGenerator", at = @At(value = "RETURN", ordinal = 1), cancellable = true)
+    @Shadow public WorldChunkManager worldChunkMgr;
+
+    @Inject(method = "registerWorldChunkManager", at = @At("TAIL"))
+    public void registerWorldChunkManager(CallbackInfo ci) {
+        if (this.worldObj.getWorldInfo().getTerrainType() != WorldType.FLAT) {
+            this.worldChunkMgr = ((WorldTypeInterface) this.terrainType).getChunkManager(this.worldObj, this.field_82913_c);
+        }
+    }
+
+    @Inject(method = "createChunkGenerator", at = @At("RETURN"), cancellable = true)
     public void createChunkGenerator(CallbackInfoReturnable<IChunkProvider> cir) {
-        cir.setReturnValue((IChunkProvider) ((WorldTypeInterface) this.terrainType).getChunkManager(this.worldObj, this.field_82913_c));
+        if (this.worldObj.getWorldInfo().getTerrainType() != WorldType.FLAT) {
+            cir.setReturnValue(((WorldTypeInterface) this.terrainType).getChunkProviderOverworld(this.worldObj, this.worldObj.getSeed(), this.worldObj.getWorldInfo().isMapFeaturesEnabled(), this.getGeneratorOptions()));
+        }
     }
 
     @Inject(method = "getCloudHeight", at = @At("RETURN"), cancellable = true)

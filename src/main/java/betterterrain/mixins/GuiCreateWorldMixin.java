@@ -33,7 +33,7 @@ public abstract class GuiCreateWorldMixin extends GuiScreen implements GuiCreate
         this.worldTypeId = ((WorldType) BTAMod.BTAWorldType).getWorldTypeID();
     }
 
-    @Inject(method = "initGui", at = @At("RETURN"))
+    @Inject(method = "initGui", at = @At("HEAD"))
     public void initBTAGUI(CallbackInfo ci) {
         StringTranslate stringTranslate = StringTranslate.getInstance();
 
@@ -47,6 +47,8 @@ public abstract class GuiCreateWorldMixin extends GuiScreen implements GuiCreate
     public void initGeneratorOptions(GuiButton guiButton, CallbackInfo ci) {
         if (((WorldTypeInterface) WorldType.worldTypes[this.worldTypeId]).isBTA() && this.generatorOptionsToUse.equals("")) {
             this.generatorOptionsToUse = WorldConfigurationInfo.createDefaultConfiguration(isDeco).toString();
+
+            System.out.println(this.generatorOptionsToUse);
 
             SurfaceBuilder.defaultBuilder.hasBeenInit = false;
             SurfaceBuilder.legacyBuilder.hasBeenInit = false;
@@ -71,7 +73,10 @@ public abstract class GuiCreateWorldMixin extends GuiScreen implements GuiCreate
             type = WorldType.worldTypes[this.worldTypeId + 1];
         }
 
-        return new WorldSettings(settings.getSeed(), settings.getGameType(), settings.isMapFeaturesEnabled(), settings.getHardcoreEnabled(), type);
+        WorldSettings newSettings = new WorldSettings(settings.getSeed(), settings.getGameType(), settings.isMapFeaturesEnabled(), settings.getHardcoreEnabled(), type);
+        newSettings.func_82750_a(this.generatorOptionsToUse);
+
+        return newSettings;
     }
 
     @Inject(method = "actionPerformed", at = @At("TAIL"))
