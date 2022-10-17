@@ -5,7 +5,7 @@ import java.util.Random;
 import betterbiomes.feature.tree.OldOakGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import net.minecraft.src.FCEntityWolf;
+import btw.entity.mob.WolfEntity;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenBigTree;
 import net.minecraft.src.WorldGenTrees;
@@ -14,7 +14,7 @@ import net.minecraft.src.WorldGenerator;
 public class AncientForestBiome extends BTABiome {
     public AncientForestBiome(int id, String internalName, Climate climate) {
 		super(id, internalName, climate);
-        this.spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 5, 4, 4));
+        this.spawnableCreatureList.add(new SpawnListEntry(WolfEntity.class, 5, 4, 4));
         this.btaBiomeDecorator.treesPerChunk = 10;
         this.btaBiomeDecorator.grassPerChunk = 2;
     }

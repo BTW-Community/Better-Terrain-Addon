@@ -1,16 +1,12 @@
 package betterterrain;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import com.google.gson.JsonObject;
+import btw.AddonHandler;
+import btw.BTWAddon;
 
 import betterterrain.biome.BiomeConfiguration;
 import betterterrain.world.config.AddonConfigurationInfo;
-import net.minecraft.src.FCAddOn;
-import net.minecraft.src.FCAddOnHandler;
 
-public abstract class BTAAddon extends FCAddOn {
+public abstract class BTAAddon extends BTWAddon {
 	public final String internalName;
 	
 	public AddonVersion currentVersion;
@@ -44,7 +40,7 @@ public abstract class BTAAddon extends FCAddOn {
 	//------ Other Functionality ------//
 	
 	public static BTAAddon getAddonByInternalName(String name) {
-		for (FCAddOn mod : FCAddOnHandler.m_ModList.values()) {
+		for (BTWAddon mod : AddonHandler.modList.values()) {
 			if (mod instanceof BTAAddon && ((BTAAddon) mod).internalName.equals(name)) {
 				return (BTAAddon) mod;
 			}

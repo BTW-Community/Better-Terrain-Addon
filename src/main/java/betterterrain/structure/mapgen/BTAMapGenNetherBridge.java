@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import net.minecraft.src.FCEntityBlaze;
-import net.minecraft.src.FCEntitySkeleton;
+import btw.entity.mob.BlazeEntity;
+import btw.entity.mob.SkeletonEntity;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.StructureBoundingBox;
 import net.minecraft.src.StructureNetherBridgeStart;
@@ -17,8 +17,8 @@ public class BTAMapGenNetherBridge extends BTAMapGenStructure
 
     public BTAMapGenNetherBridge()
     {
-        this.m_mobSpawnList.add(new SpawnListEntry(FCEntityBlaze.class, 10, 2, 3));
-        this.m_mobSpawnList.add(new SpawnListEntry(FCEntitySkeleton.class, 10, 4, 4));
+        this.m_mobSpawnList.add(new SpawnListEntry(BlazeEntity.class, 10, 2, 3));
+        this.m_mobSpawnList.add(new SpawnListEntry(SkeletonEntity.class, 10, 4, 4));
     }
 
     public List getSpawnList()

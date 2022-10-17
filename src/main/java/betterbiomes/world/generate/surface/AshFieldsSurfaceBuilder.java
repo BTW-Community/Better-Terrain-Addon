@@ -2,12 +2,11 @@ package betterbiomes.world.generate.surface;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
+import betterterrain.BTAMod;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.NetherSurfaceBuilder;
-import betterterrain.world.generate.surface.SurfaceBuilder;
-import betterterrain.world.generate.surface.SurfaceBuilder.SurfaceType;
+import deco.block.DecoBlocks;
 import net.minecraft.src.WorldType;
 
 public class AshFieldsSurfaceBuilder extends NetherSurfaceBuilder {
@@ -31,11 +30,11 @@ public class AshFieldsSurfaceBuilder extends NetherSurfaceBuilder {
 		boolean usePumice = pumiceNoiseGen.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), pumiceNoiseScale) > 0.2;
 		boolean usePumice2 = pumiceNoiseGen2.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), pumiceNoiseScale) > 0.2;
 		
-		if (usePumice && DecoIntegration.isDecoInstalled() && worldType.isDeco() && surfaceType != SurfaceType.SUBFILLER) {
-			return new int[] {DecoIntegration.pumice.blockID, 0};
+		if (usePumice && BTAMod.isDecoInstalled() && (worldType).isDeco() && surfaceType != SurfaceType.SUBFILLER) {
+			return new int[] {DecoBlocks.pumice.blockID, 0};
 		}
-		else if (usePumice2 && DecoIntegration.isDecoInstalled() && worldType.isDeco() && surfaceType != SurfaceType.SUBFILLER) {
-			return new int[] {DecoIntegration.pumice.blockID, 0};
+		else if (usePumice2 && BTAMod.isDecoInstalled() && (worldType).isDeco() && surfaceType != SurfaceType.SUBFILLER) {
+			return new int[] {DecoBlocks.pumice.blockID, 0};
 		}
 		else {
 			return super.getSurfaceBlock(i, j, k, surfaceJ, soilDepth, surfaceType, seaLevel, rand, generatorInfo, worldType);

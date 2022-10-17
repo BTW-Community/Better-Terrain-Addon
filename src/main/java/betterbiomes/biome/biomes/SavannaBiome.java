@@ -8,6 +8,7 @@ import betterterrain.BTAVersion;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.biome.layer.HillsLayer;
+import betterterrain.mixins.GenLayerAccessor;
 import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.WorldGenShrub;
 import net.minecraft.src.WorldGenerator;
@@ -33,9 +34,9 @@ public class SavannaBiome extends BTABiome {
 	@Override
 	public int getSubVariant(WorldConfigurationInfo generatorOptions, HillsLayer layer) {
 		if (this.biomeID == BetterBiomesConfiguration.savanna.biomeID) {
-			if (layer.getChunkSeed() != lastRandSeed) {
-				rand.setSeed(layer.getChunkSeed());
-				lastRandSeed = layer.getChunkSeed();
+			if (((GenLayerAccessor) layer).getChunkSeed() != lastRandSeed) {
+				rand.setSeed(((GenLayerAccessor) layer).getChunkSeed());
+				lastRandSeed = ((GenLayerAccessor) layer).getChunkSeed();
 			}
 
 			if (generatorOptions.getBTAVersion().isVersionAtLeast(BTAVersion.V2_0_3)) {

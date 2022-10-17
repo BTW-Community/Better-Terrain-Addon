@@ -3,7 +3,7 @@ package betterbiomes.biome.biomes;
 import java.util.Random;
 
 import betterbiomes.feature.tree.TaigaGen3;
-import betterterrain.DecoIntegration;
+import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.feature.plant.TallGrassGen;
@@ -12,10 +12,8 @@ import betterterrain.feature.tree.TaigaGen5;
 import betterterrain.feature.tree.TaigaGen6;
 import betterterrain.feature.tree.TaigaGen7;
 import betterterrain.world.config.WorldConfigurationInfo;
+import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
-import net.minecraft.src.FCEntityWolf;
-import net.minecraft.src.SpawnListEntry;
-import net.minecraft.src.WorldGenTaiga2;
 import net.minecraft.src.WorldGenerator;
 
 public class FirCanyonBiome extends BTABiome {
@@ -24,9 +22,9 @@ public class FirCanyonBiome extends BTABiome {
         this.btaBiomeDecorator.treesPerChunk = 10;
         this.btaBiomeDecorator.grassPerChunk = 20;
         
-        if (DecoIntegration.isDecoInstalled()) {
-        	this.topBlockExt = DecoIntegration.redSand.blockID;
-        	this.fillerBlockExt = DecoIntegration.redSand.blockID;
+        if (BTAMod.isDecoInstalled()) {
+        	this.topBlockExt = DecoBlocks.legacyRedSand.blockID;
+        	this.fillerBlockExt = DecoBlocks.legacyRedSand.blockID;
         }
 	}
 

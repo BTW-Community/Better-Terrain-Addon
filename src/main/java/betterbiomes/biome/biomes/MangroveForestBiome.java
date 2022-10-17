@@ -5,16 +5,7 @@ import java.util.Random;
 import betterbiomes.feature.tree.MangroveGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import net.minecraft.src.FCEntityChicken;
-import net.minecraft.src.FCEntityCreeper;
-import net.minecraft.src.FCEntityEnderman;
-import net.minecraft.src.FCEntityJungleSpider;
-import net.minecraft.src.FCEntityOcelot;
-import net.minecraft.src.FCEntityPig;
-import net.minecraft.src.FCEntitySkeleton;
-import net.minecraft.src.FCEntitySlime;
-import net.minecraft.src.FCEntitySpider;
-import net.minecraft.src.FCEntityZombie;
+import btw.entity.mob.*;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenerator;
 
@@ -29,18 +20,18 @@ public class MangroveForestBiome extends BTABiome {
         this.btaBiomeDecorator.clayPerChunk = 1;
         this.btaBiomeDecorator.waterlilyPerChunk = 10;
 		this.spawnableCreatureList.clear();
-		this.spawnableCreatureList.add(new SpawnListEntry(FCEntityChicken.class, 10, 4, 4));
-		this.spawnableCreatureList.add(new SpawnListEntry(FCEntityPig.class, 10, 4, 4));
-		this.spawnableCreatureList.add(new SpawnListEntry(FCEntityChicken.class, 10, 4, 4));
+		this.spawnableCreatureList.add(new SpawnListEntry(ChickenEntity.class, 10, 4, 4));
+		this.spawnableCreatureList.add(new SpawnListEntry(PigEntity.class, 10, 4, 4));
+		this.spawnableCreatureList.add(new SpawnListEntry(ChickenEntity.class, 10, 4, 4));
 		this.spawnableMonsterList.clear();
-		this.spawnableMonsterList.add(new SpawnListEntry(FCEntityJungleSpider.class, 2, 1, 1));
-		this.spawnableMonsterList.add(new SpawnListEntry(FCEntitySpider.class, 10, 4, 4));
-		this.spawnableMonsterList.add(new SpawnListEntry(FCEntityZombie.class, 10, 4, 4));
-		this.spawnableMonsterList.add(new SpawnListEntry(FCEntitySkeleton.class, 10, 4, 4));
-		this.spawnableMonsterList.add(new SpawnListEntry(FCEntityCreeper.class, 10, 4, 4));
-		this.spawnableMonsterList.add(new SpawnListEntry(FCEntitySlime.class, 10, 4, 4));
-		this.spawnableMonsterList.add(new SpawnListEntry(FCEntityEnderman.class, 1, 1, 4));
-		this.spawnableMonsterList.add(new SpawnListEntry(FCEntityOcelot.class, 2, 1, 1));
+		this.spawnableMonsterList.add(new SpawnListEntry(JungleSpiderEntity.class, 2, 1, 1));
+		this.spawnableMonsterList.add(new SpawnListEntry(SpiderEntity.class, 10, 4, 4));
+		this.spawnableMonsterList.add(new SpawnListEntry(ZombieEntity.class, 10, 4, 4));
+		this.spawnableMonsterList.add(new SpawnListEntry(SkeletonEntity.class, 10, 4, 4));
+		this.spawnableMonsterList.add(new SpawnListEntry(CreeperEntity.class, 10, 4, 4));
+		this.spawnableMonsterList.add(new SpawnListEntry(SlimeEntity.class, 10, 4, 4));
+		this.spawnableMonsterList.add(new SpawnListEntry(EndermanEntity.class, 1, 1, 4));
+		this.spawnableMonsterList.add(new SpawnListEntry(OcelotEntity.class, 2, 1, 1));
 	}
 
     /**

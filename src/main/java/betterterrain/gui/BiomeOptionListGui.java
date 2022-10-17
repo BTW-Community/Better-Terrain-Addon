@@ -1,6 +1,7 @@
 package betterterrain.gui;
 
 import betterterrain.biome.BiomeInfo;
+import betterterrain.mixins.GuiScreenAccessor;
 import net.minecraft.src.GuiSlot;
 import net.minecraft.src.Tessellator;
 
@@ -11,7 +12,7 @@ class BiomeOptionListGui extends GuiSlot
 
     public BiomeOptionListGui(BiomeOptionsGui guiBiomeOptions)
     {
-        super(guiBiomeOptions.mc, guiBiomeOptions.width, guiBiomeOptions.height, 43, guiBiomeOptions.height - 60, 24);
+        super(((GuiScreenAccessor) guiBiomeOptions).getMinecraft(), guiBiomeOptions.width, guiBiomeOptions.height, 43, guiBiomeOptions.height - 60, 24);
         this.guiBiomeOptions = guiBiomeOptions;
         this.selected = -1;
     }
@@ -70,18 +71,18 @@ class BiomeOptionListGui extends GuiSlot
         	biomeName = "Badlands";
         
         if (decoOnly && !guiBiomeOptions.isDeco()) {
-            this.guiBiomeOptions.fontRenderer.drawString(biomeName + " (Deco)", x + 1, y + 7, 8526880);
-            this.guiBiomeOptions.fontRenderer.drawString("-", x + 185, y + 7, 8526880);
+            ((GuiScreenAccessor) this.guiBiomeOptions).getFontRenderer().drawString(biomeName + " (Deco)", x + 1, y + 7, 8526880);
+            ((GuiScreenAccessor) this.guiBiomeOptions).getFontRenderer().drawString("-", x + 185, y + 7, 8526880);
         }
         else if (biomeEnabled)
         {
-            this.guiBiomeOptions.fontRenderer.drawString(biomeName, x + 1, y + 7, 16777215);
-            this.guiBiomeOptions.fontRenderer.drawString("YES", x + 179, y + 7, 16777215);
+            ((GuiScreenAccessor) this.guiBiomeOptions).getFontRenderer().drawString(biomeName, x + 1, y + 7, 16777215);
+            ((GuiScreenAccessor) this.guiBiomeOptions).getFontRenderer().drawString("YES", x + 179, y + 7, 16777215);
         }
         else
         {
-            this.guiBiomeOptions.fontRenderer.drawString(biomeName, x + 1, y + 7, 10526880);
-            this.guiBiomeOptions.fontRenderer.drawString("NO", x + 182, y + 7, 10526880);
+            ((GuiScreenAccessor) this.guiBiomeOptions).getFontRenderer().drawString(biomeName, x + 1, y + 7, 10526880);
+            ((GuiScreenAccessor) this.guiBiomeOptions).getFontRenderer().drawString("NO", x + 182, y + 7, 10526880);
         }
     }
 

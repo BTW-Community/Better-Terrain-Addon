@@ -2,7 +2,7 @@ package betterbiomes.feature.terrain;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
+import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
@@ -75,7 +75,7 @@ public class CrystalGen extends WorldGenerator {
 									world.setBlock((int) dx + i, (int) dy, (int) dz + k, Block.glowStone.blockID, 0, 2);
 								}
 								else {
-									world.setBlock((int) dx + i, (int) dy, (int) dz + k, DecoIntegration.amethyst.blockID, 0, 2);
+									world.setBlock((int) dx + i, (int) dy, (int) dz + k, DecoBlocks.amethyst.blockID, 0, 2);
 								}
 							}
 						}
@@ -96,6 +96,6 @@ public class CrystalGen extends WorldGenerator {
 	}
 	
 	public boolean doesCrystalIgnoreBlock(int blockID) {
-		return blockID == 0 || blockID == Block.lavaStill.blockID || blockID == DecoIntegration.amethystShardBlock.blockID;
+		return blockID == 0 || blockID == Block.lavaStill.blockID || blockID == DecoBlocks.amethystShard.blockID;
 	}
 }

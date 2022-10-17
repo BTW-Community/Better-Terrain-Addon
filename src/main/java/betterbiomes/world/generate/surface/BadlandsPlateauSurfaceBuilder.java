@@ -3,11 +3,10 @@ package betterbiomes.world.generate.surface;
 import java.util.ArrayList;
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.SurfaceBuilder;
-import betterterrain.world.generate.surface.SurfaceBuilder.SurfaceType;
+import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.WorldType;
 
@@ -68,12 +67,12 @@ public class BadlandsPlateauSurfaceBuilder extends SurfaceBuilder {
 			return new int[] {Block.grass.blockID, 0};
 		}
 		else {
-			int blockID = DecoIntegration.terracotta.blockID;
+			int blockID = DecoBlocks.terracotta.blockID;
 			int metadata = 0;
 			
-			if (blockID == DecoIntegration.terracotta.blockID && metaLocations[j & 15] != -1) {
+			if (blockID == DecoBlocks.terracotta.blockID && metaLocations[j & 15] != -1) {
 				if (j < 95 || (j < 127 && j != surfaceJ)) {
-					blockID = DecoIntegration.stainedTerracotta.blockID;
+					blockID = DecoBlocks.stainedTerracotta.blockID;
 					metadata = metaLocations[j & 15];
 				}
 			}

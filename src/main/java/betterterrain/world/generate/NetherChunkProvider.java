@@ -21,7 +21,6 @@ import net.minecraft.src.IProgressUpdate;
 import net.minecraft.src.NoiseGeneratorOctaves;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenFlowers;
-import net.minecraft.src.WorldType;
 
 public class NetherChunkProvider implements BTAChunkProvider
 {

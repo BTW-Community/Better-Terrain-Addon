@@ -8,15 +8,15 @@ import betterterrain.biome.Climate;
 import betterterrain.feature.plant.TallGrassGen;
 import betterterrain.feature.tree.TaigaGen6;
 import betterterrain.feature.tree.TaigaGen7;
+import btw.entity.mob.WolfEntity;
 import net.minecraft.src.Block;
-import net.minecraft.src.FCEntityWolf;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenerator;
 
 public class ShieldBiome extends BTABiome {
 	public ShieldBiome(int id, String internalName, Climate climate) {
 		super(id, internalName, climate);
-        this.spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 5, 4, 4));
+        this.spawnableCreatureList.add(new SpawnListEntry(WolfEntity.class, 5, 4, 4));
         this.btaBiomeDecorator.treesPerChunk = 7;
         this.btaBiomeDecorator.grassPerChunk = 2;
         this.btaBiomeDecorator.generateStoneInGrass = true;

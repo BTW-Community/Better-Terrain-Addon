@@ -2,8 +2,8 @@ package betterbiomes.feature.tree;
 
 import java.util.Random;
 
+import btw.world.util.BlockPos;
 import net.minecraft.src.Block;
-import net.minecraft.src.FCUtilsBlockPos;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
 
@@ -123,8 +123,7 @@ public class PalmTreeSmallGen extends WorldGenerator {
 				if (rand.nextInt(5) == 0 && this.spawnCocoa) {
 					int facing = rand.nextInt(4) + 2;
 					
-					FCUtilsBlockPos pos = new FCUtilsBlockPos(x + leanX * i, height, z + leanZ * i);
-					pos.AddFacingAsOffset(facing);
+					BlockPos pos = new BlockPos(x + leanX * i, height, z + leanZ * i, facing);
 					
 					int meta = 0;
 					
@@ -138,7 +137,7 @@ public class PalmTreeSmallGen extends WorldGenerator {
 						meta = 1;
 					}
 					
-					world.setBlockAndMetadata(pos.i, pos.j, pos.k, Block.cocoaPlant.blockID, meta);
+					world.setBlockAndMetadata(pos.x, pos.y, pos.z, Block.cocoaPlant.blockID, meta);
 				}
 				
 				height++;

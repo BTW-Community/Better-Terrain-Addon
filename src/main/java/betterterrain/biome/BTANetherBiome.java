@@ -2,16 +2,16 @@ package betterterrain.biome;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
 import betterterrain.feature.terrain.BasaltPillarGen;
 import betterterrain.feature.terrain.GlowstoneGen;
 import betterterrain.feature.terrain.NetherLavaGen;
 import betterterrain.feature.terrain.OreGen;
 import betterterrain.world.config.WorldConfigurationInfo;
+import btw.entity.mob.GhastEntity;
+import btw.entity.mob.MagmaCubeEntity;
+import btw.entity.mob.ZombiePigmanEntity;
+import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
-import net.minecraft.src.FCEntityGhast;
-import net.minecraft.src.FCEntityMagmaCube;
-import net.minecraft.src.FCEntityPigZombie;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.Vec3;
 import net.minecraft.src.World;
@@ -34,9 +34,9 @@ public abstract class BTANetherBiome extends BTABiome {
         this.spawnableCreatureList.clear();
         this.spawnableWaterCreatureList.clear();
         this.spawnableCaveCreatureList.clear();
-        this.spawnableMonsterList.add(new SpawnListEntry(FCEntityGhast.class, 50, 4, 4));
-        this.spawnableMonsterList.add(new SpawnListEntry(FCEntityPigZombie.class, 100, 4, 4));
-        this.spawnableMonsterList.add(new SpawnListEntry(FCEntityMagmaCube.class, 1, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(GhastEntity.class, 50, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(ZombiePigmanEntity.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(MagmaCubeEntity.class, 1, 4, 4));
 	}
 	
 	public Vec3 getFogColor(World world) {
@@ -84,11 +84,11 @@ public abstract class BTANetherBiome extends BTABiome {
 		}
 		
 		//Infused stone blobs
-		gen = new OreGen(DecoIntegration.infusedStone.blockID, 0, 32, 100, new int[] {Block.netherrack.blockID, DecoIntegration.basalt.blockID});
+		gen = new OreGen(DecoBlocks.infusedStone.blockID, 0, 32, 100, new int[] {Block.netherrack.blockID, DecoBlocks.basalt.blockID});
 		this.genStandardOre1(world, rand, infusedStonePerChunk, gen, chunkX, chunkZ, 5, maxInfusedStoneHeight);
 		
 		//Magma
-		gen = new OreGen(DecoIntegration.magma.blockID, 0, 8, 24, new int[] {Block.netherrack.blockID, DecoIntegration.basalt.blockID, DecoIntegration.infusedStone.blockID});
+		gen = new OreGen(DecoBlocks.magma.blockID, 0, 8, 24, new int[] {Block.netherrack.blockID, DecoBlocks.basalt.blockID, DecoBlocks.infusedStone.blockID});
 		this.genStandardOre1(world, rand, magmaPerChunk, gen, chunkX, chunkZ, 27, 36);
 		
 		//Quartz

@@ -6,11 +6,7 @@ import betterterrain.world.config.WorldConfigurationInfoLegacy;
 import betterterrain.world.generate.BetaChunkProvider;
 import betterterrain.world.generate.EndChunkProvider;
 import betterterrain.world.generate.NetherChunkProvider;
-import net.minecraft.src.ChunkProviderHell;
-import net.minecraft.src.IChunkProvider;
-import net.minecraft.src.World;
-import net.minecraft.src.WorldChunkManager;
-import net.minecraft.src.WorldType;
+import net.minecraft.src.*;
 
 public class BetaWorldType extends WorldType {
     public BetaWorldType(int par1, String par2Str) {

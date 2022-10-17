@@ -3,7 +3,7 @@ package betterbiomes.biome.biomes;
 import java.util.Random;
 
 import betterbiomes.feature.tree.CherryTreeGen;
-import betterterrain.DecoIntegration;
+import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.world.config.WorldConfigurationInfo;
@@ -25,7 +25,7 @@ public class FrozenSpringsPondBiome extends BTABiome {
     {
     	WorldGenerator gen;
     	
-    	if (rand.nextInt(5) == 0 && DecoIntegration.isDecoInstalled() && worldType.isDeco()) {
+    	if (rand.nextInt(5) == 0 && BTAMod.isDecoInstalled() && (worldType).isDeco()) {
     		gen = new CherryTreeGen();
     	}
     	else {

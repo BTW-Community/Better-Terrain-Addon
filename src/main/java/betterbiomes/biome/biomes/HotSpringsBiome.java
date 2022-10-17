@@ -3,7 +3,6 @@ package betterbiomes.biome.biomes;
 import java.util.Random;
 
 import betterbiomes.world.generate.surface.HotSpringsSurfaceBuilder;
-import betterterrain.DecoIntegration;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.feature.plant.TallGrassGen;
@@ -12,11 +11,8 @@ import betterterrain.feature.tree.TaigaGen5;
 import betterterrain.feature.tree.TaigaGen6;
 import betterterrain.feature.tree.TaigaGen7;
 import betterterrain.world.config.WorldConfigurationInfo;
+import btw.entity.mob.WolfEntity;
 import net.minecraft.src.Block;
-import net.minecraft.src.FCEntityWolf;
-import net.minecraft.src.FCUtilsBlockPos;
-import net.minecraft.src.FCUtilsColor;
-import net.minecraft.src.Material;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
@@ -25,7 +21,7 @@ public class HotSpringsBiome extends BTABiome {
 	public HotSpringsBiome(int id, String internalName, Climate climate) {
 		super(id, internalName, climate);
 
-		spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 8, 4, 4));
+		spawnableCreatureList.add(new SpawnListEntry(WolfEntity.class, 8, 4, 4));
 		
         this.btaBiomeDecorator.treesPerChunk = 8;
         this.btaBiomeDecorator.grassPerChunk = 15;

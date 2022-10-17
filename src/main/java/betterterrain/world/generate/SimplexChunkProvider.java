@@ -30,7 +30,6 @@ import net.minecraft.src.World;
 import net.minecraft.src.WorldGenDungeons;
 import net.minecraft.src.WorldGenFlowers;
 import net.minecraft.src.WorldGenLakes;
-import net.minecraft.src.WorldType;
 
 public class SimplexChunkProvider implements IChunkProvider
 {

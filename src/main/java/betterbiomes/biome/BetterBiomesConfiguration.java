@@ -111,20 +111,11 @@ import betterbiomes.biome.biomes.VolcanicJungle;
 import betterbiomes.biome.biomes.WetlandsBiome;
 import betterbiomes.biome.biomes.WillowGroveBiome;
 import betterbiomes.biome.biomes.deprecated.WoodedSteppeBiome;
-import betterterrain.biome.layer.HillsLayer;
-import betterterrain.structure.mapgen.BTAMapGenScatteredFeature;
 import betterterrain.world.config.WorldConfigurationInfo;
-import betterterrain.world.generate.surface.IcyPeaksSurfaceBuilder;
 import betterterrain.world.generate.surface.NetherSurfaceBuilder;
 import betterterrain.world.generate.surface.NoShorelineSurfaceBuilder;
 import betterterrain.world.generate.surface.StonySurfaceBuilder;
-import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.ComponentVillageStartPiece;
-import net.minecraft.src.FCUtilsHardcoreSpawn;
-import net.minecraft.src.MapGenVillage;
-import net.minecraft.src.StructureScatteredFeatureStart;
-import net.minecraft.src.WorldGenPumpkin;
-import net.minecraft.src.WorldGenReed;
+import btw.util.hardcorespawn.HardcoreSpawnUtils;
 
 public class BetterBiomesConfiguration extends BiomeConfiguration {
 	public static final int
@@ -1005,16 +996,16 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			}
 		}
 
-		FCUtilsHardcoreSpawn.blacklistedBiomes.add(tropics);
-		FCUtilsHardcoreSpawn.blacklistedBiomes.add(tropicsRiver);
-		FCUtilsHardcoreSpawn.blacklistedBiomes.add(tropicsEdge);
-		
-		FCUtilsHardcoreSpawn.blacklistedBiomes.add(rainforest);
-		FCUtilsHardcoreSpawn.blacklistedBiomes.add(rainforestRiver);
-		FCUtilsHardcoreSpawn.blacklistedBiomes.add(rainforestEdge);
+		HardcoreSpawnUtils.blacklistedBiomes.add(tropics);
+		HardcoreSpawnUtils.blacklistedBiomes.add(tropicsRiver);
+		HardcoreSpawnUtils.blacklistedBiomes.add(tropicsEdge);
 
-		FCUtilsHardcoreSpawn.blacklistedBiomes.add(volcanicJungle);
-		FCUtilsHardcoreSpawn.blacklistedBiomes.add(volcanicBeach);
+		HardcoreSpawnUtils.blacklistedBiomes.add(rainforest);
+		HardcoreSpawnUtils.blacklistedBiomes.add(rainforestRiver);
+		HardcoreSpawnUtils.blacklistedBiomes.add(rainforestEdge);
+
+		HardcoreSpawnUtils.blacklistedBiomes.add(volcanicJungle);
+		HardcoreSpawnUtils.blacklistedBiomes.add(volcanicBeach);
 	}
 	
 	public void setBiomeVariants() {

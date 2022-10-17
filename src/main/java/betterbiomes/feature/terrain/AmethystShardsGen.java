@@ -1,13 +1,11 @@
 package betterbiomes.feature.terrain;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
-import net.minecraft.src.DecoUtilsBlock;
-import net.minecraft.src.FCUtilsBlockPos;
+import btw.world.util.BlockPos;
+import deco.block.DecoBlocks;
+import net.minecraft.src.Facing;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
 
@@ -23,16 +21,16 @@ public class AmethystShardsGen extends WorldGenerator {
 				ArrayList<Integer> validOrientations = new ArrayList(0);
 
 				for (int dir = 0; dir < 6; dir++) {
-					FCUtilsBlockPos pos = new FCUtilsBlockPos(i, j, k, DecoUtilsBlock.getOppositeFacing(dir));
+					BlockPos pos = new BlockPos(i, j, k, Facing.oppositeSide[dir]);
 
-					if (world.getBlockId(pos.i, pos.j, pos.k) == DecoIntegration.amethyst.blockID) {
+					if (world.getBlockId(pos.x, pos.y, pos.z) == DecoBlocks.amethyst.blockID) {
 						validOrientations.add(dir);
 					}
 				}
 
 				if (validOrientations.size() > 0) {
 					int meta = validOrientations.get(rand.nextInt(validOrientations.size()));
-					world.setBlock(i, j, k, DecoIntegration.amethystShardBlock.blockID, meta, 2);
+					world.setBlock(i, j, k, DecoBlocks.amethystShard.blockID, meta, 2);
 				}
 			}
 		}

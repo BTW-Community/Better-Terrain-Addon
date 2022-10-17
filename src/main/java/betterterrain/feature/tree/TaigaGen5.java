@@ -2,7 +2,8 @@ package betterterrain.feature.tree;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
+import betterterrain.BTAMod;
+import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
@@ -70,7 +71,7 @@ public class TaigaGen5 extends WorldGenerator
 			{
 				var11 = par1World.getBlockId(par3, par4 - 1, par5);
 
-				if ((var11 == Block.grass.blockID || var11 == Block.dirt.blockID || (DecoIntegration.isDecoInstalled() && (var11 == DecoIntegration.coarseDirt.blockID || var11 == DecoIntegration.podzol.blockID))) && par4 < 256 - var6 - 1)
+				if ((var11 == Block.grass.blockID || var11 == Block.dirt.blockID || (BTAMod.isDecoInstalled() && (var11 == DecoBlocks.coarseDirt.blockID || var11 == DecoBlocks.podzol.blockID))) && par4 < 256 - var6 - 1)
 				{
 					this.setBlock(par1World, par3, par4 - 1, par5, Block.dirt.blockID);
 					var21 = par2Random.nextInt(2);

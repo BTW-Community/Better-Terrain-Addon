@@ -27,8 +27,8 @@ import betterterrain.world.generate.surface.NetherSurfaceBuilder;
 import betterterrain.world.generate.surface.NoShorelineSurfaceBuilder;
 import betterterrain.world.generate.surface.StonySurfaceBuilder;
 import betterterrain.world.generate.surface.SwampSurfaceBuilder;
-import net.minecraft.src.FCAddOnHandler;
-import net.minecraft.src.FCUtilsHardcoreSpawn;
+import btw.AddonHandler;
+import btw.util.hardcorespawn.HardcoreSpawnUtils;
 
 public class BTABiomeConfiguration extends BiomeConfiguration {
 	public static final int
@@ -257,7 +257,7 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 	@Override
 	public void addBiomesToList(ArrayList<BTABiome> biomeList) {
 		//Done to preserve backwards compatible biome order
-		if (!FCAddOnHandler.isModInstalled("Better Biomes")) {
+		if (!AddonHandler.isModInstalled("Better Biomes")) {
 			biomeList.add(woods);
 			biomeList.add(desert);
 			biomeList.add(jungle);
@@ -270,10 +270,10 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 		
 		biomeList.add(swamp);
 		
-		FCUtilsHardcoreSpawn.blacklistedBiomes.add(jungle);
-		FCUtilsHardcoreSpawn.blacklistedBiomes.add(jungleRiver);
-		FCUtilsHardcoreSpawn.blacklistedBiomes.add(jungleHills);
-		FCUtilsHardcoreSpawn.blacklistedBiomes.add(jungleEdge);
+		HardcoreSpawnUtils.blacklistedBiomes.add(jungle);
+		HardcoreSpawnUtils.blacklistedBiomes.add(jungleRiver);
+		HardcoreSpawnUtils.blacklistedBiomes.add(jungleHills);
+		HardcoreSpawnUtils.blacklistedBiomes.add(jungleEdge);
 	}
 
 	@Override

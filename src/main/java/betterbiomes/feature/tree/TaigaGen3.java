@@ -2,7 +2,8 @@ package betterbiomes.feature.tree;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
+import betterterrain.BTAMod;
+import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
@@ -74,13 +75,13 @@ public class TaigaGen3 extends WorldGenerator
 				var13 = var1.getBlockId(x, y - 1, z - 1);
 				var14 = var1.getBlockId(x - 1, y - 1, z - 1);
 
-				if ((var11 == Block.grass.blockID || var11 == Block.dirt.blockID || (DecoIntegration.isDecoInstalled() && (var11 == DecoIntegration.coarseDirt.blockID || var11 == DecoIntegration.podzol.blockID))) && y < 256 - var6 - 1)
+				if ((var11 == Block.grass.blockID || var11 == Block.dirt.blockID || (BTAMod.isDecoInstalled() && (var11 == DecoBlocks.coarseDirt.blockID || var11 == DecoBlocks.podzol.blockID))) && y < 256 - var6 - 1)
 				{
-					if ((var24 == Block.grass.blockID || var24 == Block.dirt.blockID || (DecoIntegration.isDecoInstalled() && (var24 == DecoIntegration.coarseDirt.blockID || var24 == DecoIntegration.podzol.blockID))) && y < 256 - var6 - 1)
+					if ((var24 == Block.grass.blockID || var24 == Block.dirt.blockID || (BTAMod.isDecoInstalled() && (var24 == DecoBlocks.coarseDirt.blockID || var24 == DecoBlocks.podzol.blockID))) && y < 256 - var6 - 1)
 					{
-						if ((var13 == Block.grass.blockID || var24 == Block.dirt.blockID || (DecoIntegration.isDecoInstalled() && (var13 == DecoIntegration.coarseDirt.blockID || var13 == DecoIntegration.podzol.blockID))) && y < 256 - var6 - 1)
+						if ((var13 == Block.grass.blockID || var24 == Block.dirt.blockID || (BTAMod.isDecoInstalled() && (var13 == DecoBlocks.coarseDirt.blockID || var13 == DecoBlocks.podzol.blockID))) && y < 256 - var6 - 1)
 						{
-							if ((var14 == Block.grass.blockID || var24 == Block.dirt.blockID || (DecoIntegration.isDecoInstalled() && (var14 == DecoIntegration.coarseDirt.blockID || var14 == DecoIntegration.podzol.blockID))) && y < 256 - var6 - 1)
+							if ((var14 == Block.grass.blockID || var24 == Block.dirt.blockID || (BTAMod.isDecoInstalled() && (var14 == DecoBlocks.coarseDirt.blockID || var14 == DecoBlocks.podzol.blockID))) && y < 256 - var6 - 1)
 							{
 								var1.setBlock(x, y - 1, z, Block.dirt.blockID);
 								var1.setBlock(x - 1, y - 1, z, Block.dirt.blockID);

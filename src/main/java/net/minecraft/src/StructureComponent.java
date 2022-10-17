@@ -1,5 +1,8 @@
 package net.minecraft.src;
 
+import btw.block.BTWBlocks;
+import btw.world.util.BlockPos;
+
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -235,7 +238,7 @@ public abstract class StructureComponent
                 return 1;
             }
         }
-        else if (par1 != Block.doorWood.blockID && par1 != Block.doorIron.blockID && par1 != FCBetterThanWolves.fcBlockDoorWood.blockID)
+        else if (par1 != Block.doorWood.blockID && par1 != Block.doorIron.blockID && par1 != BTWBlocks.woodenDoor.blockID)
         {
             if (par1 != Block.stairsCobblestone.blockID && par1 != Block.stairsWoodOak.blockID && par1 != Block.stairsNetherBrick.blockID && par1 != Block.stairsStoneBrick.blockID && par1 != Block.stairsSandStone.blockID)
             {
@@ -716,11 +719,11 @@ public abstract class StructureComponent
     protected void randomlyPlaceBlockIfNeighbor(World par1World, StructureBoundingBox par2StructureBoundingBox, Random par3Random, float par4, int par5, int par6, int par7, int par8, int par9)
     {
     	boolean hasNeighbor = false;
-    	FCUtilsBlockPos pos = new FCUtilsBlockPos();
+    	BlockPos pos = new BlockPos();
     	
     	for (int i = 0; i < 6; i++) {
-    		pos.Set(par5, par6, par7);
-    		pos.AddFacingAsOffset(i);
+    		pos.set(par5, par6, par7);
+    		pos.addFacingAsOffset(i);
     		
     		if (this.getBlockIdAtCurrentPosition(par1World, par5, par6, par7, par2StructureBoundingBox) != 0) {
     			hasNeighbor = true;
@@ -818,9 +821,9 @@ public abstract class StructureComponent
         int var10 = this.getYWithOffset(par5);
         int var11 = this.getZWithOffset(par4, par6);
 
-        if (par2StructureBoundingBox.isVecInside(var9, var10, var11) && par1World.getBlockId(var9, var10, var11) != FCBetterThanWolves.fcBlockChest.blockID)
+        if (par2StructureBoundingBox.isVecInside(var9, var10, var11) && par1World.getBlockId(var9, var10, var11) != BTWBlocks.chest.blockID)
         {
-            par1World.setBlock(var9, var10, var11, FCBetterThanWolves.fcBlockChest.blockID, 0, 2);
+            par1World.setBlock(var9, var10, var11, BTWBlocks.chest.blockID, 0, 2);
             TileEntityChest var12 = (TileEntityChest)par1World.getBlockTileEntity(var9, var10, var11);
 
             if (var12 != null)
@@ -871,7 +874,7 @@ public abstract class StructureComponent
 
         if (par2StructureBoundingBox.isVecInside(var8, var9, var10))
         {
-            ItemDoor.placeDoorBlock(par1World, var8, var9, var10, par7, FCBetterThanWolves.fcBlockDoorWood);
+            ItemDoor.placeDoorBlock(par1World, var8, var9, var10, par7, BTWBlocks.woodenDoor);
         }
     }
 }

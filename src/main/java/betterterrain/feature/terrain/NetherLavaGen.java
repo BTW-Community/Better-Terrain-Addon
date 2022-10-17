@@ -2,7 +2,8 @@ package betterterrain.feature.terrain;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
+import betterterrain.BTAMod;
+import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
@@ -79,6 +80,6 @@ public class NetherLavaGen extends WorldGenerator {
     }
 	
 	private boolean isBlockValidForReplacement(int blockID) {
-		return blockID == Block.netherrack.blockID || (DecoIntegration.isDecoInstalled() && blockID == DecoIntegration.basalt.blockID) || blockID == Block.blockNetherQuartz.blockID;
+		return blockID == Block.netherrack.blockID || (BTAMod.isDecoInstalled() && blockID == DecoBlocks.basalt.blockID) || blockID == Block.blockNetherQuartz.blockID;
 	}
 }

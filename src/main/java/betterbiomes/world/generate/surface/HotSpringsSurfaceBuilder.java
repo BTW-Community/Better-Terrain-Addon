@@ -3,15 +3,16 @@ package betterbiomes.world.generate.surface;
 import java.util.ArrayList;
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
+import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.NoShorelineSurfaceBuilder;
-import betterterrain.world.generate.surface.SurfaceBuilder;
-import betterterrain.world.generate.surface.SurfaceBuilder.SurfaceType;
+import btw.util.ColorUtils;
+import deco.block.DecoBlocks;
+import deco.block.blocks.StoneVariantsBlock;
+import deco.block.util.SandHelper;
 import net.minecraft.src.Block;
-import net.minecraft.src.FCUtilsColor;
 import net.minecraft.src.Material;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldType;
@@ -45,8 +46,8 @@ public class HotSpringsSurfaceBuilder extends NoShorelineSurfaceBuilder {
 		//k and i swapped because apparently I messed something up somewhere
 		boolean useCoarseDirt = coarseDirtNoiseGen.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), grassNoiseScale) + rand.nextDouble() * 0.1D - .25 > 0;
 
-		if (useCoarseDirt && DecoIntegration.isDecoInstalled() && worldType.isDeco() && surfaceType == SurfaceType.TOP) {
-			return new int[] {DecoIntegration.coarseDirt.blockID, 0};
+		if (useCoarseDirt && BTAMod.isDecoInstalled() && worldType.isDeco() && surfaceType == SurfaceType.TOP) {
+			return new int[] {DecoBlocks.coarseDirt.blockID, 0};
 		}
 		else {
 			return super.getSurfaceBlock(i, j, k, surfaceJ, soilDepth, surfaceType, seaLevel, rand, generatorInfo, worldType);
@@ -89,7 +90,7 @@ public class HotSpringsSurfaceBuilder extends NoShorelineSurfaceBuilder {
 						}
 
 						if (previousBlockID != 0 && previousBlockID != Block.waterStill.blockID && 
-								(thisBlockID == ((BTABiome) this.biome).topBlockExt || thisBlockID == DecoIntegration.stainedTerracotta.blockID || thisBlockID == DecoIntegration.coarseDirt.blockID) && 
+								(thisBlockID == ((BTABiome) this.biome).topBlockExt || thisBlockID == DecoBlocks.stainedTerracotta.blockID || thisBlockID == DecoBlocks.coarseDirt.blockID) &&
 								nextBlockID == 0)
 						{
 							if (waterNoise > 0.825) {
@@ -112,10 +113,10 @@ public class HotSpringsSurfaceBuilder extends NoShorelineSurfaceBuilder {
 
 								if (numBlockNeighbors == 8) {
 									world.setBlock(i, j, k, Block.waterStill.blockID);
-									fillToDepth(world, i, j - 1, k, depth, DecoIntegration.stainedTerracotta.blockID, FCUtilsColor.YELLOW.colorID);
+									fillToDepth(world, i, j - 1, k, depth, DecoBlocks.stainedTerracotta.blockID, ColorUtils.YELLOW.colorID);
 								}
 								else {
-									fillToDepth(world, i, j, k, depth + 1, DecoIntegration.redSand.blockID, 0);
+									fillToDepth(world, i, j, k, depth + 1, Block.sand.blockID, SandHelper.RED_SAND_TYPE);
 								}
 
 								for (int offsetI = -1; offsetI <= 1; offsetI++) {
@@ -125,25 +126,26 @@ public class HotSpringsSurfaceBuilder extends NoShorelineSurfaceBuilder {
 										}
 
 										if (springsNoiseGen.noise2(i + offsetI, k + offsetK, waterNoiseScale) <= 0.825) {
-											fillToDepth(world, i + offsetI, j, k + offsetK, 4, DecoIntegration.redSand.blockID, 0);
+											fillToDepth(world, i + offsetI, j, k + offsetK, 4, Block.sand.blockID, SandHelper.RED_SAND_TYPE);
 										}
 									}
 								}
 							}
 							else if (waterNoise > 0.75) {
-								fillToDepth(world, i, j, k, depth + 1, DecoIntegration.redSand.blockID, 0);
+								fillToDepth(world, i, j, k, depth + 1, Block.sand.blockID, SandHelper.RED_SAND_TYPE);
 							}
 							else if (waterNoise > 0.625) {
-								fillToDepth(world, i, j, k, depth + 1, DecoIntegration.infusedStone.blockID, 0);
+								fillToDepth(world, i, j, k, depth + 1, DecoBlocks.infusedStone.blockID, 0);
 							}
 							else if (waterNoise > 0.5) {
-								fillToDepth(world, i, j, k, depth + 1, DecoIntegration.basalt.blockID, 0);
+								fillToDepth(world, i, j, k, depth + 1, DecoBlocks.basalt.blockID, 0);
 							}
 							else if (waterNoise > 0.375) {
 								fillToDepth(world, i, j, k, depth + 1, Block.gravel.blockID, 0);
 							}
 							else if (waterNoise > 0.125) {
-								fillToDepth(world, i, j, k, depth + 1, DecoIntegration.stoneTypes.blockID, 2);
+								fillToDepth(world, i, j, k, depth + 1, DecoBlocks.stoneVariants.blockID,
+										StoneVariantsBlock.DIORITE_TYPE);
 							}
 						}
 					}
@@ -153,7 +155,7 @@ public class HotSpringsSurfaceBuilder extends NoShorelineSurfaceBuilder {
 			for (int i = chunkX + 8; i < chunkX + 24; i++) {
 				for (int k = chunkZ + 8; k < chunkZ + 24; k++) {
 					for (int j = 60; j < 128; j++) {
-						if (world.getBlockId(i, j, k) == DecoIntegration.redSand.blockID) {
+						if (world.getBlockId(i, j, k) == Block.sand.blockID) {
 							for (int offsetI = -1; offsetI <= 1; offsetI++) {
 								for (int offsetK = -1; offsetK <= 1; offsetK++) {
 									if (offsetI == 0 && offsetK == 0) {
@@ -163,7 +165,7 @@ public class HotSpringsSurfaceBuilder extends NoShorelineSurfaceBuilder {
 									int blockID = world.getBlockId(i + offsetI, j, k + offsetK);
 
 									if (blockID != 0 && Block.blocksList[blockID].blockMaterial == Material.water) {
-										fillToDepth(world, i, j, k, 1, DecoIntegration.stainedTerracotta.blockID, FCUtilsColor.YELLOW.colorID);
+										fillToDepth(world, i, j, k, 1, DecoBlocks.stainedTerracotta.blockID, ColorUtils.YELLOW.colorID);
 									}
 								}
 							}

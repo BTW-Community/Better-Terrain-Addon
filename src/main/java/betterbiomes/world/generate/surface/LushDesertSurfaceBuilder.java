@@ -3,13 +3,11 @@ package betterbiomes.world.generate.surface;
 import java.util.Random;
 
 import betterterrain.BTAVersion;
-import betterterrain.DecoIntegration;
 import betterterrain.biome.BTABiome;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.NoShorelineSurfaceBuilder;
 import net.minecraft.src.Block;
-import net.minecraft.src.FCUtilsColor;
 import net.minecraft.src.Material;
 import net.minecraft.src.World;
 

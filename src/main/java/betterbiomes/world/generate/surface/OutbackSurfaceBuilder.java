@@ -2,14 +2,12 @@ package betterbiomes.world.generate.surface;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
+import betterterrain.BTAMod;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.SurfaceBuilder;
-import betterterrain.world.generate.surface.SurfaceBuilder.SurfaceType;
 import net.minecraft.src.Block;
 import net.minecraft.src.WorldType;
-import opensimplex2.OpenSimplex2F;
 
 public class OutbackSurfaceBuilder extends SurfaceBuilder {
 	protected static OpenSimplexOctaves grassNoiseGenSimplex;
@@ -31,7 +29,7 @@ public class OutbackSurfaceBuilder extends SurfaceBuilder {
 		
 		boolean useGravel = this.useGravelAtLocation(i, k, rand, generatorInfo) && surfaceJ <= seaLevel + 1;
 		
-		if (useGrass && DecoIntegration.isDecoInstalled() && worldType.isDeco() && !useGravel) {
+		if (useGrass && BTAMod.isDecoInstalled() && worldType.isDeco() && !useGravel) {
 			if (surfaceType == SurfaceType.TOP) {
 				return new int[] {Block.grass.blockID, 0};
 			}

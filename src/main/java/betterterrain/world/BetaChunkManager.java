@@ -8,13 +8,7 @@ import betterterrain.biome.BTABiome;
 import betterterrain.biome.BiomeConfiguration;
 import betterterrain.biome.layer.BTALayer;
 import betterterrain.world.config.WorldConfigurationInfo;
-import net.minecraft.src.BiomeCache;
-import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.ChunkPosition;
-import net.minecraft.src.GenLayer;
-import net.minecraft.src.IntCache;
-import net.minecraft.src.World;
-import net.minecraft.src.WorldType;
+import net.minecraft.src.*;
 
 public class BetaChunkManager extends BTAWorldChunkManager {
     private GenLayer genBiomes;

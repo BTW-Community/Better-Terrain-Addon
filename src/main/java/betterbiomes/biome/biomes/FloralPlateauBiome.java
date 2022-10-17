@@ -8,8 +8,6 @@ import betterterrain.biome.Climate;
 import betterterrain.feature.plant.TallGrassGen;
 import betterterrain.feature.tree.TemperateBirchGen;
 import net.minecraft.src.Block;
-import net.minecraft.src.FCEntityWolf;
-import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenerator;
 
 public class FloralPlateauBiome extends BTABiome {

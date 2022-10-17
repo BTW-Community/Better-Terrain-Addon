@@ -1,8 +1,9 @@
 package betterbiomes.biome.biomes;
 
-import betterterrain.DecoIntegration;
+import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
+import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
 
 public class RedSandBeachBiome extends BTABiome
@@ -16,9 +17,9 @@ public class RedSandBeachBiome extends BTABiome
         this.btaBiomeDecorator.deadBushPerChunk = 0;
         this.btaBiomeDecorator.reedsPerChunk = 0;
         this.btaBiomeDecorator.cactiPerChunk = 0;
-		if (DecoIntegration.isDecoInstalled()) {
-			this.topBlockExt = DecoIntegration.redSand.blockID;
-			this.fillerBlockExt = DecoIntegration.redSand.blockID;
+		if (BTAMod.isDecoInstalled()) {
+			this.topBlockExt = DecoBlocks.legacyRedSand.blockID;
+			this.fillerBlockExt = DecoBlocks.legacyRedSand.blockID;
 		}
     }
 

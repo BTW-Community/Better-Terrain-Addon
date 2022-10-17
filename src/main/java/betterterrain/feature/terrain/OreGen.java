@@ -117,7 +117,7 @@ public class OreGen extends WorldGenerator
                                     if (stratas.length > 2)
                                     	strata3Height = stratas[2];
 
-                                    if (var48.HasStrata() && var41 <= strata1Height + par1World.rand.nextInt(2))
+                                    if (var48.hasStrata() && var41 <= strata1Height + par1World.rand.nextInt(2))
                                     {
                                         byte var49 = 1;
                                         
@@ -131,7 +131,7 @@ public class OreGen extends WorldGenerator
                                             var49 = 3;
                                         }
 
-                                        var47 = var48.GetMetadataConversionForStrataLevel(var49, 0);
+                                        var47 = var48.getMetadataConversionForStrataLevel(var49, 0);
                                     }
 
                                     par1World.setBlock(var38, var41, var44, this.minableBlockId, var47, 2);

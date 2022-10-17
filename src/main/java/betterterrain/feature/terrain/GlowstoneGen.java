@@ -2,9 +2,10 @@ package betterterrain.feature.terrain;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
+import betterterrain.BTAMod;
+import btw.world.util.BlockPos;
+import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
-import net.minecraft.src.FCUtilsBlockPos;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
 
@@ -31,8 +32,8 @@ public class GlowstoneGen extends WorldGenerator
                     for (int dir = 0; dir < 6; ++dir) {
                         int adjacentID = 0;
                         
-                        FCUtilsBlockPos pos = new FCUtilsBlockPos(i, j, k, dir);
-                        adjacentID = world.getBlockId(pos.i, pos.j, pos.k);
+                        BlockPos pos = new BlockPos(i, j, k, dir);
+                        adjacentID = world.getBlockId(pos.x, pos.y, pos.z);
 
                         if (adjacentID == Block.glowStone.blockID) {
                             adjacentGlowstoneCount++;
@@ -50,6 +51,6 @@ public class GlowstoneGen extends WorldGenerator
     }
     
     private boolean canGlowsotneGrowFromBlock(int blockID) {
-    	return blockID == Block.netherrack.blockID || (DecoIntegration.isDecoInstalled() && blockID == DecoIntegration.basalt.blockID || blockID == Block.blockNetherQuartz.blockID);
+    	return blockID == Block.netherrack.blockID || (BTAMod.isDecoInstalled() && blockID == DecoBlocks.basalt.blockID || blockID == Block.blockNetherQuartz.blockID);
     }
 }

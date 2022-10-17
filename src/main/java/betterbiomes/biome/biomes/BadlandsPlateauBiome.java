@@ -5,11 +5,12 @@ import java.util.Arrays;
 import java.util.Random;
 
 import betterbiomes.biome.BetterBiomesConfiguration;
+import betterterrain.BTAMod;
 import betterterrain.BTAVersion;
-import betterterrain.DecoIntegration;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.world.config.WorldConfigurationInfo;
+import deco.block.DecoBlocks;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
 
@@ -18,9 +19,9 @@ public class BadlandsPlateauBiome extends BTABiome {
 
 	public BadlandsPlateauBiome(int id, String internalName, Climate climate) {
 		super(id, internalName, climate);
-		if (DecoIntegration.isDecoInstalled()) {
-			this.topBlockExt = DecoIntegration.terracotta.blockID;
-			this.fillerBlockExt = DecoIntegration.terracotta.blockID;
+		if (BTAMod.isDecoInstalled()) {
+			this.topBlockExt = DecoBlocks.terracotta.blockID;
+			this.fillerBlockExt = DecoBlocks.terracotta.blockID;
 		}
 		this.btaBiomeDecorator.sandPerChunk = 0;
 		this.btaBiomeDecorator.sandPerChunk2 = 0;
@@ -43,9 +44,9 @@ public class BadlandsPlateauBiome extends BTABiome {
 					int metaForY = Math.abs(Arrays.hashCode(new int[] {(int) world.getSeed() >> 32, j}) % 16);
 
 					for (int k = startZ; k < startZ + 16; k++) {
-						if (world.getBlockId(i, j, k) == DecoIntegration.terracotta.blockID) {
+						if (world.getBlockId(i, j, k) == DecoBlocks.terracotta.blockID) {
 							if (allowedTerracottaMetadata.contains(metaForY)) {
-								world.setBlockAndMetadata(i, j, k, DecoIntegration.stainedTerracotta.blockID, metaForY);
+								world.setBlockAndMetadata(i, j, k, DecoBlocks.stainedTerracotta.blockID, metaForY);
 							}
 						}
 					}

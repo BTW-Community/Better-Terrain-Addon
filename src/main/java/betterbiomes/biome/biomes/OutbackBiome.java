@@ -2,15 +2,16 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
+import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.feature.plant.TallGrassGen;
 import betterterrain.feature.tree.SmallShrubGen;
 import betterterrain.feature.tree.TinyShrubGen;
+import btw.entity.mob.ChickenEntity;
+import btw.entity.mob.PigEntity;
+import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
-import net.minecraft.src.FCEntityChicken;
-import net.minecraft.src.FCEntityPig;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenShrub;
 import net.minecraft.src.WorldGenerator;
@@ -18,9 +19,9 @@ import net.minecraft.src.WorldGenerator;
 public class OutbackBiome extends BTABiome {
 	public OutbackBiome(int id, String internalName, Climate climate) {
 		super(id, internalName, climate);
-		if (DecoIntegration.isDecoInstalled()) {
-			this.topBlockExt = DecoIntegration.redSand.blockID;
-			this.fillerBlockExt = DecoIntegration.redSand.blockID;
+		if (BTAMod.isDecoInstalled()) {
+			this.topBlockExt = DecoBlocks.legacyRedSand.blockID;
+			this.fillerBlockExt = DecoBlocks.legacyRedSand.blockID;
 		}
 		this.btaBiomeDecorator.generateOutback = true;
 		this.btaBiomeDecorator.deadBushPerChunk = 10;
@@ -31,8 +32,8 @@ public class OutbackBiome extends BTABiome {
 		this.btaBiomeDecorator.sandPerChunk2 = 0;
 		this.btaBiomeDecorator.flowersPerChunk = -999;
 		this.spawnableCreatureList.clear();
-		this.spawnableCreatureList.add(new SpawnListEntry(FCEntityChicken.class, 10, 2, 2));
-		this.spawnableCreatureList.add(new SpawnListEntry(FCEntityPig.class, 10, 2, 2));
+		this.spawnableCreatureList.add(new SpawnListEntry(ChickenEntity.class, 10, 2, 2));
+		this.spawnableCreatureList.add(new SpawnListEntry(PigEntity.class, 10, 2, 2));
 	}
 
 	/**

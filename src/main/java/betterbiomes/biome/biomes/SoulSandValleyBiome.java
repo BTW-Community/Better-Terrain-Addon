@@ -1,10 +1,9 @@
 package betterbiomes.biome.biomes;
 
 import betterterrain.biome.BTANetherBiome;
-import betterterrain.biome.Climate;
+import btw.entity.mob.GhastEntity;
+import btw.entity.mob.SkeletonEntity;
 import net.minecraft.src.Block;
-import net.minecraft.src.FCEntityGhast;
-import net.minecraft.src.FCEntitySkeleton;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.Vec3;
 import net.minecraft.src.World;
@@ -20,8 +19,8 @@ public class SoulSandValleyBiome extends BTANetherBiome {
         this.spawnableCreatureList.clear();
         this.spawnableWaterCreatureList.clear();
         this.spawnableCaveCreatureList.clear();
-        this.spawnableMonsterList.add(new SpawnListEntry(FCEntityGhast.class, 50, 4, 4));
-        this.spawnableMonsterList.add(new SpawnListEntry(FCEntitySkeleton.class, 50, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(GhastEntity.class, 50, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(SkeletonEntity.class, 50, 4, 4));
 	}
 	
 	@Override

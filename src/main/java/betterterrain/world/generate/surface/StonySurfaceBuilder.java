@@ -2,15 +2,14 @@ package betterterrain.world.generate.surface;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
+import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
-import betterterrain.world.generate.surface.SurfaceBuilder.SurfaceType;
+import deco.block.DecoBlocks;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;
 import net.minecraft.src.WorldType;
-import opensimplex2.OpenSimplex2F;
 
 public class StonySurfaceBuilder extends SurfaceBuilder {
 	protected static OpenSimplexOctaves stoneNoiseGenSimplex;
@@ -31,7 +30,7 @@ public class StonySurfaceBuilder extends SurfaceBuilder {
 		
 		boolean sandOrGravel = (this.useSandAtLocation(i, k, rand) || this.useGravelAtLocation(i, k, rand, generatorInfo)) && surfaceJ <= seaLevel + 1;
 		
-		if (useStone && DecoIntegration.isDecoInstalled() && worldType.isDeco() && !sandOrGravel) {
+		if (useStone && BTAMod.isDecoInstalled() && worldType.isDeco() && !sandOrGravel) {
 			return new int[] {Block.stone.blockID, 0};
 		}
 		else {
@@ -133,9 +132,9 @@ public class StonySurfaceBuilder extends SurfaceBuilder {
 							remaingDepth = rand.nextInt(4);
 							fillerBlock = (byte)Block.sandStone.blockID;
 						}
-						else if (DecoIntegration.isDecoInstalled() && remaingDepth == 0 && fillerBlock == DecoIntegration.redSand.blockID) {
+						else if (BTAMod.isDecoInstalled() && remaingDepth == 0 && fillerBlock == DecoBlocks.legacyRedSand.blockID) {
 							remaingDepth = rand.nextInt(4);
-							fillerBlock = DecoIntegration.redSandStone.blockID;
+							fillerBlock = DecoBlocks.redSandstone.blockID;
 						}
 					}
 				}

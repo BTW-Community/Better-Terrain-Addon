@@ -3,12 +3,13 @@ package betterbiomes.biome.biomes;
 import java.util.Random;
 
 import betterbiomes.world.generate.surface.BasaltDeltasSurfaceBuilder;
-import betterterrain.DecoIntegration;
+import betterterrain.BTAMod;
 import betterterrain.biome.BTANetherBiome;
 import betterterrain.world.config.WorldConfigurationInfo;
+import btw.entity.mob.MagmaCubeEntity;
+import btw.world.util.BlockPos;
+import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
-import net.minecraft.src.FCEntityMagmaCube;
-import net.minecraft.src.FCUtilsBlockPos;
 import net.minecraft.src.Material;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.Vec3;
@@ -18,9 +19,9 @@ public class BasaltDeltasBiome extends BTANetherBiome {
 	public BasaltDeltasBiome(int id, String internalName) {
 		super(id, internalName);
 
-		if (DecoIntegration.isDecoInstalled()) {
-			this.topBlockExt = DecoIntegration.basalt.blockID;
-			this.fillerBlockExt = DecoIntegration.basalt.blockID;
+		if (BTAMod.isDecoInstalled()) {
+			this.topBlockExt = DecoBlocks.basalt.blockID;
+			this.fillerBlockExt = DecoBlocks.basalt.blockID;
 		}
 		else {
 			this.topBlockExt = Block.stone.blockID;
@@ -32,7 +33,7 @@ public class BasaltDeltasBiome extends BTANetherBiome {
 		this.magmaPerChunk = 8;
 		
 		this.spawnableMonsterList.clear();
-		this.spawnableMonsterList.add(new SpawnListEntry(FCEntityMagmaCube.class, 1, 4, 4));
+		this.spawnableMonsterList.add(new SpawnListEntry(MagmaCubeEntity.class, 1, 4, 4));
 	}
 
 	@Override
@@ -68,7 +69,7 @@ public class BasaltDeltasBiome extends BTANetherBiome {
 					boolean useLava = lavaNoise + rand.nextDouble() * 0.3 > 0.25;
 					
 					if (previousBlockID != 0 && previousBlockID != Block.lavaStill.blockID && 
-							(thisBlockID == this.topBlockExt || thisBlockID == DecoIntegration.infusedStone.blockID || thisBlockID == DecoIntegration.ash.blockID) && 
+							(thisBlockID == this.topBlockExt || thisBlockID == DecoBlocks.infusedStone.blockID || thisBlockID == DecoBlocks.ash.blockID) &&
 							nextBlockID == 0) {
 						if (useLava) {
 							int numBlockNeighbors = 4;
@@ -77,9 +78,9 @@ public class BasaltDeltasBiome extends BTANetherBiome {
 							int offset = rand.nextInt(10) == 0 ? 1 : 0;
 
 							for (int facing = 2; facing <= 5; facing++) {
-								FCUtilsBlockPos pos = new FCUtilsBlockPos(i, j, k, facing);
+								BlockPos pos = new BlockPos(i, j, k, facing);
 
-								int neighborID = world.getBlockId(pos.i, pos.j, pos.k);
+								int neighborID = world.getBlockId(pos.x, pos.y, pos.z);
 								if (neighborID == 0) {
 									numBlockNeighbors--;
 

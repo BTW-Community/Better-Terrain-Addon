@@ -6,15 +6,15 @@ import betterbiomes.feature.tree.CherryTreeGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.feature.plant.TallGrassGen;
+import btw.entity.mob.WolfEntity;
 import net.minecraft.src.Block;
-import net.minecraft.src.FCEntityWolf;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenerator;
 
 public class CherryForestBiome extends BTABiome {
     public CherryForestBiome(int id, String internalName, Climate climate) {
 		super(id, internalName, climate);
-        this.spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 5, 4, 4));
+        this.spawnableCreatureList.add(new SpawnListEntry(WolfEntity.class, 5, 4, 4));
         this.btaBiomeDecorator.treesPerChunk = 10;
         this.btaBiomeDecorator.grassPerChunk = 5;
         this.btaBiomeDecorator.flowersPerChunk = 25;

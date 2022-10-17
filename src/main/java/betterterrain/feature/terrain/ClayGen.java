@@ -2,7 +2,8 @@ package betterterrain.feature.terrain;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
+import betterterrain.BTAMod;
+import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.Material;
 import net.minecraft.src.World;
@@ -53,7 +54,7 @@ public class ClayGen extends WorldGenerator {
                             {
                                 par1World.setBlock(var8, var12, var9, this.clayBlockId, 1, 2);
                             }
-                            else if (DecoIntegration.isDecoInstalled() && var13 == DecoIntegration.redSand.blockID)
+                            else if (BTAMod.isDecoInstalled() && var13 == DecoBlocks.legacyRedSand.blockID)
                             {
                                 par1World.setBlock(var8, var12, var9, this.clayBlockId, 2, 2);
                             }

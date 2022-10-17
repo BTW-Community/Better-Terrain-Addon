@@ -2,11 +2,7 @@ package betterterrain.gui;
 
 import betterterrain.biome.BiomeInfo;
 import betterterrain.world.config.WorldConfigurationInfo;
-import net.minecraft.src.GuiButton;
-import net.minecraft.src.GuiCreateWorld;
-import net.minecraft.src.GuiScreen;
-import net.minecraft.src.StatCollector;
-import net.minecraft.src.StringTranslate;
+import net.minecraft.src.*;
 
 public class BiomeOptionsGui extends GuiScreen
 {

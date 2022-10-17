@@ -2,8 +2,8 @@ package betterterrain.biome;
 
 import java.util.Random;
 
+import betterterrain.BTAMod;
 import betterterrain.BTAVersion;
-import betterterrain.DecoIntegration;
 import betterterrain.feature.plant.DecoFlowerGen;
 import betterterrain.feature.plant.FlowerGen;
 import betterterrain.feature.plant.MelonGen;
@@ -15,14 +15,15 @@ import betterterrain.feature.terrain.SkyClayGen;
 import betterterrain.feature.terrain.SteppeGen;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.config.WorldConfigurationInfoLegacy;
-import betterterrain.world.generate.BTADefaultChunkProvider;
 import betterterrain.world.generate.surface.SurfaceBuilder;
+import btw.AddonHandler;
+import btw.BTWAddon;
+import btw.world.biome.BiomeDecoratorBase;
+import deco.block.DecoBlocks;
+import deco.block.blocks.StoneVariantsBlock;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;
 import net.minecraft.src.ChunkProviderServer;
-import net.minecraft.src.FCAddOn;
-import net.minecraft.src.FCAddOnHandler;
-import net.minecraft.src.FCIBiomeDecorator;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenBigMushroom;
 import net.minecraft.src.WorldGenCactus;
@@ -34,7 +35,7 @@ import net.minecraft.src.WorldGenSand;
 import net.minecraft.src.WorldGenWaterlily;
 import net.minecraft.src.WorldGenerator;
 
-public class BiomeDecorator implements FCIBiomeDecorator
+public class BiomeDecorator implements BiomeDecoratorBase
 {
 	/** The world the BiomeDecorator is currently decorating */
 	protected World currentWorld;
@@ -239,12 +240,12 @@ public class BiomeDecorator implements FCIBiomeDecorator
 		bigRedMushroomGen = new WorldGenBigMushroom(1);
 		decoFlowerGen = new DecoFlowerGen();
 
-		if (DecoIntegration.isDecoInstalled()) {
-			outbackGen = new MyceliumGen(Block.grass.blockID, 48, DecoIntegration.redSand.blockID);
+		if (BTAMod.isDecoInstalled()) {
+			outbackGen = new MyceliumGen(Block.grass.blockID, 48, Block.sand.blockID);
 
-			graniteGen = new OreGen(DecoIntegration.stoneTypes.blockID, 0, 32, Block.stone.blockID);
-			andesiteGen = new OreGen(DecoIntegration.stoneTypes.blockID, 1, 32, Block.stone.blockID);
-			dioriteGen = new OreGen(DecoIntegration.stoneTypes.blockID, 2, 32, Block.stone.blockID);
+			graniteGen = new OreGen(DecoBlocks.stoneVariants.blockID, StoneVariantsBlock.GRANITE_TYPE, 32, Block.stone.blockID);
+			andesiteGen = new OreGen(DecoBlocks.stoneVariants.blockID, StoneVariantsBlock.ANDESITE_TYPE, 32, Block.stone.blockID);
+			dioriteGen = new OreGen(DecoBlocks.stoneVariants.blockID, StoneVariantsBlock.DIORITE_TYPE, 32, Block.stone.blockID);
 			slateGen = new OreGen(Block.stone.blockID, 3, 32, Block.stone.blockID);
 		}
 
@@ -265,7 +266,7 @@ public class BiomeDecorator implements FCIBiomeDecorator
 		if (this.currentWorld != null)
 		{
 			//throw new RuntimeException("Already decorating!!");
-			FCAddOnHandler.LogWarning("WARNING: Already decorating!");
+			AddonHandler.logWarning("WARNING: Already decorating!");
 		}
 		else
 		{
@@ -386,7 +387,7 @@ public class BiomeDecorator implements FCIBiomeDecorator
 
 		for (var2 = 0; var2 < this.flowersPerChunk; ++var2)
 		{
-			if (DecoIntegration.isDecoInstalled() && (this.currentWorld.provider.terrainType.isDeco())) {
+			if (BTAMod.isDecoInstalled() && (this.currentWorld.provider.terrainType.isDeco())) {
 				if (this.randomGenerator.nextInt(24) > 1) {
 					var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 					var4 = this.randomGenerator.nextInt(128);
@@ -577,7 +578,7 @@ public class BiomeDecorator implements FCIBiomeDecorator
 			this.cactusGen.generate(this.currentWorld, this.randomGenerator, var3, var4, var7);
 		}
         
-        for (FCAddOn mod : FCAddOnHandler.m_ModList.values()) {
+        for (BTWAddon mod : AddonHandler.modList.values()) {
         	if (!((BTABiome) this.biome).interceptCustomDecorator(this, this.currentWorld, this.randomGenerator, this.chunk_X, this.chunk_Z)) {
         		mod.decorateWorld(this, this.currentWorld, this.randomGenerator, this.chunk_X, this.chunk_Z, this.biome);
         	}
@@ -637,7 +638,7 @@ public class BiomeDecorator implements FCIBiomeDecorator
 			this.genStandardOre2(1, this.lapisGen, 16, 16);
 		}
 
-		if (DecoIntegration.isDecoInstalled() && (this.currentWorld.provider.terrainType.isDeco())) {
+		if (BTAMod.isDecoInstalled() && (this.currentWorld.provider.terrainType.isDeco())) {
 			this.genStandardOre1(12, this.graniteGen, 0, 128);
 			this.genStandardOre1(12, this.andesiteGen, 0, 128);
 			this.genStandardOre1(12, this.dioriteGen, 0, 128);

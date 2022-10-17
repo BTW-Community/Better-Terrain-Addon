@@ -6,7 +6,7 @@ import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.feature.tree.TaigaGen5;
 import betterterrain.world.config.WorldConfigurationInfo;
-import net.minecraft.src.FCEntityWolf;
+import btw.entity.mob.WolfEntity;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenTaiga2;
@@ -15,7 +15,7 @@ import net.minecraft.src.WorldGenerator;
 public class AlpineBiome extends BTABiome {
 	public AlpineBiome(int id, String internalName, Climate climate) {
 		super(id, internalName, climate);
-        this.spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 5, 4, 4));
+        this.spawnableCreatureList.add(new SpawnListEntry(WolfEntity.class, 5, 4, 4));
         this.btaBiomeDecorator.treesPerChunk = 20;
         this.btaBiomeDecorator.grassPerChunk = 2;
 	}

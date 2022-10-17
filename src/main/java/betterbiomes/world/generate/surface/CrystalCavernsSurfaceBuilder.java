@@ -2,12 +2,11 @@ package betterbiomes.world.generate.surface;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
+import betterterrain.BTAMod;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.NetherSurfaceBuilder;
-import betterterrain.world.generate.surface.SurfaceBuilder;
-import betterterrain.world.generate.surface.SurfaceBuilder.SurfaceType;
+import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.WorldType;
 
@@ -32,11 +31,11 @@ public class CrystalCavernsSurfaceBuilder extends NetherSurfaceBuilder {
 		boolean useAmethyst = amethystNoiseGen.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), pumiceNoiseScale) > 0.2;
 		boolean useAmethyst2 = amethystNoiseGen2.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), pumiceNoiseScale) > 0.2;
 		
-		if (useAmethyst && DecoIntegration.isDecoInstalled() && worldType.isDeco() && surfaceType != SurfaceType.SUBFILLER) {
-			return new int[] {DecoIntegration.amethyst.blockID, 0};
+		if (useAmethyst && BTAMod.isDecoInstalled() && (worldType).isDeco() && surfaceType != SurfaceType.SUBFILLER) {
+			return new int[] {DecoBlocks.amethyst.blockID, 0};
 		}
-		else if (useAmethyst2 && DecoIntegration.isDecoInstalled() && worldType.isDeco() && surfaceType != SurfaceType.SUBFILLER) {
-			return new int[] {DecoIntegration.amethyst.blockID, 0};
+		else if (useAmethyst2 && BTAMod.isDecoInstalled() && (worldType).isDeco() && surfaceType != SurfaceType.SUBFILLER) {
+			return new int[] {DecoBlocks.amethyst.blockID, 0};
 		}
 		else {
 			return new int[] {getDefaultSurfaceBlock(i, k, surfaceType, Block.netherrack.blockID), 0};

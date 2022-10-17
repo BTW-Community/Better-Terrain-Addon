@@ -6,7 +6,7 @@ import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.feature.tree.TaigaGen6;
 import betterterrain.feature.tree.TemperateBirchGen;
-import net.minecraft.src.FCEntityWolf;
+import btw.entity.mob.WolfEntity;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenShrub;
 import net.minecraft.src.WorldGenTrees;
@@ -15,7 +15,7 @@ import net.minecraft.src.WorldGenerator;
 public class TemperateForestBiome extends BTABiome {
 	public TemperateForestBiome(int id, String internalName, Climate climate) {
 		super(id, internalName, climate);
-        this.spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 5, 4, 4));
+        this.spawnableCreatureList.add(new SpawnListEntry(WolfEntity.class, 5, 4, 4));
 		this.btaBiomeDecorator.reedsPerChunk = 10;
         this.btaBiomeDecorator.treesPerChunk = 30;
         this.btaBiomeDecorator.grassPerChunk = 5;

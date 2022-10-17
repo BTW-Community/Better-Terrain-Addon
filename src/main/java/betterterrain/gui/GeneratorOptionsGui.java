@@ -1,13 +1,9 @@
 package betterterrain.gui;
 
-import betterterrain.DecoIntegration;
+import betterterrain.BTAMod;
 import betterterrain.biome.BiomeInfo;
 import betterterrain.world.config.WorldConfigurationInfo;
-import net.minecraft.src.GuiButton;
-import net.minecraft.src.GuiCreateWorld;
-import net.minecraft.src.GuiScreen;
-import net.minecraft.src.StatCollector;
-import net.minecraft.src.WorldType;
+import net.minecraft.src.*;
 
 public class GeneratorOptionsGui extends GuiScreen implements SliderSettingHandler
 {
@@ -152,7 +148,7 @@ public class GeneratorOptionsGui extends GuiScreen implements SliderSettingHandl
 	}
 
 	public void setButtons() {
-        this.buttonDeco.enabled = DecoIntegration.isDecoInstalled();
+        this.buttonDeco.enabled = BTAMod.isDecoInstalled();
 		
 		if (!WorldType.worldTypes[this.guiCreateWorld.getWorldTypeId()].canPerlinBeachesBeToggled()) {
 			this.buttonPerlinBeaches.enabled = false;

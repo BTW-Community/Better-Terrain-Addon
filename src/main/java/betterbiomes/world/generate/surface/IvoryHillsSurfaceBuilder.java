@@ -1,15 +1,13 @@
 package betterbiomes.world.generate.surface;
 
-import java.util.ArrayList;
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.SurfaceBuilder;
-import betterterrain.world.generate.surface.SurfaceBuilder.SurfaceType;
+import btw.util.ColorUtils;
+import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
-import net.minecraft.src.FCUtilsColor;
 import net.minecraft.src.WorldType;
 
 public class IvoryHillsSurfaceBuilder extends SurfaceBuilder {
@@ -30,13 +28,13 @@ public class IvoryHillsSurfaceBuilder extends SurfaceBuilder {
 			for (int i = 0; i < metaLocations.length; i++) {
 				switch (metaRand.nextInt(3)) {
 				case 0:
-					metaLocations[i] = FCUtilsColor.BROWN.colorID;
+					metaLocations[i] = ColorUtils.BROWN.colorID;
 					break;
 				case 1:
-					metaLocations[i] = FCUtilsColor.BLACK.colorID;
+					metaLocations[i] = ColorUtils.BLACK.colorID;
 					break;
 				default:
-					metaLocations[i] = FCUtilsColor.WHITE.colorID;
+					metaLocations[i] = ColorUtils.WHITE.colorID;
 				}
 			}
 		}
@@ -68,17 +66,17 @@ public class IvoryHillsSurfaceBuilder extends SurfaceBuilder {
 					}
 				}
 				else {
-					return new int[] {DecoIntegration.coarseDirt.blockID, 0};
+					return new int[] {DecoBlocks.coarseDirt.blockID, 0};
 				}
 			}
 		}
 		
 		if (!useCoarseDirt || surfaceType != SurfaceType.TOP) {
-			int blockID = DecoIntegration.terracotta.blockID;
+			int blockID = DecoBlocks.terracotta.blockID;
 			int metadata = 0;
 			
-			if (blockID == DecoIntegration.terracotta.blockID && metaLocations[j & 15] != -1) {
-				blockID = DecoIntegration.stainedTerracotta.blockID;
+			if (blockID == DecoBlocks.terracotta.blockID && metaLocations[j & 15] != -1) {
+				blockID = DecoBlocks.stainedTerracotta.blockID;
 				metadata = metaLocations[j & 15];
 			}
 			

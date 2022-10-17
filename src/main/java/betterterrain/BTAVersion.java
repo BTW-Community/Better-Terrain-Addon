@@ -28,13 +28,15 @@ public enum BTAVersion {
 	V2_0_7(2, 0, 7),
 	V2_0_8(2, 0, 8),
 	
-	V3_0_0(3, 0, 0);
+	V3_0_0(3, 0, 0),
+
+	V3_1_0(3, 1, 0);
 	
 	private final int major;
 	private final int minor;
 	private final int patch;
 	
-	private BTAVersion(int major, int minor, int patch) {
+	BTAVersion(int major, int minor, int patch) {
 		this.major = major;
 		this.minor = minor;
 		this.patch = patch;

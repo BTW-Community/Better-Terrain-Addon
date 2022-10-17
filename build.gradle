@@ -31,6 +31,10 @@ repositories {
         name 'HalfOf2'
         url 'https://storage.googleapis.com/devan-maven/'
     }
+
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 sourceSets {
@@ -54,6 +58,8 @@ dependencies {
     implementation "org.lwjgl.lwjgl:lwjgl_util:${lwjglVersion}"
     implementation "org.lwjgl.lwjgl:lwjgl:${lwjglVersion}"
     implementation "org.lwjgl.lwjgl:lwjgl-platform:${lwjglVersion}"
+
+    implementation name: "Deco-Addon-4.0.0-alpha"
 
     implementation fileTree(dir: "libs", include: "**.zip")
     compileOnly fileTree(dir: "$buildDir/BTW_dev", include: "**.jar")

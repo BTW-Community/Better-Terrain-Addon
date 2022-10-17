@@ -1,20 +1,9 @@
 package betterterrain.biome.layer;
 
-import java.util.ArrayList;
-
 import betterterrain.BTAVersion;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.BTAMod;
-import net.minecraft.src.GenLayer;
-import net.minecraft.src.GenLayerAddIsland;
-import net.minecraft.src.GenLayerAddMushroomIsland;
-import net.minecraft.src.GenLayerFuzzyZoom;
-import net.minecraft.src.GenLayerRiver;
-import net.minecraft.src.GenLayerRiverInit;
-import net.minecraft.src.GenLayerSmooth;
-import net.minecraft.src.GenLayerVoronoiZoom;
-import net.minecraft.src.GenLayerZoom;
-import net.minecraft.src.WorldType;
+import net.minecraft.src.*;
 
 public abstract class BTALayer extends GenLayer {
 

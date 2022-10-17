@@ -2,7 +2,7 @@ package betterbiomes.feature.tree;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
+import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
@@ -136,74 +136,74 @@ public class AcaciaGen extends WorldGenerator
 			int blockID = world.getBlockId(x, y + i, z);
 
 			//Checks trunk space
-			if (!(world.isAirBlock(x, y + i, z) || blockID == DecoIntegration.acaciaLeaves.blockID)) {
+			if (!(world.isAirBlock(x, y + i, z) || blockID == DecoBlocks.acaciaLeaves.blockID)) {
 				return false;
 			}
 		}
 		
 		for(int i = 0; i < baseHeight + 3; i++) {
-			world.setBlock(x, y + i, z, DecoIntegration.acaciaLog.blockID);
+			world.setBlock(x, y + i, z, DecoBlocks.acaciaLog.blockID);
 		}
 		
 		createAcaciaLeaves(world, rand, x + 0, y + baseHeight + 3, z - 0, 3);
 		createAcaciaLeaves(world, rand, x + 0, y + baseHeight + 4, z - 0, 2);
 
-        world.setBlock(x, y, z, DecoIntegration.acaciaStump.blockID);
+        world.setBlock(x, y, z, DecoBlocks.acaciaStump.blockID);
 
         //Branches
 		if(rand.nextInt(4) == 0 && 
-				(world.isAirBlock(x + 0, y + baseHeight + 1, z + 1) || world.getBlockId(x + 0, y + baseHeight + 1, z + 1) == DecoIntegration.acaciaLeaves.blockID) && 
-				(world.isAirBlock(x + 1, y + baseHeight + 2, z + 2) || world.getBlockId(x + 1, y + baseHeight + 2, z + 2) == DecoIntegration.acaciaLeaves.blockID)) {
-			world.setBlock(x + 0, y + baseHeight + 1, z + 1, DecoIntegration.acaciaLog.blockID);
-			world.setBlock(x + 1, y + baseHeight + 2, z + 2, DecoIntegration.acaciaLog.blockID);
+				(world.isAirBlock(x + 0, y + baseHeight + 1, z + 1) || world.getBlockId(x + 0, y + baseHeight + 1, z + 1) == DecoBlocks.acaciaLeaves.blockID) && 
+				(world.isAirBlock(x + 1, y + baseHeight + 2, z + 2) || world.getBlockId(x + 1, y + baseHeight + 2, z + 2) == DecoBlocks.acaciaLeaves.blockID)) {
+			world.setBlock(x + 0, y + baseHeight + 1, z + 1, DecoBlocks.acaciaLog.blockID);
+			world.setBlock(x + 1, y + baseHeight + 2, z + 2, DecoBlocks.acaciaLog.blockID);
 			createAcaciaLeaves(world, rand, x + 1, y + baseHeight + 2, z + 2, 3);
 			createAcaciaLeaves(world, rand, x + 1, y + baseHeight + 3, z + 2, 2);
 		}
 
 		if(rand.nextInt(4) == 0 && 
-				(world.isAirBlock(x + 1, y + baseHeight + 0, z + 0) || world.getBlockId(x + 1, y + baseHeight + 0, z + 0) == DecoIntegration.acaciaLeaves.blockID) && 
-				(world.isAirBlock(x + 2, y + baseHeight + 1, z + 0) || world.getBlockId(x + 2, y + baseHeight + 1, z + 0) == DecoIntegration.acaciaLeaves.blockID) && 
-				(world.isAirBlock(x + 3, y + baseHeight + 2, z + 1) || world.getBlockId(x + 3, y + baseHeight + 2, z + 1) == DecoIntegration.acaciaLeaves.blockID)) {
-			world.setBlock(x + 1, y + baseHeight + 0, z + 0, DecoIntegration.acaciaLog.blockID);
-			world.setBlock(x + 2, y + baseHeight + 1, z + 0, DecoIntegration.acaciaLog.blockID);
-			world.setBlock(x + 3, y + baseHeight + 2, z - 1, DecoIntegration.acaciaLog.blockID);
+				(world.isAirBlock(x + 1, y + baseHeight + 0, z + 0) || world.getBlockId(x + 1, y + baseHeight + 0, z + 0) == DecoBlocks.acaciaLeaves.blockID) && 
+				(world.isAirBlock(x + 2, y + baseHeight + 1, z + 0) || world.getBlockId(x + 2, y + baseHeight + 1, z + 0) == DecoBlocks.acaciaLeaves.blockID) && 
+				(world.isAirBlock(x + 3, y + baseHeight + 2, z + 1) || world.getBlockId(x + 3, y + baseHeight + 2, z + 1) == DecoBlocks.acaciaLeaves.blockID)) {
+			world.setBlock(x + 1, y + baseHeight + 0, z + 0, DecoBlocks.acaciaLog.blockID);
+			world.setBlock(x + 2, y + baseHeight + 1, z + 0, DecoBlocks.acaciaLog.blockID);
+			world.setBlock(x + 3, y + baseHeight + 2, z - 1, DecoBlocks.acaciaLog.blockID);
 			createAcaciaLeaves(world, rand, x + 3, y + baseHeight + 3, z - 1, 3);
 			createAcaciaLeaves(world, rand, x + 3, y + baseHeight + 4, z - 1, 2);
 		}
 
 		if(rand.nextInt(4) == 0 && 
-				(world.isAirBlock(x - 1, y + baseHeight + 0, z + 0) || world.getBlockId(x - 1, y + baseHeight + 0, z + 0) == DecoIntegration.acaciaLeaves.blockID) && 
-				(world.isAirBlock(x - 2, y + baseHeight + 1, z + 0) || world.getBlockId(x - 2, y + baseHeight + 1, z + 0) == DecoIntegration.acaciaLeaves.blockID) && 
-				(world.isAirBlock(x - 3, y + baseHeight + 2, z - 1) || world.getBlockId(x - 3, y + baseHeight + 2, z - 1) == DecoIntegration.acaciaLeaves.blockID) && 
-				(world.isAirBlock(x - 4, y + baseHeight + 3, z - 2) || world.getBlockId(x - 4, y + baseHeight + 3, z - 2) == DecoIntegration.acaciaLeaves.blockID)) {
-			world.setBlock(x - 1, y + baseHeight + 0, z + 0, DecoIntegration.acaciaLog.blockID);
-			world.setBlock(x - 2, y + baseHeight + 1, z + 0, DecoIntegration.acaciaLog.blockID);
-			world.setBlock(x - 3, y + baseHeight + 2, z - 1, DecoIntegration.acaciaLog.blockID);
-			world.setBlock(x - 4, y + baseHeight + 3, z - 2, DecoIntegration.acaciaLog.blockID);
+				(world.isAirBlock(x - 1, y + baseHeight + 0, z + 0) || world.getBlockId(x - 1, y + baseHeight + 0, z + 0) == DecoBlocks.acaciaLeaves.blockID) && 
+				(world.isAirBlock(x - 2, y + baseHeight + 1, z + 0) || world.getBlockId(x - 2, y + baseHeight + 1, z + 0) == DecoBlocks.acaciaLeaves.blockID) && 
+				(world.isAirBlock(x - 3, y + baseHeight + 2, z - 1) || world.getBlockId(x - 3, y + baseHeight + 2, z - 1) == DecoBlocks.acaciaLeaves.blockID) && 
+				(world.isAirBlock(x - 4, y + baseHeight + 3, z - 2) || world.getBlockId(x - 4, y + baseHeight + 3, z - 2) == DecoBlocks.acaciaLeaves.blockID)) {
+			world.setBlock(x - 1, y + baseHeight + 0, z + 0, DecoBlocks.acaciaLog.blockID);
+			world.setBlock(x - 2, y + baseHeight + 1, z + 0, DecoBlocks.acaciaLog.blockID);
+			world.setBlock(x - 3, y + baseHeight + 2, z - 1, DecoBlocks.acaciaLog.blockID);
+			world.setBlock(x - 4, y + baseHeight + 3, z - 2, DecoBlocks.acaciaLog.blockID);
 			createAcaciaLeaves(world, rand, x - 4, y + baseHeight + 4, z - 2, 3);
 			createAcaciaLeaves(world, rand, x - 4, y + baseHeight + 5, z - 2, 2);
 		}
 
 		if(rand.nextInt(4) == 0 && 
-				(world.isAirBlock(x + 0, y + baseHeight + 0, z - 1) || world.getBlockId(x + 0, y + baseHeight + 0, z - 1) == DecoIntegration.acaciaLeaves.blockID) && 
-				(world.isAirBlock(x + 1, y + baseHeight + 1, z - 1) || world.getBlockId(x + 1, y + baseHeight + 1, z - 1) == DecoIntegration.acaciaLeaves.blockID) && 
-				(world.isAirBlock(x + 2, y + baseHeight + 2, z - 2) || world.getBlockId(x + 2, y + baseHeight + 2, z - 2) == DecoIntegration.acaciaLeaves.blockID) && 
-				(world.isAirBlock(x + 3, y + baseHeight + 3, z - 2) || world.getBlockId(x + 3, y + baseHeight + 3, z - 2) == DecoIntegration.acaciaLeaves.blockID)) {
-			world.setBlock(x + 0, y + baseHeight + 0, z - 1, DecoIntegration.acaciaLog.blockID);
-			world.setBlock(x + 1, y + baseHeight + 1, z - 2, DecoIntegration.acaciaLog.blockID);
-			world.setBlock(x + 2, y + baseHeight + 2, z - 2, DecoIntegration.acaciaLog.blockID);
-			world.setBlock(x + 3, y + baseHeight + 3, z - 2, DecoIntegration.acaciaLog.blockID);
+				(world.isAirBlock(x + 0, y + baseHeight + 0, z - 1) || world.getBlockId(x + 0, y + baseHeight + 0, z - 1) == DecoBlocks.acaciaLeaves.blockID) && 
+				(world.isAirBlock(x + 1, y + baseHeight + 1, z - 1) || world.getBlockId(x + 1, y + baseHeight + 1, z - 1) == DecoBlocks.acaciaLeaves.blockID) && 
+				(world.isAirBlock(x + 2, y + baseHeight + 2, z - 2) || world.getBlockId(x + 2, y + baseHeight + 2, z - 2) == DecoBlocks.acaciaLeaves.blockID) && 
+				(world.isAirBlock(x + 3, y + baseHeight + 3, z - 2) || world.getBlockId(x + 3, y + baseHeight + 3, z - 2) == DecoBlocks.acaciaLeaves.blockID)) {
+			world.setBlock(x + 0, y + baseHeight + 0, z - 1, DecoBlocks.acaciaLog.blockID);
+			world.setBlock(x + 1, y + baseHeight + 1, z - 2, DecoBlocks.acaciaLog.blockID);
+			world.setBlock(x + 2, y + baseHeight + 2, z - 2, DecoBlocks.acaciaLog.blockID);
+			world.setBlock(x + 3, y + baseHeight + 3, z - 2, DecoBlocks.acaciaLog.blockID);
 			createAcaciaLeaves(world, rand, x + 3, y + baseHeight + 3, z - 2, 3);
 			createAcaciaLeaves(world, rand, x + 3, y + baseHeight + 4, z - 2, 2);
 		}
 
 		if(rand.nextInt(4) == 0 && 
-				(world.isAirBlock(x + 0, y + baseHeight + 0, z - 1) || world.getBlockId(x + 0, y + baseHeight + 0, z - 1) == DecoIntegration.acaciaLeaves.blockID) && 
-				(world.isAirBlock(x + 0, y + baseHeight + 0, z - 2) || world.getBlockId(x + 0, y + baseHeight + 0, z - 2) == DecoIntegration.acaciaLeaves.blockID) && 
-				(world.isAirBlock(x + 1, y + baseHeight + 1, z - 3) || world.getBlockId(x + 1, y + baseHeight + 0, z - 3) == DecoIntegration.acaciaLeaves.blockID)) {
-			world.setBlock(x + 0, y + baseHeight + 0, z - 1, DecoIntegration.acaciaLog.blockID);
-			world.setBlock(x + 0, y + baseHeight + 0, z - 2, DecoIntegration.acaciaLog.blockID);
-			world.setBlock(x + 1, y + baseHeight + 1, z - 3, DecoIntegration.acaciaLog.blockID);
+				(world.isAirBlock(x + 0, y + baseHeight + 0, z - 1) || world.getBlockId(x + 0, y + baseHeight + 0, z - 1) == DecoBlocks.acaciaLeaves.blockID) && 
+				(world.isAirBlock(x + 0, y + baseHeight + 0, z - 2) || world.getBlockId(x + 0, y + baseHeight + 0, z - 2) == DecoBlocks.acaciaLeaves.blockID) && 
+				(world.isAirBlock(x + 1, y + baseHeight + 1, z - 3) || world.getBlockId(x + 1, y + baseHeight + 0, z - 3) == DecoBlocks.acaciaLeaves.blockID)) {
+			world.setBlock(x + 0, y + baseHeight + 0, z - 1, DecoBlocks.acaciaLog.blockID);
+			world.setBlock(x + 0, y + baseHeight + 0, z - 2, DecoBlocks.acaciaLog.blockID);
+			world.setBlock(x + 1, y + baseHeight + 1, z - 3, DecoBlocks.acaciaLog.blockID);
 			createAcaciaLeaves(world, rand, x + 1, y + baseHeight + 1, z - 3, 3);
 			createAcaciaLeaves(world, rand, x + 1, y + baseHeight + 2, z - 3, 2);
 		}
@@ -220,11 +220,11 @@ public class AcaciaGen extends WorldGenerator
 				if (currentID == 0)
 				{
 					if(i == -size + x && k == -size + z ){} else if(i == -size + x && k == size + z ){} else if(i == size + x && k == -size + z ){} else if(i == size + x && k == size + z ){}
-					else { par1World.setBlock(i, y, k, DecoIntegration.acaciaLeaves.blockID); }
+					else { par1World.setBlock(i, y, k, DecoBlocks.acaciaLeaves.blockID); }
 				}
 			}
 		}
 		
-		if(size==3){par1World.setBlock(x, y, z, DecoIntegration.acaciaLog.blockID);}
+		if(size==3){par1World.setBlock(x, y, z, DecoBlocks.acaciaLog.blockID);}
 	}
 }

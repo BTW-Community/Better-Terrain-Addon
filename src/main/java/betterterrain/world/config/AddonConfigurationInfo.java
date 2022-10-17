@@ -6,7 +6,6 @@ import com.google.gson.JsonObject;
 
 import betterterrain.AddonVersion;
 import betterterrain.BTAAddon;
-import net.minecraft.src.FCAddOnHandler;
 
 public class AddonConfigurationInfo {
 	private String name;

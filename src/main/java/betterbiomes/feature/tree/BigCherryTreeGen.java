@@ -2,7 +2,7 @@ package betterbiomes.feature.tree;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
+import deco.block.DecoBlocks;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
@@ -166,7 +166,7 @@ public class BigCherryTreeGen extends WorldGenerator
                     var11[var9] = var10[var9] + var13;
                     int var16 = this.worldObj.getBlockId(var11[0], var11[1], var11[2]);
 
-                    if (var16 != 0 && var16 != DecoIntegration.cherryLeaves.blockID)
+                    if (var16 != 0 && var16 != DecoBlocks.cherryLeaves.blockID)
                     {
                         ++var13;
                     }
@@ -228,7 +228,7 @@ public class BigCherryTreeGen extends WorldGenerator
         for (int var5 = par2 + this.leafDistanceLimit; var4 < var5; ++var4)
         {
             float var6 = this.leafSize(var4 - par2);
-            this.genTreeLayer(par1, var4, par3, var6, (byte)1, DecoIntegration.cherryLeaves.blockID);
+            this.genTreeLayer(par1, var4, par3, var6, (byte)1, DecoBlocks.cherryLeaves.blockID);
         }
     }
 
@@ -334,19 +334,19 @@ public class BigCherryTreeGen extends WorldGenerator
         int var4 = this.basePos[2];
         int[] var5 = new int[] {var1, var2, var4};
         int[] var6 = new int[] {var1, var3, var4};
-        this.placeBlockLine(var5, var6, DecoIntegration.cherryLog.blockID);
+        this.placeBlockLine(var5, var6, DecoBlocks.cherryLog.blockID);
 
         if (this.trunkSize == 2)
         {
             ++var5[0];
             ++var6[0];
-            this.placeBlockLine(var5, var6, DecoIntegration.cherryLog.blockID);
+            this.placeBlockLine(var5, var6, DecoBlocks.cherryLog.blockID);
             ++var5[2];
             ++var6[2];
-            this.placeBlockLine(var5, var6, DecoIntegration.cherryLog.blockID);
+            this.placeBlockLine(var5, var6, DecoBlocks.cherryLog.blockID);
             var5[0] += -1;
             var6[0] += -1;
-            this.placeBlockLine(var5, var6, DecoIntegration.cherryLog.blockID);
+            this.placeBlockLine(var5, var6, DecoBlocks.cherryLog.blockID);
         }
     }
 
@@ -367,7 +367,7 @@ public class BigCherryTreeGen extends WorldGenerator
 
             if (this.leafNodeNeedsBase(var6))
             {
-                this.placeBlockLine(var3, var5, (byte)DecoIntegration.cherryLog.blockID);
+                this.placeBlockLine(var3, var5, (byte)DecoBlocks.cherryLog.blockID);
             }
         }
     }
@@ -424,7 +424,7 @@ public class BigCherryTreeGen extends WorldGenerator
                 var13[var7] = MathHelper.floor_double((double)par1ArrayOfInteger[var7] + (double)var14 * var11);
                 int var16 = this.worldObj.getBlockId(var13[0], var13[1], var13[2]);
 
-                if (var16 != 0 && var16 != DecoIntegration.cherryLeaves.blockID)
+                if (var16 != 0 && var16 != DecoBlocks.cherryLeaves.blockID)
                 {
                     break;
                 }
@@ -510,7 +510,7 @@ public class BigCherryTreeGen extends WorldGenerator
             this.generateLeafNodeBases();
             int var8 = par1World.getBlockId(par3, par4, par5);
 
-            if (var8 == DecoIntegration.cherryLog.blockID)
+            if (var8 == DecoBlocks.cherryLog.blockID)
             {
                 int var9 = par1World.getBlockMetadata(par3, par4, par5);
                 par1World.setBlockMetadataWithClient(par3, par4, par5, var9 | 12);

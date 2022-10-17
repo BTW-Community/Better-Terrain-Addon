@@ -6,8 +6,8 @@ import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.feature.plant.TallGrassGen;
 import betterterrain.feature.tree.LogGen;
+import btw.entity.mob.WolfEntity;
 import net.minecraft.src.Block;
-import net.minecraft.src.FCEntityWolf;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenBigTree;
 import net.minecraft.src.WorldGenTrees;
@@ -16,7 +16,7 @@ import net.minecraft.src.WorldGenerator;
 public class WoodsBiome extends BTABiome {
     public WoodsBiome(int id, String internalName, Climate climate) {
 		super(id, internalName, climate);
-        this.spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 5, 4, 4));
+        this.spawnableCreatureList.add(new SpawnListEntry(WolfEntity.class, 5, 4, 4));
         this.btaBiomeDecorator.treesPerChunk = 10;
         this.btaBiomeDecorator.grassPerChunk = 2;
     }

@@ -10,9 +10,9 @@ import betterterrain.biome.layer.RiverLayer;
 import betterterrain.biome.layer.ShoreLayer;
 import betterterrain.biome.layer.SporadicLayer;
 import betterterrain.world.config.WorldConfigurationInfo;
+import btw.AddonHandler;
+import btw.BTWAddon;
 import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.FCAddOn;
-import net.minecraft.src.FCAddOnHandler;
 
 public abstract class BiomeConfiguration {
 	public static void init() {
@@ -20,7 +20,7 @@ public abstract class BiomeConfiguration {
 		btaConfig.addBiomesToList(biomeList);
 		btaConfig.setBiomeVariants();
 		
-		for (FCAddOn mod : FCAddOnHandler.m_ModList.values()) {
+		for (BTWAddon mod : AddonHandler.modList.values()) {
 			if (mod instanceof BTAAddon) {
 				BTAAddon addon = (BTAAddon) mod;
 				BiomeConfiguration biomeConfig = addon.getBiomeConfiguration();

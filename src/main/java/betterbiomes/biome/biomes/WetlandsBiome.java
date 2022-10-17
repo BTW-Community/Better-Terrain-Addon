@@ -7,10 +7,10 @@ import betterterrain.biome.Climate;
 import betterterrain.feature.tree.TaigaGen5;
 import betterterrain.feature.tree.TallSwampTreeGen;
 import betterterrain.world.config.WorldConfigurationInfo;
-import net.minecraft.src.FCEntityChicken;
-import net.minecraft.src.FCEntityPig;
-import net.minecraft.src.FCEntitySlime;
-import net.minecraft.src.FCEntityWitch;
+import btw.entity.mob.ChickenEntity;
+import btw.entity.mob.PigEntity;
+import btw.entity.mob.SlimeEntity;
+import btw.entity.mob.WitchEntity;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenVines;
@@ -27,11 +27,11 @@ public class WetlandsBiome extends BTABiome {
         this.btaBiomeDecorator.reedsPerChunk = 10;
         this.btaBiomeDecorator.clayPerChunk = 1;
         this.btaBiomeDecorator.waterlilyPerChunk = 4;
-        this.spawnableMonsterList.add(new SpawnListEntry(FCEntitySlime.class, 1, 1, 1));
-        this.spawnableMonsterList.add(new SpawnListEntry(FCEntityWitch.class, 1, 1, 1));
+        this.spawnableMonsterList.add(new SpawnListEntry(SlimeEntity.class, 1, 1, 1));
+        this.spawnableMonsterList.add(new SpawnListEntry(WitchEntity.class, 1, 1, 1));
         this.spawnableCreatureList.clear();
-        this.spawnableCreatureList.add(new SpawnListEntry(FCEntityChicken.class, 10, 2, 2));
-        this.spawnableCreatureList.add(new SpawnListEntry(FCEntityPig.class, 10, 2, 2));
+        this.spawnableCreatureList.add(new SpawnListEntry(ChickenEntity.class, 10, 2, 2));
+        this.spawnableCreatureList.add(new SpawnListEntry(PigEntity.class, 10, 2, 2));
         this.waterColorMultiplier = 10083127;
 	}
 

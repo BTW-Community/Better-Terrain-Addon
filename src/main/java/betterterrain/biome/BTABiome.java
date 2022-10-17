@@ -1,6 +1,5 @@
 package betterterrain.biome;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
@@ -14,21 +13,11 @@ import betterterrain.feature.plant.MelonGen;
 import betterterrain.feature.plant.TallGrassGen;
 import betterterrain.feature.terrain.OreGen;
 import betterterrain.structure.mapgen.BTAMapGenScatteredFeature;
-import betterterrain.structure.mapgen.BTAMapGenVillage;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.config.WorldConfigurationInfoLegacy;
 import betterterrain.world.generate.surface.SurfaceBuilder;
-import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.Block;
-import net.minecraft.src.ComponentVillageStartPiece;
-import net.minecraft.src.FCIBiomeDecorator;
-import net.minecraft.src.MapGenVillage;
-import net.minecraft.src.StructureScatteredFeatureStart;
-import net.minecraft.src.World;
-import net.minecraft.src.WorldGenPumpkin;
-import net.minecraft.src.WorldGenReed;
-import net.minecraft.src.WorldGenerator;
-import net.minecraft.src.WorldType;
+import btw.world.biome.BiomeDecoratorBase;
+import net.minecraft.src.*;
 
 public class BTABiome extends BiomeGenBase {
     public int topBlockExt;
@@ -715,7 +704,7 @@ public class BTABiome extends BiomeGenBase {
      * Allows for intercepting other mods' custom decorators in case you want to use your own custom implementation
      * @return true if the decorator was intercepted, false otherwise
      */
-    public boolean interceptCustomDecorator(FCIBiomeDecorator decorator, World world, Random rand, int x, int y) {
+    public boolean interceptCustomDecorator(BiomeDecoratorBase decorator, World world, Random rand, int x, int y) {
     	return false;
     }
     

@@ -3,11 +3,13 @@ package betterterrain.world.generate.surface;
 import java.util.Random;
 
 import betterbiomes.biome.BetterBiomesConfiguration;
+import betterterrain.BTAMod;
 import betterterrain.BTAVersion;
-import betterterrain.DecoIntegration;
 import betterterrain.biome.BTABiome;
+import betterterrain.mixins.BiomeDecoratorAccessor;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.BetaNoiseOctaves;
+import deco.block.DecoBlocks;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;
 import net.minecraft.src.NoiseGeneratorOctaves;
@@ -98,8 +100,8 @@ public class LegacySurfaceBuilder extends SurfaceBuilder {
 										if (useSand) {
 											if (biome == BetterBiomesConfiguration.badlands || biome == BetterBiomesConfiguration.badlandsPlateau || biome == BetterBiomesConfiguration.badlandsEdge || biome == BetterBiomesConfiguration.badlandsRiver || 
 													biome == BetterBiomesConfiguration.outback || biome == BetterBiomesConfiguration.outbackRiver || biome == BetterBiomesConfiguration.redSandBeach) {
-												topBlock = DecoIntegration.redSand.blockID;
-												fillerBlock = DecoIntegration.redSand.blockID;
+												topBlock = DecoBlocks.legacyRedSand.blockID;
+												fillerBlock = DecoBlocks.legacyRedSand.blockID;
 											}
 											else {
 												topBlock = Block.sand.blockID;
@@ -148,9 +150,9 @@ public class LegacySurfaceBuilder extends SurfaceBuilder {
 									remaingDepth = rand.nextInt(4);
 									fillerBlock = (byte)Block.sandStone.blockID;
 								}
-								else if (DecoIntegration.isDecoInstalled() && remaingDepth == 0 && fillerBlock == DecoIntegration.redSand.blockID) {
+								else if (BTAMod.isDecoInstalled() && remaingDepth == 0 && fillerBlock == DecoBlocks.legacyRedSand.blockID) {
 									remaingDepth = rand.nextInt(4);
-									fillerBlock = DecoIntegration.redSandStone.blockID;
+									fillerBlock = DecoBlocks.redSandstone.blockID;
 								}
 							}
 						}
@@ -170,7 +172,7 @@ public class LegacySurfaceBuilder extends SurfaceBuilder {
 				numTrees++;
 		}
 		else {
-			numTrees = biome.theBiomeDecorator.treesPerChunk;
+			numTrees = ((BiomeDecoratorAccessor) biome.theBiomeDecorator).getTreesPerChunk();
 			
 			if (rand.nextInt(10) == 0)
 				numTrees++;

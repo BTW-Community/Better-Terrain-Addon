@@ -4,13 +4,13 @@ import java.util.Random;
 
 import betterbiomes.feature.tree.TaigaGen3;
 import betterbiomes.feature.tree.TaigaGen4;
-import betterterrain.DecoIntegration;
+import betterterrain.BTAMod;
 import betterterrain.feature.tree.TaigaGen5;
 import betterterrain.feature.tree.TaigaGen7;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.SurfaceBuilder;
-import betterterrain.world.generate.surface.SurfaceBuilder.SurfaceType;
+import deco.block.DecoBlocks;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenTaiga2;
 import net.minecraft.src.WorldGenerator;
@@ -43,11 +43,11 @@ public class ConiferousForestSurfaceBuilder extends SurfaceBuilder {
 		
 		boolean sandOrGravel = (this.useSandAtLocation(i, k, rand) || this.useGravelAtLocation(i, k, rand, generatorInfo)) && surfaceJ <= seaLevel + 1;
 		
-		if (useCoarseDirt && DecoIntegration.isDecoInstalled() && worldType.isDeco() && surfaceType == SurfaceType.TOP && !sandOrGravel) {
-			return new int[] {DecoIntegration.coarseDirt.blockID, 0};
+		if (useCoarseDirt && BTAMod.isDecoInstalled() && (worldType).isDeco() && surfaceType == SurfaceType.TOP && !sandOrGravel) {
+			return new int[] {DecoBlocks.coarseDirt.blockID, 0};
 		}
-		else if (usePodzol && DecoIntegration.isDecoInstalled() && worldType.isDeco() && surfaceType == SurfaceType.TOP && !sandOrGravel) {
-			return new int[] {DecoIntegration.podzol.blockID, 0};
+		else if (usePodzol && BTAMod.isDecoInstalled() && (worldType).isDeco() && surfaceType == SurfaceType.TOP && !sandOrGravel) {
+			return new int[] {DecoBlocks.podzol.blockID, 0};
 		}
 		else {
 			return super.getSurfaceBlock(i, j, k, surfaceJ, soilDepth, surfaceType, seaLevel, rand, generatorInfo, worldType);

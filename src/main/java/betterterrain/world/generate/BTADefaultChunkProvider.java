@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Random;
 
 import betterterrain.BTAVersion;
-import betterterrain.DecoIntegration;
 import betterterrain.biome.BTABiome;
 import betterterrain.structure.mapgen.BTAMapGenBase;
 import betterterrain.structure.mapgen.BTAMapGenCave;
@@ -17,7 +16,6 @@ import betterterrain.structure.mapgen.BTAMapGenVillage;
 import betterterrain.world.BTAChunk;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.BetaNoiseOctaves;
-import betterterrain.world.generate.surface.NoShorelineSurfaceBuilder;
 import betterterrain.world.generate.surface.SurfaceBuilder;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;
@@ -34,7 +32,6 @@ import net.minecraft.src.World;
 import net.minecraft.src.WorldGenDungeons;
 import net.minecraft.src.WorldGenFlowers;
 import net.minecraft.src.WorldGenLakes;
-import net.minecraft.src.WorldType;
 
 public class BTADefaultChunkProvider implements BTAChunkProvider
 {

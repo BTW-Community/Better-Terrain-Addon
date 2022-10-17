@@ -7,13 +7,8 @@ import betterterrain.world.generate.BTADefaultChunkProvider;
 import betterterrain.world.generate.EndChunkProvider;
 import betterterrain.world.generate.NetherChunkProvider;
 import betterterrain.world.generate.SimplexChunkProvider;
-import betterterrain.world.generate.SimplexChunkProviderOld;
 import betterterrain.world.generate.TerrainGenerator;
-import net.minecraft.src.ChunkProviderHell;
-import net.minecraft.src.IChunkProvider;
-import net.minecraft.src.World;
-import net.minecraft.src.WorldChunkManager;
-import net.minecraft.src.WorldType;
+import net.minecraft.src.*;
 
 public class BTADefaultWorldType extends WorldType {
     public BTADefaultWorldType(int par1, String par2Str) {
@@ -28,12 +23,12 @@ public class BTADefaultWorldType extends WorldType {
         return "Better Terrain";
     }
 
-    @Override
+    // @Override
     public WorldChunkManager getChunkManager(World world, String generatorOptions) {
     	WorldConfigurationInfo info;
     	
     	if (generatorOptions.equals("")) {
-    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(this.isDeco());
+    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy((this).isDeco());
     	}
     	else {
     		info = WorldConfigurationInfo.createInfoFromString(generatorOptions);
@@ -42,12 +37,12 @@ public class BTADefaultWorldType extends WorldType {
     	return new BTAWorldChunkManager(world, info);
     }
 
-    @Override
+    // @Override
     public IChunkProvider getChunkProviderOverworld(World world, long seed, boolean mapFeaturesEnabled, String generatorOptions) {
     	WorldConfigurationInfo info;
     	
     	if (generatorOptions.equals("")) {
-    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(this.isDeco());
+    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy((this).isDeco());
     	}
     	else {
     		info = WorldConfigurationInfo.createInfoFromString(generatorOptions);
@@ -61,19 +56,19 @@ public class BTADefaultWorldType extends WorldType {
     		return new SimplexChunkProvider(world, seed, mapFeaturesEnabled, info);
     	}
     }
-    
-    @Override
+
+    // @Override
     public IChunkProvider getChunkProviderNether(World world, long seed, String generatorOptions) {
     	WorldConfigurationInfo info;
     	
     	if (generatorOptions.equals("")) {
-    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy(this.isDeco());
+    		info = WorldConfigurationInfoLegacy.createDefaultConfigurationLegacy((this).isDeco());
     	}
     	else {
     		info = WorldConfigurationInfo.createInfoFromString(generatorOptions);
     	}
     	
-    	if (this.isDeco()) {
+    	if ((this).isDeco()) {
     		return new NetherChunkProvider(world, seed, info);
     	}
     	else {
@@ -81,22 +76,22 @@ public class BTADefaultWorldType extends WorldType {
     	}
     }
 
-    @Override
+    // @Override
     public IChunkProvider getChunkProviderEnd(World world, long seed) {
     	return new EndChunkProvider(world, seed);
     }
     
-    @Override
+    // @Override
     public boolean hasDeco() {
     	return true;
     }
 
-    @Override
+    // @Override
     public boolean isBTA() {
     	return true;
     }
 	
-    @Override
+    // @Override
 	public int getColdBiomeSnowLevelModifier(WorldConfigurationInfo generatorInfo) {
 		return generatorInfo.getGenerator().equals(TerrainGenerator.SIMPLEX) ? 70 : 0;
 	}

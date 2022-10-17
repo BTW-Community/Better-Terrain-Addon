@@ -1,32 +1,21 @@
 package betterterrain;
 
 import betterterrain.biome.BiomeConfiguration;
-import betterterrain.block.BTABlockClay;
-import betterterrain.item.BTAItemBloodMossSpores;
-import betterterrain.item.BTAItemPileSoulSand;
 import betterterrain.world.type.BTADefaultWorldType;
 import betterterrain.world.type.BetaWorldType;
 import betterterrain.world.type.SkyWorldType;
-import net.minecraft.src.Block;
-import net.minecraft.src.EntityList;
-import net.minecraft.src.FCAddOn;
-import net.minecraft.src.FCAddOnHandler;
-import net.minecraft.src.FCBetterThanWolves;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemMultiTextureTile;
-import net.minecraft.src.MapColor;
-import net.minecraft.src.Material;
-import net.minecraft.src.RenderManager;
-import net.minecraft.src.ServerCommandManager;
-import net.minecraft.src.WorldType;
+import btw.AddonHandler;
+import btw.BTWAddon;
+import btw.block.BTWBlocks;
+import net.minecraft.src.*;
 
-public class BTAMod extends FCAddOn {
+public class BTAMod extends BTWAddon {
 	private static BTAMod instance;
 	
 	public final BTAVersion currentVersion;
 	
 	public static final WorldType BTAWorldType = new BTADefaultWorldType(4, "BTA");
-	public static final WorldType BTAWorldTypeDeco = new BTADefaultWorldType(5, "BTADeco").setIsDeco().setCanBeCreated(false).setParent(BTAWorldType);
+	public static final WorldType BTAWorldTypeDeco = (new BTADefaultWorldType(5, "BTADeco").setCanBeCreated(false)).setIsDeco().setParent(BTAWorldType);
 	public static final WorldType BTAWorldTypeBeta = new BetaWorldType(6, "BTABeta");
 	public static final WorldType BTAWorldTypeBetaDeco = new BetaWorldType(7, "BTABetaDeco").setIsDeco().setCanBeCreated(false).setParent(BTAWorldTypeBeta);
 	public static final WorldType BTAWorldTypeSky = new SkyWorldType(8, "BTASky");
@@ -37,28 +26,23 @@ public class BTAMod extends FCAddOn {
 	public static Material netherSand;
 	
 	private BTAMod() {
-		super("Better Terrain", "3.0.0", "BTA");
+		super("Better Terrain", "3.1.0", "BTA");
 		this.currentVersion = BTAVersion.fromString(this.getVersionString());
 	}
 
 	@Override
-	public void Initialize() {
-		ServerCommandManager.registerAddonCommand(new BiomeCommand());
-		
-		DecoIntegration.init();
+	public void initialize() {
+		this.registerAddonCommand(new BiomeCommand());
 		
 		netherSand = new Material(MapColor.sandColor).setRequiresTool().SetNetherMobsCanSpawnOn();
-	    
-		FCBetterThanWolves.fcItemPileSoulSand = Item.replaceItem(FCBetterThanWolves.fcItemPileSoulSand.itemID, BTAItemPileSoulSand.class, instance);
-		
-		Block.blockClay = Block.replaceBlock(Block.blockClay.blockID, BTABlockClay.class, instance);
+
+		Item.itemsList[Block.blockClay.blockID] = null;
 		Item.itemsList[Block.blockClay.blockID] = new ItemMultiTextureTile(Block.blockClay.blockID - 256, Block.blockClay, new String[] {"dirt", "sand", "redSand", "grass"});
+
+		Block.blockNetherQuartz.setBlockMaterial(BTWBlocks.netherRockMaterial);
+		Block.slowSand.setBlockMaterial(netherSand);
 		
-		FCBetterThanWolves.fcItemBloodMossSpores = Item.replaceItem(FCBetterThanWolves.fcItemBloodMossSpores.itemID, BTAItemBloodMossSpores.class, instance);
-		Block.blockNetherQuartz.SetBlockMaterial(FCBetterThanWolves.fcMaterialNetherRock);
-		Block.slowSand.SetBlockMaterial(netherSand);
-		
-		for (FCAddOn mod : FCAddOnHandler.m_ModList.values()) {
+		for (BTWAddon mod : AddonHandler.modList.values()) {
 			if (mod instanceof BTAAddon) {
 				BTAAddon addon = (BTAAddon) mod;
 				addon.currentVersion = AddonVersion.fromString(addon.getVersionString(), addon);
@@ -67,8 +51,12 @@ public class BTAMod extends FCAddOn {
 	}
 	
 	@Override
-	public void PostInitialize() {
+	public void postInitialize() {
 		BiomeConfiguration.init();
+	}
+
+	public static boolean isDecoInstalled() {
+		return AddonHandler.isModInstalled("Deco Addon");
 	}
 	
 	public static BTAMod getInstance() {

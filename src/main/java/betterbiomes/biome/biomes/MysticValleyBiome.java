@@ -6,7 +6,7 @@ import betterbiomes.feature.terrain.MysticShardsGen;
 import betterbiomes.feature.tree.CherryTreeGen;
 import betterbiomes.feature.tree.MassiveOakGen;
 import betterbiomes.feature.tree.MysticTreeGen;
-import betterterrain.DecoIntegration;
+import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.feature.plant.TallGrassGen;
@@ -14,11 +14,11 @@ import betterterrain.feature.tree.TaigaGen6;
 import betterterrain.feature.tree.TallSwampTreeGen;
 import betterterrain.feature.tree.TemperateBirchGen;
 import betterterrain.world.config.WorldConfigurationInfo;
+import btw.entity.mob.ChickenEntity;
+import btw.entity.mob.PigEntity;
+import btw.entity.mob.SlimeEntity;
+import btw.entity.mob.WitchEntity;
 import net.minecraft.src.Block;
-import net.minecraft.src.FCEntityChicken;
-import net.minecraft.src.FCEntityPig;
-import net.minecraft.src.FCEntitySlime;
-import net.minecraft.src.FCEntityWitch;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
@@ -30,11 +30,11 @@ public class MysticValleyBiome extends BTABiome {
 		this.btaBiomeDecorator.treesPerChunk = 15;
 		this.btaBiomeDecorator.grassPerChunk = 20;
 		this.btaBiomeDecorator.flowersPerChunk = 30;
-		this.spawnableMonsterList.add(new SpawnListEntry(FCEntitySlime.class, 1, 1, 1));
-		this.spawnableMonsterList.add(new SpawnListEntry(FCEntityWitch.class, 1, 1, 1));
+		this.spawnableMonsterList.add(new SpawnListEntry(SlimeEntity.class, 1, 1, 1));
+		this.spawnableMonsterList.add(new SpawnListEntry(WitchEntity.class, 1, 1, 1));
 		this.spawnableCreatureList.clear();
-		this.spawnableCreatureList.add(new SpawnListEntry(FCEntityChicken.class, 10, 2, 2));
-		this.spawnableCreatureList.add(new SpawnListEntry(FCEntityPig.class, 10, 2, 2));
+		this.spawnableCreatureList.add(new SpawnListEntry(ChickenEntity.class, 10, 2, 2));
+		this.spawnableCreatureList.add(new SpawnListEntry(PigEntity.class, 10, 2, 2));
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class MysticValleyBiome extends BTABiome {
 		if (rand.nextInt(10) == 0) {
 			gen = new MassiveOakGen(false);
 		}
-		else if (DecoIntegration.isDecoInstalled() && rand.nextInt(8) == 0) {
+		else if (BTAMod.isDecoInstalled() && rand.nextInt(8) == 0) {
 			gen = new CherryTreeGen();
 		}
 		else if (rand.nextInt(8) == 0) {
@@ -82,7 +82,7 @@ public class MysticValleyBiome extends BTABiome {
 	public void decorate(World world, Random rand, int chunkX, int chunkZ, WorldConfigurationInfo generatorOptions) {
 		super.decorate(world, rand, chunkX, chunkZ, generatorOptions);
 
-		if (DecoIntegration.isDecoInstalled()) {
+		if (BTAMod.isDecoInstalled()) {
 			WorldGenerator gen;
 
 			//Small amethyst shards

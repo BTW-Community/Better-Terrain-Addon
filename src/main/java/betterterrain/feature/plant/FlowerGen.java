@@ -24,7 +24,7 @@ public class FlowerGen extends WorldGenerator
             int var8 = par4 + par2Random.nextInt(4) - par2Random.nextInt(4);
             int var9 = par5 + par2Random.nextInt(8) - par2Random.nextInt(8);
 
-            if (par1World.isAirBlock(var7, var8, var9) && (!par1World.provider.hasNoSky || var8 < 127) && Block.blocksList[this.plantBlockId].CanBlockStayDuringGenerate(par1World, var7, var8, var9))
+            if (par1World.isAirBlock(var7, var8, var9) && (!par1World.provider.hasNoSky || var8 < 127) && Block.blocksList[this.plantBlockId].canBlockStayDuringGenerate(par1World, var7, var8, var9))
             {
                 par1World.setBlock(var7, var8, var9, this.plantBlockId, 0, 2);
                 

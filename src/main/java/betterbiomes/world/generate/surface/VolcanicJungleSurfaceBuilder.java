@@ -2,11 +2,10 @@ package betterbiomes.world.generate.surface;
 
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.SurfaceBuilder;
-import betterterrain.world.generate.surface.SurfaceBuilder.SurfaceType;
+import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.WorldType;
 
@@ -27,9 +26,8 @@ public class VolcanicJungleSurfaceBuilder extends SurfaceBuilder {
 	/**
 	 * Gets the block to use for the surface layer for this biome
 	 * @param i Local x value for this chunk
-	 * @param y Absolute y value
+	 * @param k Absolute y value
 	 * @param k Local z value for this chunk
-	 * @param isTopBlock Whether to return the top block or the filler block
 	 * @param rand
 	 * @param generatorInfo
 	 * @param worldType
@@ -53,14 +51,14 @@ public class VolcanicJungleSurfaceBuilder extends SurfaceBuilder {
 					double basaltNoise = basaltNoiseGen.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), basaltNoiseScale) + rand.nextDouble() * 0.5D;
 					
 					if (basaltNoise < -0.75) {
-						blockID = DecoIntegration.stoneTypes.blockID;
+						blockID = DecoBlocks.stoneVariants.blockID;
 						metadata = 1;
 					}
 					else if (basaltNoise < 0.125 || basaltNoise > 1) {
-						blockID = DecoIntegration.basalt.blockID;
+						blockID = DecoBlocks.basalt.blockID;
 					}
 					else {
-						blockID = DecoIntegration.infusedStone.blockID;
+						blockID = DecoBlocks.infusedStone.blockID;
 					}
 				}
 			}

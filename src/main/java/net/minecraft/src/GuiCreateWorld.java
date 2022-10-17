@@ -1,9 +1,10 @@
 package net.minecraft.src;
 
 import java.util.Random;
+
+import betterterrain.BTAMod;
 import org.lwjgl.input.Keyboard;
 
-import betterterrain.DecoIntegration;
 import betterterrain.biome.BTABiome;
 import betterterrain.gui.GeneratorOptionsGui;
 import betterterrain.world.config.WorldConfigurationInfo;
@@ -122,7 +123,7 @@ public class GuiCreateWorld extends GuiScreen
         this.buttonList.add(this.buttonCustomizeBTA = new GuiButton(10, this.width / 2 + 5, 120, 150, 20, var1.translateKey("selectWorld.customizeType")));
         this.buttonCustomizeBTA.drawButton = false;
         
-        this.isDeco = DecoIntegration.isDecoInstalled();
+        this.isDeco = BTAMod.isDecoInstalled();
         
         this.textboxWorldName = new GuiTextField(this.fontRenderer, this.width / 2 - 100, 60, 200, 20);
         this.textboxWorldName.setFocused(true);

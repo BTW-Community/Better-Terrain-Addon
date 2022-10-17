@@ -7,8 +7,8 @@ import betterterrain.biome.Climate;
 import betterterrain.feature.plant.TallGrassGen;
 import betterterrain.feature.tree.TaigaGen5;
 import betterterrain.feature.tree.TaigaGen7;
+import btw.entity.mob.WolfEntity;
 import net.minecraft.src.Block;
-import net.minecraft.src.FCEntityWolf;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenTaiga2;
 import net.minecraft.src.WorldGenerator;
@@ -16,7 +16,7 @@ import net.minecraft.src.WorldGenerator;
 public class ConiferousForestClearingBiome extends BTABiome {
 	public ConiferousForestClearingBiome(int id, String internalName, Climate climate) {
 		super(id, internalName, climate);
-		spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 8, 4, 4));
+		spawnableCreatureList.add(new SpawnListEntry(WolfEntity.class, 8, 4, 4));
         this.btaBiomeDecorator.treesPerChunk = 3;
         this.btaBiomeDecorator.grassPerChunk = 15;
 	}

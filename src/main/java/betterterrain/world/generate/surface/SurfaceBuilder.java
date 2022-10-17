@@ -6,20 +6,13 @@ import java.util.Random;
 import java.util.Set;
 
 import betterterrain.BTAVersion;
-import betterterrain.DecoIntegration;
 import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
+import betterterrain.mixins.BiomeDecoratorAccessor;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
-import betterterrain.world.generate.surface.SurfaceBuilder.SurfaceType;
-import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.Block;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.NoiseGeneratorOctaves;
-import net.minecraft.src.World;
-import net.minecraft.src.WorldGenerator;
-import net.minecraft.src.WorldType;
-import opensimplex2.OpenSimplex2F;
+import deco.block.DecoBlocks;
+import net.minecraft.src.*;
 
 public class SurfaceBuilder {
 	protected static NoiseGeneratorOctaves blockModifierNoiseGen;
@@ -353,7 +346,7 @@ public class SurfaceBuilder {
 		int surfaceJ = 127;
 
 		for (int j = 127; j >= 0; --j) {
-			if (j <= 0 + rand.nextInt(5) && !worldType.isSky()) {
+			if (j <= 0 + rand.nextInt(5) && !(worldType).isSky()) {
 				setBlockValue(blockArray, i, j, k, Block.bedrock.blockID);
 			}
 			else {
@@ -474,7 +467,7 @@ public class SurfaceBuilder {
 				numTrees++;
 		}
 		else {
-			numTrees = biome.theBiomeDecorator.treesPerChunk;
+			numTrees = ((BiomeDecoratorAccessor) biome.theBiomeDecorator).getTreesPerChunk();
 
 			if (rand.nextInt(10) == 0)
 				numTrees++;
@@ -535,7 +528,6 @@ public class SurfaceBuilder {
 	 * @param i Local x value for this chunk
 	 * @param y Absolute y value
 	 * @param k Local z value for this chunk
-	 * @param id Block id or metadata to set
 	 */
 	protected int getBlockValue(Object blockArray, int i, int y, int k) {
 		if (blockArray instanceof int[]) {
@@ -556,9 +548,8 @@ public class SurfaceBuilder {
 	/**
 	 * Gets the block to use for the surface layer for this biome
 	 * @param i Local x value for this chunk
-	 * @param y Absolute y value
+	 * @param k Absolute y value
 	 * @param k Local z value for this chunk
-	 * @param isTopBlock Whether to return the top block or the filler block
 	 * @param rand
 	 * @param generatorInfo
 	 * @param worldType
@@ -624,9 +615,9 @@ public class SurfaceBuilder {
 				if (((BTABiome) this.biome).topBlockExt == Block.sand.blockID) {
 					return Block.sandStone.blockID;
 				}
-				else if (DecoIntegration.isDecoInstalled()) {
-					if (((BTABiome) this.biome).topBlockExt == DecoIntegration.redSand.blockID) {
-						return DecoIntegration.redSandStone.blockID;
+				else if (BTAMod.isDecoInstalled()) {
+					if (((BTABiome) this.biome).topBlockExt == DecoBlocks.legacyRedSand.blockID) {
+						return DecoBlocks.redSandstone.blockID;
 					}
 					else {
 						return baseBlock;

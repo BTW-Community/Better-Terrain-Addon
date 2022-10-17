@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import betterbiomes.biome.BetterBiomesConfiguration;
-import betterterrain.DecoIntegration;
+import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
 import betterterrain.structure.mapgen.BTAMapGenBase;
 import betterterrain.structure.mapgen.BTAMapGenCave;
@@ -18,6 +18,7 @@ import betterterrain.world.BTAChunk;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.BetaNoiseOctaves;
 import betterterrain.world.generate.surface.SurfaceBuilder;
+import deco.block.DecoBlocks;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;
 import net.minecraft.src.BlockSand;
@@ -31,7 +32,6 @@ import net.minecraft.src.World;
 import net.minecraft.src.WorldGenDungeons;
 import net.minecraft.src.WorldGenFlowers;
 import net.minecraft.src.WorldGenLakes;
-import net.minecraft.src.WorldType;
 
 public class BetaChunkProvider implements BTAChunkProvider
 {
@@ -250,8 +250,8 @@ public class BetaChunkProvider implements BTAChunkProvider
 									if (useSand)
 									{
 										if (var10 == BetterBiomesConfiguration.badlands || var10 == BetterBiomesConfiguration.badlandsPlateau || var10 == BetterBiomesConfiguration.outback) {
-											var15 = DecoIntegration.redSand.blockID;
-											var16 = DecoIntegration.redSand.blockID;
+											var15 = DecoBlocks.legacyRedSand.blockID;
+											var16 = DecoBlocks.legacyRedSand.blockID;
 										}
 										else {
 											var15 = Block.sand.blockID;
@@ -289,10 +289,10 @@ public class BetaChunkProvider implements BTAChunkProvider
 									var14 = this.rand.nextInt(4);
 									var16 = (byte)Block.sandStone.blockID;
 								}
-								else if (DecoIntegration.isDecoInstalled() && var14 == 0 && var16 == DecoIntegration.redSand.blockID)
+								else if (BTAMod.isDecoInstalled() && var14 == 0 && var16 == DecoBlocks.legacyRedSand.blockID)
 								{
 									var14 = this.rand.nextInt(4);
-									var16 = DecoIntegration.redSandStone.blockID;
+									var16 = DecoBlocks.redSandstone.blockID;
 								}
 							}
 						}

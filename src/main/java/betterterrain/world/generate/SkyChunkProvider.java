@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import betterbiomes.biome.BetterBiomesConfiguration;
-import betterterrain.DecoIntegration;
+import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
 import betterterrain.structure.mapgen.BTAMapGenBase;
 import betterterrain.structure.mapgen.BTAMapGenCave;
@@ -18,6 +18,7 @@ import betterterrain.world.BTAChunk;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.BetaNoiseOctaves;
 import betterterrain.world.generate.surface.SurfaceBuilder;
+import deco.block.DecoBlocks;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;
 import net.minecraft.src.BlockSand;
@@ -37,7 +38,6 @@ import net.minecraft.src.WorldGenHellLava;
 import net.minecraft.src.WorldGenLakes;
 import net.minecraft.src.WorldGenMinable;
 import net.minecraft.src.WorldGenReed;
-import net.minecraft.src.WorldType;
 
 public class SkyChunkProvider implements BTAChunkProvider
 {
@@ -237,10 +237,10 @@ public class SkyChunkProvider implements BTAChunkProvider
                                 var14 = this.rand.nextInt(4);
                                 var16 = Block.sandStone.blockID;
                             }
-							else if (DecoIntegration.isDecoInstalled() && var14 == 0 && var16 == DecoIntegration.redSand.blockID)
+							else if (BTAMod.isDecoInstalled() && var14 == 0 && var16 == DecoBlocks.legacyRedSand.blockID)
 							{
 								var14 = this.rand.nextInt(4);
-								var16 = DecoIntegration.redSandStone.blockID;
+								var16 = DecoBlocks.redSandstone.blockID;
 							}
 						}
                     }

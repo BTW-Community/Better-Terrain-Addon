@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import btw.AddonHandler;
+import btw.BTWAddon;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -22,8 +24,6 @@ import betterterrain.biome.BiomeConfiguration;
 import betterterrain.biome.BiomeInfo;
 import betterterrain.world.generate.TerrainGenerator;
 import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.FCAddOn;
-import net.minecraft.src.FCAddOnHandler;
 
 public class WorldConfigurationInfo {
 	private ArrayList<BiomeInfo> biomeInfoList = new ArrayList();
@@ -71,7 +71,7 @@ public class WorldConfigurationInfo {
 			}
 		}
 		
-		for (FCAddOn mod : FCAddOnHandler.m_ModList.values()) {
+		for (BTWAddon mod : AddonHandler.modList.values()) {
 			if (mod instanceof BTAAddon) {
 				BTAAddon addon = (BTAAddon) mod;
 				AddonConfigurationInfo addonInfo = addon.createDefaultConfigInfo();

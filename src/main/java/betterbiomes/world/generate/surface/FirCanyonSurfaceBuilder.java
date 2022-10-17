@@ -3,12 +3,11 @@ package betterbiomes.world.generate.surface;
 import java.util.ArrayList;
 import java.util.Random;
 
-import betterterrain.DecoIntegration;
+import betterterrain.BTAMod;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.NoShorelineSurfaceBuilder;
-import betterterrain.world.generate.surface.SurfaceBuilder;
-import betterterrain.world.generate.surface.SurfaceBuilder.SurfaceType;
+import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.WorldType;
 
@@ -74,7 +73,7 @@ public class FirCanyonSurfaceBuilder extends NoShorelineSurfaceBuilder {
 		//k and i swapped because apparently I messed something up somewhere
 		boolean useCoarseDirt = coarseDirtNoiseGen.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), dirtNoiseScale) + rand.nextDouble() * 0.15D > -0.125;
 		
-		if (useCoarseDirt && DecoIntegration.isDecoInstalled() && worldType.isDeco()) {
+		if (useCoarseDirt && BTAMod.isDecoInstalled() && worldType.isDeco()) {
 			double grassNoiseScale = 1/48D;
 			//k and i swapped because apparently I messed something up somewhere
 			boolean useGrass = grassNoiseGen.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), grassNoiseScale) + rand.nextDouble() * 0.15D > -0.125;
@@ -90,7 +89,7 @@ public class FirCanyonSurfaceBuilder extends NoShorelineSurfaceBuilder {
 					}
 				}
 				else {
-					return new int[] {DecoIntegration.coarseDirt.blockID, 0};
+					return new int[] {DecoBlocks.coarseDirt.blockID, 0};
 				}
 			case FILLER:
 				return new int[] {Block.dirt.blockID, 0};
@@ -99,12 +98,12 @@ public class FirCanyonSurfaceBuilder extends NoShorelineSurfaceBuilder {
 			}
 		}
 		else if (generateTerracotta) {
-			int blockID = DecoIntegration.terracotta.blockID;
+			int blockID = DecoBlocks.terracotta.blockID;
 			int metadata = 0;
 			
-			if (blockID == DecoIntegration.terracotta.blockID && metaLocations[j & 15] != -1) {
+			if (blockID == DecoBlocks.terracotta.blockID && metaLocations[j & 15] != -1) {
 				if (j < 95 || (j < 127 && j != surfaceJ)) {
-					blockID = DecoIntegration.stainedTerracotta.blockID;
+					blockID = DecoBlocks.stainedTerracotta.blockID;
 					metadata = metaLocations[j & 15];
 				}
 			}

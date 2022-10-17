@@ -2,17 +2,17 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.feature.tree.AutmnTreeGen;
+import betterbiomes.feature.tree.AutumnTreeGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import net.minecraft.src.FCEntityWolf;
+import btw.entity.mob.WolfEntity;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenerator;
 
 public class AutmnForestBiome extends BTABiome {
 	public AutmnForestBiome(int id, String internalName, Climate climate) {
 		super(id, internalName, climate);
-        this.spawnableCreatureList.add(new SpawnListEntry(FCEntityWolf.class, 5, 4, 4));
+        this.spawnableCreatureList.add(new SpawnListEntry(WolfEntity.class, 5, 4, 4));
         this.btaBiomeDecorator.treesPerChunk = 15;
         this.btaBiomeDecorator.grassPerChunk = 2;
 	}
@@ -30,7 +30,7 @@ public class AutmnForestBiome extends BTABiome {
     		gen = this.worldGeneratorForest;
     	}
     	else {
-    		gen = new AutmnTreeGen(r % 3);
+    		gen = new AutumnTreeGen(r % 3);
     	}
     	
     	return gen;

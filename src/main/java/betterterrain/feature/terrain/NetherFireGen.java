@@ -13,7 +13,7 @@ public class NetherFireGen extends WorldGenerator {
             int j = y + random.nextInt(4) - random.nextInt(4);
             int k = z + random.nextInt(8) - random.nextInt(8);
 
-            if (world.isAirBlock(i, j, k) && world.getBlockId(i, j - 1, k) != 0 && Block.blocksList[world.getBlockId(i, j - 1, k)].DoesInfiniteBurnToFacing(world, i, j - 1, k, 0)) {
+            if (world.isAirBlock(i, j, k) && world.getBlockId(i, j - 1, k) != 0 && Block.blocksList[world.getBlockId(i, j - 1, k)].doesInfiniteBurnToFacing(world, i, j - 1, k, 0)) {
                 world.setBlock(i, j, k, Block.fire.blockID, 0, 2);
             }
         }

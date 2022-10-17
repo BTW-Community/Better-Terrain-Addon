@@ -2,8 +2,6 @@ package betterterrain.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.world.generate.surface.HotSpringsSurfaceBuilder;
-import betterterrain.DecoIntegration;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.feature.plant.TallGrassGen;
@@ -11,16 +9,11 @@ import betterterrain.feature.tree.TallSwampTreeGen;
 import betterterrain.feature.tree.TemperateBirchGen;
 import betterterrain.feature.tree.WillowGen;
 import betterterrain.world.config.WorldConfigurationInfo;
-import betterterrain.world.generate.surface.SwampSurfaceBuilder;
+import btw.entity.mob.ChickenEntity;
+import btw.entity.mob.PigEntity;
+import btw.entity.mob.SlimeEntity;
+import btw.entity.mob.WitchEntity;
 import net.minecraft.src.Block;
-import net.minecraft.src.ColorizerFoliage;
-import net.minecraft.src.ColorizerGrass;
-import net.minecraft.src.FCEntityChicken;
-import net.minecraft.src.FCEntityPig;
-import net.minecraft.src.FCEntitySlime;
-import net.minecraft.src.FCEntityWitch;
-import net.minecraft.src.FCUtilsColor;
-import net.minecraft.src.Material;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenVines;
@@ -38,11 +31,11 @@ public class SwampBiome extends BTABiome {
 		this.btaBiomeDecorator.reedsPerChunk = 10;
 		this.btaBiomeDecorator.clayPerChunk = 1;
 		this.btaBiomeDecorator.waterlilyPerChunk = 10;
-		this.spawnableMonsterList.add(new SpawnListEntry(FCEntitySlime.class, 1, 1, 1));
-		this.spawnableMonsterList.add(new SpawnListEntry(FCEntityWitch.class, 1, 1, 1));
+		this.spawnableMonsterList.add(new SpawnListEntry(SlimeEntity.class, 1, 1, 1));
+		this.spawnableMonsterList.add(new SpawnListEntry(WitchEntity.class, 1, 1, 1));
 		this.spawnableCreatureList.clear();
-		this.spawnableCreatureList.add(new SpawnListEntry(FCEntityChicken.class, 10, 2, 2));
-		this.spawnableCreatureList.add(new SpawnListEntry(FCEntityPig.class, 10, 2, 2));
+		this.spawnableCreatureList.add(new SpawnListEntry(ChickenEntity.class, 10, 2, 2));
+		this.spawnableCreatureList.add(new SpawnListEntry(PigEntity.class, 10, 2, 2));
 		this.waterColorMultiplier = 14745518;
 	}
 
