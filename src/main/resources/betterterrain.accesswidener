@@ -4,4 +4,5 @@ extendable class net/minecraft/src/WorldType
 extendable class net/minecraft/src/ComponentScatteredFeature
 
 accessible class net/minecraft/src/StructureNetherBridgeStart
+accessible class net/minecraft/src/StructureStrongholdStart
 accessible class net/minecraft/src/StructureVillageStart

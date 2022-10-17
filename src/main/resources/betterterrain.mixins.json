@@ -10,6 +10,9 @@
 
     "BiomeDecoratorAccessor",
     "GenLayerAccessor",
+    "WorldProviderMixin",
+    "WorldProviderEndMixin",
+    "WorldProviderHellMixin",
     "WorldTypeAccessor",
     "WorldTypeMixin"
   ],

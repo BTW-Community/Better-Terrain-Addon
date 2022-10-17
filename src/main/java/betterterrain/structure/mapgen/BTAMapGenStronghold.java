@@ -9,11 +9,7 @@ import java.util.Map.Entry;
 
 import betterterrain.world.BTAWorldChunkManager;
 import betterterrain.world.util.WorldTypeInterface;
-import net.minecraft.src.ChunkCoordIntPair;
-import net.minecraft.src.ChunkPosition;
-import net.minecraft.src.ComponentStrongholdStairs2;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.StructureStart;
+import net.minecraft.src.*;
 
 public class BTAMapGenStronghold extends BTAMapGenStructure
 {
