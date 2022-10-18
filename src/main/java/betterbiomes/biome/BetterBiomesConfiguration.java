@@ -1004,12 +1004,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 	
 	public void setBiomeVariants() {
 		//Sub biomes
-		WorldConfigurationInfo.Condition pre140 = new WorldConfigurationInfo.Condition() {
-			@Override
-			public boolean satisfiesContraints(WorldConfigurationInfo info) {
-				return info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V1_3_4);
-			}
-		};
+		WorldConfigurationInfo.Condition pre140 = info -> info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V1_3_4);
 		
 		alpine.addSubVariant(aspenGrove, pre140);
 		ancientForest.addSubVariant(ancientForestHills);
@@ -1027,18 +1022,8 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		ivoryHills.addSubVariant(ivoryPlains);
 		orchard.addSubVariant(orchardClearing, pre140);
 		patagonia.addSubVariant(patagoniaMountains);
-		savanna.addSubVariant(savannaHills, new WorldConfigurationInfo.Condition() {
-			@Override
-			public boolean satisfiesContraints(WorldConfigurationInfo info) {
-				return info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V2_0_2);
-			}
-		});
-		savanna.addSubVariant(savannaPlateau, new WorldConfigurationInfo.Condition() {
-			@Override
-			public boolean satisfiesContraints(WorldConfigurationInfo info) {
-				return info.getBTAVersion().isVersionAtLeast(BTAVersion.V2_0_3);
-			}
-		});
+		savanna.addSubVariant(savannaHills, info -> info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V2_0_2));
+		savanna.addSubVariant(savannaPlateau, info -> info.getBTAVersion().isVersionAtLeast(BTAVersion.V2_0_3));
 		snowyConiferousForest.addSubVariant(snowyConiferousForestClearing, pre140);
 		snowyWoods.addSubVariant(snowyWoodsHills);
 		steppe.addSubVariant(woodedSteppe, pre140);
@@ -1074,12 +1059,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		mangroveForest.addSporadicChance(3);
 		
 		//Beaches
-		WorldConfigurationInfo.Condition pre132 = new WorldConfigurationInfo.Condition() {
-			@Override
-			public boolean satisfiesContraints(WorldConfigurationInfo info) {
-				return info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V1_3_1);
-			}
-		};
+		WorldConfigurationInfo.Condition pre132 = info -> info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V1_3_1);
 		
 		alpine.setHasBeach(false);
 		alpineEdge.setHasBeach(false);
@@ -1112,12 +1092,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		
 		volcanicJungle.addBeachVariant(volcanicBeach);
 
-		WorldConfigurationInfo.Condition post132 = new WorldConfigurationInfo.Condition() {
-			@Override
-			public boolean satisfiesContraints(WorldConfigurationInfo info) {
-				return info.getBTAVersion().isVersionAtLeast(BTAVersion.V1_3_2);
-			}
-		};
+		WorldConfigurationInfo.Condition post132 = info -> info.getBTAVersion().isVersionAtLeast(BTAVersion.V1_3_2);
 		
 		snowyWoods.addBeachVariant(BTABiomeConfiguration.frozenBeach, post132);
 		frozenSprings.addBeachVariant(BTABiomeConfiguration.frozenBeach, post132);
@@ -1140,7 +1115,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		
 		tropics.addRiverVariant(tropicsRiver);
 		tropicsEdge.addRiverVariant(tropicsRiver);
-		
+
 		mangroveForest.addRiverVariant(mangroveRiver);
 		mangroveForestIsland.addRiverVariant(mangroveRiver);
 		
@@ -1169,27 +1144,12 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		alpine.addEdgeVariant(alpineEdge);
 		valleyMountains.addEdgeVariant(valley);
 		dunes.addEdgeVariant(BTABiomeConfiguration.desert);
-		badlandsPlateau.addEdgeVariant(badlands, new WorldConfigurationInfo.Condition() {
-			@Override
-			public boolean satisfiesContraints(WorldConfigurationInfo info) {
-				return info.getBTAVersion().isVersionAtLeast(BTAVersion.V3_0_0);
-			}
-		});
+		badlandsPlateau.addEdgeVariant(badlands, info -> info.getBTAVersion().isVersionAtLeast(BTAVersion.V3_0_0));
 		badlands.addEdgeVariant(badlandsEdge, pre140);
 		badlandsPlateau.addEdgeVariant(badlandsEdge, pre140);
 		firCanyon.addEdgeVariant(firCanyonValley);
-		highlands.addEdgeVariant(highlandsEdgeOld, new WorldConfigurationInfo.Condition() {
-			@Override
-			public boolean satisfiesContraints(WorldConfigurationInfo info) {
-				return info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V2_0_8);
-			}
-		});
-		highlands.addEdgeVariant(highlandsEdge, new WorldConfigurationInfo.Condition() {
-			@Override
-			public boolean satisfiesContraints(WorldConfigurationInfo info) {
-				return info.getBTAVersion().isVersionAtLeast(BTAVersion.V3_0_0);
-			}
-		});
+		highlands.addEdgeVariant(highlandsEdgeOld, info -> info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V2_0_8));
+		highlands.addEdgeVariant(highlandsEdge, info -> info.getBTAVersion().isVersionAtLeast(BTAVersion.V3_0_0));
 		//hotSprings.addEdgeVariant(hotSpringsEdge);
 		rainforest.addEdgeVariant(rainforestEdge, post132);
 		tropics.addEdgeVariant(tropicsEdge, post132);
