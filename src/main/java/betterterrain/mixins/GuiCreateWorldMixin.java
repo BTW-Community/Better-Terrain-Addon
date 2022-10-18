@@ -28,7 +28,7 @@ public abstract class GuiCreateWorldMixin extends GuiScreen implements GuiCreate
     @Shadow
     private GuiButton buttonCustomize;
 
-    @Inject(method = "initGui", at = @At("HEAD"))
+    @Inject(method = "<init>", at = @At("TAIL"))
     public void initBTAGUI(CallbackInfo ci) {
         this.worldTypeId = ((WorldType) BTAMod.BTAWorldType).getWorldTypeID();
         this.isDeco = BTAMod.isDecoInstalled();
@@ -100,6 +100,7 @@ public abstract class GuiCreateWorldMixin extends GuiScreen implements GuiCreate
     @Override
     public void setDeco(boolean isDeco) {
         this.isDeco = isDeco;
+        System.out.println(this.isDeco);
     }
 
     @Override
