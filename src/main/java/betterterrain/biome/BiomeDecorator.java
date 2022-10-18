@@ -4,10 +4,7 @@ import java.util.Random;
 
 import betterterrain.BTAMod;
 import betterterrain.BTAVersion;
-import betterterrain.feature.plant.DecoFlowerGen;
-import betterterrain.feature.plant.FlowerGen;
-import betterterrain.feature.plant.MelonGen;
-import betterterrain.feature.plant.MyceliumGen;
+import betterterrain.feature.plant.*;
 import betterterrain.feature.terrain.ClayGen;
 import betterterrain.feature.terrain.OasisGen;
 import betterterrain.feature.terrain.OreGen;
@@ -163,6 +160,7 @@ public class BiomeDecorator implements BiomeDecoratorBase
 	protected WorldGenerator bigRedMushroomGen;
 	protected WorldGenerator outbackGen;
 	protected WorldGenerator decoFlowerGen;
+	protected WorldGenerator tallFlowerGen;
 	protected WorldGenerator graniteGen;
 	protected WorldGenerator andesiteGen;
 	protected WorldGenerator dioriteGen;
@@ -229,6 +227,7 @@ public class BiomeDecorator implements BiomeDecoratorBase
 		stoneInGrassGen2 = new OreGen(Block.stone.blockID, 48);
 		bigRedMushroomGen = new WorldGenBigMushroom(1);
 		decoFlowerGen = new DecoFlowerGen();
+		tallFlowerGen = new TallFlowerGen();
 
 		if (BTAMod.isDecoInstalled()) {
 			outbackGen = new MyceliumGen(Block.grass.blockID, 48, Block.sand.blockID);
@@ -384,7 +383,13 @@ public class BiomeDecorator implements BiomeDecoratorBase
 					var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
 					var4 = this.randomGenerator.nextInt(128);
 					var7 = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
-					this.decoFlowerGen.generate(this.currentWorld, this.randomGenerator, var3, var4, var7);
+
+					if (this.randomGenerator.nextInt(8) == 0) {
+						this.tallFlowerGen.generate(this.currentWorld, this.randomGenerator, var3, var4, var7);
+					}
+					else {
+						this.decoFlowerGen.generate(this.currentWorld, this.randomGenerator, var3, var4, var7);
+					}
 				}
 				else {
 					var3 = this.chunk_X + this.randomGenerator.nextInt(16) + 8;

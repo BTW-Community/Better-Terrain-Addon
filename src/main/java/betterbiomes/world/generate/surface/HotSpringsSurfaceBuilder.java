@@ -146,7 +146,7 @@ public class HotSpringsSurfaceBuilder extends NoShorelineSurfaceBuilder {
 							}
 							else if (waterNoise > 0.125) {
 								fillToDepth(world, i, j, k, depth + 1, DecoBlocks.stoneVariants.blockID,
-										StoneVariantsBlock.DIORITE_TYPE);
+										StoneVariantsBlock.CALCITE_TYPE);
 							}
 						}
 					}

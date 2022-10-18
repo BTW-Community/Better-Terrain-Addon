@@ -2,6 +2,8 @@ package betterterrain.feature.plant;
 
 import java.util.Random;
 
+import btw.AddonHandler;
+import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
@@ -35,7 +37,17 @@ public class TallGrassGen extends WorldGenerator
 
             if (par1World.isAirBlock(var8, var9, var10) && Block.blocksList[this.tallGrassID].canBlockStay(par1World, var8, var9, var10))
             {
-                par1World.setBlock(var8, var9, var10, this.tallGrassID, this.tallGrassMetadata, 2);
+                if (par2Random.nextInt(5) == 0 &&
+                        this.tallGrassMetadata != 0 &&
+                        !AddonHandler.isModInstalled("Sock's Crops") &&
+                        par1World.getBlockId(var8, var9 + 1, var10) == 0)
+                {
+                    par1World.setBlock(var8, var9, var10, DecoBlocks.tallGrass.blockID, this.tallGrassMetadata - 1, 2);
+                    par1World.setBlock(var8, var9 + 1, var10, DecoBlocks.tallGrass.blockID, (this.tallGrassMetadata - 1) | 8, 2);
+                }
+                else {
+                    par1World.setBlock(var8, var9, var10, this.tallGrassID, this.tallGrassMetadata, 2);
+                }
                 
                 if (par1World.getBiomeGenForCoords(var8, var10).canSnowAt(par1World, par3, par4, par5) && par1World.isAirBlock(var8, var9 + 1, var10) && par1World.canBlockSeeTheSky(var8, var9 + 1, var10)) {
                 	par1World.setBlock(var8, var9 + 1, var10, Block.snow.blockID);

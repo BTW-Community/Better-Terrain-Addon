@@ -6,6 +6,7 @@ Version 3.1.0
 - Added fir trees to many taiga biomes when deco is enabled.
 - Added mahogany trees to rainforests when deco is enabled.
 - Changed (reduced) the number of bushes in temperate forests.
+- Changed hot springs to generate calcite instead of diorite.
 
 Version 3.0.0
 [list]
