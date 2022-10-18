@@ -158,7 +158,6 @@ public class BiomeDecorator implements BiomeDecoratorBase
 	protected WorldGenerator oasisGen;
 	protected WorldGenerator pumpkinGen;
 	protected WorldGenerator steppeGen;
-	protected WorldGenerator steppeGenGravel;
 	protected WorldGenerator stoneInGrassGen;
 	protected WorldGenerator stoneInGrassGen2;
 	protected WorldGenerator bigRedMushroomGen;
@@ -167,6 +166,8 @@ public class BiomeDecorator implements BiomeDecoratorBase
 	protected WorldGenerator graniteGen;
 	protected WorldGenerator andesiteGen;
 	protected WorldGenerator dioriteGen;
+	protected WorldGenerator calciteGen;
+	protected WorldGenerator tuffGen;
 	protected WorldGenerator slateGen;
 	protected WorldGenerator melonGen;
 
@@ -174,7 +175,6 @@ public class BiomeDecorator implements BiomeDecoratorBase
 	public int waterLakesPerChunk;
 	public int lavaLakesPerChunk;
 	public int steppePerChunk;
-	public int steppeGravelPerChunk;
 	public int bigRedMushroomsPerChunk;
 	public boolean generateStoneInGrass;
 	public boolean generateStoneInGrass2;
@@ -211,7 +211,7 @@ public class BiomeDecorator implements BiomeDecoratorBase
 		this.grassPerChunk = 1;
 		this.deadBushPerChunk = 0;
 		this.mushroomsPerChunk = 0;
-		this.reedsPerChunk = 0;
+		this.reedsPerChunk = 10;
 		this.cactiPerChunk = 0;
 		this.sandPerChunk = 1;
 		this.sandPerChunk2 = 3;
@@ -236,7 +236,9 @@ public class BiomeDecorator implements BiomeDecoratorBase
 			graniteGen = new OreGen(DecoBlocks.stoneVariants.blockID, StoneVariantsBlock.GRANITE_TYPE, 32, Block.stone.blockID);
 			andesiteGen = new OreGen(DecoBlocks.stoneVariants.blockID, StoneVariantsBlock.ANDESITE_TYPE, 32, Block.stone.blockID);
 			dioriteGen = new OreGen(DecoBlocks.stoneVariants.blockID, StoneVariantsBlock.DIORITE_TYPE, 32, Block.stone.blockID);
-			slateGen = new OreGen(Block.stone.blockID, 3, 32, Block.stone.blockID);
+			calciteGen = new OreGen(DecoBlocks.stoneVariants.blockID, StoneVariantsBlock.CALCITE_TYPE, 32, Block.stone.blockID);
+			tuffGen = new OreGen(DecoBlocks.stoneVariants.blockID, StoneVariantsBlock.TUFF_TYPE, 32, Block.stone.blockID);
+			slateGen = new OreGen(DecoBlocks.slate.blockID, 0, 32, Block.stone.blockID);
 		}
 
 		oasesPerChunk = 0;
@@ -629,9 +631,11 @@ public class BiomeDecorator implements BiomeDecoratorBase
 		}
 
 		if (BTAMod.isDecoInstalled() && (((WorldTypeInterface) this.currentWorld.provider.terrainType).isDeco())) {
-			this.genStandardOre1(12, this.graniteGen, 0, 128);
-			this.genStandardOre1(12, this.andesiteGen, 0, 128);
-			this.genStandardOre1(12, this.dioriteGen, 0, 128);
+			this.genStandardOre1(4, this.graniteGen, ((WorldTypeInterface) this.currentWorld.provider.terrainType).getStrataLevels()[0], 128);
+			this.genStandardOre1(4, this.andesiteGen, ((WorldTypeInterface) this.currentWorld.provider.terrainType).getStrataLevels()[0], 128);
+			this.genStandardOre1(4, this.dioriteGen, ((WorldTypeInterface) this.currentWorld.provider.terrainType).getStrataLevels()[0], 128);
+			this.genStandardOre1(4, this.calciteGen, ((WorldTypeInterface) this.currentWorld.provider.terrainType).getStrataLevels()[0], 128);
+			this.genStandardOre1(12, this.tuffGen, ((WorldTypeInterface) this.currentWorld.provider.terrainType).getStrataLevels()[1], ((WorldTypeInterface) this.currentWorld.provider.terrainType).getStrataLevels()[0]);
 			this.genStandardOre1(12, this.slateGen, 0, ((WorldTypeInterface) this.currentWorld.provider.terrainType).getStrataLevels()[1]);
 		}
 	}
