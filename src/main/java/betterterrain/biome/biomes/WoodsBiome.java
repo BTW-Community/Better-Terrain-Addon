@@ -5,13 +5,12 @@ import java.util.Random;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.feature.plant.TallGrassGen;
+import betterterrain.feature.tree.HazelTreeGen;
 import betterterrain.feature.tree.LogGen;
+import betterterrain.world.config.WorldConfigurationInfo;
+import betterterrain.world.util.WorldTypeInterface;
 import btw.entity.mob.WolfEntity;
-import net.minecraft.src.Block;
-import net.minecraft.src.SpawnListEntry;
-import net.minecraft.src.WorldGenBigTree;
-import net.minecraft.src.WorldGenTrees;
-import net.minecraft.src.WorldGenerator;
+import net.minecraft.src.*;
 
 public class WoodsBiome extends BTABiome {
     public WoodsBiome(int id, String internalName, Climate climate) {
@@ -24,11 +23,14 @@ public class WoodsBiome extends BTABiome {
     /**
      * Gets a WorldGen appropriate for this biome.
      */
-    public WorldGenerator getRandomWorldGenForTrees(Random rand)
+    public WorldGenerator getRandomWorldGenForTrees(Random rand, WorldConfigurationInfo generatorOptions, WorldType worldType)
     {
     	WorldGenerator gen;
-    	
-    	if (rand.nextInt(5) == 0) {
+
+    	if (((WorldTypeInterface) worldType).isDeco() && rand.nextInt(20) == 0) {
+			gen = new HazelTreeGen();
+		}
+    	else if (rand.nextInt(5) == 0) {
     		gen = this.worldGeneratorForest;
     	}
     	else if (rand.nextInt(10) == 0) {

@@ -13,7 +13,7 @@ public class MangroveForestBiome extends BTABiome {
 
 	public MangroveForestBiome(int id, String internalName, Climate climate) {
 		super(id, internalName, climate);
-        this.btaBiomeDecorator.treesPerChunk = 3;
+        this.btaBiomeDecorator.treesPerChunk = 10;
         this.btaBiomeDecorator.flowersPerChunk = -999;
         this.btaBiomeDecorator.mushroomsPerChunk = 8;
         this.btaBiomeDecorator.reedsPerChunk = 10;
@@ -40,6 +40,5 @@ public class MangroveForestBiome extends BTABiome {
 	@Override
     public WorldGenerator getRandomWorldGenForTrees(Random par1Random) {
 		return new MangroveGen();
-		//return this.worldGeneratorSwamp;
 	}
 }

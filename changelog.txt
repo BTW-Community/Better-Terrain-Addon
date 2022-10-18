@@ -17,6 +17,8 @@ Version 3.1.0
 - Refactored the mod to use fabric mixins, so it can now be installed through the mods folder
 - Added the ability for new deco stones to generate.
 - Changed stone variants to only generate within their respective strata according to the changes in deco.
+- Added hazel trees to many forested biomes when deco is enabled.
+- Added mahogany trees to rainforests when deco is enabled.
 - Fixed an issue where some biomes were not generating sugar cane when they were supposed to.
 
 Version 3.0.0

@@ -2,6 +2,10 @@ package betterbiomes.feature.tree;
 
 import java.util.Random;
 
+import betterterrain.BTAMod;
+import betterterrain.world.util.WorldTypeInterface;
+import deco.block.DecoBlocks;
+import deco.block.blocks.DecoSaplingBlock;
 import net.minecraft.src.Block;
 import net.minecraft.src.Direction;
 import net.minecraft.src.World;
@@ -36,7 +40,16 @@ public class RainforestGen1 extends WorldGenerator
 	}
 
 	@Override
-	public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
+	public boolean generate(World world, Random rand, int x, int y, int z) {
+		if (((WorldTypeInterface) world.provider.terrainType).isDeco()) {
+			return ((DecoSaplingBlock) DecoBlocks.mahoganySapling).generateTree(world, rand, x, y, z, 0);
+		}
+		else {
+			return generateJungle(world, rand, x, y, z);
+		}
+	}
+
+	public boolean generateJungle(World par1World, Random par2Random, int par3, int par4, int par5)
 	{
 		int var6 = par2Random.nextInt(8) + minTreeHeight;
 		boolean var7 = true;

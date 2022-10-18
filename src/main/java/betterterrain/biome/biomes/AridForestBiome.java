@@ -25,9 +25,7 @@ public class AridForestBiome extends BTABiome {
     public WorldGenerator getRandomWorldGenForTrees(Random rand)
     {
     	WorldGenerator gen;
-    	
 
-    	
     	if (rand.nextInt(10) == 0) {
     		gen = new WorldGenBigTree(false);
     	}

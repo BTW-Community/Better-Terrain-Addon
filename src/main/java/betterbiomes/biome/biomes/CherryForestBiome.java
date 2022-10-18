@@ -6,6 +6,7 @@ import betterbiomes.feature.tree.CherryTreeGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.feature.plant.TallGrassGen;
+import betterterrain.feature.tree.HazelTreeGen;
 import btw.entity.mob.WolfEntity;
 import net.minecraft.src.Block;
 import net.minecraft.src.SpawnListEntry;
@@ -26,8 +27,11 @@ public class CherryForestBiome extends BTABiome {
     public WorldGenerator getRandomWorldGenForTrees(Random rand)
     {
     	WorldGenerator gen;
-    	
-    	if (rand.nextInt(5) == 0) {
+
+		if (rand.nextInt(20) == 0) {
+			gen = new HazelTreeGen();
+		}
+		else if (rand.nextInt(5) == 0) {
     		gen = this.worldGeneratorTrees;
     	}
     	else if (rand.nextInt(4) == 0) {

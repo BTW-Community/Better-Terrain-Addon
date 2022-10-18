@@ -5,24 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import betterbiomes.world.generate.surface.AlpineSurfaceBuilder;
-import betterbiomes.world.generate.surface.AncientForestSurfaceBuilder;
-import betterbiomes.world.generate.surface.AshFieldsSurfaceBuilder;
-import betterbiomes.world.generate.surface.BadlandsPlateauSurfaceBuilder;
-import betterbiomes.world.generate.surface.BasaltDeltasSurfaceBuilder;
-import betterbiomes.world.generate.surface.ConiferousForestSurfaceBuilder;
-import betterbiomes.world.generate.surface.CrystalCavernsSurfaceBuilder;
-import betterbiomes.world.generate.surface.FirCanyonSurfaceBuilder;
-import betterbiomes.world.generate.surface.HeathlandSurfaceBuilder;
-import betterbiomes.world.generate.surface.HotSpringsSurfaceBuilder;
-import betterbiomes.world.generate.surface.IvoryHillsSurfaceBuilder;
-import betterbiomes.world.generate.surface.OrchardSurfaceBuilder;
-import betterbiomes.world.generate.surface.OutbackSurfaceBuilder;
-import betterbiomes.world.generate.surface.SoulSandValleySurfaceBuilder;
-import betterbiomes.world.generate.surface.SteppeSurfaceBuilder;
-import betterbiomes.world.generate.surface.TropicsSurfaceBuilder;
-import betterbiomes.world.generate.surface.VolcanicBeachSurfaceBuilder;
-import betterbiomes.world.generate.surface.VolcanicJungleSurfaceBuilder;
+import betterbiomes.world.generate.surface.*;
 import betterterrain.BTAVersion;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.BTABiomeConfiguration;
@@ -298,7 +281,8 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.8F, 2.5F);
 
 	public static final BTABiome mangroveForest = new MangroveForestBiome(MANGROVE_FOREST_ID, "betterbiomes:mangrove_forest", Climate.TEMPERATE)
-			.setBiomeName("Mangal")
+			.setBiomeName("Mangrove Forest")
+			.setSurfaceBuilder(new MangroveForestSurfaceBuilder())
 			.setSpawnsSugarCane()
 			.setSpawnsJungleTemples()
 			.setTemperatureRainfall(0.8F, 0.9F)
@@ -645,7 +629,8 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setBeach();
 
 	public static final BTABiome mangroveForestIsland = new MangroveForestBiome(MANGROVE_FOREST_ISLAND_ID, "betterbiomes:mangrove_forest", Climate.TEMPERATE)
-			.setBiomeName("Mangal Island")
+			.setBiomeName("Mangrove Forest Island")
+			.setSurfaceBuilder(new MangroveForestSurfaceBuilder())
 			.setSpawnsSugarCane()
 			.setSpawnsJungleTemples()
 			.setMinMaxHeight(0.0F, 0.3F)

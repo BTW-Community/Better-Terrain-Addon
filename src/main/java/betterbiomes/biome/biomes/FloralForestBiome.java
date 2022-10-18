@@ -6,11 +6,15 @@ import betterbiomes.feature.tree.MeadowTreeGen1;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.feature.plant.TallGrassGen;
+import betterterrain.feature.tree.HazelTreeGen;
 import betterterrain.feature.tree.TemperateBirchGen;
+import betterterrain.world.config.WorldConfigurationInfo;
+import betterterrain.world.util.WorldTypeInterface;
 import btw.entity.mob.WolfEntity;
 import net.minecraft.src.Block;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenerator;
+import net.minecraft.src.WorldType;
 
 public class FloralForestBiome extends BTABiome {
 	WorldGenerator meadowGen = new MeadowTreeGen1();
@@ -25,10 +29,13 @@ public class FloralForestBiome extends BTABiome {
     }
 
     @Override
-    public WorldGenerator getRandomWorldGenForTrees(Random rand) {
+	public WorldGenerator getRandomWorldGenForTrees(Random rand, WorldConfigurationInfo generatorOptions, WorldType worldType) {
     	WorldGenerator gen;
-    	
-    	if (rand.nextInt(10) == 0) {
+
+		if (((WorldTypeInterface) worldType).isDeco() && rand.nextInt(20) == 0) {
+			gen = new HazelTreeGen();
+		}
+		else if (rand.nextInt(10) == 0) {
     		gen = this.meadowGen;
     	}
     	else if (rand.nextInt(4) == 0) {

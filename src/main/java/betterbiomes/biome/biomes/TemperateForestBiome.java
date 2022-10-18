@@ -4,13 +4,13 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
+import betterterrain.feature.tree.HazelTreeGen;
 import betterterrain.feature.tree.TaigaGen6;
 import betterterrain.feature.tree.TemperateBirchGen;
+import betterterrain.world.config.WorldConfigurationInfo;
+import betterterrain.world.util.WorldTypeInterface;
 import btw.entity.mob.WolfEntity;
-import net.minecraft.src.SpawnListEntry;
-import net.minecraft.src.WorldGenShrub;
-import net.minecraft.src.WorldGenTrees;
-import net.minecraft.src.WorldGenerator;
+import net.minecraft.src.*;
 
 public class TemperateForestBiome extends BTABiome {
 	public TemperateForestBiome(int id, String internalName, Climate climate) {
@@ -21,14 +21,14 @@ public class TemperateForestBiome extends BTABiome {
         this.btaBiomeDecorator.grassPerChunk = 5;
 	}
 
-    /**
-     * Gets a WorldGen appropriate for this biome.
-     */
-    public WorldGenerator getRandomWorldGenForTrees(Random rand)
-    {
+	@Override
+	public WorldGenerator getRandomWorldGenForTrees(Random rand, WorldConfigurationInfo generatorOptions, WorldType worldType) {
     	WorldGenerator gen;
-    	
-    	if (rand.nextInt(4) == 0) {
+
+		if (((WorldTypeInterface) worldType).isDeco() && rand.nextInt(20) == 0) {
+			gen = new HazelTreeGen();
+		}
+		else if (rand.nextInt(4) == 0) {
     		gen = new WorldGenTrees(false, 6, 0, 0, false);
     	}
     	else if (rand.nextInt(4) == 0) {
