@@ -32,13 +32,22 @@ public class MangroveForestBiome extends BTABiome {
 		this.spawnableMonsterList.add(new SpawnListEntry(SlimeEntity.class, 10, 4, 4));
 		this.spawnableMonsterList.add(new SpawnListEntry(EndermanEntity.class, 1, 1, 4));
 		this.spawnableMonsterList.add(new SpawnListEntry(OcelotEntity.class, 2, 1, 1));
+
+		this.waterColorMultiplier = 0x00FF74;
 	}
 
-    /**
-     * Gets a WorldGen appropriate for this biome.
-     */
 	@Override
     public WorldGenerator getRandomWorldGenForTrees(Random par1Random) {
 		return new MangroveGen();
+	}
+
+	@Override
+	public int getBiomeGrassColor() {
+		return 0x6A7039;
+	}
+
+	@Override
+	public int getBiomeFoliageColor() {
+		return 0x8DB127;
 	}
 }

@@ -211,6 +211,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			RIVER_ID = 211,
 			FROZEN_RIVER_ID = 212,
 			VOLCANIC_RIVER_ID = 213,
+			MANGROVE_RIVER_ID = 214,
 	
 	//Edges
 			ALPINE_EDGE_ID = 230,
@@ -703,6 +704,14 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setRiver()
 			.setNotSpawnable();
 
+	public static final BTABiome mangroveRiver = new MysticRiverBiome(MANGROVE_RIVER_ID, "betterbiomes:mangrove_river")
+			.setBiomeName("Mangrove River")
+			.setSurfaceBuilder(new MangroveForestSurfaceBuilder())
+			.setSpawnsSugarCane()
+			.setTemperatureRainfall(0.9F, 1.0F)
+			.setMinMaxHeight(-0.5F, 0.0F)
+			.setRiver();
+
 	public static final BTABiome mysticRiver = new MysticRiverBiome(MYSTIC_RIVER_ID, "betterbiomes:mystic_river")
 			.setBiomeName("Mystic River")
 			.setSpawnsSugarCane()
@@ -1132,6 +1141,9 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		tropics.addRiverVariant(tropicsRiver);
 		tropicsEdge.addRiverVariant(tropicsRiver);
 		
+		mangroveForest.addRiverVariant(mangroveRiver);
+		mangroveForestIsland.addRiverVariant(mangroveRiver);
+		
 		orchard.addRiverVariant(orchardRiver);
 		orchardClearing.addRiverVariant(orchardRiver);
 		
@@ -1181,19 +1193,6 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		//hotSprings.addEdgeVariant(hotSpringsEdge);
 		rainforest.addEdgeVariant(rainforestEdge, post132);
 		tropics.addEdgeVariant(tropicsEdge, post132);
-	}
-
-	/**
-	 * Legacy code maintained for backwards compatibility
-	 */
-	public static int getEdgeVariantForBiomeGuaranteed(int baseBiome, WorldConfigurationInfo generatorInfo) {
-		int edgeBiome = -1;
-
-		if (baseBiome == badlandsPlateau.biomeID) {
-			edgeBiome = badlands.biomeID;
-		}
-
-		return edgeBiome;
 	}
 	
 	private static BetterBiomesConfiguration instance;
