@@ -2,8 +2,7 @@ package betterbiomes.world.generate.surface;
 
 import java.util.Random;
 
-import betterbiomes.feature.tree.TaigaGen3;
-import betterbiomes.feature.tree.TaigaGen4;
+import betterbiomes.feature.tree.*;
 import betterterrain.BTAMod;
 import betterterrain.feature.tree.TaigaGen5;
 import betterterrain.feature.tree.TaigaGen7;
@@ -65,31 +64,65 @@ public class ConiferousForestSurfaceBuilder extends SurfaceBuilder {
 
 			WorldGenerator gen;
 
-			if (this.treeNoiseGen.noise2(x, z, this.treeNoiseScale) - .375 > 0 && rand.nextInt(6) < 3) {
-				if (rand.nextInt(5) == 0) {
-					gen = new WorldGenTaiga2(false);
-				}
-				else if (rand.nextInt(3) == 0) {
-					gen = new TaigaGen5(false);
-				}
-				else {
-					gen = new TaigaGen7(false);
-				}
+			if (((WorldTypeInterface) world.provider.terrainType).isDeco()) {
+				gen = this.getDecoTree(rand, x, z);
 			}
 			else {
-				if (rand.nextInt(5) == 0) {
-					gen = new TaigaGen3(false);
-				}
-				else if (rand.nextInt(3) == 0) {
-					gen = new TaigaGen4(false);
-				}
-				else {
-					gen = new TaigaGen7(false);
-				}
+				gen = this.getVanillaTree(rand, x, z);
 			}
 
 			gen.setScale(1.0D, 1.0D, 1.0D);
 			gen.generate(world, rand, x, world.getHeightValue(x, z), z);
+		}
+	}
+	
+	private WorldGenerator getDecoTree(Random rand, int x, int z) {
+		if (this.treeNoiseGen.noise2(x, z, this.treeNoiseScale) - .375 > 0 && rand.nextInt(6) < 3) {
+			if (rand.nextInt(5) == 0) {
+				return new FirGen();
+			}
+			else if (rand.nextInt(3) == 0) {
+				return new FirGen2();
+			}
+			else {
+				return new FirGen3();
+			}
+		}
+		else {
+			if (rand.nextInt(5) == 0) {
+				return new LargeFirGen();
+			}
+			else if (rand.nextInt(3) == 0) {
+				return new TallFirGen();
+			}
+			else {
+				return new FirGen3();
+			}
+		}
+	}
+
+	private WorldGenerator getVanillaTree(Random rand, int x, int z) {
+		if (this.treeNoiseGen.noise2(x, z, this.treeNoiseScale) - .375 > 0 && rand.nextInt(6) < 3) {
+			if (rand.nextInt(5) == 0) {
+				return new WorldGenTaiga2(false);
+			}
+			else if (rand.nextInt(3) == 0) {
+				return new TaigaGen5(false);
+			}
+			else {
+				return new TaigaGen7(false);
+			}
+		}
+		else {
+			if (rand.nextInt(5) == 0) {
+				return new TaigaGen3(false);
+			}
+			else if (rand.nextInt(3) == 0) {
+				return new TaigaGen4(false);
+			}
+			else {
+				return new TaigaGen7(false);
+			}
 		}
 	}
 }

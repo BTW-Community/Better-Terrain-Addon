@@ -1,9 +1,6 @@
 package betterbiomes.biome;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
 
 import betterbiomes.biome.biomes.*;
 import betterbiomes.world.generate.surface.*;
@@ -11,25 +8,9 @@ import betterterrain.BTAVersion;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.BTABiomeConfiguration;
 import betterterrain.biome.BiomeConfiguration;
-import betterterrain.biome.BiomeHeight;
-import betterterrain.biome.BiomeInfo;
 import betterterrain.biome.Climate;
-import betterterrain.biome.biomes.AridForestBiome;
 import betterterrain.biome.biomes.BeachBiome;
-import betterterrain.biome.biomes.DesertBiome;
-import betterterrain.biome.biomes.DesertRiverBiome;
-import betterterrain.biome.biomes.IcyPeaksBiome;
-import betterterrain.biome.biomes.JungleBiome;
-import betterterrain.biome.biomes.JungleEdgeBiome;
-import betterterrain.biome.biomes.JungleRiverBiome;
-import betterterrain.biome.biomes.MountainBiome;
-import betterterrain.biome.biomes.NetherWastesBiome;
-import betterterrain.biome.biomes.PlainsBiome;
-import betterterrain.biome.biomes.RiverBiome;
-import betterterrain.biome.biomes.SiberiaBiome;
-import betterterrain.biome.biomes.TundraBiome;
 import betterterrain.biome.biomes.WoodsBiome;
-import betterterrain.biome.biomes.deprecated.ForestedIcyPeaksBiome;
 import betterbiomes.biome.biomes.deprecated.ConiferousForestClearingBiome;
 import betterbiomes.biome.biomes.deprecated.HeathlandWoodsBiome;
 import betterbiomes.biome.biomes.deprecated.OldValleyBiome;
@@ -183,7 +164,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.1F, 0.5F)
 			.setLegacyCompatible();
 
-	public static final BTABiome autumnForest = new AutmnForestBiome(AUTUMN_FOREST_ID, "betterbiomes:autumn_forest", Climate.TEMPERATE)
+	public static final BTABiome autumnForest = new AutumnForestBiome(AUTUMN_FOREST_ID, "betterbiomes:autumn_forest", Climate.TEMPERATE)
 			.setBiomeName("Autumn Forest")
 			.setTemperatureRainfall(0.9F, 0.2F)
 			.setMinMaxHeight(0.1F, 0.5F)
@@ -495,7 +476,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(0.7F, 0.8F)
 			.setMinMaxHeight(0.3F, 1.0F);
 
-	public static final BTABiome autumnForestHills = new AutmnForestBiome(AUTUMN_FOREST_HILLS_ID, "betterbiomes:autumn_forest_hills", Climate.TEMPERATE)
+	public static final BTABiome autumnForestHills = new AutumnForestBiome(AUTUMN_FOREST_HILLS_ID, "betterbiomes:autumn_forest_hills", Climate.TEMPERATE)
 			.setBiomeName("Autumn Forest Hills")
 			.setTemperatureRainfall(0.9F, 0.2F)
 			.setMinMaxHeight(0.3F, 1.0F);

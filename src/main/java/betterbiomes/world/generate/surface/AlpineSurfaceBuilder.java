@@ -2,11 +2,13 @@ package betterbiomes.world.generate.surface;
 
 import java.util.Random;
 
+import betterbiomes.feature.tree.FirGen;
 import betterterrain.feature.tree.PineTreeGen;
 import betterterrain.feature.tree.TaigaGen5;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.SurfaceBuilder;
+import betterterrain.world.util.WorldTypeInterface;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenTaiga2;
 import net.minecraft.src.WorldGenerator;
@@ -33,7 +35,12 @@ public class AlpineSurfaceBuilder extends SurfaceBuilder {
 			
 			if (this.treeNoiseGen.noise2(x, z, this.treeNoiseScale) - .25 > 0) {
 				if (rand.nextInt(5) == 0) {
-					gen = new TaigaGen5(false);
+					if (((WorldTypeInterface) world.provider.terrainType).isDeco() && rand.nextInt(2) == 0) {
+						gen = new FirGen();
+					}
+					else {
+						gen = new TaigaGen5(false);
+					}
 				}
 				else {
 					gen = new PineTreeGen(false, 2, 2);
@@ -41,7 +48,12 @@ public class AlpineSurfaceBuilder extends SurfaceBuilder {
 			}
 			else {
 				if (rand.nextInt(3) == 0) {
-					gen = new TaigaGen5(false);
+					if (((WorldTypeInterface) world.provider.terrainType).isDeco() && rand.nextInt(2) == 0) {
+						gen = new FirGen();
+					}
+					else {
+						gen = new TaigaGen5(false);
+					}
 				}
 				else {
 					gen = new WorldGenTaiga2(false);

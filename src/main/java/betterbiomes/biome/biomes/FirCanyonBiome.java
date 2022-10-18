@@ -2,7 +2,7 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.feature.tree.TaigaGen3;
+import betterbiomes.feature.tree.*;
 import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
@@ -36,19 +36,19 @@ public class FirCanyonBiome extends BTABiome {
     	WorldGenerator gen;
     	
     	if (rand.nextInt(7) == 0) {
-    		gen = new TaigaGen3(false);
+    		gen = new LargeFirGen();
     	}
     	else if (rand.nextInt(6) == 0) {
-    		gen = new TaigaGen5(false);
+    		gen = new FirGen();
     	}
     	else if (rand.nextInt(5) == 0) {
-    		gen = new TaigaGen6(false);
+    		gen = new FirGen2();
     	}
     	else if (rand.nextInt(4) == 0) {
-    		gen = new TaigaGen7(false);
+    		gen = new FirGen3();
     	}
     	else {
-    		gen = new SmallShrubGen(1, 1);
+    		gen = new SmallFirShrub();
     	}
     	
     	return gen;
