@@ -11,15 +11,7 @@ import java.util.Map.Entry;
 import betterterrain.structure.callable.BTACallableChunkPosHash;
 import betterterrain.structure.callable.BTACallableIsFeatureChunk;
 import betterterrain.structure.callable.BTACallableStructureType;
-import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.ChunkCoordIntPair;
-import net.minecraft.src.CrashReport;
-import net.minecraft.src.CrashReportCategory;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.ReportedException;
-import net.minecraft.src.StructureScatteredFeatureStart;
-import net.minecraft.src.StructureStart;
-import net.minecraft.src.World;
+import net.minecraft.src.*;
 
 public class BTAMapGenScatteredFeature extends BTAMapGenStructure
 {

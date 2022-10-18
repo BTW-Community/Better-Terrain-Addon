@@ -12,11 +12,13 @@ import betterterrain.biome.layer.SporadicLayer;
 import betterterrain.feature.plant.MelonGen;
 import betterterrain.feature.plant.TallGrassGen;
 import betterterrain.feature.terrain.OreGen;
+import betterterrain.mixins.StructureScatteredFeatureStartAccessor;
 import betterterrain.structure.mapgen.BTAMapGenScatteredFeature;
 import betterterrain.structure.mapgen.BTAMapGenVillage;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.config.WorldConfigurationInfoLegacy;
 import betterterrain.world.generate.surface.SurfaceBuilder;
+import betterterrain.world.util.StructureScatteredFeatureStartInterface;
 import betterterrain.world.util.WorldProviderInterface;
 import betterterrain.world.util.WorldTypeInterface;
 import btw.world.biome.BiomeDecoratorBase;
@@ -180,7 +182,7 @@ public class BTABiome extends BiomeGenBase {
 	}
     
     public boolean canSlimesSpawnOnSurface() {
-    	return StructureScatteredFeatureStart.swampBiomeList.contains(this);
+    	return StructureScatteredFeatureStartAccessor.getSwampBiomeList().contains(this);
     }
 
 	public BTABiome setSurfaceBuilder(SurfaceBuilder surfaceBuilder) {
@@ -596,7 +598,7 @@ public class BTABiome extends BiomeGenBase {
 	
 	public BTABiome setSpawnsRedDesertTemples() {
 		BTAMapGenScatteredFeature.biomelist.add(this);
-		StructureScatteredFeatureStart.addRedDesertBiome(this);
+		StructureScatteredFeatureStartInterface.addRedDesertBiome(this);
 		return this;
 	}
 	
