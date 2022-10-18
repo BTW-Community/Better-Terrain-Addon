@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import betterbiomes.biome.biomes.*;
 import betterbiomes.world.generate.surface.*;
 import betterterrain.BTAVersion;
 import betterterrain.biome.BTABiome;
@@ -29,70 +30,10 @@ import betterterrain.biome.biomes.SiberiaBiome;
 import betterterrain.biome.biomes.TundraBiome;
 import betterterrain.biome.biomes.WoodsBiome;
 import betterterrain.biome.biomes.deprecated.ForestedIcyPeaksBiome;
-import betterbiomes.biome.biomes.AlpineBiome;
-import betterbiomes.biome.biomes.AncientForestBiome;
-import betterbiomes.biome.biomes.AshFieldsBiome;
-import betterbiomes.biome.biomes.AspenGroveBiome;
-import betterbiomes.biome.biomes.AutmnForestBiome;
-import betterbiomes.biome.biomes.BadlandsBiome;
-import betterbiomes.biome.biomes.BadlandsPlateauBiome;
-import betterbiomes.biome.biomes.BasaltDeltasBiome;
-import betterbiomes.biome.biomes.RedSandBeachBiome;
-import betterbiomes.biome.biomes.BirchForestBiome;
-import betterbiomes.biome.biomes.BorealForestBiome;
-import betterbiomes.biome.biomes.BrushlandBiome;
-import betterbiomes.biome.biomes.ChapparalBiome;
-import betterbiomes.biome.biomes.CherryForestBiome;
-import betterbiomes.biome.biomes.ConiferousForestBiome;
 import betterbiomes.biome.biomes.deprecated.ConiferousForestClearingBiome;
-import betterbiomes.biome.biomes.CrystalCavernsBiome;
-import betterbiomes.biome.biomes.DunesBiome;
-import betterbiomes.biome.biomes.FirCanyonBiome;
-import betterbiomes.biome.biomes.FloralForestBiome;
-import betterbiomes.biome.biomes.FloralPlateauBiome;
-import betterbiomes.biome.biomes.FrozenSpringsPondBiome;
-import betterbiomes.biome.biomes.FrozenSpringsBiome;
-import betterbiomes.biome.biomes.FungalForestBiome;
-import betterbiomes.biome.biomes.GrasslandsBiome;
-import betterbiomes.biome.biomes.GrasslandsLakeBiome;
-import betterbiomes.biome.biomes.HeathlandBiome;
 import betterbiomes.biome.biomes.deprecated.HeathlandWoodsBiome;
-import betterbiomes.biome.biomes.HighlandsBiome;
-import betterbiomes.biome.biomes.HotSpringsBiome;
-import betterbiomes.biome.biomes.IvoryHillsBiome;
-import betterbiomes.biome.biomes.LushDesertBiome;
-import betterbiomes.biome.biomes.MangroveForestBiome;
-import betterbiomes.biome.biomes.MeadowBiome;
-import betterbiomes.biome.biomes.MysticValleyBiome;
-import betterbiomes.biome.biomes.OasisBiome;
 import betterbiomes.biome.biomes.deprecated.OldValleyBiome;
-import betterbiomes.biome.biomes.OrchardBiome;
 import betterbiomes.biome.biomes.deprecated.OrchardClearingBiome;
-import betterbiomes.biome.biomes.OutbackBiome;
-import betterbiomes.biome.biomes.PatagoniaBiome;
-import betterbiomes.biome.biomes.PatagoniaMountainBiome;
-import betterbiomes.biome.biomes.PetrifiedForestBiome;
-import betterbiomes.biome.biomes.RainforestBiome;
-import betterbiomes.biome.biomes.RainforestEdgeBiome;
-import betterbiomes.biome.biomes.BadlandsRiverBiome;
-import betterbiomes.biome.biomes.MysticRiverBiome;
-import betterbiomes.biome.biomes.OrchardRiverBiome;
-import betterbiomes.biome.biomes.OutbackRiverBiome;
-import betterbiomes.biome.biomes.PatagoniaRiverBiome;
-import betterbiomes.biome.biomes.RainforestRiverBiome;
-import betterbiomes.biome.biomes.TropicsRiverBiome;
-import betterbiomes.biome.biomes.WetlandsRiverBiome;
-import betterbiomes.biome.biomes.WillowRiverBiome;
-import betterbiomes.biome.biomes.SavannaBiome;
-import betterbiomes.biome.biomes.ShieldBiome;
-import betterbiomes.biome.biomes.SoulSandValleyBiome;
-import betterbiomes.biome.biomes.SteppeBiome;
-import betterbiomes.biome.biomes.TemperateForestBiome;
-import betterbiomes.biome.biomes.TropicsBiome;
-import betterbiomes.biome.biomes.ValleyBiome;
-import betterbiomes.biome.biomes.VolcanicJungle;
-import betterbiomes.biome.biomes.WetlandsBiome;
-import betterbiomes.biome.biomes.WillowGroveBiome;
 import betterbiomes.biome.biomes.deprecated.WoodedSteppeBiome;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.surface.NetherSurfaceBuilder;
@@ -704,7 +645,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setRiver()
 			.setNotSpawnable();
 
-	public static final BTABiome mangroveRiver = new MysticRiverBiome(MANGROVE_RIVER_ID, "betterbiomes:mangrove_river")
+	public static final BTABiome mangroveRiver = new MangroveRiverBiome(MANGROVE_RIVER_ID, "betterbiomes:mangrove_river")
 			.setBiomeName("Mangrove River")
 			.setSurfaceBuilder(new MangroveForestSurfaceBuilder())
 			.setSpawnsSugarCane()
