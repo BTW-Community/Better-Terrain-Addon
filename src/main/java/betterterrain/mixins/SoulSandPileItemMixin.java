@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(SoulSandPileItem.class)
-public class SoulSandPileItemMixin extends Item {
+public abstract class SoulSandPileItemMixin extends Item {
     public SoulSandPileItemMixin(int itemID) {
         super(itemID);
     }

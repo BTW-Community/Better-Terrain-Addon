@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(NetherGrothSporesItem.class)
-public class NetherGrothSporesItemMixin extends Item {
+public abstract class NetherGrothSporesItemMixin extends Item {
     public NetherGrothSporesItemMixin(int item) {
         super(item);
     }

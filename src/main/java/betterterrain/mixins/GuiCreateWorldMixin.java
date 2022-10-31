@@ -67,6 +67,14 @@ public abstract class GuiCreateWorldMixin extends GuiScreen implements GuiCreate
         WorldSettings newSettings = new WorldSettings(settings.getSeed(), settings.getGameType(), settings.isMapFeaturesEnabled(), settings.getHardcoreEnabled(), type);
         newSettings.func_82750_a(this.generatorOptionsToUse);
 
+        if (newSettings.areCommandsAllowed()) {
+            newSettings.enableBonusChest();
+        }
+
+        if (newSettings.isBonusChestEnabled()) {
+            newSettings.enableBonusChest();
+        }
+
         return newSettings;
     }
 

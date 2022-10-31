@@ -52,9 +52,7 @@ public class TallFlowerGen extends WorldGenerator {
             int var9 = par5 + rand.nextInt(8) - rand.nextInt(8);
 
             if (par1World.isAirBlock(var7, var8, var9) && par1World.isAirBlock(var7, var8 + 1, var9) && (!par1World.provider.hasNoSky || var8 < 127)) {
-                System.out.println("Success?");
                 if (DecoBlocks.flower.canBlockStay(par1World, var7, var8, var9)) {
-                    System.out.println("Success!");
                     par1World.setBlock(var7, var8, var9, plantID, plantMeta, 2);
                     par1World.setBlock(var7, var8 + 1, var9, plantID, plantMeta | 8, 2);
                 }

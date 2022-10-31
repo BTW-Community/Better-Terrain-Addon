@@ -34,7 +34,7 @@ public class BTAMod extends BTWAddon {
 
 	@Override
 	public void initialize() {
-		//this.registerAddonCommand(new BiomeCommand());
+		this.registerAddonCommand(new BiomeCommand());
 		
 		netherSand = new Material(MapColor.sandColor).setRequiresTool().setNetherMobsCanSpawnOn();
 

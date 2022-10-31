@@ -24,11 +24,11 @@ public class MangroveForestSurfaceBuilder extends NoShorelineSurfaceBuilder {
 
     @Override
     protected int[] getSurfaceBlock(int i, int j, int k, int surfaceJ, int soilDepth, SurfaceType surfaceType, int seaLevel, Random rand, WorldConfigurationInfo generatorInfo, WorldType worldType) {
-        double grassNoiseScale = 1/192D;
+        double grassNoiseScale = 1/128D;
         //k and i swapped because apparently I messed something up somewhere
         boolean useGrass = mudNoiseGen.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), grassNoiseScale) + rand.nextFloat() * 0.2F > 0;
 
-        if (useGrass && BTAMod.isDecoInstalled() && ((WorldTypeInterface) worldType).isDeco()) {
+        if (useGrass && BTAMod.isDecoInstalled() && ((WorldTypeInterface) worldType).isDeco() && surfaceType != SurfaceType.SUBFILLER) {
             return new int[] {DecoBlocks.mud.blockID, 0};
         }
 

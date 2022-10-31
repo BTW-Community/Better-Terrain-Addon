@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.Random;
 
 @Mixin(StructureScatteredFeatureStart.class)
-public class StructureScatteredFeatureStartMixin extends StructureStart implements StructureScatteredFeatureStartInterface {
+public abstract class StructureScatteredFeatureStartMixin extends StructureStart implements StructureScatteredFeatureStartInterface {
     @Inject(method = "<init>", at = @At("TAIL"))
     public void setRedDesertPyramid(World world, Random rand, int chunkX, int chunkZ, CallbackInfo ci) {
         BiomeGenBase biome = world.getBiomeGenForCoords(chunkX * 16 + 8, chunkZ * 16 + 8);

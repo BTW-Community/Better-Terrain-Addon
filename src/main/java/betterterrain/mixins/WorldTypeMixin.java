@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(WorldType.class)
-public class WorldTypeMixin implements WorldTypeInterface {
+public abstract class WorldTypeMixin implements WorldTypeInterface {
     private boolean isDeco;
     private WorldTypeInterface parent;
 

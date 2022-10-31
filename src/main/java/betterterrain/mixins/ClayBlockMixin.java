@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.List;
 
 @Mixin(ClayBlock.class)
-public class ClayBlockMixin extends Block {
+public abstract class ClayBlockMixin extends Block {
     protected ClayBlockMixin(int blockID, Material material) {
         super(blockID, material);
     }
