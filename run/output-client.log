@@ -1,0 +1,694 @@
+2022-10-17 11:04:33 [CLIENT] [INFO] Setting user: Player520
+2022-10-17 11:04:34 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 11:04:35 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBlood.png, but that file does not exist. Ignoring.
+2022-10-17 11:04:35 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullCherry.png, but that file does not exist. Ignoring.
+2022-10-17 11:04:35 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullJungle.png, but that file does not exist. Ignoring.
+2022-10-17 11:04:36 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullSpruce.png, but that file does not exist. Ignoring.
+2022-10-17 11:04:36 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullHazel.png, but that file does not exist. Ignoring.
+2022-10-17 11:04:36 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullOak.png, but that file does not exist. Ignoring.
+2022-10-17 11:04:36 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullFir.png, but that file does not exist. Ignoring.
+2022-10-17 11:04:36 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBirch.png, but that file does not exist. Ignoring.
+2022-10-17 11:04:36 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMangrove.png, but that file does not exist. Ignoring.
+2022-10-17 11:04:36 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMahogany.png, but that file does not exist. Ignoring.
+2022-10-17 11:04:36 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullAcacia.png, but that file does not exist. Ignoring.
+2022-10-17 11:05:24 [CLIENT] [INFO] Stopping!
+2022-10-17 11:05:39 [CLIENT] [INFO] Setting user: Player297
+2022-10-17 11:05:39 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 11:05:41 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBlood.png, but that file does not exist. Ignoring.
+2022-10-17 11:05:41 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullCherry.png, but that file does not exist. Ignoring.
+2022-10-17 11:05:41 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullJungle.png, but that file does not exist. Ignoring.
+2022-10-17 11:05:41 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullSpruce.png, but that file does not exist. Ignoring.
+2022-10-17 11:05:41 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullHazel.png, but that file does not exist. Ignoring.
+2022-10-17 11:05:41 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullOak.png, but that file does not exist. Ignoring.
+2022-10-17 11:05:41 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullFir.png, but that file does not exist. Ignoring.
+2022-10-17 11:05:41 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBirch.png, but that file does not exist. Ignoring.
+2022-10-17 11:05:41 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMangrove.png, but that file does not exist. Ignoring.
+2022-10-17 11:05:41 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMahogany.png, but that file does not exist. Ignoring.
+2022-10-17 11:05:41 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullAcacia.png, but that file does not exist. Ignoring.
+2022-10-17 11:06:15 [CLIENT] [INFO] Stopping!
+2022-10-17 11:07:39 [CLIENT] [INFO] Setting user: Player86
+2022-10-17 11:07:39 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 11:07:41 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBlood.png, but that file does not exist. Ignoring.
+2022-10-17 11:07:41 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullCherry.png, but that file does not exist. Ignoring.
+2022-10-17 11:07:41 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullJungle.png, but that file does not exist. Ignoring.
+2022-10-17 11:07:41 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullSpruce.png, but that file does not exist. Ignoring.
+2022-10-17 11:07:41 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullHazel.png, but that file does not exist. Ignoring.
+2022-10-17 11:07:41 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullOak.png, but that file does not exist. Ignoring.
+2022-10-17 11:07:41 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullFir.png, but that file does not exist. Ignoring.
+2022-10-17 11:07:41 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBirch.png, but that file does not exist. Ignoring.
+2022-10-17 11:07:41 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMangrove.png, but that file does not exist. Ignoring.
+2022-10-17 11:07:41 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMahogany.png, but that file does not exist. Ignoring.
+2022-10-17 11:07:41 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullAcacia.png, but that file does not exist. Ignoring.
+2022-10-17 11:12:50 [CLIENT] [INFO] Stopping!
+2022-10-17 14:28:56 [CLIENT] [INFO] Setting user: Player915
+2022-10-17 14:28:56 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 14:28:57 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBlood.png, but that file does not exist. Ignoring.
+2022-10-17 14:28:57 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullCherry.png, but that file does not exist. Ignoring.
+2022-10-17 14:28:58 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullJungle.png, but that file does not exist. Ignoring.
+2022-10-17 14:28:58 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullSpruce.png, but that file does not exist. Ignoring.
+2022-10-17 14:28:58 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullHazel.png, but that file does not exist. Ignoring.
+2022-10-17 14:28:58 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullOak.png, but that file does not exist. Ignoring.
+2022-10-17 14:28:58 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullFir.png, but that file does not exist. Ignoring.
+2022-10-17 14:28:58 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBirch.png, but that file does not exist. Ignoring.
+2022-10-17 14:28:58 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMangrove.png, but that file does not exist. Ignoring.
+2022-10-17 14:28:58 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMahogany.png, but that file does not exist. Ignoring.
+2022-10-17 14:28:59 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullAcacia.png, but that file does not exist. Ignoring.
+2022-10-17 14:52:45 [CLIENT] [INFO] Setting user: Player264
+2022-10-17 14:52:45 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 14:52:47 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBlood.png, but that file does not exist. Ignoring.
+2022-10-17 14:52:47 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullCherry.png, but that file does not exist. Ignoring.
+2022-10-17 14:52:47 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullJungle.png, but that file does not exist. Ignoring.
+2022-10-17 14:52:48 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullSpruce.png, but that file does not exist. Ignoring.
+2022-10-17 14:52:48 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullHazel.png, but that file does not exist. Ignoring.
+2022-10-17 14:52:48 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullOak.png, but that file does not exist. Ignoring.
+2022-10-17 14:52:48 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullFir.png, but that file does not exist. Ignoring.
+2022-10-17 14:52:48 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBirch.png, but that file does not exist. Ignoring.
+2022-10-17 14:52:48 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMangrove.png, but that file does not exist. Ignoring.
+2022-10-17 14:52:48 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMahogany.png, but that file does not exist. Ignoring.
+2022-10-17 14:52:48 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullAcacia.png, but that file does not exist. Ignoring.
+2022-10-17 14:52:54 [CLIENT] [INFO] Stopping!
+2022-10-17 14:53:16 [CLIENT] [INFO] Setting user: Player726
+2022-10-17 14:53:16 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 14:53:18 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBlood.png, but that file does not exist. Ignoring.
+2022-10-17 14:53:18 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullCherry.png, but that file does not exist. Ignoring.
+2022-10-17 14:53:18 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullJungle.png, but that file does not exist. Ignoring.
+2022-10-17 14:53:19 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullSpruce.png, but that file does not exist. Ignoring.
+2022-10-17 14:53:19 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullHazel.png, but that file does not exist. Ignoring.
+2022-10-17 14:53:19 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullOak.png, but that file does not exist. Ignoring.
+2022-10-17 14:53:19 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullFir.png, but that file does not exist. Ignoring.
+2022-10-17 14:53:19 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBirch.png, but that file does not exist. Ignoring.
+2022-10-17 14:53:19 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMangrove.png, but that file does not exist. Ignoring.
+2022-10-17 14:53:19 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMahogany.png, but that file does not exist. Ignoring.
+2022-10-17 14:53:19 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullAcacia.png, but that file does not exist. Ignoring.
+2022-10-17 14:53:28 [CLIENT] [INFO] Stopping!
+2022-10-17 15:33:01 [CLIENT] [INFO] Setting user: Player488
+2022-10-17 15:33:01 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 15:33:03 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBlood.png, but that file does not exist. Ignoring.
+2022-10-17 15:33:03 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullCherry.png, but that file does not exist. Ignoring.
+2022-10-17 15:33:03 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullJungle.png, but that file does not exist. Ignoring.
+2022-10-17 15:33:04 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullSpruce.png, but that file does not exist. Ignoring.
+2022-10-17 15:33:04 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullHazel.png, but that file does not exist. Ignoring.
+2022-10-17 15:33:04 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullOak.png, but that file does not exist. Ignoring.
+2022-10-17 15:33:04 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullFir.png, but that file does not exist. Ignoring.
+2022-10-17 15:33:04 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBirch.png, but that file does not exist. Ignoring.
+2022-10-17 15:33:04 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMangrove.png, but that file does not exist. Ignoring.
+2022-10-17 15:33:04 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMahogany.png, but that file does not exist. Ignoring.
+2022-10-17 15:33:04 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullAcacia.png, but that file does not exist. Ignoring.
+2022-10-17 15:33:18 [CLIENT] [INFO] Stopping!
+2022-10-17 15:36:11 [CLIENT] [INFO] Setting user: Player445
+2022-10-17 15:36:11 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 15:36:13 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBlood.png, but that file does not exist. Ignoring.
+2022-10-17 15:36:13 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullCherry.png, but that file does not exist. Ignoring.
+2022-10-17 15:36:13 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullJungle.png, but that file does not exist. Ignoring.
+2022-10-17 15:36:14 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullSpruce.png, but that file does not exist. Ignoring.
+2022-10-17 15:36:14 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullHazel.png, but that file does not exist. Ignoring.
+2022-10-17 15:36:14 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullOak.png, but that file does not exist. Ignoring.
+2022-10-17 15:36:14 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullFir.png, but that file does not exist. Ignoring.
+2022-10-17 15:36:14 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBirch.png, but that file does not exist. Ignoring.
+2022-10-17 15:36:14 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMangrove.png, but that file does not exist. Ignoring.
+2022-10-17 15:36:14 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMahogany.png, but that file does not exist. Ignoring.
+2022-10-17 15:36:14 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullAcacia.png, but that file does not exist. Ignoring.
+2022-10-17 15:38:27 [CLIENT] [INFO] Setting user: Player296
+2022-10-17 15:38:27 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 15:38:29 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBlood.png, but that file does not exist. Ignoring.
+2022-10-17 15:38:29 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullCherry.png, but that file does not exist. Ignoring.
+2022-10-17 15:38:29 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullJungle.png, but that file does not exist. Ignoring.
+2022-10-17 15:38:30 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullSpruce.png, but that file does not exist. Ignoring.
+2022-10-17 15:38:30 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullHazel.png, but that file does not exist. Ignoring.
+2022-10-17 15:38:30 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullOak.png, but that file does not exist. Ignoring.
+2022-10-17 15:38:30 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullFir.png, but that file does not exist. Ignoring.
+2022-10-17 15:38:30 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBirch.png, but that file does not exist. Ignoring.
+2022-10-17 15:38:30 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMangrove.png, but that file does not exist. Ignoring.
+2022-10-17 15:38:30 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMahogany.png, but that file does not exist. Ignoring.
+2022-10-17 15:38:30 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullAcacia.png, but that file does not exist. Ignoring.
+2022-10-17 15:39:27 [CLIENT] [INFO] Setting user: Player765
+2022-10-17 15:39:27 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 15:39:28 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBlood.png, but that file does not exist. Ignoring.
+2022-10-17 15:39:28 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullCherry.png, but that file does not exist. Ignoring.
+2022-10-17 15:39:28 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullJungle.png, but that file does not exist. Ignoring.
+2022-10-17 15:39:29 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullSpruce.png, but that file does not exist. Ignoring.
+2022-10-17 15:39:29 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullHazel.png, but that file does not exist. Ignoring.
+2022-10-17 15:39:29 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullOak.png, but that file does not exist. Ignoring.
+2022-10-17 15:39:29 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullFir.png, but that file does not exist. Ignoring.
+2022-10-17 15:39:29 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBirch.png, but that file does not exist. Ignoring.
+2022-10-17 15:39:29 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMangrove.png, but that file does not exist. Ignoring.
+2022-10-17 15:39:29 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMahogany.png, but that file does not exist. Ignoring.
+2022-10-17 15:39:29 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullAcacia.png, but that file does not exist. Ignoring.
+2022-10-17 15:43:48 [CLIENT] [INFO] Setting user: Player362
+2022-10-17 15:43:48 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 15:43:50 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBlood.png, but that file does not exist. Ignoring.
+2022-10-17 15:43:50 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullCherry.png, but that file does not exist. Ignoring.
+2022-10-17 15:43:51 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullJungle.png, but that file does not exist. Ignoring.
+2022-10-17 15:43:51 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullSpruce.png, but that file does not exist. Ignoring.
+2022-10-17 15:43:51 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullHazel.png, but that file does not exist. Ignoring.
+2022-10-17 15:43:51 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullOak.png, but that file does not exist. Ignoring.
+2022-10-17 15:43:51 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullFir.png, but that file does not exist. Ignoring.
+2022-10-17 15:43:51 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBirch.png, but that file does not exist. Ignoring.
+2022-10-17 15:43:51 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMangrove.png, but that file does not exist. Ignoring.
+2022-10-17 15:43:51 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMahogany.png, but that file does not exist. Ignoring.
+2022-10-17 15:43:52 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullAcacia.png, but that file does not exist. Ignoring.
+2022-10-17 15:51:35 [CLIENT] [INFO] Setting user: Player866
+2022-10-17 15:51:35 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 15:51:37 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBlood.png, but that file does not exist. Ignoring.
+2022-10-17 15:51:38 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullCherry.png, but that file does not exist. Ignoring.
+2022-10-17 15:51:38 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullJungle.png, but that file does not exist. Ignoring.
+2022-10-17 15:51:38 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullSpruce.png, but that file does not exist. Ignoring.
+2022-10-17 15:51:39 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullHazel.png, but that file does not exist. Ignoring.
+2022-10-17 15:51:39 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullOak.png, but that file does not exist. Ignoring.
+2022-10-17 15:51:39 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullFir.png, but that file does not exist. Ignoring.
+2022-10-17 15:51:39 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBirch.png, but that file does not exist. Ignoring.
+2022-10-17 15:51:39 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMangrove.png, but that file does not exist. Ignoring.
+2022-10-17 15:51:39 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMahogany.png, but that file does not exist. Ignoring.
+2022-10-17 15:51:39 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullAcacia.png, but that file does not exist. Ignoring.
+2022-10-17 15:54:33 [CLIENT] [INFO] Setting user: Player760
+2022-10-17 15:54:33 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 15:54:34 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBlood.png, but that file does not exist. Ignoring.
+2022-10-17 15:54:34 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullCherry.png, but that file does not exist. Ignoring.
+2022-10-17 15:54:35 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullJungle.png, but that file does not exist. Ignoring.
+2022-10-17 15:54:35 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullSpruce.png, but that file does not exist. Ignoring.
+2022-10-17 15:54:35 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullHazel.png, but that file does not exist. Ignoring.
+2022-10-17 15:54:35 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullOak.png, but that file does not exist. Ignoring.
+2022-10-17 15:54:35 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullFir.png, but that file does not exist. Ignoring.
+2022-10-17 15:54:35 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBirch.png, but that file does not exist. Ignoring.
+2022-10-17 15:54:35 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMangrove.png, but that file does not exist. Ignoring.
+2022-10-17 15:54:35 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMahogany.png, but that file does not exist. Ignoring.
+2022-10-17 15:54:36 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullAcacia.png, but that file does not exist. Ignoring.
+2022-10-17 15:55:30 [CLIENT] [INFO] Setting user: Player489
+2022-10-17 15:55:30 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 15:55:31 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBlood.png, but that file does not exist. Ignoring.
+2022-10-17 15:55:31 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullCherry.png, but that file does not exist. Ignoring.
+2022-10-17 15:55:31 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullJungle.png, but that file does not exist. Ignoring.
+2022-10-17 15:55:32 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullSpruce.png, but that file does not exist. Ignoring.
+2022-10-17 15:55:32 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullHazel.png, but that file does not exist. Ignoring.
+2022-10-17 15:55:32 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullOak.png, but that file does not exist. Ignoring.
+2022-10-17 15:55:32 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullFir.png, but that file does not exist. Ignoring.
+2022-10-17 15:55:32 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBirch.png, but that file does not exist. Ignoring.
+2022-10-17 15:55:32 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMangrove.png, but that file does not exist. Ignoring.
+2022-10-17 15:55:32 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMahogany.png, but that file does not exist. Ignoring.
+2022-10-17 15:55:32 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullAcacia.png, but that file does not exist. Ignoring.
+2022-10-17 15:56:15 [CLIENT] [INFO] Setting user: Player883
+2022-10-17 15:56:15 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 15:56:16 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBlood.png, but that file does not exist. Ignoring.
+2022-10-17 15:56:16 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullCherry.png, but that file does not exist. Ignoring.
+2022-10-17 15:56:17 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullJungle.png, but that file does not exist. Ignoring.
+2022-10-17 15:56:17 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullSpruce.png, but that file does not exist. Ignoring.
+2022-10-17 15:56:17 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullHazel.png, but that file does not exist. Ignoring.
+2022-10-17 15:56:17 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullOak.png, but that file does not exist. Ignoring.
+2022-10-17 15:56:17 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullFir.png, but that file does not exist. Ignoring.
+2022-10-17 15:56:17 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBirch.png, but that file does not exist. Ignoring.
+2022-10-17 15:56:17 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMangrove.png, but that file does not exist. Ignoring.
+2022-10-17 15:56:17 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMahogany.png, but that file does not exist. Ignoring.
+2022-10-17 15:56:17 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullAcacia.png, but that file does not exist. Ignoring.
+2022-10-17 15:58:31 [CLIENT] [INFO] Setting user: Player977
+2022-10-17 15:58:31 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 15:58:33 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBlood.png, but that file does not exist. Ignoring.
+2022-10-17 15:58:33 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullCherry.png, but that file does not exist. Ignoring.
+2022-10-17 15:58:33 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullJungle.png, but that file does not exist. Ignoring.
+2022-10-17 15:58:33 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullSpruce.png, but that file does not exist. Ignoring.
+2022-10-17 15:58:33 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullHazel.png, but that file does not exist. Ignoring.
+2022-10-17 15:58:33 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullOak.png, but that file does not exist. Ignoring.
+2022-10-17 15:58:33 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullFir.png, but that file does not exist. Ignoring.
+2022-10-17 15:58:33 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBirch.png, but that file does not exist. Ignoring.
+2022-10-17 15:58:34 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMangrove.png, but that file does not exist. Ignoring.
+2022-10-17 15:58:34 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMahogany.png, but that file does not exist. Ignoring.
+2022-10-17 15:58:34 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullAcacia.png, but that file does not exist. Ignoring.
+2022-10-17 16:03:04 [CLIENT] [INFO] Setting user: Player870
+2022-10-17 16:03:04 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 16:03:05 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBlood.png, but that file does not exist. Ignoring.
+2022-10-17 16:03:06 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullCherry.png, but that file does not exist. Ignoring.
+2022-10-17 16:03:06 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullJungle.png, but that file does not exist. Ignoring.
+2022-10-17 16:03:06 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullSpruce.png, but that file does not exist. Ignoring.
+2022-10-17 16:03:06 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullHazel.png, but that file does not exist. Ignoring.
+2022-10-17 16:03:06 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullOak.png, but that file does not exist. Ignoring.
+2022-10-17 16:03:06 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullFir.png, but that file does not exist. Ignoring.
+2022-10-17 16:03:07 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBirch.png, but that file does not exist. Ignoring.
+2022-10-17 16:03:07 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMangrove.png, but that file does not exist. Ignoring.
+2022-10-17 16:03:07 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMahogany.png, but that file does not exist. Ignoring.
+2022-10-17 16:03:07 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullAcacia.png, but that file does not exist. Ignoring.
+2022-10-17 16:03:59 [CLIENT] [INFO] Setting user: Player201
+2022-10-17 16:03:59 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 16:04:01 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBlood.png, but that file does not exist. Ignoring.
+2022-10-17 16:04:01 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullCherry.png, but that file does not exist. Ignoring.
+2022-10-17 16:04:01 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullJungle.png, but that file does not exist. Ignoring.
+2022-10-17 16:04:01 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullSpruce.png, but that file does not exist. Ignoring.
+2022-10-17 16:04:01 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullHazel.png, but that file does not exist. Ignoring.
+2022-10-17 16:04:01 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullOak.png, but that file does not exist. Ignoring.
+2022-10-17 16:04:02 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullFir.png, but that file does not exist. Ignoring.
+2022-10-17 16:04:02 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBirch.png, but that file does not exist. Ignoring.
+2022-10-17 16:04:02 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMangrove.png, but that file does not exist. Ignoring.
+2022-10-17 16:04:02 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMahogany.png, but that file does not exist. Ignoring.
+2022-10-17 16:04:02 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullAcacia.png, but that file does not exist. Ignoring.
+2022-10-17 16:04:47 [CLIENT] [INFO] Setting user: Player840
+2022-10-17 16:04:47 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 16:04:48 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBlood.png, but that file does not exist. Ignoring.
+2022-10-17 16:04:48 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullCherry.png, but that file does not exist. Ignoring.
+2022-10-17 16:04:49 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullJungle.png, but that file does not exist. Ignoring.
+2022-10-17 16:04:49 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullSpruce.png, but that file does not exist. Ignoring.
+2022-10-17 16:04:49 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullHazel.png, but that file does not exist. Ignoring.
+2022-10-17 16:04:49 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullOak.png, but that file does not exist. Ignoring.
+2022-10-17 16:04:49 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullFir.png, but that file does not exist. Ignoring.
+2022-10-17 16:04:49 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullBirch.png, but that file does not exist. Ignoring.
+2022-10-17 16:04:49 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMangrove.png, but that file does not exist. Ignoring.
+2022-10-17 16:04:49 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullMahogany.png, but that file does not exist. Ignoring.
+2022-10-17 16:04:49 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/nullAcacia.png, but that file does not exist. Ignoring.
+2022-10-17 16:05:01 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 16:05:01 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 16:06:55 [CLIENT] [INFO] Stopping!
+2022-10-17 16:07:59 [CLIENT] [INFO] Setting user: Player916
+2022-10-17 16:07:59 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 16:08:17 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 16:08:17 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 16:08:17 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 16:10:08 [CLIENT] [INFO] Stopping!
+2022-10-17 16:11:06 [CLIENT] [INFO] Setting user: Player707
+2022-10-17 16:11:06 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 16:19:24 [CLIENT] [INFO] Setting user: Player773
+2022-10-17 16:19:24 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 16:24:39 [CLIENT] [INFO] Setting user: Player140
+2022-10-17 16:24:39 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 16:24:53 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 16:24:53 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 16:24:53 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 16:24:53 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 16:25:07 [CLIENT] [INFO] [CHAT] Local game hosted on 0.0.0.0:63160
+2022-10-17 16:25:09 [CLIENT] [INFO] [CHAT] §cUnknown command. Try /help for a list of commands.
+2022-10-17 16:25:14 [CLIENT] [INFO] [CHAT] Your game mode has been updated
+2022-10-17 16:26:45 [CLIENT] [INFO] Stopping!
+2022-10-17 16:31:18 [CLIENT] [INFO] Setting user: Player861
+2022-10-17 16:31:18 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 16:31:42 [CLIENT] [INFO] Stopping!
+2022-10-17 16:32:41 [CLIENT] [INFO] Setting user: Player27
+2022-10-17 16:32:41 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 16:33:01 [CLIENT] [INFO] Stopping!
+2022-10-17 16:33:41 [CLIENT] [INFO] Setting user: Player486
+2022-10-17 16:33:41 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 16:34:02 [CLIENT] [INFO] Stopping!
+2022-10-17 16:36:49 [CLIENT] [INFO] Setting user: Player471
+2022-10-17 16:36:49 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 16:37:01 [CLIENT] [INFO] Stopping!
+2022-10-17 16:37:24 [CLIENT] [INFO] Setting user: Player92
+2022-10-17 16:37:24 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 16:37:37 [CLIENT] [INFO] Stopping!
+2022-10-17 16:39:38 [CLIENT] [INFO] Setting user: Player133
+2022-10-17 16:39:38 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 16:40:40 [CLIENT] [INFO] Stopping!
+2022-10-17 16:41:52 [CLIENT] [INFO] Setting user: Player331
+2022-10-17 16:41:52 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 16:43:31 [CLIENT] [INFO] Stopping!
+2022-10-17 16:45:36 [CLIENT] [INFO] Setting user: Player515
+2022-10-17 16:45:36 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 16:45:59 [CLIENT] [INFO] Stopping!
+2022-10-17 16:47:41 [CLIENT] [INFO] Setting user: Player607
+2022-10-17 16:47:41 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 16:48:30 [CLIENT] [INFO] Stopping!
+2022-10-17 16:49:16 [CLIENT] [INFO] Setting user: Player451
+2022-10-17 16:49:16 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 16:49:28 [CLIENT] [INFO] Stopping!
+2022-10-17 16:49:46 [CLIENT] [INFO] Setting user: Player369
+2022-10-17 16:49:46 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 16:51:12 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 16:51:12 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 16:51:12 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 16:51:12 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 16:53:35 [CLIENT] [INFO] Stopping!
+2022-10-17 18:12:30 [CLIENT] [INFO] Setting user: Player674
+2022-10-17 18:12:30 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 18:13:35 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 18:13:35 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 18:13:35 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 18:13:35 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 18:15:45 [CLIENT] [INFO] Stopping!
+2022-10-17 18:20:42 [CLIENT] [INFO] Setting user: Player470
+2022-10-17 18:20:42 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 18:21:11 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 18:21:11 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 18:21:11 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 18:21:11 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 18:26:14 [CLIENT] [INFO] Stopping!
+2022-10-17 18:59:38 [CLIENT] [INFO] Setting user: Player19
+2022-10-17 18:59:38 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 19:00:37 [CLIENT] [INFO] Setting user: Player668
+2022-10-17 19:00:37 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 19:00:55 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 19:00:55 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 19:00:55 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 19:00:55 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 19:01:31 [CLIENT] [INFO] Stopping!
+2022-10-17 19:01:49 [CLIENT] [INFO] Setting user: Player293
+2022-10-17 19:01:49 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 19:02:04 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 19:02:04 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 19:02:04 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 19:02:04 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 19:03:01 [CLIENT] [INFO] Stopping!
+2022-10-17 19:04:21 [CLIENT] [INFO] Setting user: Player326
+2022-10-17 19:04:21 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 19:04:58 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 19:04:58 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 19:04:58 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 19:04:58 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 19:05:38 [CLIENT] [INFO] Stopping!
+2022-10-17 19:21:01 [CLIENT] [INFO] Setting user: Player915
+2022-10-17 19:21:01 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 19:21:14 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 19:21:14 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 19:21:14 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 19:21:14 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 19:21:49 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 19:21:49 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 19:21:49 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 19:21:49 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 19:25:03 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 19:25:03 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 19:25:03 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 19:25:03 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 19:28:06 [CLIENT] [INFO] [CHAT] §cYou do not have permission to use this command.
+2022-10-17 19:28:10 [CLIENT] [INFO] [CHAT] Local game hosted on 0.0.0.0:60571
+2022-10-17 19:28:11 [CLIENT] [INFO] [CHAT] Player915 fell out of the world
+2022-10-17 19:28:11 [CLIENT] [INFO] [CHAT] Ouch. That looks like it hurt.
+2022-10-17 19:29:58 [CLIENT] [INFO] Stopping!
+2022-10-17 19:32:19 [CLIENT] [INFO] Setting user: Player301
+2022-10-17 19:32:19 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 19:32:52 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 19:32:52 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 19:32:52 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 19:32:52 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 19:33:19 [CLIENT] [INFO] Stopping!
+2022-10-17 19:35:33 [CLIENT] [INFO] Setting user: Player796
+2022-10-17 19:35:33 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 19:35:53 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 19:35:53 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 19:35:53 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 19:35:53 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 19:39:08 [CLIENT] [INFO] Stopping!
+2022-10-17 20:38:41 [CLIENT] [INFO] Setting user: Player746
+2022-10-17 20:38:41 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 20:39:05 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 20:39:05 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 20:39:05 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 20:39:05 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 20:39:11 [CLIENT] [INFO] [CHAT] §cYou do not have permission to use this command.
+2022-10-17 20:39:16 [CLIENT] [INFO] [CHAT] Local game hosted on 0.0.0.0:52606
+2022-10-17 20:39:18 [CLIENT] [INFO] [CHAT] Player746 fell out of the world
+2022-10-17 20:39:18 [CLIENT] [INFO] [CHAT] Ouch. That looks like it hurt.
+2022-10-17 20:39:35 [CLIENT] [INFO] [CHAT] Teleported Player746 to 4845.77,73.85,-19.15
+2022-10-17 20:40:10 [CLIENT] [INFO] [CHAT] Saved screenshot as 2022-10-17_20.40.09.png
+2022-10-17 20:44:06 [CLIENT] [INFO] Setting user: Player722
+2022-10-17 20:44:06 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 20:45:32 [CLIENT] [INFO] Setting user: Player843
+2022-10-17 20:45:32 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 20:45:52 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 20:45:52 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 20:45:52 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 20:45:52 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 20:46:28 [CLIENT] [INFO] Stopping!
+2022-10-17 20:46:50 [CLIENT] [INFO] Setting user: Player423
+2022-10-17 20:46:50 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 20:47:08 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 20:47:08 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 20:47:08 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 20:47:08 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 20:48:28 [CLIENT] [INFO] Stopping!
+2022-10-17 20:51:45 [CLIENT] [INFO] Setting user: Player84
+2022-10-17 20:51:45 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 20:52:11 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 20:52:11 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 20:52:11 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 20:52:11 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 20:53:01 [CLIENT] [INFO] Stopping!
+2022-10-17 20:54:54 [CLIENT] [INFO] Setting user: Player662
+2022-10-17 20:54:54 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 20:55:18 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 20:55:18 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 20:55:18 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 20:55:18 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 20:55:42 [CLIENT] [INFO] Stopping!
+2022-10-17 20:56:30 [CLIENT] [INFO] Setting user: Player302
+2022-10-17 20:56:30 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 20:56:50 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 20:56:50 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 20:56:50 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 20:56:50 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 20:58:12 [CLIENT] [INFO] Stopping!
+2022-10-17 21:00:34 [CLIENT] [INFO] Setting user: Player894
+2022-10-17 21:00:34 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 21:00:54 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 21:00:54 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 21:00:54 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 21:00:54 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 21:01:43 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 21:01:43 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 21:01:43 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 21:01:43 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 21:02:20 [CLIENT] [INFO] [CHAT] §cYou do not have permission to use this command.
+2022-10-17 21:02:30 [CLIENT] [INFO] [CHAT] Local game hosted on 0.0.0.0:60573
+2022-10-17 21:02:31 [CLIENT] [INFO] [CHAT] §eCurrent Location: -12, 103, -84
+2022-10-17 21:02:34 [CLIENT] [INFO] [CHAT] §eCurrent Location: -12, 103, -89
+2022-10-17 21:02:42 [CLIENT] [INFO] [CHAT] Teleported Player894 to -11.30,103.69,160.33
+2022-10-17 21:02:51 [CLIENT] [INFO] [CHAT] Teleported Player894 to -11.30,103.69,-339.67
+2022-10-17 21:02:57 [CLIENT] [INFO] [CHAT] Teleported Player894 to -11.30,103.69,-839.67
+2022-10-17 21:03:03 [CLIENT] [INFO] [CHAT] Teleported Player894 to -11.30,103.69,-1339.67
+2022-10-17 21:03:08 [CLIENT] [WARNING] Memory connection overburdened; after processing 2500 packets, we still have 2129 to go!
+2022-10-17 21:03:08 [CLIENT] [WARNING] Memory connection overburdened; after processing 2500 packets, we still have 2943 to go!
+2022-10-17 21:03:08 [CLIENT] [WARNING] Memory connection overburdened; after processing 2500 packets, we still have 689 to go!
+2022-10-17 21:03:12 [CLIENT] [INFO] [CHAT] Teleported Player894 to -11.30,103.69,-1839.67
+2022-10-17 21:03:44 [CLIENT] [INFO] [CHAT] §eCurrent Location: 79, 63, -1992
+2022-10-17 21:04:02 [CLIENT] [INFO] Stopping!
+2022-10-17 21:04:58 [CLIENT] [INFO] Setting user: Player757
+2022-10-17 21:04:58 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 21:05:12 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 21:05:12 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 21:05:12 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 21:05:12 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 21:05:18 [CLIENT] [INFO] [CHAT] §cYou do not have permission to use this command.
+2022-10-17 21:05:21 [CLIENT] [INFO] [CHAT] Local game hosted on 0.0.0.0:60600
+2022-10-17 21:05:24 [CLIENT] [INFO] [CHAT] Teleported Player757 to 0.50,100.50,-1999.50
+2022-10-17 21:07:25 [CLIENT] [INFO] Stopping!
+2022-10-17 21:16:04 [CLIENT] [INFO] Setting user: Player831
+2022-10-17 21:16:04 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 21:19:38 [CLIENT] [INFO] Setting user: Player789
+2022-10-17 21:19:38 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 21:20:11 [CLIENT] [INFO] Stopping!
+2022-10-17 21:21:02 [CLIENT] [INFO] Setting user: Player988
+2022-10-17 21:21:02 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 21:22:00 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 21:22:00 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 21:22:00 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 21:22:00 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 21:22:08 [CLIENT] [INFO] [CHAT] §cYou do not have permission to use this command.
+2022-10-17 21:22:11 [CLIENT] [INFO] [CHAT] Local game hosted on 0.0.0.0:61077
+2022-10-17 21:22:13 [CLIENT] [INFO] [CHAT] Teleported Player988 to 0.50,100.50,-1999.50
+2022-10-17 21:23:26 [CLIENT] [INFO] Stopping!
+2022-10-17 21:25:31 [CLIENT] [INFO] Setting user: Player172
+2022-10-17 21:25:31 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 21:25:41 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 21:25:41 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 21:25:41 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 21:25:41 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 21:27:02 [CLIENT] [INFO] Stopping!
+2022-10-17 21:27:42 [CLIENT] [INFO] Setting user: Player968
+2022-10-17 21:27:42 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 21:28:09 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 21:28:09 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 21:28:09 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 21:28:09 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 21:28:36 [CLIENT] [INFO] Stopping!
+2022-10-17 21:29:32 [CLIENT] [INFO] Setting user: Player212
+2022-10-17 21:29:32 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 21:29:42 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 21:29:42 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 21:29:42 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 21:29:42 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 21:31:58 [CLIENT] [INFO] Stopping!
+2022-10-17 21:40:43 [CLIENT] [INFO] Setting user: Player983
+2022-10-17 21:40:43 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 21:41:24 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 21:41:24 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 21:41:24 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 21:41:24 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 21:42:14 [CLIENT] [INFO] Stopping!
+2022-10-17 21:44:51 [CLIENT] [INFO] Setting user: Player640
+2022-10-17 21:44:51 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 21:45:08 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 21:45:08 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 21:45:08 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 21:45:08 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 21:46:07 [CLIENT] [INFO] Stopping!
+2022-10-17 21:56:59 [CLIENT] [INFO] Setting user: Player803
+2022-10-17 21:56:59 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 21:57:46 [CLIENT] [INFO] Setting user: Player233
+2022-10-17 21:57:46 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 21:58:22 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 21:58:22 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 21:58:22 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 21:58:22 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 21:59:41 [CLIENT] [INFO] Stopping!
+2022-10-17 22:02:40 [CLIENT] [INFO] Setting user: Player296
+2022-10-17 22:02:40 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 22:03:42 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 22:03:42 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 22:03:42 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 22:03:42 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 22:04:49 [CLIENT] [INFO] Stopping!
+2022-10-17 22:17:20 [CLIENT] [INFO] Setting user: Player796
+2022-10-17 22:17:20 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 22:17:47 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 22:17:47 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 22:17:47 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 22:17:47 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 22:19:47 [CLIENT] [INFO] Stopping!
+2022-10-17 22:22:17 [CLIENT] [INFO] Setting user: Player724
+2022-10-17 22:22:17 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 22:22:44 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 22:22:44 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 22:22:44 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 22:22:44 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 22:24:02 [CLIENT] [INFO] Stopping!
+2022-10-17 22:25:53 [CLIENT] [INFO] Setting user: Player580
+2022-10-17 22:25:53 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 22:26:21 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 22:26:21 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 22:26:21 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 22:26:21 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 22:27:24 [CLIENT] [INFO] Stopping!
+2022-10-17 22:29:45 [CLIENT] [INFO] Setting user: Player250
+2022-10-17 22:29:45 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 22:30:10 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 22:30:10 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 22:30:10 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 22:30:10 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 22:31:39 [CLIENT] [INFO] Stopping!
+2022-10-17 22:33:59 [CLIENT] [INFO] Setting user: Player970
+2022-10-17 22:33:59 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 22:34:36 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 22:34:36 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 22:34:36 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 22:34:36 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 22:40:37 [CLIENT] [INFO] Stopping!
+2022-10-17 22:53:12 [CLIENT] [INFO] Setting user: Player638
+2022-10-17 22:53:12 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 22:53:28 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 22:53:28 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 22:53:28 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 22:53:28 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 22:54:09 [CLIENT] [INFO] [CHAT] §cYou do not have permission to use this command.
+2022-10-17 22:54:13 [CLIENT] [INFO] [CHAT] Local game hosted on 0.0.0.0:60661
+2022-10-17 22:54:15 [CLIENT] [INFO] [CHAT] Teleported Player638 to 1198.62,89.11,409.72
+2022-10-17 22:58:43 [CLIENT] [INFO] Stopping!
+2022-10-17 23:14:34 [CLIENT] [INFO] Setting user: Player504
+2022-10-17 23:14:34 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 23:14:51 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 23:14:51 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 23:14:51 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 23:14:51 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 23:17:06 [CLIENT] [INFO] Setting user: Player604
+2022-10-17 23:17:06 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 23:17:17 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 23:17:17 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 23:17:17 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 23:17:17 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 23:18:54 [CLIENT] [INFO] Setting user: Player6
+2022-10-17 23:18:54 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 23:19:11 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 23:19:11 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 23:19:11 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 23:19:11 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 23:20:07 [CLIENT] [INFO] Setting user: Player564
+2022-10-17 23:20:07 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 23:20:30 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 23:20:30 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 23:20:30 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 23:20:30 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 23:22:03 [CLIENT] [INFO] Stopping!
+2022-10-17 23:22:33 [CLIENT] [INFO] Setting user: Player260
+2022-10-17 23:22:33 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 23:23:02 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 23:23:02 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 23:23:02 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 23:23:02 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 23:25:30 [CLIENT] [INFO] Stopping!
+2022-10-17 23:25:58 [CLIENT] [INFO] Setting user: Player214
+2022-10-17 23:25:58 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 23:28:29 [CLIENT] [INFO] Setting user: Player117
+2022-10-17 23:28:29 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 23:28:50 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 23:28:50 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 23:28:50 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 23:28:50 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 23:29:49 [CLIENT] [INFO] Stopping!
+2022-10-17 23:35:01 [CLIENT] [INFO] Setting user: Player805
+2022-10-17 23:35:01 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 23:35:31 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 23:35:31 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 23:35:31 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 23:35:31 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 23:35:56 [CLIENT] [INFO] Stopping!
+2022-10-17 23:38:52 [CLIENT] [INFO] Setting user: Player737
+2022-10-17 23:38:52 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 23:39:13 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 23:39:13 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 23:39:13 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 23:39:13 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 23:39:18 [CLIENT] [INFO] Stopping!
+2022-10-17 23:39:34 [CLIENT] [INFO] Setting user: Player552
+2022-10-17 23:39:34 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-17 23:39:51 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 23:39:51 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 23:39:51 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 23:39:51 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 23:43:45 [CLIENT] [INFO] [CHAT] §cYou do not have permission to use this command.
+2022-10-17 23:43:48 [CLIENT] [INFO] [CHAT] Local game hosted on 0.0.0.0:49817
+2022-10-17 23:43:49 [CLIENT] [INFO] [CHAT] §eCurrent Location: 389, 95, -412
+2022-10-17 23:44:28 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-17 23:44:28 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-17 23:44:28 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-17 23:44:28 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-17 23:44:40 [CLIENT] [INFO] [CHAT] §cYou do not have permission to use this command.
+2022-10-17 23:44:44 [CLIENT] [INFO] [CHAT] Local game hosted on 0.0.0.0:49821
+2022-10-17 23:44:45 [CLIENT] [INFO] [CHAT] Teleported Player552 to 400.50,130.50,-399.50
+2022-10-17 23:45:23 [CLIENT] [INFO] Stopping!
+2022-10-18 11:58:34 [CLIENT] [INFO] Setting user: Player85
+2022-10-18 11:58:34 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-18 11:59:32 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-18 11:59:32 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-18 11:59:32 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-18 11:59:32 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-18 11:59:56 [CLIENT] [INFO] [CHAT] Local game hosted on 0.0.0.0:61959
+2022-10-18 11:59:58 [CLIENT] [INFO] [CHAT] Player85 fell out of the world
+2022-10-18 11:59:58 [CLIENT] [INFO] [CHAT] Ouch. That looks like it hurt.
+2022-10-18 12:00:28 [CLIENT] [INFO] Stopping!
+2022-10-18 12:02:32 [CLIENT] [INFO] Setting user: Player765
+2022-10-18 12:02:32 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-18 12:02:42 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-18 12:02:42 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-18 12:02:42 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-18 12:02:42 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-18 12:02:45 [CLIENT] [INFO] [CHAT] §cYou do not have permission to use this command.
+2022-10-18 12:02:49 [CLIENT] [INFO] [CHAT] Local game hosted on 0.0.0.0:62008
+2022-10-18 12:02:50 [CLIENT] [INFO] [CHAT] §eCurrent Location: -2048, 89, 1673
+2022-10-18 12:03:02 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-18 12:03:02 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-18 12:03:02 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-18 12:03:02 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-18 12:03:06 [CLIENT] [INFO] [CHAT] Local game hosted on 0.0.0.0:62011
+2022-10-18 12:03:15 [CLIENT] [INFO] [CHAT] Teleported Player765 to -1999.50,100.50,1600.50
+2022-10-18 12:03:29 [CLIENT] [INFO] Stopping!
+2022-10-18 12:05:58 [CLIENT] [INFO] Setting user: Player679
+2022-10-18 12:05:58 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-18 12:06:44 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.0
+2022-10-18 12:06:44 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-18 12:06:44 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-18 12:06:44 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-18 12:06:54 [CLIENT] [INFO] [CHAT] Local game hosted on 0.0.0.0:62076
+2022-10-18 12:07:01 [CLIENT] [INFO] [CHAT] Teleported Player679 to -225.50,96.50,-33.50
+2022-10-18 12:08:07 [CLIENT] [INFO] Stopping!
+2022-10-20 18:12:54 [CLIENT] [INFO] Setting user: Player116
+2022-10-20 18:12:54 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2022-10-20 18:13:03 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.1
+2022-10-20 18:13:03 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.1.0
+2022-10-20 18:13:03 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2022-10-20 18:13:03 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.0.0
+2022-10-20 18:13:06 [CLIENT] [INFO] [CHAT] §cYou do not have permission to use this command.
+2022-10-20 18:13:09 [CLIENT] [INFO] [CHAT] Local game hosted on 0.0.0.0:60692
+2022-10-20 18:13:11 [CLIENT] [INFO] [CHAT] Current biome: Badlands
+2022-10-20 18:14:02 [CLIENT] [INFO] Stopping!

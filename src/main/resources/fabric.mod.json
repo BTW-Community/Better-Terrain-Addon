@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "betterterrain",
+  "version": "${version}",
+
+  "name": "Better Terrain Addon",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "The Lady Dawn / Dawnraider00"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "CC 4.0 BY-SA-NC",
+  "icon": "assets/modid/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "init": [
+    ],
+    "preLaunch": [
+    ]
+  },
+  "mixins": [
+    "betterterrain.mixins.json"
+  ],
+
+  "accessWidener" : "betterterrain.accesswidener",
+
+  "depends": {
+    "fabricloader": ">=0.7.4"
+  },
+  "suggests": {
+    "decoaddon": ">=4.0.0"
+  }
+}

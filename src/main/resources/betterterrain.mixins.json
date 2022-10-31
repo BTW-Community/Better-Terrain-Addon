@@ -1,0 +1,28 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "betterterrain.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "ClayBlockMixin",
+    "NetherGrothSporesItemMixin",
+    "SoulSandPileItemMixin",
+
+    "BiomeDecoratorAccessor",
+    "GenLayerAccessor",
+    "StructureScatteredFeatureStartAccessor",
+    "StructureScatteredFeatureStartMixin",
+    "WorldProviderMixin",
+    "WorldProviderEndMixin",
+    "WorldProviderHellMixin",
+    "WorldTypeAccessor",
+    "WorldTypeMixin"
+  ],
+  "client": [
+    "GuiCreateWorldMixin",
+    "GuiScreenAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
