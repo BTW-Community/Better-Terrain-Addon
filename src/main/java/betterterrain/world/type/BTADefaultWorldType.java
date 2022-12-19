@@ -3,11 +3,7 @@ package betterterrain.world.type;
 import betterterrain.world.BTAWorldChunkManager;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.config.WorldConfigurationInfoLegacy;
-import betterterrain.world.generate.BTADefaultChunkProvider;
-import betterterrain.world.generate.EndChunkProvider;
-import betterterrain.world.generate.NetherChunkProvider;
-import betterterrain.world.generate.SimplexChunkProvider;
-import betterterrain.world.generate.TerrainGenerator;
+import betterterrain.world.generate.provider.*;
 import betterterrain.world.util.WorldTypeInterface;
 import net.minecraft.src.*;
 
@@ -52,9 +48,9 @@ public class BTADefaultWorldType extends WorldType {
     	switch (info.getGenerator()) {
     	default:
     	case CLASSIC:
-    		return new BTADefaultChunkProvider(world, seed, mapFeaturesEnabled, info);
-    	case SIMPLEX:
-    		return new SimplexChunkProvider(world, seed, mapFeaturesEnabled, info);
+    		return new ClassicChunkProvider(world, seed, mapFeaturesEnabled, info);
+    	case DEFAULT:
+    		return new BTAChunkProvider(world, seed, mapFeaturesEnabled, info);
     	}
     }
 
@@ -70,7 +66,7 @@ public class BTADefaultWorldType extends WorldType {
     	}
     	
     	if (((WorldTypeInterface) this).isDeco()) {
-    		return new NetherChunkProvider(world, seed, info);
+    		return new NetherChunkProvider(world, seed, true, info);
     	}
     	else {
     		return new ChunkProviderHell(world, seed);
@@ -94,6 +90,6 @@ public class BTADefaultWorldType extends WorldType {
 	
     // @Override
 	public int getColdBiomeSnowLevelModifier(WorldConfigurationInfo generatorInfo) {
-		return generatorInfo.getGenerator().equals(TerrainGenerator.SIMPLEX) ? 70 : 0;
+		return generatorInfo.getGenerator().equals(TerrainGenerator.DEFAULT) ? 70 : 0;
 	}
 }

@@ -29,7 +29,7 @@ public class FastNoiseOctaves {
 		double noise = 0;
 		
 		for (int i = 0; i < generators.length; i++) {
-			noise += generators[i].SinglePerlin(generators[i].GetSeed(), (float) (x * noiseScaleXZ / octaveScale), (float) (z * noiseScaleXZ / octaveScale), (float) (y * noiseScaleY / octaveScale * octaveScale));
+			noise += generators[i].SinglePerlin(generators[i].GetSeed(), (float) (x * noiseScaleXZ / octaveScale), (float) (z * noiseScaleXZ / octaveScale), (float) (y * noiseScaleY / octaveScale));
 			octaveScale /= 2;
 		}
 		

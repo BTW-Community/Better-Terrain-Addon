@@ -1,4 +1,4 @@
-package betterterrain.world.generate;
+package betterterrain.world.generate.provider;
 
 import java.util.List;
 import java.util.Random;
@@ -38,7 +38,7 @@ import net.minecraft.src.WorldGenLakes;
 import net.minecraft.src.WorldGenMinable;
 import net.minecraft.src.WorldGenReed;
 
-public class SkyChunkProvider implements BTAChunkProvider
+public class SkyChunkProvider extends AbstractChunkProvider
 {
 	private Random rand;
 	private BetaNoiseOctaves field_912_k;
@@ -78,7 +78,8 @@ public class SkyChunkProvider implements BTAChunkProvider
 	private long seed;
 
 	public SkyChunkProvider(World var1, long var2, boolean var4, WorldConfigurationInfo generatorInfo)
-	{
+    {
+        super(var1, var2, var4, generatorInfo);
 		this.worldObj = var1;
 		this.rand = new Random(var2);
 		this.m_structureRand = new Random(var2);

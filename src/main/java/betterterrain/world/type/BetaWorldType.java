@@ -3,9 +3,9 @@ package betterterrain.world.type;
 import betterterrain.world.BetaChunkManager;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.config.WorldConfigurationInfoLegacy;
-import betterterrain.world.generate.BetaChunkProvider;
-import betterterrain.world.generate.EndChunkProvider;
-import betterterrain.world.generate.NetherChunkProvider;
+import betterterrain.world.generate.provider.BetaChunkProvider;
+import betterterrain.world.generate.provider.EndChunkProvider;
+import betterterrain.world.generate.provider.NetherChunkProvider;
 import betterterrain.world.util.WorldTypeInterface;
 import net.minecraft.src.*;
 
@@ -62,7 +62,7 @@ public class BetaWorldType extends WorldType {
     	}
     	
     	if (((WorldTypeInterface) this).isDeco()) {
-    		return new NetherChunkProvider(world, seed, info);
+    		return new NetherChunkProvider(world, seed, true, info);
     	}
     	else {
     		return new ChunkProviderHell(world, seed);

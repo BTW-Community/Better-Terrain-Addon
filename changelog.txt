@@ -12,6 +12,9 @@ Version 3.X.0
 [*]Changed black stone to be able to spawn nether mobs.
 [/list]
 
+Version 3.2.0
+- Added the current biome to the debug screen, and removed the /biome command
+
 Version 3.1.0
 - Updated to CE 2.0.0
 - Refactored the mod to use fabric mixins, so it can now be installed through the mods folder

@@ -1,4 +1,4 @@
-package betterterrain.world.generate;
+package betterterrain.world.generate.provider;
 
 import java.util.List;
 import java.util.Random;
@@ -33,7 +33,7 @@ import net.minecraft.src.WorldGenDungeons;
 import net.minecraft.src.WorldGenFlowers;
 import net.minecraft.src.WorldGenLakes;
 
-public class BTADefaultChunkProvider implements BTAChunkProvider
+public class ClassicChunkProvider extends AbstractChunkProvider
 {
 	/** RNG. */
 	private Random rand;
@@ -44,12 +44,6 @@ public class BTADefaultChunkProvider implements BTAChunkProvider
 	public NoiseGeneratorOctaves biomeHeightNoiseGen;
 
 	private NoiseGeneratorOctaves soilDepthNoiseGen;
-
-	/** Reference to the World object. */
-	private World worldObj;
-
-	/** are map structures going to be generated (e.g. strongholds) */
-	private final boolean mapFeaturesEnabled;
 
 	/** Holds the overall noise array used in chunk generation */
 	private double[] noiseArray;
@@ -87,25 +81,17 @@ public class BTADefaultChunkProvider implements BTAChunkProvider
 	float[] parabolicField;
 	int[][] field_73219_j = new int[32][32];
 	private Random m_structureRand;
-
-	public WorldConfigurationInfo generatorInfo;
-	private long seed;
 	private int parabolicRadius = 2;
 
-	public BTADefaultChunkProvider(World world, long seed, boolean mapFeaturesEnabled, WorldConfigurationInfo generatorInfo)
-	{
-		this.worldObj = world;
-		this.mapFeaturesEnabled = mapFeaturesEnabled;
-		this.rand = new Random(seed);
+	public ClassicChunkProvider(World world, long seed, boolean mapFeaturesEnabled, WorldConfigurationInfo generatorInfo) {
+		super(world, seed, mapFeaturesEnabled, generatorInfo);
 		this.m_structureRand = new Random(seed);
-		this.generatorInfo = generatorInfo;
 		this.blockNoiseGen1 = new NoiseGeneratorOctaves(this.rand, 16);
 		this.blockNoiseGen2 = new NoiseGeneratorOctaves(this.rand, 16);
 		this.blockModifierNoiseGen = new NoiseGeneratorOctaves(this.rand, 8);
 		this.soilDepthNoiseGen = new NoiseGeneratorOctaves(this.rand, 4);
 		this.biomeHeightNoiseGen = new NoiseGeneratorOctaves(this.rand, 16);
 		this.sandNoiseGen = new BetaNoiseOctaves(this.rand, 4);
-		this.seed = seed;
 
 		SurfaceBuilder.initForNoiseField(this.seed);
 	}
@@ -192,14 +178,6 @@ public class BTADefaultChunkProvider implements BTAChunkProvider
 				}
 			}
 		}
-	}
-
-	/**
-	 * loads or generates the chunk at the chunk location specified
-	 */
-	public Chunk loadChunk(int par1, int par2)
-	{
-		return this.provideChunk(par1, par2);
 	}
 
 	/**

@@ -1,4 +1,4 @@
-package betterterrain.world.generate;
+package betterterrain.world.generate.provider;
 
 import java.util.List;
 import java.util.Random;

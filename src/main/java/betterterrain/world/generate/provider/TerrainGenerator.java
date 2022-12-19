@@ -1,8 +1,8 @@
-package betterterrain.world.generate;
+package betterterrain.world.generate.provider;
 
 public enum TerrainGenerator {
 	CLASSIC(0, "classic"),
-	SIMPLEX(1, "simplex"),
+	DEFAULT(1, "default"),
 	BETA(2, "beta"),
 	SKYLANDS(3, "skylands");
 	

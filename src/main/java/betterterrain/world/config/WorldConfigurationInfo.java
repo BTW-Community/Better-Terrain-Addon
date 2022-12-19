@@ -1,10 +1,7 @@
 package betterterrain.world.config;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -22,7 +19,7 @@ import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.BiomeConfiguration;
 import betterterrain.biome.BiomeInfo;
-import betterterrain.world.generate.TerrainGenerator;
+import betterterrain.world.generate.provider.TerrainGenerator;
 import net.minecraft.src.BiomeGenBase;
 
 public class WorldConfigurationInfo {
@@ -50,7 +47,7 @@ public class WorldConfigurationInfo {
 		info.setGeneratePerlinBeaches(true);
 		info.setWideRivers(true);
 		info.setBiomeSize(1);
-		info.setGenerator(TerrainGenerator.CLASSIC);
+		info.setGenerator(TerrainGenerator.DEFAULT);
 
 		info.generateBiomeInfoListFromBiomes(BiomeConfiguration.getBiomeList(), true, false);
 

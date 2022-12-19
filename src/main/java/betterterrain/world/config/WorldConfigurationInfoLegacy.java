@@ -1,16 +1,12 @@
 package betterterrain.world.config;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import betterterrain.BTAVersion;
-import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.BiomeConfiguration;
 import betterterrain.biome.BiomeInfo;
-import betterterrain.world.generate.TerrainGenerator;
+import betterterrain.world.generate.provider.TerrainGenerator;
 import net.minecraft.src.BiomeGenBase;
 
 public class WorldConfigurationInfoLegacy {

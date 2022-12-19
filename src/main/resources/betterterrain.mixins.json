@@ -20,6 +20,7 @@
   ],
   "client": [
     "GuiCreateWorldMixin",
+    "GuiInGameMixin",
     "GuiScreenAccessor"
   ],
   "injectors": {

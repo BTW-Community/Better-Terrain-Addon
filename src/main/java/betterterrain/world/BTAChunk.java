@@ -45,8 +45,12 @@ public class BTAChunk extends Chunk {
             {
                 for (int j = 0; j < var5; ++j)
                 {
-                    int blockID = blockArray[i << 11 | k << 7 | j];
-                    int meta = metaArray[i << 11 | k << 7 | j];
+                    int index = var5 == 256 ?
+                            i << 12 | k << 8 | j :
+                            i << 11 | k << 7 | j;
+
+                    int blockID = blockArray[index];
+                    int meta = metaArray[index];
 
                     if (blockID != 0)
                     {

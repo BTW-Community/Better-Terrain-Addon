@@ -1,6 +1,6 @@
 package betterterrain.mixins;
 
-import betterterrain.world.generate.BTAChunkProvider;
+import betterterrain.world.generate.provider.AbstractChunkProvider;
 import btw.client.fx.BTWEffectManager;
 import btw.entity.SoulSandEntity;
 import btw.item.items.SoulSandPileItem;
@@ -56,8 +56,8 @@ public abstract class SoulSandPileItemMixin extends Item {
                             ChunkProviderHell hellProvider = (ChunkProviderHell) provider;
                             closestFortress = hellProvider.genNetherBridge.getClosestStructureWithinRangeSq(player.posX, player.posZ, 90000); // 300 block range
                         }
-                        else if (provider instanceof BTAChunkProvider) {
-                            BTAChunkProvider btaProvider = (BTAChunkProvider) provider;
+                        else if (provider instanceof AbstractChunkProvider) {
+                            AbstractChunkProvider btaProvider = (AbstractChunkProvider) provider;
 
                             if (btaProvider.isNether()) {
                                 closestFortress = btaProvider.getNetherBridgeGenerator().GetClosestStructureWithinRangeSq(player.posX, player.posZ, 90000); // 300 block range

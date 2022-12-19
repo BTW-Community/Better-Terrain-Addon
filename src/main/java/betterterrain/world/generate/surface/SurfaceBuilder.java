@@ -51,44 +51,6 @@ public class SurfaceBuilder {
 	public static final SurfaceBuilder defaultBuilder = new SurfaceBuilder();
 	public static final LegacySurfaceBuilder legacyBuilder = new LegacySurfaceBuilder();
 
-	//New 3D array format
-	public static void replaceSurface(Random rand, long seed, int chunkX, int chunkZ, int[][][] blockArray, int[][][] metaArray, BiomeGenBase[] biomesForGeneration, WorldConfigurationInfo generatorInfo, WorldType worldType) {
-		Set<BiomeGenBase> biomeSet = new HashSet(Arrays.asList(biomesForGeneration));
-
-		for (BiomeGenBase b : biomeSet) {
-			if (b instanceof BTABiome && ((BTABiome) b).getSurfaceBuilder() != null) {
-				if (!((BTABiome) b).getSurfaceBuilder().hasBeenInit) {
-					((BTABiome) b).getSurfaceBuilder().init(rand, seed);
-					((BTABiome) b).getSurfaceBuilder().hasBeenInit = true;
-				}
-
-				((BTABiome) b).getSurfaceBuilder().initForChunk(chunkX, chunkZ);
-			}
-		}
-
-		if (!defaultBuilder.hasBeenInit) {
-			defaultBuilder.init(rand, seed);
-			defaultBuilder.hasBeenInit = true;
-		}
-
-		defaultBuilder.initForChunk(chunkX, chunkZ);
-
-		for (int i = 0; i < 16; i++) {
-			for (int k = 0; k < 16; k++) {
-				BiomeGenBase biome = biomesForGeneration[k + i*16];
-
-				if (biome instanceof BTABiome && ((BTABiome) biome).getSurfaceBuilder() != null) {
-					((BTABiome) biome).getSurfaceBuilder().replaceBlocksForBiome(rand, k, i, blockArray, metaArray, biomesForGeneration, generatorInfo, worldType, ((BTABiome) biome).isNether());
-				}
-				else {
-					defaultBuilder.setBiome(biome);
-					defaultBuilder.replaceBlocksForBiome(rand, k, i, blockArray, metaArray, biomesForGeneration, generatorInfo, worldType, false);
-				}
-			}
-		}
-	}
-
-	//Old 1D array format
 	public static void replaceSurface(Random rand, long seed, int chunkX, int chunkZ, int[] blockArray, int[] metaArray, BiomeGenBase[] biomesForGeneration, WorldConfigurationInfo generatorInfo, WorldType worldType) {
 		if (generatorInfo.getBTAVersion().isVersionAtOrBelow(BTAVersion.V1_3_4)) {
 			if (!legacyBuilder.hasBeenInit) {
@@ -513,9 +475,6 @@ public class SurfaceBuilder {
 	protected void setBlockValue(Object blockArray, int i, int y, int k, int id) {
 		if (blockArray instanceof int[]) {
 			((int[]) blockArray)[(k * 16 + i) * 128 + y] = id;
-		}
-		else if (blockArray instanceof int[][][]) {
-			((int[][][]) blockArray)[i][k][y] = id;
 		}
 		else {
 			throw new IllegalArgumentException("blockArray must be of type int[] or int[][][]");

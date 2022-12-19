@@ -8,10 +8,10 @@ import net.minecraft.src.MathHelper;
 public class HorizonsNoiseGeneratorTerrain extends HorizonsNoiseFieldGenerator {
 	private Random rand;
 	
-	private HorizonsNoiseOctaves biomeHeightNoiseGen;
-	private HorizonsNoiseOctaves blockModifierNoiseGen;
-	private HorizonsNoiseOctaves blockNoiseGen1;
-	private HorizonsNoiseOctaves blockNoiseGen2;
+	private PerlinNoiseOctaves biomeHeightNoiseGen;
+	private PerlinNoiseOctaves blockModifierNoiseGen;
+	private PerlinNoiseOctaves blockNoiseGen1;
+	private PerlinNoiseOctaves blockNoiseGen2;
 	
 	private double[] biomeHeightNoise;
 	private double[] blockModifierNoise;
@@ -25,10 +25,10 @@ public class HorizonsNoiseGeneratorTerrain extends HorizonsNoiseFieldGenerator {
 	public HorizonsNoiseGeneratorTerrain(Random rand) {
 		this.rand = rand;
 		
-		this.biomeHeightNoiseGen = new HorizonsNoiseOctaves(this.rand, 16);
-		this.blockModifierNoiseGen = new HorizonsNoiseOctaves(this.rand, 8);
-		this.blockNoiseGen1 = new HorizonsNoiseOctaves(this.rand, 16);
-		this.blockNoiseGen2 = new HorizonsNoiseOctaves(this.rand, 16);
+		this.biomeHeightNoiseGen = new PerlinNoiseOctaves(this.rand, 16);
+		this.blockModifierNoiseGen = new PerlinNoiseOctaves(this.rand, 8);
+		this.blockNoiseGen1 = new PerlinNoiseOctaves(this.rand, 16);
+		this.blockNoiseGen2 = new PerlinNoiseOctaves(this.rand, 16);
 	}
 	
 	public double[] initializeNoiseField(double[] noiseArray, int posX, int posY, int posZ, int sizeX, int sizeY, int sizeZ, BiomeGenBase[] biomesForGeneration) {
@@ -52,10 +52,10 @@ public class HorizonsNoiseGeneratorTerrain extends HorizonsNoiseFieldGenerator {
 
 		double octaveScalarXZ = 684.412D;
 		double octaveScalarY = 684.412D;
-		this.biomeHeightNoise = this.biomeHeightNoiseGen.generateNoiseOctaves(this.biomeHeightNoise, posX, posZ, sizeX, sizeZ, 200.0D, 200.0D, 0.5D);
-		this.blockModifierNoise = this.blockModifierNoiseGen.generateNoiseOctaves(this.blockModifierNoise, posX, posY, posZ, sizeX, sizeY, sizeZ, octaveScalarXZ / 80.0D, octaveScalarY / 160.0D, octaveScalarXZ / 80.0D);
-		this.blockNoise1 = this.blockNoiseGen1.generateNoiseOctaves(this.blockNoise1, posX, posY, posZ, sizeX, sizeY, sizeZ, octaveScalarXZ, octaveScalarY, octaveScalarXZ);
-		this.blockNoise2 = this.blockNoiseGen2.generateNoiseOctaves(this.blockNoise2, posX, posY, posZ, sizeX, sizeY, sizeZ, octaveScalarXZ, octaveScalarY, octaveScalarXZ);
+		//this.biomeHeightNoise = this.biomeHeightNoiseGen.generateNoiseOctaves2D(this.biomeHeightNoise, posX, posZ, sizeX, sizeZ, 200.0D, 200.0D, 0.5D);
+		this.blockModifierNoise = this.blockModifierNoiseGen.generateNoiseOctaves3D(this.blockModifierNoise, posX, posY, posZ, sizeX, sizeY, sizeZ, octaveScalarXZ / 80.0D, octaveScalarY / 160.0D, octaveScalarXZ / 80.0D);
+		this.blockNoise1 = this.blockNoiseGen1.generateNoiseOctaves3D(this.blockNoise1, posX, posY, posZ, sizeX, sizeY, sizeZ, octaveScalarXZ, octaveScalarY, octaveScalarXZ);
+		this.blockNoise2 = this.blockNoiseGen2.generateNoiseOctaves3D(this.blockNoise2, posX, posY, posZ, sizeX, sizeY, sizeZ, octaveScalarXZ, octaveScalarY, octaveScalarXZ);
 		int biomeHeightNoiseIndex = 0;
 		int blockNoiseIndex = 0;
 

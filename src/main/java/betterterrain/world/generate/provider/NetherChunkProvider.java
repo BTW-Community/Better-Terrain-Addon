@@ -1,4 +1,4 @@
-package betterterrain.world.generate;
+package betterterrain.world.generate.provider;
 
 import java.util.List;
 import java.util.Random;
@@ -22,7 +22,7 @@ import net.minecraft.src.NoiseGeneratorOctaves;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenFlowers;
 
-public class NetherChunkProvider implements BTAChunkProvider
+public class NetherChunkProvider extends AbstractChunkProvider
 {
     private Random hellRNG;
 
@@ -69,8 +69,8 @@ public class NetherChunkProvider implements BTAChunkProvider
 	/** The biomes that are used to generate the chunk */
 	private BiomeGenBase[] biomesForGeneration;
 
-    public NetherChunkProvider(World world, long seed, WorldConfigurationInfo generatorInfo)
-    {
+    public NetherChunkProvider(World world, long seed, boolean mapFeaturesEnabled, WorldConfigurationInfo generatorInfo) {
+        super(world, seed, mapFeaturesEnabled, generatorInfo);
         this.worldObj = world;
         this.hellRNG = new Random(seed);
         this.netherNoiseGen1 = new NoiseGeneratorOctaves(this.hellRNG, 16);
