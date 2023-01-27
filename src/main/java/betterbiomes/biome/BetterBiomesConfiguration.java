@@ -24,14 +24,6 @@ import btw.util.hardcorespawn.HardcoreSpawnUtils;
 
 public class BetterBiomesConfiguration extends BiomeConfiguration {
 	public static final int
-	//Nether
-			NETHER_WASTES_ID = 90,
-			ASH_FIELDS_ID = 91,
-			BASALT_DELTAS_ID = 92,
-			SOUL_SAND_VALLEY_ID = 93,
-			OBSIDIAN_GROVE_ID = 94,
-			CRYSTAL_CAVERNS_ID = 95,
-			PETRIFIED_FOREST_ID = 96,
 	//Primary
 			WOODS_ID = 100,
 			DESERT_ID = 101,
@@ -759,34 +751,6 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.0F, 0.1F)
 			.setBeach()
 			.setNotSpawnable();
-
-	// ------ Nether Biomes ------ //
-	public static final BTABiome ashFields = new AshFieldsBiome(ASH_FIELDS_ID, "betterbiomes:ash_fields")
-			.setBiomeName("Ash Fields")
-			.setSurfaceBuilder(new AshFieldsSurfaceBuilder())
-			.setNether();
-
-	public static final BTABiome basaltDeltas = new BasaltDeltasBiome(BASALT_DELTAS_ID, "betterbiomes:basalt_deltas")
-			.setBiomeName("Basalt Deltas")
-			.setSurfaceBuilder(new BasaltDeltasSurfaceBuilder())
-			.setNether();
-
-	public static final BTABiome soulSandValley = new SoulSandValleyBiome(SOUL_SAND_VALLEY_ID, "betterbiomes:soul_sand_valley")
-			.setBiomeName("Soul Sand Valley")
-			.setSurfaceBuilder(new SoulSandValleySurfaceBuilder())
-			.setNether();
-
-	public static final BTABiome obsidianGrove = null;
-
-	public static final BTABiome crystalCaverns = new CrystalCavernsBiome(CRYSTAL_CAVERNS_ID, "betterbiomes:crystal_caverns")
-			.setBiomeName("Crystal Caverns")
-			.setSurfaceBuilder(new CrystalCavernsSurfaceBuilder())
-			.setNether();
-
-	public static final BTABiome petrifiedForest = new PetrifiedForestBiome(PETRIFIED_FOREST_ID, "betterbiomes:petrified_forest")
-			.setBiomeName("Petrified Forest")
-			.setSurfaceBuilder(new NetherSurfaceBuilder())
-			.setNether();
 
 	// ------ Deprecated ------ //
 	public static final BTABiome aspenGrove = new AspenGroveBiome(ASPEN_GROVE_ID, "betterbiomes:aspen_grove", Climate.COLD)

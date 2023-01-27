@@ -1,8 +1,8 @@
-package betterbiomes.biome.biomes;
+package netherexpanded.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.world.generate.surface.BasaltDeltasSurfaceBuilder;
+import netherexpanded.world.generate.surface.BasaltDeltasSurfaceBuilder;
 import betterterrain.BTAMod;
 import betterterrain.biome.BTANetherBiome;
 import betterterrain.world.config.WorldConfigurationInfo;

@@ -1,4 +1,4 @@
-package betterbiomes.biome.biomes;
+package netherexpanded.biome.biomes;
 
 import java.util.Random;
 

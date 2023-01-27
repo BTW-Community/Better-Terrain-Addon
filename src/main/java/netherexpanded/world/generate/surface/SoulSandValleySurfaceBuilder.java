@@ -1,4 +1,4 @@
-package betterbiomes.world.generate.surface;
+package netherexpanded.world.generate.surface;
 
 import betterterrain.world.generate.surface.NetherSurfaceBuilder;
 
