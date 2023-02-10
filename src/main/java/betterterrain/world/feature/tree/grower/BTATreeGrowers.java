@@ -16,6 +16,14 @@ public class BTATreeGrowers {
     public static final AbstractTreeGrower TALL_SWAMP_OAK_TREE = new SwampTreeGrower("betterterrain:tall_swamp_oak", 8, 13, TreeGrowers.OAK_WOOD_TYPE);
 
     public static final AbstractTreeGrower FALLEN_OAK_TREE = new FallenLogGrower("betterterrain:fallen_oak", TreeGrowers.OAK_WOOD_TYPE);
+    public static final AbstractTreeGrower BIG_DEAD_OAK_TREE = new BigDeadTreeGrower("betterterrain:big_dead_oak", 5, 16, TreeGrowers.OAK_WOOD_TYPE);
+    public static final AbstractTreeGrower HUGE_DEAD_OAK_TREE = new HugeDeadTreeGrower("betterterrain:huge_dead_oak", 12, 21, TreeGrowers.OAK_WOOD_TYPE);
+
+    public static final AbstractTreeGrower OAK_ACACIA_TREE = new AcaciaTreeGrower("betterterrain:oak_acacia", 4, 6, TreeGrowers.OAK_WOOD_TYPE);
+    public static final AbstractTreeGrower OAK_ASPEN = new AspenTreeGrower("betterterrain:oak_aspen", 6, 10, TreeGrowers.OAK_WOOD_TYPE);
+    public static final AbstractTreeGrower HUGE_OAK_WILLOW_TREE = new HugeWillowTreeGrower("betterterrain:huge_oak_willow", 9, 12, TreeGrowers.OAK_WOOD_TYPE, false);
+    public static final AbstractTreeGrower OAK_REDWOOD_TREE = new TallTaigaTreeGrower("betterterrain:oak_redwood", 13, 21, TreeGrowers.OAK_WOOD_TYPE);
+    public static final AbstractTreeGrower HUGE_OAK_REDWOOD_TREE = new HugeRedwoodTreeGrower("betterterrain:huge_oak_redwood", 20, 35, TreeGrowers.OAK_WOOD_TYPE);
 
     //------ Spruce ------//
 
@@ -36,12 +44,16 @@ public class BTATreeGrowers {
 
     public static final AbstractTreeGrower TEMPERATE_BIRCH_TREE = new TemperateTreeGrower("betterterrain:temperate_birch", 7, 12, TreeGrowers.BIRCH_WOOD_TYPE);
 
+    public static final AbstractTreeGrower BIRCH_ASPEN_TREE = new AspenTreeGrower("betterterrain:birch_aspen", 6, 10, TreeGrowers.BIRCH_WOOD_TYPE);
+
     //------ Jungle ------//
 
     public static final AbstractTreeGrower JUNGLE_BUSH = new BushGrower("betterterrain:jungle_bush", TreeGrowers.JUNGLE_WOOD_TYPE);
 
     public static final AbstractTreeGrower PALM_TREE = new PalmTreeGrower("betterterrain:palm", 6, 8, TreeGrowers.JUNGLE_WOOD_TYPE, false);
     public static final AbstractTreeGrower PALM_TREE_COCOA = new PalmTreeGrower("betterterrain:palm_cocoa", 6, 8, TreeGrowers.JUNGLE_WOOD_TYPE, true);
+
+    public static final AbstractTreeGrower JUNGLE_MAHOGANY_TREE = new MahoganyTreeGrower("betterterrain:jungle_mahogany", 12, 17, TreeGrowers.JUNGLE_WOOD_TYPE);
 
     //------ Cherry ------//
 
@@ -55,13 +67,9 @@ public class BTATreeGrowers {
 
     //------ Acacia ------//
 
-    public static final AbstractTreeGrower OAK_ACACIA_TREE = new AcaciaTreeGrower("betterterrain:oak_acacia", 4, 6, TreeGrowers.OAK_WOOD_TYPE);
-
     public static final AbstractTreeGrower ACACIA_TREE = new AcaciaTreeGrower("betterterrain:acacia", 4, 6, DecoWoodTypeHelper.acaciaWoodType());
 
     //------ Mahogany ------//
-
-    public static final AbstractTreeGrower JUNGLE_MAHOGANY_TREE = new MahoganyTreeGrower("betterterrain:jungle_mahogany", 12, 17, TreeGrowers.JUNGLE_WOOD_TYPE);
 
     public static final AbstractTreeGrower MAHOGANY_TREE = new MahoganyTreeGrower("betterterrain:mahogany", 12, 17, DecoWoodTypeHelper.mahoganyWoodType());
 
@@ -89,14 +97,9 @@ public class BTATreeGrowers {
 
     //------ Aspen ------//
 
-    public static final AbstractTreeGrower OAK_ASPEN = new AspenTreeGrower("betterterrain:oak_aspen", 6, 10, TreeGrowers.OAK_WOOD_TYPE);
-    public static final AbstractTreeGrower BIRCH_ASPEN_TREE = new AspenTreeGrower("betterterrain:birch_aspen", 6, 10, TreeGrowers.BIRCH_WOOD_TYPE);
-
     public static final AbstractTreeGrower ASPEN_TREE = new AspenTreeGrower("betterterrain:aspen", 6, 10, DecoWoodTypeHelper.aspenWoodType());
 
     //------ Willow ------//
-
-    public static final AbstractTreeGrower HUGE_OAK_WILLOW_TREE = new HugeWillowTreeGrower("betterterrain:huge_oak_willow", 9, 12, TreeGrowers.OAK_WOOD_TYPE, false);
 
     public static final AbstractTreeGrower WILLOW_TREE = new SwampTreeGrower("betterterrain:willow", 5, 8, DecoWoodTypeHelper.willowWoodType());
     public static final AbstractTreeGrower HUGE_WILLOW_TREE = new HugeWillowTreeGrower("betterterrain:huge_willow", 9, 12, DecoWoodTypeHelper.willowWoodType(), true);
@@ -107,11 +110,13 @@ public class BTATreeGrowers {
     public static final AbstractTreeGrower HUGE_DARK_OAK_TREE = new HugeDarkOakTreeGrower("betterterrain:huge_dark_oak", 7, 18, DecoWoodTypeHelper.darkOakWoodType());
 
     public static final AbstractTreeGrower MEADOW_DARK_OAK_TREE = new TemperateTreeGrower("betterterrain:meadow_dark_oak", 7, 12, DecoWoodTypeHelper.darkOakWoodType());
+    public static final AbstractTreeGrower TALL_DARK_OAK_TREE = new TallTaigaTreeGrower("betterterrain:tall_dark_oak", 13, 21, DecoWoodTypeHelper.darkOakWoodType());
+
+    public static final AbstractTreeGrower DARK_OAK_HIGHLANDS_TREE = new BigTaigaTreeGrower("betterterrain:dark_oak_highlands", 10, 19, DecoWoodTypeHelper.darkOakWoodType());
 
     //------ Redwood ------//
 
-    public static final AbstractTreeGrower OAK_REDWOOD_TREE = new TallTaigaTreeGrower("betterterrain:oak_redwood", 13, 21, TreeGrowers.OAK_WOOD_TYPE);
-    public static final AbstractTreeGrower HUGE_OAK_REDWOOD_TREE = new HugeRedwoodTreeGrower("betterterrain:huge_oak_redwood", 20, 35, TreeGrowers.OAK_WOOD_TYPE);
+    public static final AbstractTreeGrower SMALL_REDWOOD_SHRUB = new SmallShrubGrower("betterterrain:small_redwood_shrub", DecoWoodTypeHelper.redwoodWoodType());
 
     public static final AbstractTreeGrower REDWOOD_TREE = new TallTaigaTreeGrower("betterterrain:redwood", 13, 21, DecoWoodTypeHelper.redwoodWoodType());
     public static final AbstractTreeGrower HUGE_REDWOOD_TREE = new HugeRedwoodTreeGrower("betterterrain:huge_redwood", 20, 35, DecoWoodTypeHelper.redwoodWoodType());
@@ -120,7 +125,7 @@ public class BTATreeGrowers {
 
     public static final AbstractTreeGrower RED_AUTUMN_TREE = new StandardTreeGrower("betterterrain:red_autumn", 5, 7, DecoWoodTypeHelper.redAutumnWoodType());
     public static final AbstractTreeGrower BIG_RED_AUTUMN_TREE = new BigTreeGrower("betterterrain:big_red_autumn", 5, 16, DecoWoodTypeHelper.redAutumnWoodType());
-    public static final AbstractTreeGrower HUGE_RED_AUTUMN_TREE = new HugeTreeGrower("betterterrain:huge_red_autumn", 12, 21, DecoWoodTypeHelper.redwoodWoodType());
+    public static final AbstractTreeGrower HUGE_RED_AUTUMN_TREE = new HugeTreeGrower("betterterrain:huge_red_autumn", 12, 21, DecoWoodTypeHelper.redAutumnWoodType());
 
     public static final AbstractTreeGrower ORANGE_AUTUMN_TREE = new StandardTreeGrower("betterterrain:orange_autumn", 5, 7, DecoWoodTypeHelper.orangeAutumnWoodType());
     public static final AbstractTreeGrower BIG_ORANGE_AUTUMN_TREE = new BigTreeGrower("betterterrain:big_orange_autumn", 5, 16, DecoWoodTypeHelper.orangeAutumnWoodType());
@@ -129,4 +134,7 @@ public class BTATreeGrowers {
     public static final AbstractTreeGrower YELLOW_AUTUMN_TREE = new StandardTreeGrower("betterterrain:yellow_autumn", 5, 7, DecoWoodTypeHelper.yellowAutumnWoodType());
     public static final AbstractTreeGrower BIG_YELLOW_AUTUMN_TREE = new BigTreeGrower("betterterrain:big_yellow_autumn", 5, 16, DecoWoodTypeHelper.yellowAutumnWoodType());
     public static final AbstractTreeGrower HUGE_YELLOW_AUTUMN_TREE = new HugeTreeGrower("betterterrain:huge_yellow_autumn", 12, 21, DecoWoodTypeHelper.yellowAutumnWoodType());
+
+    public static final AbstractTreeGrower RED_HIGHLANDS_TREE = new BigTaigaTreeGrower("betterterrain:red_highlands", 10, 19, DecoWoodTypeHelper.redAutumnWoodType());
+    public static final AbstractTreeGrower ORANGE_HIGHLANDS_TREE = new BigTaigaTreeGrower("betterterrain:orange_highlands", 10, 19, DecoWoodTypeHelper.orangeAutumnWoodType());
 }

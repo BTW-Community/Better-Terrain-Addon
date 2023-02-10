@@ -21,6 +21,16 @@ public class SwampSurfaceBuilder extends NoShorelineSurfaceBuilder {
 
 	protected OpenSimplexOctaves waterNoiseGen;
 
+	protected boolean generateFlora;
+
+	public SwampSurfaceBuilder() {
+		this(true);
+	}
+
+	public SwampSurfaceBuilder(boolean generateFlora) {
+		this.generateFlora = generateFlora;
+	}
+
 	@Override
 	public void init(Random rand, long seed) {
 		super.init(rand, seed);
@@ -86,13 +96,13 @@ public class SwampSurfaceBuilder extends NoShorelineSurfaceBuilder {
 								int blockID = world.getBlockId(i + offset, j, k);
 
 								if (BTAMod.isDecoInstalled() && ((WorldTypeInterface) world.provider.terrainType).isDeco()) {
-									if (blockID != 0 && Block.blocksList[blockID].blockMaterial != Material.water) {
+									if (blockID != 0 && Block.blocksList[blockID].blockMaterial != Material.water && blockID != Block.ice.blockID) {
 										world.setBlock(i + offset, j, k, DecoBlocks.podzol.blockID);
 									}
 
 									blockID = world.getBlockId(i, j, k + offset);
 
-									if (blockID != 0 && Block.blocksList[blockID].blockMaterial != Material.water) {
+									if (blockID != 0 && Block.blocksList[blockID].blockMaterial != Material.water && blockID != Block.ice.blockID) {
 										world.setBlock(i, j, k + offset, DecoBlocks.podzol.blockID);
 									}
 								}
@@ -102,7 +112,7 @@ public class SwampSurfaceBuilder extends NoShorelineSurfaceBuilder {
 
 					if (BTAMod.isDecoInstalled() && ((WorldTypeInterface) world.provider.terrainType).isDeco() &&
 							waterNoise + rand.nextDouble() * 0.1 > -0.5
-							&& world.getBlockId(i, j, k) != 0 && Block.blocksList[world.getBlockId(i, j, k)].blockMaterial != Material.water
+							&& world.getBlockId(i, j, k) != 0 && Block.blocksList[world.getBlockId(i, j, k)].blockMaterial != Material.water && world.getBlockId(i, j, k) != Block.ice.blockID
 							&& world.getBlockId(i, j + 1, k) == 0)
 					{
 						world.setBlock(i, j, k, DecoBlocks.podzol.blockID);
@@ -111,23 +121,24 @@ public class SwampSurfaceBuilder extends NoShorelineSurfaceBuilder {
 			}
 		}
 
-		int x = chunkX + 16;
-		int y = world.getTopSolidOrLiquidBlock(chunkX + 16, chunkZ + 16);
-		int z = chunkZ + 16;
+		if (generateFlora) {
+			int x = chunkX + 16;
+			int y = world.getTopSolidOrLiquidBlock(chunkX + 16, chunkZ + 16);
+			int z = chunkZ + 16;
 
-		if (y == 63)
-		{
-			for (int i = 0; i < 5; i++) {
+			if (y == 63) {
+				for (int i = 0; i < 5; i++) {
+					x = chunkX + rand.nextInt(16) + 8;
+					z = chunkZ + rand.nextInt(16) + 8;
+					this.fernGen.generate(world, rand, x, y, z);
+				}
+			}
+
+			if (BTAMod.isDecoInstalled() && ((WorldTypeInterface) world.provider.terrainType).isDeco() && rand.nextInt(2) == 0) {
 				x = chunkX + rand.nextInt(16) + 8;
 				z = chunkZ + rand.nextInt(16) + 8;
-				this.fernGen.generate(world, rand, x, y, z);
+				this.orchidGen.generate(world, rand, x, y, z);
 			}
-		}
-		
-		if (BTAMod.isDecoInstalled() && ((WorldTypeInterface) world.provider.terrainType).isDeco() && rand.nextInt(2) == 0) {
-			x = chunkX + rand.nextInt(16) + 8;
-			z = chunkZ + rand.nextInt(16) + 8;
-			this.orchidGen.generate(world, rand, x, y, z);
 		}
 	}
 }

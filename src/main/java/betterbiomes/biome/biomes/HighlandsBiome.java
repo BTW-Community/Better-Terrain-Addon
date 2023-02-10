@@ -12,11 +12,10 @@ import net.minecraft.src.WorldGenShrub;
 import net.minecraft.src.WorldGenerator;
 
 public class HighlandsBiome extends BTABiome {
-
 	public HighlandsBiome(int id, String internalName, Climate climate) {
 		super(id, internalName, climate);
 		this.btaBiomeDecorator.fractionalTreeChance = 2;
-		this.btaBiomeDecorator.grassPerChunk = 3;
+		this.btaBiomeDecorator.grassPerChunk = 15;
 	}
 
 	public void initTreeGrowerMap() {

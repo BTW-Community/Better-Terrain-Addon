@@ -16,6 +16,7 @@ import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.surface.NetherSurfaceBuilder;
 import betterterrain.world.generate.surface.NoShorelineSurfaceBuilder;
 import betterterrain.world.generate.surface.StonySurfaceBuilder;
+import betterterrain.world.generate.surface.SwampSurfaceBuilder;
 import btw.util.hardcorespawn.HardcoreSpawnUtils;
 
 public class BetterBiomesConfiguration extends BiomeConfiguration {
@@ -29,6 +30,8 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			CRYSTAL_CAVERNS_ID = 95,
 			PETRIFIED_FOREST_ID = 96,
 	//Primary
+			FIELD_ID = 98,
+			BOWER_ID = 99,
 			WOODS_ID = 100,
 			DESERT_ID = 101,
 			LUSH_DESERT_ID = 102,
@@ -76,7 +79,9 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			BRUSHLAND_ID = 144,
 			HIGHLANDS_ID = 145,
 			FLORAL_FOREST_ID = 146,
-			
+			REDWOOD_FOREST_ID = 147,
+			ICE_MARSH_ID = 148,
+			FORESTED_HIGHLANDS_ID = 149,
 	//Sub biomes
 			WOODS_HILLS_ID = 150,
 			DESERT_HILLS_ID = 151,
@@ -102,6 +107,9 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			SAVANNA_PLATEAU_ID = 171,
 			FIR_CANYON_VALLEY_ID = 172,
 			FLORAL_PLATEAU_ID = 173,
+			MAPLE_WOODS_HILLS_ID = 174,
+			SNOWY_MAPLE_WOODS_HILLS_ID = 175,
+			ICE_MARSH_POND_ID = 176,
 			
 	//Deco only
 			OUTBACK_ID = 180,
@@ -113,6 +121,9 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			HOT_SPRINGS_ID = 186,
 			VOLCANIC_JUNGLE_ID = 187,
 			FIR_CANYON_ID = 188,
+			DARK_FOREST_ID = 189,
+			MAPLE_WOODS_ID = 190,
+			SNOWY_MAPLE_WOODS_ID = 191,
 		
 	//Rivers
 			DESERT_RIVER_ID = 200,
@@ -130,8 +141,10 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			FROZEN_RIVER_ID = 212,
 			VOLCANIC_RIVER_ID = 213,
 			MANGROVE_RIVER_ID = 214,
+			DARK_FOREST_RIVER_BIOME = 215,
 	
 	//Edges
+			FORESTED_HIGHLANDS_EDGE_ID = 229,
 			ALPINE_EDGE_ID = 230,
 			MOUNTAIN_EDGE_ID = 231,
 			BADLANDS_EDGE_ID = 232,
@@ -153,32 +166,36 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 
 	// ------ Primary Biomes ------ //
 	//Temperate
-	public static final BTABiome oldGrowthWoodland = new OldGrowthWoodlandBiome(OLD_GROWTH_WOODLAND_ID, "betterbiomes:ancient_forest", Climate.TEMPERATE)
-			.setBiomeName("Old Growth Woodland")
-			.setSurfaceBuilder(new AncientForestSurfaceBuilder())
-			.setTemperatureRainfall(0.7F, 0.8F)
-			.setMinMaxHeight(0.1F, 0.5F)
-			.setLegacyCompatible();
-
-	public static final BTABiome seasonalForest = new SeasonalForestBiome(SEASONAL_FOREST_ID, "betterbiomes:autumn_forest", Climate.TEMPERATE)
-			.setBiomeName("Seasonal Forest")
-			.setSpawnsPumpkins()
-			.setTemperatureRainfall(0.9F, 0.2F)
-			.setMinMaxHeight(0.1F, 0.5F)
-			.setDecoOnly()
-			.setLegacyCompatible();
-
 	public static final BTABiome cherryBlossomGrove = new CherryBlossomGroveBiome(CHERRY_BLOSSOM_GROVE_ID, "betterbiomes:cherry_forest", Climate.TEMPERATE)
 			.setBiomeName("Cherry Blossom Grove")
 			.setTemperatureRainfall(0.9F, 0.8F)
 			.setMinMaxHeight(0.1F, 0.5F)
 			.setDecoOnly()
 			.setLegacyCompatible();
+
+	public static final BTABiome darkForest = new DarkForestBiome(DARK_FOREST_ID, "betterbiomes:dark_forest", Climate.TEMPERATE)
+			.setBiomeName("Dark Forest")
+			.setSpawnsSugarCane()
+			.setTemperatureRainfall(0.6F, 0.9F)
+			.setMinMaxHeight(1.0F, 0.8F)
+			.setDecoOnly();
+
+	public static final BTABiome field = new FieldBiome(FIELD_ID, "betterbiomes:field", Climate.TEMPERATE)
+			.setBiomeName("Field")
+			.setSpawnsPumpkins()
+			.setSpawnsVillages(false)
+			.setTemperatureRainfall(0.6F, 0.8F)
+			.setMinMaxHeight(0.1F, 0.5F);
 	
 	public static final BTABiome floralForest = new FloralForestBiome(FLORAL_FOREST_ID, "betterbiomes:floral_forest", Climate.TEMPERATE)
 			.setBiomeName("Floral Forest")
 			.setTemperatureRainfall(0.9F, 0.8F)
 			.setMinMaxHeight(0.2F, 0.5F);
+
+	public static final BTABiome forestedHighlands = new ForestedHighlandsBiome(FORESTED_HIGHLANDS_ID, "betterbiomes:forested_highlands", Climate.TEMPERATE)
+			.setBiomeName("Forested Highlands")
+			.setTemperatureRainfall(0.7F, 0.5F)
+			.setMinMaxHeight(0.8F, 2.5F);
 
 	public static final BTABiome grasslands = new GrasslandsBiome(GRASSLANDS_ID, "betterbiomes:grasslands", Climate.TEMPERATE)
 			.setBiomeName("Grasslands")
@@ -216,11 +233,31 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.3F, 1.5F)
 			.setLegacyCompatible();
 
+	public static final BTABiome oldGrowthWoodland = new OldGrowthWoodlandBiome(OLD_GROWTH_WOODLAND_ID, "betterbiomes:ancient_forest", Climate.TEMPERATE)
+			.setBiomeName("Old Growth Woodland")
+			.setSurfaceBuilder(new AncientForestSurfaceBuilder())
+			.setTemperatureRainfall(0.7F, 0.8F)
+			.setMinMaxHeight(0.1F, 0.5F)
+			.setLegacyCompatible();
+
 	public static final BTABiome orchard = new OrchardBiome(ORCHARD_ID, "betterbiomes:orchard", Climate.TEMPERATE)
 			.setBiomeName("Orchard")
 			.setSpawnsPumpkins()
 			.setSpawnsVillages(false)
 			.setTemperatureRainfall(0.7F, 0.5F)
+			.setLegacyCompatible();
+
+	public static final BTABiome redwoodForest = new RedwoodForestBiome(REDWOOD_FOREST_ID, "betterbiomes:redwood_forest", Climate.TEMPERATE)
+			.setBiomeName("Redwood Forest")
+			.setTemperatureRainfall(0.6F, 0.9F)
+			.setMinMaxHeight(1.0F, 0.8F);
+
+	public static final BTABiome seasonalForest = new SeasonalForestBiome(SEASONAL_FOREST_ID, "betterbiomes:autumn_forest", Climate.TEMPERATE)
+			.setBiomeName("Seasonal Forest")
+			.setSpawnsPumpkins()
+			.setTemperatureRainfall(0.9F, 0.2F)
+			.setMinMaxHeight(0.1F, 0.5F)
+			.setDecoOnly()
 			.setLegacyCompatible();
 
 	public static final BTABiome steppe = new SteppeBiome(STEPPE_ID, "betterbiomes:steppe", Climate.TEMPERATE)
@@ -398,6 +435,11 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(0.5F, 0.4F)
 			.setMinMaxHeight(0.1F, 0.4F);
 
+	public static final BTABiome bower = new BowerBiome(BOWER_ID, "betterbiomes:bower", Climate.COLD)
+			.setBiomeName("Bower")
+			.setTemperatureRainfall(0.5F, 0.4F)
+			.setMinMaxHeight(0.5F, 1.5F);
+
 	public static final BTABiome brushland = new BrushlandBiome(BRUSHLAND_ID, "betterbiomes:brushland", Climate.COLD)
 			.setBiomeName("Brushland")
 			.setSpawnsPumpkins()
@@ -427,6 +469,12 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.8F, 1.2F)
 			.setDecoOnly();
 
+	public static final BTABiome mapleWoods = new MapleWoodsBiome(MAPLE_WOODS_ID, "betterbiomes:maple_woods", Climate.COLD)
+			.setBiomeName("Maple Woods")
+			.setTemperatureRainfall(0.4F, 0.6F)
+			.setMinMaxHeight(0.1F, 0.5F)
+			.setDecoOnly();
+
 	public static final BTABiome patagonia = new PatagoniaBiome(PATAGONIA_ID, "betterbiomes:patagonia", Climate.COLD)
 			.setBiomeName("Patagonia")
 			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
@@ -450,6 +498,14 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.2F, 0.6F)
 			.setEnableSnow();
 
+	public static final BTABiome iceMarsh = new IceMarshBiome(ICE_MARSH_ID, "betterbiomes:ice_marsh", Climate.SNOWY)
+			.setBiomeName("Ice Marsh")
+			.setSpawnsWitchHuts()
+			.setSurfaceBuilder(new SwampSurfaceBuilder(false))
+			.setTemperatureRainfall(0.1F, 0.3F)
+			.setMinMaxHeight(-0.1F, 0.3F)
+			.setEnableSnow();
+
 	public static final BTABiome snowyConiferousForest = new ConiferousForestBiome(SNOWY_CONIFEROUS_FOREST_ID, "betterbiomes:snowy_coniferous_forest", Climate.SNOWY)
 			.setBiomeName("Snowy Coniferous Forest")
 			.setSurfaceBuilder(new ConiferousForestSurfaceBuilder())
@@ -457,6 +513,13 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.3F, 1.2F)
 			.setEnableSnow()
 			.setLegacyCompatible();
+
+	public static final BTABiome snowyMapleWoods = new MapleWoodsBiome(SNOWY_MAPLE_WOODS_ID, "betterbiomes:snowy_maple_woods", Climate.SNOWY)
+			.setBiomeName("Snowy Maple Woods")
+			.setEnableSnow()
+			.setTemperatureRainfall(0.1F, 0.6F)
+			.setMinMaxHeight(0.1F, 0.5F)
+			.setDecoOnly();
 
 	public static final BTABiome snowyWoods = new WoodsBiome(SNOWY_WOODS_ID, "betterbiomes:snowy_woods", Climate.SNOWY)
 			.setBiomeName("Snowy Woods")
@@ -467,17 +530,6 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 
 	// ------ Secondary Biomes ------ //
 	//Variants
-	public static final BTABiome oldGrowthWoodlandHills = new OldGrowthWoodlandBiome(OLD_GROWTH_WOODLAND_HILLS_ID, "betterbiomes:ancient_forest_hills", Climate.TEMPERATE)
-			.setBiomeName("Old Growth Woodland Hills")
-			.setTemperatureRainfall(0.7F, 0.8F)
-			.setMinMaxHeight(0.3F, 1.0F);
-
-	public static final BTABiome seasonalForestHills = new SeasonalForestBiome(SEASONAL_FOREST_HILLS_ID, "betterbiomes:autumn_forest_hills", Climate.TEMPERATE)
-			.setBiomeName("Autumn Forest Hills")
-			.setSpawnsPumpkins()
-			.setTemperatureRainfall(0.9F, 0.2F)
-			.setMinMaxHeight(0.3F, 1.0F);
-
 	public static final BTABiome badlands = new BadlandsBiome(BADLANDS_ID, "betterbiomes:badlands", Climate.ARID)
 			.setBiomeName("Badlands")
 			.setSurfaceBuilder(new NoShorelineSurfaceBuilder())
@@ -540,6 +592,14 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setBiomeName("Grasslands Lake")
 			.setTemperatureRainfall(0.5F, 0.6F)
 			.setMinMaxHeight(-0.3F, 0.0F);
+
+	public static final BTABiome iceMarshPond = new IceMarshBiome(ICE_MARSH_POND_ID, "betterbiomes:ice_marsh_pond", Climate.SNOWY)
+			.setBiomeName("Ice Marsh Pond")
+			.setSurfaceBuilder(new SwampSurfaceBuilder(false))
+			.setSpawnsWitchHuts()
+			.setSpawnsSugarCane()
+			.setTemperatureRainfall(0.3F, 0.3F)
+			.setMinMaxHeight(-0.3F, 0.0F);
 	
 	public static final BTABiome ivoryPlains = new SavannaBiome(IVORY_BEACH_ID, "betterbiomes:ivory_plains", Climate.ARID)
 			.setBiomeName("Ivory Plains")
@@ -548,7 +608,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.1F, 0.3F)
 			.setBeach();
 
-	public static final BTABiome mangroveForestIsland = new MangroveForestBiome(MANGROVE_FOREST_ISLAND_ID, "betterbiomes:mangrove_forest", Climate.TEMPERATE)
+	public static final BTABiome mangroveForestIsland = new MangroveForestBiome(MANGROVE_FOREST_ISLAND_ID, "betterbiomes:mangrove_forest_island", Climate.TEMPERATE)
 			.setBiomeName("Mangrove Forest Island")
 			.setSurfaceBuilder(new MangroveForestSurfaceBuilder())
 			.setSpawnsSugarCane()
@@ -556,6 +616,12 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.0F, 0.3F)
 			.setTemperatureRainfall(0.8F, 0.9F)
 			.setNotSpawnable();
+
+	public static final BTABiome mapleWoodsHills = new MapleWoodsBiome(MAPLE_WOODS_HILLS_ID, "betterbiomes:maple_woods_hills", Climate.COLD)
+			.setBiomeName("Maple Woods Hills")
+			.setTemperatureRainfall(0.4F, 0.6F)
+			.setMinMaxHeight(0.3F, 1.0F)
+			.setDecoOnly();
 
 	public static final BTABiome oasis = new OasisBiome(OASIS_ID, "betterbiomes:oasis", Climate.TROPICAL)
 			.setBiomeName("Oasis")
@@ -565,6 +631,11 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(0.9F, 1.0F)
 			.setMinMaxHeight(-0.2F, 0.1F)
 			.setNotSpawnable();
+
+	public static final BTABiome oldGrowthWoodlandHills = new OldGrowthWoodlandBiome(OLD_GROWTH_WOODLAND_HILLS_ID, "betterbiomes:ancient_forest_hills", Climate.TEMPERATE)
+			.setBiomeName("Old Growth Woodland Hills")
+			.setTemperatureRainfall(0.7F, 0.8F)
+			.setMinMaxHeight(0.3F, 1.0F);
 
 	public static final BTABiome patagoniaMountains = new PatagoniaMountainBiome(PATAGONIA_MOUNTAINS_ID, "betterbiomes:patagonia_mountains", Climate.COLD)
 			.setBiomeName("Patagonia Mountains")
@@ -584,6 +655,20 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(1.5F, 0.1F)
 			.setMinMaxHeight(0.3F, 0.8F)
 			.setPlateau();
+
+	public static final BTABiome seasonalForestHills = new SeasonalForestBiome(SEASONAL_FOREST_HILLS_ID, "betterbiomes:autumn_forest_hills", Climate.TEMPERATE)
+			.setBiomeName("Autumn Forest Hills")
+			.setSpawnsPumpkins()
+			.setTemperatureRainfall(0.9F, 0.2F)
+			.setMinMaxHeight(0.3F, 1.0F)
+			.setDecoOnly();
+
+	public static final BTABiome snowyMapleWoodsHills = new MapleWoodsBiome(SNOWY_MAPLE_WOODS_HILLS_ID, "betterbiomes:snowy_maple_woods_hills", Climate.SNOWY)
+			.setBiomeName("Snowy Maple Woods Hills")
+			.setEnableSnow()
+			.setTemperatureRainfall(0.1F, 0.6F)
+			.setMinMaxHeight(0.3F, 1.0F)
+			.setDecoOnly();
 
 	public static final BTABiome snowyWoodsHills = new WoodsBiome(SNOWY_WOODS_HILLS, "betterbiomes:snowy_woods_hills", Climate.SNOWY)
 			.setBiomeName("Snowy Woods Hills")
@@ -622,6 +707,13 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(-0.5F, 0.0F)
 			.setRiver()
 			.setNotSpawnable();
+
+	public static final BTABiome darkForestRiver = new OrchardRiverBiome(DARK_FOREST_RIVER_BIOME, "betterbiomes:dark_forest_river")
+			.setBiomeName("Dark Forest River")
+			.setSpawnsSugarCane()
+			.setTemperatureRainfall(0.6F, 0.9F)
+			.setMinMaxHeight(-0.5F, 0.0F)
+			.setRiver();
 
 	public static final BTABiome mangroveRiver = new MangroveRiverBiome(MANGROVE_RIVER_ID, "betterbiomes:mangrove_river")
 			.setBiomeName("Mangrove River")
@@ -709,6 +801,12 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(0.2F, 0.8F)
 			.setMinMaxHeight(0.2F, 0.5F)
 			.setEdge();
+
+	public static final BTABiome forestedHighlandsEdge = new ForestedHighlandsBiome(FORESTED_HIGHLANDS_EDGE_ID, "betterbiomes:forested_highlands_edge", Climate.TEMPERATE)
+			.setBiomeName("Forested Highlands Edge")
+			.setTemperatureRainfall(0.7F, 0.5F)
+			.setMinMaxHeight(0.2F, 0.5F)
+			.setMinMaxHeight(0.8F, 2.5F);
 
 	public static final BTABiome highlandsEdge = new HighlandsBiome(HIGHLANDS_EDGE_ID, "betterbiomes:highlands_edge", Climate.TEMPERATE)
 			.setBiomeName("Highlands Edge")
@@ -889,6 +987,11 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		betterBiomes.add(brushland);
 		betterBiomes.add(highlands);
 		betterBiomes.add(floralForest);
+		betterBiomes.add(redwoodForest);
+		betterBiomes.add(iceMarsh);
+		betterBiomes.add(forestedHighlands);
+		betterBiomes.add(bower);
+		betterBiomes.add(field);
 
 		betterBiomes.add(outback);
 		betterBiomes.add(cherryBlossomGrove);
@@ -898,6 +1001,9 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		betterBiomes.add(volcanicJungle);
 		betterBiomes.add(firCanyon);
 		betterBiomes.add(ivoryHills);
+		betterBiomes.add(darkForest);
+		betterBiomes.add(mapleWoods);
+		betterBiomes.add(snowyMapleWoods);
 		
 		biomeList.addAll(betterBiomes);
 		
@@ -939,11 +1045,13 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		grasslands.addSubVariant(grasslandsLake);
 		heathland.addSubVariant(heathlandWoods, pre140);
 		ivoryHills.addSubVariant(ivoryPlains);
+		mapleWoods.addSubVariant(mapleWoodsHills);
 		orchard.addSubVariant(orchardClearing, pre140);
 		patagonia.addSubVariant(patagoniaMountains);
 		savanna.addSubVariant(savannaHills, info -> info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V2_0_2));
 		savanna.addSubVariant(savannaPlateau, info -> info.getBTAVersion().isVersionAtLeast(BTAVersion.V2_0_3));
 		snowyConiferousForest.addSubVariant(snowyConiferousForestClearing, pre140);
+		snowyMapleWoods.addSubVariant(snowyMapleWoodsHills);
 		snowyWoods.addSubVariant(snowyWoodsHills);
 		steppe.addSubVariant(woodedSteppe, pre140);
 		valleyMountains.addSubVariant(valley);
@@ -957,6 +1065,9 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		//Sporadic
 		frozenSprings.addSporadicVariant(frozenSpringsPond);
 		frozenSprings.addSporadicChance(3);
+
+		iceMarsh.addSporadicVariant(iceMarshPond);
+		iceMarsh.addSporadicChance(3);
 		
 		wetlands.addSporadicVariant(wetlandsRiver);
 		wetlandsHills.addSporadicVariant(wetlandsRiver);
@@ -992,6 +1103,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		valleyMountains.setHasBeach(false);
 		snowyWoods.setHasBeach(false, pre132);
 		snowyWoodsHills.setHasBeach(false);
+		snowyMapleWoodsHills.setHasBeach(false);
 		badlandsPlateau.setHasBeach(false);
 		rainforest.setHasBeach(false);
 		tropics.setHasBeach(false);
@@ -1001,6 +1113,11 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		mangroveForestIsland.setHasBeach(false);
 		highlands.setHasBeach(false);
 		highlandsEdge.setHasBeach(false);
+		iceMarsh.setHasBeach(false);
+		iceMarshPond.setHasBeach(false);
+		forestedHighlands.setHasBeach(false);
+		forestedHighlandsEdge.setHasBeach(false);
+		bower.setHasBeach(false);
 		
 		outback.addBeachVariant(redSandBeach);
 		badlands.addBeachVariant(redSandBeach);
@@ -1012,7 +1129,8 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		volcanicJungle.addBeachVariant(volcanicBeach);
 
 		WorldConfigurationInfo.Condition post132 = info -> info.getBTAVersion().isVersionAtLeast(BTAVersion.V1_3_2);
-		
+
+		mapleWoods.addBeachVariant(BTABiomeConfiguration.frozenBeach);
 		snowyWoods.addBeachVariant(BTABiomeConfiguration.frozenBeach, post132);
 		frozenSprings.addBeachVariant(BTABiomeConfiguration.frozenBeach, post132);
 		
@@ -1052,12 +1170,16 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		
 		volcanicJungle.addRiverVariant(volcanicRiver);
 		volcanicBeach.addRiverVariant(volcanicRiver);
+
+		darkForest.addRiverVariant(darkForestRiver);
 		
 		for (BTABiome b : betterBiomes) {
 			if (b.getEnableSnow()) {
 				b.addRiverVariant(BTABiomeConfiguration.frozenRiver);
 			}
 		}
+		// Idk why this wasn't being picked up by the automatic checker above
+		snowyMapleWoodsHills.addRiverVariant(BTABiomeConfiguration.frozenRiver);
 		
 		//Edges
 		alpine.addEdgeVariant(alpineEdge);
@@ -1067,6 +1189,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		badlands.addEdgeVariant(badlandsEdge, pre140);
 		badlandsPlateau.addEdgeVariant(badlandsEdge, pre140);
 		firCanyon.addEdgeVariant(firCanyonValley);
+		forestedHighlands.addEdgeVariant(forestedHighlandsEdge);
 		highlands.addEdgeVariant(highlandsEdgeOld, info -> info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V2_0_8));
 		highlands.addEdgeVariant(highlandsEdge, info -> info.getBTAVersion().isVersionAtLeast(BTAVersion.V3_0_0));
 		//hotSprings.addEdgeVariant(hotSpringsEdge);

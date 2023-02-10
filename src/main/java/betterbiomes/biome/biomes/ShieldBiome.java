@@ -33,7 +33,8 @@ public class ShieldBiome extends BTABiome {
 		this.decoTreeGrowers.put(BTATreeGrowers.BIG_SPRUCE_TREE, 3);
 		this.decoTreeGrowers.put(BTATreeGrowers.TALL_FIR_TREE, 3);
 		this.decoTreeGrowers.put(BTATreeGrowers.BIG_FIR_TREE, 3);
-		this.decoTreeGrowers.put(BTATreeGrowers.OAK_REDWOOD_TREE, 6);
+		this.decoTreeGrowers.put(BTATreeGrowers.TALL_DARK_OAK_TREE, 3);
+		this.decoTreeGrowers.put(BTATreeGrowers.OAK_REDWOOD_TREE, 3);
 		this.decoTreeGrowers.put(BTATreeGrowers.BIRCH_ASPEN_TREE, 1);
 		this.decoTreeGrowers.put(BTATreeGrowers.ASPEN_TREE, 1);
 	}

@@ -111,8 +111,6 @@ public class BigTaigaTreeGrower extends AbstractTreeGrower {
 						}
 					}
 					
-					world.setBlockMetadataWithClient(x, y, z, 1 | 12); // place stump
-					
 					return true;
 				}
 				else {
