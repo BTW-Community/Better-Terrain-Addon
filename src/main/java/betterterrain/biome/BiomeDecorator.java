@@ -4,12 +4,12 @@ import java.util.Random;
 
 import betterterrain.BTAMod;
 import betterterrain.BTAVersion;
-import betterterrain.feature.plant.*;
-import betterterrain.feature.terrain.ClayGen;
-import betterterrain.feature.terrain.OasisGen;
-import betterterrain.feature.terrain.OreGen;
-import betterterrain.feature.terrain.SkyClayGen;
-import betterterrain.feature.terrain.SteppeGen;
+import betterterrain.world.feature.plant.*;
+import betterterrain.world.feature.terrain.ClayGen;
+import betterterrain.world.feature.terrain.OasisGen;
+import betterterrain.world.feature.terrain.OreGen;
+import betterterrain.world.feature.terrain.SkyClayGen;
+import betterterrain.world.feature.terrain.SteppeGen;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.config.WorldConfigurationInfoLegacy;
 import betterterrain.world.generate.surface.SurfaceBuilder;

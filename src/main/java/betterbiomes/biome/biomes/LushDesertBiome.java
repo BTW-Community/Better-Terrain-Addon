@@ -2,10 +2,12 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.feature.tree.PalmTreeSmallGen;
+import betterbiomes.world.feature.tree.legacy.PalmTreeSmallGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.world.config.WorldConfigurationInfo;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
+import btw.world.feature.trees.grower.TreeGrowers;
 import net.minecraft.src.Block;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenDesertWells;
@@ -27,6 +29,10 @@ public class LushDesertBiome extends BTABiome
 		this.btaBiomeDecorator.treesPerChunk = 20;
 		this.btaBiomeDecorator.grassPerChunk = 2;
 	}
+
+    public void initTreeGrowerMap() {
+        this.treeGrowers.put(BTATreeGrowers.PALM_TREE, 1);
+    }
 
 	/**
 	 * Gets a WorldGen appropriate for this biome.
@@ -50,7 +56,7 @@ public class LushDesertBiome extends BTABiome
         }
     }
 
-    public boolean CanLightningStrikeInBiome()
+    public boolean canLightningStrikeInBiome()
     {
         return true;
     }

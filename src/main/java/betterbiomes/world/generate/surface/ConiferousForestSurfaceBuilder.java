@@ -2,14 +2,17 @@ package betterbiomes.world.generate.surface;
 
 import java.util.Random;
 
-import betterbiomes.feature.tree.*;
+import betterbiomes.biome.biomes.ConiferousForestBiome;
+import betterbiomes.world.feature.tree.legacy.*;
 import betterterrain.BTAMod;
-import betterterrain.feature.tree.TaigaGen5;
-import betterterrain.feature.tree.TaigaGen7;
+import betterterrain.biome.BTABiome;
+import betterterrain.world.feature.tree.legacy.TaigaGen5;
+import betterterrain.world.feature.tree.legacy.TaigaGen7;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.SurfaceBuilder;
 import betterterrain.world.util.WorldTypeInterface;
+import btw.world.feature.trees.grower.AbstractTreeGrower;
 import deco.block.DecoBlocks;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenTaiga2;
@@ -62,67 +65,38 @@ public class ConiferousForestSurfaceBuilder extends SurfaceBuilder {
 			int x = this.chunkX + rand.nextInt(16) + 8;
 			int z = this.chunkZ + rand.nextInt(16) + 8;
 
-			WorldGenerator gen;
+			AbstractTreeGrower treeGrower;
 
 			if (((WorldTypeInterface) world.provider.terrainType).isDeco()) {
-				gen = this.getDecoTree(rand, x, z);
+				treeGrower = this.getDecoTree(rand, x, z);
 			}
 			else {
-				gen = this.getVanillaTree(rand, x, z);
+				treeGrower = this.getVanillaTree(rand, x, z);
 			}
 
-			gen.setScale(1.0D, 1.0D, 1.0D);
-			gen.generate(world, rand, x, world.getHeightValue(x, z), z);
-		}
-	}
-	
-	private WorldGenerator getDecoTree(Random rand, int x, int z) {
-		if (this.treeNoiseGen.noise2(x, z, this.treeNoiseScale) - .375 > 0 && rand.nextInt(6) < 3) {
-			if (rand.nextInt(5) == 0) {
-				return new FirGen();
-			}
-			else if (rand.nextInt(3) == 0) {
-				return new FirGen2();
-			}
-			else {
-				return new FirGen3();
-			}
-		}
-		else {
-			if (rand.nextInt(5) == 0) {
-				return new LargeFirGen();
-			}
-			else if (rand.nextInt(3) == 0) {
-				return new TallFirGen();
-			}
-			else {
-				return new FirGen3();
-			}
+			treeGrower.growTree(world, rand, x, world.getHeightValue(x, z), z, true);
 		}
 	}
 
-	private WorldGenerator getVanillaTree(Random rand, int x, int z) {
+	private AbstractTreeGrower getDecoTree(Random rand, int x, int z) {
+		ConiferousForestBiome coniferousForestBiome = (ConiferousForestBiome) this.biome;
+
 		if (this.treeNoiseGen.noise2(x, z, this.treeNoiseScale) - .375 > 0 && rand.nextInt(6) < 3) {
-			if (rand.nextInt(5) == 0) {
-				return new WorldGenTaiga2(false);
-			}
-			else if (rand.nextInt(3) == 0) {
-				return new TaigaGen5(false);
-			}
-			else {
-				return new TaigaGen7(false);
-			}
+			return coniferousForestBiome.getTreeGrowerFromList(rand, coniferousForestBiome.decoClearingTreeGrowers);
 		}
 		else {
-			if (rand.nextInt(5) == 0) {
-				return new TaigaGen3(false);
-			}
-			else if (rand.nextInt(3) == 0) {
-				return new TaigaGen4(false);
-			}
-			else {
-				return new TaigaGen7(false);
-			}
+			return coniferousForestBiome.getTreeGrowerFromList(rand, coniferousForestBiome.decoTreeGrowers);
+		}
+	}
+
+	private AbstractTreeGrower getVanillaTree(Random rand, int x, int z) {
+		ConiferousForestBiome coniferousForestBiome = (ConiferousForestBiome) this.biome;
+
+		if (this.treeNoiseGen.noise2(x, z, this.treeNoiseScale) - .375 > 0 && rand.nextInt(6) < 3) {
+			return coniferousForestBiome.getTreeGrowerFromList(rand, coniferousForestBiome.clearingTreeGrowers);
+		}
+		else {
+			return coniferousForestBiome.getTreeGrowerFromList(rand, coniferousForestBiome.treeGrowers);
 		}
 	}
 }

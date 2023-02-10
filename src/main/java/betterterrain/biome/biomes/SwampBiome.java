@@ -4,15 +4,17 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.plant.TallGrassGen;
-import betterterrain.feature.tree.TallSwampTreeGen;
-import betterterrain.feature.tree.TemperateBirchGen;
-import betterterrain.feature.tree.WillowGen;
+import betterterrain.world.feature.plant.TallGrassGen;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
+import betterterrain.world.feature.tree.legacy.TallSwampTreeGen;
+import betterterrain.world.feature.tree.legacy.TemperateBirchGen;
+import betterterrain.world.feature.tree.legacy.WillowGen;
 import betterterrain.world.config.WorldConfigurationInfo;
 import btw.entity.mob.ChickenEntity;
 import btw.entity.mob.PigEntity;
 import btw.entity.mob.SlimeEntity;
 import btw.entity.mob.WitchEntity;
+import btw.world.feature.trees.grower.TreeGrowers;
 import net.minecraft.src.Block;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.World;
@@ -47,6 +49,18 @@ public class SwampBiome extends BTABiome {
 	@Override
 	public int getBiomeFoliageColor() {
 		return 0x5C8E47;
+	}
+
+	public void initTreeGrowerMap() {
+		this.treeGrowers.put(BTATreeGrowers.HUGE_OAK_WILLOW_TREE, 1);
+		this.treeGrowers.put(BTATreeGrowers.TALL_SWAMP_OAK_TREE, 5);
+		this.treeGrowers.put(TreeGrowers.SWAMP_OAK_TREE, 10);
+		this.treeGrowers.put(BTATreeGrowers.TEMPERATE_BIRCH_TREE, 2);
+
+		this.decoTreeGrowers.put(BTATreeGrowers.HUGE_WILLOW_TREE, 1);
+		this.decoTreeGrowers.put(BTATreeGrowers.TALL_SWAMP_OAK_TREE, 5);
+		this.decoTreeGrowers.put(TreeGrowers.SWAMP_OAK_TREE, 10);
+		this.decoTreeGrowers.put(BTATreeGrowers.TEMPERATE_BIRCH_TREE, 2);
 	}
 
 	@Override

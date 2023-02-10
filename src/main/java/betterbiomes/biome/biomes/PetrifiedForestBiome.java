@@ -2,7 +2,7 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.feature.tree.PetrifiedTreeGen;
+import betterbiomes.world.feature.tree.legacy.PetrifiedTreeGen;
 import betterterrain.biome.BTANetherBiome;
 import net.minecraft.src.WorldGenerator;
 

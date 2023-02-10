@@ -4,8 +4,8 @@ import java.util.Random;
 
 import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
-import betterterrain.feature.plant.DecoFlowerGen;
-import betterterrain.feature.plant.TallGrassGen;
+import betterterrain.world.feature.plant.DecoFlowerGen;
+import betterterrain.world.feature.plant.TallGrassGen;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.util.WorldTypeInterface;

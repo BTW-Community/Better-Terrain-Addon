@@ -4,9 +4,10 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.plant.TallGrassGen;
+import betterterrain.world.feature.plant.TallGrassGen;
 import betterterrain.world.config.WorldConfigurationInfo;
 import btw.entity.mob.*;
+import btw.world.feature.trees.grower.TreeGrowers;
 import net.minecraft.src.Block;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.World;
@@ -40,6 +41,13 @@ public class VolcanicJungle extends BTABiome
         this.spawnableMonsterList.add(new SpawnListEntry(EndermanEntity.class, 1, 1, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(OcelotEntity.class, 2, 1, 1));
         this.waterColorMultiplier = 65396;
+    }
+
+    public void initTreeGrowerMap() {
+        treeGrowers.put(TreeGrowers.BIG_OAK_TREE, 1);
+        treeGrowers.put(TreeGrowers.JUNGLE_BUSH, 6);
+        treeGrowers.put(TreeGrowers.JUNGLE_TREE, 4);
+        treeGrowers.put(TreeGrowers.BIG_JUNGLE_TREE, 2);
     }
 
     @Override

@@ -4,6 +4,8 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
+import btw.world.feature.trees.grower.TreeGrowers;
 import net.minecraft.src.WorldGenShrub;
 import net.minecraft.src.WorldGenerator;
 
@@ -12,6 +14,11 @@ public class TundraBiome extends BTABiome {
 		super(id, internalName, climate);
 		this.btaBiomeDecorator.flowersPerChunk = -999;
 		this.btaBiomeDecorator.treesPerChunk = 2;
+	}
+
+	public void initTreeGrowerMap() {
+		treeGrowers.put(TreeGrowers.OAK_TREE, 1);
+		treeGrowers.put(BTATreeGrowers.SPRUCE_BUSH, 9);
 	}
 
     /**

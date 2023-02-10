@@ -44,7 +44,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			STEPPE_ID = 108,
 			WOODED_STEPPE_ID = 109,
 			CHAPPARAL_ID = 110,
-			ANCIENT_FOREST_ID = 111,
+			OLD_GROWTH_WOODLAND_ID = 111,
 			TROPICS_ID = 112,
 			JUNGLE_ID = 113,
 			ALPINE_ID = 114,
@@ -88,12 +88,12 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			BIRCH_FOREST_HILLS_ID = 153,
 			SNOWY_WOODS_HILLS = 154,
 			CHAPPARAL_HILLS_ID = 155,
-			ANCIENT_FOREST_HILLS_ID = 156,
+			OLD_GROWTH_WOODLAND_HILLS_ID = 156,
 			JUNGLE_HILLS_ID = 157,
 			FUNGAL_FOREST_FLAT_ID = 158,
 			WETLANDS_HILLS_ID = 159,
-			CHERRY_FOREST_HILLS_ID = 160,
-			AUTUMN_FOREST_HILLS_ID = 161,
+			CHERRY_BLOSSOM_GROVE_HILLS_ID = 160,
+			SEASONAL_FOREST_HILLS_ID = 161,
 			VALLEY_ID = 162,
 			ORCHARD_CLEARING_ID = 163,
 			WILLOW_HILLS_ID = 164,
@@ -109,10 +109,10 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			
 	//Deco only
 			OUTBACK_ID = 180,
-			CHERRY_FOREST_ID = 181,
+			CHERRY_BLOSSOM_GROVE_ID = 181,
 			BADLANDS_ID = 182,
 			BADLANDS_PLATEAU_ID = 183,
-			AUTUMN_FOREST_ID = 184,
+			SEASONAL_FOREST_ID = 184,
 			IVORY_HILLS_ID = 185,
 			HOT_SPRINGS_ID = 186,
 			VOLCANIC_JUNGLE_ID = 187,
@@ -157,22 +157,23 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 
 	// ------ Primary Biomes ------ //
 	//Temperate
-	public static final BTABiome ancientForest = new AncientForestBiome(ANCIENT_FOREST_ID, "betterbiomes:ancient_forest", Climate.TEMPERATE)
-			.setBiomeName("Ancient Forest")
+	public static final BTABiome oldGrowthWoodland = new OldGrowthWoodlandBiome(OLD_GROWTH_WOODLAND_ID, "betterbiomes:ancient_forest", Climate.TEMPERATE)
+			.setBiomeName("Old Growth Woodland")
 			.setSurfaceBuilder(new AncientForestSurfaceBuilder())
 			.setTemperatureRainfall(0.7F, 0.8F)
 			.setMinMaxHeight(0.1F, 0.5F)
 			.setLegacyCompatible();
 
-	public static final BTABiome autumnForest = new AutumnForestBiome(AUTUMN_FOREST_ID, "betterbiomes:autumn_forest", Climate.TEMPERATE)
-			.setBiomeName("Autumn Forest")
+	public static final BTABiome seasonalForest = new SeasonalForestBiome(SEASONAL_FOREST_ID, "betterbiomes:autumn_forest", Climate.TEMPERATE)
+			.setBiomeName("Seasonal Forest")
+			.setSpawnsPumpkins()
 			.setTemperatureRainfall(0.9F, 0.2F)
 			.setMinMaxHeight(0.1F, 0.5F)
 			.setDecoOnly()
 			.setLegacyCompatible();
 
-	public static final BTABiome cherryForest = new CherryForestBiome(CHERRY_FOREST_ID, "betterbiomes:cherry_forest", Climate.TEMPERATE)
-			.setBiomeName("Cherry Forest")
+	public static final BTABiome cherryBlossomGrove = new CherryBlossomGroveBiome(CHERRY_BLOSSOM_GROVE_ID, "betterbiomes:cherry_forest", Climate.TEMPERATE)
+			.setBiomeName("Cherry Blossom Grove")
 			.setTemperatureRainfall(0.9F, 0.8F)
 			.setMinMaxHeight(0.1F, 0.5F)
 			.setDecoOnly()
@@ -221,7 +222,6 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 
 	public static final BTABiome orchard = new OrchardBiome(ORCHARD_ID, "betterbiomes:orchard", Climate.TEMPERATE)
 			.setBiomeName("Orchard")
-			.setSurfaceBuilder(new OrchardSurfaceBuilder())
 			.setSpawnsPumpkins()
 			.setSpawnsVillages(false)
 			.setTemperatureRainfall(0.7F, 0.5F)
@@ -442,7 +442,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 
 	public static final BTABiome shield = new ShieldBiome(SHIELD_ID, "betterbiomes:shield", Climate.COLD)
 			.setBiomeName("Shield")
-			.setSurfaceBuilder(new StonySurfaceBuilder())
+			.setSurfaceBuilder(new ShieldSurfaceBuilder())
 			.setTemperatureRainfall(0.5F, 0.4F)
 			.setMinMaxHeight(0.2F, 0.6F);
 
@@ -471,13 +471,14 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 
 	// ------ Secondary Biomes ------ //
 	//Variants
-	public static final BTABiome ancientForestHills = new AncientForestBiome(ANCIENT_FOREST_HILLS_ID, "betterbiomes:ancient_forest_hills", Climate.TEMPERATE)
-			.setBiomeName("Ancient Forest Hills")
+	public static final BTABiome oldGrowthWoodlandHills = new OldGrowthWoodlandBiome(OLD_GROWTH_WOODLAND_HILLS_ID, "betterbiomes:ancient_forest_hills", Climate.TEMPERATE)
+			.setBiomeName("Old Growth Woodland Hills")
 			.setTemperatureRainfall(0.7F, 0.8F)
 			.setMinMaxHeight(0.3F, 1.0F);
 
-	public static final BTABiome autumnForestHills = new AutumnForestBiome(AUTUMN_FOREST_HILLS_ID, "betterbiomes:autumn_forest_hills", Climate.TEMPERATE)
+	public static final BTABiome seasonalForestHills = new SeasonalForestBiome(SEASONAL_FOREST_HILLS_ID, "betterbiomes:autumn_forest_hills", Climate.TEMPERATE)
 			.setBiomeName("Autumn Forest Hills")
+			.setSpawnsPumpkins()
 			.setTemperatureRainfall(0.9F, 0.2F)
 			.setMinMaxHeight(0.3F, 1.0F);
 
@@ -507,8 +508,8 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(0.8F, 0.4F)
 			.setMinMaxHeight(0.3F, 1.0F);
 
-	public static final BTABiome cherryForestHills = new CherryForestBiome(CHERRY_FOREST_HILLS_ID, "betterbiomes:cherry_forest_hills", Climate.TEMPERATE)
-			.setBiomeName("Cherry Forest Hills")
+	public static final BTABiome cherryBlossomGroveHills = new CherryBlossomGroveBiome(CHERRY_BLOSSOM_GROVE_HILLS_ID, "betterbiomes:cherry_forest_hills", Climate.TEMPERATE)
+			.setBiomeName("Cherry Blossom Grove Hills")
 			.setTemperatureRainfall(0.7F, 0.8F)
 			.setMinMaxHeight(0.3F, 1.0F);
 	
@@ -859,7 +860,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		betterBiomes.add(birchForest);
 		betterBiomes.add(snowyWoods);
 		betterBiomes.add(chaparral);
-		betterBiomes.add(ancientForest);
+		betterBiomes.add(oldGrowthWoodland);
 		betterBiomes.add(tropics);
 		betterBiomes.add(BTABiomeConfiguration.jungle);
 		betterBiomes.add(alpine);
@@ -894,9 +895,9 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		betterBiomes.add(floralForest);
 
 		betterBiomes.add(outback);
-		betterBiomes.add(cherryForest);
+		betterBiomes.add(cherryBlossomGrove);
 		betterBiomes.add(badlandsPlateau);
-		betterBiomes.add(autumnForest);
+		betterBiomes.add(seasonalForest);
 		betterBiomes.add(hotSprings);
 		betterBiomes.add(volcanicJungle);
 		betterBiomes.add(firCanyon);
@@ -929,13 +930,13 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		WorldConfigurationInfo.Condition pre140 = info -> info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V1_3_4);
 		
 		alpine.addSubVariant(aspenGrove, pre140);
-		ancientForest.addSubVariant(ancientForestHills);
-		autumnForest.addSubVariant(autumnForestHills);
+		oldGrowthWoodland.addSubVariant(oldGrowthWoodlandHills);
+		seasonalForest.addSubVariant(seasonalForestHills);
 		badlandsPlateau.addSubVariant(badlands);
 		birchForest.addSubVariant(birchForestHills);
 		borealForest.addSubVariant(borealForestHills);
 		chaparral.addSubVariant(chaparralHills);
-		cherryForest.addSubVariant(cherryForestHills);
+		cherryBlossomGrove.addSubVariant(cherryBlossomGroveHills);
 		coniferousForest.addSubVariant(coniferousForestClearing, pre140);
 		firCanyon.addSubVariant(firCanyonValley);
 		fungalForest.addSubVariant(fungalForestFlat);

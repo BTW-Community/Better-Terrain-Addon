@@ -4,9 +4,11 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.plant.TallGrassGen;
-import betterterrain.feature.tree.SmallShrubGen;
-import betterterrain.feature.tree.TinyShrubGen;
+import betterterrain.world.feature.plant.TallGrassGen;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
+import betterterrain.world.feature.tree.legacy.SmallShrubGen;
+import betterterrain.world.feature.tree.legacy.TinyShrubGen;
+import btw.world.feature.trees.grower.TreeGrowers;
 import net.minecraft.src.Block;
 import net.minecraft.src.WorldGenShrub;
 import net.minecraft.src.WorldGenTrees;
@@ -18,6 +20,13 @@ public class BrushlandBiome extends BTABiome {
 		btaBiomeDecorator.treesPerChunk = 2;
 		btaBiomeDecorator.grassPerChunk = 5;
 		btaBiomeDecorator.generateStoneInGrass = true;
+	}
+
+	public void initTreeGrowerMap() {
+		this.treeGrowers.put(TreeGrowers.OAK_TREE, 1);
+		this.treeGrowers.put(BTATreeGrowers.SMALL_OAK_SHRUB, 2);
+		this.treeGrowers.put(BTATreeGrowers.OAK_BUSH, 2);
+		this.treeGrowers.put(BTATreeGrowers.TINY_OAK_SHRUB, 2);
 	}
 
     /**

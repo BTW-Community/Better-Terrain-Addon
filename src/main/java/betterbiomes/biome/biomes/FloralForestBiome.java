@@ -2,15 +2,17 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.feature.tree.MeadowTreeGen1;
+import betterbiomes.world.feature.tree.legacy.MeadowTreeGen1;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.plant.TallGrassGen;
-import betterterrain.feature.tree.HazelTreeGen;
-import betterterrain.feature.tree.TemperateBirchGen;
+import betterterrain.world.feature.plant.TallGrassGen;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
+import betterterrain.world.feature.tree.legacy.HazelTreeGen;
+import betterterrain.world.feature.tree.legacy.TemperateBirchGen;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.util.WorldTypeInterface;
 import btw.entity.mob.WolfEntity;
+import btw.world.feature.trees.grower.TreeGrowers;
 import net.minecraft.src.Block;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenerator;
@@ -27,6 +29,17 @@ public class FloralForestBiome extends BTABiome {
         this.btaBiomeDecorator.grassPerChunk = 15;
         this.btaBiomeDecorator.flowersPerChunk = 25;
     }
+
+	public void initTreeGrowerMap() {
+		this.treeGrowers.put(TreeGrowers.OAK_TREE, 12);
+		this.treeGrowers.put(BTATreeGrowers.TEMPERATE_BIRCH_TREE, 6);
+		this.treeGrowers.put(BTATreeGrowers.MEADOW_SPRUCE_TREE, 4);
+
+		this.decoTreeGrowers.put(TreeGrowers.OAK_TREE, 12);
+		this.decoTreeGrowers.put(BTATreeGrowers.TEMPERATE_BIRCH_TREE, 6);
+		this.decoTreeGrowers.put(BTATreeGrowers.MEADOW_SPRUCE_TREE, 4);
+		this.decoTreeGrowers.put(BTATreeGrowers.HAZEL_TREE, 1);
+	}
 
     @Override
 	public WorldGenerator getRandomWorldGenForTrees(Random rand, WorldConfigurationInfo generatorOptions, WorldType worldType) {

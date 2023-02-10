@@ -1,3 +1,22 @@
+Version 3.2.0
+- Updated to CE 2.0.2 and Deco 4.1.0.
+- Refactored how tree generation is handled internally.
+- Renamed several biomes:
+    - Ancient Forest -> Old Growth Woodland
+    - Autumn Forest -> Seasonal Forest
+    - Cherry Forest -> Cherry Blossom Grove
+- Added willow trees to Willow Groves when deco generation is enabled.
+- Added aspen trees to Alpine, Shield, and Hot Springs when deco generation is enabled.
+- added redwood trees to Temperate Forest when deco generation is enabled.
+- Added the ability for much larger trees to spawn in several forest biomes which previously only had small trees, such as the Seasonal Forest.
+- Added large birch and dark oak trees to Old Growth Woodland.
+- Increased the frequency at which large trees appear in Orchards.
+- Decreased the intensity of the grass color in Orchards.
+- Changed Meadows so some trees there spawn with dark oak wood.
+- Changed Shield to no longer generate sandy shorelines.
+- Added the ability for pumpkins to spawn in Seasonal Forests, because the fall theme wouldn't be complete otherwise.
+- Removed the small single block thick trees from coniferous forests as they were too much of a pain to chop down.
+
 Version 3.1.0
 - Updated to CE 2.0.0
 - Refactored the mod to use fabric mixins, so it can now be installed through the mods folder

@@ -4,7 +4,7 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.tree.TaigaGen5;
+import betterterrain.world.feature.tree.legacy.TaigaGen5;
 import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenTaiga2;

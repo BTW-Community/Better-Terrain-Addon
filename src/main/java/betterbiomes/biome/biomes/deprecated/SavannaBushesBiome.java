@@ -2,7 +2,7 @@ package betterbiomes.biome.biomes.deprecated;
 
 import java.util.Random;
 
-import betterbiomes.feature.tree.AcaciaGen;
+import betterbiomes.world.feature.tree.legacy.AcaciaGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import net.minecraft.src.WorldGenShrub;

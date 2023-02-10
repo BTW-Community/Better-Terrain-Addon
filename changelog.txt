@@ -12,6 +12,12 @@ Version 3.X.0
 [*]Changed black stone to be able to spawn nether mobs.
 [/list]
 
+Version 3.2.0
+- Updated to CE 2.0.2 and Deco 4.1.0.
+- Refactored how tree generation is handled internally.
+- Renamed Woods to Woodland
+- Added aspen trees to Mountains and willow trees to Swamps when deco generation is enabled.
+
 Version 3.1.0
 - Updated to CE 2.0.0
 - Refactored the mod to use fabric mixins, so it can now be installed through the mods folder

@@ -5,11 +5,12 @@ import java.util.Random;
 import betterbiomes.world.generate.surface.HotSpringsSurfaceBuilder;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.plant.TallGrassGen;
-import betterterrain.feature.tree.PineTreeGen;
-import betterterrain.feature.tree.TaigaGen5;
-import betterterrain.feature.tree.TaigaGen6;
-import betterterrain.feature.tree.TaigaGen7;
+import betterterrain.world.feature.plant.TallGrassGen;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
+import betterterrain.world.feature.tree.legacy.PineTreeGen;
+import betterterrain.world.feature.tree.legacy.TaigaGen5;
+import betterterrain.world.feature.tree.legacy.TaigaGen6;
+import betterterrain.world.feature.tree.legacy.TaigaGen7;
 import betterterrain.world.config.WorldConfigurationInfo;
 import btw.entity.mob.WolfEntity;
 import net.minecraft.src.Block;
@@ -29,6 +30,14 @@ public class HotSpringsBiome extends BTABiome {
         this.btaBiomeDecorator.clayPerChunk = 0;
 		
 		this.waterColorMultiplier =  0x00ffaa;
+	}
+
+	public void initTreeGrowerMap() {
+		this.decoTreeGrowers.put(BTATreeGrowers.MEDIUM_SPRUCE_TREE, 2);
+		this.decoTreeGrowers.put(BTATreeGrowers.TALL_SPRUCE_TREE, 2);
+		this.decoTreeGrowers.put(BTATreeGrowers.BIG_SPRUCE_TREE, 2);
+		this.decoTreeGrowers.put(BTATreeGrowers.ASPEN_TREE, 1);
+		this.decoTreeGrowers.put(BTATreeGrowers.BIRCH_ASPEN_TREE, 1);
 	}
 
 	@Override

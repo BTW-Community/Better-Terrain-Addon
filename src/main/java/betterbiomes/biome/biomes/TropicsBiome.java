@@ -2,12 +2,13 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.feature.tree.PalmTreeSmallGen;
+import betterbiomes.world.feature.tree.legacy.PalmTreeSmallGen;
 import betterterrain.BTAVersion;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.plant.TallGrassGen;
+import betterterrain.world.feature.plant.TallGrassGen;
 import betterterrain.world.config.WorldConfigurationInfo;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
 import btw.entity.mob.*;
 import net.minecraft.src.Block;
 import net.minecraft.src.SpawnListEntry;
@@ -36,6 +37,11 @@ public class TropicsBiome extends BTABiome {
 		this.spawnableMonsterList.add(new SpawnListEntry(SlimeEntity.class, 10, 4, 4));
 		this.spawnableMonsterList.add(new SpawnListEntry(EndermanEntity.class, 1, 1, 4));
 		this.spawnableMonsterList.add(new SpawnListEntry(OcelotEntity.class, 2, 1, 1));
+	}
+
+	public void initTreeGrowerMap() {
+		this.treeGrowers.put(BTATreeGrowers.PALM_TREE_COCOA, 1);
+		this.treeGrowers.put(BTATreeGrowers.JUNGLE_BUSH, 1);
 	}
 	
 	@Override

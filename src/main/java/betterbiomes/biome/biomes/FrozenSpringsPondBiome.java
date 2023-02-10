@@ -2,7 +2,7 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.feature.tree.CherryTreeGen;
+import betterbiomes.world.feature.tree.legacy.CherryTreeGen;
 import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
