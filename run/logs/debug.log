@@ -1,126 +1,126 @@
-[23:59:03] [main/INFO] (FabricLoader) Loading for game Minecraft 1.5.2
-[23:59:03] [main/DEBUG] (FabricLoader) Requesting deobfuscation of dev.jar
-[23:59:03] [main/DEBUG] (FabricLoader) [Knot] Proposed file:/C:/Users/abiga/Documents/Minecraft%20Modding/Better%20than%20Wolves/Better-terrain-addon/Better-Terrain-Addon/build/dev_run/dev.jar to classpath.
-[23:59:03] [main/DEBUG] (FabricLoader|EntrypointTransformer) Found game constructor: net.minecraft.client.main.Main -> net.minecraft.client.Minecraft
-[23:59:03] [main/DEBUG] (FabricLoader|EntrypointTransformer) Patching game constructor startGame()V
-[23:59:03] [main/DEBUG] (FabricLoader|EntrypointTransformer) Run directory field is thought to be net/minecraft/client/Minecraft/mcDataDir
-[23:59:03] [main/DEBUG] (FabricLoader|EntrypointTransformer) Applying brand name hook to net/minecraft/client/ClientBrandRetriever::getClientModName
-[23:59:03] [main/DEBUG] (FabricLoader|EntrypointTransformer) Applying brand name hook to net/minecraft/server/MinecraftServer::getServerModName
-[23:59:03] [main/DEBUG] (FabricLoader|EntrypointTransformer) [EntrypointTransformer] Patched 3 classes.
-[23:59:03] [main/DEBUG] (Fabric|Loader) [ClasspathModCandidateFinder] Adding dev classpath directories to classpath.
-[23:59:03] [main/DEBUG] (FabricLoader) [Knot] Proposed file:/C:/Users/abiga/Documents/Minecraft%20Modding/Better%20than%20Wolves/Better-terrain-addon/Better-Terrain-Addon/build/classes/java/main/ to classpath.
-[23:59:03] [main/DEBUG] (Fabric|Loader) [ClasspathModCandidateFinder] Processing /C:/Users/abiga/Documents/Minecraft%20Modding/Better%20than%20Wolves/Better-terrain-addon/Better-Terrain-Addon/build/resources/main/
-[23:59:03] [main/DEBUG] (Fabric|Loader) [ClasspathModCandidateFinder] Processing /C:/Users/abiga/Documents/Minecraft%20Modding/Better%20than%20Wolves/Better-terrain-addon/Better-Terrain-Addon/.gradle/loom-cache/remapped_mods/null_unspecified_1_5_2_1_0/io/github/minecraft-cursed-legacy/cursed-fabric-loader/1.0.0/cursed-fabric-loader-1.0.0.jar
-[23:59:03] [ForkJoinPool-1-worker-25/DEBUG] (Fabric|Loader) Testing file:/C:/Users/abiga/Documents/Minecraft%20Modding/Better%20than%20Wolves/Better-terrain-addon/Better-Terrain-Addon/build/resources/main/
-[23:59:03] [ForkJoinPool-1-worker-18/DEBUG] (Fabric|Loader) Testing file:/C:/Users/abiga/Documents/Minecraft%20Modding/Better%20than%20Wolves/Better-terrain-addon/Better-Terrain-Addon/.gradle/loom-cache/remapped_mods/null_unspecified_1_5_2_1_0/io/github/minecraft-cursed-legacy/cursed-fabric-loader/1.0.0/cursed-fabric-loader-1.0.0.jar
-[23:59:03] [ForkJoinPool-1-worker-11/DEBUG] (Fabric|Loader) Testing file:/C:/Users/abiga/Documents/Minecraft/mods/Deco-Addon-4.1.0-alpha.jar
-[23:59:03] [ForkJoinPool-1-worker-25/DEBUG] (Fabric|Loader) Adding file:/C:/Users/abiga/Documents/Minecraft%20Modding/Better%20than%20Wolves/Better-terrain-addon/Better-Terrain-Addon/build/resources/main/ as ModCandidate{betterterrain@3.1.0}
-[23:59:03] [ForkJoinPool-1-worker-18/DEBUG] (Fabric|Loader) Adding file:/C:/Users/abiga/Documents/Minecraft%20Modding/Better%20than%20Wolves/Better-terrain-addon/Better-Terrain-Addon/.gradle/loom-cache/remapped_mods/null_unspecified_1_5_2_1_0/io/github/minecraft-cursed-legacy/cursed-fabric-loader/1.0.0/cursed-fabric-loader-1.0.0.jar as ModCandidate{fabricloader@1.0.0}
-[23:59:03] [ForkJoinPool-1-worker-11/DEBUG] (Fabric|Loader) Adding file:/C:/Users/abiga/Documents/Minecraft/mods/Deco-Addon-4.1.0-alpha.jar as ModCandidate{decoaddon@4.1.0}
-[23:59:03] [ForkJoinPool-1-worker-25/DEBUG] (Fabric|Loader) Searching for nested JARs in ModCandidate{betterterrain@3.1.0}
-[23:59:03] [ForkJoinPool-1-worker-18/DEBUG] (Fabric|Loader) Searching for nested JARs in ModCandidate{fabricloader@1.0.0}
-[23:59:03] [ForkJoinPool-1-worker-25/DEBUG] (Fabric|Loader) file:/C:/Users/abiga/Documents/Minecraft%20Modding/Better%20than%20Wolves/Better-terrain-addon/Better-Terrain-Addon/build/resources/main/
-[23:59:03] [ForkJoinPool-1-worker-11/DEBUG] (Fabric|Loader) Searching for nested JARs in ModCandidate{decoaddon@4.1.0}
-[23:59:03] [ForkJoinPool-1-worker-18/DEBUG] (Fabric|Loader) file:/C:/Users/abiga/Documents/Minecraft%20Modding/Better%20than%20Wolves/Better-terrain-addon/Better-Terrain-Addon/.gradle/loom-cache/remapped_mods/null_unspecified_1_5_2_1_0/io/github/minecraft-cursed-legacy/cursed-fabric-loader/1.0.0/cursed-fabric-loader-1.0.0.jar
-[23:59:03] [ForkJoinPool-1-worker-11/DEBUG] (Fabric|Loader) file:/C:/Users/abiga/Documents/Minecraft/mods/Deco-Addon-4.1.0-alpha.jar
-[23:59:03] [main/DEBUG] (Fabric|Loader) Mod resolution detection time: 11ms
-[23:59:03] [main/DEBUG] (Fabric|Loader) Mod resolution time: 2ms
-[23:59:03] [main/INFO] (Fabric|Loader) [FabricLoaderImpl] Loading 5 mods: minecraft@1.5.2, betterterrain@3.1.0, java@8, fabricloader@1.0.0, decoaddon@4.1.0
-[23:59:03] [main/DEBUG] (FabricLoader) Loading mappings took 22 ms
-[23:59:03] [main/DEBUG] (FabricLoader) [Knot] Proposed jimfs://nestedJarStore/31656761-9712-4ce1-905f-59bb9694ef68.jar to classpath.
-[23:59:03] [main/DEBUG] (FabricLoader) [Knot] Proposed file:/C:/Users/abiga/Documents/Minecraft%20Modding/Better%20than%20Wolves/Better-terrain-addon/Better-Terrain-Addon/build/resources/main/ to classpath.
-[23:59:03] [main/DEBUG] (mixin) Mixin bootstrap service org.spongepowered.asm.service.mojang.MixinServiceLaunchWrapperBootstrap is not available: LaunchWrapper is not available
-[23:59:03] [main/DEBUG] (mixin) Mixin bootstrap service org.spongepowered.asm.service.modlauncher.MixinServiceModLauncherBootstrap is not available: ModLauncher is not available
-[23:59:03] [main/DEBUG] (mixin) MixinService [LaunchWrapper] is not valid
-[23:59:03] [main/DEBUG] (mixin) MixinService [ModLauncher] is not valid
-[23:59:03] [main/DEBUG] (mixin) MixinService [Knot/Fabric] was successfully booted in sun.misc.Launcher$AppClassLoader@266474c2
-[23:59:03] [main/INFO] (mixin) SpongePowered MIXIN Subsystem Version=0.8.2 Source=file:/C:/Users/abiga/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.9.2+mixin.0.8.2/12c437eebf031967eaa7daad861e115932772cc7/sponge-mixin-0.9.2+mixin.0.8.2.jar Service=Knot/Fabric Env=CLIENT
-[23:59:03] [main/DEBUG] (mixin) Initialising Mixin Platform Manager
-[23:59:03] [main/DEBUG] (mixin) Adding mixin platform agents for container ContainerHandleURI(file:/C:/Users/abiga/Documents/Minecraft%20Modding/Better%20than%20Wolves/Better-terrain-addon/Better-Terrain-Addon/.gradle/loom-cache/remapped_mods/null_unspecified_1_5_2_1_0/io/github/minecraft-cursed-legacy/cursed-fabric-loader/1.0.0/cursed-fabric-loader-1.0.0.jar)
-[23:59:03] [main/DEBUG] (mixin) Instancing new MixinPlatformAgentDefault for ContainerHandleURI(file:/C:/Users/abiga/Documents/Minecraft%20Modding/Better%20than%20Wolves/Better-terrain-addon/Better-Terrain-Addon/.gradle/loom-cache/remapped_mods/null_unspecified_1_5_2_1_0/io/github/minecraft-cursed-legacy/cursed-fabric-loader/1.0.0/cursed-fabric-loader-1.0.0.jar)
-[23:59:03] [main/DEBUG] (mixin) MixinPlatformAgentDefault accepted container ContainerHandleURI(file:/C:/Users/abiga/Documents/Minecraft%20Modding/Better%20than%20Wolves/Better-terrain-addon/Better-Terrain-Addon/.gradle/loom-cache/remapped_mods/null_unspecified_1_5_2_1_0/io/github/minecraft-cursed-legacy/cursed-fabric-loader/1.0.0/cursed-fabric-loader-1.0.0.jar)
-[23:59:03] [main/DEBUG] (mixin) Instancing new MixinPlatformAgentDefault for ContainerHandleURI(file:/C:/Users/abiga/Documents/Minecraft%20Modding/Better%20than%20Wolves/Better-terrain-addon/Better-Terrain-Addon/.gradle/loom-cache/remapped_mods/null_unspecified_1_5_2_1_0/io/github/minecraft-cursed-legacy/cursed-fabric-loader/1.0.0/cursed-fabric-loader-1.0.0.jar)
-[23:59:03] [main/DEBUG] (mixin) MixinPlatformAgentDefault accepted container ContainerHandleURI(file:/C:/Users/abiga/Documents/Minecraft%20Modding/Better%20than%20Wolves/Better-terrain-addon/Better-Terrain-Addon/.gradle/loom-cache/remapped_mods/null_unspecified_1_5_2_1_0/io/github/minecraft-cursed-legacy/cursed-fabric-loader/1.0.0/cursed-fabric-loader-1.0.0.jar)
-[23:59:03] [main/DEBUG] (mixin) Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:ContainerHandleURI(file:/C:/Users/abiga/Documents/Minecraft%20Modding/Better%20than%20Wolves/Better-terrain-addon/Better-Terrain-Addon/.gradle/loom-cache/remapped_mods/null_unspecified_1_5_2_1_0/io/github/minecraft-cursed-legacy/cursed-fabric-loader/1.0.0/cursed-fabric-loader-1.0.0.jar)]
-[23:59:03] [main/DEBUG] (mixin) Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:ContainerHandleURI(file:/C:/Users/abiga/Documents/Minecraft%20Modding/Better%20than%20Wolves/Better-terrain-addon/Better-Terrain-Addon/.gradle/loom-cache/remapped_mods/null_unspecified_1_5_2_1_0/io/github/minecraft-cursed-legacy/cursed-fabric-loader/1.0.0/cursed-fabric-loader-1.0.0.jar)]
-[23:59:03] [main/INFO] (Fabric|MixinBootstrap) Loaded Fabric development mappings for mixin remapper!
-[23:59:03] [main/DEBUG] (mixin) Error cleaning class output directory: .mixin.out\class: failed to delete one or more files; see suppressed exceptions for details
-[23:59:03] [main/DEBUG] (Fabric|Loader) No subscribers for entrypoint 'preLaunch'
-[23:59:03] [main/DEBUG] (mixin) Preparing mixins for MixinEnvironment[DEFAULT]
-[23:59:03] [main/DEBUG] (mixin) Selecting config betterterrain.mixins.json
-[23:59:03] [main/DEBUG] (mixin) Selecting config decoaddon.item.mixins.json
-[23:59:03] [main/DEBUG] (mixin) Selecting config decoaddon.block.mixins.json
-[23:59:03] [main/DEBUG] (mixin) Selecting config decoaddon.entity.mixins.json
-[23:59:03] [main/DEBUG] (mixin) Selecting config decoaddon.inventory.mixins.json
-[23:59:03] [main/DEBUG] (mixin) Selecting config decoaddon.client.mixins.json
-[23:59:03] [main/DEBUG] (mixin) Preparing betterterrain.mixins.json (14)
-[23:59:04] [main/DEBUG] (mixin) Preparing decoaddon.item.mixins.json (17)
-[23:59:04] [main/DEBUG] (mixin) Preparing decoaddon.block.mixins.json (20)
-[23:59:04] [main/DEBUG] (mixin) Preparing decoaddon.entity.mixins.json (3)
-[23:59:04] [main/DEBUG] (mixin) Preparing decoaddon.inventory.mixins.json (2)
-[23:59:04] [main/WARN] (mixin) @Mixin target net/minecraft/src/SlotRepair is public in decoaddon.inventory.mixins.json:SlotRepairMixin and should be specified in value
-[23:59:04] [main/DEBUG] (mixin) Preparing decoaddon.client.mixins.json (0)
-[23:59:04] [main/DEBUG] (mixin) Registering new injector for @Inject with org.spongepowered.asm.mixin.injection.struct.CallbackInjectionInfo
-[23:59:04] [main/DEBUG] (mixin) Registering new injector for @ModifyArg with org.spongepowered.asm.mixin.injection.struct.ModifyArgInjectionInfo
-[23:59:04] [main/DEBUG] (mixin) Registering new injector for @ModifyArgs with org.spongepowered.asm.mixin.injection.struct.ModifyArgsInjectionInfo
-[23:59:04] [main/DEBUG] (mixin) Registering new injector for @Redirect with org.spongepowered.asm.mixin.injection.struct.RedirectInjectionInfo
-[23:59:04] [main/DEBUG] (mixin) Registering new injector for @ModifyVariable with org.spongepowered.asm.mixin.injection.struct.ModifyVariableInjectionInfo
-[23:59:04] [main/DEBUG] (mixin) Registering new injector for @ModifyConstant with org.spongepowered.asm.mixin.injection.struct.ModifyConstantInjectionInfo
-[23:59:04] [main/DEBUG] (mixin) Mixing GuiScreenAccessor from betterterrain.mixins.json into net.minecraft.src.GuiScreen
-[23:59:04] [main/DEBUG] (mixin) Mixing EntityPlayerSPMixin from decoaddon.entity.mixins.json into net.minecraft.src.EntityPlayerSP
-[23:59:04] [main/DEBUG] (mixin) Mixing BlockMixin from decoaddon.block.mixins.json into net.minecraft.src.Block
-[23:59:04] [main/DEBUG] (mixin) Mixing StoneBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.StoneBlock
-[23:59:04] [main/DEBUG] (mixin) Mixing GrassBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.GrassBlock
-[23:59:04] [main/DEBUG] (mixin) Mixing PlanksBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.PlanksBlock
-[23:59:04] [main/DEBUG] (mixin) Mixing SandBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.SandBlock
-[23:59:04] [main/DEBUG] (mixin) Mixing LogBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.LogBlock
-[23:59:04] [main/DEBUG] (mixin) Mixing SandstoneBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.SandstoneBlock
-[23:59:04] [main/DEBUG] (mixin) Mixing TallGrassBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.TallGrassBlock
-[23:59:04] [main/DEBUG] (mixin) Mixing BookshelfBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.BookshelfBlock
-[23:59:04] [main/DEBUG] (mixin) Mixing ObsidianBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.ObsidianBlock
-[23:59:04] [main/DEBUG] (mixin) Mixing WoodSlabMixin from decoaddon.block.mixins.json into btw.block.blocks.WoodSlabBlock
-[23:59:04] [main/DEBUG] (mixin) Mixing WoodSidingAndCornerBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.WoodSidingAndCornerAndDecorativeBlock
-[23:59:04] [main/DEBUG] (mixin) Mixing SidingAndCornerBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.SidingAndCornerBlock
-[23:59:04] [main/DEBUG] (mixin) Mixing WoodMouldingBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.WoodMouldingAndDecorativeBlock
-[23:59:04] [main/DEBUG] (mixin) Mixing BloodWoodLogMixin from decoaddon.block.mixins.json into btw.block.blocks.BloodWoodLogBlock
-[23:59:04] [main/DEBUG] (mixin) Mixing LooseDirtBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.LooseDirtBlock
-[23:59:04] [main/DEBUG] (mixin) Mixing WorkStumpBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.WorkStumpBlock
-[23:59:04] [main/DEBUG] (mixin) Mixing ClayBlockMixin from betterterrain.mixins.json into btw.block.blocks.ClayBlock
-[23:59:04] [main/DEBUG] (mixin) Mixing WorldTypeAccessor from betterterrain.mixins.json into net.minecraft.src.WorldType
-[23:59:04] [main/DEBUG] (mixin) Mixing WorldTypeMixin from betterterrain.mixins.json into net.minecraft.src.WorldType
-[23:59:04] [main/DEBUG] (mixin) Mixing CocoaPlantBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.CocoaPlantBlock
-[23:59:04] [main/DEBUG] (mixin) Mixing PlaceAsBlockItemAccessor from decoaddon.item.mixins.json into btw.item.items.PlaceAsBlockItem
-[23:59:04] [main/DEBUG] (mixin) Mixing SignItemMixin from decoaddon.item.mixins.json into btw.item.items.SignItem
-[23:59:04] [main/DEBUG] (mixin) Mixing DoorItemMixin from decoaddon.item.mixins.json into btw.item.items.DoorItem
-[23:59:04] [main/DEBUG] (mixin) Mixing BookItemMixin from decoaddon.item.mixins.json into btw.item.items.BookItem
-[23:59:04] [main/DEBUG] (mixin) Mixing DyeItemMixin from decoaddon.item.mixins.json into btw.item.items.DyeItem
-[23:59:04] [main/DEBUG] (mixin) Mixing ShearsItemMixin from decoaddon.item.mixins.json into btw.item.items.ShearsItem
-[23:59:04] [main/DEBUG] (mixin) Mixing GenLayerAccessor from betterterrain.mixins.json into net.minecraft.src.GenLayer
-[23:59:04] [main/DEBUG] (mixin) Mixing GrassSlabBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.GrassSlabBlock
-[23:59:04] [main/DEBUG] (mixin) Mixing LadderBlockFlamingMixin from decoaddon.block.mixins.json into btw.block.blocks.LadderBlockFlaming
-[23:59:04] [main/DEBUG] (mixin) Mixing JungleSpiderEntityMixin from decoaddon.entity.mixins.json into btw.entity.mob.JungleSpiderEntity
-[23:59:04] [main/DEBUG] (mixin) Mixing SquidEntityMixin from decoaddon.entity.mixins.json into btw.entity.mob.SquidEntity
-[23:59:04] [main/DEBUG] (mixin) Mixing LegacySubstitutionBlockItemMixin from decoaddon.item.mixins.json into btw.item.blockitems.legacy.LegacySubstitutionBlockItem
-[23:59:04] [main/DEBUG] (mixin) Mixing WoodCornerStubMixin from decoaddon.item.mixins.json into btw.item.blockitems.WoodCornerStubBlockItem
-[23:59:04] [main/DEBUG] (mixin) Mixing WoodMouldingDecorativeStubMixin from decoaddon.item.mixins.json into btw.item.blockitems.WoodMouldingDecorativeStubBlockItem
-[23:59:04] [main/DEBUG] (mixin) Mixing WoodMouldingStubMixin from decoaddon.item.mixins.json into btw.item.blockitems.WoodMouldingStubBlockItem
-[23:59:04] [main/DEBUG] (mixin) Mixing WoodSidingDecorativeStubMixin from decoaddon.item.mixins.json into btw.item.blockitems.WoodSidingDecorativeStubBlockItem
-[23:59:04] [main/DEBUG] (mixin) Mixing WoodSidingStubMixin from decoaddon.item.mixins.json into btw.item.blockitems.WoodSidingStubBlockItem
-[23:59:04] [main/DEBUG] (mixin) Mixing BarkItemMixin from decoaddon.item.mixins.json into btw.item.items.BarkItem
-[23:59:04] [main/DEBUG] (mixin) Mixing CocoaBeanItemMixin from decoaddon.item.mixins.json into btw.item.items.CocoaBeanItem
-[23:59:04] [main/DEBUG] (mixin) Mixing NetherGrothSporesItemMixin from betterterrain.mixins.json into btw.item.items.NetherGrothSporesItem
-[23:59:04] [main/DEBUG] (mixin) Mixing SandPileItemMixin from decoaddon.item.mixins.json into btw.item.items.SandPileItem
-[23:59:04] [main/DEBUG] (mixin) Mixing SoulSandPileItemMixin from betterterrain.mixins.json into btw.item.items.SoulSandPileItem
-[23:59:04] [main/DEBUG] (mixin) Mixing StoneBrickItemMixin from decoaddon.item.mixins.json into btw.item.items.StoneBrickItem
-[23:59:04] [main/DEBUG] (mixin) Mixing StoneItemMixin from decoaddon.item.mixins.json into btw.item.items.StoneItem
-[23:59:05] [main/DEBUG] (mixin) Mixing BiomeDecoratorAccessor from betterterrain.mixins.json into net.minecraft.src.BiomeDecorator
-[23:59:05] [main/DEBUG] (mixin) Mixing StructureScatteredFeatureStartAccessor from betterterrain.mixins.json into net.minecraft.src.StructureScatteredFeatureStart
-[23:59:05] [main/DEBUG] (mixin) Mixing StructureScatteredFeatureStartMixin from betterterrain.mixins.json into net.minecraft.src.StructureScatteredFeatureStart
-[23:59:05] [Minecraft main thread/DEBUG] (Fabric|Loader) No subscribers for entrypoint 'init'
-[23:59:05] [Minecraft main thread/DEBUG] (Fabric|Loader) No subscribers for entrypoint 'client'
-[23:59:05] [Minecraft main thread/DEBUG] (Fabric|Loader) No subscribers for entrypoint 'postInit'
-[23:59:15] [Minecraft main thread/DEBUG] (mixin) Mixing GuiCreateWorldMixin from betterterrain.mixins.json into net.minecraft.src.GuiCreateWorld
-[23:59:39] [Server thread/DEBUG] (mixin) Mixing WorldProviderMixin from betterterrain.mixins.json into net.minecraft.src.WorldProvider
-[23:59:39] [Server thread/DEBUG] (mixin) Mixing WorldProviderHellMixin from betterterrain.mixins.json into net.minecraft.src.WorldProviderHell
-[23:59:39] [Server thread/DEBUG] (mixin) Mixing WorldProviderEndMixin from betterterrain.mixins.json into net.minecraft.src.WorldProviderEnd
-[23:59:44] [Server thread/DEBUG] (mixin) Mixing ContainerRepairInvoker from decoaddon.inventory.mixins.json into net.minecraft.src.ContainerRepair
+[10:14:45] [main/INFO] (FabricLoader) Loading for game Minecraft 1.5.2
+[10:14:45] [main/DEBUG] (FabricLoader) Requesting deobfuscation of dev.jar
+[10:14:45] [main/DEBUG] (FabricLoader) [Knot] Proposed file:/B:/Data/Documents/BTW-Modding/Better-Terrain/Better-Terrain-Addon/build/dev_run/dev.jar to classpath.
+[10:14:45] [main/DEBUG] (FabricLoader|EntrypointTransformer) Found game constructor: net.minecraft.client.main.Main -> net.minecraft.client.Minecraft
+[10:14:45] [main/DEBUG] (FabricLoader|EntrypointTransformer) Patching game constructor startGame()V
+[10:14:45] [main/DEBUG] (FabricLoader|EntrypointTransformer) Run directory field is thought to be net/minecraft/client/Minecraft/mcDataDir
+[10:14:45] [main/DEBUG] (FabricLoader|EntrypointTransformer) Applying brand name hook to net/minecraft/client/ClientBrandRetriever::getClientModName
+[10:14:45] [main/DEBUG] (FabricLoader|EntrypointTransformer) Applying brand name hook to net/minecraft/server/MinecraftServer::getServerModName
+[10:14:45] [main/DEBUG] (FabricLoader|EntrypointTransformer) [EntrypointTransformer] Patched 3 classes.
+[10:14:45] [main/DEBUG] (Fabric|Loader) [ClasspathModCandidateFinder] Adding dev classpath directories to classpath.
+[10:14:45] [main/DEBUG] (FabricLoader) [Knot] Proposed file:/B:/Data/Documents/BTW-Modding/Better-Terrain/Better-Terrain-Addon/build/classes/java/main/ to classpath.
+[10:14:45] [main/DEBUG] (Fabric|Loader) [ClasspathModCandidateFinder] Processing /B:/Data/Documents/BTW-Modding/Better-Terrain/Better-Terrain-Addon/.gradle/loom-cache/remapped_mods/null_unspecified_1_5_2_1_0/io/github/minecraft-cursed-legacy/cursed-fabric-loader/1.0.0/cursed-fabric-loader-1.0.0.jar
+[10:14:45] [main/DEBUG] (Fabric|Loader) [ClasspathModCandidateFinder] Processing /B:/Data/Documents/BTW-Modding/Better-Terrain/Better-Terrain-Addon/build/resources/main/
+[10:14:45] [ForkJoinPool-1-worker-9/DEBUG] (Fabric|Loader) Testing file:/B:/Data/Documents/BTW-Modding/Better-Terrain/Better-Terrain-Addon/.gradle/loom-cache/remapped_mods/null_unspecified_1_5_2_1_0/io/github/minecraft-cursed-legacy/cursed-fabric-loader/1.0.0/cursed-fabric-loader-1.0.0.jar
+[10:14:45] [ForkJoinPool-1-worker-2/DEBUG] (Fabric|Loader) Testing file:/B:/Data/Documents/BTW-Modding/Better-Terrain/Better-Terrain-Addon/build/resources/main/
+[10:14:45] [ForkJoinPool-1-worker-11/DEBUG] (Fabric|Loader) Testing file:/B:/Data/Documents/BTW-Modding/Better-Terrain/Better-Terrain-Addon/run/mods/Deco-Addon-4.1.0-alpha.jar
+[10:14:45] [ForkJoinPool-1-worker-2/DEBUG] (Fabric|Loader) Adding file:/B:/Data/Documents/BTW-Modding/Better-Terrain/Better-Terrain-Addon/build/resources/main/ as ModCandidate{betterterrain@3.1.0}
+[10:14:45] [ForkJoinPool-1-worker-9/DEBUG] (Fabric|Loader) Adding file:/B:/Data/Documents/BTW-Modding/Better-Terrain/Better-Terrain-Addon/.gradle/loom-cache/remapped_mods/null_unspecified_1_5_2_1_0/io/github/minecraft-cursed-legacy/cursed-fabric-loader/1.0.0/cursed-fabric-loader-1.0.0.jar as ModCandidate{fabricloader@1.0.0}
+[10:14:45] [ForkJoinPool-1-worker-2/DEBUG] (Fabric|Loader) Searching for nested JARs in ModCandidate{betterterrain@3.1.0}
+[10:14:45] [ForkJoinPool-1-worker-9/DEBUG] (Fabric|Loader) Searching for nested JARs in ModCandidate{fabricloader@1.0.0}
+[10:14:45] [ForkJoinPool-1-worker-2/DEBUG] (Fabric|Loader) file:/B:/Data/Documents/BTW-Modding/Better-Terrain/Better-Terrain-Addon/build/resources/main/
+[10:14:45] [ForkJoinPool-1-worker-9/DEBUG] (Fabric|Loader) file:/B:/Data/Documents/BTW-Modding/Better-Terrain/Better-Terrain-Addon/.gradle/loom-cache/remapped_mods/null_unspecified_1_5_2_1_0/io/github/minecraft-cursed-legacy/cursed-fabric-loader/1.0.0/cursed-fabric-loader-1.0.0.jar
+[10:14:45] [ForkJoinPool-1-worker-11/DEBUG] (Fabric|Loader) Adding file:/B:/Data/Documents/BTW-Modding/Better-Terrain/Better-Terrain-Addon/run/mods/Deco-Addon-4.1.0-alpha.jar as ModCandidate{decoaddon@4.1.0}
+[10:14:45] [ForkJoinPool-1-worker-11/DEBUG] (Fabric|Loader) Searching for nested JARs in ModCandidate{decoaddon@4.1.0}
+[10:14:45] [ForkJoinPool-1-worker-11/DEBUG] (Fabric|Loader) file:/B:/Data/Documents/BTW-Modding/Better-Terrain/Better-Terrain-Addon/run/mods/Deco-Addon-4.1.0-alpha.jar
+[10:14:45] [main/DEBUG] (Fabric|Loader) Mod resolution detection time: 21ms
+[10:14:45] [main/DEBUG] (Fabric|Loader) Mod resolution time: 2ms
+[10:14:45] [main/INFO] (Fabric|Loader) [FabricLoaderImpl] Loading 5 mods: minecraft@1.5.2, betterterrain@3.1.0, java@8, fabricloader@1.0.0, decoaddon@4.1.0
+[10:14:45] [main/DEBUG] (FabricLoader) Loading mappings took 30 ms
+[10:14:46] [main/DEBUG] (FabricLoader) [Knot] Proposed jimfs://nestedJarStore/4d0d36cb-27ee-424f-9d58-7524898814ce.jar to classpath.
+[10:14:46] [main/DEBUG] (FabricLoader) [Knot] Proposed file:/B:/Data/Documents/BTW-Modding/Better-Terrain/Better-Terrain-Addon/build/resources/main/ to classpath.
+[10:14:46] [main/DEBUG] (mixin) Mixin bootstrap service org.spongepowered.asm.service.mojang.MixinServiceLaunchWrapperBootstrap is not available: LaunchWrapper is not available
+[10:14:46] [main/DEBUG] (mixin) Mixin bootstrap service org.spongepowered.asm.service.modlauncher.MixinServiceModLauncherBootstrap is not available: ModLauncher is not available
+[10:14:46] [main/DEBUG] (mixin) MixinService [LaunchWrapper] is not valid
+[10:14:46] [main/DEBUG] (mixin) MixinService [ModLauncher] is not valid
+[10:14:46] [main/DEBUG] (mixin) MixinService [Knot/Fabric] was successfully booted in sun.misc.Launcher$AppClassLoader@2b193f2d
+[10:14:46] [main/INFO] (mixin) SpongePowered MIXIN Subsystem Version=0.8.2 Source=file:/C:/Users/Abigail%20Moore/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.9.2+mixin.0.8.2/12c437eebf031967eaa7daad861e115932772cc7/sponge-mixin-0.9.2+mixin.0.8.2.jar Service=Knot/Fabric Env=CLIENT
+[10:14:46] [main/DEBUG] (mixin) Initialising Mixin Platform Manager
+[10:14:46] [main/DEBUG] (mixin) Adding mixin platform agents for container ContainerHandleURI(file:/B:/Data/Documents/BTW-Modding/Better-Terrain/Better-Terrain-Addon/.gradle/loom-cache/remapped_mods/null_unspecified_1_5_2_1_0/io/github/minecraft-cursed-legacy/cursed-fabric-loader/1.0.0/cursed-fabric-loader-1.0.0.jar)
+[10:14:46] [main/DEBUG] (mixin) Instancing new MixinPlatformAgentDefault for ContainerHandleURI(file:/B:/Data/Documents/BTW-Modding/Better-Terrain/Better-Terrain-Addon/.gradle/loom-cache/remapped_mods/null_unspecified_1_5_2_1_0/io/github/minecraft-cursed-legacy/cursed-fabric-loader/1.0.0/cursed-fabric-loader-1.0.0.jar)
+[10:14:46] [main/DEBUG] (mixin) MixinPlatformAgentDefault accepted container ContainerHandleURI(file:/B:/Data/Documents/BTW-Modding/Better-Terrain/Better-Terrain-Addon/.gradle/loom-cache/remapped_mods/null_unspecified_1_5_2_1_0/io/github/minecraft-cursed-legacy/cursed-fabric-loader/1.0.0/cursed-fabric-loader-1.0.0.jar)
+[10:14:46] [main/DEBUG] (mixin) Instancing new MixinPlatformAgentDefault for ContainerHandleURI(file:/B:/Data/Documents/BTW-Modding/Better-Terrain/Better-Terrain-Addon/.gradle/loom-cache/remapped_mods/null_unspecified_1_5_2_1_0/io/github/minecraft-cursed-legacy/cursed-fabric-loader/1.0.0/cursed-fabric-loader-1.0.0.jar)
+[10:14:46] [main/DEBUG] (mixin) MixinPlatformAgentDefault accepted container ContainerHandleURI(file:/B:/Data/Documents/BTW-Modding/Better-Terrain/Better-Terrain-Addon/.gradle/loom-cache/remapped_mods/null_unspecified_1_5_2_1_0/io/github/minecraft-cursed-legacy/cursed-fabric-loader/1.0.0/cursed-fabric-loader-1.0.0.jar)
+[10:14:46] [main/DEBUG] (mixin) Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:ContainerHandleURI(file:/B:/Data/Documents/BTW-Modding/Better-Terrain/Better-Terrain-Addon/.gradle/loom-cache/remapped_mods/null_unspecified_1_5_2_1_0/io/github/minecraft-cursed-legacy/cursed-fabric-loader/1.0.0/cursed-fabric-loader-1.0.0.jar)]
+[10:14:46] [main/DEBUG] (mixin) Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:ContainerHandleURI(file:/B:/Data/Documents/BTW-Modding/Better-Terrain/Better-Terrain-Addon/.gradle/loom-cache/remapped_mods/null_unspecified_1_5_2_1_0/io/github/minecraft-cursed-legacy/cursed-fabric-loader/1.0.0/cursed-fabric-loader-1.0.0.jar)]
+[10:14:46] [main/INFO] (Fabric|MixinBootstrap) Loaded Fabric development mappings for mixin remapper!
+[10:14:46] [main/DEBUG] (mixin) Error cleaning class output directory: .mixin.out\class: failed to delete one or more files; see suppressed exceptions for details
+[10:14:46] [main/DEBUG] (Fabric|Loader) No subscribers for entrypoint 'preLaunch'
+[10:14:46] [main/DEBUG] (mixin) Preparing mixins for MixinEnvironment[DEFAULT]
+[10:14:46] [main/DEBUG] (mixin) Selecting config betterterrain.mixins.json
+[10:14:46] [main/DEBUG] (mixin) Selecting config decoaddon.item.mixins.json
+[10:14:46] [main/DEBUG] (mixin) Selecting config decoaddon.block.mixins.json
+[10:14:46] [main/DEBUG] (mixin) Selecting config decoaddon.entity.mixins.json
+[10:14:46] [main/DEBUG] (mixin) Selecting config decoaddon.inventory.mixins.json
+[10:14:46] [main/DEBUG] (mixin) Selecting config decoaddon.client.mixins.json
+[10:14:46] [main/DEBUG] (mixin) Preparing betterterrain.mixins.json (14)
+[10:14:46] [main/DEBUG] (mixin) Preparing decoaddon.item.mixins.json (17)
+[10:14:46] [main/DEBUG] (mixin) Preparing decoaddon.block.mixins.json (20)
+[10:14:46] [main/DEBUG] (mixin) Preparing decoaddon.entity.mixins.json (3)
+[10:14:46] [main/DEBUG] (mixin) Preparing decoaddon.inventory.mixins.json (2)
+[10:14:46] [main/WARN] (mixin) @Mixin target net/minecraft/src/SlotRepair is public in decoaddon.inventory.mixins.json:SlotRepairMixin and should be specified in value
+[10:14:46] [main/DEBUG] (mixin) Preparing decoaddon.client.mixins.json (0)
+[10:14:46] [main/DEBUG] (mixin) Registering new injector for @Inject with org.spongepowered.asm.mixin.injection.struct.CallbackInjectionInfo
+[10:14:46] [main/DEBUG] (mixin) Registering new injector for @ModifyArg with org.spongepowered.asm.mixin.injection.struct.ModifyArgInjectionInfo
+[10:14:46] [main/DEBUG] (mixin) Registering new injector for @ModifyArgs with org.spongepowered.asm.mixin.injection.struct.ModifyArgsInjectionInfo
+[10:14:46] [main/DEBUG] (mixin) Registering new injector for @Redirect with org.spongepowered.asm.mixin.injection.struct.RedirectInjectionInfo
+[10:14:46] [main/DEBUG] (mixin) Registering new injector for @ModifyVariable with org.spongepowered.asm.mixin.injection.struct.ModifyVariableInjectionInfo
+[10:14:46] [main/DEBUG] (mixin) Registering new injector for @ModifyConstant with org.spongepowered.asm.mixin.injection.struct.ModifyConstantInjectionInfo
+[10:14:46] [main/DEBUG] (mixin) Mixing GuiScreenAccessor from betterterrain.mixins.json into net.minecraft.src.GuiScreen
+[10:14:46] [main/DEBUG] (mixin) Mixing EntityPlayerSPMixin from decoaddon.entity.mixins.json into net.minecraft.src.EntityPlayerSP
+[10:14:46] [main/DEBUG] (mixin) Mixing BlockMixin from decoaddon.block.mixins.json into net.minecraft.src.Block
+[10:14:46] [main/DEBUG] (mixin) Mixing StoneBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.StoneBlock
+[10:14:46] [main/DEBUG] (mixin) Mixing GrassBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.GrassBlock
+[10:14:46] [main/DEBUG] (mixin) Mixing PlanksBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.PlanksBlock
+[10:14:46] [main/DEBUG] (mixin) Mixing SandBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.SandBlock
+[10:14:46] [main/DEBUG] (mixin) Mixing LogBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.LogBlock
+[10:14:46] [main/DEBUG] (mixin) Mixing SandstoneBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.SandstoneBlock
+[10:14:46] [main/DEBUG] (mixin) Mixing TallGrassBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.TallGrassBlock
+[10:14:46] [main/DEBUG] (mixin) Mixing BookshelfBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.BookshelfBlock
+[10:14:46] [main/DEBUG] (mixin) Mixing ObsidianBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.ObsidianBlock
+[10:14:46] [main/DEBUG] (mixin) Mixing WoodSlabMixin from decoaddon.block.mixins.json into btw.block.blocks.WoodSlabBlock
+[10:14:46] [main/DEBUG] (mixin) Mixing WoodSidingAndCornerBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.WoodSidingAndCornerAndDecorativeBlock
+[10:14:46] [main/DEBUG] (mixin) Mixing SidingAndCornerBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.SidingAndCornerBlock
+[10:14:46] [main/DEBUG] (mixin) Mixing WoodMouldingBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.WoodMouldingAndDecorativeBlock
+[10:14:46] [main/DEBUG] (mixin) Mixing BloodWoodLogMixin from decoaddon.block.mixins.json into btw.block.blocks.BloodWoodLogBlock
+[10:14:46] [main/DEBUG] (mixin) Mixing LooseDirtBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.LooseDirtBlock
+[10:14:46] [main/DEBUG] (mixin) Mixing WorkStumpBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.WorkStumpBlock
+[10:14:46] [main/DEBUG] (mixin) Mixing ClayBlockMixin from betterterrain.mixins.json into btw.block.blocks.ClayBlock
+[10:14:46] [main/DEBUG] (mixin) Mixing WorldTypeAccessor from betterterrain.mixins.json into net.minecraft.src.WorldType
+[10:14:46] [main/DEBUG] (mixin) Mixing WorldTypeMixin from betterterrain.mixins.json into net.minecraft.src.WorldType
+[10:14:46] [main/DEBUG] (mixin) Mixing CocoaPlantBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.CocoaPlantBlock
+[10:14:46] [main/DEBUG] (mixin) Mixing PlaceAsBlockItemAccessor from decoaddon.item.mixins.json into btw.item.items.PlaceAsBlockItem
+[10:14:46] [main/DEBUG] (mixin) Mixing SignItemMixin from decoaddon.item.mixins.json into btw.item.items.SignItem
+[10:14:46] [main/DEBUG] (mixin) Mixing DoorItemMixin from decoaddon.item.mixins.json into btw.item.items.DoorItem
+[10:14:46] [main/DEBUG] (mixin) Mixing BookItemMixin from decoaddon.item.mixins.json into btw.item.items.BookItem
+[10:14:46] [main/DEBUG] (mixin) Mixing DyeItemMixin from decoaddon.item.mixins.json into btw.item.items.DyeItem
+[10:14:46] [main/DEBUG] (mixin) Mixing ShearsItemMixin from decoaddon.item.mixins.json into btw.item.items.ShearsItem
+[10:14:47] [main/DEBUG] (mixin) Mixing GenLayerAccessor from betterterrain.mixins.json into net.minecraft.src.GenLayer
+[10:14:47] [main/DEBUG] (mixin) Mixing GrassSlabBlockMixin from decoaddon.block.mixins.json into btw.block.blocks.GrassSlabBlock
+[10:14:47] [main/DEBUG] (mixin) Mixing LadderBlockFlamingMixin from decoaddon.block.mixins.json into btw.block.blocks.LadderBlockFlaming
+[10:14:47] [main/DEBUG] (mixin) Mixing JungleSpiderEntityMixin from decoaddon.entity.mixins.json into btw.entity.mob.JungleSpiderEntity
+[10:14:47] [main/DEBUG] (mixin) Mixing SquidEntityMixin from decoaddon.entity.mixins.json into btw.entity.mob.SquidEntity
+[10:14:47] [main/DEBUG] (mixin) Mixing LegacySubstitutionBlockItemMixin from decoaddon.item.mixins.json into btw.item.blockitems.legacy.LegacySubstitutionBlockItem
+[10:14:47] [main/DEBUG] (mixin) Mixing WoodCornerStubMixin from decoaddon.item.mixins.json into btw.item.blockitems.WoodCornerStubBlockItem
+[10:14:47] [main/DEBUG] (mixin) Mixing WoodMouldingDecorativeStubMixin from decoaddon.item.mixins.json into btw.item.blockitems.WoodMouldingDecorativeStubBlockItem
+[10:14:47] [main/DEBUG] (mixin) Mixing WoodMouldingStubMixin from decoaddon.item.mixins.json into btw.item.blockitems.WoodMouldingStubBlockItem
+[10:14:47] [main/DEBUG] (mixin) Mixing WoodSidingDecorativeStubMixin from decoaddon.item.mixins.json into btw.item.blockitems.WoodSidingDecorativeStubBlockItem
+[10:14:47] [main/DEBUG] (mixin) Mixing WoodSidingStubMixin from decoaddon.item.mixins.json into btw.item.blockitems.WoodSidingStubBlockItem
+[10:14:47] [main/DEBUG] (mixin) Mixing BarkItemMixin from decoaddon.item.mixins.json into btw.item.items.BarkItem
+[10:14:47] [main/DEBUG] (mixin) Mixing CocoaBeanItemMixin from decoaddon.item.mixins.json into btw.item.items.CocoaBeanItem
+[10:14:47] [main/DEBUG] (mixin) Mixing NetherGrothSporesItemMixin from betterterrain.mixins.json into btw.item.items.NetherGrothSporesItem
+[10:14:47] [main/DEBUG] (mixin) Mixing SandPileItemMixin from decoaddon.item.mixins.json into btw.item.items.SandPileItem
+[10:14:47] [main/DEBUG] (mixin) Mixing SoulSandPileItemMixin from betterterrain.mixins.json into btw.item.items.SoulSandPileItem
+[10:14:47] [main/DEBUG] (mixin) Mixing StoneBrickItemMixin from decoaddon.item.mixins.json into btw.item.items.StoneBrickItem
+[10:14:47] [main/DEBUG] (mixin) Mixing StoneItemMixin from decoaddon.item.mixins.json into btw.item.items.StoneItem
+[10:14:47] [main/DEBUG] (mixin) Mixing BiomeDecoratorAccessor from betterterrain.mixins.json into net.minecraft.src.BiomeDecorator
+[10:14:47] [main/DEBUG] (mixin) Mixing StructureScatteredFeatureStartAccessor from betterterrain.mixins.json into net.minecraft.src.StructureScatteredFeatureStart
+[10:14:47] [main/DEBUG] (mixin) Mixing StructureScatteredFeatureStartMixin from betterterrain.mixins.json into net.minecraft.src.StructureScatteredFeatureStart
+[10:14:47] [Minecraft main thread/DEBUG] (Fabric|Loader) No subscribers for entrypoint 'init'
+[10:14:47] [Minecraft main thread/DEBUG] (Fabric|Loader) No subscribers for entrypoint 'client'
+[10:14:47] [Minecraft main thread/DEBUG] (Fabric|Loader) No subscribers for entrypoint 'postInit'
+[10:17:36] [Minecraft main thread/DEBUG] (mixin) Mixing GuiCreateWorldMixin from betterterrain.mixins.json into net.minecraft.src.GuiCreateWorld
+[10:17:50] [Server thread/DEBUG] (mixin) Mixing WorldProviderMixin from betterterrain.mixins.json into net.minecraft.src.WorldProvider
+[10:17:50] [Server thread/DEBUG] (mixin) Mixing WorldProviderHellMixin from betterterrain.mixins.json into net.minecraft.src.WorldProviderHell
+[10:17:50] [Server thread/DEBUG] (mixin) Mixing WorldProviderEndMixin from betterterrain.mixins.json into net.minecraft.src.WorldProviderEnd
+[10:17:56] [Server thread/DEBUG] (mixin) Mixing ContainerRepairInvoker from decoaddon.inventory.mixins.json into net.minecraft.src.ContainerRepair

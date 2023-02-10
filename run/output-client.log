@@ -692,3 +692,57 @@
 2022-10-20 18:13:09 [CLIENT] [INFO] [CHAT] Local game hosted on 0.0.0.0:60692
 2022-10-20 18:13:11 [CLIENT] [INFO] [CHAT] Current biome: Badlands
 2022-10-20 18:14:02 [CLIENT] [INFO] Stopping!
+2023-02-10 10:14:47 [CLIENT] [INFO] Setting user: Player233
+2023-02-10 10:14:47 [CLIENT] [INFO] LWJGL Version: 2.9.0
+2023-02-10 10:14:49 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockBottleRackAspen.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:49 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockChairDarkOak.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:49 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockBottleRackEmptyCherry.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:49 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockBookshelfEmptyCherry.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:49 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockChairAspen.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:49 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockChairMahogany.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:49 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockChairMangrove.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:50 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockChairWillow.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:50 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockBookshelfEmptyAspen.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:50 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockChairRedwood.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:50 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockChairCherry.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:50 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockBottleRackEmptyRedwood.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:50 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockChairBirch.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:50 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockCrateRedwood.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:50 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockBottleRackEmptyAspen.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:50 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockCrateWillow.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:50 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockChairJungle.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:50 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockGlassFramedRedwood.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:50 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockBookshelfEmptyWillow.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:50 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockChairBlood.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:50 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockChairSpruce.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:50 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockBottleRackRedwood.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:50 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockBottleRackWillow.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:51 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockBottleRackEmptyWillow.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:51 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockGlassFramedAspen.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:51 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockBottleRackCherry.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:51 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockGlassFramedCherry.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:51 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockChairAcacia.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:51 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockChairOak.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:51 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockChairFir.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:51 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockBookshelfEmptyRedwood.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:51 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockCrateCherry.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:51 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockCrateAspen.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:51 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockGlassFramedWillow.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:51 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/blocks/decoBlockChairHazel.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:51 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/items/decoItemDoorWillow.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:51 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/items/decoItemSignAspen.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:52 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/items/decoItemDoorRedwood.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:52 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/items/decoItemSignRedwood.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:52 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/items/decoItemDoorDarkOak.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:52 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/items/decoItemBarkAspen.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:52 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/items/decoItemSignWillow.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:52 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/items/decoItemBarkWillow.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:52 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/items/decoItemDoorAspen.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:52 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/items/decoItemSignDarkOak.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:52 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/items/decoItemBarkRedwood.png, but that file does not exist. Ignoring.
+2023-02-10 10:14:52 [CLIENT] [WARNING] TextureManager.createTexture called for file textures/items/decoItemBarkDarkOak.png, but that file does not exist. Ignoring.
+2023-02-10 10:17:57 [CLIENT] [INFO] [CHAT] §fBetter Than Wolves CE V2.0.2
+2023-02-10 10:17:57 [CLIENT] [INFO] [CHAT] §fBetter Terrain V3.2.0
+2023-02-10 10:17:57 [CLIENT] [INFO] [CHAT] §fBetter Biomes V3.1.0
+2023-02-10 10:17:57 [CLIENT] [INFO] [CHAT] §fDeco Addon V4.1.0
+2023-02-10 10:23:49 [CLIENT] [INFO] Stopping!

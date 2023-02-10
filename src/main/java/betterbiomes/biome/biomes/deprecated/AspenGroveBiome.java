@@ -1,7 +1,8 @@
-package betterbiomes.biome.biomes;
+package betterbiomes.biome.biomes.deprecated;
 
 import java.util.Random;
 
+import betterbiomes.biome.biomes.AlpineBiome;
 import betterterrain.biome.Climate;
 import betterterrain.world.feature.tree.grower.BTATreeGrowers;
 import betterterrain.world.feature.tree.legacy.PineTreeGen;
