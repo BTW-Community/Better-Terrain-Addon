@@ -1,5 +1,5 @@
-[14:48:27] [main/INFO] (FabricLoader) Loading for game Minecraft 1.5.2
-[14:48:27] [main/INFO] (Fabric|Loader) [FabricLoaderImpl] Loading 5 mods: minecraft@1.5.2, betterterrain@3.1.0, java@8, fabricloader@1.0.0, decoaddon@4.1.0
-[14:48:28] [main/INFO] (mixin) SpongePowered MIXIN Subsystem Version=0.8.2 Source=file:/C:/Users/Abigail%20Moore/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.9.2+mixin.0.8.2/12c437eebf031967eaa7daad861e115932772cc7/sponge-mixin-0.9.2+mixin.0.8.2.jar Service=Knot/Fabric Env=CLIENT
-[14:48:28] [main/INFO] (Fabric|MixinBootstrap) Loaded Fabric development mappings for mixin remapper!
-[14:48:28] [main/WARN] (mixin) @Mixin target net/minecraft/src/SlotRepair is public in decoaddon.inventory.mixins.json:SlotRepairMixin and should be specified in value
+[14:58:29] [main/INFO] (FabricLoader) Loading for game Minecraft 1.5.2
+[14:58:29] [main/INFO] (Fabric|Loader) [FabricLoaderImpl] Loading 5 mods: minecraft@1.5.2, betterterrain@3.1.0, java@8, fabricloader@1.0.0, decoaddon@4.1.0
+[14:58:30] [main/INFO] (mixin) SpongePowered MIXIN Subsystem Version=0.8.2 Source=file:/C:/Users/Abigail%20Moore/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.9.2+mixin.0.8.2/12c437eebf031967eaa7daad861e115932772cc7/sponge-mixin-0.9.2+mixin.0.8.2.jar Service=Knot/Fabric Env=CLIENT
+[14:58:30] [main/INFO] (Fabric|MixinBootstrap) Loaded Fabric development mappings for mixin remapper!
+[14:58:30] [main/WARN] (mixin) @Mixin target net/minecraft/src/SlotRepair is public in decoaddon.inventory.mixins.json:SlotRepairMixin and should be specified in value

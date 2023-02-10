@@ -29,6 +29,7 @@ import betterterrain.world.generate.surface.StonySurfaceBuilder;
 import betterterrain.world.generate.surface.SwampSurfaceBuilder;
 import btw.AddonHandler;
 import btw.util.hardcorespawn.HardcoreSpawnUtils;
+import net.minecraft.src.BiomeGenBase;
 
 public class BTABiomeConfiguration extends BiomeConfiguration {
 	public static final int
@@ -303,14 +304,20 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 		jungleHills.addRiverVariant(jungleRiver);
 		jungleEdge.addRiverVariant(jungleRiver);
 		swamp.addRiverVariant(swampRiver);
-		tundra.addRiverVariant(frozenRiver);
-		icyPeaks.addRiverVariant(frozenRiver);
-		siberia.addRiverVariant(frozenRiver);
 
 		mountains.addEdgeVariant(mountainEdge);
 		icyPeaks.addEdgeVariant(icyPeaksEdge);
 		jungle.addEdgeVariant(jungleEdge, info -> info.getBTAVersion().isVersionAtLeast(BTAVersion.V1_3_2));
 		jungleHills.setConnectToEdge(false);
+
+		for (int i = 0; i < BiomeGenBase.biomeList.length; i++) {
+			BiomeGenBase b = BiomeGenBase.biomeList[i];
+
+			if (b instanceof BTABiome) {
+				BTABiome biome = (BTABiome) b;
+				biome.addRiverVariant(BTABiomeConfiguration.frozenRiver);
+			}
+		}
 	}
 	
 	private static BTABiomeConfiguration instance;

@@ -18,6 +18,7 @@ import betterterrain.world.generate.surface.NoShorelineSurfaceBuilder;
 import betterterrain.world.generate.surface.StonySurfaceBuilder;
 import betterterrain.world.generate.surface.SwampSurfaceBuilder;
 import btw.util.hardcorespawn.HardcoreSpawnUtils;
+import net.minecraft.src.BiomeGenBase;
 
 public class BetterBiomesConfiguration extends BiomeConfiguration {
 	public static final int
@@ -1172,14 +1173,6 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		volcanicBeach.addRiverVariant(volcanicRiver);
 
 		darkForest.addRiverVariant(darkForestRiver);
-		
-		for (BTABiome b : betterBiomes) {
-			if (b.getEnableSnow()) {
-				b.addRiverVariant(BTABiomeConfiguration.frozenRiver);
-			}
-		}
-		// Idk why this wasn't being picked up by the automatic checker above
-		snowyMapleWoodsHills.addRiverVariant(BTABiomeConfiguration.frozenRiver);
 		
 		//Edges
 		alpine.addEdgeVariant(alpineEdge);
