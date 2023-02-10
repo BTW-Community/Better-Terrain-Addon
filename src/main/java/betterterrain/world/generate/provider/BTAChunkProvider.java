@@ -12,7 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BTAChunkProvider extends AbstractChunkProvider {
-    public final FastNoiseOctaves terrainOctaves;
+    public final FastNoiseOctaves terrainOctavesHigh;
+    public final FastNoiseOctaves terrainOctavesLow;
+    public final FastNoiseOctaves terrainOctavesBlend;
+
+    public final FastNoiseOctaves terrainOctavesDetail;
 
     public final OpenSimplexOctavesFast continentalnessOctaves;
     public final OpenSimplexOctavesFast erosionOctaves;
@@ -31,7 +35,10 @@ public class BTAChunkProvider extends AbstractChunkProvider {
 
         SurfaceBuilder.initForNoiseField(this.seed);
 
-        this.terrainOctaves = new FastNoiseOctaves(this.seed, 10);
+        this.terrainOctavesHigh = new FastNoiseOctaves(this.seed, 6);
+        this.terrainOctavesLow = new FastNoiseOctaves(this.seed + 1000, 10);
+        this.terrainOctavesBlend = new FastNoiseOctaves(this.seed + 2000, 4);
+        this.terrainOctavesDetail = new FastNoiseOctaves(this.seed + 3000, 4);
 
         this.continentalnessOctaves = new OpenSimplexOctavesFast(this.rand.nextLong(), 4);
         this.erosionOctaves = new OpenSimplexOctavesFast(this.rand.nextLong(), 4);
@@ -72,34 +79,39 @@ public class BTAChunkProvider extends AbstractChunkProvider {
         int x = chunkX * 16;
         int z = chunkZ * 16;
 
-        double terrainScale = 1/8192D;
-
-        int chunkIndex = 0;
-
-        double[] terrainArray = new double[1];
-
         for (int i = 0; i < 16; i++) {
             for (int k = 0; k < 16; k++) {
                 for (int j = 0; j < 256; j++) {
-                    double density = this.getTerrainNoise(x + i, j, z + k, terrainScale);
+                    double density = this.getTerrainNoise(x + i, j, z + k);
 
-                    double modifiedNoise = this.modifyNoise(density, x + i, j, z + k);
-
-                    if (modifiedNoise > 0) {
+                    if (density > 0) {
                         blockArray[i << 12 | k << 8 | j] = Block.stone.blockID;
                     }
                     else if (j < seaLevel) {
                         blockArray[i << 12 | k << 8 | j] = Block.waterStill.blockID;
                     }
-
-                    chunkIndex++;
                 }
             }
         }
     }
 
-    public double getTerrainNoise(int x, int y, int z, double terrainScale) {
-        return this.terrainOctaves.noise3(x, y, z, terrainScale, terrainScale / 2);
+    public double getTerrainNoise(int x, int y, int z) {
+        double terrainScale = 1/Math.pow(2, 14);
+
+        double noiseHigh = this.terrainOctavesHigh.noise3(x, y, z, terrainScale * 8, terrainScale * 8 / 2);
+        double noiseLow = this.terrainOctavesLow.noise3(x, y, z, terrainScale, terrainScale / 2);
+
+        double noiseBlend = this.terrainOctavesBlend.noise3(x, y, z, terrainScale / 2);
+
+        double blendedNoise = lerp(noiseBlend, noiseHigh, noiseLow);
+
+        double detailNoise = this.terrainOctavesDetail.noise3(x, y, z, terrainScale * Math.pow(2, 8));
+
+        int detailFactor = 1;
+        blendedNoise += detailNoise / detailFactor;
+        blendedNoise = fitToRange(blendedNoise, -1 - 1D/detailFactor, 1 + 1D/detailFactor, -1, 1);
+
+        return modifyNoise(blendedNoise, x, y, z);
     }
 
     public double modifyNoise(double noise, int x, int y, int z) {
@@ -107,8 +119,8 @@ public class BTAChunkProvider extends AbstractChunkProvider {
         double liftFactor = this.getLiftFactor(x, z);
 
         int heightDivideLevel = seaLevel + 25 + (int) (25 * liftFactor);
-        int maxHeight = heightDivideLevel + (int) ((200 - heightDivideLevel) * squashFactor);
-        int minHeight = heightDivideLevel - (int) (50 * squashFactor * liftFactor);
+        int maxHeight = heightDivideLevel + (int) ((224 - heightDivideLevel) * squashFactor);
+        int minHeight = heightDivideLevel - (int) (50 * squashFactor * (1 - liftFactor));
 
         double newNoise;
 
@@ -133,7 +145,8 @@ public class BTAChunkProvider extends AbstractChunkProvider {
     }
 
     public double getLiftFactor(int x, int z) {
-        return fitToRange(this.getInterpolatedContinentalness(x, z), -1, 1, 0.125, 1);
+        //return fitToRange(this.getInterpolatedContinentalness(x, z), -1, 1, 0.125, 1);
+        return 0;
     }
 
     public double getContinentalness(int x, int z) {
