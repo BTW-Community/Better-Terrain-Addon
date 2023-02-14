@@ -19,7 +19,7 @@ public class MountainBiome extends BTABiome {
 	}
 
 	public void initTreeGrowerMap() {
-		this.treeGrowers.put(BTATreeGrowers.OAK_ASPEN, 2);
+		this.treeGrowers.put(BTATreeGrowers.OAK_ASPEN_TREE, 2);
 		this.treeGrowers.put(BTATreeGrowers.TEMPERATE_BIRCH_TREE, 1);
 
 		this.decoTreeGrowers.put(BTATreeGrowers.ASPEN_TREE, 2);

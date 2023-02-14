@@ -13,7 +13,7 @@ import java.util.Random;
 public class MangroveRiverBiome extends RiverBiome {
     public MangroveRiverBiome(int id, String internalName) {
         super(id, internalName, BetterBiomesConfiguration.mangroveForest.climate);
-        this.btaBiomeDecorator.treesPerChunk = 10;
+        this.btaBiomeDecorator.treesPerChunk = 7;
         this.btaBiomeDecorator.flowersPerChunk = -999;
         this.btaBiomeDecorator.mushroomsPerChunk = 8;
         this.btaBiomeDecorator.reedsPerChunk = 10;

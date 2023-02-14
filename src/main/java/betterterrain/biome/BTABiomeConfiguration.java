@@ -313,7 +313,7 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 		for (int i = 0; i < BiomeGenBase.biomeList.length; i++) {
 			BiomeGenBase b = BiomeGenBase.biomeList[i];
 
-			if (b instanceof BTABiome) {
+			if (b instanceof BTABiome && ((BTABiome) b).climate == Climate.SNOWY) {
 				BTABiome biome = (BTABiome) b;
 				biome.addRiverVariant(BTABiomeConfiguration.frozenRiver);
 			}

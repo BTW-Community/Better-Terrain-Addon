@@ -529,6 +529,17 @@ public class BTABiome extends BiomeGenBase {
         return getEdgeVariant(generatorOptions) == this.biomeID;
     }
 
+    private boolean hasExtendedEdge = true;
+
+    public BTABiome setHasSmallerEdge() {
+        this.hasExtendedEdge = false;
+        return this;
+    }
+
+    public boolean hasExtendedEdge() {
+        return this.hasExtendedEdge;
+    }
+
     //------ Biome type Functionality ------//
 
     private boolean isPlateau;

@@ -15,7 +15,7 @@ public class MangroveForestBiome extends BTABiome {
 
 	public MangroveForestBiome(int id, String internalName, Climate climate) {
 		super(id, internalName, climate);
-        this.btaBiomeDecorator.treesPerChunk = 10;
+        this.btaBiomeDecorator.treesPerChunk = 7;
         this.btaBiomeDecorator.flowersPerChunk = -999;
         this.btaBiomeDecorator.mushroomsPerChunk = 8;
         this.btaBiomeDecorator.reedsPerChunk = 10;

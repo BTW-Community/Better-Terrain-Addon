@@ -18,7 +18,6 @@ import betterterrain.world.generate.surface.NoShorelineSurfaceBuilder;
 import betterterrain.world.generate.surface.StonySurfaceBuilder;
 import betterterrain.world.generate.surface.SwampSurfaceBuilder;
 import btw.util.hardcorespawn.HardcoreSpawnUtils;
-import net.minecraft.src.BiomeGenBase;
 
 public class BetterBiomesConfiguration extends BiomeConfiguration {
 	public static final int
@@ -103,7 +102,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			PATAGONIA_MOUNTAINS_ID = 166,
 			GRASSLANDS_LAKE_ID = 167,
 			FROZEN_SPRINGS_POND_ID = 168,
-			MANGROVE_FOREST_ISLAND_ID = 169,
+			MANGROVE_FOREST_ISLAND_OLD_ID = 169,
 			BOREAL_FOREST_HILLS_ID = 170,
 			SAVANNA_PLATEAU_ID = 171,
 			FIR_CANYON_VALLEY_ID = 172,
@@ -111,6 +110,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			MAPLE_WOODS_HILLS_ID = 174,
 			SNOWY_MAPLE_WOODS_HILLS_ID = 175,
 			ICE_MARSH_POND_ID = 176,
+			MANGROVE_FOREST_ISLAND_ID = 177,
 			
 	//Deco only
 			OUTBACK_ID = 180,
@@ -286,6 +286,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(2.0F, 0.0F)
 			.setMinMaxHeight(0.8F, 2.0F)
 			.setPlateau()
+			.setHasSmallerEdge()
 			.setDecoOnly()
 			.setLegacyCompatible();
 	
@@ -614,7 +615,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setSurfaceBuilder(new MangroveForestSurfaceBuilder())
 			.setSpawnsSugarCane()
 			.setSpawnsJungleTemples()
-			.setMinMaxHeight(0.0F, 0.3F)
+			.setMinMaxHeight(0.0F, 0.6F)
 			.setTemperatureRainfall(0.8F, 0.9F)
 			.setNotSpawnable();
 
@@ -917,6 +918,15 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setMinMaxHeight(0.8F, 2.5F)
 			.setEdge();
 
+	public static final BTABiome mangroveForestIslandOld = new MangroveForestBiome(MANGROVE_FOREST_ISLAND_OLD_ID, "betterbiomes:mangrove_forest_island_old", Climate.TEMPERATE)
+			.setBiomeName("Mangrove Forest Island")
+			.setSurfaceBuilder(new MangroveForestSurfaceBuilder())
+			.setSpawnsSugarCane()
+			.setSpawnsJungleTemples()
+			.setMinMaxHeight(0.0F, 0.3F)
+			.setTemperatureRainfall(0.8F, 0.9F)
+			.setNotSpawnable();
+
 	public static final BTABiome oldValley = new OldValleyBiome(OLD_VALLEY_ID, "betterbiomes:old_valley", Climate.TROPICAL)
 			.setBiomeName("Old Valley")
 			.setTemperatureRainfall(0.7F, 0.8F)
@@ -938,9 +948,9 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 			.setBiomeName("Wooded Steppe")
 			.setSpawnsVillages(true)
 			.setSpawnsDesertTemples()
+			//.setNotSpawnable()
 			.setTemperatureRainfall(0.8F, 0.1F)
-			.setMinMaxHeight(0.3F, 0.5F)
-			.setNotSpawnable();
+			.setMinMaxHeight(0.3F, 0.5F);
 	
 	private static ArrayList<BTABiome> betterBiomes = new ArrayList();
 	
@@ -1062,6 +1072,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		floralForest.addSubVariantCommon(floralPlateau);
 		wetlands.addSubVariantCommon(wetlandsHills);
 		willowGrove.addSubVariantCommon(willowHills);
+		mangroveForest.addSubVariantCommon(mangroveForestIsland, info -> info.getBTAVersion().isVersionAtLeast(BTAVersion.V3_2_0));
 		
 		//Sporadic
 		frozenSprings.addSporadicVariant(frozenSpringsPond);
@@ -1086,7 +1097,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		lushDesert.addSporadicVariant(oasis);
 		lushDesert.addSporadicChance(8);
 		
-		mangroveForest.addSporadicVariant(mangroveForestIsland);
+		mangroveForest.addSporadicVariant(mangroveForestIslandOld, info -> info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V3_1_0));
 		mangroveForest.addSporadicChance(3);
 		
 		//Beaches
@@ -1111,7 +1122,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		patagoniaMountains.setHasBeach(false);
 		frozenSprings.setHasBeach(false, pre132);
 		mangroveForest.setHasBeach(false);
-		mangroveForestIsland.setHasBeach(false);
+		mangroveForestIslandOld.setHasBeach(false);
 		highlands.setHasBeach(false);
 		highlandsEdge.setHasBeach(false);
 		iceMarsh.setHasBeach(false);
@@ -1155,7 +1166,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		tropicsEdge.addRiverVariant(tropicsRiver);
 
 		mangroveForest.addRiverVariant(mangroveRiver);
-		mangroveForestIsland.addRiverVariant(mangroveRiver);
+		mangroveForestIslandOld.addRiverVariant(mangroveRiver);
 		
 		orchard.addRiverVariant(orchardRiver);
 		orchardClearing.addRiverVariant(orchardRiver);

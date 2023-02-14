@@ -29,6 +29,8 @@ public class TemperateTreeGrower extends AbstractTreeGrower {
         }
 
         int y2 = y + treeHeight - 1;
+        //Level 0
+        setBlockAndMetadata(world, x, y2 + 3, z, this.woodType.leavesBlockID, this.woodType.leavesMetadata, isWorldGen);
         //Level 1
         setBlockAndMetadata(world, x, y2 + 2, z, this.woodType.leavesBlockID, this.woodType.leavesMetadata, isWorldGen);
         //Level 2
@@ -42,8 +44,8 @@ public class TemperateTreeGrower extends AbstractTreeGrower {
         setBlockAndMetadata(world, x, y2, z + 1, this.woodType.leavesBlockID, this.woodType.leavesMetadata, isWorldGen);
         setBlockAndMetadata(world, x - 1, y2, z, this.woodType.leavesBlockID, this.woodType.leavesMetadata, isWorldGen);
         setBlockAndMetadata(world, x, y2, z - 1, this.woodType.leavesBlockID, this.woodType.leavesMetadata, isWorldGen);
-        //Level 4-6
-        for (int i = 1; i < 4; i++) {
+        //Level 4-7
+        for (int i = 1; i < 5; i++) {
             setBlockAndMetadata(world, x + 1, y2 - i, z, this.woodType.leavesBlockID, this.woodType.leavesMetadata, isWorldGen);
             setBlockAndMetadata(world, x + 2, y2 - i, z, this.woodType.leavesBlockID, this.woodType.leavesMetadata, isWorldGen);
             setBlockAndMetadata(world, x + 1, y2 - i, z + 1, this.woodType.leavesBlockID, this.woodType.leavesMetadata, isWorldGen);
@@ -57,11 +59,16 @@ public class TemperateTreeGrower extends AbstractTreeGrower {
             setBlockAndMetadata(world, x, y2 - i, z - 2, this.woodType.leavesBlockID, this.woodType.leavesMetadata, isWorldGen);
             setBlockAndMetadata(world, x + 1, y2 - i, z - 1, this.woodType.leavesBlockID, this.woodType.leavesMetadata, isWorldGen);
         }
-        //Level 7
-        setBlockAndMetadata(world, x + 1, y2 - 4, z, this.woodType.leavesBlockID, this.woodType.leavesMetadata, isWorldGen);
-        setBlockAndMetadata(world, x, y2 - 4, z + 1, this.woodType.leavesBlockID, this.woodType.leavesMetadata, isWorldGen);
-        setBlockAndMetadata(world, x - 1, y2 - 4, z, this.woodType.leavesBlockID, this.woodType.leavesMetadata, isWorldGen);
-        setBlockAndMetadata(world, x, y2 - 4, z - 1, this.woodType.leavesBlockID, this.woodType.leavesMetadata, isWorldGen);
+        //Level 8
+        setBlockAndMetadata(world, x + 1, y2 - 5, z, this.woodType.leavesBlockID, this.woodType.leavesMetadata, isWorldGen);
+        setBlockAndMetadata(world, x, y2 - 5, z + 1, this.woodType.leavesBlockID, this.woodType.leavesMetadata, isWorldGen);
+        setBlockAndMetadata(world, x - 1, y2 - 5, z, this.woodType.leavesBlockID, this.woodType.leavesMetadata, isWorldGen);
+        setBlockAndMetadata(world, x, y2 - 5, z - 1, this.woodType.leavesBlockID, this.woodType.leavesMetadata, isWorldGen);
+        //Level 9
+        setBlockAndMetadata(world, x + 1, y2 - 6, z, this.woodType.leavesBlockID, this.woodType.leavesMetadata, isWorldGen);
+        setBlockAndMetadata(world, x, y2 - 6, z + 1, this.woodType.leavesBlockID, this.woodType.leavesMetadata, isWorldGen);
+        setBlockAndMetadata(world, x - 1, y2 - 6, z, this.woodType.leavesBlockID, this.woodType.leavesMetadata, isWorldGen);
+        setBlockAndMetadata(world, x, y2 - 6, z - 1, this.woodType.leavesBlockID, this.woodType.leavesMetadata, isWorldGen);
 
         return true;
     }

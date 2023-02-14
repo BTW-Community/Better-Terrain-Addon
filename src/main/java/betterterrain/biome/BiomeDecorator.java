@@ -537,16 +537,11 @@ public class BiomeDecorator implements BiomeDecoratorBase
 
 		for (var2 = 0; var2 < steppePerChunk; ++var2)
 		{
-			try
-			{
+			if (generatorInfo.getBTAVersion().isVersionAtOrBelow(BTAVersion.V3_1_0)) {
 				var3 = chunk_X + randomGenerator.nextInt(16) + 8;
 				var4 = randomGenerator.nextInt(128);
 				var7 = chunk_Z + randomGenerator.nextInt(16) + 8;
 				steppeGen.generate(currentWorld, randomGenerator, var3, var4, var7);
-			}
-			catch (Exception e)
-			{
-
 			}
 		}
 
