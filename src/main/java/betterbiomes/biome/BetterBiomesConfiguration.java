@@ -18,6 +18,7 @@ import betterterrain.world.generate.surface.NoShorelineSurfaceBuilder;
 import betterterrain.world.generate.surface.StonySurfaceBuilder;
 import betterterrain.world.generate.surface.SwampSurfaceBuilder;
 import btw.util.hardcorespawn.HardcoreSpawnUtils;
+import net.minecraft.src.BiomeGenBase;
 
 public class BetterBiomesConfiguration extends BiomeConfiguration {
 	public static final int
@@ -1184,6 +1185,20 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 		volcanicBeach.addRiverVariant(volcanicRiver);
 
 		darkForest.addRiverVariant(darkForestRiver);
+
+		for (int i = 0; i < BiomeGenBase.biomeList.length; i++) {
+			BiomeGenBase b = BiomeGenBase.biomeList[i];
+
+			if (b instanceof BTABiome) {
+				BTABiome biome = (BTABiome) b;
+
+				if (biome.climate == Climate.SNOWY
+					&& biome.getInternalName().startsWith("betterbiomes"))
+				{
+					biome.addRiverVariant(BTABiomeConfiguration.frozenRiver);
+				}
+			}
+		}
 		
 		//Edges
 		alpine.addEdgeVariant(alpineEdge);

@@ -309,15 +309,6 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 		icyPeaks.addEdgeVariant(icyPeaksEdge);
 		jungle.addEdgeVariant(jungleEdge, info -> info.getBTAVersion().isVersionAtLeast(BTAVersion.V1_3_2));
 		jungleHills.setConnectToEdge(false);
-
-		for (int i = 0; i < BiomeGenBase.biomeList.length; i++) {
-			BiomeGenBase b = BiomeGenBase.biomeList[i];
-
-			if (b instanceof BTABiome && ((BTABiome) b).climate == Climate.SNOWY) {
-				BTABiome biome = (BTABiome) b;
-				biome.addRiverVariant(BTABiomeConfiguration.frozenRiver);
-			}
-		}
 	}
 	
 	private static BTABiomeConfiguration instance;
