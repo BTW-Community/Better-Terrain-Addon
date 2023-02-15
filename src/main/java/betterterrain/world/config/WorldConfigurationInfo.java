@@ -49,6 +49,7 @@ public class WorldConfigurationInfo {
 		info.setBTAVersion(BTAMod.getInstance().currentVersion);
 		info.setOceanSize(5);
 		info.setGeneratePerlinBeaches(true);
+		info.setGenerateGravelBeaches(true);
 		info.setWideRivers(true);
 		info.setBiomeSize(1);
 		info.setGenerator(TerrainGenerator.CLASSIC);
@@ -104,7 +105,10 @@ public class WorldConfigurationInfo {
 		JsonObject globalSettings = root.get("global_settings").getAsJsonObject();
 		oceanSize = globalSettings.get("ocean_size").getAsInt();
 		generatePerlinBeaches = globalSettings.get("better_beaches").getAsBoolean();
-		generateGravelBeaches = globalSettings.get("gravel_beaches").getAsBoolean();
+
+		if (globalSettings.has("gravel_beaches")) {
+			generateGravelBeaches = globalSettings.get("gravel_beaches").getAsBoolean();
+		}
 		
 		if (globalSettings.has("wide_rivers")) {
 			wideRivers = globalSettings.get("wide_rivers").getAsBoolean();

@@ -20,6 +20,7 @@ Version 3.2.0
 - Added aspen trees to Mountains and willow trees to Swamps when deco generation is enabled.
 - Added hooks for biomes to use narrower edges.
 - Fixed an issue where some snowy biomes generated regular rivers instead of frozen.
+- Fixed an issue where the 'enable cheats' button when creating a new world was not respected.
 
 Version 3.1.0
 - Updated to CE 2.0.0

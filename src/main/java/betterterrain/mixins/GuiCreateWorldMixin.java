@@ -39,8 +39,6 @@ public abstract class GuiCreateWorldMixin extends GuiScreen implements GuiCreate
         if (((WorldTypeInterface) WorldType.worldTypes[this.worldTypeId]).isBTA() && this.generatorOptionsToUse.equals("")) {
             this.generatorOptionsToUse = WorldConfigurationInfo.createDefaultConfiguration(isDeco).toString();
 
-            System.out.println(this.generatorOptionsToUse);
-
             SurfaceBuilder.defaultBuilder.hasBeenInit = false;
             SurfaceBuilder.legacyBuilder.hasBeenInit = false;
 
@@ -67,11 +65,11 @@ public abstract class GuiCreateWorldMixin extends GuiScreen implements GuiCreate
         WorldSettings newSettings = new WorldSettings(settings.getSeed(), settings.getGameType(), settings.isMapFeaturesEnabled(), settings.getHardcoreEnabled(), type);
         newSettings.func_82750_a(this.generatorOptionsToUse);
 
-        if (newSettings.areCommandsAllowed()) {
-            newSettings.enableBonusChest();
+        if (settings.areCommandsAllowed()) {
+            newSettings.enableCommands();
         }
 
-        if (newSettings.isBonusChestEnabled()) {
+        if (settings.isBonusChestEnabled()) {
             newSettings.enableBonusChest();
         }
 
