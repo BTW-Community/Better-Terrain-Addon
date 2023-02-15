@@ -15,7 +15,8 @@ Version 3.X.0
 Version 3.2.0
 - Updated to CE 2.0.2 and Deco 4.1.0.
 - Refactored how tree generation is handled internally.
-- Renamed Woods to Woodland
+- Renamed Woods to Woodland.
+- Added the ability to toggle gravel beaches separately from the main better shorelines toggle at world creation.
 - Added aspen trees to Mountains and willow trees to Swamps when deco generation is enabled.
 - Added hooks for biomes to use narrower edges.
 - Fixed an issue where some snowy biomes generated regular rivers instead of frozen.

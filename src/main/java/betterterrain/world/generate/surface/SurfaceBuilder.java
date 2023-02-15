@@ -656,9 +656,14 @@ public class SurfaceBuilder {
 
 	protected boolean useGravelAtLocation(int i, int k, Random rand, WorldConfigurationInfo generatorInfo) {
 		if (generatorInfo.getBTAVersion().isVersionAtLeast(BTAVersion.V2_0_3)) {
-			double beachNoiseScale = 1/384D;
-			//k and i swapped because apparently I messed something up somewhere
-			return gravelNoiseGenSimplex.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), beachNoiseScale) > 0.925;
+			if (generatorInfo.generateGravelBeaches()) {
+				double beachNoiseScale = 1 / 384D;
+				//k and i swapped because apparently I messed something up somewhere
+				return gravelNoiseGenSimplex.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), beachNoiseScale) > 0.925;
+			}
+			else {
+				return false;
+			}
 		}
 		else {
 			return gravelNoise[k * 16 + i] + rand.nextDouble() * 0.2D > 3.0D;
