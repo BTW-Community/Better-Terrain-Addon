@@ -29,6 +29,7 @@ Version 3.1.0
 - Added the ability for new deco stones to generate.
 - Changed stone variants to only generate within their respective strata according to the changes in deco.
 - Fixed an issue where some biomes were not generating sugar cane when they were supposed to.
+- Fixed an issue where BTA addon information could not be retrieved from the world configuration info.
 
 Version 3.0.0
 [list]

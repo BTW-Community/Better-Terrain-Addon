@@ -300,6 +300,10 @@ public class WorldConfigurationInfo {
 		this.generator = generator;
 		return this;
 	}
+
+	public AddonConfigurationInfo getWorldConfigurationForAddon(BTAAddon addon) {
+		return this.addonInfoList.get(addon);
+	}
 	
 	public interface Condition {
 		boolean satisfiesContraints(WorldConfigurationInfo info);
