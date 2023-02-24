@@ -11,28 +11,30 @@ public class GeneratorOptionsGui extends GuiScreen implements SliderSettingHandl
 	private final GuiCreateWorld guiCreateWorld;
 	public WorldConfigurationInfo worldGeneratorInfo;
 	
-	private GuiButton buttonDone;
-	private GuiButton buttonDeco;
-	private Slider sliderBiomeSize;
-	private Slider sliderOceanSize;
-	private GuiButton buttonOceanSizeDummy;
-	private GuiButton buttonPerlinBeaches;
-	private GuiButton buttonGravelBeaches;
-	private GuiButton buttonClimates;
-	private GuiButton buttonBiomeConfig;
-	private GuiButton buttoRiverConfig;
+	private GuiButton doneButton;
+	private GuiButton decoButton;
+	private Slider biomeSizeSlider;
+	private Slider oceanSizeSlider;
+	private GuiButton oceanSizeButtonDummy;
+	private GuiButton betterBeachesButton;
+	private GuiButton gravelBeachesButton;
+	private GuiButton climatesButton;
+	private GuiButton biomeConfigButton;
+	private GuiButton riverButton;
+	private GuiButton advancedConfigButton;
 	
-	private final int id_done = 0;
-	private final int id_deco = 1;
-	private final int id_biomeSize = 2;
-	private final int id_oceanSize = 3;
-	private final int id_perlinBeaches = 4;
-	private final int id_climates = 5;
-	private final int id_biomeConfig = 6;
-	private final int id_riverConfig = 7;
-	private final int id_gravelBeaches = 8;
+	private final int DONE_ID = 0;
+	private final int DECO_ID = 1;
+	private final int BIOME_SIZE_ID = 2;
+	private final int OCEAN_SIZE_ID = 3;
+	private final int BETTER_BEACHES_ID = 4;
+	private final int CLIMATES_ID = 5;
+	private final int BIOME_LIST_ID = 6;
+	private final int RIVER_ID = 7;
+	private final int GRAVEL_BEACHES_ID = 8;
+	private final int ADVANCED_SETTINGS_ID = 9;
 	
-	private final int id_oceanDummy = 999;
+	private final int DUMMY_OCEAN_ID = 999;
 
 	public GeneratorOptionsGui(GuiCreateWorld createWorldGui, String infoString) {
 		this.guiCreateWorld = createWorldGui;
@@ -47,20 +49,21 @@ public class GeneratorOptionsGui extends GuiScreen implements SliderSettingHandl
 	 */
 	public void initGui() {
 		this.buttonList.clear();
-		this.buttonList.add(this.sliderOceanSize = new Slider(id_oceanSize, this.width / 2 - 155, this.height / 6, 150, 20, "Ocean Size", this.worldGeneratorInfo.getOceanSize() - 1, this, 10));
-		this.buttonList.add(this.buttonOceanSizeDummy = new GuiButton(id_oceanSize, this.width / 2 - 155, this.height / 6, 150, 20, "Ocean Size: Off"));
-		this.buttonList.add(this.sliderBiomeSize = new Slider(id_biomeSize, this.width / 2 + 5, this.height / 6, 150, 20, "Biome Size", this.worldGeneratorInfo.getBiomeSize(), this, 4));
+		this.buttonList.add(this.oceanSizeSlider = new Slider(OCEAN_SIZE_ID, this.width / 2 - 155, this.height / 6, 150, 20, "Ocean Size", this.worldGeneratorInfo.getOceanSize() - 1, this, 10));
+		this.buttonList.add(this.oceanSizeButtonDummy = new GuiButton(DUMMY_OCEAN_ID, this.width / 2 - 155, this.height / 6, 150, 20, "Ocean Size: Off"));
+		this.buttonList.add(this.biomeSizeSlider = new Slider(BIOME_SIZE_ID, this.width / 2 + 5, this.height / 6, 150, 20, "Biome Size", this.worldGeneratorInfo.getBiomeSize(), this, 4));
 		
-		this.buttonList.add(this.buttonPerlinBeaches = new GuiButton(id_perlinBeaches, this.width / 2 - 155, this.height / 6 + 25, 150, 20, "Better Shores: On"));
-		this.buttonList.add(this.buttonGravelBeaches = new GuiButton(id_gravelBeaches, this.width / 2 + 5, this.height / 6 + 25, 150, 20, "Gravel Beaches: On"));
+		this.buttonList.add(this.betterBeachesButton = new GuiButton(BETTER_BEACHES_ID, this.width / 2 - 155, this.height / 6 + 25, 150, 20, "Better Shores: On"));
+		this.buttonList.add(this.gravelBeachesButton = new GuiButton(GRAVEL_BEACHES_ID, this.width / 2 + 5, this.height / 6 + 25, 150, 20, "Gravel Beaches: On"));
 
-		this.buttonList.add(this.buttoRiverConfig = new GuiButton(id_riverConfig, this.width / 2 - 155, this.height / 6 + 50, 150, 20, "Larger Rivers: On"));
-		this.buttonList.add(this.buttonClimates = new GuiButton(id_climates, this.width / 2 + 5, this.height / 6 + 50, 150, 20, "Climate Zones: On"));
+		this.buttonList.add(this.riverButton = new GuiButton(RIVER_ID, this.width / 2 - 155, this.height / 6 + 50, 150, 20, "Larger Rivers: On"));
+		this.buttonList.add(this.climatesButton = new GuiButton(CLIMATES_ID, this.width / 2 + 5, this.height / 6 + 50, 150, 20, "Climate Zones: On"));
 		
-		this.buttonList.add(this.buttonBiomeConfig = new GuiButton(id_biomeConfig, this.width / 2 - 155, this.height / 6 + 75, 150, 20, "Configure Biomes"));
-		this.buttonList.add(this.buttonDeco = new GuiButton(id_deco, this.width / 2 + 5, this.height / 6 + 75, 150, 20, "Deco Enabled: Off"));
-		
-		this.buttonList.add(this.buttonDone = new GuiButton(id_done, this.width / 2 - 75, this.height / 6 + 105, 150, 20, StatCollector.translateToLocal("gui.done")));
+		this.buttonList.add(this.biomeConfigButton = new GuiButton(BIOME_LIST_ID, this.width / 2 - 155, this.height / 6 + 75, 150, 20, "Configure Biomes"));
+		this.buttonList.add(this.decoButton = new GuiButton(DECO_ID, this.width / 2 + 5, this.height / 6 + 75, 150, 20, "Deco Enabled: Off"));
+
+		this.buttonList.add(this.advancedConfigButton = new GuiButton(ADVANCED_SETTINGS_ID, this.width / 2 - 155, this.height / 6 + 105, 150, 20, "Advanced Settings"));
+		this.buttonList.add(this.doneButton = new GuiButton(DONE_ID, this.width / 2 + 75, this.height / 6 + 105, 150, 20, StatCollector.translateToLocal("gui.done")));
 		this.setButtons();
 	}
 
@@ -80,7 +83,7 @@ public class GeneratorOptionsGui extends GuiScreen implements SliderSettingHandl
 	 * Fired when a control is clicked. This is the equivalent of ActionListener.actionPerformed(ActionEvent e).
 	 */
 	protected void actionPerformed(GuiButton button) {
-		if (button.id == id_done) {
+		if (button.id == DONE_ID) {
 			if (!isDeco()) {
 				for (BiomeInfo b : this.worldGeneratorInfo.getBiomeInfoList()) {
 					if (b.isDecoOnly()) {
@@ -92,7 +95,10 @@ public class GeneratorOptionsGui extends GuiScreen implements SliderSettingHandl
 			this.guiCreateWorld.generatorOptionsToUse = this.getGeneratorInfo();
 			this.mc.displayGuiScreen(this.guiCreateWorld);
 		}
-		else if (button.id == id_deco) {
+		else if (button.id == ADVANCED_SETTINGS_ID) {
+			this.mc.displayGuiScreen(new AdvancedWorldConfigGui(this));
+		}
+		else if (button.id == DECO_ID) {
 			((GuiCreateWorldInterface) this.guiCreateWorld).setDeco(!this.isDeco());
 			
 			for (BiomeInfo b : this.worldGeneratorInfo.getBiomeInfoList()) {
@@ -103,24 +109,24 @@ public class GeneratorOptionsGui extends GuiScreen implements SliderSettingHandl
 			
 			this.updateButtons();
 		}
-		else if (button.id == id_perlinBeaches) {
+		else if (button.id == BETTER_BEACHES_ID) {
 			this.worldGeneratorInfo.setGeneratePerlinBeaches(!this.worldGeneratorInfo.generatePerlinBeaches());
-			this.buttonGravelBeaches.enabled = this.worldGeneratorInfo.generatePerlinBeaches();
+			this.gravelBeachesButton.enabled = this.worldGeneratorInfo.generatePerlinBeaches();
 			this.updateButtons();
 		}
-		else if (button.id == id_gravelBeaches) {
+		else if (button.id == GRAVEL_BEACHES_ID) {
 			this.worldGeneratorInfo.setGenerateGravelBeaches(!this.worldGeneratorInfo.generateGravelBeaches());
 			this.updateButtons();
 		}
-		else if (button.id == id_riverConfig) {
+		else if (button.id == RIVER_ID) {
 			this.worldGeneratorInfo.setWideRivers(!this.worldGeneratorInfo.hasWideRivers());
 			this.updateButtons();
 		}
-		else if (button.id == id_climates) {
+		else if (button.id == CLIMATES_ID) {
 			this.worldGeneratorInfo.setClimatized(!this.worldGeneratorInfo.isClimatized());
 			this.updateButtons();
 		}
-		else if (button.id == id_biomeConfig) {
+		else if (button.id == BIOME_LIST_ID) {
 			this.mc.displayGuiScreen(new BiomeOptionsGui(this.guiCreateWorld, this, this.getGeneratorInfo()));
 		}
 	}
@@ -128,57 +134,57 @@ public class GeneratorOptionsGui extends GuiScreen implements SliderSettingHandl
 
 	public void updateButtons() {
         if (this.isDeco()) {
-        	this.buttonDeco.displayString = "Deco Enabled: On";
+        	this.decoButton.displayString = "Deco Enabled: On";
         }
         else {
-        	this.buttonDeco.displayString = "Deco Enabled: Off";
+        	this.decoButton.displayString = "Deco Enabled: Off";
         }
         
 		if (this.worldGeneratorInfo.generatePerlinBeaches()) {
-			this.buttonPerlinBeaches.displayString = "Better Shores: On";
+			this.betterBeachesButton.displayString = "Better Shores: On";
 		}
 		else {
-			this.buttonPerlinBeaches.displayString = "Better Shores: Off";
+			this.betterBeachesButton.displayString = "Better Shores: Off";
 		}
 
 		if (this.worldGeneratorInfo.generateGravelBeaches() && this.worldGeneratorInfo.generatePerlinBeaches()) {
-			this.buttonGravelBeaches.displayString = "Gravel Beaches: On";
+			this.gravelBeachesButton.displayString = "Gravel Beaches: On";
 		}
 		else {
-			this.buttonGravelBeaches.displayString = "Gravel Beaches: Off";
+			this.gravelBeachesButton.displayString = "Gravel Beaches: Off";
 		}
 		
 		if (this.worldGeneratorInfo.hasWideRivers()) {
-			this.buttoRiverConfig.displayString = "Larger Rivers: On";
+			this.riverButton.displayString = "Larger Rivers: On";
 		}
 		else {
-			this.buttoRiverConfig.displayString = "Larger Rivers: Off";
+			this.riverButton.displayString = "Larger Rivers: Off";
 		}
 		
 		if (this.worldGeneratorInfo.isClimatized()) {
-			this.buttonClimates.displayString = "Climate Zones: On";
+			this.climatesButton.displayString = "Climate Zones: On";
 		}
 		else {
-			this.buttonClimates.displayString = "Climate Zones: Off";
+			this.climatesButton.displayString = "Climate Zones: Off";
 		}
 	}
 
 	public void setButtons() {
-        this.buttonDeco.enabled = BTAMod.isDecoInstalled();
+        this.decoButton.enabled = BTAMod.isDecoInstalled();
 		
 		if (!((WorldTypeInterface) WorldType.worldTypes[((GuiCreateWorldInterface) this.guiCreateWorld).getWorldTypeId()]).canPerlinBeachesBeToggled()) {
-			this.buttonPerlinBeaches.enabled = false;
+			this.betterBeachesButton.enabled = false;
 			this.worldGeneratorInfo.setGeneratePerlinBeaches(((WorldTypeInterface) WorldType.worldTypes[((GuiCreateWorldInterface) this.guiCreateWorld).getWorldTypeId()]).getDefaultPerlinBeachState());
 		}
 		
 		if (!((WorldTypeInterface) WorldType.worldTypes[((GuiCreateWorldInterface) this.guiCreateWorld).getWorldTypeId()]).hasOceans()) {
-			this.buttonOceanSizeDummy.enabled = false;
-			this.buttonOceanSizeDummy.drawButton = true;
-			this.sliderOceanSize.drawButton = false;
+			this.oceanSizeButtonDummy.enabled = false;
+			this.oceanSizeButtonDummy.drawButton = true;
+			this.oceanSizeSlider.drawButton = false;
 			this.worldGeneratorInfo.setOceanSize(1);
 		}
 		else {
-			this.buttonOceanSizeDummy.drawButton = false;
+			this.oceanSizeButtonDummy.drawButton = false;
 		}
         
 		this.updateButtons();
@@ -196,7 +202,7 @@ public class GeneratorOptionsGui extends GuiScreen implements SliderSettingHandl
 
 	@Override
 	public void handleSetting(Slider slider) {
-		if (slider.id == id_oceanSize) {
+		if (slider.id == OCEAN_SIZE_ID) {
 			int setting;
 			
 			if (slider.sliderValue == 0) {
@@ -211,7 +217,7 @@ public class GeneratorOptionsGui extends GuiScreen implements SliderSettingHandl
 			
 			this.worldGeneratorInfo.setOceanSize(setting + 1);
 		}
-		else if (slider.id == id_biomeSize) {
+		else if (slider.id == BIOME_SIZE_ID) {
 			int setting;
 			
 			if (slider.sliderValue == 0) {
@@ -230,7 +236,7 @@ public class GeneratorOptionsGui extends GuiScreen implements SliderSettingHandl
 
 	@Override
 	public void updateText(Slider slider) {
-		if (slider.id == id_oceanSize) {
+		if (slider.id == OCEAN_SIZE_ID) {
 			int setting;
 			
 			if (slider.sliderValue == 0) {
@@ -256,7 +262,7 @@ public class GeneratorOptionsGui extends GuiScreen implements SliderSettingHandl
 			
 			slider.displayString = "Ocean Size: " + displaySetting;
 		}
-		else if (slider.id == id_biomeSize) {
+		else if (slider.id == BIOME_SIZE_ID) {
 			int setting;
 			
 			if (slider.sliderValue == 0) {
