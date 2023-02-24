@@ -283,8 +283,12 @@ public class WorldConfigurationInfo {
 		this.generator = generator;
 		return this;
 	}
+
+	public AddonConfigurationInfo getWorldConfigurationForAddon(BTAAddon addon) {
+		return this.addonInfoList.get(addon);
+	}
 	
-	public static interface Condition {
-		public boolean satisfiesContraints(WorldConfigurationInfo info);
+	public interface Condition {
+		boolean satisfiesContraints(WorldConfigurationInfo info);
 	}
 }
