@@ -2,6 +2,7 @@ package betterterrain.world.feature.plant;
 
 import java.util.Random;
 
+import betterterrain.world.util.WorldTypeInterface;
 import btw.AddonHandler;
 import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
@@ -40,6 +41,7 @@ public class TallGrassGen extends WorldGenerator
                 if (par2Random.nextInt(5) == 0 &&
                         this.tallGrassMetadata != 0 &&
                         !AddonHandler.isModInstalled("Sock's Crops") &&
+                        ((WorldTypeInterface) par1World.provider.terrainType).isDeco() &&
                         par1World.getBlockId(var8, var9 + 1, var10) == 0)
                 {
                     par1World.setBlock(var8, var9, var10, DecoBlocks.tallGrass.blockID, this.tallGrassMetadata - 1, 2);

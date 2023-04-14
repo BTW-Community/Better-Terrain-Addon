@@ -62,8 +62,9 @@ public class GeneratorOptionsGui extends GuiScreen implements SliderSettingHandl
 		this.buttonList.add(this.biomeConfigButton = new GuiButton(BIOME_LIST_ID, this.width / 2 - 155, this.height / 6 + 75, 150, 20, "Configure Biomes"));
 		this.buttonList.add(this.decoButton = new GuiButton(DECO_ID, this.width / 2 + 5, this.height / 6 + 75, 150, 20, "Deco Enabled: Off"));
 
-		this.buttonList.add(this.advancedConfigButton = new GuiButton(ADVANCED_SETTINGS_ID, this.width / 2 - 155, this.height / 6 + 105, 150, 20, "Advanced Settings"));
-		this.buttonList.add(this.doneButton = new GuiButton(DONE_ID, this.width / 2 + 75, this.height / 6 + 105, 150, 20, StatCollector.translateToLocal("gui.done")));
+		//this.buttonList.add(this.advancedConfigButton = new GuiButton(ADVANCED_SETTINGS_ID, this.width / 2 - 75, this.height / 6 + 100, 150, 20, "Advanced Settings"));
+
+		this.buttonList.add(this.doneButton = new GuiButton(DONE_ID, this.width / 2 - 75, this.height / 6 + 105, 150, 20, StatCollector.translateToLocal("gui.done")));
 		this.setButtons();
 	}
 

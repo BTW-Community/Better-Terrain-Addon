@@ -100,7 +100,7 @@ public class BTATreeGrowers {
 
     //------ Willow ------//
 
-    public static final AbstractTreeGrower WILLOW_TREE = new SwampTreeGrower("betterterrain:willow", 5, 8, DecoWoodTypeHelper.willowWoodType());
+    public static final AbstractTreeGrower WILLOW_TREE = new WillowTreeGrower("betterterrain:willow", 7, 10, DecoWoodTypeHelper.willowWoodType());
     public static final AbstractTreeGrower HUGE_WILLOW_TREE = new HugeWillowTreeGrower("betterterrain:huge_willow", 9, 12, DecoWoodTypeHelper.willowWoodType(), true);
 
     //------ Dark Oak ------//

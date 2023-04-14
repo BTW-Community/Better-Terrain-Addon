@@ -1143,7 +1143,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 
 		WorldConfigurationInfo.Condition post132 = info -> info.getBTAVersion().isVersionAtLeast(BTAVersion.V1_3_2);
 
-		mapleWoods.addBeachVariant(BTABiomeConfiguration.frozenBeach);
+		snowyMapleWoods.addBeachVariant(BTABiomeConfiguration.frozenBeach);
 		snowyWoods.addBeachVariant(BTABiomeConfiguration.frozenBeach, post132);
 		frozenSprings.addBeachVariant(BTABiomeConfiguration.frozenBeach, post132);
 		

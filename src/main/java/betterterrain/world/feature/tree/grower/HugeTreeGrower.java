@@ -15,4 +15,19 @@ public class HugeTreeGrower extends BigTreeGrower {
 		this.setScale(1, 1, 1);
 		this.trunkSize = 2;
 	}
+
+	@Override
+	public boolean growTree(World world, Random rand, int x, int y, int z, boolean isWorldGen) {
+		if (super.growTree(world, rand, x, y, z, isWorldGen)) {
+			if (this.trunkSize == 2) {
+				this.setBlockAndMetadata(world, x + 1, y, z, this.woodType.stumpBlockID, this.woodType.stumpMetadata, isWorldGen);
+				this.setBlockAndMetadata(world, x, y, z + 1, this.woodType.stumpBlockID, this.woodType.stumpMetadata, isWorldGen);
+				this.setBlockAndMetadata(world, x + 1, y, z + 1, this.woodType.stumpBlockID, this.woodType.stumpMetadata, isWorldGen);
+			}
+
+			return true;
+		}
+
+		return false;
+	}
 }

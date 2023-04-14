@@ -58,6 +58,7 @@ public class SwampBiome extends BTABiome {
 		this.treeGrowers.put(BTATreeGrowers.TEMPERATE_BIRCH_TREE, 2);
 
 		this.decoTreeGrowers.put(BTATreeGrowers.HUGE_WILLOW_TREE, 1);
+		this.decoTreeGrowers.put(BTATreeGrowers.WILLOW_TREE, 10);
 		this.decoTreeGrowers.put(BTATreeGrowers.TALL_SWAMP_OAK_TREE, 5);
 		this.decoTreeGrowers.put(TreeGrowers.SWAMP_OAK_TREE, 10);
 		this.decoTreeGrowers.put(BTATreeGrowers.TEMPERATE_BIRCH_TREE, 2);

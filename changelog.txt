@@ -21,6 +21,7 @@ Version 3.2.0
 - Added hooks for biomes to use narrower edges.
 - Fixed an issue where some snowy biomes generated regular rivers instead of frozen.
 - Fixed an issue where the 'enable cheats' button when creating a new world was not respected.
+- Fixed an issue where deco double tall grass generated even when deco generation was not enabled.
 
 Version 3.1.0
 - Updated to CE 2.0.0
