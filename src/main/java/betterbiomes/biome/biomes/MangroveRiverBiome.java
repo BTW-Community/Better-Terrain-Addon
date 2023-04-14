@@ -1,8 +1,9 @@
 package betterbiomes.biome.biomes;
 
 import betterbiomes.biome.BetterBiomesConfiguration;
-import betterbiomes.feature.tree.MangroveGen;
+import betterbiomes.world.feature.tree.legacy.MangroveGen;
 import betterterrain.biome.biomes.RiverBiome;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
 import btw.entity.mob.*;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenerator;
@@ -12,7 +13,7 @@ import java.util.Random;
 public class MangroveRiverBiome extends RiverBiome {
     public MangroveRiverBiome(int id, String internalName) {
         super(id, internalName, BetterBiomesConfiguration.mangroveForest.climate);
-        this.btaBiomeDecorator.treesPerChunk = 10;
+        this.btaBiomeDecorator.treesPerChunk = 7;
         this.btaBiomeDecorator.flowersPerChunk = -999;
         this.btaBiomeDecorator.mushroomsPerChunk = 8;
         this.btaBiomeDecorator.reedsPerChunk = 10;
@@ -28,6 +29,12 @@ public class MangroveRiverBiome extends RiverBiome {
         this.spawnableMonsterList.add(new SpawnListEntry(CreeperEntity.class, 10, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(SlimeEntity.class, 10, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EndermanEntity.class, 1, 1, 4));
+    }
+
+    public void initTreeGrowerMap() {
+        this.treeGrowers.put(BTATreeGrowers.OAK_MANGROVE_TREE, 1);
+
+        this.decoTreeGrowers.put(BTATreeGrowers.MANGROVE_TREE, 1);
     }
 
     @Override

@@ -4,8 +4,10 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.tree.TaigaGen5;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
+import betterterrain.world.feature.tree.legacy.TaigaGen5;
 import betterterrain.world.config.WorldConfigurationInfo;
+import btw.world.feature.trees.grower.TreeGrowers;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenTaiga2;
 import net.minecraft.src.WorldGenerator;
@@ -15,6 +17,11 @@ public class IcyPeaksBiome extends BTABiome {
 		super(id, internalName, climate);
         this.btaBiomeDecorator.grassPerChunk = 2;
 	}
+
+    public void initTreeGrowerMap() {
+        treeGrowers.put(TreeGrowers.SPRUCE_TREE, 2);
+        treeGrowers.put(BTATreeGrowers.MEDIUM_SPRUCE_TREE, 1);
+    }
 
     /**
      * Gets a WorldGen appropriate for this biome.

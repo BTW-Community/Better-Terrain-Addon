@@ -48,7 +48,9 @@ public abstract class BTALayer extends GenLayer {
 		}
 
 		GenLayer layerMangnifyBiome = GenLayerZoom.magnify(1000L, layerMushroomIsland, 0);
+
 		GenLayer layerBiome;
+
 		if (generatorInfo.isClimatized() && generatorInfo.getBTAVersion().isVersionAtLeast(BTAVersion.V1_3_0)) {
 			GenLayer layerClimateZoom = GenLayerZoom.magnify(1000l, layerClimates, 2);
 			GenLayer layerClimateSmooth = new ClimateSmoothLayer(2000L, layerClimateZoom, generatorInfo.getBiomesForGeneration());

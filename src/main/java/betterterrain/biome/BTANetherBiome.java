@@ -2,10 +2,10 @@ package betterterrain.biome;
 
 import java.util.Random;
 
-import betterterrain.feature.terrain.BasaltPillarGen;
-import betterterrain.feature.terrain.GlowstoneGen;
-import betterterrain.feature.terrain.NetherLavaGen;
-import betterterrain.feature.terrain.OreGen;
+import betterterrain.world.feature.terrain.BasaltPillarGen;
+import betterterrain.world.feature.terrain.GlowstoneGen;
+import betterterrain.world.feature.terrain.NetherLavaGen;
+import betterterrain.world.feature.terrain.OreGen;
 import betterterrain.world.config.WorldConfigurationInfo;
 import btw.entity.mob.GhastEntity;
 import btw.entity.mob.MagmaCubeEntity;

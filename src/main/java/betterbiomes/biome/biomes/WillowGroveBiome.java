@@ -4,11 +4,13 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.tree.WillowGen;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
+import betterterrain.world.feature.tree.legacy.WillowGen;
 import btw.entity.mob.ChickenEntity;
 import btw.entity.mob.PigEntity;
 import btw.entity.mob.SlimeEntity;
 import btw.entity.mob.WitchEntity;
+import btw.world.feature.trees.grower.TreeGrowers;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenerator;
 
@@ -30,6 +32,14 @@ public class WillowGroveBiome extends BTABiome {
         this.spawnableCreatureList.add(new SpawnListEntry(PigEntity.class, 10, 2, 2));
         this.waterColorMultiplier = 3653595;
 	}
+
+    public void initTreeGrowerMap() {
+        treeGrowers.put(BTATreeGrowers.HUGE_OAK_WILLOW_TREE, 1);
+        treeGrowers.put(TreeGrowers.SWAMP_OAK_TREE, 1);
+
+        decoTreeGrowers.put(BTATreeGrowers.HUGE_WILLOW_TREE, 1);
+        decoTreeGrowers.put(BTATreeGrowers.WILLOW_TREE, 1);
+    }
 
     /**
      * Gets a WorldGen appropriate for this biome.

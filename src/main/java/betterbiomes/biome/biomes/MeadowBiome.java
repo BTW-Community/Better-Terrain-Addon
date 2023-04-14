@@ -2,10 +2,11 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.feature.tree.MeadowTreeGen1;
-import betterbiomes.feature.tree.MeadowTreeGen2;
+import betterbiomes.world.feature.tree.legacy.MeadowTreeGen1;
+import betterbiomes.world.feature.tree.legacy.MeadowTreeGen2;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
 import net.minecraft.src.WorldGenerator;
 
 public class MeadowBiome extends BTABiome {
@@ -14,6 +15,15 @@ public class MeadowBiome extends BTABiome {
 		this.btaBiomeDecorator.treesPerChunk = 1;
 		this.btaBiomeDecorator.grassPerChunk = 15;
 		this.btaBiomeDecorator.flowersPerChunk = 30;
+	}
+
+	public void initTreeGrowerMap() {
+		this.treeGrowers.put(BTATreeGrowers.MEADOW_SPRUCE_TREE, 20);
+		this.treeGrowers.put(BTATreeGrowers.LARGE_MEADOW_OAK_TREE, 1);
+
+		this.decoTreeGrowers.put(BTATreeGrowers.MEADOW_SPRUCE_TREE, 12);
+		this.decoTreeGrowers.put(BTATreeGrowers.MEADOW_DARK_OAK_TREE, 8);
+		this.decoTreeGrowers.put(BTATreeGrowers.LARGE_MEADOW_DARK_OAK_TREE, 1);
 	}
 
 	/**

@@ -12,6 +12,17 @@ Version 3.X.0
 [*]Changed black stone to be able to spawn nether mobs.
 [/list]
 
+Version 3.2.0
+- Updated to CE 2.0.2 and Deco 4.1.0.
+- Refactored how tree generation is handled internally.
+- Renamed Woods to Woodland.
+- Added the ability to toggle gravel beaches separately from the main better shorelines toggle at world creation.
+- Added aspen trees to Mountains and willow trees to Swamps when deco generation is enabled.
+- Added hooks for biomes to use narrower edges.
+- Fixed an issue where some snowy biomes generated regular rivers instead of frozen.
+- Fixed an issue where the 'enable cheats' button when creating a new world was not respected.
+- Fixed an issue where deco double tall grass generated even when deco generation was not enabled.
+
 Version 3.1.0
 - Updated to CE 2.0.0
 - Refactored the mod to use fabric mixins, so it can now be installed through the mods folder
@@ -19,6 +30,7 @@ Version 3.1.0
 - Added the ability for new deco stones to generate.
 - Changed stone variants to only generate within their respective strata according to the changes in deco.
 - Fixed an issue where some biomes were not generating sugar cane when they were supposed to.
+- Fixed an issue where BTA addon information could not be retrieved from the world configuration info.
 
 Version 3.0.0
 [list]

@@ -30,7 +30,9 @@ public enum BTAVersion {
 	
 	V3_0_0(3, 0, 0),
 
-	V3_1_0(3, 1, 0);
+	V3_1_0(3, 1, 0),
+
+	V3_2_0(3, 2, 0);
 	
 	private final int major;
 	private final int minor;

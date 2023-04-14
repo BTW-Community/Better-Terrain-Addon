@@ -10,7 +10,6 @@ import betterterrain.BTAAddon;
 public class AddonConfigurationInfo {
 	private String name;
 	private AddonVersion version;
-	private Map<String, String> settings;
 	
 	public final JsonObject toJsonObject() {
 		JsonObject root = new JsonObject();

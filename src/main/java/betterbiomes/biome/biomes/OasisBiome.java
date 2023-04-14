@@ -2,7 +2,7 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.feature.tree.PalmTreeSmallGen;
+import betterbiomes.world.feature.tree.legacy.PalmTreeSmallGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import net.minecraft.src.WorldGenerator;
@@ -26,7 +26,7 @@ public class OasisBiome extends BTABiome {
 	}
 
 	@Override
-    public boolean CanLightningStrikeInBiome()
+    public boolean canLightningStrikeInBiome()
     {
         return true;
     }

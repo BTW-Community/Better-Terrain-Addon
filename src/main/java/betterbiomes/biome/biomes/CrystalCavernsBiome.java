@@ -2,8 +2,8 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.feature.terrain.AmethystShardsGen;
-import betterbiomes.feature.terrain.CrystalGen;
+import betterbiomes.world.feature.terrain.AmethystShardsGen;
+import betterbiomes.world.feature.terrain.CrystalGen;
 import betterterrain.biome.BTANetherBiome;
 import betterterrain.world.config.WorldConfigurationInfo;
 import net.minecraft.src.Block;

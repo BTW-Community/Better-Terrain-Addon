@@ -2,9 +2,11 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.feature.tree.OldOakGen;
+import betterbiomes.world.feature.tree.legacy.OldOakGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
+import btw.world.feature.trees.grower.TreeGrowers;
 import net.minecraft.src.WorldGenBigTree;
 import net.minecraft.src.WorldGenTrees;
 import net.minecraft.src.WorldGenerator;
@@ -15,6 +17,12 @@ public class OrchardBiome extends BTABiome {
 		this.btaBiomeDecorator.treesPerChunk = 3;
 		this.btaBiomeDecorator.grassPerChunk = 30;
 		this.btaBiomeDecorator.flowersPerChunk = 20;
+	}
+
+	public void initTreeGrowerMap() {
+		this.treeGrowers.put(BTATreeGrowers.TALL_OAK_TREE, 5);
+		this.treeGrowers.put(TreeGrowers.BIG_OAK_TREE, 5);
+		this.treeGrowers.put(BTATreeGrowers.HUGE_OAK_TREE, 1);
 	}
 
     /**
@@ -42,6 +50,6 @@ public class OrchardBiome extends BTABiome {
      */
     public int getBiomeGrassColor()
     {
-    	return 13236061;
+    	return 0xa0c940;
     }
 }

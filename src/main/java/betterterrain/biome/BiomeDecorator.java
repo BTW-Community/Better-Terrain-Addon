@@ -4,12 +4,12 @@ import java.util.Random;
 
 import betterterrain.BTAMod;
 import betterterrain.BTAVersion;
-import betterterrain.feature.plant.*;
-import betterterrain.feature.terrain.ClayGen;
-import betterterrain.feature.terrain.OasisGen;
-import betterterrain.feature.terrain.OreGen;
-import betterterrain.feature.terrain.SkyClayGen;
-import betterterrain.feature.terrain.SteppeGen;
+import betterterrain.world.feature.plant.*;
+import betterterrain.world.feature.terrain.ClayGen;
+import betterterrain.world.feature.terrain.OasisGen;
+import betterterrain.world.feature.terrain.OreGen;
+import betterterrain.world.feature.terrain.SkyClayGen;
+import betterterrain.world.feature.terrain.SteppeGen;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.config.WorldConfigurationInfoLegacy;
 import betterterrain.world.generate.surface.SurfaceBuilder;
@@ -537,16 +537,11 @@ public class BiomeDecorator implements BiomeDecoratorBase
 
 		for (var2 = 0; var2 < steppePerChunk; ++var2)
 		{
-			try
-			{
+			if (generatorInfo.getBTAVersion().isVersionAtOrBelow(BTAVersion.V3_1_0)) {
 				var3 = chunk_X + randomGenerator.nextInt(16) + 8;
 				var4 = randomGenerator.nextInt(128);
 				var7 = chunk_Z + randomGenerator.nextInt(16) + 8;
 				steppeGen.generate(currentWorld, randomGenerator, var3, var4, var7);
-			}
-			catch (Exception e)
-			{
-
 			}
 		}
 

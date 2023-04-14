@@ -2,9 +2,11 @@ package betterbiomes.world.generate.surface;
 
 import java.util.Random;
 
+import betterbiomes.biome.biomes.HeathlandBiome;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.generate.surface.SurfaceBuilder;
+import btw.world.feature.trees.grower.AbstractTreeGrower;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenShrub;
 import net.minecraft.src.WorldGenTaiga2;
@@ -30,24 +32,20 @@ public class HeathlandSurfaceBuilder extends SurfaceBuilder {
 		{
 			int x = this.chunkX + rand.nextInt(16) + 8;
 			int z = this.chunkZ + rand.nextInt(16) + 8;
-			
-			WorldGenerator gen;
+
+			HeathlandBiome heathlandBiome = (HeathlandBiome) this.biome;
+
+			AbstractTreeGrower treeGrower;
 			
 			if (this.treeNoiseGen.noise2(x, z, this.treeNoiseScale) - .5 > 0) {
-				gen = new WorldGenTaiga2(false);
+				treeGrower = heathlandBiome.getTreeGrowerFromList(rand, heathlandBiome.treeGrowers);
 			}
 			else if (rand.nextInt(12) < 7) {
-				if (rand.nextInt(3) == 0) {
-					gen = new WorldGenTrees(false);
-				}
-				else {
-					gen = new WorldGenShrub(0,0);
-				}
+				treeGrower = heathlandBiome.getTreeGrowerFromList(rand, heathlandBiome.spruceTreeGrowers);
 			}
 			else continue;
-			
-			gen.setScale(1.0D, 1.0D, 1.0D);
-			gen.generate(world, rand, x, world.getHeightValue(x, z), z);
+
+			treeGrower.growTree(world, rand, x, world.getHeightValue(x, z), z, true);
 		}
 	}
 }

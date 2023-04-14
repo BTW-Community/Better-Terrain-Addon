@@ -2,12 +2,13 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.feature.tree.TaigaGen4;
+import betterbiomes.world.feature.tree.legacy.TaigaGen4;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.plant.TallGrassGen;
-import betterterrain.feature.tree.TaigaGen6;
-import betterterrain.feature.tree.TaigaGen7;
+import betterterrain.world.feature.plant.TallGrassGen;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
+import betterterrain.world.feature.tree.legacy.TaigaGen6;
+import betterterrain.world.feature.tree.legacy.TaigaGen7;
 import btw.entity.mob.WolfEntity;
 import net.minecraft.src.Block;
 import net.minecraft.src.SpawnListEntry;
@@ -20,6 +21,22 @@ public class ShieldBiome extends BTABiome {
         this.btaBiomeDecorator.treesPerChunk = 7;
         this.btaBiomeDecorator.grassPerChunk = 2;
         this.btaBiomeDecorator.generateStoneInGrass = true;
+	}
+
+	public void initTreeGrowerMap() {
+		this.treeGrowers.put(BTATreeGrowers.TALL_SPRUCE_TREE, 6);
+		this.treeGrowers.put(BTATreeGrowers.BIG_SPRUCE_TREE, 6);
+		this.treeGrowers.put(BTATreeGrowers.OAK_REDWOOD_TREE, 6);
+		this.treeGrowers.put(BTATreeGrowers.BIRCH_ASPEN_TREE, 2);
+
+		this.decoTreeGrowers.put(BTATreeGrowers.TALL_SPRUCE_TREE, 3);
+		this.decoTreeGrowers.put(BTATreeGrowers.BIG_SPRUCE_TREE, 3);
+		this.decoTreeGrowers.put(BTATreeGrowers.TALL_FIR_TREE, 3);
+		this.decoTreeGrowers.put(BTATreeGrowers.BIG_FIR_TREE, 3);
+		this.decoTreeGrowers.put(BTATreeGrowers.TALL_DARK_OAK_TREE, 3);
+		this.decoTreeGrowers.put(BTATreeGrowers.OAK_REDWOOD_TREE, 3);
+		this.decoTreeGrowers.put(BTATreeGrowers.BIRCH_ASPEN_TREE, 1);
+		this.decoTreeGrowers.put(BTATreeGrowers.ASPEN_TREE, 1);
 	}
 
     /**

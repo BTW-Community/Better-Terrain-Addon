@@ -5,11 +5,13 @@ import java.util.Random;
 import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.plant.TallGrassGen;
-import betterterrain.feature.tree.SmallShrubGen;
-import betterterrain.feature.tree.TinyShrubGen;
+import betterterrain.world.feature.plant.TallGrassGen;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
+import betterterrain.world.feature.tree.legacy.SmallShrubGen;
+import betterterrain.world.feature.tree.legacy.TinyShrubGen;
 import btw.entity.mob.ChickenEntity;
 import btw.entity.mob.PigEntity;
+import btw.world.feature.trees.grower.TreeGrowers;
 import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.SpawnListEntry;
@@ -34,6 +36,12 @@ public class OutbackBiome extends BTABiome {
 		this.spawnableCreatureList.clear();
 		this.spawnableCreatureList.add(new SpawnListEntry(ChickenEntity.class, 10, 2, 2));
 		this.spawnableCreatureList.add(new SpawnListEntry(PigEntity.class, 10, 2, 2));
+	}
+
+	public void initTreeGrowerMap() {
+		this.treeGrowers.put(BTATreeGrowers.OAK_BUSH, 1);
+		this.treeGrowers.put(BTATreeGrowers.SMALL_OAK_SHRUB, 3);
+		this.treeGrowers.put(BTATreeGrowers.TINY_OAK_SHRUB, 3);
 	}
 
 	/**

@@ -5,16 +5,22 @@ import java.util.Random;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.world.config.WorldConfigurationInfo;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
+import btw.world.feature.trees.grower.TreeGrowers;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenShrub;
 import net.minecraft.src.WorldGenerator;
 
 public class HighlandsBiome extends BTABiome {
-
 	public HighlandsBiome(int id, String internalName, Climate climate) {
 		super(id, internalName, climate);
 		this.btaBiomeDecorator.fractionalTreeChance = 2;
-		this.btaBiomeDecorator.grassPerChunk = 3;
+		this.btaBiomeDecorator.grassPerChunk = 15;
+	}
+
+	public void initTreeGrowerMap() {
+		this.treeGrowers.put(TreeGrowers.OAK_TREE, 1);
+		this.treeGrowers.put(BTATreeGrowers.OAK_BUSH, 3);
 	}
 
 	/**

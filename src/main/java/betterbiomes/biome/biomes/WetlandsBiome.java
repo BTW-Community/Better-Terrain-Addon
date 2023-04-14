@@ -4,13 +4,15 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.tree.TaigaGen5;
-import betterterrain.feature.tree.TallSwampTreeGen;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
+import betterterrain.world.feature.tree.legacy.TaigaGen5;
+import betterterrain.world.feature.tree.legacy.TallSwampTreeGen;
 import betterterrain.world.config.WorldConfigurationInfo;
 import btw.entity.mob.ChickenEntity;
 import btw.entity.mob.PigEntity;
 import btw.entity.mob.SlimeEntity;
 import btw.entity.mob.WitchEntity;
+import btw.world.feature.trees.grower.TreeGrowers;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenVines;
@@ -34,6 +36,12 @@ public class WetlandsBiome extends BTABiome {
         this.spawnableCreatureList.add(new SpawnListEntry(PigEntity.class, 10, 2, 2));
         this.waterColorMultiplier = 10083127;
 	}
+
+    public void initTreeGrowerMap() {
+        treeGrowers.put(BTATreeGrowers.TALL_SWAMP_OAK_TREE, 1);
+        treeGrowers.put(BTATreeGrowers.MEDIUM_SPRUCE_TREE, 2);
+        treeGrowers.put(TreeGrowers.SWAMP_OAK_TREE, 4);
+    }
 
     /**
      * Gets a WorldGen appropriate for this biome.

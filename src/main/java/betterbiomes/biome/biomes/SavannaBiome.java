@@ -3,13 +3,14 @@ package betterbiomes.biome.biomes;
 import java.util.Random;
 
 import betterbiomes.biome.BetterBiomesConfiguration;
-import betterbiomes.feature.tree.AcaciaGen;
+import betterbiomes.world.feature.tree.legacy.AcaciaGen;
 import betterterrain.BTAVersion;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.biome.layer.HillsLayer;
 import betterterrain.mixins.GenLayerAccessor;
 import betterterrain.world.config.WorldConfigurationInfo;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
 import net.minecraft.src.WorldGenShrub;
 import net.minecraft.src.WorldGenerator;
 
@@ -21,6 +22,14 @@ public class SavannaBiome extends BTABiome {
 		super(id, internalName, climate);
 		this.btaBiomeDecorator.treesPerChunk = 2;
 		this.btaBiomeDecorator.grassPerChunk = 25;
+	}
+
+	public void initTreeGrowerMap() {
+		this.treeGrowers.put(BTATreeGrowers.OAK_ACACIA_TREE, 1);
+		this.treeGrowers.put(BTATreeGrowers.OAK_BUSH, 2);
+
+		this.decoTreeGrowers.put(BTATreeGrowers.ACACIA_TREE, 1);
+		this.decoTreeGrowers.put(BTATreeGrowers.OAK_BUSH, 2);
 	}
 
 	/**

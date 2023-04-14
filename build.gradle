@@ -55,7 +55,7 @@ dependencies {
     implementation "org.lwjgl.lwjgl:lwjgl:${lwjglVersion}"
     implementation "org.lwjgl.lwjgl:lwjgl-platform:${lwjglVersion}"
 
-    compileOnly fileTree(dir: "libs", include: "Deco-Addon-4.0.0-alpha.jar")
+    compileOnly fileTree(dir: "libs", include: "Deco-Addon-4.1.0.jar")
 
     implementation fileTree(dir: "libs", include: "**.zip")
     compileOnly fileTree(dir: "$buildDir/BTW_dev", include: "**.jar")

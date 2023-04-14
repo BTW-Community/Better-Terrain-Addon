@@ -1,5 +1,6 @@
 package betterterrain.biome.layer;
 
+import betterterrain.BTAVersion;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.BiomeConfiguration;
 import betterterrain.world.config.WorldConfigurationInfo;
@@ -99,7 +100,16 @@ public class ShoreLayer extends BTALayer
 					{
 						//If current biome is a biome that forms edges
 						if (BiomeConfiguration.getEdgeVariantForBiomes(currentBiome, this.generatorInfo, this) != currentBiome) {
-							intCache[j + i * xSize] = BiomeConfiguration.getEdgeVariantForBiomes(currentBiome, this.generatorInfo, this);
+							if (this.generatorInfo.getBTAVersion().isVersionAtOrBelow(BTAVersion.V3_1_0)
+									|| passNum == 1
+									|| (BiomeGenBase.biomeList[currentBiome] instanceof BTABiome
+											&& ((BTABiome) BiomeGenBase.biomeList[currentBiome]).hasExtendedEdge()))
+							{
+								intCache[j + i * xSize] = BiomeConfiguration.getEdgeVariantForBiomes(currentBiome, this.generatorInfo, this);
+							}
+							else {
+								intCache[j + i * xSize] = currentBiome;
+							}
 						}
 						else {
 							intCache[j + i * xSize] = currentBiome;

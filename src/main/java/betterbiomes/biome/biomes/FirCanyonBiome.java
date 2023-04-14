@@ -2,16 +2,13 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.feature.tree.*;
+import betterbiomes.world.feature.tree.legacy.*;
 import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.plant.TallGrassGen;
-import betterterrain.feature.tree.SmallShrubGen;
-import betterterrain.feature.tree.TaigaGen5;
-import betterterrain.feature.tree.TaigaGen6;
-import betterterrain.feature.tree.TaigaGen7;
+import betterterrain.world.feature.plant.TallGrassGen;
 import betterterrain.world.config.WorldConfigurationInfo;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
 import deco.block.DecoBlocks;
 import net.minecraft.src.Block;
 import net.minecraft.src.WorldGenerator;
@@ -26,6 +23,15 @@ public class FirCanyonBiome extends BTABiome {
         	this.topBlockExt = DecoBlocks.legacyRedSand.blockID;
         	this.fillerBlockExt = DecoBlocks.legacyRedSand.blockID;
         }
+	}
+
+	public void initTreeGrowerMap() {
+		this.treeGrowers.put(BTATreeGrowers.FIR_TREE, 1);
+		this.treeGrowers.put(BTATreeGrowers.MEDIUM_FIR_TREE, 1);
+		this.treeGrowers.put(BTATreeGrowers.TALL_FIR_TREE, 1);
+		this.treeGrowers.put(BTATreeGrowers.BIG_FIR_TREE, 1);
+		this.treeGrowers.put(BTATreeGrowers.HUGE_FIR_TREE, 1);
+		this.treeGrowers.put(BTATreeGrowers.SMALL_FIR_SHRUB, 3);
 	}
 
     /**

@@ -10,6 +10,8 @@ import betterterrain.BTAVersion;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.world.config.WorldConfigurationInfo;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
+import btw.world.feature.trees.grower.TreeGrowers;
 import deco.block.DecoBlocks;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
@@ -60,6 +62,10 @@ public class BadlandsPlateauBiome extends BTABiome {
 		return true;
 	}
 
+	public void initTreeGrowerMap() {
+		this.treeGrowers.put(TreeGrowers.OAK_TREE, 1);
+	}
+
     /**
      * Gets a WorldGen appropriate for this biome.
      */
@@ -69,7 +75,7 @@ public class BadlandsPlateauBiome extends BTABiome {
     }
 
 	@Override
-	public boolean CanLightningStrikeInBiome()
+	public boolean canLightningStrikeInBiome()
 	{
 		return true;
 	}

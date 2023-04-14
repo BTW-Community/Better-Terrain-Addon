@@ -3,10 +3,12 @@ package betterbiomes.biome.biomes;
 import java.util.ArrayList;
 import java.util.Random;
 
-import betterbiomes.feature.tree.AcaciaGen;
+import betterbiomes.world.feature.tree.legacy.AcaciaGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
 import betterterrain.world.config.WorldConfigurationInfo;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
+import btw.world.feature.trees.grower.TreeGrowers;
 import net.minecraft.src.WorldGenerator;
 
 public class IvoryHillsBiome extends BTABiome {
@@ -23,6 +25,10 @@ public class IvoryHillsBiome extends BTABiome {
         this.btaBiomeDecorator.generateLakes = false;
 	}
 
+	public void initTreeGrowerMap() {
+		this.decoTreeGrowers.put(BTATreeGrowers.ACACIA_TREE, 1);
+	}
+
 	@Override
 	public boolean shouldConnectWithEdge(WorldConfigurationInfo generatorOptions) {
 		return true;
@@ -34,7 +40,7 @@ public class IvoryHillsBiome extends BTABiome {
     }
 
 	@Override
-	public boolean CanLightningStrikeInBiome() {
+	public boolean canLightningStrikeInBiome() {
 		return true;
 	}
 }

@@ -34,6 +34,7 @@ public class WorldConfigurationInfo {
 	private BTAVersion btaVersion = BTAVersion.V1_1_3;
 	private int oceanSize = 10;
 	private boolean generatePerlinBeaches = false;
+	private boolean generateGravelBeaches = true;
 	private boolean wideRivers = false;
 
 	private boolean climatized = false;
@@ -48,6 +49,7 @@ public class WorldConfigurationInfo {
 		info.setBTAVersion(BTAMod.getInstance().currentVersion);
 		info.setOceanSize(5);
 		info.setGeneratePerlinBeaches(true);
+		info.setGenerateGravelBeaches(true);
 		info.setWideRivers(true);
 		info.setBiomeSize(1);
 		info.setGenerator(TerrainGenerator.CLASSIC);
@@ -103,6 +105,10 @@ public class WorldConfigurationInfo {
 		JsonObject globalSettings = root.get("global_settings").getAsJsonObject();
 		oceanSize = globalSettings.get("ocean_size").getAsInt();
 		generatePerlinBeaches = globalSettings.get("better_beaches").getAsBoolean();
+
+		if (globalSettings.has("gravel_beaches")) {
+			generateGravelBeaches = globalSettings.get("gravel_beaches").getAsBoolean();
+		}
 		
 		if (globalSettings.has("wide_rivers")) {
 			wideRivers = globalSettings.get("wide_rivers").getAsBoolean();
@@ -150,6 +156,7 @@ public class WorldConfigurationInfo {
 		JsonObject globalSettings = new JsonObject();
 		globalSettings.addProperty("ocean_size", oceanSize);
 		globalSettings.addProperty("better_beaches", generatePerlinBeaches);
+		globalSettings.addProperty("gravel_beaches", generateGravelBeaches);
 		globalSettings.addProperty("wide_rivers", wideRivers);
 		globalSettings.addProperty("climates", climatized);
 		globalSettings.addProperty("biome_size", biomeSize);
@@ -250,6 +257,16 @@ public class WorldConfigurationInfo {
 		this.generatePerlinBeaches = generateBeaches;
 		return this;
 	}
+
+	public boolean generateGravelBeaches() {
+		return generateGravelBeaches;
+	}
+
+	public WorldConfigurationInfo setGenerateGravelBeaches(boolean generateBeaches) {
+		this.generateGravelBeaches = generateBeaches;
+		return this;
+	}
+
 	public boolean hasWideRivers() {
 		return wideRivers;
 	}
@@ -283,8 +300,12 @@ public class WorldConfigurationInfo {
 		this.generator = generator;
 		return this;
 	}
+
+	public AddonConfigurationInfo getWorldConfigurationForAddon(BTAAddon addon) {
+		return this.addonInfoList.get(addon);
+	}
 	
-	public static interface Condition {
-		public boolean satisfiesContraints(WorldConfigurationInfo info);
+	public interface Condition {
+		boolean satisfiesContraints(WorldConfigurationInfo info);
 	}
 }

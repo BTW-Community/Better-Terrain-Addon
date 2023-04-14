@@ -2,17 +2,18 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.feature.terrain.MysticShardsGen;
-import betterbiomes.feature.tree.CherryTreeGen;
-import betterbiomes.feature.tree.MassiveOakGen;
-import betterbiomes.feature.tree.MysticTreeGen;
+import betterbiomes.world.feature.terrain.MysticShardsGen;
+import betterbiomes.world.feature.tree.legacy.CherryTreeGen;
+import betterbiomes.world.feature.tree.legacy.MassiveOakGen;
+import betterbiomes.world.feature.tree.legacy.MysticTreeGen;
 import betterterrain.BTAMod;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.plant.TallGrassGen;
-import betterterrain.feature.tree.TaigaGen6;
-import betterterrain.feature.tree.TallSwampTreeGen;
-import betterterrain.feature.tree.TemperateBirchGen;
+import betterterrain.world.feature.plant.TallGrassGen;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
+import betterterrain.world.feature.tree.legacy.TaigaGen6;
+import betterterrain.world.feature.tree.legacy.TallSwampTreeGen;
+import betterterrain.world.feature.tree.legacy.TemperateBirchGen;
 import betterterrain.world.config.WorldConfigurationInfo;
 import btw.entity.mob.ChickenEntity;
 import btw.entity.mob.PigEntity;
@@ -35,6 +36,22 @@ public class MysticValleyBiome extends BTABiome {
 		this.spawnableCreatureList.clear();
 		this.spawnableCreatureList.add(new SpawnListEntry(ChickenEntity.class, 10, 2, 2));
 		this.spawnableCreatureList.add(new SpawnListEntry(PigEntity.class, 10, 2, 2));
+	}
+
+	public void initTreeGrowerMap() {
+		this.treeGrowers.put(BTATreeGrowers.HUGE_OAK_REDWOOD_TREE, 2);
+		this.treeGrowers.put(BTATreeGrowers.TALL_SWAMP_OAK_TREE, 3);
+		this.treeGrowers.put(BTATreeGrowers.TEMPERATE_BIRCH_TREE, 5);
+		this.treeGrowers.put(BTATreeGrowers.BIG_SPRUCE_TREE, 5);
+		this.treeGrowers.put(BTATreeGrowers.OAK_REDWOOD_TREE, 5);
+
+		this.decoTreeGrowers.put(BTATreeGrowers.HUGE_OAK_REDWOOD_TREE, 2);
+		this.decoTreeGrowers.put(BTATreeGrowers.CHERRY_TREE, 2);
+		this.decoTreeGrowers.put(BTATreeGrowers.WHITE_CHERRY_TREE, 2);
+		this.decoTreeGrowers.put(BTATreeGrowers.TALL_SWAMP_OAK_TREE, 3);
+		this.decoTreeGrowers.put(BTATreeGrowers.TEMPERATE_BIRCH_TREE, 5);
+		this.decoTreeGrowers.put(BTATreeGrowers.BIG_SPRUCE_TREE, 5);
+		this.decoTreeGrowers.put(BTATreeGrowers.OAK_REDWOOD_TREE, 5);
 	}
 
 	@Override

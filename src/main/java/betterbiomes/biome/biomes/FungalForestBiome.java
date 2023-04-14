@@ -2,14 +2,16 @@ package betterbiomes.biome.biomes;
 
 import java.util.Random;
 
-import betterbiomes.feature.tree.MassiveOakGen;
+import betterbiomes.world.feature.tree.legacy.MassiveOakGen;
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.tree.TallSwampTreeGen;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
+import betterterrain.world.feature.tree.legacy.TallSwampTreeGen;
 import btw.entity.mob.ChickenEntity;
 import btw.entity.mob.PigEntity;
 import btw.entity.mob.SlimeEntity;
 import btw.entity.mob.WitchEntity;
+import btw.world.feature.trees.grower.TreeGrowers;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenerator;
 
@@ -26,6 +28,15 @@ public class FungalForestBiome extends BTABiome {
         this.spawnableCreatureList.add(new SpawnListEntry(ChickenEntity.class, 10, 2, 2));
         this.spawnableCreatureList.add(new SpawnListEntry(PigEntity.class, 10, 2, 2));
 	}
+
+    public void initTreeGrowerMap() {
+        this.treeGrowers.put(BTATreeGrowers.HUGE_OAK_REDWOOD_TREE, 4);
+        this.treeGrowers.put(BTATreeGrowers.TALL_SWAMP_OAK_TREE, 8);
+
+        this.decoTreeGrowers.put(BTATreeGrowers.HUGE_OAK_REDWOOD_TREE, 4);
+        this.decoTreeGrowers.put(BTATreeGrowers.TALL_SWAMP_OAK_TREE, 8);
+        this.decoTreeGrowers.put(BTATreeGrowers.WILLOW_TREE, 1);
+    }
 
     /**
      * Gets a WorldGen appropriate for this biome.

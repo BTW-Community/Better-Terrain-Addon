@@ -1,3 +1,36 @@
+Version 3.2.0
+- Updated to CE 2.0.2 and Deco 4.1.0.
+- Refactored how tree generation is handled internally.
+- Added new biomes:
+    - Redwood Forest: Temperate, spawns wolves
+    - Ice Marsh: Snowy, spawns witches, witch huts, slimes, and sugarcane
+    - Forested Highlands: Temperate, spawns wolves, emeralds, and silverfish
+    - Bower: Cold, spawns emeralds and silverfish
+    - Field: Temperate, spawns pumpkins and villages
+    - Dark Forest: Temperate, spawns witches (deco only) and sugarcane
+    - Maple Woods: Cold, spawns wolves (deco only)
+    - Snowy Maple Woods: Snowy, spawns wolves (deco only)
+- Renamed biomes:
+    - Ancient Forest -> Old Growth Woodland
+    - Autumn Forest -> Seasonal Forest
+    - Cherry Forest -> Cherry Blossom Grove
+- Added willow trees to Willow Groves when deco generation is enabled.
+- Added aspen trees to Alpine, Shield, and Hot Springs when deco generation is enabled.
+- Added redwood trees to Temperate Forest when deco generation is enabled.
+- Added the ability for much larger trees to spawn in several forest biomes which previously only had small trees, such as the Seasonal Forest.
+- Added large birch and dark oak trees to Old Growth Woodland.
+- Increased the frequency at which large trees appear in Orchards.
+- Decreased the intensity of the grass color in Orchards.
+- Increased the amount of grass in Highlands.
+- Changed Meadows so some trees there spawn with dark oak wood, and added rare larger trees.
+- Changed Shield to no longer generate sandy shorelines.
+- Increased the size and spacing of stone patches in Shield, Chaparral, and Arid Forest.
+- Changed Steppe generation to be more varied for new worlds.
+- Decreased the frequency of trees slightly in mangrove forests, and increased terrain height variance in new worlds.
+- Added the ability for pumpkins to spawn in Seasonal Forests, because the fall theme wouldn't be complete otherwise.
+- Removed the small single block thick trees from coniferous forests as they were too much of a pain to chop down.
+- Fixed an issue where badlands edges were too wide, leading to very infrequent plateaus. This only affects new worlds to avoid creating seams.
+
 Version 3.1.0
 - Updated to CE 2.0.0
 - Refactored the mod to use fabric mixins, so it can now be installed through the mods folder

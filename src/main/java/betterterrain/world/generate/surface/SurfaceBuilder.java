@@ -12,6 +12,7 @@ import betterterrain.mixins.BiomeDecoratorAccessor;
 import betterterrain.world.config.WorldConfigurationInfo;
 import betterterrain.world.generate.noise.OpenSimplexOctaves;
 import betterterrain.world.util.WorldTypeInterface;
+import btw.world.feature.trees.grower.AbstractTreeGrower;
 import deco.block.DecoBlocks;
 import net.minecraft.src.*;
 
@@ -479,17 +480,16 @@ public class SurfaceBuilder {
 			int x = this.chunkX + rand.nextInt(16) + 8;
 			int z = this.chunkZ + rand.nextInt(16) + 8;
 
-			WorldGenerator gen;
-
 			if (biome instanceof BTABiome) {
-				gen = ((BTABiome) this.biome).getRandomWorldGenForTrees(rand, generatorInfo, world.provider.terrainType);
+				AbstractTreeGrower treeGrower = ((BTABiome) biome).getTreeGrower(rand, generatorInfo, world.provider.terrainType);
+				treeGrower.growTree(world, rand, x, world.getHeightValue(x, z), z, true);
 			}
 			else {
-				gen = this.biome.getRandomWorldGenForTrees(rand);
+				WorldGenerator gen = this.biome.getRandomWorldGenForTrees(rand);
+				gen.setScale(1.0D, 1.0D, 1.0D);
+				gen.generate(world, rand, x, world.getHeightValue(x, z), z);
 			}
 
-			gen.setScale(1.0D, 1.0D, 1.0D);
-			gen.generate(world, rand, x, world.getHeightValue(x, z), z);
 		}
 	}
 
@@ -656,9 +656,14 @@ public class SurfaceBuilder {
 
 	protected boolean useGravelAtLocation(int i, int k, Random rand, WorldConfigurationInfo generatorInfo) {
 		if (generatorInfo.getBTAVersion().isVersionAtLeast(BTAVersion.V2_0_3)) {
-			double beachNoiseScale = 1/384D;
-			//k and i swapped because apparently I messed something up somewhere
-			return gravelNoiseGenSimplex.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), beachNoiseScale) > 0.925;
+			if (generatorInfo.generateGravelBeaches()) {
+				double beachNoiseScale = 1 / 384D;
+				//k and i swapped because apparently I messed something up somewhere
+				return gravelNoiseGenSimplex.noise2((this.chunkX * 16 + k), (this.chunkZ * 16 + i), beachNoiseScale) > 0.925;
+			}
+			else {
+				return false;
+			}
 		}
 		else {
 			return gravelNoise[k * 16 + i] + rand.nextDouble() * 0.2D > 3.0D;

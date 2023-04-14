@@ -4,12 +4,14 @@ import java.util.Random;
 
 import betterterrain.biome.BTABiome;
 import betterterrain.biome.Climate;
-import betterterrain.feature.plant.TallGrassGen;
-import betterterrain.feature.tree.SmallShrubGen;
-import betterterrain.feature.tree.TaigaGen5;
-import betterterrain.feature.tree.TaigaGen6;
-import betterterrain.feature.tree.TaigaGen7;
+import betterterrain.world.feature.plant.TallGrassGen;
+import betterterrain.world.feature.tree.grower.BTATreeGrowers;
+import betterterrain.world.feature.tree.legacy.SmallShrubGen;
+import betterterrain.world.feature.tree.legacy.TaigaGen5;
+import betterterrain.world.feature.tree.legacy.TaigaGen6;
+import betterterrain.world.feature.tree.legacy.TaigaGen7;
 import btw.entity.mob.WolfEntity;
+import btw.world.feature.trees.grower.TreeGrowers;
 import net.minecraft.src.Block;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenShrub;
@@ -22,6 +24,15 @@ public class BorealForestBiome extends BTABiome {
         this.spawnableCreatureList.add(new SpawnListEntry(WolfEntity.class, 5, 4, 4));
         this.btaBiomeDecorator.treesPerChunk = 20;
         this.btaBiomeDecorator.grassPerChunk = 2;
+	}
+
+	public void initTreeGrowerMap() {
+		this.treeGrowers.put(TreeGrowers.SPRUCE_TREE, 1);
+		this.treeGrowers.put(BTATreeGrowers.MEDIUM_SPRUCE_TREE, 1);
+		this.treeGrowers.put(BTATreeGrowers.TALL_SPRUCE_TREE, 1);
+		this.treeGrowers.put(BTATreeGrowers.BIG_SPRUCE_TREE, 1);
+		this.treeGrowers.put(BTATreeGrowers.SPRUCE_BUSH, 1);
+		this.treeGrowers.put(BTATreeGrowers.SMALL_SPRUCE_SHRUB, 1);
 	}
 
     /**

@@ -51,7 +51,7 @@ public class BadlandsBiome extends BTABiome {
 	}
 
 	@Override
-    public boolean CanLightningStrikeInBiome()
+    public boolean canLightningStrikeInBiome()
     {
         return true;
     }

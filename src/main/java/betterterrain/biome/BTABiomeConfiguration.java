@@ -29,6 +29,7 @@ import betterterrain.world.generate.surface.StonySurfaceBuilder;
 import betterterrain.world.generate.surface.SwampSurfaceBuilder;
 import btw.AddonHandler;
 import btw.util.hardcorespawn.HardcoreSpawnUtils;
+import net.minecraft.src.BiomeGenBase;
 
 public class BTABiomeConfiguration extends BiomeConfiguration {
 	public static final int
@@ -133,7 +134,7 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 			.setTemperatureRainfall(0.8F, 0.9F);
 	
 	public static final BTABiome woods = new WoodsBiome(WOODS_ID, "betterterrain:woods", Climate.TEMPERATE)
-			.setBiomeName("Woods")
+			.setBiomeName("Woodland")
 			.setTemperatureRainfall(0.7F, 0.8F)
 			.setMinMaxHeight(0.1F, 0.5F)
 			.setLegacyCompatible();
@@ -279,25 +280,10 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 	@Override
 	public void setBiomeVariants() {
 		desert.addSubVariant(desertHills);
-		icyPeaks.addSubVariant(icyPeaksForested, new WorldConfigurationInfo.Condition() {
-			@Override
-			public boolean satisfiesContraints(WorldConfigurationInfo info) {
-				return info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V1_3_4);
-			}
-		});
+		icyPeaks.addSubVariant(icyPeaksForested, info -> info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V1_3_4));
 		jungle.addSubVariant(jungleHills);
-		plains.addSubVariant(woods, new WorldConfigurationInfo.Condition() {
-			@Override
-			public boolean satisfiesContraints(WorldConfigurationInfo info) {
-				return info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V1_2_1);
-			}
-		});
-		plains.addSubVariant(aridForest, new WorldConfigurationInfo.Condition() {
-			@Override
-			public boolean satisfiesContraints(WorldConfigurationInfo info) {
-				return info.getBTAVersion().isVersionAtLeast(BTAVersion.V1_3_0);
-			}
-		});
+		plains.addSubVariant(woods, info -> info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V1_2_1));
+		plains.addSubVariant(aridForest, info -> info.getBTAVersion().isVersionAtLeast(BTAVersion.V1_3_0));
 		woods.addSubVariant(woodsHills);
 		
 		jungle.addSporadicVariant(jungleRiver);
@@ -306,31 +292,11 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 		swamp.addSporadicChance(5);
 
 		mountains.setHasBeach(false);
-		tundra.setHasBeach(false, new WorldConfigurationInfo.Condition() {
-			@Override
-			public boolean satisfiesContraints(WorldConfigurationInfo info) {
-				return info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V1_3_1);
-			}
-		});
+		tundra.setHasBeach(false, info -> info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V1_3_1));
 		icyPeaks.setHasBeach(false);
-		siberia.setHasBeach(false, new WorldConfigurationInfo.Condition() {
-			@Override
-			public boolean satisfiesContraints(WorldConfigurationInfo info) {
-				return info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V1_3_1);
-			}
-		});
-		tundra.addBeachVariant(frozenBeach, new WorldConfigurationInfo.Condition() {
-			@Override
-			public boolean satisfiesContraints(WorldConfigurationInfo info) {
-				return info.getBTAVersion().isVersionAtLeast(BTAVersion.V1_3_2);
-			}
-		});
-		siberia.addBeachVariant(frozenBeach, new WorldConfigurationInfo.Condition() {
-			@Override
-			public boolean satisfiesContraints(WorldConfigurationInfo info) {
-				return info.getBTAVersion().isVersionAtLeast(BTAVersion.V1_3_2);
-			}
-		});
+		siberia.setHasBeach(false, info -> info.getBTAVersion().isVersionAtOrBelow(BTAVersion.V1_3_1));
+		tundra.addBeachVariant(frozenBeach, info -> info.getBTAVersion().isVersionAtLeast(BTAVersion.V1_3_2));
+		siberia.addBeachVariant(frozenBeach, info -> info.getBTAVersion().isVersionAtLeast(BTAVersion.V1_3_2));
 
 		desert.addRiverVariant(desertRiver);
 		desertHills.addRiverVariant(desertRiver);
@@ -338,18 +304,10 @@ public class BTABiomeConfiguration extends BiomeConfiguration {
 		jungleHills.addRiverVariant(jungleRiver);
 		jungleEdge.addRiverVariant(jungleRiver);
 		swamp.addRiverVariant(swampRiver);
-		tundra.addRiverVariant(frozenRiver);
-		icyPeaks.addRiverVariant(frozenRiver);
-		siberia.addRiverVariant(frozenRiver);
 
 		mountains.addEdgeVariant(mountainEdge);
 		icyPeaks.addEdgeVariant(icyPeaksEdge);
-		jungle.addEdgeVariant(jungleEdge, new WorldConfigurationInfo.Condition() {
-			@Override
-			public boolean satisfiesContraints(WorldConfigurationInfo info) {
-				return info.getBTAVersion().isVersionAtLeast(BTAVersion.V1_3_2);
-			}
-		});
+		jungle.addEdgeVariant(jungleEdge, info -> info.getBTAVersion().isVersionAtLeast(BTAVersion.V1_3_2));
 		jungleHills.setConnectToEdge(false);
 	}
 	
