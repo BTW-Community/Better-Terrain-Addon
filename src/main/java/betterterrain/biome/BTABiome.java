@@ -14,7 +14,6 @@ import betterterrain.biome.layer.SporadicLayer;
 import betterterrain.world.feature.plant.MelonGen;
 import betterterrain.world.feature.plant.TallGrassGen;
 import betterterrain.world.feature.terrain.OreGen;
-import betterterrain.mixins.StructureScatteredFeatureStartAccessor;
 import betterterrain.structure.mapgen.BTAMapGenScatteredFeature;
 import betterterrain.structure.mapgen.BTAMapGenVillage;
 import betterterrain.world.config.WorldConfigurationInfo;
@@ -193,9 +192,11 @@ public class BTABiome extends BiomeGenBase {
         return surfaceBuilder;
     }
 
+    private boolean canSlimesSpawnOnSurface = false;
+
 	@Override
     public boolean canSlimesSpawnOnSurface() {
-        return StructureScatteredFeatureStartAccessor.getSwampBiomeList().contains(this);
+        return canSlimesSpawnOnSurface;
     }
 
     public BTABiome setSurfaceBuilder(SurfaceBuilder surfaceBuilder) {
@@ -632,6 +633,7 @@ public class BTABiome extends BiomeGenBase {
     public BTABiome setSpawnsWitchHuts() {
         BTAMapGenScatteredFeature.biomelist.add(this);
         StructureScatteredFeatureStart.addSwampBiome(this);
+        this.canSlimesSpawnOnSurface = true;
         return this;
     }
 

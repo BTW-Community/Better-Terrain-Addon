@@ -39,11 +39,6 @@ public abstract class WorldProviderMixin implements WorldProviderInterface {
         }
     }
 
-    @Inject(method = "getCloudHeight", at = @At("RETURN"), cancellable = true)
-    public void getCloudHeight(CallbackInfoReturnable<Float> cir) {
-        cir.setReturnValue(((WorldTypeInterface) this.terrainType).getCloudHeight());
-    }
-
     @Inject(method = "getAverageGroundLevel", at = @At("RETURN"), cancellable = true)
     public void getAverageGroundLevel(CallbackInfoReturnable<Integer> cir) {
         if (this.terrainType != WorldType.FLAT) {
@@ -57,6 +52,12 @@ public abstract class WorldProviderMixin implements WorldProviderInterface {
     }
 
     //----------- Client Side Functionality -----------//
+
+    @Environment(EnvType.CLIENT)
+    @Inject(method = "getCloudHeight", at = @At("RETURN"), cancellable = true)
+    public void getCloudHeight(CallbackInfoReturnable<Float> cir) {
+        cir.setReturnValue(((WorldTypeInterface) this.terrainType).getCloudHeight());
+    }
 
     @Environment(EnvType.CLIENT)
     @Inject(method = "getFogColor", at = @At("HEAD"), cancellable = true)

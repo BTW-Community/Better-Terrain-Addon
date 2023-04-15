@@ -16,14 +16,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(WorldProviderEnd.class)
 public abstract class WorldProviderEndMixin extends WorldProvider implements WorldProviderInterface {
-    @Shadow public abstract Vec3 getFogColor(float par1, float par2);
-
     @Inject(method = "createChunkGenerator", at = @At("RETURN"), cancellable = true)
     public void createChunkGenerator(CallbackInfoReturnable<IChunkProvider> cir) {
         cir.setReturnValue(((WorldTypeInterface) this.terrainType).getChunkProviderEnd(this.worldObj, this.worldObj.getSeed()));
     }
 
     //----------- Client Side Functionality -----------//
+
+    @Environment(EnvType.CLIENT)
+    @Shadow public abstract Vec3 getFogColor(float par1, float par2);
 
     @Environment(EnvType.CLIENT)
     @Override

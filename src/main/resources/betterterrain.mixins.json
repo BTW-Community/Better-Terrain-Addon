@@ -10,7 +10,6 @@
 
     "BiomeDecoratorAccessor",
     "GenLayerAccessor",
-    "StructureScatteredFeatureStartAccessor",
     "StructureScatteredFeatureStartMixin",
     "WorldProviderMixin",
     "WorldProviderEndMixin",
