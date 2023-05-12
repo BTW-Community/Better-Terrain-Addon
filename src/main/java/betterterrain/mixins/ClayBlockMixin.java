@@ -3,7 +3,9 @@ package betterterrain.mixins;
 import betterterrain.BTAMod;
 import betterterrain.block.util.ClayHelper;
 import btw.BTWAddon;
+import btw.block.BTWBlocks;
 import btw.block.blocks.ClayBlock;
+import btw.block.blocks.GrassBlock;
 import btw.item.BTWItems;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -15,9 +17,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
+import java.util.Random;
 
 @Mixin(ClayBlock.class)
 public abstract class ClayBlockMixin extends Block {
+    
     protected ClayBlockMixin(int blockID, Material material) {
         super(blockID, material);
     }
@@ -62,6 +66,47 @@ public abstract class ClayBlockMixin extends Block {
 
         this.dropItemsIndividually(world, x, y, z, BTWItems.clayPile.itemID, 1, 0, chance);
     }
+    
+    @Override
+    public void updateTick(World world, int x, int y, int z, Random rand) {
+        if (world.getBlockMetadata(x, y, z) == ClayHelper.GRASS_TYPE) {
+            if (!GrassBlock.canGrassSurviveAtLocation(world, x, y, z)) {
+                // convert back to dirt in low light
+                world.setBlockMetadataWithNotify(x, y, z, ClayHelper.DIRT_TYPE);
+            } else if (GrassBlock.canGrassSpreadFromLocation(world, x, y, z)) {
+                if (rand.nextFloat() <= GrassBlock.GROWTH_CHANCE) {
+                    GrassBlock.checkForGrassSpreadFromLocation(world, x, y, z);
+                }
+            }
+        }
+    }
+    
+    @Override
+    public boolean getCanGrassSpreadToBlock(World world, int x, int y, int z) {
+        return world.getBlockMetadata(x, y, z) == ClayHelper.DIRT_TYPE;
+    }
+    
+    @Override
+    public boolean spreadGrassToBlock(World world, int x, int y, int z) {
+        if (world.getBlockMetadata(x, y, z) == ClayHelper.DIRT_TYPE) {
+            world.setBlockMetadataWithNotify(x, y, z, ClayHelper.GRASS_TYPE);
+            return true;
+        }
+        
+        return false;
+    }
+    
+    @Override
+    public boolean canBeGrazedOn(IBlockAccess blockAccess, int x, int y, int z, EntityAnimal animal) {
+        return blockAccess.getBlockMetadata(x, y, z) == ClayHelper.GRASS_TYPE;
+    }
+    
+    @Override
+    public void onGrazed(World world, int x, int y, int z, EntityAnimal animal) {
+        if (world.getBlockMetadata(x, y, z) == ClayHelper.GRASS_TYPE) {
+            world.setBlockMetadataWithNotify(x, y, z, ClayHelper.DIRT_TYPE);
+        }
+    }
 
     @Override
     public float getMovementModifier(World world, int x, int y, int z) {
@@ -99,24 +144,21 @@ public abstract class ClayBlockMixin extends Block {
     Icon sandyClayIcon;
     @Environment(EnvType.CLIENT)
     Icon redSandyClayIcon;
-    @Environment(EnvType.CLIENT)
-    Icon grassyClayOverlay;
 
     @Environment(EnvType.CLIENT)
     public void registerIcons(IconRegister var1) {
         super.registerIcons(var1);
         sandyClayIcon = var1.registerIcon("btaBlockSandyClay");
         redSandyClayIcon = var1.registerIcon("btaBlockRedSandyClay");
-        grassyClayOverlay = var1.registerIcon("btaOverlayGrassyClay");
     }
 
     @Environment(EnvType.CLIENT)
     @Override
     public Icon getIcon(int side, int meta) {
-        if (meta == 1) {
+        if (meta == ClayHelper.SAND_TYPE) {
             return sandyClayIcon;
         }
-        else if (meta == 2) {
+        else if (meta == ClayHelper.RED_SAND_TYPE) {
             return redSandyClayIcon;
         }
         else {
@@ -129,14 +171,12 @@ public abstract class ClayBlockMixin extends Block {
     public boolean renderBlock(RenderBlocks render, int x, int y, int z) {
         int meta = render.blockAccess.getBlockMetadata(x, y, z);
 
-        if (meta == 0)
-            super.renderBlock(render, x, y, z);
-        else if (meta == 1)
+        if (meta == ClayHelper.SAND_TYPE)
             this.renderBlockWithTexture(render, x, y, z, sandyClayIcon);
-        else if (meta == 2)
+        else if (meta == ClayHelper.RED_SAND_TYPE)
             this.renderBlockWithTexture(render, x, y, z, redSandyClayIcon);
         else
-            Block.grass.renderBlock(render, x, y, z);
+            super.renderBlock(render, x, y, z);
 
         return true;
     }
@@ -156,10 +196,6 @@ public abstract class ClayBlockMixin extends Block {
     public void renderBlockSecondPass(RenderBlocks var1, int var2, int var3, int var4, boolean var5) {
         if (var1.blockAccess.getBlockMetadata(var2, var3, var4) == 3) {
             Block.grass.renderBlockSecondPass(var1, var2, var3, var4, var5);
-
-            var1.setRenderAllFaces(false);
-            this.renderBlockWithTexture(var1, var2, var3, var4, grassyClayOverlay);
-            var1.setRenderAllFaces(true);
         }
     }
 

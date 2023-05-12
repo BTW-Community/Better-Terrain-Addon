@@ -504,6 +504,7 @@ public class BetterBiomesConfiguration extends BiomeConfiguration {
 	public static final BTABiome iceMarsh = new IceMarshBiome(ICE_MARSH_ID, "betterbiomes:ice_marsh", Climate.SNOWY)
 			.setBiomeName("Ice Marsh")
 			.setSpawnsWitchHuts()
+			.setSpawnsSugarCane()
 			.setSurfaceBuilder(new SwampSurfaceBuilder(false))
 			.setTemperatureRainfall(0.1F, 0.3F)
 			.setMinMaxHeight(-0.1F, 0.3F)

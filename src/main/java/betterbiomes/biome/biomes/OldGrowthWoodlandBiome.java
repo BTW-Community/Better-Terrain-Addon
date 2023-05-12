@@ -26,7 +26,6 @@ public class OldGrowthWoodlandBiome extends BTABiome {
 		this.treeGrowers.put(TreeGrowers.BIG_OAK_TREE, 6);
 		this.treeGrowers.put(BTATreeGrowers.TALL_OAK_TREE, 10);
 		this.treeGrowers.put(BTATreeGrowers.BIG_BIRCH_TREE, 1);
-		this.treeGrowers.put(BTATreeGrowers.DARK_OAK_TREE, 1);
 
 		this.decoTreeGrowers.put(BTATreeGrowers.HUGE_OAK_TREE, 3);
 		this.decoTreeGrowers.put(TreeGrowers.BIG_OAK_TREE, 6);

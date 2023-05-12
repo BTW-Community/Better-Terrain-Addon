@@ -1,4 +1,4 @@
-[20:31:20] [main/INFO] (FabricLoader) Loading for game Minecraft 1.5.2
-[20:31:20] [main/INFO] (Fabric|Loader) [FabricLoaderImpl] Loading 4 mods: minecraft@1.5.2, betterterrain@3.2.0, java@8, fabricloader@1.0.0
-[20:31:21] [main/INFO] (mixin) SpongePowered MIXIN Subsystem Version=0.8.2 Source=file:/C:/Users/abiga/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.9.2+mixin.0.8.2/12c437eebf031967eaa7daad861e115932772cc7/sponge-mixin-0.9.2+mixin.0.8.2.jar Service=Knot/Fabric Env=SERVER
-[20:31:21] [main/INFO] (Fabric|MixinBootstrap) Loaded Fabric development mappings for mixin remapper!
+[15:14:07] [main/INFO] (FabricLoader) Loading for game Minecraft 1.5.2
+[15:14:07] [main/INFO] (Fabric|Loader) [FabricLoaderImpl] Loading 4 mods: minecraft@1.5.2, betterterrain@3.2.1, java@8, fabricloader@1.0.0
+[15:14:07] [main/INFO] (mixin) SpongePowered MIXIN Subsystem Version=0.8.2 Source=file:/C:/Users/abiga/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.9.2+mixin.0.8.2/12c437eebf031967eaa7daad861e115932772cc7/sponge-mixin-0.9.2+mixin.0.8.2.jar Service=Knot/Fabric Env=CLIENT
+[15:14:07] [main/INFO] (Fabric|MixinBootstrap) Loaded Fabric development mappings for mixin remapper!
