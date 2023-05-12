@@ -15,6 +15,7 @@ Version 3.X.0
 Version 3.2.1
 - Changed grassy clay to behave like regular grass blocks. It can spread grass, grass can spread to dirt clay blocks, and animals can eat grassy clay.
 - Changed how grassy clay renders to only render clay in the dirt instead of in the grass as well.
+- Removed the grassy clay overlay texture as it is no longer used.
 - Fixed an issue where mahogany trees try to generate with mahogany wood instead of jungle wood without deco installed, crashing the game.
 
 Version 3.2.0

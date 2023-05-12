@@ -144,15 +144,12 @@ public abstract class ClayBlockMixin extends Block {
     Icon sandyClayIcon;
     @Environment(EnvType.CLIENT)
     Icon redSandyClayIcon;
-    @Environment(EnvType.CLIENT)
-    Icon grassyClayOverlay;
 
     @Environment(EnvType.CLIENT)
     public void registerIcons(IconRegister var1) {
         super.registerIcons(var1);
         sandyClayIcon = var1.registerIcon("btaBlockSandyClay");
         redSandyClayIcon = var1.registerIcon("btaBlockRedSandyClay");
-        grassyClayOverlay = var1.registerIcon("btaOverlayGrassyClay");
     }
 
     @Environment(EnvType.CLIENT)
