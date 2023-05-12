@@ -28,7 +28,7 @@ public class BTAMod extends BTWAddon {
 	public static Material netherSand;
 	
 	private BTAMod() {
-		super("Better Terrain", "3.2.0", "BTA");
+		super("Better Terrain", "3.2.1", "BTA");
 		this.currentVersion = BTAVersion.fromString(this.getVersionString());
 	}
 

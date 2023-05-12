@@ -1,3 +1,6 @@
+Version 3.2.1
+- Fixed an issue where dark oak trees tried to generate in old growth woodland when deco was not installed, crashing the game
+
 Version 3.2.0
 - Updated to CE 2.0.2 and Deco 4.1.0.
 - Refactored how tree generation is handled internally.
