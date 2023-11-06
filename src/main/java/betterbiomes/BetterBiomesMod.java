@@ -15,9 +15,10 @@ public class BetterBiomesMod extends BTAAddon {
 	public static final AddonVersion V3_1_0 = new AddonVersion(3, 1, 0, getInstance());
 	public static final AddonVersion V3_2_0 = new AddonVersion(3, 2, 0, getInstance());
 	public static final AddonVersion V3_2_1 = new AddonVersion(3, 2, 1, getInstance());
+	public static final AddonVersion V3_2_2 = new AddonVersion(3, 2, 2, getInstance());
 	
 	private BetterBiomesMod() {
-		super("Better Biomes", "betterbiomes", "3.2.1", "BB");
+		super("Better Biomes", "betterbiomes", "3.2.2", "BB");
 	}
 	
 	@Override

@@ -1,9 +1,6 @@
 package betterterrain.biome;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.function.ToDoubleFunction;
 
 import betterterrain.BTAVersion;
@@ -603,7 +600,7 @@ public class BTABiome extends BiomeGenBase {
     private boolean canSpawnStronghold = true;
 
     public BTABiome setSpawnsVillages(boolean isDesert) {
-        BTAMapGenVillage.villageSpawnBiomes.add(this);
+        MapGenVillage.villageSpawnBiomes.add(this);
 
         if (isDesert) {
             ComponentVillageStartPiece.addDesertBiome(this);

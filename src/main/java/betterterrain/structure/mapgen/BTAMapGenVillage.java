@@ -7,8 +7,6 @@ import net.minecraft.src.*;
 
 public class BTAMapGenVillage extends BTAMapGenStructure
 {
-    public static final ArrayList<BiomeGenBase> villageSpawnBiomes = new ArrayList<BiomeGenBase>(Arrays.asList(new BiomeGenBase[] {BiomeGenBase.plains, BiomeGenBase.desert}));
-
     /** World terrain type, 0 for normal, 1 for flat map */
     private int terrainType;
     private int field_82665_g;
@@ -66,7 +64,7 @@ public class BTAMapGenVillage extends BTAMapGenStructure
 
         if (var3 == var5 && var4 == var6)
         {
-            boolean var8 = this.worldObj.getWorldChunkManager().areBiomesViable(var3 * 16 + 8, var4 * 16 + 8, 0, villageSpawnBiomes);
+            boolean var8 = this.worldObj.getWorldChunkManager().areBiomesViable(var3 * 16 + 8, var4 * 16 + 8, 0, MapGenVillage.villageSpawnBiomes);
 
             if (var8)
             {

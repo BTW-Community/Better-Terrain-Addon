@@ -12,6 +12,10 @@ Version 3.X.0
 [*]Changed black stone to be able to spawn nether mobs.
 [/list]
 
+Version 3.2.2
+- Fixed an issue where villages were not generating properly.
+- Fixed an issue where difficulty selection at world creation was not being respected.
+
 Version 3.2.1
 - Changed grassy clay to behave like regular grass blocks. It can spread grass, grass can spread to dirt clay blocks, and animals can eat grassy clay.
 - Changed how grassy clay renders to only render clay in the dirt instead of in the grass as well.

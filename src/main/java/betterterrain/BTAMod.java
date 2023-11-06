@@ -11,6 +11,8 @@ import btw.BTWAddon;
 import btw.block.BTWBlocks;
 import net.minecraft.src.*;
 
+import java.util.ArrayList;
+
 public class BTAMod extends BTWAddon {
 	private static BTAMod instance;
 	
@@ -28,7 +30,7 @@ public class BTAMod extends BTWAddon {
 	public static Material netherSand;
 	
 	private BTAMod() {
-		super("Better Terrain", "3.2.1", "BTA");
+		super("Better Terrain", "3.2.2", "BTA");
 		this.currentVersion = BTAVersion.fromString(this.getVersionString());
 	}
 
@@ -43,6 +45,10 @@ public class BTAMod extends BTWAddon {
 
 		Block.blockNetherQuartz.setBlockMaterial(BTWBlocks.netherRockMaterial);
 		Block.slowSand.setBlockMaterial(netherSand);
+		
+		MapGenVillage.villageSpawnBiomes = new ArrayList<>();
+		MapGenVillage.villageSpawnBiomes.add(BiomeGenBase.plains);
+		MapGenVillage.villageSpawnBiomes.add(BiomeGenBase.desert);
 		
 		for (BTWAddon mod : AddonHandler.modList.values()) {
 			if (mod instanceof BTAAddon) {

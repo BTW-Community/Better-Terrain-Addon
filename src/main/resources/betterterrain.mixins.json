@@ -4,16 +4,15 @@
   "package": "betterterrain.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "BiomeDecoratorAccessor",
     "ClayBlockMixin",
+    "GenLayerAccessor",
     "NetherGrothSporesItemMixin",
     "SoulSandPileItemMixin",
-
-    "BiomeDecoratorAccessor",
-    "GenLayerAccessor",
     "StructureScatteredFeatureStartMixin",
-    "WorldProviderMixin",
     "WorldProviderEndMixin",
     "WorldProviderHellMixin",
+    "WorldProviderMixin",
     "WorldTypeAccessor",
     "WorldTypeMixin"
   ],
